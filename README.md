@@ -1,5 +1,7 @@
 # ProgettoSushi
 
+IMPORTANTE: Ricordatevi quando scegliete un lavoro da fare di mettermi tra gli "assignee" (incaricato) così non ci mettiamo in due a fare la stessa cosa
+
 Come gestire i vari branch:
 
 Puntavamo ad usare il seguente tipo di workflow
