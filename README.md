@@ -2,6 +2,8 @@
 
 IMPORTANTE: Ricordatevi quando scegliete un lavoro da fare di mettermi tra gli "assignee" (incaricato) così non ci mettiamo in due a fare la stessa cosa
 
+IMPORTANTE2: Ricordatevi anche che quando create un "feature branch" prima dovete posizionarvi in develop e poi creare un branch nuovo.
+
 Come gestire i vari branch:
 
 Puntavamo ad usare il seguente tipo di workflow
