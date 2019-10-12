@@ -1,10 +1,14 @@
 # ProgettoSushi
 
-IMPORTANTE: Ricordatevi quando scegliete un lavoro da fare di mettermi tra gli "assignee" (incaricato) così non ci mettiamo in due a fare la stessa cosa
+**IMPORTANTE:** Ricordatevi quando scegliete un lavoro da fare di mettermi tra gli "assignee" (incaricato) così non ci mettiamo in due a fare la stessa cosa
 
-IMPORTANTE2: Ricordatevi anche che quando create un "feature branch" prima dovete posizionarvi in develop e poi creare un branch nuovo.
+**IMPORTANTE2:** Ricordatevi anche che quando create un "feature branch" prima dovete posizionarvi in develop e poi creare un branch nuovo.
 
-Come gestire i vari branch:
+**Link utili:**
+
+Validatore di W3C: https://validator.w3.org/
+
+**Come gestire i vari branch:**
 
 Puntavamo ad usare il seguente tipo di workflow
 ![Workflow](https://user-images.githubusercontent.com/56229661/66667012-50e26b00-ec52-11e9-8c43-69d8d352f4cd.PNG)
