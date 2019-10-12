@@ -7,7 +7,7 @@
       <meta name="description" content="Pagina di accesso e/o registrazione al sito dove è possibile comprare sushi" />
       <meta name="keyword" content="Accedi Registrati" />
       <meta name="language" content="italian it"/>
-      <meta name="author" content="Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
+      <meta name="author" content="Alessandro Dindinelli, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
   </head>
   <body>
     <div id="header">
@@ -23,20 +23,32 @@
     </div>
 
     <div id="content">
-      <form action="">
+        <h1>Nome del sushi</h1> <!Nome temporaneo>
+        <!-- Form per l'accesso -->
+      <form action=""> <!Manca l'attributo action e l'attributo method (get/post)>
         <fieldset>
-          <legend>Accedi</legend>
-          <label for="username">Nome Utente:</label>
-          <input id="username" type="text" placeholder="Utente"/>
-          <label for="password">Password:</label>
-          <input id="password" type="password" placeholder="Password"/>
-          <input type="submit" value="Accedi"/>
+            <legend>Accedi</legend>
+            <label for="username">Nome Utente:</label>
+            <input type="text" id="username" placeholder="Utente"/>
+            <label for="password" xml:lang="en">Password:</label>
+            <input type="password" id="password" placeholder="Password"/>
+            <input type="submit" value="Accedi"/>
         </fieldset>
       </form>
       <span>oppure</span>
-      <form action="">
+      <!-- Form per le registrazione -->
+      <form action=""> <!Manca l'attributo action e l'attributo method (get/post)>
         <fieldset>
-          <legend>Registrati</legend>
+            <legend>Registrati</legend>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" placeholder="Nome"/>
+            <label for="cognome">Cognome:</label>
+            <input type="text" id="cognome" placeholder="Cognome"/>
+            <label for="password" xml:lang="en">Password:</label>
+            <input type="password" id="password"/>
+            <label for="passwordRepeat">Ripeti la <span xml:lang="en">password:</span></label>
+            <input type="password" id="passwordRepeat"/>
+            <input type="submit" value="Registrati"/>
         </fieldset>
       </form>
     </div>
