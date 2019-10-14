@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+<!DOCTYPE html>
+<html lang="it">
   <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <title>Login</title>
@@ -25,13 +25,17 @@
     <div id="content">
         <h1>Nome del sushi</h1> <!Nome temporaneo>
         <!-- Form per l'accesso -->
-        <form action=""> <!Manca l'attributo action e l'attributo method (get/post)>
+        <form action="" autocomplete="on"> <!Manca l'attributo action e l'attributo method (get/post)>
             <fieldset>
                 <legend>Accedi</legend>
-                <label for="username">Nome Utente:</label>
-                <input type="text" id="username" placeholder="Utente"/>
-                <label for="passwordAcc" xml:lang="en">Password:</label>
-                <input type="password" id="passwordAcc" placeholder="Password"/>
+                <div class="formGroup">
+                    <label for="username">Nome Utente:</label>
+                    <input type="text" id="username" name="username" placeholder="Utente"/>
+                </div>
+                <div class="formGroup">
+                    <label for="passwordAcc" lang="en">Password:</label>
+                    <input type="password" id="passwordAcc" name="password" placeholder="Password"/>
+                </div>
                 <input type="submit" value="Accedi"/>
             </fieldset>
         </form>
@@ -40,16 +44,30 @@
         <form action=""> <!Manca l'attributo action e l'attributo method (get/post)>
             <fieldset>
                 <legend>Registrati</legend>
-                <label for="nomeUtente">Nome utente:</label>
-                <input type="text" id="nomeUtente" placeholder="Nome utente"/>
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" placeholder="Nome"/>
-                <label for="cognome">Cognome:</label>
-                <input type="text" id="cognome" placeholder="Cognome"/>
-                <label for="passwordReg" xml:lang="en">Password:</label>
-                <input type="password" id="passwordReg"/>
-                <label for="passwordRepeat">Ripeti la <span xml:lang="en">password:</span></label>
-                <input type="password" id="passwordRepeat"/>
+                <div class="formGroup">
+                    <label for="nomeUtente">Nome utente:</label>
+                    <input type="text" id="nomeUtente" name="username" placeholder="Nome utente"/>
+                </div>
+                <div class="formGroup">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" placeholder="Nome"/>
+                </div>
+                <div class="formGroup">
+                    <label for="cognome">Cognome:</label>
+                    <input type="text" id="cognome" name="cognome" placeholder="Cognome"/>
+                </div>
+                <div class="formGroup">
+                    <label for="data">Data di nascita:</label>
+                    <input type="date" id="data" name="dataNascita"/> <! Il validatore consiglia di prendere in considerazione "polyfill" in quanto date non è supportato da tutti i browser >
+                </div>
+                <div class="formGroup">
+                    <label for="passwordReg" lang="en">Password:</label>
+                    <input type="password" id="passwordReg" name="password"/>
+                </div>
+                <div class="formGroup">
+                    <label for="passwordRepeat">Ripeti la <span lang="en">password:</span></label>
+                    <input type="password" id="passwordRepeat" name="passwordRepeat"/>
+                </div>
                 <input type="submit" value="Registrati"/>
             </fieldset>
         </form>
