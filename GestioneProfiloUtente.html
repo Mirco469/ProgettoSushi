@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
   <head>
-      <meta charset=utf-8" />
+      <meta charset="utf-8" />
       <title>Gestione profilo</title>
       <meta name="title" content="Gestione profilo" />
       <meta name="description" content="Pagina di gestione del profilo" />
@@ -15,7 +15,7 @@
     </div>
 
     <div id="breadcrumb">
-      <p>Ti trovi in <span xml:lang="en">Home</span> &gt; &gt; Gestione Profilo </p>
+      <p>Ti trovi in <span xml:lang="en" lang="en">Home</span> &gt; &gt; Gestione Profilo </p>
     </div>
 
     <div id="menu">
@@ -29,11 +29,12 @@
         <legend>Informazioni personali: </legend>
         <h2>Nome Utente</h2>
           <label for="username">Nome utente: </label>
-          <input type="text" id="username" name="username" value="USERNAME"/> <!DA INSERIRE USERNAME DELL'UTENTE>
+          <input type="text" id="username" name="username" value="NomeUtenteVero"/>
+
         <h2>Cambia Password: </h2>
-          <label for="password">Inserisci la nuova <span xml:lang="en">password</span>: </label>
+          <label for="password">Inserisci la nuova <span xml:lang="en" lang="en">password</span>: </label>
           <input type="password" id="password" name="password" value=""/>
-          <label for="c_password">Conferma la nuova <span xml:lang="en">password</span>: </label>
+          <label for="c_password">Conferma la nuova <span xml:lang="en" lang="en">password</span>: </label>
           <input type="password" id="c_password" name="c_password" value=""/>
           <input type="submit" name="dati_personali" id="dati_personali" value="Salva"/>
       </fieldset>
@@ -41,7 +42,7 @@
         <legend>Modifica o inserisci informazioni sulla spedizione: </legend>
 
         <label for="nome_cognome">Nome e Cognome: </label>
-        <input type="text" name="nome_cognome" placeholder="Mario Rossi"/>
+        <input type="text" name="nome_cognome" id="nome_cognome" placeholder="Mario Rossi"/>
         <label for="indirizzo">Indirizzo: </label>
         <input type="text" id="indirizzo" name="indirizzo" placeholder="Inserire via"/>
         <label for="civico">Numero civico: </label>
