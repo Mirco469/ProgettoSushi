@@ -1,80 +1,80 @@
 <!DOCTYPE html>
 <html lang="it">
-  <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <title>Login</title>
-      <meta name="title" content="Sushi - Pagina di acesso e registrazione" />
-      <meta name="description" content="Pagina di accesso e/o registrazione al sito dove è possibile comprare sushi" />
-      <meta name="keyword" content="Accedi Registrati" />
-      <meta name="language" content="italian it"/>
-      <meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
-  </head>
-  <body>
-    <div id="header">
-      ...
-    </div>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Login</title>
+        <meta name="title" content="Sushi - Pagina di acesso e registrazione" />
+        <meta name="description" content="Pagina di accesso e/o registrazione al sito dove è possibile comprare sushi" />
+        <meta name="keyword" content="Accedi Registrati" />
+        <meta name="language" content="italian it"/>
+        <meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
+    </head>
+    <body>
+        <div id="header">
+        ...
+        </div>
 
-    <div id="breadcrumb">
-      ...
-    </div>
+        <div id="breadcrumb">
+        ...
+        </div>
 
-    <div id="menu">
-      ...
-    </div>
+        <div id="menu">
+        ...
+        </div>
 
-    <div id="content">
-        <h1>Nome del sushi</h1> <!Nome temporaneo>
-        <!-- Form per l'accesso -->
-        <form action="" autocomplete="on"> <!Manca l'attributo action e l'attributo method (get/post)>
-            <fieldset>
-                <legend>Accedi</legend>
-                <div class="formGroup">
-                    <label for="username">Nome Utente:</label>
-                    <input type="text" id="username" name="username" placeholder="Utente"/>
-                </div>
-                <div class="formGroup">
-                    <label for="passwordAcc" lang="en">Password:</label>
-                    <input type="password" id="passwordAcc" name="password" placeholder="Password"/>
-                </div>
-                <input type="submit" value="Accedi"/>
-            </fieldset>
-        </form>
-        <span>oppure</span>
-        <!-- Form per le registrazione -->
-        <form action=""> <!Manca l'attributo action e l'attributo method (get/post)>
-            <fieldset>
-                <legend>Registrati</legend>
-                <div class="formGroup">
-                    <label for="nomeUtente">Nome utente:</label>
-                    <input type="text" id="nomeUtente" name="username" placeholder="Nome utente"/>
-                </div>
-                <div class="formGroup">
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" placeholder="Nome"/>
-                </div>
-                <div class="formGroup">
-                    <label for="cognome">Cognome:</label>
-                    <input type="text" id="cognome" name="cognome" placeholder="Cognome"/>
-                </div>
-                <div class="formGroup">
-                    <label for="data">Data di nascita:</label>
-                    <input type="date" id="data" name="dataNascita"/> <! Il validatore consiglia di prendere in considerazione "polyfill" in quanto date non è supportato da tutti i browser >
-                </div>
-                <div class="formGroup">
-                    <label for="passwordReg" lang="en">Password:</label>
-                    <input type="password" id="passwordReg" name="password"/>
-                </div>
-                <div class="formGroup">
-                    <label for="passwordRepeat">Ripeti la <span lang="en">password:</span></label>
-                    <input type="password" id="passwordRepeat" name="passwordRepeat"/>
-                </div>
-                <input type="submit" value="Registrati"/>
-            </fieldset>
-        </form>
-    </div>
+        <div id="content">
+            <h1>Nome del sushi</h1> <!Nome temporaneo>
+            <!-- Form per l'accesso -->
+            <form action="" autocomplete="on"> <!Manca l'attributo action e l'attributo method (get/post)>
+                <fieldset>
+                    <legend>Accedi</legend>
+                    <div class="formGroup">
+                        <label for="username">Nome Utente:</label>
+                        <input type="text" id="username" name="username" placeholder="Utente"/>
+                    </div>
+                    <div class="formGroup">
+                        <label for="passwordAcc" xml:lang="en" lang="en">Password:</label>
+                        <input type="password" id="passwordAcc" name="password" placeholder="Password"/>
+                    </div>
+                    <input type="submit" value="Accedi"/>
+                </fieldset>
+            </form>
+            <span>oppure</span>
+            <!-- Form per le registrazione -->
+            <form action=""> <!Manca l'attributo action e l'attributo method (get/post)>
+                <fieldset>
+                    <legend>Registrati</legend>
+                    <div class="formGroup">
+                        <label for="nomeUtente">Nome utente:</label>
+                        <input type="text" id="nomeUtente" name="username" placeholder="Nome utente"/>
+                    </div>
+                    <div class="formGroup">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" placeholder="Nome"/>
+                    </div>
+                    <div class="formGroup">
+                        <label for="cognome">Cognome:</label>
+                        <input type="text" id="cognome" name="cognome" placeholder="Cognome"/>
+                    </div>
+                    <div class="formGroup">
+                        <label for="data">Data di nascita:</label>
+                        <input type="date" id="data" name="dataNascita"/> <! Il validatore consiglia di prendere in considerazione "polyfill" in quanto date non è supportato da tutti i browser >
+                    </div>
+                    <div class="formGroup">
+                        <label for="passwordReg" xml:lang="en" lang="en">Password:</label>
+                        <input type="password" id="passwordReg" name="password"/>
+                    </div>
+                    <div class="formGroup">
+                        <label for="passwordRepeat">Ripeti la <span xml:lang="en" lang="en">password:</span></label>
+                        <input type="password" id="passwordRepeat" name="passwordRepeat"/>
+                    </div>
+                    <input type="submit" value="Registrati"/>
+                </fieldset>
+            </form>
+        </div>
 
-    <div id="footer">
-      ...
-    </div>
-  </body>
+        <div id="footer">
+        ...
+        </div>
+    </body>
 </html>
