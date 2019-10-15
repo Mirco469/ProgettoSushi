@@ -32,149 +32,140 @@
           <input type="text" id="username" name="username" value="NomeUtenteVero"/>
 
         <h2>Cambia Password: </h2>
+        <div class="form_content">
           <label for="password">Inserisci la nuova <span xml:lang="en" lang="en">password</span>: </label>
           <input type="password" id="password" name="password" value=""/>
+        </div>
+        <div class="form_content">
           <label for="c_password">Conferma la nuova <span xml:lang="en" lang="en">password</span>: </label>
           <input type="password" id="c_password" name="c_password" value=""/>
-          <input type="submit" name="dati_personali" id="dati_personali" value="Salva"/>
+        </div>
+        <input type="submit" name="dati_personali" id="dati_personali" value="Salva"/>  <!--Submit legato solo al cambio della password-->
       </fieldset>
       <fieldset>
         <legend>Modifica o inserisci informazioni sulla spedizione: </legend>
 
+      <div class="form_content">
         <label for="nome_cognome">Nome e Cognome: </label>
         <input type="text" name="nome_cognome" id="nome_cognome" placeholder="Mario Rossi"/>
+      </div>
+      <div class="form_content">
         <label for="indirizzo">Indirizzo: </label>
         <input type="text" id="indirizzo" name="indirizzo" placeholder="Inserire via"/>
+      </div>
+      <div class="form_content">
         <label for="civico">Numero civico: </label>
         <input type="text" id="civico" name="civico" placeholder="Inserire numero civico"/>
+      </div>
+      <div class="form_content">
         <label for="cap"><abbr title="Codice di Avviamento Postale">CAP</abbr> :</label>
         <input type="text" id="cap"  name="cap" placeholder="Inserire CAP"/>
-        <label for="comune">Comune: </label>
-        <input type="text" id="comune" name="comune" placeholder="Inserire comune"/>
+      </div>
+        <div class="form_content">
+          <label for="comune">Comune: </label>
+          <input type="text" id="comune" name="comune" placeholder="Inserire comune"/>
+        </div>
+        <div class="form_content">
+          <label for="provincia">Provincia: </label>
+          <input type="provincia" id="provincia" name="provincia" value="Padova" disabled="disabled"/>
+        </div>
+        <div class="form_content">
+          <label for="stato">Stato: </label>
+          <input type="text" id="stato" name="stato" value="Italia" disabled="disabled"/>
+        </div>
+        <div class="form_content">
+          <label for="tel">Numero di telefono: </label>
+          <input type="tel" id="tel" name="tel" value=""/>
+        </div>
 
-        <label for="provincia">Provincia: </label>
-        <input list="provincie" id="provincia" name="provincia">
+        <input type="submit" name="dati_spedizione" id="dati_spedizione" value="Salva"/> <!--Submit legato solo alle informazioni di spedizione-->
 
-          <datalist id="provincie">
-            <option value="ag">Agrigento</option>
-	<option value="al">Alessandria</option>
-	<option value="an">Ancona</option>
-	<option value="ao">Aosta</option>
-	<option value="ar">Arezzo</option>
-	<option value="ap">Ascoli Piceno</option>
-	<option value="at">Asti</option>
-	<option value="av">Avellino</option>
-	<option value="ba">Bari</option>
-	<option value="bt">Barletta-Andria-Trani</option>
-	<option value="bl">Belluno</option>
-	<option value="bn">Benevento</option>
-	<option value="bg">Bergamo</option>
-	<option value="bi">Biella</option>
-	<option value="bo">Bologna</option>
-	<option value="bz">Bolzano</option>
-	<option value="bs">Brescia</option>
-	<option value="br">Brindisi</option>
-	<option value="ca">Cagliari</option>
-	<option value="cl">Caltanissetta</option>
-	<option value="cb">Campobasso</option>
-	<option value="ci">Carbonia-iglesias</option>
-	<option value="ce">Caserta</option>
-	<option value="ct">Catania</option>
-	<option value="cz">Catanzaro</option>
-	<option value="ch">Chieti</option>
-	<option value="co">Como</option>
-	<option value="cs">Cosenza</option>
-	<option value="cr">Cremona</option>
-	<option value="kr">Crotone</option>
-	<option value="cn">Cuneo</option>
-	<option value="en">Enna</option>
-	<option value="fm">Fermo</option>
-	<option value="fe">Ferrara</option>
-	<option value="fi">Firenze</option>
-	<option value="fg">Foggia</option>
-	<option value="fc">Forl&igrave;-Cesena</option>
-	<option value="fr">Frosinone</option>
-	<option value="ge">Genova</option>
-	<option value="go">Gorizia</option>
-	<option value="gr">Grosseto</option>
-	<option value="im">Imperia</option>
-	<option value="is">Isernia</option>
-	<option value="sp">La spezia</option>
-	<option value="aq">L'aquila</option>
-	<option value="lt">Latina</option>
-	<option value="le">Lecce</option>
-	<option value="lc">Lecco</option>
-	<option value="li">Livorno</option>
-	<option value="lo">Lodi</option>
-	<option value="lu">Lucca</option>
-	<option value="mc">Macerata</option>
-	<option value="mn">Mantova</option>
-	<option value="ms">Massa-Carrara</option>
-	<option value="mt">Matera</option>
-	<option value="vs">Medio Campidano</option>
-	<option value="me">Messina</option>
-	<option value="mi">Milano</option>
-	<option value="mo">Modena</option>
-	<option value="mb">Monza e della Brianza</option>
-	<option value="na">Napoli</option>
-	<option value="no">Novara</option>
-	<option value="nu">Nuoro</option>
-	<option value="og">Ogliastra</option>
-	<option value="ot">Olbia-Tempio</option>
-	<option value="or">Oristano</option>
-	<option value="pd">Padova</option>
-	<option value="pa">Palermo</option>
-	<option value="pr">Parma</option>
-	<option value="pv">Pavia</option>
-	<option value="pg">Perugia</option>
-	<option value="pu">Pesaro e Urbino</option>
-	<option value="pe">Pescara</option>
-	<option value="pc">Piacenza</option>
-	<option value="pi">Pisa</option>
-	<option value="pt">Pistoia</option>
-	<option value="pn">Pordenone</option>
-	<option value="pz">Potenza</option>
-	<option value="po">Prato</option>
-	<option value="rg">Ragusa</option>
-	<option value="ra">Ravenna</option>
-	<option value="rc">Reggio di Calabria</option>
-	<option value="re">Reggio nell'Emilia</option>
-	<option value="ri">Rieti</option>
-	<option value="rn">Rimini</option>
-	<option value="rm">Roma</option>
-	<option value="ro">Rovigo</option>
-	<option value="sa">Salerno</option>
-	<option value="ss">Sassari</option>
-	<option value="sv">Savona</option>
-	<option value="si">Siena</option>
-	<option value="sr">Siracusa</option>
-	<option value="so">Sondrio</option>
-	<option value="ta">Taranto</option>
-	<option value="te">Teramo</option>
-	<option value="tr">Terni</option>
-	<option value="to">Torino</option>
-	<option value="tp">Trapani</option>
-	<option value="tn">Trento</option>
-	<option value="tv">Treviso</option>
-	<option value="ts">Trieste</option>
-	<option value="ud">Udine</option>
-	<option value="va">Varese</option>
-	<option value="ve">Venezia</option>
-	<option value="vb">Verbano-Cusio-Ossola</option>
-	<option value="vc">Vercelli</option>
-	<option value="vr">Verona</option>
-	<option value="vv">Vibo valentia</option>
-	<option value="vi">Vicenza</option>
-	<option value="vt">Viterbo</option>
-          </datalist>
-        <label for="stato">Stato: </label>
-        <input type="text" id="stato" name="stato" value="Italia" disabled="disabled"/>
-        <label for="tel">Numero di telefono: </label>
-        <input type="tel" id="tel" name="tel" value=""/>
-        <input type="submit" name="dati_spedizione" id="dati_spedizione" value="Salva"/>
-      </fieldset>
+        <fieldset>
+          <legend>Informazioni di pagamento: </legend>
+          <div class="form_content">
+            <label for="intestatario_carta">Intestatario carta: </label>
+            <input type="text" name="intestatario_carta" id="intestatario_carta" value="" />
+          </div>                                          <!--Vanno inseriti i veri dati di pagamento se sono già nel DB-->
+          <div class="form_content">
+            <label for="num_carta">Numero carta: </label>
+            <input type="text" name="num_carta" id="num_carta" value="" />
+          </div>
+        </select><select name="mese_scad">
+            <option>- Mese -</option>
+            <option value="01">January</option>
+            <option value="03">March</option>
+            <option value="04">April</option>
+            <option value="05">May</option>
+            <option value="06">June</option>
+            <option value="07">July</option>
+            <option value="08">August</option>
+            <option value="09">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+       </select><select name="anno_scad">
+            <option>- Anno -</option>
+            <option value="2020">2020</option>
+            <option value="2019">2019</option>
+            <option value="2018">2018</option>
+            <option value="2017">2017</option>
+            <option value="2016">2016</option>
+            <option value="2015">2015</option>
+            <option value="2014">2014</option>
+            <option value="2013">2013</option>
+            <option value="2012">2012</option>
+            <option value="2011">2011</option>
+            <option value="2010">2010</option>
+            <option value="2009">2009</option>
+            <option value="2008">2008</option>
+            <option value="2007">2007</option>
+            <option value="2006">2006</option>
+            <option value="2005">2005</option>
+            <option value="2004">2004</option>
+            <option value="2003">2003</option>
+            <option value="2002">2002</option>
+            <option value="2001">2001</option>
+            <option value="2000">2000</option>
+            <option value="1999">1999</option>
+            <option value="1998">1998</option>
+            <option value="1997">1997</option>
+            <option value="1996">1996</option>
+            <option value="1995">1995</option>
+            <option value="1994">1994</option>
+            <option value="1993">1993</option>
+            <option value="1992">1992</option>
+            <option value="1991">1991</option>
+            <option value="1990">1990</option>
+            <option value="1989">1989</option>
+            <option value="1988">1988</option>
+            <option value="1987">1987</option>
+            <option value="1986">1986</option>
+            <option value="1985">1985</option>
+            <option value="1984">1984</option>
+            <option value="1983">1983</option>
+            <option value="1982">1982</option>
+            <option value="1981">1981</option>
+            <option value="1980">1980</option>
+            <option value="1979">1979</option>
+            <option value="1978">1978</option>
+            <option value="1977">1977</option>
+            <option value="1976">1976</option>
+            <option value="1975">1975</option>
+            <option value="1974">1974</option>
+            <option value="1973">1973</option>
+            <option value="1972">1972</option>
+            <option value="1971">1971</option>
+            <option value="1970">1970</option>
+            <option value="1969">1969</option>
+            <option value="1968">1968</option>
+            <option value="1967">1967</option>
+            <option value="1966">1966</option>
+            <option value="1965">1965</option>
 
+          <input type="submit" name="dati_pagamento" value="Salva">
+        </fieldset>
     </form>
+
     </div>
 
     <div id="footer">
