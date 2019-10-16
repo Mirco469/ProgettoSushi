@@ -11,11 +11,11 @@
 	
 	<body>
 		<div id="header">
-			
+		...
 		</div>
 
 		<div id="breadcrumb">
-			<p>Ti trovi in <span xml:lang="en" lang="en">Home</span> &gt; &gt; Gestione Profilo </p>
+			<p>Ti trovi in <span xml:lang="en" lang="en">Home</span> &gt; &gt; Carrello </p>
 		</div>
 
 		<div id="menu">
@@ -30,8 +30,10 @@
 				<!-- Inizio consegna_domicilio_o_asporto -->
 				<div>
 					<label>Tipo Consegna:</label>
-					<input type="radio" name="tipo_consegna" value="domicilio" />
-					<input type="radio" name="tipo_consegna" value="asporto" />
+					<input id="tipoConsegna_domicilio" type="radio" name="tipoConsegna" value="domicilio" />
+					<label for="tipoConsegna_domicilio">Domicilio</label>
+					<input id="tipoConsegna_asporto" type="radio" name="tipoConsegna" value="asporto" />
+					<label for="tipoConsegna_asporto">Asporto</label>
 				</div>
 				<!-- Fine consegna_domicilio_o_asporto -->
 			</div>
@@ -40,7 +42,7 @@
 			<div>
 				<!-- Inizio destinazione_default -->
 				<div>
-					<label for="destinazione_default">Destinazione di default:</label> 
+					<label for="destinazione_default">Destinazione di <span xml:lang="en" lang="en">default</span>:</label> 
 					<input id="destinazione_default" type="checkbox" name="destinazione" checked="checked" value="default" />
 				</div>
 				<!-- Fine destinazione_default -->
@@ -66,7 +68,7 @@
 				</div>
 				<div class="form_content">
 					<label for="provincia">Provincia: </label>
-					<input type="provincia" id="provincia" name="provincia" value="Padova" disabled="disabled"/>
+					<input type="text" id="provincia" name="provincia" value="Padova" disabled="disabled"/>
 				</div>
 				<div class="form_content">
 					<label for="stato">Stato: </label>
@@ -79,22 +81,64 @@
 			</div>
 			<!-- Fine dati_destinazione -->
 			<!-- Inizio lista_ordini -->
-				<div>
-					<!-- Inizio prodotto -->
-					<div>
-						<p>Nome prodotto</p>
-						<!-- Inizio quantita_prodotto -->
-						<div>
+			<table>
+				<thead>
+					<tr>
+						<th>Nome prodotto</th>
+						<th>Quantit&agrave;</th>
+						<th>Operazioni</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><a href="">Nome Prodotto</a></td>
+						<td>
 							<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
 							<input type="text" name="quantita" /><!-- numero prodotto -->
 							<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
-						</div>
-						<!-- Fine quantita_prodotto -->
-						<input type="button" name="rimuovi" />
-					</div>
-					<!-- Fine prodotto -->
-				</div>
+						</td>
+						<td>
+							<input type="button" name="rimuovi" value="Rimuovi" />
+						</td>
+					</tr>
+					<tr>
+						<td><a href="">Nome Prodotto</a></td>
+						<td>
+							<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
+							<input type="text" name="quantita" /><!-- numero prodotto -->
+							<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
+						</td>
+						<td>
+							<input type="button" name="rimuovi" value="Rimuovi" />
+						</td>
+					</tr>
+					<tr>
+						<td><a href="">Nome Prodotto</a></td>
+						<td>
+							<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
+							<input type="text" name="quantita" /><!-- numero prodotto -->
+							<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
+						</td>
+						<td>
+							<input type="button" name="rimuovi" value="Rimuovi" />
+						</td>
+					</tr>
+					<tr>
+						<td><a href="">Nome Prodotto</a></td>
+						<td>
+							<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
+							<input type="text" name="quantita" /><!-- numero prodotto -->
+							<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
+						</td>
+						<td>
+							<input type="button" name="rimuovi" value="Rimuovi" />
+						</td>
+					</tr>
+				</tbody>
+				<tfoot></tfoot>
+			</table>
 			<!-- Fine lista_ordini -->
+			<input type="button" value="Vai a pagamento" />
 		</div>
 		<!-- Fine contenuto -->
 
