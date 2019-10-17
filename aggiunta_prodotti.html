@@ -35,7 +35,7 @@
                 <div class="formGroup">
                     <label for="categoria">Categotia:</label>
                     <!-- lista delle categorie da caricare da database (letti dal sito domosushi.it se serve hanno una foto per ogni categoria)-->
-                    <input placeholder="Categoria" name="categoria" id="categoria" list="lista_categoria">
+                    <input placeholder="Categoria" name="categoria" id="categoria" list="lista_categoria" required="required">
                     <datalist id="lista_categoria">
                         <option>Antipasti</option>
                         <option>Primi Piatti</option>
@@ -61,28 +61,28 @@
             <thead>
                 <tr>
                     <th>Prodotto</th>
-                    <th>Categoria</th>
                     <th>Prezzo</th>
+                    <th>Categoria</th>
                     <th>Operazioni</th>
                 </tr>
             </thead>
             <tfoot>
                 <th>Prodotto</th>
-                <th>Categoria</th>
                 <th>Prezzo</th>
+                <th>Categoria</th>
                 <th>Operazioni</th>
             </tfoot>
             <tbody>
                 <tr>
                     <td>Prova</td>
-                    <td>Uramaki</td>
                     <td>5</td>
+                    <td>Uramaki</td>
                     <td><input type="button" value="Modifica" name="modifica"/></td>
                 </tr>
                 <tr>
                     <td>Prova2</td>
-                    <td>Sashimi</td>
                     <td>6</td>
+                    <td>Sashimi</td>
                     <td><input type="button" value="Modifica" name="modifica"/></td>
                 </tr>
             </tbody>
