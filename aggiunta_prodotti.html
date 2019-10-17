@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+<!DOCTYPE html>
+<html lang="it">
   <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta charset=utf-8" />
       <title></title>
       <meta name="title" content="" />
       <meta name="description" content="" />
-      <meta name="keyword" content="" />
+      <meta name="keyword" content="aggiunta prodotti" />
       <meta name="language" content="italian it"/>
       <meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
   </head>
@@ -23,7 +23,70 @@
     </div>
 
     <div id="content">
-    ...
+        <h1>Pagina di aggiunta prodotti</h1>
+        <!-- Form di aggiunta prodotti -->
+        <form action=""> <!Manca l'attributo action e l'attributo method (get/post)>
+            <fieldset>
+                <legend>Aggiungi nuovo prodotto</legend>
+                <div class="formGroup">
+                    <label for="prodotto">Nome Prodotto:</label>
+                    <input type="text" id="prodotto" name="prodotto" placeholder="Prodotto" required="required"/>
+                </div>
+                <div class="formGroup">
+                    <label for="categoria">Categotia:</label>
+                    <!-- lista delle categorie da caricare da database (letti dal sito domosushi.it se serve hanno una foto per ogni categoria)-->
+                    <input placeholder="Categoria" name="categoria" id="categoria" list="lista_categoria">
+                    <datalist id="lista_categoria">
+                        <option>Antipasti</option>
+                        <option>Primi Piatti</option>
+                        <option>Teppanyako e tempure</option>
+                        <option>Uramaki</option>
+                        <option>Nigiri e Onigiri</option>
+                        <option>Gunkan</option>
+                        <option>Temaki</option>
+                        <option>Hosomaki</option>
+                        <option>Sashimi</option>
+                        <option>Desert</option>
+                    </datalist>
+                </div>
+                <div class="formGroup">
+                    <label for="prezzo">Prezzo:</label>
+                    <input type="number" id="prezzo" name="prezzo" min="0" step="0.01" required="required"/>
+                </div>
+                <input type="submit" value="Aggiungi"/>
+            </fieldset>
+        </form>
+        <!-- Lista prodotti già presenti -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Prodotto</th>
+                    <th>Categoria</th>
+                    <th>Prezzo</th>
+                    <th>Operazioni</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <th>Prodotto</th>
+                <th>Categoria</th>
+                <th>Prezzo</th>
+                <th>Operazioni</th>
+            </tfoot>
+            <tbody>
+                <tr>
+                    <td>Prova</td>
+                    <td>Uramaki</td>
+                    <td>5</td>
+                    <td><input type="button" value="Modifica" name="modifica"/></td>
+                </tr>
+                <tr>
+                    <td>Prova2</td>
+                    <td>Sashimi</td>
+                    <td>6</td>
+                    <td><input type="button" value="Modifica" name="modifica"/></td>
+                </tr>
+            </tbody>
+		</table>
     </div>
 
     <div id="footer">
