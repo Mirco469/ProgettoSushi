@@ -5,13 +5,14 @@
       <title>Gestione profilo</title>
       <meta name="title" content="Gestione profilo" />
       <meta name="description" content="Pagina di gestione del profilo" />
-      <meta name="keyword" content="" />
+      <!--Da aggiungere robot noindex-->
       <meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
   </head>
 
   <body>
     <div id="header">
-
+      <img src="images/logo.jpg" alt="Logo ristorante, due bacchette con un pezzo di sushi"/>
+      <h1 xml:lang="ja">Sushi Nakamura</h1>
     </div>
 
     <div id="breadcrumb">
@@ -22,6 +23,14 @@
     ...
     </div>
 
+    <div class="menu_profilo">
+      <ul>
+        <li><a href="#cp">Cambia password</a></li>
+        <li><a href="#is">Modifica le informazioni di spedizione</a></li>
+        <li><a href="#ip">Modifica le informazioni di pagamento</a></li>
+      </ul>
+    </div>
+
     <div id="content">
     <h1>Gestione profilo</h1>
     <form class="" action="index.html" method="post">
@@ -29,9 +38,13 @@
         <legend>Informazioni personali: </legend>
         <h2>Nome Utente</h2>
           <label for="username">Nome utente: </label>
-          <input type="text" id="username" name="username" value="NomeUtenteVero"/>
+          <input type="text" id="username" name="username" value="NomeUtenteVero" disabled="disabled"/>
 
-        <h2>Cambia Password: </h2>
+        <h2 id="cp">Cambia Password: </h2>
+        <div class="form_content">
+          <label for="v_password">Inserisci la vecchia <span xml:lang="en" lang="en">password</span>: </label>
+          <input type="password" id="v_password" name="v_password" value=""/>
+        </div>
         <div class="form_content">
           <label for="password">Inserisci la nuova <span xml:lang="en" lang="en">password</span>: </label>
           <input type="password" id="password" name="password" value=""/>
@@ -43,9 +56,9 @@
         <input type="submit" name="dati_personali" id="dati_personali" value="Salva"/>  <!--Submit legato solo al cambio della password-->
       </fieldset>
       <fieldset>
-        <legend>Modifica o inserisci informazioni sulla spedizione: </legend>
+        <legend id="is" >Modifica o inserisci informazioni sulla spedizione: </legend>
 
-      <div class="form_content">
+      <div  class="form_content">
         <label for="nome_cognome">Nome e Cognome: </label>
         <input type="text" name="nome_cognome" id="nome_cognome" placeholder="Mario Rossi"/>
       </div>
@@ -67,7 +80,7 @@
         </div>
         <div class="form_content">
           <label for="provincia">Provincia: </label>
-          <input type="provincia" id="provincia" name="provincia" value="Padova" disabled="disabled"/>
+          <input type="text" id="provincia" name="provincia" value="Padova" disabled="disabled"/>
         </div>
         <div class="form_content">
           <label for="stato">Stato: </label>
@@ -81,7 +94,7 @@
         <input type="submit" name="dati_spedizione" id="dati_spedizione" value="Salva"/> <!--Submit legato solo alle informazioni di spedizione-->
 
         <fieldset>
-          <legend>Informazioni di pagamento: </legend>
+          <legend id="ip">Informazioni di pagamento: </legend>
           <div class="form_content">
             <label for="intestatario_carta">Intestatario carta: </label>
             <input type="text" name="intestatario_carta" id="intestatario_carta" value="" />
@@ -105,62 +118,27 @@
             <option value="12">December</option>
        </select><select name="anno_scad">
             <option>- Anno -</option>
-            <option value="2020">2020</option>
             <option value="2019">2019</option>
-            <option value="2018">2018</option>
-            <option value="2017">2017</option>
-            <option value="2016">2016</option>
-            <option value="2015">2015</option>
-            <option value="2014">2014</option>
-            <option value="2013">2013</option>
-            <option value="2012">2012</option>
-            <option value="2011">2011</option>
-            <option value="2010">2010</option>
-            <option value="2009">2009</option>
-            <option value="2008">2008</option>
-            <option value="2007">2007</option>
-            <option value="2006">2006</option>
-            <option value="2005">2005</option>
-            <option value="2004">2004</option>
-            <option value="2003">2003</option>
-            <option value="2002">2002</option>
-            <option value="2001">2001</option>
-            <option value="2000">2000</option>
-            <option value="1999">1999</option>
-            <option value="1998">1998</option>
-            <option value="1997">1997</option>
-            <option value="1996">1996</option>
-            <option value="1995">1995</option>
-            <option value="1994">1994</option>
-            <option value="1993">1993</option>
-            <option value="1992">1992</option>
-            <option value="1991">1991</option>
-            <option value="1990">1990</option>
-            <option value="1989">1989</option>
-            <option value="1988">1988</option>
-            <option value="1987">1987</option>
-            <option value="1986">1986</option>
-            <option value="1985">1985</option>
-            <option value="1984">1984</option>
-            <option value="1983">1983</option>
-            <option value="1982">1982</option>
-            <option value="1981">1981</option>
-            <option value="1980">1980</option>
-            <option value="1979">1979</option>
-            <option value="1978">1978</option>
-            <option value="1977">1977</option>
-            <option value="1976">1976</option>
-            <option value="1975">1975</option>
-            <option value="1974">1974</option>
-            <option value="1973">1973</option>
-            <option value="1972">1972</option>
-            <option value="1971">1971</option>
-            <option value="1970">1970</option>
-            <option value="1969">1969</option>
-            <option value="1968">1968</option>
-            <option value="1967">1967</option>
-            <option value="1966">1966</option>
-            <option value="1965">1965</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+            <option value="2029">2028</option>
+            <option value="2030">2030</option>
+            <option value="2031">2031</option>
+            <option value="2032">2032</option>
+            <option value="2033">2033</option>
+            <option value="2034">2034</option>
+            <option value="2035">2035</option>
+            <option value="2036">2036</option>
+            <option value="2037">2037</option>
+            <option value="2038">2038</option>
+            <option value="2039">2039</option>
 
           <input type="submit" name="dati_pagamento" value="Salva">
         </fieldset>
@@ -169,7 +147,27 @@
     </div>
 
     <div id="footer">
-    ...
+      <h1>Contatti: </h1>
+        <div class="indirizzo_footer">
+          <h2>Indirizzo</h2>
+           <p>35131 Padova (PD) - Piazza Eremitani, 404/2  </p>
+        </div>
+        <div class="telefono_footer">
+          <h2>Telefono</h2>
+           <ul>
+             <li><p>Telefono: 049.xxxxxx</p></li>
+             <li><p>Cellulare: 348xxxxxxx</p></li>
+           </ul>
+        </div>
+        <div class="orari_footer">
+          <h2>Orari</h2>
+          <ul>
+            <li><abbr title="Martedì">Mar</abbr>Mar - <abbr title="Giovedì">Gio</abbr>:  12.00 - 15.00 e 19.00 - 22.30 </li>
+            <li><abbr title="Venerdì">Ven</abbr>-<abbr title="Domenica">Dom</abbr>: 19.00 - 00.00 </li>
+            <li>Luned&igrave; chiuso</li>
+          </ul>
+         </div>
+         <span xml:lang="en">Copyright (c) 2019 Copyright Holder All Rights Reserved.</span>
     </div>
 
   </body>
