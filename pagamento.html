@@ -11,7 +11,8 @@
   </head>
   <body>
     <div id="header">
-      
+      <img src="images/logo.jpg" alt="Logo ristorante, due bacchette con un pezzo di sushi"/>
+      <h1 xml:lang="ja">Sushi Nakamura</h1>
     </div>
 
     <div id="breadcrumb">
@@ -19,7 +20,19 @@
     </div>
 
     <div id="menu">
-    ...
+      <ul>
+        <li xml:lang="en"><a href="home_utente.html">Home</a></li>
+        <li xml:lang="en"><a href="take_away.html">Take Away</a></li>
+        <li><a href="chi_siamo.html"></a>Chi siamo</li>
+        <li><a href="recensioni.html"></a>Recensioni</li>
+        <li><a href="prodotti.html"></a>Prodotti</li>
+        <li><a href="contatti.html"></a>Contatti</li>
+        <li><a href="gestione_profilo_utente.html"></a>Gestione profilo</li>
+      </ul>
+      <ul>
+        <li><a href="login.html">Login/Registrazione</a></li>
+        <li><a href="carrello.html"></a>Carrello</li>
+      </ul>
     </div>
 
     <div id="content">
@@ -115,16 +128,35 @@
             <option value="1965">1965</option>
           </select>
           <label for="cvv_carta">CVV: </label>
-          <input type="text" name="cvv_carta" id="cvv_carta" maxlength="3" />
+          <input type="text" id="cvv_carta" maxlength="3" />
         </fieldset>
       </form>
-
-      <input type="button" name="Indietro" value="Indietro" />
-      <input type="button" name="Prosegui" value="Prosegui" />
+      <input type="button" value="Indietro" />
+      <input type="submit" value="Prosegui" />
     </div>
 
     <div id="footer">
-    ...
+      <h1>Contatti: </h1>
+            <div class="indirizzo_footer">
+                <h2>Indirizzo</h2>
+                <p>35131 Padova (PD) - Piazza Eremitani, 404/2  </p>
+            </div>
+            <div class="telefono_footer">
+                <h2>Telefono</h2>
+                <ul>
+                <li><p>Telefono: 049.xxxxxx</p></li>
+                <li><p>Cellulare: 348xxxxxxx</p></li>
+                </ul>
+            </div>
+            <div class="orari_footer">
+                <h2>Orari</h2>
+                <ul>
+                <li><abbr title="Martedì">Mar</abbr>Mar - <abbr title="Giovedì">Gio</abbr>:  12.00 - 15.00 e 19.00 - 22.30 </li>
+                <li><abbr title="Venerdì">Ven</abbr>-<abbr title="Domenica">Dom</abbr>: 19.00 - 00.00 </li>
+                <li>Luned&igrave; chiuso</li>
+                </ul>
+            </div>
+            <span xml:lang="en">Copyright (c) 2019 Copyright Holder All Rights Reserved.</span>
     </div>
   </body>
 </html>
