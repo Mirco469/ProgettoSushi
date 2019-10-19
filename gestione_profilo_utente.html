@@ -12,7 +12,7 @@
   <body>
     <div id="header">
       <img src="images/logo.jpg" alt="Logo ristorante, due bacchette con un pezzo di sushi"/>
-      <h1 xml:lang="ja">Sushi Nakamura</h1>
+      <h1 xml:lang="ja" lang="ja">Sushi Nakamura</h1>
     </div>
 
     <div id="breadcrumb">
@@ -20,7 +20,19 @@
     </div>
 
     <div id="menu">
-    ...
+      <ul>
+          <li xml:lang="en" lang="en"><a href="home_utente.html">Home</a></li>
+          <li xml:lang="en" lang="en"><a href="take_away.html">Take Away</a></li>
+          <li><a href="chi_siamo.html">Chi siamo</a></li>
+          <li><a href="recensioni.html">Recensioni</a></li>
+          <li><a href="prodotti.html">Prodotti</a></li>
+          <li><a href="contatti.html">Contatti</a></li>
+          <li>Gestione profilo</li>
+      </ul>
+      <ul>
+          <li><a href="login.html">Login/Registrazione</a></li>
+          <li><a href="carrello.html">Carrello</a></li>
+      </ul>
     </div>
 
     <div class="menu_profilo">
@@ -93,8 +105,8 @@
         </div>
 
         <input type="submit" name="dati_spedizione" id="dati_spedizione" value="Salva"/> <!--Submit legato solo alle informazioni di spedizione-->
-
-        <fieldset>
+      </fieldset>
+      <fieldset>
           <legend id="ip">Informazioni di pagamento: </legend>
           <div class="form_content">
             <label for="intestatario_carta">Intestatario carta: </label>
@@ -104,7 +116,7 @@
             <label for="num_carta">Numero carta: </label>
             <input type="text" name="num_carta" id="num_carta" value="" />
           </div>
-        </select><select name="mese_scad">
+        <select name="mese_scad">
             <option>- Mese -</option>
             <option value="01">January</option>
             <option value="03">March</option>
@@ -117,7 +129,8 @@
             <option value="10">October</option>
             <option value="11">November</option>
             <option value="12">December</option>
-       </select><select name="anno_scad">
+       </select>
+       <select name="anno_scad">
             <option>- Anno -</option>
             <option value="2019">2019</option>
             <option value="2020">2020</option>
@@ -140,6 +153,7 @@
             <option value="2037">2037</option>
             <option value="2038">2038</option>
             <option value="2039">2039</option>
+          </select>
 
           <input type="submit" name="dati_pagamento" value="Salva">
         </fieldset>
@@ -168,7 +182,7 @@
             <li>Luned&igrave; chiuso</li>
           </ul>
          </div>
-         <span xml:lang="en">Copyright (c) 2019 Copyright Holder All Rights Reserved.</span>
+         <span xml:lang="en" lang="en">Copyright (c) 2019 Copyright Holder All Rights Reserved.</span>
     </div>
 
   </body>
