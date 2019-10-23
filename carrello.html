@@ -43,7 +43,7 @@
 				<!-- Inizio consegna_domicilio_o_asporto -->
 				<div>
 					<label>Tipo Consegna:</label>
-					<input id="tipoConsegna_domicilio" type="radio" name="tipoConsegna" value="domicilio" />
+					<input id="tipoConsegna_domicilio" type="radio" name="tipoConsegna" value="domicilio" checked="checked" />
 					<label for="tipoConsegna_domicilio">Domicilio</label>
 					<input id="tipoConsegna_asporto" type="radio" name="tipoConsegna" value="asporto" />
 					<label for="tipoConsegna_asporto">Asporto</label>
@@ -55,8 +55,11 @@
 			<div>
 				<!-- Inizio destinazione_default -->
 				<div>
-					<label for="destinazione_default">Destinazione di <span xml:lang="en" lang="en">default</span>:</label> 
-					<input id="destinazione_default" type="checkbox" name="destinazione" checked="checked" value="default" />
+					<label for="destinazione">Destinazione:</label>
+					<select>
+						<option>Inserisci destinazioni</option>
+						<option>Via - n. civico, interno, citta, cap, prov</option>
+					</select>
 				</div>
 				<!-- Fine destinazione_default -->
 				<div class="form_content">
@@ -98,13 +101,15 @@
 				<thead>
 					<tr>
 						<th>Nome prodotto</th>
-						<th>Quantit&agrave;</th>
+						<th>Categoria</th>
+						<th>Porzioni</th>
 						<th>Operazioni</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td><a href="">Nome Prodotto</a></td>
+						<td><a href="">Categoria</a></td>
 						<td>
 							<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
 							<input type="text" name="quantita" /><!-- numero prodotto -->
@@ -116,6 +121,7 @@
 					</tr>
 					<tr>
 						<td><a href="">Nome Prodotto</a></td>
+						<td><a href="">Categoria</a></td>
 						<td>
 							<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
 							<input type="text" name="quantita" /><!-- numero prodotto -->
@@ -127,6 +133,7 @@
 					</tr>
 					<tr>
 						<td><a href="">Nome Prodotto</a></td>
+						<td><a href="">Categoria</a></td>
 						<td>
 							<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
 							<input type="text" name="quantita" /><!-- numero prodotto -->
@@ -138,6 +145,7 @@
 					</tr>
 					<tr>
 						<td><a href="">Nome Prodotto</a></td>
+						<td><a href="">Categoria</a></td>
 						<td>
 							<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
 							<input type="text" name="quantita" /><!-- numero prodotto -->
