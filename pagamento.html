@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
   <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <title></title>
-      <meta name="title" content="Sushi - Pagamento"/>
-      <meta name="description" content="Pagina di riassunto dell'ordine"/>
+      <title>Sushi Nakamura - Pagamento</title>
+      <meta name="title" content="Sushi Nakamura - Pagamento"/>
+      <meta name="description" content="Pagina di pagamento dell'ordine"/>
       <meta name="keyword" content="Pagamento Ordine Ristorante Sushi"/>
       <meta name="language" content="italian it"/>
       <meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
@@ -16,22 +16,22 @@
     </div>
 
     <div id="breadcrumb">
-      <p>Ti trovi in: <span xml:lang="en">Home</span> &gt; &gt; Carrello &gt; &gt; Pagamento </p>
+      <p>Ti trovi in: <span xml:lang="en" lang="en">Home</span> &gt; &gt; Carrello &gt; &gt; Pagamento </p>
     </div>
 
     <div id="menu">
       <ul>
-        <li xml:lang="en"><a href="home_utente.html">Home</a></li>
-        <li xml:lang="en"><a href="take_away.html">Take Away</a></li>
-        <li><a href="chi_siamo.html"></a>Chi siamo</li>
-        <li><a href="recensioni.html"></a>Recensioni</li>
-        <li><a href="prodotti.html"></a>Prodotti</li>
-        <li><a href="contatti.html"></a>Contatti</li>
-        <li><a href="gestione_profilo_utente.html"></a>Gestione profilo</li>
+	<li xml:lang="en"><a href="home_utente.html">Home</a></li>
+	<li xml:lang="en"><a href="take_away.html">Take Away</a></li>
+	<li><a href="chi_siamo.html">Chi siamo</a></li>
+	<li><a href="recensioni.html">Recensioni</a></li>
+	<li><a href="prodotti.html">Prodotti</a></li>
+	<li><a href="contatti.html">Contatti</a></li>
+	<li><a href="gestione_profilo_utente.html">Gestione profilo</a></li>
       </ul>
       <ul>
-	<li><a href="login.html"><span xml:lang="en">Login</span>/Registrazione</a></li>
-        <li><a href="carrello.html"></a>Carrello</li>
+        <li><a href="login.html">Login/Registrazione</a></li>
+        <li><a href="carrello.html">Carrello</a></li>
 	<li><input type="button" id="logout" name="logout" value="logout" /></li>
       </ul>
     </div>
@@ -42,7 +42,7 @@
         <!-- prodotti nel carrello -->
       </fieldset>
 
-	<!-- Inizio tipo consegna -->
+    <!-- Inizio informazioni_ordini -->
 	<div>
 	  <label>Tipo Consegna:</label>
 	  <input id="tipoConsegna_domicilio" type="radio" name="tipoConsegna" value="domicilio" checked="checked" />
@@ -50,8 +50,9 @@
 	  <input id="tipoConsegna_asporto" type="radio" name="tipoConsegna" value="asporto" />
 	  <label for="tipoConsegna_asporto">Asporto</label>
 	</div>
+	<!-- Fine informazioni_ordini -->
 
-	<!-- Inizio dati destinazione -->
+	<!-- Inizio dati_destinazione -->
 	<div>
 	  <label for="destinazione">Destinazione:</label>
 	  <select id="destinazione" name="destinazione">
@@ -61,20 +62,16 @@
 	</div>
 
       <!-- Inizio informazioni di pagamento -->
-      <div>
-        <label for="carta_salvata">Informazioni salvate: </label>
-        <input id="carta_salvata" type="radio" name="carta_salvata" value="carta_salvata" />
-        <label for="nuova_carta">Nuove informazioni: </label>
-        <input id="nuova_carta" type="radio" name="nuova_carta" value="nuova_carta" />
-        <label for="alla_consegna">Paga alla consegna: </label>
-        <input id="alla_consegna" type="radio" name="alla_consegna" value="alla_consegna" />
-      </div>
-	    
       <!-- manca l'attributo action-->
       <form action="" method="post">
         <fieldset>
           <legend>Informazioni di pagamento: </legend>
-          <!-- se presenti, vengono inseriti i dati dell'utente -->
+	      <div>
+	        <input id="carta_salvata" type="radio" name="scelta_carta" value="carta_salvata" />
+			<label for="carta_salvata">Informazioni salvate</label>
+	        <input id="nuova_carta" type="radio" name="scelta_carta" value="nuova_carta" />
+			<label for="nuova_carta">Nuove informazioni</label>
+	      </div>
           <div class="form_content">
             <label for="intestatario_carta">Intestatario carta: </label>
             <input type="text" name="intestatario_carta" id="intestatario_carta" />
@@ -125,32 +122,35 @@
           <input type="text" id="cvv_carta" maxlength="3"/>
         </fieldset>
       </form>
+	    
       <input type="button" value="Indietro" />
       <input type="submit" value="Prosegui" />
+	    
     </div>
 
     <div id="footer">
       <h1>Contatti: </h1>
-        <div class="indirizzo_footer">
-        <h2>Indirizzo</h2>
-        <p>35131 Padova (PD) - Piazza Eremitani, 404/2  </p>
-        </div>
-        <div class="telefono_footer">
-          <h2>Telefono</h2>
-          <ul>
-            <li><p>Telefono: 049.xxxxxx</p></li>
-            <li><p>Cellulare: 348xxxxxxx</p></li>
-           </ul>
-         </div>
-         <div class="orari_footer">
-           <h2>Orari</h2>
-           <ul>
-              <li><abbr title="Martedì">Mar</abbr>-<abbr title="Giovedì">Gio</abbr>:  12.00 - 15.00 e 19.00 - 22.30 </li>
-              <li><abbr title="Venerdì">Ven</abbr>-<abbr title="Domenica">Dom</abbr>: 19.00 - 00.00 </li>
-              <li>Luned&igrave; chiuso</li>
-           </ul>
-      	 </div>
-      <span xml:lang="en">Copyright (c) 2019 Copyright Holder All Rights Reserved.</span>
+            <div class="indirizzo_footer">
+                <h2>Indirizzo</h2>
+                <p>35131 Padova (PD) - Piazza Eremitani, 404/2  </p>
+            </div>
+            <div class="telefono_footer">
+                <h2>Telefono</h2>
+                <ul>
+                <li><p>Telefono: 049.xxxxxx</p></li>
+                <li><p>Cellulare: 348xxxxxxx</p></li>
+                </ul>
+            </div>
+            <div class="orari_footer">
+                <h2>Orari</h2>
+                <ul>
+                <li><abbr title="Martedì">Mar</abbr>-<abbr title="Giovedì">Gio</abbr>:  12.00 - 15.00 e 19.00 - 22.30 </li>
+                <li><abbr title="Venerdì">Ven</abbr>-<abbr title="Domenica">Dom</abbr>: 19.00 - 00.00 </li>
+                <li>Luned&igrave; chiuso</li>
+                </ul>
+            </div>
+            <span xml:lang="en">Copyright (c) 2019 Copyright Holder All Rights Reserved.</span>
     </div>
   </body>
 </html>
+
