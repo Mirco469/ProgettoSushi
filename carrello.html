@@ -32,71 +32,14 @@
             <ul>
                 <li><a href="login.html"><span xml:lang="en" lang="en">Login</span>/Registrazione</a></li>
                 <li><a href="carrello.html">Carrello</a></li>
+                <li><input type="button" name="logout" id="logout" value="Logout"/></li>
             </ul>
         </div>
 		
 		<!-- Inizio contenuto -->
 		<div id="carrello" class="content">
 			<form id="form_carrello" action="pagamento" method="POST">
-				<!-- Inizio informazioni_ordini -->
-				<div>
-					<p>Username</p>
-					<!-- Inizio consegna_domicilio_o_asporto -->
-					<div>
-						<label>Tipo Consegna:</label>
-						<input id="tipoConsegna_domicilio" type="radio" name="tipoConsegna" value="domicilio" checked="checked" />
-						<label for="tipoConsegna_domicilio">Domicilio</label>
-						<input id="tipoConsegna_asporto" type="radio" name="tipoConsegna" value="asporto" />
-						<label for="tipoConsegna_asporto">Asporto</label>
-					</div>
-					<!-- Fine consegna_domicilio_o_asporto -->
-				</div>
-				<!-- Fine informazioni_ordini -->
-				<!-- Inizio dati_destinazione -->
-				<div>
-					<!-- Inizio destinazione_default -->
-					<div>
-						<label for="destinazione">Destinazione:</label>
-						<select id="destinazione" name="destinazione">
-							<option selected="selected">Inserisci destinazioni</option>
-							<option>Via - n. civico, interno, citta, cap, prov</option>
-						</select>
-					</div>
-					<!-- Fine destinazione_default -->
-					<div class="form_content">
-						<label for="nome_cognome">Nome e Cognome: </label>
-						<input type="text" name="nome_cognome" id="nome_cognome" placeholder="Mario Rossi"/>
-					</div>
-					<div class="form_content">
-						<label for="indirizzo">Indirizzo: </label>
-						<input type="text" id="indirizzo" name="indirizzo" placeholder="Inserire via"/>
-					</div>
-					<div class="form_content">
-						<label for="civico">Numero civico: </label>
-						<input type="text" id="civico" name="civico" placeholder="Inserire numero civico"/>
-					</div>
-					<div class="form_content">
-						<label for="cap"><abbr title="Codice di Avviamento Postale">CAP</abbr> :</label>
-						<input type="text" id="cap"  name="cap" placeholder="Inserire CAP"/>
-					</div>
-					<div class="form_content">
-						<label for="comune">Comune: </label>
-						<input type="text" id="comune" name="comune" placeholder="Inserire comune"/>
-					</div>
-					<div class="form_content">
-						<label for="provincia">Provincia: </label>
-						<input type="text" id="provincia" name="provincia" value="Padova" disabled="disabled"/>
-					</div>
-					<div class="form_content">
-						<label for="stato">Stato: </label>
-						<input type="text" id="stato" name="stato" value="Italia" disabled="disabled"/>
-					</div>
-					<div class="form_content">
-						<label for="tel">Numero di telefono: </label>
-						<input type="tel" id="tel" name="tel" value=""/>
-					</div>
-				</div>
-				<!-- Fine dati_destinazione -->
+				
 				<!-- Inizio lista_ordini -->
 				<table>
 					<thead>
