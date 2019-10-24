@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
   <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-      <title></title>
+      <title>Sushi Nakamura</title>
       <meta name="title" content="Sushi - Recensioni dei clienti"/>
       <meta name="description" content="Pagina per visualizzare e scrivere recensioni"/>
       <meta name="keyword" content="Recensioni Clienti Ristorante Sushi"/>
@@ -11,23 +11,23 @@
   </head>
   <body>
     <div id="header">
-      <img src="images/logo.jpg" alt="Logo ristorante, due bacchette con un pezzo di sushi"/>
+      <span id="logo"></span>
       <h1 xml:lang="ja">Sushi Nakamura</h1>
     </div>
 
     <div id="breadcrumb">
-      <p>Ti trovi in <span xml:lang="en" lang="en">Home</span> &gt; &gt; Recensioni </p>
+      <p>Ti trovi in: <span xml:lang="en" lang="en">Home</span> &gt; &gt; Recensioni </p>
     </div>
 
     <div id="menu">
       <ul>
         <li xml:lang="en"><a href="home_utente.html">Home</a></li>
         <li xml:lang="en"><a href="take_away.html">Take Away</a></li>
-        <li><a href="chi_siamo.html">Chi siamo</a></li>
-        <li>Recensioni</li>
-        <li><a href="prodotti.html">Prodotti</a></li>
-        <li><a href="contatti.html">Contatti</a></li>
-        <li><a href="gestione_profilo_utente.html">Gestione profilo</a></li>
+        <li><a href="chi_siamo.html"></a>Chi siamo</li>
+        <li><a href="recensioni.html"></a>Recensioni</li>
+        <li><a href="prodotti.html"></a>Prodotti</li>
+        <li><a href="contatti.html"></a>Contatti</li>
+        <li><a href="gestione_profilo_utente.html"></a>Gestione profilo</li>
       </ul>
       <ul>
         <li><a href="login.html">Login/Registrazione</a></li>
@@ -39,12 +39,22 @@
       <h1>Recensioni</h1>
       <fieldset>
         <!-- spazio per visualizzare recensioni già scritte-->
+        <h2>Recensione 1</h2>
+        <p>« Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur. Duis aute irure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.»</p>
+        <p>voto: 10</p>
+        <h2>Recensione 2</h2>
+        <p>« Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur. Duis aute irure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.»</p>
+        <p>voto: 8</p>
       </fieldset>
+
       <!-- Manca l'attributo action-->
       <form action="" method="post">
         <fieldset>
           <legend>La tua recensione</legend>
+          <label for="titolo_recensione">Titolo: </label>
+          <input type="text" id="titolo_recensione" name="titolo" />
           <textarea rows="5" cols="60"></textarea>
+          <input type="number" id="valutazione" name="valutazione" min="0" max="10" />
           <input type="submit" value="invia" />
         </fieldset>
       </form>
