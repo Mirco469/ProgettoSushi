@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Sushi Nakamura</title>
-        <meta name="title" content="" />
-        <meta name="description" content="" />
+        <title>Sushi Nakamura - Take Away</title>
+        <meta name="title" content="Sushi Nakamura - Take Away" />
+        <meta name="description" content="Pagina contenente la lista dei piatti che è possibile ordinare" />
         <meta name="keyword" content="Take Away Ristorante Sushi" />
         <meta name="language" content="italian it" />
         <meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco" />
@@ -30,27 +30,27 @@
                 <li><a href="gestione_profilo_utente.html">Gestione profilo</a></li>
             </ul>
             <ul>
-                <li><a href="login.html"><span xml:lang="en">Login</span>/Registrazione</a></li>
-                <li><a href="carrello.html"></a>Carrello</li>
+            	<li><a href="login.html">Login/Registrazione</a></li>
+                <li><a href="carrello.html">Carrello</a></li>
                 <li><input type="button" id="logout" name="logout" value="logout" /></li>
             </ul>
         </div>
 
         <div id="content">
-          <!-- menù di ricerca -->
+          <!-- Form di ricerca -->
           <div id="ricerca">
             <!-- manca l'attributo action -->
             <form action="" method="get">
               <fieldset>
                 <div>
-                  <input type="text" id="prodotto" name="prodotto"/>
-                  <input type="submit" value="Cerca"/>
+                  <input type="text" name="prodotto" />
+                  <input type="submit" name="submit" value="Cerca" />
                 </div>
               </fieldset>
             </form>
           </div>
 
-          <!-- lista delle categorie (forse meglio liste di definizione per mettere immagini) -->
+          <!-- Lista delle categorie -->
           <dl id="menu_list">
             <dt><a href="#antipasti">Antipasti</a></dt>
               <dd>Specialità giaponesi leggere.</dd>
@@ -74,7 +74,7 @@
               <dd>Golosi semifreddi.</dd>
           </dl>
 
-          <!-- lista dei piatti -->
+          <!-- lista antipasti -->
           <h1 id="antipasti">Antipasti</h1>
           <dl>
             <dt>Tartara di tonno</dt>
@@ -106,14 +106,15 @@
               <dd>Ravioli di verdure in sfoglia di grano e riso.</dd>
           </dl>
 
+		  <!-- lista primi piatti -->
           <h1 id="primi">Primi Piatti</h1>
           <dl>
             <dt xml:lang="ja">Ramen Chasumiso</dt>
               <dd>7&euro;</dd>
-              <dd>Ramen in brodo di maialino <span xml:lang="ja">chasu</span>, cipollotto, spinaci e alga <span xml:lang="ja">nori.</span></dd>
+              <dd><span xml:lang="ja">Ramen</span> in brodo di maialino <span xml:lang="ja">chasu</span>, cipollotto, spinaci e alga <span xml:lang="ja">nori.</span></dd>
             <dt xml:lang="ja">Katsu Ramen</dt>
               <dd>7&euro;</dd>
-              <dd>Ramen in brodo di miso con cotoletta, cipollotto e alga nori.</dd>
+              <dd><span xml:lang="ja">Ramen</span> in brodo di miso con cotoletta, cipollotto e alga nori.</dd>
             <dt xml:lang="ja"><span xml:lang="en">Black</span> Yakimeshi</dt>
               <dd>8&euro;</dd>
               <dd>Riso venere ai frutti di mare, uova <span xml:lang="ja">tamago</span> e fiocchi di tonno disidratato.</dd>
@@ -128,6 +129,7 @@
               <dd><span xml:lang="ja">Udon</span> ai frutti di mare con mazzancolle, verdure e fiocchi di tonno disidratato.</dd>
           </dl>
 
+		  <!-- lista tempure -->
           <h1 id="tempure" xml:lang="ja">Teppanyako <span xml:lang="it">e</span> Tempure</h1>
           <dl>
             <dt xml:lang="ja">Yakitori</dt>
@@ -136,10 +138,10 @@
             <dt xml:lang="ja">Salmon Kushiyaki</dt>
               <dd>5&euro;</dd>
               <dd>Impanatura di salmone in cottura <span xml:lang="ja">teriyaki.</span></dd>
-            <dt>Ebi Yaki</dt>
+            <dt xml:lang="ja">Ebi Yaki</dt>
               <dd>6&euro;</dd>
               <dd><span xml:lang="ja">Teppanyaki</span> di gamberi marinati.</dd>
-            <dt>Salmon Tataki</dt>
+            <dt xml:lang="en">Salmon <span xml:lang="ja">Tataki</span></dt>
               <dd>5&euro;</dd>
               <dd>Filetto di salmone scottato.</dd>
             <dt xml:lang="ja">Maguro Tataki</dt>
@@ -156,6 +158,7 @@
               <dd>Mazzancolle in frittura giapponese.</dd>
           </dl>
 
+		  <!-- lista uramaki -->
           <h1 id="uramaki" xml:lang="ja">Uramaki</h1>
           <dl>
             <dt xml:lang="en">Chips Roll</dt>
@@ -170,7 +173,7 @@
             <dt xml:lang="en">Black California</dt>
               <dd>4&euro;</dd>
               <dd>Polpa di granchio e <span xml:lang="ja">goma wakame.</span></dd>
-            <dt>Ichigo Hosomaki</dt>
+            <dt xml:lang="ja">Ichigo Hosomaki</dt>
               <dd>4&euro;</dd>
               <dd><span xml:lang="ja">Hosomaki</span> in <span xml:lang="ja">tempura</span> con <span xml:lang="en">philadelphia</span> e fragole.</dd>
             <dt xml:lang="en">California</dt>
@@ -190,6 +193,7 @@
               <dd>Asparagi in tempura ricoperti da salmone alla fiamma.</dd>
           </dl>
 
+		  <!-- lista nigiri -->
           <h1 id="nigiri" xml:lang="ja">Nigiri</h1>
           <dl>
             <dt>Salmone</dt>
@@ -206,6 +210,7 @@
               <dd><span xml:lang="ja">Onigiri</span> con cuore di mazzancolla in tempura.</dd>
           </dl>
 
+		  <!-- lista gunkan -->
           <h1 id="gunkan" xml:lang="ja">Gunkan</h1>
           <dl>
             <dt xml:lang="en">Spicy Tuna</dt>
@@ -222,6 +227,7 @@
               <dd>Riso, salmone, <span xml:lang="en">philadelphia.</span></dd>
           </dl>
 
+		  <!-- lista temaki -->
           <h1 id="temaki" xml:lang="ja">Temaki</h1>
           <dl>
             <dt><span xml:lang="en">Salmon</span> Avocado <span xml:lang="ja">Temaki</span></dt>
@@ -238,6 +244,7 @@
               <dd>Mazzancolla in <span xml:lang="ja">tempura</span> e salsa <span xml:lang="ja">teriyaki.</span></dd>
           </dl>
 
+		  <!-- lista hosomaki -->
           <h1 id="hosomaki" xml:lang="ja">Hosomaki</h1>
           <dl>
             <dt>Salmone</dt>
@@ -250,6 +257,7 @@
               <dd>2&euro;</dd>
           </dl>
 
+		  <!-- lista sashimi -->
           <h1 id="sashimi" xml:lang="ja">Sashimi</h1>
           <dl>
             <dt>Salmone</dt>
@@ -260,6 +268,7 @@
               <dd>6&euro;</dd>
           </dl>
 
+		  <!-- lista dessert -->
           <h1 id="dessert">Dessert</h1>
           <dl>
             <dt xml:lang="fr">Profiteroles</dt>
@@ -278,6 +287,9 @@
               <dd>5&euro;</dd>
               <dd><span xml:lang="fr">Mousse</span> al caramello e crema di lamponi.</dd>
           </dl>
+
+		  <a href="#menu_list">Torna sù</a>
+		  
         </div>
 
         <div id="footer">
