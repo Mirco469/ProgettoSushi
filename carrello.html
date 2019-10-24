@@ -1,7 +1,7 @@
-<!DOCTYPE html>
-<html lang="it">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it">
 	<head>
-		<meta charset="utf-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Carrello</title>
 		<meta name="title" content="Carrello" />
 		<meta name="description" content="Pagina carrello contenente la lista dei prodotti aggiunti" />
@@ -17,13 +17,13 @@
         </div>
 
 		<div id="breadcrumb">
-			<p>Ti trovi in: <span xml:lang="en" lang="en">Home</span> &gt; &gt; Carrello</p>
+			<p>Ti trovi in: <a href="home.html">Home</a> &gt; &gt; Carrello</p>
 		</div>
 
 		<div id="menu">
             <ul>
-                <li xml:lang="en" lang="en"><a href="home_utente.html">Home</a></li>
-                <li xml:lang="en" lang="en"><a href="take_away.html">Take Away</a></li>
+                <li xml:lang="en"><a href="home_utente.html">Home</a></li>
+                <li xml:lang="en"><a href="take_away.html">Take Away</a></li>
                 <li><a href="chi_siamo.html">Chi siamo</a></li>
                 <li><a href="recensioni.html">Recensioni</a></li>
                 <li><a href="prodotti.html">Prodotti</a></li>
@@ -31,81 +31,77 @@
                 <li><a href="gestione_profilo_utente.html">Gestione profilo</a></li>
             </ul>
             <ul>
-                <li><a href="login.html"><span xml:lang="en" lang="en">Login</span>/Registrazione</a></li>
-                <li><a href="carrello.html">Carrello</a></li>
+                <li><a href="login.html"><span xml:lang="en">Login</span>/Registrazione</a></li>
+                <li>Carrello</li>
                 <li><input type="button" name="logout" id="logout" value="Logout"/></li>
             </ul>
         </div>
 		
 		<!-- Inizio contenuto -->
 		<div id="carrello" class="content">
-			<form id="form_carrello" action="pagamento" method="POST">
-				
-				<!-- Inizio lista_ordini -->
-				<table>
-					<thead>
-						<tr>
-							<th>Nome prodotto</th>
-							<th>Categoria</th>
-							<th>Porzioni</th>
-							<th>Operazioni</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><a href="">Nome Prodotto</a></td>
-							<td><a href="">Categoria</a></td>
-							<td>
-								<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
-								<input type="text" name="quantita" /><!-- numero prodotto -->
-								<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
-							</td>
-							<td>
-								<input type="button" name="rimuovi" value="Rimuovi" />
-							</td>
-						</tr>
-						<tr>
-							<td><a href="">Nome Prodotto</a></td>
-							<td><a href="">Categoria</a></td>
-							<td>
-								<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
-								<input type="text" name="quantita" /><!-- numero prodotto -->
-								<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
-							</td>
-							<td>
-								<input type="button" name="rimuovi" value="Rimuovi" />
-							</td>
-						</tr>
-						<tr>
-							<td><a href="">Nome Prodotto</a></td>
-							<td><a href="">Categoria</a></td>
-							<td>
-								<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
-								<input type="text" name="quantita" /><!-- numero prodotto -->
-								<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
-							</td>
-							<td>
-								<input type="button" name="rimuovi" value="Rimuovi" />
-							</td>
-						</tr>
-						<tr>
-							<td><a href="">Nome Prodotto</a></td>
-							<td><a href="">Categoria</a></td>
-							<td>
-								<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
-								<input type="text" name="quantita" /><!-- numero prodotto -->
-								<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
-							</td>
-							<td>
-								<input type="button" name="rimuovi" value="Rimuovi" />
-							</td>
-						</tr>
-					</tbody>
-					<tfoot></tfoot>
-				</table>
-				<!-- Fine lista_ordini -->
-				<input type="button" value="Vai a pagamento" />
-			</form>
+			<!-- Inizio lista_ordini -->
+			<table>
+				<thead>
+					<tr>
+						<th>Nome prodotto</th>
+						<th>Categoria</th>
+						<th>Porzioni</th>
+						<th>Operazioni</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><a href="">Nome Prodotto</a></td>
+						<td><a href="">Categoria</a></td>
+						<td>
+							<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
+							<input type="text" name="quantita" /><!-- numero prodotto -->
+							<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
+						</td>
+						<td>
+							<input type="button" name="rimuovi" value="Rimuovi" />
+						</td>
+					</tr>
+					<tr>
+						<td><a href="">Nome Prodotto</a></td>
+						<td><a href="">Categoria</a></td>
+						<td>
+							<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
+							<input type="text" name="quantita" /><!-- numero prodotto -->
+							<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
+						</td>
+						<td>
+							<input type="button" name="rimuovi" value="Rimuovi" />
+						</td>
+					</tr>
+					<tr>
+						<td><a href="">Nome Prodotto</a></td>
+						<td><a href="">Categoria</a></td>
+						<td>
+							<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
+							<input type="text" name="quantita" /><!-- numero prodotto -->
+							<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
+						</td>
+						<td>
+							<input type="button" name="rimuovi" value="Rimuovi" />
+						</td>
+					</tr>
+					<tr>
+						<td><a href="">Nome Prodotto</a></td>
+						<td><a href="">Categoria</a></td>
+						<td>
+							<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
+							<input type="text" name="quantita" /><!-- numero prodotto -->
+							<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
+						</td>
+						<td>
+							<input type="button" name="rimuovi" value="Rimuovi" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- Fine lista_ordini -->
+			<button>Vai a pagamento</button>
 		</div>
 		<!-- Fine contenuto -->
 
@@ -131,7 +127,7 @@
                 <li>Luned&igrave; chiuso</li>
                 </ul>
             </div>
-            <span xml:lang="en" lang="en">Copyright (c) 2019 Copyright Holder All Rights Reserved.</span>
+            <span xml:lang="en">Copyright (c) 2019 Copyright Holder All Rights Reserved.</span>
         </div>
 
 	</body>
