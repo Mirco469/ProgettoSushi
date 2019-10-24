@@ -30,7 +30,7 @@
 	<li><a href="gestione_profilo_utente.html">Gestione profilo</a></li>
       </ul>
       <ul>
-        <li><a href="login.html">Login/Registrazione</a></li>
+	<li><a href="login.html"><span xml:lang="en">Login</span>/Registrazione</a></li>
         <li><a href="carrello.html">Carrello</a></li>
 	<li><input type="button" id="logout" name="logout" value="logout" /></li>
       </ul>
@@ -42,7 +42,7 @@
         <!-- prodotti nel carrello -->
       </fieldset>
 
-    <!-- Inizio informazioni_ordini -->
+    	<!-- Inizio informazioni_ordini -->
 	<div>
 	  <label>Tipo Consegna:</label>
 	  <input id="tipoConsegna_domicilio" type="radio" name="tipoConsegna" value="domicilio" checked="checked" />
@@ -60,6 +60,7 @@
 	    <option>Via - n. civico, interno, citta, cap, prov</option>
           </select>
 	</div>
+	<!-- Fine Inizio dati_destinazione -->
 
       <!-- Inizio informazioni di pagamento -->
       <!-- manca l'attributo action-->
@@ -122,6 +123,7 @@
           <input type="text" id="cvv_carta" maxlength="3"/>
         </fieldset>
       </form>
+      <!-- Fine informazioni di pagamento -->
 	    
       <input type="button" value="Indietro" />
       <input type="submit" value="Prosegui" />
