@@ -40,7 +40,7 @@
         <li><a href="#cp">Cambia password</a></li>
         <li><a href="#is">Modifica le informazioni di spedizione</a></li>
         <li><a href="#ip">Modifica le informazioni di pagamento</a></li>
-        <li><a href="">I miei ordini</a></li> <!--Ho aggiunto un link alla pagina di gestione degli ordini effettuati-->
+        <li><a href="storico_ordini.html">I miei ordini</a></li> 
       </ul>
     </div>
 
@@ -51,7 +51,7 @@
         <legend>Informazioni personali: </legend>
         <h2>Nome Utente</h2>
           <label for="username">Nome utente: </label>
-          <input type="text" id="username" name="username" value="NomeUtenteVero" disabled="disabled"/>
+          <input type="text" id="username" name="username" value="NomeUtenteVero" readonly="readonly"/>
 
         <h2 id="cp">Cambia Password: </h2>
         <div class="form_content">
@@ -89,7 +89,7 @@
       </div>
         <div class="form_content">
           <label for="comune">Comune: </label>
-          <input type="text" id="comune" name="comune" placeholder="Inserire comune"/>
+          <input type="text" id="comune" name="comune" value="Padova" disabled="disabled"/>
         </div>
         <div class="form_content">
           <label for="provincia">Provincia: </label>
