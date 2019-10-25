@@ -1,0 +1,25 @@
+Validate xhtml1.0 :
+- carrello.html
+- chi_siamo.html
+- contatti.html
+- errore_utente.html
+- home_utente.html
+- pagamento.html
+- recensioni.html
+- storico_ordini.html
+- take_away.html
+- errore_admin.html
+- gestione_ordini.html
+- home_admin.html
+
+Validate:
+- gestione_profilo_utente.html
+
+
+
+Non Validate
+- login.html
+- aggiunta_prodotti.html
+- gestione_profilo_admin.html
+- prodotti.html
+- successo.html
