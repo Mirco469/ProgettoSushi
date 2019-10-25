@@ -2,7 +2,7 @@
 <html lang="it">
   <head>
       <meta charset="utf-8" />
-      <title>Gestione profilo</title>
+      <title>Gestione profilo - Sushi Nakamura</title>
       <meta name="title" content="Gestione profilo" />
       <meta name="description" content="Pagina di gestione del profilo" />
       <!--Da aggiungere robot noindex-->
@@ -16,7 +16,7 @@
     </div>
 
     <div id="breadcrumb">
-      <p>Ti trovi in: <span xml:lang="en" lang="en">Home</span> &gt; &gt; Gestione Profilo </p>
+      <p>Ti trovi in: <a href="home_utente" xml:lang="en" lang="en">Home</a> &gt; &gt; Gestione Profilo </p>
     </div>
 
     <div id="menu">
@@ -38,7 +38,7 @@
 
     <div class="menu_profilo">
       <ul>
-        <li><a href="#cp">Cambia password</a></li>
+        <li><a href="#cp">Cambia <span xml:lang="en">password</span></a></li>
         <li><a href="#is">Modifica le informazioni di spedizione</a></li>
         <li><a href="#ip">Modifica le informazioni di pagamento</a></li>
         <li><a href="storico_ordini.html">I miei ordini</a></li>
@@ -47,7 +47,7 @@
 
     <div id="content">
     <h1>Gestione profilo</h1>
-    <form class="" action="index.html" method="post">
+    <form action="index.html" method="post">
       <fieldset>
         <legend>Informazioni personali: </legend>
         <h2>Nome Utente</h2>
@@ -57,17 +57,17 @@
         <h2 id="cp">Cambia Password: </h2>
         <div class="form_content">
           <label for="v_password">Inserisci la vecchia <span xml:lang="en" lang="en">password</span>: </label>
-          <input type="password" id="v_password" name="v_password" value=""/>
+          <input type="password" id="v_password" name="v_password" />
         </div>
         <div class="form_content">
           <label for="password">Inserisci la nuova <span xml:lang="en" lang="en">password</span>: </label>
-          <input type="password" id="password" name="password" value=""/>
+          <input type="password" id="password" name="password" />
         </div>
         <div class="form_content">
           <label for="c_password">Conferma la nuova <span xml:lang="en" lang="en">password</span>: </label>
           <input type="password" id="c_password" name="c_password" value=""/>
         </div>
-        <input type="submit" name="dati_personali" id="dati_personali" value="Salva"/>  <!--Submit legato solo al cambio della password-->
+        <input type="submit" name="dati_personali" value="Salva"/>  <!--Submit legato solo al cambio della password-->
       </fieldset>
       <fieldset>
         <legend id="is" >Modifica o inserisci informazioni sulla spedizione: </legend>
@@ -102,10 +102,10 @@
         </div>
         <div class="form_content">
           <label for="tel">Numero di telefono: </label>
-          <input type="tel" id="tel" name="tel" value=""/>
+          <input type="tel" id="tel" name="tel" />
         </div>
 
-        <input type="submit" name="dati_spedizione" id="dati_spedizione" value="Salva"/> <!--Submit legato solo alle informazioni di spedizione-->
+        <input type="submit" name="dati_spedizione" value="Salva"/> <!--Submit legato solo alle informazioni di spedizione-->
       </fieldset>
       <fieldset>
           <legend id="ip">Informazioni di pagamento: </legend>
@@ -115,7 +115,7 @@
           </div>                                          <!--Vanno inseriti i veri dati di pagamento se sono già nel DB-->
           <div class="form_content">
             <label for="num_carta">Numero carta: </label>
-            <input type="text" name="num_carta" id="num_carta" value="" />
+            <input type="text" name="num_carta" id="num_carta" />
           </div>
         <select name="mese_scad">
             <option>- Mese -</option>
