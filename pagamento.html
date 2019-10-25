@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <title>Sushi Nakamura - Pagamento</title>
+      <meta name="title" content="Pagamento - Sushi Nakamura"/>
+      <meta name="description" content="Pagina di pagamento dell'ordine"/>
+      <meta name="keyword" content="Pagamento, Ordine, Ristorante, Sushi"/>
+      <meta name="language" content="italian it"/>
+      <meta name="robots" content="noindex">
+      <meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
+  </head>
+  <body>
+    <div id="header">
+      <span id="logo"></span>
+      <h1 xml:lang="ja">Sushi Nakamura</h1>
+    </div>
+
+    <div id="breadcrumb">
+      <p>Ti trovi in: <a href="home_utente.html" xml:lang="en">Home</a> &gt; &gt; <a href="carrello.html">Carrello</a> &gt; &gt; Pagamento </p>
+    </div>
+
+    <div id="menu">
+      <ul>
+	<li><a href="home_utente.html" xml:lang="en">Home</a></li>
+	<li><a href="take_away.html" xml:lang="en">Take Away</a></li>
+	<li><a href="chi_siamo.html">Chi siamo</a></li>
+	<li><a href="recensioni.html">Recensioni</a></li>
+	<li><a href="prodotti.html">Prodotti</a></li>
+	<li><a href="contatti.html">Contatti</a></li>
+	<li><a href="gestione_profilo_utente.html">Gestione profilo</a></li>
+      </ul>
+      <ul>
+	<li><a href="login.html"><span xml:lang="en">Login</span>/Registrazione</a></li>
+        <li><a href="carrello.html">Carrello</a></li>
+	<li><input type="button" id="logout" name="logout" value="logout" /></li>
+      </ul>
+    </div>
+
+    <div id="content">
+      <fieldset>
+        <legend>Prodotti: </legend>
+        <!-- prodotti nel carrello -->
+      </fieldset>
+
+    	<!-- Inizio informazioni_ordini -->
+	<div>
+	  <label>Tipo Consegna:</label>
+	  <input id="tipoConsegna_domicilio" type="radio" name="tipoConsegna" value="domicilio" checked="checked" />
+	  <label for="tipoConsegna_domicilio">Domicilio</label>
+	  <input id="tipoConsegna_asporto" type="radio" name="tipoConsegna" value="asporto" />
+	  <label for="tipoConsegna_asporto">Asporto</label>
+	</div>
+	<!-- Fine informazioni_ordini -->
+
+	<!-- Inizio dati_destinazione -->
+	<div>
+	  <label for="destinazione">Destinazione:</label>
+	  <select id="destinazione" name="destinazione">
+	    <option selected="selected">Inserisci destinazioni</option>
+	    <option>Via - n. civico, interno, citta, cap, prov</option>
+          </select>
+	</div>
+	<!-- Fine Inizio dati_destinazione -->
+
+      <!-- Inizio informazioni di pagamento -->
+      <!-- manca l'attributo action-->
+      <form action="" method="post">
+        <fieldset>
+          <legend>Informazioni di pagamento: </legend>
+	      <div>
+	        <input id="carta_salvata" type="radio" name="scelta_carta" value="carta_salvata" />
+			<label for="carta_salvata">Informazioni salvate</label>
+	        <input id="nuova_carta" type="radio" name="scelta_carta" value="nuova_carta" />
+			<label for="nuova_carta">Nuove informazioni</label>
+	      </div>
+          <div class="form_content">
+            <label for="intestatario_carta">Intestatario carta: </label>
+            <input type="text" name="intestatario_carta" id="intestatario_carta" />
+          </div>
+          <div class="form_content">
+            <label for="num_carta">Numero carta: </label>
+            <input type="text" name="num_carta" id="num_carta" />
+          </div>
+          <select name="mese_scad">
+            <option>- Mese -</option>
+            <option value="01">January</option>
+            <option value="03">March</option>
+            <option value="04">April</option>
+            <option value="05">May</option>
+            <option value="06">June</option>
+            <option value="07">July</option>
+            <option value="08">August</option>
+            <option value="09">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+          <select name="anno_scad">
+            <option>- Anno -</option>
+            <option value="2030">2020</option>
+            <option value="2029">2020</option>
+            <option value="2028">2020</option>
+            <option value="2027">2020</option>
+            <option value="2026">2020</option>
+            <option value="2025">2020</option>
+            <option value="2024">2020</option>
+            <option value="2023">2020</option>
+            <option value="2022">2020</option>
+            <option value="2021">2020</option>
+            <option value="2020">2020</option>
+            <option value="2019">2019</option>
+            <option value="2018">2018</option>
+            <option value="2017">2017</option>
+            <option value="2016">2016</option>
+            <option value="2015">2015</option>
+            <option value="2014">2014</option>
+            <option value="2013">2013</option>
+            <option value="2012">2012</option>
+            <option value="2011">2011</option>
+            <option value="2010">2010</option>
+          </select>
+          <label for="cvv_carta">CVV: </label>
+          <input type="text" id="cvv_carta" maxlength="3"/>
+        </fieldset>
+      </form>
+      <!-- Fine informazioni di pagamento -->
+	    
+      <input type="button" value="Indietro" />
+      <input type="submit" value="Prosegui" />
+	    
+    </div>
+
+    <div id="footer">
+      <h1>Contatti: </h1>
+            <div class="indirizzo_footer">
+                <h2>Indirizzo</h2>
+                <p>35131 Padova (PD) - Piazza Eremitani, 404/2  </p>
+            </div>
+            <div class="telefono_footer">
+                <h2>Telefono</h2>
+                <ul>
+                <li><p>Telefono: 049.xxxxxx</p></li>
+                <li><p>Cellulare: 348xxxxxxx</p></li>
+                </ul>
+            </div>
+            <div class="orari_footer">
+                <h2>Orari</h2>
+                <ul>
+                <li><abbr title="Martedì">Mar</abbr>-<abbr title="Giovedì">Gio</abbr>:  12.00 - 15.00 e 19.00 - 22.30 </li>
+                <li><abbr title="Venerdì">Ven</abbr>-<abbr title="Domenica">Dom</abbr>: 19.00 - 00.00 </li>
+                <li>Luned&igrave; chiuso</li>
+                </ul>
+            </div>
+            <span xml:lang="en">Copyright (c) 2019 Copyright Holder All Rights Reserved.</span>
+    </div>
+  </body>
+</html>
+
