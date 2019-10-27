@@ -8,6 +8,7 @@
       <meta name="keyword" content="sushi, take away, Padova, Nakamura" />
       <meta name="language" content="italian it"/>
       <meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
+      <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
     <div id="header">
@@ -20,8 +21,8 @@
     </div>
 
     <div id="menu">
-      <ul>
-          <li xml:lang="en">Home</li>
+      <ul>    <!--Ho dovuto assegnare un ID perche non riuscivo a metterlo in riga con gli altri -->
+          <li id="not_a_link" xml:lang="en">Home</li>
           <li xml:lang="en"><a href="take_away.html">Take Away</a></li>
           <li><a href="chi_siamo.html">Chi siamo</a></li>
           <li><a href="recensioni.html">Recensioni</a></li>
@@ -29,11 +30,18 @@
           <li><a href="contatti.html">Contatti</a></li>
           <li><a href="gestione_profilo_utente.html">Gestione profilo</a></li>
       </ul>
-      <ul>
-          <li><a href="login.html"><span xml:lang="en">Login</span>/Registrazione</a></li>
-          <li><a href="carrello.html">Carrello</a></li>
-          <li><input type="button" name="logout" id="logout" value="Logout"/></li>
-      </ul>
+
+
+      <span class="impostazioni" >
+          <button type="button" class="dropbtn" name="button">Impostazioni</button>
+          <div class="impostazioni-content">
+            <a href="login.html"><span xml:lang="en">Login</span>/Registrazione</a>
+            <a href="carrello.html">Carrello</a>
+            <a xml:lang="en" href="#">Logout</a>
+          </div>
+      </span>
+
+
     </div>
 
     <div id="content">
