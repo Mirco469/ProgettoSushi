@@ -1,8 +1,9 @@
 body {
   padding: 0em;
   margin: 0em;
-  font-size: 0,9em;
+  font-size: 0.9em;
   font-family: Helvetica, Verdana, sans-serif;
+
 }
 
 #logo {
@@ -39,13 +40,15 @@ body {
   padding-left: 1em;
 }
 
+
 #menu ul {
-  margin: 0;
-  padding: 0;
+  margin: 0em;
+  padding: 0em;
   overflow: hidden;
   background-color: #4a0715;
   list-style-type: none;
-  ;
+
+
 }
 
 #menu ul li{
@@ -73,7 +76,8 @@ body {
   margin: 0em;
 }
 
-.dropbtn {
+
+#dropbtn {
   background-color: #4a0715;
   color: #e0ac00;
   padding: 0.3em;
@@ -83,36 +87,41 @@ body {
   cursor: pointer;
 }
 
-/* Da spostare a destra*/
-.impostazioni {
-  position: absolute;
-  float: right;
-  display: inline-block;
 
+/* Da spostare a destra*/
+#dropdown {
+  display: inline-block;
+  float: right;
 }
 
-.impostazioni-content {
+#dropdown_content {
+
+
+  right: 0;
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: #4a0715;
   z-index: 1;
+
 }
 
-.impostazioni-content a {
-  color: black;
+#dropdown_content a {
+  display: block;
+  color: #e0ac00;
   padding: 0.3em;
   text-decoration: none;
+  padding-left: 0.8em;
+
+}
+
+#dropdown:hover #dropdown_content {
   display: block;
 }
 
-.impostazioni-content a:hover {
-  background-color: #f1f1f1
+#dropdown_content a:hover {
+  background-color: #33050e
 }
 
-.impostazioni:hover .impostazioni-content {
-  display: block;
-}
-
-.impostazioni:hover .dropbtn {
+#dropdown:hover #dropbtn {
   background-color: #33050e;
 }
