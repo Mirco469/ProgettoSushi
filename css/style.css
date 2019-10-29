@@ -3,7 +3,6 @@ body {
   margin: 0em;
   font-size: 0.9em;
   font-family: Helvetica, Verdana, sans-serif;
-
 }
 
 #logo {
@@ -34,6 +33,7 @@ body {
 }
 
 #breadcrumb {
+  text-align: left;
   background-color: #1f1d1d;
   color: #e0ac00;
   padding: 0.1em;
@@ -124,4 +124,40 @@ body {
 
 #dropdown:hover #dropbtn {
   background-color: #33050e;
+}
+
+#info_container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#footer h2 {
+ font-size: 1em;
+}
+
+#footer p {
+  font-size: 0.8em;
+}
+
+.info {
+  margin: 0em;
+  padding-right: 0.5em;
+  list-style: none;
+}
+
+.info ul {
+  list-style-type: none;
+}
+
+#footer h1 {
+  font-size: 1.3em;
+}
+
+
+
+#footer span {
+  margin-top: 2em;
+  text-align: center;
+  display: block;
+  clear: both;
 }
