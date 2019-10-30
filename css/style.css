@@ -65,13 +65,12 @@ body {
 #menu > ul > li {
   float: left;
   color: #ffdd00;
-  padding: 0.3em;
 }
 
 #menu > ul li a {
   display: block;
   text-align: center;
-  padding: 0.3em;
+  padding: 0.6em;
   text-decoration: none;
   margin: 0em;
   color: #ffdd00;
@@ -84,16 +83,16 @@ body {
 #menu > ul .impostazioni > span {
   display: block;
   text-align: center;
-  padding: 0.3em;
+  padding: 0.6em;
   text-decoration: none;
   margin: 0em;
   color: #ffdd00;
 }
 
-#menu > ul li.active {
+#active {
   display: block;
   text-align: center;
-  padding: 0.3em;
+  padding: 0.6em;
   text-decoration: none;
   margin: 0em;
 }
