@@ -5,6 +5,7 @@ body {
   font-family: Helvetica, Verdana, sans-serif;
 }
 
+
 #logo {
   display: block;
   float: left;
@@ -22,6 +23,10 @@ body {
   border-radius: 40px;
 }
 
+#menu a:visited {
+  color: #e0ac00;
+}
+
 #header {
   margin: 0em;
   background-color: #4a0715;
@@ -35,14 +40,14 @@ body {
 #breadcrumb {
   text-align: left;
   background-color: #1f1d1d;
-  color: #e0ac00;
+  color: #ffdd00;
   padding: 0.1em;
   padding-left: 1em;
 }
 
 #breadcrumb > p{
   margin:0;
-}   
+}
 
 #menu {
 	width: 100%;
@@ -59,7 +64,7 @@ body {
 
 #menu > ul > li {
   float: left;
-  color: #e0ac00;
+  color: #ffdd00;
   padding: 0.3em;
 }
 
@@ -69,7 +74,7 @@ body {
   padding: 0.3em;
   text-decoration: none;
   margin: 0em;
-  color: inherit;
+  color: #ffdd00;
 }
 
 #menu > ul .login {
@@ -82,7 +87,7 @@ body {
   padding: 0.3em;
   text-decoration: none;
   margin: 0em;
-  color: inherit;
+  color: #ffdd00;
 }
 
 #menu > ul li.active {
@@ -111,7 +116,7 @@ body {
 
 #dropbtn {
   background-color: #4a0715;
-  color: #e0ac00;
+  color: #ffdd00;
   padding: 0.3em;
   margin: 0em;
   font-size: 1em;
@@ -136,7 +141,7 @@ body {
 
 #dropdown_content a {
   display: block;
-  color: #e0ac00;
+  color: #ffdd00;
   padding: 0.3em;
   text-decoration: none;
   padding-left: 0.8em;
