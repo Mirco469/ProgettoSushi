@@ -3,6 +3,7 @@ body {
   margin: 0em;
   font-size: 0.9em;
   font-family: Helvetica, Verdana, sans-serif;
+  background-color: #1f1d1d;
 }
 
 
@@ -161,6 +162,7 @@ body {
 
 #footer {
   text-align: center;
+  background-color: #4a0715;
 }
 
 #footer h2 {
@@ -178,6 +180,10 @@ body {
 
 }
 
+.info > h2 {
+    color: #e0ac00;
+}
+
 .info > ul > li {
   text-align: left;
 }
@@ -190,9 +196,12 @@ body {
 
 #footer h1 {
   font-size: 1.3em;
+  color: white;
 }
 
-
+#content {
+    color: white;
+}
 
 #footer span {
   margin-top: 2em;
