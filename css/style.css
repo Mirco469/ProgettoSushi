@@ -40,6 +40,10 @@ body {
   padding-left: 1em;
 }
 
+#breadcrumb > p{
+  margin:0;
+}   
+
 #menu {
 	width: 100%;
 }
