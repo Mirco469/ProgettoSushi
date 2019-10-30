@@ -46,10 +46,11 @@ body {
 
 #menu {
 	width: 100%;
+    font-size: 1.2em;
 }
 
 #menu > ul {
-    background-color: #4a0715;
+  background-color: #4a0715;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -59,6 +60,7 @@ body {
 #menu > ul > li {
   float: left;
   color: #e0ac00;
+  padding: 0.3em;
 }
 
 #menu > ul li a {
