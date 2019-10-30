@@ -6,6 +6,9 @@ body {
   background-color: #1f1d1d;
 }
 
+#content, .info {
+    color: white;
+}
 
 #logo {
   display: block;
