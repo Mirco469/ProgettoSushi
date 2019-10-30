@@ -165,16 +165,13 @@ body {
   background-color: #4a0715;
 }
 
-#footer {
-	text-align: center;
-}
-
 #footer h2 {
  font-size: 1em;
 }
 
 #footer p {
   font-size: 0.8em;
+  margin-bottom: 0;
 }
 
 .info {
