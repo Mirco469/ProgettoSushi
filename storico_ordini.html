@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Storico ordini - Sushi Nakamura</title>
+		<meta name="title" content="Storico ordini" />
+		<meta name="description" content="Lista ordini effettuati in corso e passati dall'utente loggato" />
+		<meta name="keyword" content="Ordini, prodotti, dettagli" />
+		<meta name="robots" content="noindex" />
+		<meta name="language" content="italian it"/>
+		<meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
+	</head>
+	
+	<body>
+		<div id="header">
+            <span id="logo"></span>
+            <h1 xml:lang="ja">Sushi Nakamura</h1>
+        </div>
+
+        <div id="breadcrumb">
+			<p>Ti trovi in: <span xml:lang="en">Home</span> &gt; &gt; Storico Ordini</p>
+        </div>
+
+		<div id="menu">
+            <ul>
+                <li xml:lang="en"><a href="home_utente.html">Home</a></li>
+                <li xml:lang="en"><a href="take_away.html">Take Away</a></li>
+                <li><a href="chi_siamo.html">Chi siamo</a></li>
+                <li><a href="recensioni.html">Recensioni</a></li>
+                <li><a href="prodotti.html">Prodotti</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+                <li><a href="gestione_profilo_utente.html">Gestione profilo</a></li>
+            </ul>
+            <ul>
+                <li><a href="login.html"><span xml:lang="en" lang="en">Login</span>/Registrazione</a></li>
+                <li><a href="carrello.html">Carrello</a></li>
+                <li><input type="button" name="logout" id="logout" value="Logout"/></li>
+            </ul>
+        </div>
+		
+		<!-- Inizio contenuto -->
+		<div id="carrello" class="content">
+		
+			<!-- Inizio lista_ordini -->
+			<table>
+				<thead>
+					<tr>
+						<th>ID ordine</th>
+						<th>Data ordine</th>
+						<th>Data consegna</th>
+						<th>Totale</th>
+						<th>Operazioni</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>ID</td>
+						<td>data1</td>
+						<td>data2</td>
+						<td>Totale</td>
+						<td>
+							<input type="button" name="dettagli" value="dettagli" />
+						</td>
+					</tr>
+					<tr>
+						<td colspan="5">
+							<!-- Inizio dettagli ordine -->
+							<div>
+								<p>Nome Cognome</p>
+								<p>Via, n. civico, citta, cap</p>
+								<p>Pagamento</p>
+								<table>
+									<thead>
+										<tr>
+											<th>Nome prodotto</th>
+											<th>Categoria</th>
+											<th>Porzioni</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td xml:lang="ja">Uramaki Maguro</td>
+											<td><a href="prodotti.html#uramaki" xml:lang="ja">Uramaki</a></td>
+											<td>1</td>
+										</tr>
+										<tr>
+											<td xml:lang="ja">Hosomaki Maguro</td>
+											<td><a href="prodotti.html#hosomaki" xml:lang="ja">Hosomaki</a></td>
+											<td>4</td>
+										</tr>
+										<tr>
+											<td xml:lang="ja">Hosomaki Sake</td>
+											<td><a href="prodotti.html#hosomaki" xml:lang="ja">Hosomaki</a></td>
+											<td>4</td>
+										</tr>
+										<tr>
+											<td>Tiramisù</td>
+											<td><a href="prodotti.html#dessert" xml:lang="fr">Dessert</a></td>
+											<td>10</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- Fine dettagli ordine -->
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- Fine lista_ordini -->
+			
+		</div>
+		<!-- Fine contenuto -->
+
+
+		<div id="footer">
+            <h1>Contatti: </h1>
+            <div class="indirizzo">
+                <h2>Indirizzo</h2>
+                <p>35131 Padova (PD) - Piazza Eremitani, 404/2  </p>
+            </div>
+            <div class="telefono">
+                <h2>Telefono</h2>
+                <ul>
+                <li><p>Telefono: 049.xxxxxx</p></li>
+                <li><p>Cellulare: 348xxxxxxx</p></li>
+                </ul>
+            </div>
+            <div class="orari">
+                <h2>Orari</h2>
+                <ul>
+                <li><abbr title="Martedì">Mar</abbr> - <abbr title="Giovedì">Gio</abbr>:  12.00 - 15.00 e 19.00 - 22.30 </li>
+                <li><abbr title="Venerdì">Ven</abbr> - <abbr title="Domenica">Dom</abbr>: 19.00 - 00.00 </li>
+                <li>Luned&igrave; chiuso</li>
+                </ul>
+            </div>
+            <span xml:lang="en">Copyright (c) 2019 Copyright Holder All Rights Reserved.</span>
+			<p>
+                <a href="http://validator.w3.org/check?uri=referer"><img
+                src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
+            </p>  
+        </div>
+
+	</body>
+</html>
