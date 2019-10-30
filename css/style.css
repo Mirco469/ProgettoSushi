@@ -40,42 +40,68 @@ body {
   padding-left: 1em;
 }
 
-
-#menu ul {
-  margin: 0em;
-  padding: 0em;
-  overflow: hidden;
-  background-color: #4a0715;
-  list-style-type: none;
-
-
+#menu {
+	width: 100%;
 }
 
-#menu ul li{
+#menu > ul {
+    background-color: #4a0715;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#menu > ul > li {
   float: left;
   color: #e0ac00;
-
 }
 
-#menu ul li a{
+#menu > ul li a {
   display: block;
   text-align: center;
   padding: 0.3em;
-  margin: 0em;
   text-decoration: none;
-  color: #e0ac00;
-  margin-bottom: 0em;
+  margin: 0em;
+  color: inherit;
+}
+
+#menu > ul .login {
+    float: right;
+}
+
+#menu > ul .impostazioni > span {
+  display: block;
+  text-align: center;
+  padding: 0.3em;
+  text-decoration: none;
+  margin: 0em;
+  color: inherit;
+}
+
+#menu > ul li.active {
+  display: block;
+  text-align: center;
+  padding: 0.3em;
+  text-decoration: none;
+  margin: 0em;
 }
 
 #menu ul li a:hover {
   background-color: #33050e;
 }
 
-#not_a_link {
-  padding: 0.3em;
-  margin: 0em;
+#menu > ul .impostazioni {
+	float: right;
 }
 
+#menu > ul .impostazioni > span:hover {
+  background-color: #33050e;
+}
+
+#dropbtn:hover + #dropdown_content {
+	display: block;
+}
 
 #dropbtn {
   background-color: #4a0715;
@@ -85,13 +111,6 @@ body {
   font-size: 1em;
   border: none;
   cursor: pointer;
-}
-
-
-/* Da spostare a destra*/
-#dropdown {
-  display: inline-block;
-  float: right;
 }
 
 #dropdown_content {
@@ -105,6 +124,10 @@ body {
 
 }
 
+#dropdown_content:hover {
+    display: block;
+}
+
 #dropdown_content a {
   display: block;
   color: #e0ac00;
@@ -114,7 +137,7 @@ body {
 
 }
 
-#dropdown:hover #dropdown_content {
+#dropdown:hover + #dropdown_content {
   display: block;
 }
 
