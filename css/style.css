@@ -6,6 +6,17 @@ body {
   background-color: #1f1d1d;
 }
 
+/*
+ * Palette
+ * 
+ * backgroud-color: #1f1d1d
+ * header footer backgroud-color: #4a0715
+ * header h1 color: #e0ac00
+ * menù li color: #f5e900
+ * menù li:hover background-color: #33050e
+ * menù li a:visited color: #e0ac00
+ * 
+ */
 
 
 /*	Header	*/
@@ -239,3 +250,68 @@ body {
 #content, .info {
     color: white;
 }
+
+
+
+/*	carrello	*/
+
+.carrello table {
+	width: calc(100% - 16em);
+	margin: 0 8em;
+	text-align: center;
+	margin: 2em 8em 1em;
+	border-collapse: separate;
+	border-spacing: 0 1em;
+}
+
+.carrello table tbody tr td {
+	border: solid 1px white;
+	margin-right: 0;
+}
+
+.carrello table tbody tr td {
+	border-left: none;
+	border-right: none;
+	padding: 0.5em;
+}
+
+.carrello table tbody tr td:first-child {
+	border-top-left-radius: 16px;
+	border-bottom-left-radius: 16px;
+	border-left: solid 2px white;
+}
+
+.carrello table tbody tr td:last-child {
+	border-top-right-radius: 16px;
+	border-bottom-right-radius: 16px;
+	border-right: solid 2px white;
+}
+
+#content.carrello table tbody td:first-child {
+	text-align: left;
+}
+
+.carrello input[type="text"] {
+	text-align: center;
+	width: 2.5em;
+}
+
+.carrello button {
+	margin: 1em auto 2em 90%;
+}
+
+.carrello input {
+	border-radius: 5px;
+}
+
+.carrello input[name="rimuovi"] {
+    background-color: #dc3545;
+	border: solid 4px #dc3545;
+    border-radius: 5px;
+}
+
+.carrello input[name="rimuovi"]:hover {
+	background-color: #c82333;
+	border: solid 4px #c82333;
+}
+
