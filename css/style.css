@@ -6,9 +6,9 @@ body {
   background-color: #1f1d1d;
 }
 
-#content, .info {
-    color: white;
-}
+
+
+/*	Header	*/
 
 #logo {
   display: block;
@@ -41,18 +41,10 @@ body {
 
 }
 
-#breadcrumb {
-  text-align: left;
-  background-color: #1f1d1d;
-  color: #f5e900;
-  padding: 0.1em;
-  padding-left: 1em;
-}
 
-#breadcrumb > p{
-  margin:0;
-}
 
+/*	Menu	*/
+ 
 #menu {
 	width: 100%;
     font-size: 1.2em;
@@ -113,6 +105,10 @@ body {
   background-color: #33050e;
 }
 
+#menu a:visited {
+  color: #e0ac00;
+}
+
 #dropbtn:hover + #dropdown_content {
 	display: block;
 }
@@ -162,6 +158,26 @@ body {
 #dropdown:hover #dropbtn {
   background-color: #33050e;
 }
+
+
+
+/*	Breadcrumb	*/
+
+#breadcrumb {
+  text-align: left;
+  background-color: #1f1d1d;
+  color: #f5e900;
+  padding: 0.1em;
+  padding-left: 1em;
+}
+
+#breadcrumb > p{
+  margin:0;
+}
+
+
+
+/*	Footer	*/
 
 #footer {
   text-align: center;
@@ -214,4 +230,12 @@ body {
   text-align: center;
   display: block;
   clear: both;
+}
+
+
+
+/*	home_utente	*/
+
+#content, .info {
+    color: white;
 }
