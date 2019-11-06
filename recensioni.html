@@ -20,21 +20,24 @@
     </div>
 
     <div id="menu">
-      <ul>
-        <li><a href="home_utente.html" xml:lang="en">Home</a></li>
-        <li><a href="take_away.html" xml:lang="en">Take Away</a></li>
-        <li><a href="chi_siamo.html">Chi siamo</a></li>
-        <li>Recensioni</li>
-        <li><a href="prodotti.html">Prodotti</a></li>
-        <li><a href="contatti.html">Contatti</a></li>
-        <li><a href="gestione_profilo_utente.html">Gestione profilo</a></li>
-      </ul>
-      <ul>
-        <li><a href="login.html"><span xml:lang="en">Login</span>/Registrazione</a></li>
-        <li><a href="carrello.html">Carrello</a></li>
-        <li><input type="button" id="logout" name="logout" value="logout" /></li>
-      </ul>
-    </div>
+		<ul>
+			<li xml:lang="en"><a href="home_utente.html">Home</a></li>
+			<li xml:lang="en"><a href="take_away.html">Take Away</a></li>
+			<li><a href="chi_siamo.html">Chi siamo</a></li>
+			<li id="active"><a href="recensioni.html">Recensioni</a></li>
+			<li><a href="prodotti.html">Prodotti</a></li>
+			<li><a href="contatti.html">Contatti</a></li>
+			<li><a href="gestione_profilo_utente.html">Gestione profilo</a></li>
+			<li class="login"><a href="login.html"><span xml:lang="en">Login</span>/Registrazione</a></li>
+			<li class="impostazioni">
+				<span id="dropbtn">Impostazioni</span>
+				<ul id="dropdown_content">
+					<li><a href="carrello.html">Carrello</a></li>
+					<li><a xml:lang="en" href="#">Logout</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
 
     <div id="content">
       <h1>Recensioni</h1>
