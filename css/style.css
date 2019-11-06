@@ -6,6 +6,14 @@ body {
   background-color: #1f1d1d;
 }
 
+body a {
+    color: #f5e900;
+}
+
+body a:visited {
+  color: #e0ac00;
+}
+
 /*
  * Palette
  * 
@@ -36,10 +44,6 @@ body {
   -webkit-border-radius: 40px;
   -moz-border-radius: 40px;
   border-radius: 40px;
-}
-
-#menu a:visited {
-  color: #e0ac00;
 }
 
 #header {
@@ -80,7 +84,6 @@ body {
   padding: 0.6em;
   text-decoration: none;
   margin: 0em;
-  color: #f5e900;
 }
 
 #menu > ul .login {
@@ -114,10 +117,6 @@ body {
 
 #menu > ul .impostazioni > span:hover {
   background-color: #33050e;
-}
-
-#menu a:visited {
-  color: #e0ac00;
 }
 
 #dropbtn:hover + #dropdown_content {
@@ -248,7 +247,7 @@ body {
 /*	home_utente	*/
 
 #content, .info {
-    color: white;
+    color: #d9d9d9;
 }
 
 
