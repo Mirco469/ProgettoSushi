@@ -6,12 +6,18 @@ body {
   background-color: #1f1d1d;
 }
 
+/* Generale */
+
 body a {
-    color: #f5e900;
+	color: #f5e900;
 }
 
 body a:visited {
-  color: #e0ac00;
+	color: #e0ac00;
+}
+
+#content, .info {
+    color: #d9d9d9;
 }
 
 /*
@@ -242,16 +248,6 @@ body a:visited {
   clear: both;
 }
 
-
-
-/*	home_utente	*/
-
-#content, .info {
-    color: #d9d9d9;
-}
-
-
-
 /*	carrello	*/
 
 .carrello table {
@@ -314,3 +310,32 @@ body a:visited {
 	border: solid 4px #c82333;
 }
 
+/* Login */
+.login>form{
+	max-width: 26.875em;
+	margin: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.login>p{
+	width: fit-content;
+	margin: auto;
+	font-weight: bold;
+}
+
+.login .formGroup>input{ /* Da mettere uguale per tutti i form del sito? */
+	display: block;
+	width: 100%;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 2px;
+	border-radius: 4px;
+}
+
+.login>form input[type=submit]{
+	display: block;
+	margin:auto;
+	font-size: 1.2em;
+}
