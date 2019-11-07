@@ -320,8 +320,7 @@ body a:visited {
 }
 
 #login>p{
-	width: fit-content;
-	margin: auto;
+	text-align: center;
 	font-weight: bold;
 }
 
