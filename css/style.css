@@ -22,14 +22,14 @@ body a:visited {
 
 /*
  * Palette
- * 
+ *
  * backgroud-color: #1f1d1d
  * header footer backgroud-color: #4a0715
  * header h1 color: #e0ac00
  * menù li color: #f5e900
  * menù li:hover background-color: #33050e
  * menù li a:visited color: #e0ac00
- * 
+ *
  */
 
 
@@ -65,7 +65,7 @@ body a:visited {
 
 
 /*	Menu	*/
- 
+
 #menu {
 	width: 100%;
     font-size: 1.2em;
@@ -338,4 +338,25 @@ body a:visited {
 	display: block;
 	margin:auto;
 	font-size: 1.2em;
+}
+
+#chiSiamo {
+    margin: 2%;
+}
+
+#chiSiamo div{
+    margin-left: 20%;
+    margin-top: 3em;
+    width: 80%;
+}
+
+#homeUtente {
+    margin: 2%;
+}
+
+div#notizie {
+    float: right;
+    border: 1px solid white;
+    padding-left: 2em;
+    padding-right: 2em;
 }
