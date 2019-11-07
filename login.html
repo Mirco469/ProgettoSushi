@@ -34,51 +34,35 @@
     			</li>
     		</ul>
     	</div>
-        <div id="content">
+        <div id="login" class="content">
             <!-- Form per l'accesso -->
             <form action="home_utente.html" autocomplete="on"> <!--Manca l'attributo action e l'attributo method (get/post)-->
                 <fieldset>
                     <legend>Accedi</legend>
-                    <div class="formGroup">
-                        <label for="nomeUtente">Nome Utente:</label>
-                        <input type="text" id="nomeUtente" name="username" placeholder="Utente" required="required"/>
-                    </div>
-                    <div class="formGroup">
-                        <label for="passwordAcc" xml:lang="en" lang="en">Password:</label>
-                        <input type="password" id="passwordAcc" name="password" placeholder="Password" required="required"/>
-                    </div>
+                    <label for="nomeUtente">Nome Utente:</label>
+                    <input type="text" id="nomeUtente" name="username" placeholder="Utente" required="required"/>
+                    <label for="passwordAcc" xml:lang="en" lang="en">Password:</label>
+                    <input type="password" id="passwordAcc" name="password" placeholder="Password" required="required"/>
                     <input type="submit" value="Accedi"/>
                 </fieldset>
             </form>
-            <span>oppure</span>
+            <p>oppure</p>
             <!-- Form per le registrazione -->
             <form action="home_utente.html"> <!--Manca l'attributo action e l'attributo method (get/post)-->
                 <fieldset>
                     <legend>Registrati</legend>
-                    <div class="formGroup">
-                        <label for="username">Nome utente:</label>
-                        <input type="text" id="username" name="username" placeholder="Nome utente" required="required"/>
-                    </div>
-                    <div class="formGroup">
-                        <label for="nome">Nome:</label>
-                        <input type="text" id="nome" name="nome" placeholder="Nome" required="required"/>
-                    </div>
-                    <div class="formGroup">
-                        <label for="cognome">Cognome:</label>
-                        <input type="text" id="cognome" name="cognome" placeholder="Cognome" required="required"/>
-                    </div>
-                    <div class="formGroup">
-                        <label for="data">Data di nascita:</label>
-                        <input type="date" id="data" name="dataNascita" required="required"/> <!-- Il validatore consiglia di prendere in considerazione "polyfill" in quanto date non è supportato da tutti i browser -->
-                    </div>
-                    <div class="formGroup">
-                        <label for="passwordReg" xml:lang="en" lang="en">Password:</label>
-                        <input type="password" id="passwordReg" name="password" required="required"/>
-                    </div>
-                    <div class="formGroup">
-                        <label for="passwordRepeat">Ripeti la <span xml:lang="en" lang="en">password:</span></label>
-                        <input type="password" id="passwordRepeat" name="passwordRepeat" required="required"/>
-                    </div>
+                    <label for="username">Nome utente:</label>
+                    <input type="text" id="username" name="username" placeholder="Utente" required="required"/>
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" placeholder="Nome" required="required"/>
+                    <label for="cognome">Cognome:</label>
+                    <input type="text" id="cognome" name="cognome" placeholder="Cognome" required="required"/>
+                    <label for="data">Data di nascita:</label>
+                    <input type="date" id="data" name="dataNascita" required="required"/> <!-- Il validatore consiglia di prendere in considerazione "polyfill" in quanto date non è supportato da tutti i browser -->
+                    <label for="passwordReg" xml:lang="en" lang="en">Password:</label>
+                    <input type="password" id="passwordReg" name="password" required="required"/>
+                    <label for="passwordRepeat">Ripeti la <span xml:lang="en" lang="en">password:</span></label>
+                    <input type="password" id="passwordRepeat" name="passwordRepeat" required="required"/>
                     <input type="submit" value="Registrati"/>
                 </fieldset>
             </form>

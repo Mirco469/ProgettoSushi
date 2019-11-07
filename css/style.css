@@ -6,12 +6,18 @@ body {
   background-color: #1f1d1d;
 }
 
+/* Generale */
+
 body a {
-    color: #f5e900;
+	color: #f5e900;
 }
 
 body a:visited {
-  color: #e0ac00;
+	color: #e0ac00;
+}
+
+.content, .info {
+    color: #d9d9d9;
 }
 
 /*
@@ -243,19 +249,9 @@ body a:visited {
   clear: both;
 }
 
-
-
-/*	home_utente	*/
-
-#content, .info {
-    color: #d9d9d9;
-}
-
-
-
 /*	carrello	*/
 
-.carrello table {
+#carrello table {
 	width: calc(100% - 16em);
 	margin: 0 8em;
 	text-align: center;
@@ -264,54 +260,83 @@ body a:visited {
 	border-spacing: 0 1em;
 }
 
-.carrello table tbody tr td {
+#carrello table tbody tr td {
 	border: solid 1px white;
 	margin-right: 0;
 }
 
-.carrello table tbody tr td {
+#carrello table tbody tr td {
 	border-left: none;
 	border-right: none;
 	padding: 0.5em;
 }
 
-.carrello table tbody tr td:first-child {
+#carrello table tbody tr td:first-child {
 	border-top-left-radius: 16px;
 	border-bottom-left-radius: 16px;
 	border-left: solid 2px white;
 }
 
-.carrello table tbody tr td:last-child {
+#carrello table tbody tr td:last-child {
 	border-top-right-radius: 16px;
 	border-bottom-right-radius: 16px;
 	border-right: solid 2px white;
 }
 
-#content.carrello table tbody td:first-child {
+#carrello table tbody td:first-child {
 	text-align: left;
 }
 
-.carrello input[type="text"] {
+#carrello input[type="text"] {
 	text-align: center;
 	width: 2.5em;
 }
 
-.carrello button {
+#carrello button {
 	margin: 1em auto 2em 90%;
 }
 
-.carrello input {
+#carrello input {
 	border-radius: 5px;
 }
 
-.carrello input[name="rimuovi"] {
+#carrello input[name="rimuovi"] {
     background-color: #dc3545;
 	border: solid 4px #dc3545;
     border-radius: 5px;
 }
 
-.carrello input[name="rimuovi"]:hover {
+#carrello input[name="rimuovi"]:hover {
 	background-color: #c82333;
 	border: solid 4px #c82333;
 }
 
+/* Login */
+#login>form{
+	max-width: 26.875em;
+	margin: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+#login>p{
+	width: fit-content;
+	margin: auto;
+	font-weight: bold;
+}
+
+#login input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
+	display: block;
+	width: 100%;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 2px;
+	border-radius: 4px;
+}
+
+#login>form input[type=submit]{
+	display: block;
+	margin:auto;
+	font-size: 1.2em;
+}
