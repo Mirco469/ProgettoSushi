@@ -135,27 +135,32 @@ body a:visited {
 }
 
 #dropdown_content {
-
-
-  right: 0;
-  display: none;
-  position: absolute;
-  background-color: #4a0715;
-  z-index: 1;
-
+	list-style-type: none;
+	padding-left: 0;
+	right: 0;
+	display: none;
+	position: absolute;
+	background-color: #4a0715;
+	z-index: 1;
 }
 
 #dropdown_content:hover {
     display: block;
 }
 
-#dropdown_content a {
-  display: block;
-  color: #f5e900;
-  padding: 0.3em;
-  text-decoration: none;
-  padding-left: 0.8em;
+#menu #dropdown_content a {
+	display: block;
+	color: #f5e900;
+	padding: 0.3em;
+	text-decoration: none;
+	padding-left: 0.8em;
+	text-align: left;
+}
 
+#dropdown_content #active {
+	text-align: left;
+	padding: 0.3em;
+	padding-left: 0.8em;
 }
 
 #dropdown:hover + #dropdown_content {
