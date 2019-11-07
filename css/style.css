@@ -105,6 +105,7 @@ body a:visited {
   padding: 0.6em;
   text-decoration: none;
   margin: 0em;
+  font-weight: bold;
 }
 
 #menu ul li a:hover {
