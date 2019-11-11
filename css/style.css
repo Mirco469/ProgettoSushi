@@ -344,3 +344,14 @@ body a:visited {
 	margin:auto;
 	font-size: 1.2em;
 }
+
+/* Successo */
+#successo{
+	display: block;
+	text-align: center;
+	margin: 2em 0em;
+}
+
+#successo img{
+	width: 18%;
+}
