@@ -341,7 +341,7 @@ body a:visited {
 }
 
 #menu_list {
-	width: 75%;
+	width: 90%;
 	margin: auto;
 	list-style: none;
 }
@@ -352,6 +352,7 @@ body a:visited {
 
 #menu_list  dd {
 	font-style: italic;
+	padding-bottom: 0.3em;
 }
 
 .menu_item {
