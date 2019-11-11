@@ -344,3 +344,51 @@ body a:visited {
 	margin:auto;
 	font-size: 1.2em;
 }
+
+#recensioni {
+	width: 75%;
+	margin: auto;
+}
+
+#recensioni h1 {
+	text-align: center;
+	font-variant: small-caps;
+	color: #e0ac00;
+}
+
+#recensioni h2 {
+	color: #e0ac00;
+	font-size: 1.3em;
+}
+
+#recensioni h2 + p {
+	font-style: italic;
+}
+
+#recensioni h2 + p + p {
+	padding: 0.5em;
+	border: 1px solid #fff;
+	border-radius: 5px;
+	margin: 1em;
+	background-color: #4a0715;
+}
+
+#form_recensione {
+	margin:auto;
+	margin-top: 2em;
+	margin-bottom: 1.5em;
+	max-width: 60%;
+	border-radius: 5px;
+}
+
+#titolo_recensione, #testo_recensione {
+	display: block;
+	margin-top: 0.6em;
+	margin-bottom: 0.6em;
+}
+
+#form_recensione input[type=submit] {
+	margin-top: 0.3em;
+	border-radius: 5px;
+	float: right;
+}
