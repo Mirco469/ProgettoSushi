@@ -339,17 +339,17 @@ body a:visited {
 	margin:auto;
 	font-size: 1.2em;
 }
-
+/* Chi Siamo */
 #chiSiamo {
     margin: 2%;
 }
 
 #chiSiamo div{
-    margin-left: 20%;
+    margin-left: 14%;
     margin-top: 3em;
     width: 80%;
 }
-
+/*Home Utente*/
 #homeUtente {
     margin: 2%;
 }
@@ -359,4 +359,74 @@ div#notizie {
     border: 1px solid white;
     padding-left: 2em;
     padding-right: 2em;
+    margin-left: 1em;
+}
+/* Gestione Profilo Utente */
+
+#profilo_utente {
+    margin: 2%;
+}
+
+#menu_profilo>h1 {
+    color: #d9d9d9;
+    text-align: center;
+    display: block;
+}
+
+#menu_profilo {
+    margin: 2%;
+    border: 2px solid grey;
+    margin-top: 8%;
+    display: block;
+    float: left;
+}
+
+#menu_profilo ul {
+    padding-left: 0;
+}
+
+#menu_profilo a {
+    font-size: 1.1em;
+}
+#menu_profilo>ul li {
+    padding: 1em;
+    padding-top: 0.4em;
+    list-style-type: none;
+    font-size: 1em;
+    margin-top: 1em;
+}
+
+#profilo_utente>form{
+	max-width: 35em;
+	margin: auto;
+	margin-top: 6%;
+	margin-bottom: 1em;
+    margin-left: 40%
+}
+
+#profilo_utente fieldset {
+    padding: 1em;
+    padding-left: 3em;
+    padding-right: 3em;
+}
+
+#profilo_utente>p{
+	text-align: center;
+	font-weight: bold;
+}
+
+#profilo_utente input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
+	display: block;
+	width: 100%;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 2px;
+	border-radius: 4px;
+}
+
+#profilo_utente>form input[type=submit]{
+	display: block;
+	margin:auto;
+	font-size: 1.2em;
 }
