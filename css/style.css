@@ -141,27 +141,31 @@ body a:visited {
 }
 
 #dropdown_content {
-
-
-  right: 0;
-  display: none;
-  position: absolute;
-  background-color: #4a0715;
-  z-index: 1;
-
+	list-style-type: none;
+	padding-left: 0;
+	right: 0;
+	display: none;
+	position: absolute;
+	background-color: #4a0715;
+	z-index: 1;
 }
 
 #dropdown_content:hover {
     display: block;
 }
 
-#dropdown_content a {
-  display: block;
-  color: #f5e900;
-  padding: 0.3em;
-  text-decoration: none;
-  padding-left: 0.8em;
+#menu #dropdown_content a {
+	display: block;
+	padding: 0.3em;
+	text-decoration: none;
+	padding-left: 0.8em;
+	text-align: left;
+}
 
+#dropdown_content #active {
+	text-align: left;
+	padding: 0.3em;
+	padding-left: 0.8em;
 }
 
 #dropdown:hover + #dropdown_content {
@@ -411,4 +415,50 @@ body a:visited {
 	padding: 0.7em;
 	border:  1px solid #000;
 	cursor: pointer;
+}
+
+/* Prodotti */
+
+#prodotti dl, dt, dd{ /* Da applicare a tutte le pagine così che si resetti la visualizzazione iniziale? */
+	margin: 0;
+	padding: 0;
+}
+
+#prodotti>dl{
+	margin: 0em 2em;
+}
+
+#prodotti>dl>dd{
+	overflow: auto;
+	border: 1px solid #d9d9d9;
+    border-top: none;
+	margin-bottom: 2em;
+}
+
+#prodotti>dl>dt{
+	font-size: 1.5em;
+	padding: 0.2em 0em;
+	padding-left: 0.5em;
+	clear: both;
+	border: 1px solid #d9d9d9;
+	background-color: #4a0715;
+}
+
+#prodotti>dl>dt.prodotti_dispari+dd img{
+	float: left;
+	margin-right: 0.5em;
+}
+
+#prodotti>dl>dt.prodotti_pari+dd img{
+	float: right;
+	margin-left: 0.5em;
+}
+
+#prodotti img{
+	width: 20%;
+}
+
+#prodotti>dl>dd>p{
+	margin-left: 0.5em;
+	margin-right: 0.5em;
 }
