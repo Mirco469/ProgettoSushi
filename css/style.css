@@ -344,19 +344,23 @@ body a:visited {
 	font-size: 1.2em;
 }
 
+/* Takeaway */
+
 #menu_list {
-	width: 90%;
+	width: 80%;
 	margin: auto;
 	list-style: none;
+	padding-top: 1em;
 }
 
 #menu_list  dt {
 	font-variant: small-caps;
+	padding-bottom: 0.2em;
 }
 
 #menu_list  dd {
 	font-style: italic;
-	padding-bottom: 0.3em;
+	padding-bottom: 0.4em;
 }
 
 .menu_item {
@@ -405,7 +409,6 @@ body a:visited {
 }
 
 #torna_su {
-	/* display: none; */
 	position: fixed;
 	bottom: 0.8em;
 	right: 0.8em;
@@ -414,7 +417,6 @@ body a:visited {
 	color: #fff;
 	padding: 0.7em;
 	border:  1px solid #000;
-	cursor: pointer;
 }
 
 /* Prodotti */
