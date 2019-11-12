@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Carrello - Sushi Nakamura</title>
+		<meta name="description" content="Pagina carrello contenente la lista dei prodotti aggiunti" />
+		<meta name="keywords" content="Carrello, prodotti" />
+		<meta name="robot" content="noIndex" />
+		<meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+
+	<body>
+		<div id="header">
+            <a id="logo" href="home_utente.html"></a>
+            <h1 xml:lang="ja" lang="ja">Sushi Nakamura</h1>
+        </div>
+
+		<div id="menu">
+			<ul>
+				<li xml:lang="en"><a href="home_utente.html">Home</a></li>
+				<li xml:lang="en"><a href="take_away.html">Take Away</a></li>
+				<li><a href="chi_siamo.html">Chi siamo</a></li>
+				<li><a href="recensioni.html">Recensioni</a></li>
+				<li><a href="prodotti.html">Prodotti</a></li>
+				<li><a href="contatti.html">Contatti</a></li>
+				<li class="impostazioni">
+					<span id="dropbtn">Area Riservata</span>
+					<ul id="dropdown_content">
+						<li id="active">Carrello</li>
+						<li><a href="storico_ordini.html">Storico ordini</a></li>
+						<li><a href="gestione_profilo_utente.html">Gestione profilo</a></li>
+						<li><a xml:lang="en" href="#">Logout</a></li>
+					</ul>
+				</li>
+				<li class="login"><a href="login.html"><span xml:lang="en">Login</span>/Registrazione</a></li>
+			</ul>
+		</div>
+
+		<div id="breadcrumb">
+			<p>Ti trovi in: <a href="home_utente.html" xml:lang="en">Home</a> &gt; &gt; Carrello</p>
+		</div>
+
+		<!-- Inizio contenuto -->
+		<div class="content" id="carrello">
+			<!-- Inizio lista_ordini -->
+			<table>
+				<thead>
+					<tr>
+						<th>Nome prodotto</th>
+						<th>Categoria</th>
+						<th>Porzioni</th>
+						<th>Operazioni</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td xml:lang="ja">Uramaki Maguro</td>
+						<td><a href="prodotti.html#uramaki" xml:lang="ja">Uramaki</a></td>
+						<td>
+							<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
+							<input type="text" name="quantita" value="1" /><!-- numero prodotto -->
+							<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
+						</td>
+						<td>
+							<input type="button" name="rimuovi" value="Rimuovi" />
+						</td>
+					</tr>
+					<tr>
+						<td xml:lang="ja">Hosomaki Maguro</td>
+						<td><a href="prodotti.html#hosomaki" xml:lang="ja">Hosomaki</a></td>
+						<td>
+							<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
+							<input type="text" name="quantita" value="4" /><!-- numero prodotto -->
+							<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
+						</td>
+						<td>
+							<input type="button" name="rimuovi" value="Rimuovi" />
+						</td>
+					</tr>
+					<tr>
+						<td xml:lang="ja">Hosomaki Sake</td>
+						<td><a href="prodotti.html#hosomaki" xml:lang="ja">Hosomaki</a></td>
+						<td>
+							<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
+							<input type="text" name="quantita" value="4" /><!-- numero prodotto -->
+							<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
+						</td>
+						<td>
+							<input type="button" name="rimuovi" value="Rimuovi" />
+						</td>
+					</tr>
+					<tr>
+						<td>Tiramisù</td>
+						<td><a href="prodotti.html#dessert" xml:lang="fr">Dessert</a></td>
+						<td>
+							<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
+							<input type="text" name="quantita" value="10" /><!-- numero prodotto -->
+							<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
+						</td>
+						<td>
+							<input type="button" name="rimuovi" value="Rimuovi" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- Fine lista_ordini -->
+			<button>Vai a pagamento</button>
+		</div>
+		<!-- Fine contenuto -->
+
+
+		<div id="footer">
+
+
+	      <div class="info">
+	        <h2>Contatti</h2>
+				<ul>
+					<li>35131 Padova (PD) - Piazza Eremitani, 404/2</li>
+					<li>Telefono: 049.xxxxxx</li>
+					<li>Cellulare: 348xxxxxxx</li>
+				</ul>
+	      </div>
+
+	      <div class="info">
+		  <h2>Orari</h2>
+			<ul>
+	          <li><abbr title="Martedì">Mar</abbr> - <abbr title="Giovedì">Gio</abbr>:  12.00 - 15.00 e 19.00 - 22.30</li>
+	          <li><abbr title="Venerdì">Ven</abbr>-<abbr title="Domenica">Dom</abbr>: 19.00 - 00.00 </li>
+	          <li>Luned&igrave; chiuso</li>
+			</ul>
+	      </div>
+	       <p xml:lang="en">Copyright (c) 2019 Copyright Holder All Rights Reserved.</p>
+
+	    <p>
+	      <a href="http://validator.w3.org/check?uri=referer"><img
+	      src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
+	    </p>
+
+	    </div>
+
+	</body>
+</html>

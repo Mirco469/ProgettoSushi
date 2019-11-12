@@ -1,0 +1,464 @@
+body {
+  padding: 0em;
+  margin: 0em;
+  font-size: 0.9em;
+  font-family: Helvetica, Verdana, sans-serif;
+  background-color: #1f1d1d;
+}
+
+/* Generale */
+
+body a {
+	color: #f5e900;
+}
+
+body a:visited {
+	color: #e0ac00;
+}
+
+.content, .info {
+    color: #d9d9d9;
+}
+
+/*
+ * Palette
+ * 
+ * backgroud-color: #1f1d1d
+ * header footer backgroud-color: #4a0715
+ * header h1 color: #e0ac00
+ * menù li color: #f5e900
+ * menù li:hover background-color: #33050e
+ * menù li a:visited color: #e0ac00
+ * 
+ */
+
+
+/*	Header	*/
+
+#logo {
+  display: block;
+  float: left;
+  width: 5em;
+  height: 5em;
+  background-image: url(../img/logo.jpg);
+  background-position: center;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  border-radius: 40px;
+}
+
+#header {
+  margin: 0em;
+  background-color: #4a0715;
+  color: #e0ac00;
+  padding: 1em;
+  font-size: 2em;
+  text-align: center;
+
+}
+
+
+
+/*	Menu	*/
+ 
+#menu {
+	width: 100%;
+    font-size: 1.2em;
+}
+
+#menu > ul {
+  background-color: #4a0715;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#menu > ul > li {
+  float: left;
+  color: #f5e900;
+}
+
+#menu > ul li a {
+  display: block;
+  text-align: center;
+  padding: 0.6em;
+  text-decoration: none;
+  margin: 0em;
+}
+
+#menu > ul .login {
+    float: right;
+}
+
+#menu > ul .impostazioni > span {
+  display: block;
+  text-align: center;
+  padding: 0.6em;
+  text-decoration: none;
+  margin: 0em;
+  color: #f5e900;
+}
+
+#active {
+  display: block;
+  text-align: center;
+  padding: 0.6em;
+  text-decoration: none;
+  margin: 0em;
+  font-weight: bold;
+}
+
+#menu ul li a:hover {
+  background-color: #33050e;
+}
+
+#menu > ul .impostazioni {
+	float: right;
+}
+
+#menu > ul .impostazioni > span:hover {
+  background-color: #33050e;
+}
+
+#dropbtn:hover + #dropdown_content {
+	display: block;
+}
+
+#dropbtn {
+  background-color: #4a0715;
+  color: #f5e900;
+  padding: 0.3em;
+  margin: 0em;
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+}
+
+#dropdown_content {
+	list-style-type: none;
+	padding-left: 0;
+	right: 0;
+	display: none;
+	position: absolute;
+	background-color: #4a0715;
+	z-index: 1;
+}
+
+#dropdown_content:hover {
+    display: block;
+}
+
+#menu #dropdown_content a {
+	display: block;
+	padding: 0.3em;
+	text-decoration: none;
+	padding-left: 0.8em;
+	text-align: left;
+}
+
+#dropdown_content #active {
+	text-align: left;
+	padding: 0.3em;
+	padding-left: 0.8em;
+}
+
+#dropdown:hover + #dropdown_content {
+  display: block;
+}
+
+#dropdown_content a:hover {
+  background-color: #33050e
+}
+
+#dropdown:hover #dropbtn {
+  background-color: #33050e;
+}
+
+
+
+/*	Breadcrumb	*/
+
+#breadcrumb {
+  text-align: left;
+  background-color: #1f1d1d;
+  color: #f5e900;
+  padding: 0.1em;
+  padding-left: 1em;
+}
+
+#breadcrumb > p{
+  margin:0;
+}
+
+
+
+/*	Footer	*/
+
+#footer {
+  text-align: center;
+  background-color: #4a0715;
+}
+
+#footer h2 {
+ font-size: 1em;
+}
+
+#footer p {
+  font-size: 0.8em;
+  margin-bottom: 0;
+}
+
+.info {
+  margin: 0em;
+  padding-right: 0.5em;
+  list-style: none;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.info > h2 {
+    color: #e0ac00;
+}
+
+.info > ul > li {
+  text-align: left;
+}
+
+.info ul {
+	padding: 0;
+	text-align: left;
+	list-style-type: none;
+}
+
+.info:nth-child(1) ul li:nth-child(2) {
+    margin-top: 1em;
+    border-top: 1px solid black;
+    padding-top: 1em;
+}
+
+.info:nth-child(2) {
+    margin-left: 10%;
+}
+
+#footer span {
+  margin-top: 2em;
+  text-align: center;
+  display: block;
+  clear: both;
+}
+
+/*	carrello	*/
+
+#carrello table {
+	width: calc(100% - 16em);
+	margin: 0 8em;
+	text-align: center;
+	margin: 2em 8em 1em;
+	border-collapse: separate;
+	border-spacing: 0 1em;
+}
+
+#carrello table tbody tr td {
+	border: solid 1px white;
+	margin-right: 0;
+}
+
+#carrello table tbody tr td {
+	border-left: none;
+	border-right: none;
+	padding: 0.5em;
+}
+
+#carrello table tbody tr td:first-child {
+	border-top-left-radius: 16px;
+	border-bottom-left-radius: 16px;
+	border-left: solid 2px white;
+}
+
+#carrello table tbody tr td:last-child {
+	border-top-right-radius: 16px;
+	border-bottom-right-radius: 16px;
+	border-right: solid 2px white;
+}
+
+#carrello table tbody td:first-child {
+	text-align: left;
+}
+
+#carrello input[type="text"] {
+	text-align: center;
+	width: 2.5em;
+}
+
+#carrello button {
+	margin: 1em auto 2em 90%;
+}
+
+#carrello input {
+	border-radius: 5px;
+}
+
+#carrello input[name="rimuovi"] {
+    background-color: #dc3545;
+	border: solid 4px #dc3545;
+    border-radius: 5px;
+}
+
+#carrello input[name="rimuovi"]:hover {
+	background-color: #c82333;
+	border: solid 4px #c82333;
+}
+
+/* Login */
+#login>form{
+	max-width: 26.875em;
+	margin: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+#login>p{
+	text-align: center;
+	font-weight: bold;
+}
+
+#login input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
+	display: block;
+	width: 100%;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 2px;
+	border-radius: 4px;
+}
+
+#login>form input[type=submit]{
+	display: block;
+	margin:auto;
+	font-size: 1.2em;
+}
+
+#menu_list {
+	width: 90%;
+	margin: auto;
+	list-style: none;
+}
+
+#menu_list  dt {
+	font-variant: small-caps;
+}
+
+#menu_list  dd {
+	font-style: italic;
+	padding-bottom: 0.3em;
+}
+
+.menu_item {
+	display: inline-block;
+	vertical-align: top;
+	width: 18%;
+	text-align: center;
+}
+
+.lista_piatti {
+	width: 75%;
+	margin: auto;
+	line-height: 1.5em;
+	padding-bottom: 1em;
+}
+
+.lista_piatti h1 {
+	text-align: center;
+	font-variant: small-caps;
+	color: #e0ac00;
+}
+
+.lista_piatti dt {
+	clear: both;
+	width: 100%;
+	padding: 0.5em;
+	margin: 0.5em;
+	border: 1px solid #000;
+	background-color: #4a0715;
+	font-size: 1.2em;
+}
+
+.lista_piatti dt + dd {
+	display: block;
+	float: right;
+	width: 25%;
+	text-align: right;
+	font-size: 1.2em;
+	padding-bottom: 1em;
+}
+
+.lista_piatti dt + dd + dd {
+	width: 70%;
+	font-style: italic;
+	padding-bottom: 1em;
+}
+
+#torna_su {
+	/* display: none; */
+	position: fixed;
+	bottom: 0.8em;
+	right: 0.8em;
+	z-index: 99;
+	background-color: #555;
+	color: #fff;
+	padding: 0.7em;
+	border:  1px solid #000;
+	cursor: pointer;
+}
+
+/* Prodotti */
+
+#prodotti dl, dt, dd{ /* Da applicare a tutte le pagine così che si resetti la visualizzazione iniziale? */
+	margin: 0;
+	padding: 0;
+}
+
+#prodotti>dl{
+	margin: 0em 2em;
+}
+
+#prodotti>dl>dd{
+	overflow: auto;
+	border: 1px solid #d9d9d9;
+    border-top: none;
+	margin-bottom: 2em;
+}
+
+#prodotti>dl>dt{
+	font-size: 1.5em;
+	padding: 0.2em 0em;
+	padding-left: 0.5em;
+	clear: both;
+	border: 1px solid #d9d9d9;
+	background-color: #4a0715;
+}
+
+#prodotti>dl>dt.prodotti_dispari+dd img{
+	float: left;
+	margin-right: 0.5em;
+}
+
+#prodotti>dl>dt.prodotti_pari+dd img{
+	float: right;
+	margin-left: 0.5em;
+}
+
+#prodotti img{
+	width: 20%;
+}
+
+#prodotti>dl>dd>p{
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+}
