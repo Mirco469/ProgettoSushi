@@ -2,17 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
   <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-      <title>Pagamento - Sushi Nakamura</title>
+      <title>Recensioni - Sushi Nakamura</title>
       <meta name="title" content="Sushi - Recensioni dei clienti"/>
       <meta name="description" content="Pagina per visualizzare e scrivere recensioni"/>
       <meta name="keyword" content="Recensioni, Clienti, Ristorante, Sushi"/>
       <meta name="language" content="italian it"/>
       <meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
-      <link rel="stylesheet" type="text/css" href="css/style.css">
+      <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
     <div id="header">
-      <span id="logo"></span>
+      <a id="logo" href="home_utente.html"></a>
       <h1 xml:lang="ja">Sushi Nakamura</h1>
     </div>
 
@@ -41,9 +41,8 @@
       <p>Ti trovi in: <a href="home_utente.html" xml:lang="en">Home</a> &gt; &gt; Recensioni </p>
     </div>
 
-    <div class="content">
+    <div class="content" id="recensioni">
       <h1>Recensioni</h1>
-      <fieldset>
         <!-- spazio per visualizzare recensioni già scritte-->
         <h2>Recensione 1</h2>
         <p>username1</p>
@@ -55,15 +54,15 @@
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur. Duis aute irure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
-      </fieldset>
 
       <!-- Manca l'attributo action-->
       <form action="" method="post">
-        <fieldset>
+        <fieldset id="form_recensione">
           <legend>La tua recensione</legend>
           <label for="titolo_recensione">Titolo: </label>
           <input type="text" id="titolo_recensione" name="titolo" />
-          <textarea rows="5" cols="60"></textarea>
+	  <label for="testo_recensione">Testo: </label>
+          <textarea id="testo_recensione" rows="5" cols="85"></textarea>
           <input type="submit" value="invia" />
         </fieldset>
       </form>
