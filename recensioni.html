@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
   <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-      <title>Pagamento - Sushi Nakamura</title>
+      <title>Recensioni - Sushi Nakamura</title>
       <meta name="title" content="Sushi - Recensioni dei clienti"/>
       <meta name="description" content="Pagina per visualizzare e scrivere recensioni"/>
       <meta name="keyword" content="Recensioni, Clienti, Ristorante, Sushi"/>
       <meta name="language" content="italian it"/>
       <meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
-      <link rel="stylesheet" type="text/css" href="css/style.css"/>
+      <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
     <div id="header">
@@ -41,7 +41,7 @@
       <p>Ti trovi in: <a href="home_utente.html" xml:lang="en">Home</a> &gt; &gt; Recensioni </p>
     </div>
 
-    <div class="content">
+    <div class="content" id="recensioni">
       <h1>Recensioni</h1>
         <!-- spazio per visualizzare recensioni già scritte-->
         <h2>Recensione 1</h2>
@@ -57,11 +57,12 @@
 
       <!-- Manca l'attributo action-->
       <form action="" method="post">
-        <fieldset>
+        <fieldset id="form_recensione">
           <legend>La tua recensione</legend>
           <label for="titolo_recensione">Titolo: </label>
           <input type="text" id="titolo_recensione" name="titolo" />
-          <textarea rows="5" cols="60"></textarea>
+	  <label for="testo_recensione">Testo: </label>
+          <textarea id="testo_recensione" rows="5" cols="85"></textarea>
           <input type="submit" value="invia" />
         </fieldset>
       </form>
