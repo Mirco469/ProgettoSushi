@@ -8,11 +8,11 @@
         <meta name="keyword" content="Antipasti,Primi Piatti,Teppanyako e tempure,Uramaki,Nigiri e Onigiri,Gunkan,Temaki,Hosomaki,Sashimi,Dessert" />
         <meta name="language" content="italian it"/>
         <meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
     </head>
     <body>
         <div id="header">
-            <span id="logo"></span>
+            <a id="logo" href="home_utente.html"></a>
             <h1 xml:lang="ja">Sushi Nakamura</h1>
         </div>
 
@@ -36,23 +36,23 @@
 				<li class="login"><a href="login.html"><span xml:lang="en">Login</span>/Registrazione</a></li>
 			</ul>
 		</div>
-		
+
         <div id="breadcrumb">
             <p>Ti trovi in: <a href="home_utente.html" xml:lang="en">Home</a> &gt; &gt; Prodotti</p>
         </div>
 
 
-        <div class="content">
+        <div id="prodotti" class="content">
             <h1>Lista delle categorie:</h1>
             <dl>
-                <dt id="antipasti">Antipasti</dt>
+                <dt id="antipasti" class="prodotti_dispari">Antipasti</dt>
                 <dd>
                     <img src="img/categorie_prodotti/antipasti.jpg" alt="Raviolo giapponese all'interno una bacinella di legno"></img>
                     <p>Specialit&agrave; della cucina giapponese leggeri da mangiare. Variano da piatti completamente composti da verdure a
                         ravioli ripieni di carne fino a zuppe calde.
                     </p>
                 </dd>
-                <dt id="primi_piatti">Primi Piatti</dt>
+                <dt id="primi_piatti" class="prodotti_pari">Primi Piatti</dt>
                 <dd>
                     <img src="img/categorie_prodotti/primi.jpg" alt="Ciotola di ramen in brodo e carne"></img>
                     <p>
@@ -62,7 +62,7 @@
                         Ogni localit&agrave; del Giappone ha le proprie varianti di <span xml:lang="ja">ramen</span> per tutti i gusti e palati.
                     </p>
                 </dd>
-                <dt xml:lang="ja" id="teppanyako_tempure">Teppanyako <span xml:lang="it">e</span> tempure</dt>
+                <dt xml:lang="ja" id="teppanyako_tempure" class="prodotti_dispari">Teppanyako <span xml:lang="it">e</span> tempure</dt>
                 <dd>
                     <img src="img/categorie_prodotti/tempura.jpg" alt="Gamberetti impanati"></img>
                     <p>
@@ -71,7 +71,7 @@
                         Il <strong xml:lang="ja">tempura</strong> &egrave; un piatto a base di verdure e/o pesce, impastellati separatamente e fritti.
                     </p>
                 </dd>
-                <dt xml:lang="ja" id="uramaki">Uramaki</dt>
+                <dt xml:lang="ja" id="uramaki" class="prodotti_pari">Uramaki</dt>
                 <dd>
                     <img src="img/categorie_prodotti/uramaki.jpg" alt="Anello di riso ripieno di pesce"></img>
                     <p>
@@ -79,7 +79,7 @@
                         tostati, <span xml:lang="ja">tobiko</span> o uova di pesce. Il ripieno è composto da due o più ingredienti tra pesce e verdure.
                     </p>
                 </dd>
-                <dt xml:lang="ja" id="nigiri_onigiri">Nigiri <span xml:lang="it">e</span> Onigiri</dt>
+                <dt xml:lang="ja" id="nigiri_onigiri" class="prodotti_dispari">Nigiri <span xml:lang="it">e</span> Onigiri</dt>
                 <dd>
                     <img src="img/categorie_prodotti/nigiri.jpg" alt="Pallina di riso con una fetta di salmone sopra"></img>
                     <p>
@@ -91,7 +91,7 @@
 
                     </p>
                 </dd>
-                <dt xml:lang="ja" id="gunkan">Gunkan</dt>
+                <dt xml:lang="ja" id="gunkan" class="prodotti_pari">Gunkan</dt>
                 <dd>
                     <img src="img/categorie_prodotti/gunkan.jpg" alt="Pallina di riso di forma ovale con uova di pesce sopra"></img>
                     <p>
@@ -99,7 +99,7 @@
                         vengono utilizzati diversi ingredienti, ad esempio, le uova di pesce, la carne e le minuscole uova di quaglia.
                     </p>
                 </dd>
-                <dt xml:lang="ja" id="temaki">Temaki</dt>
+                <dt xml:lang="ja" id="temaki" class="prodotti_dispari">Temaki</dt>
                 <dd>
                     <img src="img/categorie_prodotti/temaki.jpg" alt="Alga di forma conica contente riso e salmone"></img>
                     <p>
@@ -107,7 +107,7 @@
                         ripieno di diversi ingredienti. Il <span xml:lang="ja">temaki</span> tradizionale &egrave; lungo 10 cm e va mangiato con le mani perch&eacute; troppo grande da mangiare con le bacchette.
                     </p>
                 </dd>
-                <dt xml:lang="ja" id="hosomaki">Hosomaki</dt>
+                <dt xml:lang="ja" id="hosomaki" class="prodotti_pari">Hosomaki</dt>
                 <dd>
                     <img src="img/categorie_prodotti/hosomaki.jpg" alt="Rotoli di riso ricoperti di alga e contente salmone"></img>
                     <p>
@@ -117,7 +117,7 @@
                         <span xml:lang="ja">hosomaki</span> vegetariani e vegani con cetriolo, carota o avocado.
                     </p>
                 </dd>
-                <dt xml:lang="ja" id="sashimi">Sashimi</dt>
+                <dt xml:lang="ja" id="sashimi" class="prodotti_dispari">Sashimi</dt>
                 <dd>
                     <img src="img/categorie_prodotti/sashimi.jpg" alt="Fettine di salmone crudo"></img>
                     <p>
@@ -126,7 +126,7 @@
                         senza l’aggiunta di spezie e alghe.
                     </p>
                 </dd>
-                <dt xml:lang="fr" id="dessert">Dessert</dt>
+                <dt xml:lang="fr" id="dessert" class="prodotti_pari">Dessert</dt>
                 <dd>
                     <img src="img/categorie_prodotti/dessert.jpg" alt="Profiteroles ricoperto con glassa di cacao e granella di nocciola"></img>
                     <p>

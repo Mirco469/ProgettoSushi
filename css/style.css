@@ -156,7 +156,6 @@ body a:visited {
 
 #menu #dropdown_content a {
 	display: block;
-	color: #f5e900;
 	padding: 0.3em;
 	text-decoration: none;
 	padding-left: 0.8em;
@@ -344,14 +343,133 @@ body a:visited {
 	margin:auto;
 	font-size: 1.2em;
 }
+/* Takeaway */
+#menu_list {
+	width: 80%;
+	margin: auto;
+	list-style: none;
+	padding-top: 1em;
+}
 
+#menu_list  dt {
+	font-variant: small-caps;
+	padding-bottom: 0.2em;
+}
+
+#menu_list  dd {
+	font-style: italic;
+	padding-bottom: 0.4em;
+}
+
+.menu_item {
+	display: inline-block;
+	vertical-align: top;
+	width: 18%;
+	text-align: center;
+}
+
+.lista_piatti {
+	width: 75%;
+	margin: auto;
+	line-height: 1.5em;
+	padding-bottom: 1em;
+}
+
+.lista_piatti h1 {
+	text-align: center;
+	font-variant: small-caps;
+	color: #e0ac00;
+}
+
+.lista_piatti dt {
+	clear: both;
+	width: 100%;
+	padding: 0.5em;
+	margin: 0.5em;
+	border: 1px solid #000;
+	background-color: #4a0715;
+	font-size: 1.2em;
+}
+
+.lista_piatti dt + dd {
+	display: block;
+	float: right;
+	width: 25%;
+	text-align: right;
+	font-size: 1.2em;
+	padding-bottom: 1em;
+}
+
+.lista_piatti dt + dd + dd {
+	width: 70%;
+	font-style: italic;
+	padding-bottom: 1em;
+}
+
+#torna_su {
+	position: fixed;
+	bottom: 0.8em;
+	right: 0.8em;
+	z-index: 99;
+	background-color: #555;
+	color: #fff;
+	padding: 0.7em;
+	border:  1px solid #000;
+}
+
+/* Prodotti */
+#prodotti dl, dt, dd{ /* Da applicare a tutte le pagine così che si resetti la visualizzazione iniziale? */
+	margin: 0;
+	padding: 0;
+}
+
+#prodotti>dl{
+	margin: 0em 2em;
+}
+
+#prodotti>dl>dd{
+	overflow: auto;
+	border: 1px solid #d9d9d9;
+    border-top: none;
+	margin-bottom: 2em;
+}
+
+#prodotti>dl>dt{
+	font-size: 1.5em;
+	padding: 0.2em 0em;
+	padding-left: 0.5em;
+	clear: both;
+	border: 1px solid #d9d9d9;
+	background-color: #4a0715;
+}
+
+#prodotti>dl>dt.prodotti_dispari+dd img{
+	float: left;
+	margin-right: 0.5em;
+}
+
+#prodotti>dl>dt.prodotti_pari+dd img{
+	float: right;
+	margin-left: 0.5em;
+}
+
+#prodotti img{
+	width: 20%;
+}
+
+#prodotti>dl>dd>p{
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+}
+
+/* Recensioni */
 #recensioni {
 	width: 75%;
 	margin: auto;
 }
 
 #recensioni h1 {
-	text-align: center;
+  text-align: center;
 	font-variant: small-caps;
 	color: #e0ac00;
 }
