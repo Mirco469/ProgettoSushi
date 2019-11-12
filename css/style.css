@@ -257,7 +257,6 @@ body a:visited {
 
 #carrello table {
 	width: calc(100% - 16em);
-	margin: 0 8em;
 	text-align: center;
 	margin: 2em 8em 1em;
 	border-collapse: separate;
@@ -266,10 +265,6 @@ body a:visited {
 
 #carrello table tbody tr td {
 	border: solid 1px white;
-	margin-right: 0;
-}
-
-#carrello table tbody tr td {
 	border-left: none;
 	border-right: none;
 	padding: 0.5em;
