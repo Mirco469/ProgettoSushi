@@ -22,14 +22,14 @@ body a:visited {
 
 /*
  * Palette
- * 
+ *
  * backgroud-color: #1f1d1d
  * header footer backgroud-color: #4a0715
  * header h1 color: #e0ac00
  * menù li color: #f5e900
  * menù li:hover background-color: #33050e
  * menù li a:visited color: #e0ac00
- * 
+ *
  */
 
 
@@ -127,18 +127,18 @@ body a:visited {
 	background-color: #33050e;
 }
 
-#dropbtn:hover + #dropdown_content {
-	display: block;
+#dropdown_content {
+	position: absolute;
+	height: 0;
+    overflow: hidden;
 }
 
-#dropdown_content {
-	display: none;
-	position: absolute;
-	right: 0;
+#dropbtn:hover + #dropdown_content {
+	height: auto;
 }
 
 #dropdown_content:hover {
-    display: block;
+    height: auto;
 }
 
 #dropdown_content a {
@@ -501,3 +501,4 @@ body a:visited {
 	width: 18%;
 
 }
+
