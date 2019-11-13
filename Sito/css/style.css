@@ -484,6 +484,12 @@ body a:visited {
 	float: right;
 }
 
+
+.aiuti{
+	position: absolute;
+	height: 0;
+	overflow: hidden;
+
 /* Successo */
 #successo{
 	display: block;
@@ -493,4 +499,6 @@ body a:visited {
 
 #successo img{
 	width: 18%;
+
 }
+
