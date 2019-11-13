@@ -342,6 +342,11 @@ body a:visited {
 /* Chi Siamo */
 #chiSiamo {
     margin: 2%;
+    font-size: 1.1em;
+}
+
+#chiSiamo>h1 {
+    font-size: 2.1em;
 }
 
 #chiSiamo div{
@@ -349,6 +354,7 @@ body a:visited {
     margin-top: 3em;
     width: 80%;
 }
+
 /*Home Utente*/
 #homeUtente {
     margin: 2%;
@@ -360,6 +366,18 @@ div#notizie {
     padding-left: 2em;
     padding-right: 2em;
     margin-left: 1em;
+}
+
+#notizie dt, #notizie dd {
+    font-size: 1.1em;
+}
+
+#homeUtente h1 {
+    font-size: 2.1em;
+}
+
+#homeUtente p {
+    font-size: 1.1em;
 }
 /* Gestione Profilo Utente */
 
@@ -405,17 +423,13 @@ div#notizie {
 }
 
 #profilo_utente fieldset {
+    font-size: 1.2em;
     padding: 1em;
     padding-left: 3em;
     padding-right: 3em;
 }
 
-#profilo_utente>p{
-	text-align: center;
-	font-weight: bold;
-}
-
-#profilo_utente input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
+#profilo_utente input:not([type=submit]){
 	display: block;
 	width: 100%;
 	padding: 0.6em 0.875em;
