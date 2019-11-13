@@ -20,6 +20,12 @@ body a:visited {
     color: #d9d9d9;
 }
 
+.aiuti{
+	position: absolute;
+	height: 0;
+	overflow: hidden;
+}
+
 /*
  * Palette
  * 
@@ -483,12 +489,6 @@ body a:visited {
 	border-radius: 5px;
 	float: right;
 }
-
-
-.aiuti{
-	position: absolute;
-	height: 0;
-	overflow: hidden;
 
 /* Successo */
 #successo{
