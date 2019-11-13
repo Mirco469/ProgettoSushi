@@ -233,7 +233,7 @@ body a:visited {
 }
 
 
-
+/* LATO UTENTE*/
 /*	carrello	*/
 
 #carrello table {
@@ -499,5 +499,62 @@ body a:visited {
 
 #successo img{
 	width: 18%;
+}
 
+/* LATO ADMIN */
+/* Aggiunta prodotti */
+#aggiunta_prodotti>form{
+	margin: 2em;
+}
+
+#aggiunta_prodotti fieldset{
+	max-width: 90em;
+	margin: auto;
+	text-align: center;
+}
+
+#aggiunta_prodotti fieldset>legend{
+	text-align: left;
+}
+
+#aggiunta_prodotti .formGroup{ /*Da applicare solo alla classe togliendo #aggiunta_prodotti oppure da altre parti viene usato in modo diverso? */
+	display: inline-block;
+	margin: 0.5em 0.5em;
+}
+
+#aggiunta_prodotti form input[type=submit]{
+	background-color: #4a0715;
+    border: solid 4px #4a0715;
+    border-radius: 5px;
+	color: #d9d9d9;
+}
+
+#aggiunta_prodotti form input[type=submit]:hover{
+	background-color: #990000;
+	border: solid 4px #990000;
+}
+
+#aggiunta_prodotti table{
+	width: 90%;
+	text-align: center;
+	margin: auto;
+	margin-bottom: 2em;
+}
+
+#aggiunta_prodotti table, th, td{
+	border: 1px solid;
+	border-collapse: collapse;
+}
+
+#aggiunta_prodotti th, td{
+	padding: 0.4em;
+}
+
+#aggiunta_prodotti th{
+	background-color: #4a0715;
+}
+
+#aggiunta_prodotti table>caption{
+	margin: 1em;
+	font-size:1.5em;
 }
