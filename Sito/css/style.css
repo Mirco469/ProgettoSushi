@@ -483,3 +483,9 @@ body a:visited {
 	border-radius: 5px;
 	float: right;
 }
+
+.aiuti{
+	position: absolute;
+	height: 0;
+	overflow: hidden;
+}
