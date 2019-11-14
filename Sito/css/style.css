@@ -658,3 +658,39 @@ div#notizie {
     display: block;
 	margin:auto;
 }
+
+/* Contatti */
+#contatti {
+    margin: 2%;
+}
+
+#contatti h1 {
+    margin-bottom: 3em;
+}
+
+#contatti h2 {
+    margin-top: 0.5em;
+    display: inline;
+}
+
+#contatti div img {
+    vertical-align: middle;
+    margin-bottom: 0.75em;
+}
+/* Fissato altezza min del div con id="info_stradali alla
+   stessa dimensione dell'immagine in quanto la dimensione
+   dell'immagine non può essere modificata */
+#info_stradali {
+min-height: 465px;
+}
+
+#info_stradali a>img {
+    display: block;
+    float: left;
+    clear: both;
+    margin-right:1em; ;
+}
+
+#info_stradali ul {
+    list-style-type: none;
+}
