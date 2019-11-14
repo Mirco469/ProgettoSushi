@@ -20,6 +20,9 @@ body a:visited {
     color: #d9d9d9;
 }
 
+.content {
+    font-size: 1.1em;
+}
 /*
  * Palette
  *
@@ -342,7 +345,6 @@ body a:visited {
 /* Chi Siamo */
 #chiSiamo {
     margin: 2%;
-    font-size: 1.1em;
 }
 
 #chiSiamo>h1 {
@@ -366,19 +368,14 @@ div#notizie {
     padding-left: 2em;
     padding-right: 2em;
     margin-left: 1em;
+    max-width: 25%;
 }
 
-#notizie dt, #notizie dd {
-    font-size: 1.1em;
-}
 
 #homeUtente h1 {
     font-size: 2.1em;
 }
 
-#homeUtente p {
-    font-size: 1.1em;
-}
 /* Gestione Profilo Utente */
 
 #profilo_utente {
@@ -404,13 +401,12 @@ div#notizie {
 }
 
 #menu_profilo a {
-    font-size: 1.1em;
+    font-size: 1.2em;
 }
 #menu_profilo>ul li {
     padding: 1em;
     padding-top: 0.4em;
     list-style-type: none;
-    font-size: 1em;
     margin-top: 1em;
 }
 
@@ -423,7 +419,6 @@ div#notizie {
 }
 
 #profilo_utente fieldset {
-    font-size: 1.2em;
     padding: 1em;
     padding-left: 3em;
     padding-right: 3em;
@@ -432,6 +427,7 @@ div#notizie {
 #profilo_utente input:not([type=submit]){
 	display: block;
 	width: 100%;
+    font-size: 1.0em;
 	padding: 0.6em 0.875em;
 	margin: 0.5em 0;
 	box-sizing: border-box;
@@ -440,7 +436,7 @@ div#notizie {
 }
 
 #profilo_utente>form input[type=submit]{
-	display: block;
+    font-size: 1.2em;
+    display: block;
 	margin:auto;
-	font-size: 1.2em;
 }
