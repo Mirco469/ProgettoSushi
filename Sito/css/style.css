@@ -559,15 +559,15 @@ body a:visited {
 	font-size:1.5em;
 }
 /* Chi Siamo */
-#chiSiamo {
+#chi_siamo {
     margin: 2%;
 }
 
-#chiSiamo>h1 {
+#chi_siamo>h1 {
     font-size: 2.1em;
 }
 
-#chiSiamo div{
+#chi_siamo div{
     margin-left: 14%;
     margin-top: 3em;
     width: 80%;
