@@ -658,3 +658,59 @@ div#notizie {
     display: block;
 	margin:auto;
 }
+
+/*Home Admin*/
+
+#home_admin {
+    margin: 2%;
+}
+
+#home_admin div dd {
+    padding-left: 2em;
+    padding-bottom: 0.5em;
+}
+
+#home_admin div {
+    border: 2px solid white;
+}
+
+#home_admin div dl {
+    padding: 1em;
+}
+
+
+#home_admin div h1 {
+    padding-left: 1em;
+}
+
+#home_admin>form {
+	margin: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+
+#home_admin input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
+	display: block;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 2px;
+	border-radius: 4px;
+    font-size: 0.8em;
+}
+
+#home_admin>form input[type=submit]{
+	display: block;
+	margin:auto;
+	font-size: 1.2em;
+}
+
+#home_admin fieldset {
+    margin: auto;
+    width: 20em;
+}
+#home_admin fieldset textarea ,#home_admin fieldset input[type=text]  {
+    width: 100%;
+    font-size: 1em;
+}
