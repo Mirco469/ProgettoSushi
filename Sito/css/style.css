@@ -586,3 +586,18 @@ div#notizie {
 #homeUtente h1 {
     font-size: 2.1em;
 }
+
+/* Chi Siamo */
+#chi_siamo {
+    margin: 2%;
+}
+
+#chi_siamo>h1 {
+    font-size: 2.1em;
+}
+
+#chi_siamo div{
+    margin-left: 14%;
+    margin-top: 3em;
+    width: 80%;
+}
