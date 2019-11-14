@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+      <meta charset="utf-8" />
+      <title>Gestione profilo - Sushi Nakamura</title>
+      <meta name="title" content="Gestione profilo" />
+      <meta name="description" content="Pagina di gestione del profilo" />
+      <meta name="robots" content="noindex"/>
+      <meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
+      <link rel="stylesheet" type="text/css" href="css/style.css"/>
+  </head>
+
+  <body>
+    <div id="header">
+      <a id="logo" href="home_utente.html" title="Vai alla home"></a>
+      <h1 xml:lang="ja" lang="ja">Sushi Nakamura</h1>
+    </div>
+    <a class="aiuti" href="#gestione_utente">Salta il menu</a>
+	<div id="menu">
+		<ul>
+			<li xml:lang="en" lang="en"><a href="home_utente.html">Home</a></li>
+			<li xml:lang="en" lang="en"><a href="take_away.html">Take Away</a></li>
+			<li><a href="chi_siamo.html">Chi siamo</a></li>
+			<li><a href="recensioni.html">Recensioni</a></li>
+			<li><a href="prodotti.html">Prodotti</a></li>
+			<li><a href="contatti.html">Contatti</a></li>
+			<li class="impostazioni">
+				<span id="dropbtn">Area Riservata</span>
+				<ul id="dropdown_content">
+					<li><a href="carrello.html">Carrello</a></li>
+					<li><a href="storico_ordini.html">Storico ordini</a></li>
+					<li id="active">Gestione profilo</li>
+					<li><a xml:lang="en" lang="en" href="#">Logout</a></li>
+				</ul>
+			</li>
+			<li class="login"><a href="login.html" lang="en"><span xml:lang="en">Login</span>/Registrazione</a></li>
+		</ul>
+	</div>
+
+    <div id="breadcrumb">
+      <p>Ti trovi in: <a href="home_utente.html" xml:lang="en" lang="en">Home</a> &gt; &gt; Gestione Profilo </p>
+    </div>
+
+    <div class="menu_profilo">
+      <ul>
+        <li><a href="#cp">Cambia <span xml:lang="en" lang="en">password</span></a></li>
+        <li><a href="#is">Modifica le informazioni di spedizione</a></li>
+        <li><a href="#ip">Modifica le informazioni di pagamento</a></li>
+      </ul>
+    </div>
+
+    <div class="content" id="gestione_utente">
+        <h1>Gestione profilo</h1>
+        <form action="index.html" method="post">
+        <fieldset>
+            <legend>Informazioni personali: </legend>
+            <h2>Nome Utente</h2>
+            <label for="username">Nome utente: </label>
+            <input type="text" id="username" name="username" value="NomeUtenteVero" readonly="readonly"/>
+
+            <h2 id="cp">Cambia Password: </h2>
+            <div class="form_content">
+            <label for="v_password">Inserisci la vecchia <span xml:lang="en" lang="en">password</span>: </label>
+            <input type="password" id="v_password" name="v_password" />
+            </div>
+            <div class="form_content">
+            <label for="password">Inserisci la nuova <span xml:lang="en" lang="en">password</span>: </label>
+            <input type="password" id="password" name="password" />
+            </div>
+            <div class="form_content">
+            <label for="c_password">Conferma la nuova <span xml:lang="en" lang="en">password</span>: </label>
+            <input type="password" id="c_password" name="c_password" value=""/>
+            </div>
+            <input type="submit" name="dati_personali" value="Salva"/>  <!--Submit legato solo al cambio della password-->
+        </fieldset>
+        <fieldset>
+            <legend id="is" >Modifica o inserisci informazioni sulla spedizione: </legend>
+
+        <div  class="form_content">
+            <label for="nome_cognome">Nome e Cognome: </label>
+            <input type="text" name="nome_cognome" id="nome_cognome" placeholder="Mario Rossi"/>
+        </div>
+        <div class="form_content">
+            <label for="indirizzo">Indirizzo: </label>
+            <input type="text" id="indirizzo" name="indirizzo" placeholder="Inserire via"/>
+        </div>
+        <div class="form_content">
+            <label for="civico">Numero civico: </label>
+            <input type="text" id="civico" name="civico" placeholder="Inserire numero civico"/>
+        </div>
+        <div class="form_content">
+            <label for="cap"><abbr title="Codice di Avviamento Postale">CAP</abbr> :</label>
+            <input type="text" id="cap"  name="cap" placeholder="Inserire CAP"/>
+        </div>
+            <div class="form_content">
+            <label for="comune">Comune: </label>
+            <input type="text" id="comune" name="comune" value="Padova" disabled="disabled"/>
+            </div>
+            <div class="form_content">
+            <label for="provincia">Provincia: </label>
+            <input type="text" id="provincia" name="provincia" value="Padova" disabled="disabled"/>
+            </div>
+            <div class="form_content">
+            <label for="stato">Stato: </label>
+            <input type="text" id="stato" name="stato" value="Italia" disabled="disabled"/>
+            </div>
+            <div class="form_content">
+            <label for="tel">Numero di telefono: </label>
+            <input type="tel" id="tel" name="tel" />
+            </div>
+
+            <input type="submit" name="dati_spedizione" value="Salva"/> <!--Submit legato solo alle informazioni di spedizione-->
+        </fieldset>
+        <fieldset>
+            <legend id="ip">Informazioni di pagamento: </legend>
+            <div class="form_content">
+                <label for="intestatario_carta">Intestatario carta: </label>
+                <input type="text" name="intestatario_carta" id="intestatario_carta" value="" />
+            </div>                                          <!--Vanno inseriti i veri dati di pagamento se sono già nel DB-->
+            <div class="form_content">
+                <label for="num_carta">Numero carta: </label>
+                <input type="text" name="num_carta" id="num_carta" />
+            </div>
+            <select name="mese_scad">
+                <option>- Mese -</option>
+                <option value="01">January</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+        </select>
+        <select name="anno_scad">
+                <option>- Anno -</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2028</option>
+                <option value="2030">2030</option>
+                <option value="2031">2031</option>
+                <option value="2032">2032</option>
+                <option value="2033">2033</option>
+                <option value="2034">2034</option>
+                <option value="2035">2035</option>
+                <option value="2036">2036</option>
+                <option value="2037">2037</option>
+                <option value="2038">2038</option>
+                <option value="2039">2039</option>
+            </select>
+
+            <input type="submit" name="dati_pagamento" value="Salva">
+            </fieldset>
+        </form>
+
+    </div>
+
+    <div id="footer">
+
+
+      <div class="info">
+        <h2>Contatti</h2>
+			<ul>
+				<li>35131 Padova (PD) - Piazza Eremitani, 404/2</li>
+				<li>Telefono: 049.xxxxxx</li>
+				<li>Cellulare: 348xxxxxxx</li>
+			</ul>
+      </div>
+
+      <div class="info">
+	  <h2>Orari</h2>
+		<ul>
+          <li><abbr title="Martedì">Mar</abbr> - <abbr title="Giovedì">Gio</abbr>:  12.00 - 15.00 e 19.00 - 22.30</li>
+          <li><abbr title="Venerdì">Ven</abbr>-<abbr title="Domenica">Dom</abbr>: 19.00 - 00.00 </li>
+          <li>Luned&igrave; chiuso</li>
+		</ul>
+      </div>
+       <p xml:lang="en" lang="en">Copyright (c) 2019 Copyright Holder All Rights Reserved.</p>
+
+    <p>
+      <a href="http://validator.w3.org/check?uri=referer"><img
+      src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
+    </p>
+
+    </div>
+
+  </body>
+</html>
