@@ -596,7 +596,7 @@ div#notizie {
 
 /* Gestione Profilo Utente */
 
-#profilo_utente {
+#gestione_profilo {
     margin: 2%;
 }
 
@@ -628,7 +628,7 @@ div#notizie {
     margin-top: 1em;
 }
 
-#profilo_utente>form{
+#gestione_profilo>form{
 	max-width: 35em;
 	margin: auto;
 	margin-top: 6%;
@@ -636,13 +636,13 @@ div#notizie {
     margin-left: 40%
 }
 
-#profilo_utente fieldset {
+#gestione_profilo fieldset {
     padding: 1em;
     padding-left: 3em;
     padding-right: 3em;
 }
 
-#profilo_utente input:not([type=submit]){
+#gestione_profilo input:not([type=submit]){
 	display: block;
 	width: 100%;
     font-size: 1.0em;
@@ -653,8 +653,18 @@ div#notizie {
 	border-radius: 4px;
 }
 
-#profilo_utente>form input[type=submit]{
+#gestione_profilo>form input[type=submit]{
     font-size: 1.2em;
     display: block;
 	margin:auto;
+}
+
+/*Gestione Profilo Admin*/
+
+#gestione_profilo>h1 {
+    text-align: center;
+}
+
+#gestione_profilo>form {
+    margin-left: auto;
 }
