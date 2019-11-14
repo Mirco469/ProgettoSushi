@@ -558,3 +558,22 @@ body a:visited {
 	margin: 1em;
 	font-size:1.5em;
 }
+
+/*Home Utente*/
+#homeUtente {
+    margin: 2%;
+}
+
+div#notizie {
+    float: right;
+    border: 1px solid white;
+    padding-left: 2em;
+    padding-right: 2em;
+    margin-left: 1em;
+    max-width: 25%;
+}
+
+
+#homeUtente h1 {
+    font-size: 2.1em;
+}
