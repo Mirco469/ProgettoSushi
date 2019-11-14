@@ -103,12 +103,8 @@ body a:visited {
 	background-color: #33050e;
 }
 
-#menu .impostazioni {
+#menu .impostazioni, #menu .login {
 	float: right;
-}
-
-#menu .login {
-    float: right;
 }
 
 #active {
@@ -139,12 +135,8 @@ body a:visited {
     overflow: hidden;
 }
 
-#dropbtn:hover + #dropdown_content {
+#menu .impostazioni:hover #dropdown_content {
 	height: auto;
-}
-
-#dropdown_content:hover {
-    height: auto;
 }
 
 #dropdown_content a {
@@ -541,12 +533,12 @@ body a:visited {
 	margin-bottom: 2em;
 }
 
-#aggiunta_prodotti table, th, td{
+#aggiunta_prodotti table, #aggiunta_prodotti th, #aggiunta_prodotti td{
 	border: 1px solid;
 	border-collapse: collapse;
 }
 
-#aggiunta_prodotti th, td{
+#aggiunta_prodotti th, #aggiunta_prodotti td{
 	padding: 0.4em;
 }
 
