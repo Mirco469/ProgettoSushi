@@ -573,6 +573,14 @@ div#notizie {
     max-width: 25%;
 }
 
+#notizie dt {
+    font-weight: bold;
+}
+
+#notizie dd {
+    padding-left: 1em;
+}
+
 
 #homeUtente h1 {
     font-size: 2.1em;
