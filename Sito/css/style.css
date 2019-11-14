@@ -3,9 +3,9 @@
 body {
   padding: 0em;
   margin: 0em;
-  font-size: 0.9em;
   font-family: Helvetica, Verdana, sans-serif;
   background-color: #1f1d1d;
+  font-size: 1.1em;
 }
 
 body a {
@@ -558,6 +558,50 @@ body a:visited {
 	margin: 1em;
 	font-size:1.5em;
 }
+
+/*Home Utente*/
+
+#home_utente {
+    margin: 2%;
+}
+
+div#notizie {
+    float: right;
+    border: 1px solid white;
+    padding-left: 2em;
+    padding-right: 2em;
+    margin-left: 1em;
+    max-width: 25%;
+}
+
+#notizie dt {
+    font-weight: bold;
+}
+
+#notizie dd {
+    padding-left: 1em;
+}
+
+
+#homeUtente h1 {
+    font-size: 2.1em;
+}
+
+/* Chi Siamo */
+#chi_siamo {
+    margin: 2%;
+}
+
+#chi_siamo>h1 {
+    font-size: 2.1em;
+}
+
+#chi_siamo div{
+    margin-left: 14%;
+    margin-top: 3em;
+    width: 80%;
+}
+
 /* Gestione Profilo Utente */
 
 #profilo_utente {
