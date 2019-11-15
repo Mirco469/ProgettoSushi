@@ -373,17 +373,12 @@ body a:visited {
 	width: 70%;
 	font-style: italic;
 	padding-bottom: 1em;
+	text-indent: 3em;
 }
 
 #torna_su {
-	position: fixed;
-	bottom: 0.8em;
-	right: 0.8em;
-	z-index: 99;
-	background-color: #555;
-	color: #fff;
-	padding: 0.7em;
-	border:  1px solid #000;
+	padding: 1em;
+	text-align: right;
 }
 
 
