@@ -39,14 +39,14 @@ body a:visited {
  */
 
 /* Form */
-form{
+.defaultForm{
 	max-width: 26.875em;
 	margin: auto;
 	margin-top: 1em;
 	margin-bottom: 1em;
 }
 
-input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
+.defaultForm input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
 	display: block;
 	width: 100%;
 	padding: 0.6em 0.875em;
@@ -56,7 +56,7 @@ input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
 	border-radius: 4px;
 }
 
-form input[type=submit]{
+.defaultForm input[type=submit]{
 	display: block;
 	margin:auto;
 	font-size: 1.2em;
