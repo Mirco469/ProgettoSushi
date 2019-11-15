@@ -665,7 +665,8 @@ div#notizie {
 }
 
 #contatti h1 {
-    margin-bottom: 3em;
+    margin-bottom: 2em;
+    text-align: center;
 }
 
 #contatti h2 {
@@ -684,6 +685,10 @@ div#notizie {
 min-height: 465px;
 }
 
+#info_stradali>h2 {
+    white-space:nowrap;
+}
+
 #info_stradali a>img {
     display: block;
     float: left;
@@ -691,6 +696,15 @@ min-height: 465px;
     margin-right:1em; ;
 }
 
-#info_stradali ul {
-    list-style-type: none;
+
+#info_stradali dl>dt {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+}
+
+#info_stradali dl>dd {
+    padding-left: 2em;
+    margin-bottom: 0.5em;
 }
