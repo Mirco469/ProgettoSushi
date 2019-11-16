@@ -3,9 +3,9 @@
 body {
   padding: 0em;
   margin: 0em;
-  font-size: 0.9em;
   font-family: Helvetica, Verdana, sans-serif;
   background-color: #1f1d1d;
+  font-size: 1.1em;
 }
 
 body a {
@@ -38,6 +38,29 @@ body a:visited {
  *
  */
 
+/* Form */
+.defaultForm{
+	max-width: 26.875em;
+	margin: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.defaultForm input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
+	display: block;
+	width: 100%;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 2px;
+	border-radius: 4px;
+}
+
+.defaultForm input[type=submit]{
+	display: block;
+	margin:auto;
+	font-size: 1.2em;
+}
 
 /*	Header	*/
 
@@ -103,12 +126,8 @@ body a:visited {
 	background-color: #33050e;
 }
 
-#menu .impostazioni {
+#menu .impostazioni, #menu .login {
 	float: right;
-}
-
-#menu .login {
-    float: right;
 }
 
 #active {
@@ -139,12 +158,8 @@ body a:visited {
     overflow: hidden;
 }
 
-#dropbtn:hover + #dropdown_content {
+#menu .impostazioni:hover #dropdown_content {
 	height: auto;
-}
-
-#dropdown_content:hover {
-    height: auto;
 }
 
 #dropdown_content a {
@@ -292,33 +307,11 @@ body a:visited {
 }
 
 /* Login */
-#login>form{
-	max-width: 26.875em;
-	margin: auto;
-	margin-top: 1em;
-	margin-bottom: 1em;
-}
-
 #login>p{
 	text-align: center;
 	font-weight: bold;
 }
 
-#login input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
-	display: block;
-	width: 100%;
-	padding: 0.6em 0.875em;
-	margin: 0.5em 0;
-	box-sizing: border-box;
-	border: 2px;
-	border-radius: 4px;
-}
-
-#login>form input[type=submit]{
-	display: block;
-	margin:auto;
-	font-size: 1.2em;
-}
 
 /* Takeaway */
 #menu_list {
@@ -381,17 +374,12 @@ body a:visited {
 	width: 70%;
 	font-style: italic;
 	padding-bottom: 1em;
+	text-indent: 3em;
 }
 
 #torna_su {
-	position: fixed;
-	bottom: 0.8em;
-	right: 0.8em;
-	z-index: 99;
-	background-color: #555;
-	color: #fff;
-	padding: 0.7em;
-	border:  1px solid #000;
+	padding: 1em;
+	text-align: right;
 }
 
 
@@ -541,12 +529,12 @@ body a:visited {
 	margin-bottom: 2em;
 }
 
-#aggiunta_prodotti table, th, td{
+#aggiunta_prodotti table, #aggiunta_prodotti th, #aggiunta_prodotti td{
 	border: 1px solid;
 	border-collapse: collapse;
 }
 
-#aggiunta_prodotti th, td{
+#aggiunta_prodotti th, #aggiunta_prodotti td{
 	padding: 0.4em;
 }
 
@@ -558,3 +546,280 @@ body a:visited {
 	margin: 1em;
 	font-size:1.5em;
 }
+
+/*Home Utente*/
+
+#home_utente {
+    margin: 2%;
+}
+
+div#notizie {
+    float: right;
+    border: 1px solid white;
+    padding-left: 2em;
+    padding-right: 2em;
+    margin-left: 1em;
+    max-width: 25%;
+}
+
+#notizie dt {
+    font-weight: bold;
+}
+
+#notizie dd {
+    padding-left: 1em;
+}
+
+
+#homeUtente h1 {
+    font-size: 2.1em;
+}
+
+/* Chi Siamo */
+#chi_siamo {
+    margin: 2%;
+}
+
+#chi_siamo>h1 {
+    font-size: 2.1em;
+}
+
+#chi_siamo div{
+    margin-left: 14%;
+    margin-top: 3em;
+    width: 80%;
+}
+
+/* Gestione Profilo Utente */
+
+#gestione_profilo {
+    margin: 2%;
+}
+
+#menu_profilo>h1 {
+    color: #d9d9d9;
+    text-align: center;
+    display: block;
+}
+
+#menu_profilo {
+    margin: 2%;
+    border: 2px solid grey;
+    margin-top: 8%;
+    display: block;
+    float: left;
+}
+
+#menu_profilo ul {
+    padding-left: 0;
+}
+
+#menu_profilo a {
+    font-size: 1.2em;
+}
+#menu_profilo>ul li {
+    padding: 1em;
+    padding-top: 0.4em;
+    list-style-type: none;
+    margin-top: 1em;
+}
+
+#gestione_utente>form{
+	max-width: 35em;
+	margin-top: 6%;
+	margin-bottom: 1em;
+    margin-left: 40%
+}
+
+#gestione_utente fieldset {
+    padding: 1em;
+    padding-left: 3em;
+    padding-right: 3em;
+}
+
+#gestione_utente input:not([type=submit]){
+    font-size: 1.0em;
+}
+
+
+/*Gestione Profilo Admin*/
+
+#gestione_admin>h1 {
+    text-align: center;
+}
+
+#gestione_admin>form {
+    margin-left: auto;
+}
+
+/* Contatti */
+#contatti {
+    margin: 2%;
+}
+
+#contatti h1 {
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+#contatti h2 {
+    margin-top: 0.5em;
+    display: inline;
+}
+
+#contatti div img {
+    vertical-align: middle;
+    margin-bottom: 0.75em;
+}
+/* Fissato altezza min del div con id="info_stradali alla
+   stessa dimensione dell'immagine in quanto la dimensione
+   dell'immagine non può essere modificata */
+#info_stradali {
+min-height: 465px;
+}
+
+#info_stradali>h2 {
+    white-space:nowrap;
+}
+
+#info_stradali a>img {
+    display: block;
+    float: left;
+    clear: both;
+    margin-right:1em; 
+}
+
+
+#info_stradali dl>dt {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+}
+
+#info_stradali dl>dd {
+    padding-left: 2em;
+    margin-bottom: 0.5em;
+}
+
+/*Home Admin*/
+
+#home_admin {
+    margin: 2%;
+}
+
+#home_admin div dd {
+    padding-left: 2em;
+    padding-bottom: 0.5em;
+}
+
+#home_admin div {
+    border: 2px solid white;
+}
+
+#home_admin div dl {
+    padding: 1em;
+}
+
+
+#home_admin div h1 {
+    padding-left: 1em;
+}
+
+#home_admin>form {
+	margin: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+
+#home_admin input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
+	display: block;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 2px;
+	border-radius: 4px;
+    font-size: 0.8em;
+}
+
+#home_admin>form input[type=submit]{
+	display: block;
+	margin:auto;
+	font-size: 1.2em;
+}
+
+#home_admin fieldset {
+    margin: auto;
+    width: 20em;
+}
+#home_admin fieldset textarea ,#home_admin fieldset input[type=text]  {
+    width: 100%;
+    font-size: 1em;
+}
+
+/* Pagamento */
+
+#pagamento {
+	width: 50%;
+	margin: auto;
+	margin-top: 1em;
+	text-align: center;
+}
+
+#pagamento fieldset {
+	margin: 1em;
+}
+
+#scelta_consegna input[type=radio] {
+	cursor: pointer;
+}
+
+#scelta_consegna input[type=radio] + label {
+	cursor: pointer;
+	margin-right: 1em;
+}
+
+#pagamento input[type=text] {
+	border: none;
+	border-radius: 4px;
+	width: 65%;
+	padding: 0.6em;
+	margin-bottom: 0.5em;
+}
+
+#info_consegna label {
+	display: block;
+	padding-top: 0.3em;
+	padding-bottom: 0.3em;
+}
+
+#info_pagamento label {
+	display: block;
+	padding-top: 0.3em;
+	padding-bottom: 0.3em;
+}
+
+#navigazione input {
+	text-align: center;
+	width: 10em;
+	height: 2em;
+	margin-left: 0.4em;
+	margin-right: 0.4em;
+	font-size: 1em;
+	margin-bottom: 1em;
+	border-radius: 4px;
+}
+
+#info_pagamento input[name="cvv_carta"] {
+	display: inline;
+	width: 5em;
+}
+
+.selezione {
+	padding: 0.3em;
+	border-radius: 4px;
+	font-size: 0.8em;
+	margin: 0.5em;
+}
+
