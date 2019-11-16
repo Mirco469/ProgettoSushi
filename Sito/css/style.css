@@ -38,6 +38,29 @@ body a:visited {
  *
  */
 
+/* Form */
+.defaultForm{
+	max-width: 26.875em;
+	margin: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.defaultForm input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
+	display: block;
+	width: 100%;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 2px;
+	border-radius: 4px;
+}
+
+.defaultForm input[type=submit]{
+	display: block;
+	margin:auto;
+	font-size: 1.2em;
+}
 
 /*	Header	*/
 
@@ -284,33 +307,11 @@ body a:visited {
 }
 
 /* Login */
-#login>form{
-	max-width: 26.875em;
-	margin: auto;
-	margin-top: 1em;
-	margin-bottom: 1em;
-}
-
 #login>p{
 	text-align: center;
 	font-weight: bold;
 }
 
-#login input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
-	display: block;
-	width: 100%;
-	padding: 0.6em 0.875em;
-	margin: 0.5em 0;
-	box-sizing: border-box;
-	border: 2px;
-	border-radius: 4px;
-}
-
-#login>form input[type=submit]{
-	display: block;
-	margin:auto;
-	font-size: 1.2em;
-}
 
 /* Takeaway */
 #menu_list {
@@ -591,7 +592,7 @@ div#notizie {
 
 /* Gestione Profilo Utente */
 
-#profilo_utente {
+#gestione_profilo {
     margin: 2%;
 }
 
@@ -623,35 +624,82 @@ div#notizie {
     margin-top: 1em;
 }
 
-#profilo_utente>form{
+#gestione_utente>form{
 	max-width: 35em;
-	margin: auto;
 	margin-top: 6%;
 	margin-bottom: 1em;
     margin-left: 40%
 }
 
-#profilo_utente fieldset {
+#gestione_utente fieldset {
     padding: 1em;
     padding-left: 3em;
     padding-right: 3em;
 }
 
-#profilo_utente input:not([type=submit]){
-	display: block;
-	width: 100%;
+#gestione_utente input:not([type=submit]){
     font-size: 1.0em;
-	padding: 0.6em 0.875em;
-	margin: 0.5em 0;
-	box-sizing: border-box;
-	border: 2px;
-	border-radius: 4px;
 }
 
-#profilo_utente>form input[type=submit]{
-    font-size: 1.2em;
+
+/*Gestione Profilo Admin*/
+
+#gestione_admin>h1 {
+    text-align: center;
+}
+
+#gestione_admin>form {
+    margin-left: auto;
+}
+
+/* Contatti */
+#contatti {
+    margin: 2%;
+}
+
+#contatti h1 {
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+#contatti h2 {
+    margin-top: 0.5em;
+    display: inline;
+}
+
+#contatti div img {
+    vertical-align: middle;
+    margin-bottom: 0.75em;
+}
+/* Fissato altezza min del div con id="info_stradali alla
+   stessa dimensione dell'immagine in quanto la dimensione
+   dell'immagine non può essere modificata */
+#info_stradali {
+min-height: 465px;
+}
+
+#info_stradali>h2 {
+    white-space:nowrap;
+}
+
+#info_stradali a>img {
     display: block;
-	margin:auto;
+    float: left;
+    clear: both;
+    margin-right:1em; 
+}
+
+
+#info_stradali dl>dt {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+}
+
+#info_stradali dl>dd {
+    padding-left: 2em;
+    margin-bottom: 0.5em;
 }
 
 /*Home Admin*/
@@ -709,3 +757,69 @@ div#notizie {
     width: 100%;
     font-size: 1em;
 }
+
+/* Pagamento */
+
+#pagamento {
+	width: 50%;
+	margin: auto;
+	margin-top: 1em;
+	text-align: center;
+}
+
+#pagamento fieldset {
+	margin: 1em;
+}
+
+#scelta_consegna input[type=radio] {
+	cursor: pointer;
+}
+
+#scelta_consegna input[type=radio] + label {
+	cursor: pointer;
+	margin-right: 1em;
+}
+
+#pagamento input[type=text] {
+	border: none;
+	border-radius: 4px;
+	width: 65%;
+	padding: 0.6em;
+	margin-bottom: 0.5em;
+}
+
+#info_consegna label {
+	display: block;
+	padding-top: 0.3em;
+	padding-bottom: 0.3em;
+}
+
+#info_pagamento label {
+	display: block;
+	padding-top: 0.3em;
+	padding-bottom: 0.3em;
+}
+
+#navigazione input {
+	text-align: center;
+	width: 10em;
+	height: 2em;
+	margin-left: 0.4em;
+	margin-right: 0.4em;
+	font-size: 1em;
+	margin-bottom: 1em;
+	border-radius: 4px;
+}
+
+#info_pagamento input[name="cvv_carta"] {
+	display: inline;
+	width: 5em;
+}
+
+.selezione {
+	padding: 0.3em;
+	border-radius: 4px;
+	font-size: 0.8em;
+	margin: 0.5em;
+}
+
