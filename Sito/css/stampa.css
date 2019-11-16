@@ -1,0 +1,21 @@
+html, body {
+    height: 97%;
+    margin: 0;
+}
+
+img {
+    display: none;
+}
+
+.aiuti {
+    display: none;
+}
+
+#menu {
+    display: none;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+}
