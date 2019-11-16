@@ -38,6 +38,29 @@ body a:visited {
  *
  */
 
+/* Form */
+.defaultForm{
+	max-width: 26.875em;
+	margin: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.defaultForm input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
+	display: block;
+	width: 100%;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 2px;
+	border-radius: 4px;
+}
+
+.defaultForm input[type=submit]{
+	display: block;
+	margin:auto;
+	font-size: 1.2em;
+}
 
 /*	Header	*/
 
@@ -284,33 +307,11 @@ body a:visited {
 }
 
 /* Login */
-#login>form{
-	max-width: 26.875em;
-	margin: auto;
-	margin-top: 1em;
-	margin-bottom: 1em;
-}
-
 #login>p{
 	text-align: center;
 	font-weight: bold;
 }
 
-#login input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
-	display: block;
-	width: 100%;
-	padding: 0.6em 0.875em;
-	margin: 0.5em 0;
-	box-sizing: border-box;
-	border: 2px;
-	border-radius: 4px;
-}
-
-#login>form input[type=submit]{
-	display: block;
-	margin:auto;
-	font-size: 1.2em;
-}
 
 /* Takeaway */
 #menu_list {
@@ -591,7 +592,7 @@ div#notizie {
 
 /* Gestione Profilo Utente */
 
-#profilo_utente {
+#gestione_profilo {
     margin: 2%;
 }
 
@@ -623,35 +624,32 @@ div#notizie {
     margin-top: 1em;
 }
 
-#profilo_utente>form{
+#gestione_utente>form{
 	max-width: 35em;
-	margin: auto;
 	margin-top: 6%;
 	margin-bottom: 1em;
     margin-left: 40%
 }
 
-#profilo_utente fieldset {
+#gestione_utente fieldset {
     padding: 1em;
     padding-left: 3em;
     padding-right: 3em;
 }
 
-#profilo_utente input:not([type=submit]){
-	display: block;
-	width: 100%;
+#gestione_utente input:not([type=submit]){
     font-size: 1.0em;
-	padding: 0.6em 0.875em;
-	margin: 0.5em 0;
-	box-sizing: border-box;
-	border: 2px;
-	border-radius: 4px;
 }
 
-#profilo_utente>form input[type=submit]{
-    font-size: 1.2em;
-    display: block;
-	margin:auto;
+
+/*Gestione Profilo Admin*/
+
+#gestione_admin>h1 {
+    text-align: center;
+}
+
+#gestione_admin>form {
+    margin-left: auto;
 }
 
 /*Home Admin*/
