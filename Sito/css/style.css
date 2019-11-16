@@ -373,17 +373,12 @@ body a:visited {
 	width: 70%;
 	font-style: italic;
 	padding-bottom: 1em;
+	text-indent: 3em;
 }
 
 #torna_su {
-	position: fixed;
-	bottom: 0.8em;
-	right: 0.8em;
-	z-index: 99;
-	background-color: #555;
-	color: #fff;
-	padding: 0.7em;
-	border:  1px solid #000;
+	padding: 1em;
+	text-align: right;
 }
 
 
@@ -707,4 +702,60 @@ min-height: 465px;
 #info_stradali dl>dd {
     padding-left: 2em;
     margin-bottom: 0.5em;
+}
+
+/*Home Admin*/
+
+#home_admin {
+    margin: 2%;
+}
+
+#home_admin div dd {
+    padding-left: 2em;
+    padding-bottom: 0.5em;
+}
+
+#home_admin div {
+    border: 2px solid white;
+}
+
+#home_admin div dl {
+    padding: 1em;
+}
+
+
+#home_admin div h1 {
+    padding-left: 1em;
+}
+
+#home_admin>form {
+	margin: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+
+#home_admin input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
+	display: block;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 2px;
+	border-radius: 4px;
+    font-size: 0.8em;
+}
+
+#home_admin>form input[type=submit]{
+	display: block;
+	margin:auto;
+	font-size: 1.2em;
+}
+
+#home_admin fieldset {
+    margin: auto;
+    width: 20em;
+}
+#home_admin fieldset textarea ,#home_admin fieldset input[type=text]  {
+    width: 100%;
+    font-size: 1em;
 }
