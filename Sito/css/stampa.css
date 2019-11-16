@@ -1,3 +1,4 @@
+/* Generale */
 html, body {
     height: 97%;
     margin: 0;
@@ -16,11 +17,52 @@ img {
 }
 
 #footer {
-    position: fixed;
-    bottom: 0;
     font-size: 0.9em;
 }
 
 .info{
     display: inline-block;
+}
+
+/* Prodotti */
+#prodotti dl, dt, dd{ /* Da applicare a tutte le pagine così che si resetti la visualizzazione iniziale? */
+	margin: 0;
+	padding: 0;
+}
+
+#prodotti>dl{
+	margin: 0em 2em;
+}
+
+#prodotti>dl>dd{
+	overflow: auto;
+    border-top: none;
+	margin-bottom: 2em;
+}
+
+#prodotti>dl>dt{
+	font-size: 1.5em;
+	padding: 0.2em 0em;
+	padding-left: 0.5em;
+	clear: both;
+}
+
+#prodotti>dl>dt.prodotti_dispari+dd img{
+	float: left;
+	margin-right: 0.5em;
+}
+
+#prodotti>dl>dt.prodotti_pari+dd img{
+	float: right;
+	margin-left: 0.5em;
+}
+
+#prodotti img{
+	width: 20%;
+    display: inline-block;
+}
+
+#prodotti>dl>dd>p{
+	margin-left: 0.5em;
+	margin-right: 0.5em;
 }
