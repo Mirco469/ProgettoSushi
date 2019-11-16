@@ -18,4 +18,9 @@ img {
 #footer {
     position: fixed;
     bottom: 0;
+    font-size: 0.9em;
+}
+
+.info{
+    display: inline-block;
 }
