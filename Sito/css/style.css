@@ -709,3 +709,69 @@ div#notizie {
     width: 100%;
     font-size: 1em;
 }
+
+/* Pagamento */
+
+#pagamento {
+	width: 50%;
+	margin: auto;
+	margin-top: 1em;
+	text-align: center;
+}
+
+#pagamento fieldset {
+	margin: 1em;
+}
+
+#scelta_consegna input[type=radio] {
+	cursor: pointer;
+}
+
+#scelta_consegna input[type=radio] + label {
+	cursor: pointer;
+	margin-right: 1em;
+}
+
+#pagamento input[type=text] {
+	border: none;
+	border-radius: 4px;
+	width: 65%;
+	padding: 0.6em;
+	margin-bottom: 0.5em;
+}
+
+#info_consegna label {
+	display: block;
+	padding-top: 0.3em;
+	padding-bottom: 0.3em;
+}
+
+#info_pagamento label {
+	display: block;
+	padding-top: 0.3em;
+	padding-bottom: 0.3em;
+}
+
+#navigazione input {
+	text-align: center;
+	width: 10em;
+	height: 2em;
+	margin-left: 0.4em;
+	margin-right: 0.4em;
+	font-size: 1em;
+	margin-bottom: 1em;
+	border-radius: 4px;
+}
+
+#info_pagamento input[name="cvv_carta"] {
+	display: inline;
+	width: 5em;
+}
+
+.selezione {
+	padding: 0.3em;
+	border-radius: 4px;
+	font-size: 0.8em;
+	margin: 0.5em;
+}
+
