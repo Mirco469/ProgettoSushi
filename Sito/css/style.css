@@ -823,3 +823,18 @@ min-height: 465px;
 	margin: 0.5em;
 }
 
+/*	errore utente e admin	*/
+#errore_utente, #errore_admin {
+	background: url("../img/404.png") no-repeat center top;
+	background-size: 32%;
+	background-color: white;
+	min-height: 25em;
+	color: black;
+}
+
+#errore_utente #testo, #errore_admin #testo {
+	position: absolute;
+	top: 70%;
+	left: 20%;
+	right: 20%;
+}
