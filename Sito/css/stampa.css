@@ -66,3 +66,20 @@ img {
 	margin-left: 0.5em;
 	margin-right: 0.5em;
 }
+
+/* Contatti */
+
+#info_stradali dl>dt {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 0.5em;
+    margin-bottom: 0.7em;
+}
+
+#info_stradali dl>dd {
+    margin-left: 1.5em;
+}
+
+.h_info {
+    display: none;
+}
