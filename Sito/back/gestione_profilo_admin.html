@@ -13,19 +13,19 @@
 
   <body>
     <div id="header">
-      <a id="logo" href="home_admin.html" title="Vai alla home"></a>
+      <a id="logo" href="home_admin.html" title="Vai alla home" tabindex="-1"></a>
       <h1 lang="ja">Sushi Nakamura</h1>
     </div>
     <p class="aiuti">
-        <a href="#gestione_admin">Salta il menu</a>
+        <a href="#gestione_admin" tabindex="1">Salta il menu</a>
     </p>
     <div id="menu">
         <ul>
-            <li><a href="home_admin.html" lang="en">Home</a></li>
-            <li><a href="aggiunta_prodotti.html">Aggiungi Prodotto</a></li>
-            <li><a href="gestione_ordini.html">Gestione Ordini</a></li>
+            <li><a href="home_admin.html" lang="en" tabindex="2">Home</a></li>
+            <li><a href="aggiunta_prodotti.html" tabindex="3">Aggiungi Prodotto</a></li>
+            <li><a href="gestione_ordini.html" tabindex="4">Gestione Ordini</a></li>
             <li class="impostazioni" id="active">Gestione Profilo</li>
-            <li class="login"><a href="#" lang="en">Logout</a></li>
+            <li class="login"><a href="#" lang="en" tabindex="5">Logout</a></li>
         </ul>
     </div>
 
