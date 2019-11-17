@@ -76,3 +76,15 @@ img {
 #aggiunta_prodotti form{
 	display: none;
 }
+
+/* Pagina Successo */
+#successo{
+	display: block;
+	text-align: center;
+	margin: 2em 0em;
+}
+
+#successo img{
+	display: inline-block;
+	width: 18%;
+}
