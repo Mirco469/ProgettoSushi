@@ -25,7 +25,7 @@ img {
 }
 
 /* Prodotti */
-#prodotti dl, dt, dd{ /* Da applicare a tutte le pagine così che si resetti la visualizzazione iniziale? */
+#prodotti dl, dt, dd{
 	margin: 0;
 	padding: 0;
 }
@@ -70,4 +70,9 @@ img {
 /* Gestione Profilo Utente */
 #menu_profilo {
     display: none;
+}
+
+/* Aggiunta Prodotti */
+#aggiunta_prodotti form{
+	display: none;
 }
