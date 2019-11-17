@@ -840,3 +840,64 @@ min-height: 465px;
 	margin: 0.5em;
 }
 
+
+
+/*	gestione ordini admin	*/
+
+#gestione_ordini table {
+	width: calc(100% - 16em);
+	text-align: center;
+	margin: 2em 8em 1em;
+	border-collapse: separate;
+	border-spacing: 0 1em;
+}
+
+#gestione_ordini td {
+	border: solid 1px white;
+	border-left: none;
+	border-right: none;
+	padding: 0.5em;
+}
+
+#gestione_ordini td:first-child {
+	border-top-left-radius: 16px;
+	border-bottom-left-radius: 16px;
+	border-left: solid 2px white;
+}
+
+#gestione_ordini td:last-child {
+	border-top-right-radius: 16px;
+	border-bottom-right-radius: 16px;
+	border-right: solid 2px white;
+}
+
+#gestione_ordini .dettagli {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: 5% 10%;
+	border: solid 2px white;
+	border-radius: 16px;
+	padding: 2em 4em;
+	background-color: #1f1d1d;
+	text-align: left;
+	overflow: auto;
+}
+
+#gestione_ordini .dettagli .data {
+	display: inline-block;
+	width: 49%;
+	margin-bottom: 0;
+}
+
+#gestione_ordini .dettagli table {
+	margin: unset;
+	width: 100%;
+}
+
+#gestione_ordini .dettagli .totale {
+	float: right;
+}
+
