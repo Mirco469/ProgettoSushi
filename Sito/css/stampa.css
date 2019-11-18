@@ -79,13 +79,14 @@ img {
 #info_stradali>a>img {
     float: left;
     display: block;
-    height: 300px;
-    width: 300px;
-    margin-top: 50px;
-    margin-right: 10px;
+    height: 85mm;
+    width: 85mm;
+    margin-top: 8mm;
+    margin-right: 5mm;
 }
-#info_stradali dl>dd {
-    margin-left: 1.5em;
+
+#info_stradali dl dd {
+    margin-left: 90mm;
 }
 
 .h_info {
