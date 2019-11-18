@@ -76,6 +76,14 @@ img {
     margin-bottom: 0.7em;
 }
 
+#info_stradali>a>img {
+    float: left;
+    display: block;
+    height: 300px;
+    width: 300px;
+    margin-top: 50px;
+    margin-right: 10px;
+}
 #info_stradali dl>dd {
     margin-left: 1.5em;
 }
