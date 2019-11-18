@@ -67,8 +67,14 @@ img {
 	margin-right: 0.5em;
 }
 
+
 /* Home Admin */
 
 #home_admin form {
-    display: none;
+  display: none;
+}
+
+/* Gestione Profilo Utente */
+#menu_profilo {
+  display: none;
 }
