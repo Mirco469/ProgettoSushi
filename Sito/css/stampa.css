@@ -71,3 +71,42 @@ img {
 #menu_profilo {
     display: none;
 }
+
+/* Pagamento */
+#pagamento {
+	width: 70%;
+	margin: auto;
+	text-align: center;
+}
+
+#scelta_consegna {
+	padding-bottom: 5mm;
+}
+
+#pagamento fieldset {
+	margin-bottom: 5mm;
+}
+
+.selezione {
+	padding: 1mm;
+	margin: 2mm;
+}
+
+#pagamento input[type=text] {
+	width: 65%;
+	margin-bottom: 2mm;
+	padding: 1mm;
+}
+
+#info_consegna label {
+	display: block;
+}
+
+#info_pagamento label {
+	display: block;
+}
+
+#info_pagamento input[name="cvv_carta"] {
+	display: inline;
+	width: 15mm;
+}
