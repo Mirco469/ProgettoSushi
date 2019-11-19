@@ -25,7 +25,7 @@ img {
 }
 
 /* Prodotti */
-#prodotti dl, dt, dd{ /* Da applicare a tutte le pagine così che si resetti la visualizzazione iniziale? */
+#prodotti dl, dt, dd{
 	margin: 0;
 	padding: 0;
 }
@@ -67,9 +67,56 @@ img {
 	margin-right: 0.5em;
 }
 
+
+/* Home Admin */
+
+#home_admin form {
+  display: none;
+}
+
 /* Gestione Profilo Utente */
 #menu_profilo {
-    display: none;
+  display: none;
+}
+
+/* Pagamento */
+#pagamento {
+	width: 70%;
+	margin: auto;
+	text-align: center;
+}
+
+#scelta_consegna {
+	padding-bottom: 5mm;
+}
+
+#pagamento fieldset {
+	margin-bottom: 5mm;
+	page-break-inside: avoid;
+}
+
+.selezione {
+	padding: 1mm;
+	margin: 2mm;
+}
+
+#pagamento input[type=text] {
+	width: 65%;
+	margin-bottom: 2mm;
+	padding: 1mm;
+}
+
+#info_consegna label {
+	display: block;
+}
+
+#info_pagamento label {
+	display: block;
+}
+
+#info_pagamento input[name="cvv_carta"] {
+	display: inline;
+	width: 15mm;
 }
 
 /* Takeaway */
@@ -101,3 +148,22 @@ img {
 #torna_su {
 	display: none;
 }
+
+/* Aggiunta Prodotti */
+#aggiunta_prodotti form{
+	display: none;
+}
+
+/* Pagina Successo */
+#successo{
+	display: block;
+	text-align: center;
+	margin: 2em 0em;
+}
+
+#successo img{
+	display: inline-block;
+	width: 18%;
+}
+
+
