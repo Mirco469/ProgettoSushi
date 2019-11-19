@@ -153,6 +153,54 @@ img {
 #aggiunta_prodotti form{
 	display: none;
 }
+#aggiunta_prodotti>form{
+	margin: 2em;
+}
+
+#aggiunta_prodotti fieldset{
+	max-width: 90em;
+	margin: auto;
+	text-align: center;
+}
+
+#aggiunta_prodotti fieldset>legend{
+	text-align: left;
+}
+
+#aggiunta_prodotti .formGroup{
+	display: inline-block;
+	margin: 0.5em 0.5em;
+}
+
+#aggiunta_prodotti form input[type=submit]{
+    border: solid 4px;
+    border-radius: 5px;
+}
+
+#aggiunta_prodotti form input[type=submit]:hover{
+	border: solid 4px;
+}
+
+#aggiunta_prodotti table{
+	width: 90%;
+	text-align: center;
+	margin: auto;
+	margin-bottom: 2em;
+}
+
+#aggiunta_prodotti table, #aggiunta_prodotti th, #aggiunta_prodotti td{
+	border: 1px solid;
+	border-collapse: collapse;
+}
+
+#aggiunta_prodotti th, #aggiunta_prodotti td{
+	padding: 0.4em;
+}
+
+#aggiunta_prodotti table>caption{
+	margin: 1em;
+	font-size:1.5em;
+}
 
 /* Pagina Successo */
 #successo{
@@ -164,6 +212,35 @@ img {
 #successo img{
 	display: inline-block;
 	width: 18%;
+}
+
+/* Login */
+#login>p{
+	text-align: center;
+	font-weight: bold;
+}
+
+#login .defaultForm{
+	max-width: 26.875em;
+	margin: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+#login .defaultForm input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
+	display: block;
+	width: 100%;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 2px;
+	border-radius: 4px;
+}
+
+#login .defaultForm input[type=submit]{
+	display: block;
+	margin:auto;
+	font-size: 1.2em;
 }
 
 
