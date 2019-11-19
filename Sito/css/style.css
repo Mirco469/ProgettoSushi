@@ -348,13 +348,6 @@ body a:visited {
 	padding-bottom: 0.4em;
 }
 
-.menu_item {
-	display: inline-block;
-	vertical-align: top;
-	width: 18%;
-	text-align: center;
-}
-
 .lista_piatti {
 	width: 75%;
 	margin: auto;
