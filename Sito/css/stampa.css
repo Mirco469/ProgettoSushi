@@ -25,7 +25,7 @@ img {
 }
 
 /* Prodotti */
-#prodotti dl, dt, dd{ /* Da applicare a tutte le pagine così che si resetti la visualizzazione iniziale? */
+#prodotti dl, dt, dd{
 	margin: 0;
 	padding: 0;
 }
@@ -67,9 +67,16 @@ img {
 	margin-right: 0.5em;
 }
 
+
+/* Home Admin */
+
+#home_admin form {
+  display: none;
+}
+
 /* Gestione Profilo Utente */
 #menu_profilo {
-    display: none;
+  display: none;
 }
 
 /* Pagamento */
@@ -111,3 +118,21 @@ img {
 	display: inline;
 	width: 15mm;
 }
+
+/* Aggiunta Prodotti */
+#aggiunta_prodotti form{
+	display: none;
+}
+
+/* Pagina Successo */
+#successo{
+	display: block;
+	text-align: center;
+	margin: 2em 0em;
+}
+
+#successo img{
+	display: inline-block;
+	width: 18%;
+}
+
