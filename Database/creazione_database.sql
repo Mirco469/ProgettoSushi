@@ -19,6 +19,8 @@ CREATE TABLE Utente(
 
 INSERT INTO Utente (username, nome, cognome, password, autorizzazione, numero_carta, intestatario, scadenza) VALUES (
 ('admin', 'Admin', 'Generico', 'password', 'Admin', NULL, NULL, NULL),
+('ammin1', 'Amministratore', 'Due', 'password', 'Admin', NULL, NULL, NULL),
+('ammin2', 'Amministratore', 'Tre', 'password', 'Admin', NULL, NULL, NULL),
 ('utente', 'Utente', 'Generico', 'password', 'Utente', '1111222233334444', 'Utente Generico', ),
 ('user1', 'Ulisse', 'Ferrari', 'password', 'Utente', '5555222211116666', 'Ulisse Ferrari', ),
 ('user2', 'Jessica', 'Bianchi', 'password', 'Utente', '4444333388880000', 'Jessica Bianchi', ),
@@ -64,10 +66,13 @@ CREATE TABLE News(
 -- Inserimento dati nella tabella News
 
 INSERT INTO News (id_news, titolo, descrizione, data, utente) VALUES (
-(101, ),
-(102, ),
-(103, ),
-(104, )
+(101, , , , 'admin'),
+(102, , , , 'ammin1'),
+(103, , , , 'ammin2'),
+(104, , , , 'admin'),
+(105, , , , 'ammin1'),
+(106, , , , 'ammin2'),
+(107, , , , 'admin'),
 )
 
 -- Crea la tabella Destinazione
@@ -114,7 +119,17 @@ CREATE TABLE Ordine(
 -- Inserimento dati nella tabella Ordine
 
 INSERT INTO Ordine (id_ordine, data_ordine, data_consegna, totale, destinazione) VALUES (
-
+(301, , , 27.00, 201),
+(302, , , 28.00, 202),
+(303, , , 33.00, 203),
+(304, , , 31.50, 204),
+(305, , , 46.50, 205),
+(306, , , 40.00, 206),
+(307, , , 36.50, 207),
+(308, , , 66.00, 201),
+(309, , , 15.50, 202),
+(310, , , 42.50, 203),
+(311, , , 57.50, 204)
 )
 
 -- Crea la tabella Tabella Prodotto
@@ -183,14 +198,14 @@ INSERT INTO Prodotto (nome, categoria, pezzi, prezzo) VALUES (
 ('Tuna Temaki', 'Temaki', 1, 3.00),
 ('Ebiten Temaki', 'Temaki', 1, 4.00),
 
-('Salmone', 'Hosomaki', 6, 3.00),
-('Tonno', 'Hosomaki', 6, 3.00),
-('Cetriolo', 'Hosomaki', 6, 2.00),
-('Avocado', 'Hosomaki', 6, 2.50),
+('Hosomaki Salmone', 'Hosomaki', 6, 3.00),
+('Hosomaki Tonno', 'Hosomaki', 6, 3.00),
+('Hosomaki Cetriolo', 'Hosomaki', 6, 2.00),
+('Hosomaki Avocado', 'Hosomaki', 6, 2.50),
 
-('Salmone', 'Sashimi', 4, 6.00),
-('Tonno', 'Sashimi', 4, 5.00),
-('Branzino', 'Sashimi', 4, 6.00),
+('Sashimi Salmone', 'Sashimi', 4, 6.00),
+('Sashimi Tonno', 'Sashimi', 4, 5.00),
+('Sashimi Branzino', 'Sashimi', 4, 6.00),
 
 ('Profiteroles', 'Dessert', 1, 6.00),
 ('Matcha Tiramisù', 'Dessert', 1, 6.50),
@@ -215,14 +230,55 @@ CREATE TABLE Contiene(
 -- Inserimento dati nella tabella Contiene
 
 INSERT INTO Contiene (id_ordine, nome, numero_porzioni) VALUES (
-(),
-(),
-(),
-(),
-(),
-(),
-(),
-()
+(301, 'Tartara di tonno', 1),
+(301, 'Kaisen Udon', 1),
+(301, 'Salmon Philadelphia', 2),
+(301, 'Spicy Tuna', 1),
+
+(302, 'Katsu Ramen', 2),
+(302, 'Shake Fry Tobiko', 2),
+(302, 'Nigiri Branziono', 3),
+
+(303, 'Ebiten Onigiri', 2),
+(303, 'Tuna Temaki', 3),
+(303, 'Sashimi Tonno', 2),
+(303, 'Semisfera ai Lamponi', 2),
+
+(304, 'Hosomaki Avocado', 3),
+(304, 'Sashimi Salmone', 2),
+(304, 'Profiteroles', 2),
+
+(305, 'Goma Wakame', 3),
+(305, 'Ramen Chasumiso', 2),
+(305, 'Salmon Tataki', 1),
+(305, 'Yasai Teppanyaki', 3),
+
+(306, 'Domò Harumaki', 4),
+(306, 'Ebi Yaki', 4),
+(306, 'Ebiten Onigiri', 4),
+
+(307, 'Edamame', 3),
+(307, 'Maguro Tataki', 3),
+(307, 'Asparago Roll', 2),
+(307, 'Onigiri Salmone', 6),
+
+(308, 'Ebi Yaki', 4),
+(308, 'Sashimi Salmone', 3),
+(308, 'Tuna Temaki', 4),
+(308, 'Tartara di tonno', 2),
+
+(309, 'Salmon Philadelphia', 1),
+(309, 'Hosomaki Salmone', 2),
+(309, 'Red Cheesecake', 1),
+
+(310, 'Spicy Tuna', 2),
+(310, 'Sashimi Salmone', 3),
+(310, 'Shake Fry Tobiko', 2),
+(310, 'Matcha Tiramisù', 2),
+
+(311, 'Hosomaki Avocado', 3),
+(311, 'Sashimi Tonno', 4),
+(311, 'Profiteroles', 5)
 )
 
 SET FOREIGN_KEY_CHECKS=1;
