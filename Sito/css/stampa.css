@@ -166,4 +166,29 @@ img {
 	width: 18%;
 }
 
+/* Recensioni */
+#recensioni h2 {
+	margin: 0;
+}
 
+#recensioni h2 + p {
+	padding: 0.2mm;
+	margin: 0;
+	font-size: 0.8em;
+}
+
+#recensioni h2 + p + p {
+	font-style: italic;
+	padding: 0.2mm;
+	margin: 0;
+}
+
+#recensioni h2 + p + p + p{
+	page-break-inside: avoid;
+	margin: 0;
+	padding-bottom: 5mm;
+}
+
+#form_recensione {
+	display: none;
+}
