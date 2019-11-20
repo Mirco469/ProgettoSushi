@@ -479,7 +479,7 @@ body a:visited {
 	line-height: 1.5em;
 }
 
-#form_recensione {
+#recensioni form {
 	margin:auto;
 	margin-top: 2em;
 	margin-bottom: 1.5em;
@@ -493,7 +493,7 @@ body a:visited {
 	margin-bottom: 0.6em;
 }
 
-#form_recensione input[type=submit] {
+#recensioni form input[type=submit] {
 	margin-top: 0.3em;
 	border-radius: 5px;
 	float: right;
