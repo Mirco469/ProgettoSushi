@@ -25,6 +25,10 @@ img {
     display: inline-block;
 }
 
+.hide_print {           /* Usare questa classe per nascondere i contenuti dalla stampa  */
+    display: none;
+}
+
 /* Prodotti */
 #prodotti dl, dt, dd{
 	margin: 0;
@@ -294,8 +298,4 @@ img {
 
 #info_stradali dl dd {
     margin-left: 90mm;
-}
-
-.h_info {
-    display: none;
 }
