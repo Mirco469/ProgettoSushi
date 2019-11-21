@@ -25,6 +25,10 @@ img {
     display: inline-block;
 }
 
+.hide_print {           /* Usare questa classe per nascondere i contenuti dalla stampa  */
+    display: none;
+}
+
 /* Prodotti */
 #prodotti dl, dt, dd{
 	margin: 0;
@@ -272,3 +276,26 @@ img {
 	font-size: 1.2em;
 }
 
+
+
+/* Contatti */
+
+#info_stradali dl>dt {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 0.5em;
+    margin-bottom: 0.7em;
+}
+
+#info_stradali>a>img {
+    float: left;
+    display: block;
+    height: 85mm;
+    width: 85mm;
+    margin-top: 8mm;
+    margin-right: 5mm;
+}
+
+#info_stradali dl dd {
+    margin-left: 90mm;
+}
