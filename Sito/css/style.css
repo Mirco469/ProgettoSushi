@@ -636,10 +636,11 @@ div#notizie {
 }
 
 #menu_profilo a {
-    font-size: 1.2em;
+    font-size: 1em;
 }
 #menu_profilo>ul li {
-    padding: 1em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
     padding-top: 0.4em;
     list-style-type: none;
     margin-top: 1em;
@@ -659,7 +660,7 @@ div#notizie {
 }
 
 #gestione_utente input:not([type=submit]){
-    font-size: 1.0em;
+    font-size: 1em;
 }
 
 
@@ -707,7 +708,7 @@ min-height: 465px;
     display: block;
     float: left;
     clear: both;
-    margin-right:1em; 
+    margin-right:1em;
 }
 
 
@@ -843,4 +844,3 @@ min-height: 465px;
 	font-size: 0.8em;
 	margin: 0.5em;
 }
-
