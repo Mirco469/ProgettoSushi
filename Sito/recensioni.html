@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it">
   <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
       <title>Recensioni - Sushi Nakamura</title>
@@ -13,51 +13,56 @@
   </head>
   <body>
     <div id="header">
-      <a id="logo" href="home_utente.html" title="Vai alla home"></a>
-      <h1 xml:lang="ja" lang="ja">Sushi Nakamura</h1>
+      <a id="logo" href="home_utente.html" title="Vai alla home" tabindex="-1"></a>
+      <h1 lang="ja">Sushi Nakamura</h1>
     </div>
-    <a class="aiuti" href="#recensioni">Salta il menu</a>
+    <p class="aiuti">
+        <a href="#recensioni" tabindex="1">Salta il menu</a>
+    </p>
 	<div id="menu">
 		<ul>
-			<li xml:lang="en" lang="en"><a href="home_utente.html">Home</a></li>
-			<li xml:lang="en" lang="en"><a href="take_away.html">Take Away</a></li>
-			<li><a href="chi_siamo.html">Chi siamo</a></li>
+			<li lang="en"><a href="home_utente.html" tabindex="2">Home</a></li>
+			<li lang="en"><a href="take_away.html" tabindex="3">Take Away</a></li>
+			<li><a href="chi_siamo.html" tabindex="4">Chi siamo</a></li>
 			<li id="active">Recensioni</li>
-			<li><a href="prodotti.html">Prodotti</a></li>
-			<li><a href="contatti.html">Contatti</a></li>
+			<li><a href="prodotti.html" tabindex="5">Prodotti</a></li>
+			<li><a href="contatti.html" tabindex="6">Contatti</a></li>
 			<li class="impostazioni">
 				<span id="dropbtn">Area Riservata</span>
 				<ul id="dropdown_content">
-					<li><a href="carrello.html">Carrello</a></li>
-					<li><a href="storico_ordini.html">Storico ordini</a></li>
-					<li><a href="gestione_profilo_utente.html">Gestione profilo</a></li>
-					<li><a xml:lang="en" lang="en" href="#">Logout</a></li>
+					<li><a href="carrello.html" tabindex="8">Carrello</a></li>
+					<li><a href="storico_ordini.html" tabindex="9">Storico ordini</a></li>
+					<li><a href="gestione_profilo_utente.html" tabindex="10">Gestione profilo</a></li>
+					<li><a lang="en" href="#" tabindex="11">Logout</a></li>
 				</ul>
 			</li>
-			<li class="login"><a href="login.html"><span xml:lang="en" lang="en">Login</span>/Registrazione</a></li>
+			<li class="login"><a href="login.html" tabindex="7"><span  lang="en">Login</span>/Registrazione</a></li>
 		</ul>
 	</div>
 
     <div id="breadcrumb">
-      <p>Ti trovi in: <a href="home_utente.html" xml:lang="en" lang="en">Home</a> &gt; &gt; Recensioni </p>
+      <p>Ti trovi in: <a href="home_utente.html" lang="en">Home</a> &gt; &gt; Recensioni </p>
     </div>
     <div class="content" id="recensioni">
       <h1>Recensioni</h1>
-        <!-- spazio per visualizzare recensioni già scritte-->
-        <h2>Recensione 1</h2>
-        <p>username1</p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur. Duis aute irure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <h2>Recensione 2</h2>
-        <p>username2</p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur. Duis aute irure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+      <!-- spazio per visualizzare recensioni già scritte-->
+      <h2>Recensione 1</h2>
+			<p>GG/MM/AAAA</p>
+      <p>username1</p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur. Duis aute irure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+			
+      <h2>Recensione 2</h2>
+			<p>GG/MM/AAAA</p>
+      <p>username2</p>
+      <p>
+				Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur. Duis aute irure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
 
       <!-- Manca l'attributo action-->
       <form action="" method="post">
-        <fieldset id="form_recensione">
+        <fieldset>
           <legend>La tua recensione</legend>
           <label for="titolo_recensione">Titolo: </label>
           <input type="text" id="titolo_recensione" name="titolo" />
@@ -67,10 +72,9 @@
         </fieldset>
       </form>
     </div>
-
+		
     <div id="footer">
-
-
+			
       <div class="info">
         <h2>Contatti</h2>
             <ul>
@@ -88,7 +92,7 @@
           <li>Luned&igrave; chiuso</li>
         </ul>
       </div>
-       <p xml:lang="en" lang="en">Copyright (c) 2019 Copyright Holder All Rights Reserved.</p>
+       <p lang="en">Copyright (c) 2019 Copyright Holder All Rights Reserved.</p>
 
     <p>
       <a href="http://validator.w3.org/check?uri=referer"><img
