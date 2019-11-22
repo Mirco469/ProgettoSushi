@@ -348,13 +348,6 @@ body a:visited {
 	padding-bottom: 0.4em;
 }
 
-.menu_item {
-	display: inline-block;
-	vertical-align: top;
-	width: 18%;
-	text-align: center;
-}
-
 .lista_piatti {
 	width: 75%;
 	margin: auto;
@@ -461,21 +454,32 @@ body a:visited {
 #recensioni h2 {
 	color: #e0ac00;
 	font-size: 1.3em;
+	margin: 0;
 }
 
 #recensioni h2 + p {
-	font-style: italic;
+	font-size: 0.8em;
+	padding: 0.2em;
+	margin: 0;
 }
 
 #recensioni h2 + p + p {
+	font-style: italic;
+	font-size: 0.8em;
+	padding: 0.2em;
+	margin: 0;
+}
+
+#recensioni h2 + p + p + p{
 	padding: 0.5em;
 	border: 1px solid #fff;
 	border-radius: 5px;
 	margin: 1em;
 	background-color: #4a0715;
+	line-height: 1.5em;
 }
 
-#form_recensione {
+#recensioni form {
 	margin:auto;
 	margin-top: 2em;
 	margin-bottom: 1.5em;
@@ -489,7 +493,7 @@ body a:visited {
 	margin-bottom: 0.6em;
 }
 
-#form_recensione input[type=submit] {
+#recensioni form input[type=submit] {
 	margin-top: 0.3em;
 	border-radius: 5px;
 	float: right;
