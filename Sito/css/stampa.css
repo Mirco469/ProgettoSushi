@@ -29,6 +29,30 @@ img {
     display: none;
 }
 
+.defaultForm{
+	max-width: 26.875em;
+	margin: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.defaultForm input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
+	display: block;
+	width: 100%;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+
+.defaultForm input[type=submit]{
+	display: block;
+	margin:auto;
+	font-size: 1.2em;
+}
+
+
+
 /* Prodotti */
 #prodotti dl, dt, dd{
 	margin: 0;
@@ -83,6 +107,15 @@ img {
 #menu_profilo {
   display: none;
 }
+
+#gestione_utente>form{
+	max-width: 35em;
+	margin-top: 6%;
+	margin-bottom: 1em;
+    margin-left: auto;
+}
+
+
 
 /* Pagamento */
 #pagamento {
@@ -253,31 +286,6 @@ img {
 	font-weight: bold;
 }
 
-#login .defaultForm{
-	max-width: 26.875em;
-	margin: auto;
-	margin-top: 1em;
-	margin-bottom: 1em;
-}
-
-#login .defaultForm input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
-	display: block;
-	width: 100%;
-	padding: 0.6em 0.875em;
-	margin: 0.5em 0;
-	box-sizing: border-box;
-	border: 2px;
-	border-radius: 4px;
-}
-
-#login .defaultForm input[type=submit]{
-	display: block;
-	margin:auto;
-	font-size: 1.2em;
-}
-
-
-
 /* Contatti */
 
 #info_stradali dl>dt {
@@ -298,4 +306,9 @@ img {
 
 #info_stradali dl dd {
     margin-left: 90mm;
+}
+
+/*Gestion Profilo Admin*/
+#gestione_admin>form {
+    margin-left: auto;
 }
