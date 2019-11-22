@@ -65,20 +65,21 @@ body a:visited {
 /*	Header	*/
 
 #logo {
-  display: block;
-  float: left;
-  width: 2em;
-  height: 2em;
-  background-image: url(../img/logo.jpg);
-  background-position: center;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 0.8;
-  -webkit-border-radius: 12px;
-  -moz-border-radius: 12px;
-  border-radius: 12px;
+	display: block;
+	margin-left: 10%;
+	float: left;
+	width: 2em;
+	height: 2em;
+	background-image: url(../img/logo.jpg);
+	background-position: center;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+	opacity: 0.8;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
 }
 
 #header {
