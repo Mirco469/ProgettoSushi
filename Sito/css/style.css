@@ -871,12 +871,65 @@ min-height: 465px;
 	border-right: solid 2px white;
 }
 
-#gestione_ordini .dettagli {
+#gestione_ordini input:focus + .fade {
+	position: fixed;
+	background-color: rgba(31,29,29,0.5);
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 5;
+}
+
+#gestione_ordini input:focus + .fade .dettagli {
 	position: fixed;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
+	width: auto;
+	height: auto;
+	z-index: 10;
+	margin: 5% 10%;
+	border: solid 2px white;
+	border-radius: 16px;
+	padding: 2em 4em;
+	background-color: #1f1d1d;
+	text-align: left;
+	overflow: auto;
+}
+
+#gestione_ordini .dettagli:hover {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: auto;
+	height: auto;
+	z-index: 10;
+	margin: 5% 10%;
+	border: solid 2px white;
+	border-radius: 16px;
+	padding: 2em 4em;
+	background-color: #1f1d1d;
+	text-align: left;
+	overflow: auto;
+}
+
+#gestione_ordini .dettagli {
+	width: 0;
+	height: 0;
+	overflow: hidden;
+}
+
+#gestione_ordini .dettagli.active {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 10;
 	margin: 5% 10%;
 	border: solid 2px white;
 	border-radius: 16px;
