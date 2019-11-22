@@ -270,6 +270,7 @@ body a:visited {
 	border-top-left-radius: 16px;
 	border-bottom-left-radius: 16px;
 	border-left: solid 2px white;
+	text-align: left;
 }
 
 #carrello table tbody tr td:last-child {
@@ -278,8 +279,8 @@ body a:visited {
 	border-right: solid 2px white;
 }
 
-#carrello table tbody td:first-child {
-	text-align: left;
+#carrello input {
+	border-radius: 5px;
 }
 
 #carrello input[type="text"] {
@@ -287,23 +288,39 @@ body a:visited {
 	width: 2.5em;
 }
 
-#carrello button {
-	margin: 1em auto 2em 90%;
+#carrello input[type="button"] {
+	cursor: pointer;
 }
 
-#carrello input {
-	border-radius: 5px;
-}
-
-#carrello input[name="rimuovi"] {
-    background-color: #dc3545;
-	border: solid 4px #dc3545;
+#carrello .rimuovi {
+	border: solid 4px #4a0715;
     border-radius: 5px;
+	padding: 0.2em 1em;
+    background-color: #4a0715;
+    color: #f5e900;
+    font-size: 0.8em;
+	cursor: pointer;
 }
 
-#carrello input[name="rimuovi"]:hover {
-	background-color: #c82333;
-	border: solid 4px #c82333;
+#carrello .rimuovi:hover {
+	background-color: #33050e;
+	border: solid 4px #33050e;
+    color: #e0ac00;
+}
+
+#carrello #paga {
+	display: block;
+	margin: 1em 2% 2em 88%;
+	background-color: rgb(245, 246, 247);
+	border-radius: 5px;
+	text-align: center;
+	color: rgb(61, 61, 61);
+	text-decoration: none;
+	border: solid 1px rgb(245, 246, 247);
+}
+
+#carrello #paga:hover {
+	background-color: #1f1d1d;
 }
 
 
@@ -447,13 +464,6 @@ body a:visited {
 	padding-bottom: 0.4em;
 }
 
-.menu_item {
-	display: inline-block;
-	vertical-align: top;
-	width: 18%;
-	text-align: center;
-}
-
 .lista_piatti {
 	width: 75%;
 	margin: auto;
@@ -560,21 +570,32 @@ body a:visited {
 #recensioni h2 {
 	color: #e0ac00;
 	font-size: 1.3em;
+	margin: 0;
 }
 
 #recensioni h2 + p {
-	font-style: italic;
+	font-size: 0.8em;
+	padding: 0.2em;
+	margin: 0;
 }
 
 #recensioni h2 + p + p {
+	font-style: italic;
+	font-size: 0.8em;
+	padding: 0.2em;
+	margin: 0;
+}
+
+#recensioni h2 + p + p + p{
 	padding: 0.5em;
 	border: 1px solid #fff;
 	border-radius: 5px;
 	margin: 1em;
 	background-color: #4a0715;
+	line-height: 1.5em;
 }
 
-#form_recensione {
+#recensioni form {
 	margin:auto;
 	margin-top: 2em;
 	margin-bottom: 1.5em;
@@ -588,7 +609,7 @@ body a:visited {
 	margin-bottom: 0.6em;
 }
 
-#form_recensione input[type=submit] {
+#recensioni form input[type=submit] {
 	margin-top: 0.3em;
 	border-radius: 5px;
 	float: right;

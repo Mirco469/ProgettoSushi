@@ -14,28 +14,30 @@
 
   <body>
     <div id="header">
-     <a id="logo" href="home_utente.html" title="Vai alla home"></a>
+     <a id="logo" href="home_utente.html" title="Vai alla home" tabindex="-1"></a>
       <h1 lang="ja">Sushi Nakamura</h1>
     </div>
-    	<a class="aiuti" href="#pagamento">Salta il menu</a>
+    <p class="aiuti">
+        <a href="#pagamento" tabindex="1">Salta il menu</a>
+    </p>
     <div id="menu">
 			<ul>
-				<li lang="en"><a href="home_utente.html">Home</a></li>
-				<li lang="en"><a href="take_away.html">Take Away</a></li>
-				<li><a href="chi_siamo.html">Chi siamo</a></li>
-				<li><a href="recensioni.html">Recensioni</a></li>
-				<li><a href="prodotti.html">Prodotti</a></li>
-				<li><a href="contatti.html">Contatti</a></li>
+				<li lang="en"><a href="home_utente.html" tabindex="2">Home</a></li>
+				<li lang="en"><a href="take_away.html" tabindex="3">Take Away</a></li>
+				<li><a href="chi_siamo.html" tabindex="4">Chi siamo</a></li>
+				<li><a href="recensioni.html" tabindex="5">Recensioni</a></li>
+				<li><a href="prodotti.html" tabindex="6">Prodotti</a></li>
+				<li><a href="contatti.html" tabindex="7">Contatti</a></li>
 				<li class="impostazioni">
 					<span id="dropbtn">Area Riservata</span>
 					<ul id="dropdown_content">
-						<li><a href="carrello.html">Carrello</a></li>
-						<li><a href="storico_ordini.html">Storico ordini</a></li>
-						<li><a href="gestione_profilo_utente.html">Gestione profilo</a></li>
-						<li><a lang="en" href="#">Logout</a></li>
+						<li><a href="carrello.html" tabindex="9">Carrello</a></li>
+						<li><a href="storico_ordini.html" tabindex="10">Storico ordini</a></li>
+						<li><a href="gestione_profilo_utente.html" tabindex="11">Gestione profilo</a></li>
+						<li><a lang="en" href="#" tabindex="12">Logout</a></li>
 					</ul>
 				</li>
-				<li class="login"><a href="login.html"><span lang="en">Login</span>/Registrazione</a></li>
+				<li class="login"><a href="login.html" tabindex="8"><span lang="en">Login</span>/Registrazione</a></li>
 			</ul>
 		</div>
 
@@ -50,7 +52,7 @@
 					<label>Tipo Consegna: </label>
 					<input type="radio" id="tipoConsegna_asporto" name="tipoConsegna" value="asporto" />
 					<label for="tipoConsegna_asporto">Asporto</label>
-					<input type="radio"  id="tipoConsegna_domicilio" name="tipoConsegna" value="domicilio" />
+					<input type="radio" id="tipoConsegna_domicilio" name="tipoConsegna" value="domicilio" />
 					<label for="tipoConsegna_domicilio">Domicilio</label>
 				</div>
 				<fieldset id="info_consegna">
@@ -70,7 +72,7 @@
 					<label for="civico">Numero civico: </label>
 					<input type="text" id="civico" name="civico" placeholder="Inserire numero civico"/>
 					<label for="cap"><abbr title="Codice di Avviamento Postale">CAP</abbr>: </label>
-					<input type="text" id="cap"  name="cap" placeholder="Inserire CAP"/>
+					<input type="text" id="cap" name="cap" placeholder="Inserire CAP"/>
 					<label for="comune">Comune: </label>
         	<input type="text" id="comune" name="comune" value="Padova" disabled="disabled"/>
         	<label for="provincia">Provincia: </label>
@@ -118,7 +120,7 @@
 						/* Inserire anni scadenza carta */
 
         	</select>
-          <label for="cvv_carta" xml:lang="en" lang="en"><abbr title="Card Verification Value">CVV</abbr>: </label>
+          <label for="cvv_carta" lang="en"><abbr title="Card Verification Value">CVV</abbr>: </label>
           <input type="text" id="cvv_carta" name="cvv_carta" maxlength="3"/>
         </fieldset>
       </form>
