@@ -65,32 +65,35 @@ body a:visited {
 /*	Header	*/
 
 #logo {
-  display: block;
-  float: left;
-  width: 5em;
-  height: 5em;
-  background-image: url(../img/logo.jpg);
-  background-position: center;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 0.8;
-  -webkit-border-radius: 40px;
-  -moz-border-radius: 40px;
-  border-radius: 40px;
+	display: block;
+	margin-left: 10%;
+	float: left;
+	width: 2em;
+	height: 2em;
+	background-image: url(../img/logo.jpg);
+	background-position: center;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+	opacity: 0.8;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
 }
 
 #header {
-  margin: 0em;
-  background-color: #4a0715;
-  color: #e0ac00;
-  padding: 1em;
-  font-size: 2em;
-  text-align: center;
-
+	margin: 0em;
+	background-color: #4a0715;
+	color: #e0ac00;
+	padding: 0.5em;
+	font-size: 2em;
+	text-align: center;
 }
 
+#header h1 {
+	margin: 0;
+}
 
 
 /*	Menu	*/
@@ -270,7 +273,6 @@ body a:visited {
 	border-top-left-radius: 16px;
 	border-bottom-left-radius: 16px;
 	border-left: solid 2px white;
-	text-align: left;
 }
 
 #carrello table tbody tr td:last-child {
@@ -279,8 +281,8 @@ body a:visited {
 	border-right: solid 2px white;
 }
 
-#carrello input {
-	border-radius: 5px;
+#carrello table tbody td:first-child {
+	text-align: left;
 }
 
 #carrello input[type="text"] {
@@ -288,40 +290,88 @@ body a:visited {
 	width: 2.5em;
 }
 
-#carrello input[type="button"] {
-	cursor: pointer;
+#carrello button {
+	margin: 1em auto 2em 90%;
 }
 
-#carrello .rimuovi {
-	border: solid 4px #4a0715;
-    border-radius: 5px;
-	padding: 0.2em 1em;
-    background-color: #4a0715;
-    color: #f5e900;
-    font-size: 0.8em;
-	cursor: pointer;
-}
-
-#carrello .rimuovi:hover {
-	background-color: #33050e;
-	border: solid 4px #33050e;
-    color: #e0ac00;
-}
-
-#carrello #paga {
-	display: block;
-	margin: 1em 2% 2em 88%;
-	background-color: rgb(245, 246, 247);
+#carrello input {
 	border-radius: 5px;
-	text-align: center;
-	color: rgb(61, 61, 61);
-	text-decoration: none;
-	border: solid 1px rgb(245, 246, 247);
 }
 
-#carrello #paga:hover {
-	background-color: #1f1d1d;
+#carrello input[name="rimuovi"] {
+    background-color: #dc3545;
+	border: solid 4px #dc3545;
+    border-radius: 5px;
 }
+
+#carrello input[name="rimuovi"]:hover {
+	background-color: #c82333;
+	border: solid 4px #c82333;
+}
+
+
+
+/*	storico ordini	*/
+
+#storico_ordini table {
+	width: calc(100% - 16em);
+	text-align: center;
+	margin: 2em 8em 1em;
+	border-collapse: separate;
+	border-spacing: 0 1em;
+}
+
+#storico_ordini td {
+	border: solid 1px white;
+	border-left: none;
+	border-right: none;
+	padding: 0.5em;
+}
+
+#storico_ordini td:first-child {
+	border-top-left-radius: 16px;
+	border-bottom-left-radius: 16px;
+	border-left: solid 2px white;
+}
+
+#storico_ordini td:last-child {
+	border-top-right-radius: 16px;
+	border-bottom-right-radius: 16px;
+	border-right: solid 2px white;
+}
+
+#storico_ordini .dettagli {
+	display: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: 5% 10%;
+	border: solid 2px white;
+	border-radius: 16px;
+	padding: 2em 4em;
+	background-color: #1f1d1d;
+	text-align: left;
+	overflow: auto;
+}
+
+#storico_ordini .dettagli .data {
+	display: inline-block;
+	width: 49%;
+	margin-bottom: 0;
+}
+
+#storico_ordini .dettagli table {
+	margin: unset;
+	width: 100%;
+}
+
+#storico_ordini .dettagli .totale {
+	float: right;
+}
+
+
 
 /* Login */
 #login>p{
