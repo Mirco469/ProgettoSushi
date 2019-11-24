@@ -135,7 +135,7 @@ DROP TABLE IF EXISTS Prodotto;
 
 CREATE TABLE Prodotto(
 	nome 				VARCHAR(30) PRIMARY KEY,
-	categoria		ENUM('Antipasti','Primi Piatti','Teppanyako e tempure','Uramaki','Nigiri','Gunkan','Temaki','Hosomaki','Sashimi','Dessert') NOT NULL,
+	categoria		ENUM('Antipasti','Primi Piatti','Teppanyako e tempure','Uramaki','Nigiri ed Onigiri','Gunkan','Temaki','Hosomaki','Sashimi','Dessert') NOT NULL,
 	pezzi				TINYINT NOT NULL,
 	prezzo 			FLOAT NOT NULL
 );
