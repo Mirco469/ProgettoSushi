@@ -17,7 +17,7 @@ CREATE TABLE Utente(
 
 -- Inserimento dati nella tabella Utente
 
-INSERT INTO Utente (username, nome_cognome, password, autorizzazione, numero_carta, intestatario, scadenza) VALUES (
+INSERT INTO Utente (username, nome, cognome, password, autorizzazione, numero_carta, intestatario, scadenza) VALUES (
 ('admin', 'Admin', 'Generico', 'admin', 'Admin', NULL, NULL, NULL),
 ('ammin1', 'Amministratore', 'Due', 'password', 'Admin', NULL, NULL, NULL),
 ('ammin2', 'Amministratore', 'Tre', 'password', 'Admin', NULL, NULL, NULL),
@@ -116,7 +116,7 @@ CREATE TABLE Ordine(
 
 -- Inserimento dati nella tabella Ordine
 
-INSERT INTO Ordine (id_ordine, data_ordine, totale, destinazione) VALUES (
+INSERT INTO Ordine (id_ordine, data_ordine, data_consegna, totale, destinazione) VALUES (
 (301, '2019-02-19', '2019-02-19', 27.00, 201),
 (302, '2019-03-22', '2019-03-22', 28.00, 202),
 (303, '2019-04-11', '2019-04-11', 33.00, 203),
