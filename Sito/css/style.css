@@ -29,8 +29,8 @@ body a:visited {
 /*
  * Palette
  *
- * backgroud-color: #1f1d1d
- * header footer backgroud-color: #4a0715
+ * background-color: #1f1d1d
+ * header footer background-color: #4a0715
  * header h1 color: #e0ac00
  * menù li color: #f5e900
  * menù li:hover background-color: #33050e
@@ -251,10 +251,10 @@ body a:visited {
 }
 
 
-/* LATO UTENTE*/
-/*	carrello	*/
 
-#carrello table {
+/*	Table Fritz	*/
+
+table.fritzTable {
 	width: calc(100% - 16em);
 	text-align: center;
 	margin: 2em 8em 1em;
@@ -262,24 +262,29 @@ body a:visited {
 	border-spacing: 0 1em;
 }
 
-#carrello table tbody tr td {
+table.fritzTable td {
 	border: solid 1px white;
 	border-left: none;
 	border-right: none;
 	padding: 0.5em;
 }
 
-#carrello table tbody tr td:first-child {
+table.fritzTable td:first-child {
 	border-top-left-radius: 16px;
 	border-bottom-left-radius: 16px;
 	border-left: solid 2px white;
 }
 
-#carrello table tbody tr td:last-child {
+table.fritzTable td:last-child {
 	border-top-right-radius: 16px;
 	border-bottom-right-radius: 16px;
 	border-right: solid 2px white;
 }
+
+
+
+/* LATO UTENTE*/
+/*	carrello	*/
 
 #carrello table tbody td:first-child {
 	text-align: left;
@@ -311,37 +316,6 @@ body a:visited {
 
 
 
-/*	storico ordini	*/
-
-#storico_ordini table {
-	width: calc(100% - 16em);
-	text-align: center;
-	margin: 2em 8em 1em;
-	border-collapse: separate;
-	border-spacing: 0 1em;
-}
-
-#storico_ordini td {
-	border: solid 1px white;
-	border-left: none;
-	border-right: none;
-	padding: 0.5em;
-}
-
-#storico_ordini td:first-child {
-	border-top-left-radius: 16px;
-	border-bottom-left-radius: 16px;
-	border-left: solid 2px white;
-}
-
-#storico_ordini td:last-child {
-	border-top-right-radius: 16px;
-	border-bottom-right-radius: 16px;
-	border-right: solid 2px white;
-}
-
-
-
 /*	Dettagli ordine (utente e admin)	*/
 
 #dettagli_ordine {
@@ -360,25 +334,6 @@ body a:visited {
 	margin: 2em 0 1em;
 	border-collapse: separate;
 	border-spacing: 0 1em;
-}
-
-#dettagli_ordine td {
-	border: solid 1px white;
-	border-left: none;
-	border-right: none;
-	padding: 0.5em;
-}
-
-#dettagli_ordine td:first-child {
-	border-top-left-radius: 16px;
-	border-bottom-left-radius: 16px;
-	border-left: solid 2px white;
-}
-
-#dettagli_ordine td:last-child {
-	border-top-right-radius: 16px;
-	border-bottom-right-radius: 16px;
-	border-right: solid 2px white;
 }
 
 
@@ -572,6 +527,10 @@ body a:visited {
 
 /* LATO ADMIN */
 /* Aggiunta prodotti */
+#aggiunta_prodotti>h1{
+	margin-left: 1em;
+}
+
 #aggiunta_prodotti>form{
 	margin: 2em;
 }
@@ -621,6 +580,10 @@ body a:visited {
 
 #aggiunta_prodotti th{
 	background-color: #4a0715;
+}
+
+#aggiunta_prodotti th[scope=row]{
+	background-color: #1f1d1d;
 }
 
 #aggiunta_prodotti table>caption{
@@ -903,118 +866,4 @@ min-height: 465px;
 	border-radius: 4px;
 	font-size: 0.8em;
 	margin: 0.5em;
-}
-
-
-
-/*	gestione ordini admin	*/
-
-#gestione_ordini table {
-	width: calc(100% - 16em);
-	text-align: center;
-	margin: 2em 8em 1em;
-	border-collapse: separate;
-	border-spacing: 0 1em;
-}
-
-#gestione_ordini td {
-	border: solid 1px white;
-	border-left: none;
-	border-right: none;
-	padding: 0.5em;
-}
-
-#gestione_ordini td:first-child {
-	border-top-left-radius: 16px;
-	border-bottom-left-radius: 16px;
-	border-left: solid 2px white;
-}
-
-#gestione_ordini td:last-child {
-	border-top-right-radius: 16px;
-	border-bottom-right-radius: 16px;
-	border-right: solid 2px white;
-}
-
-#gestione_ordini input:focus + .fade {
-	position: fixed;
-	background-color: rgba(31,29,29,0.5);
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	z-index: 5;
-}
-
-#gestione_ordini input:focus + .fade .dettagli {
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	width: auto;
-	height: auto;
-	z-index: 10;
-	margin: 5% 10%;
-	border: solid 2px white;
-	border-radius: 16px;
-	padding: 2em 4em;
-	background-color: #1f1d1d;
-	text-align: left;
-	overflow: auto;
-}
-
-#gestione_ordini .dettagli:hover {
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	width: auto;
-	height: auto;
-	z-index: 10;
-	margin: 5% 10%;
-	border: solid 2px white;
-	border-radius: 16px;
-	padding: 2em 4em;
-	background-color: #1f1d1d;
-	text-align: left;
-	overflow: auto;
-}
-
-#gestione_ordini .dettagli {
-	width: 0;
-	height: 0;
-	overflow: hidden;
-}
-
-#gestione_ordini .dettagli.active {
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	z-index: 10;
-	margin: 5% 10%;
-	border: solid 2px white;
-	border-radius: 16px;
-	padding: 2em 4em;
-	background-color: #1f1d1d;
-	text-align: left;
-	overflow: auto;
-}
-
-#gestione_ordini .dettagli .data {
-	display: inline-block;
-	width: 49%;
-	margin-bottom: 0;
-}
-
-#gestione_ordini .dettagli table {
-	margin: unset;
-	width: 100%;
-}
-
-#gestione_ordini .dettagli .totale {
-	float: right;
 }
