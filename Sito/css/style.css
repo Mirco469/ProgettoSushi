@@ -29,8 +29,8 @@ body a:visited {
 /*
  * Palette
  *
- * backgroud-color: #1f1d1d
- * header footer backgroud-color: #4a0715
+ * background-color: #1f1d1d
+ * header footer background-color: #4a0715
  * header h1 color: #e0ac00
  * menù li color: #f5e900
  * menù li:hover background-color: #33050e
@@ -572,6 +572,10 @@ body a:visited {
 
 /* LATO ADMIN */
 /* Aggiunta prodotti */
+#aggiunta_prodotti>h1{
+	margin-left: 1em;
+}
+
 #aggiunta_prodotti>form{
 	margin: 2em;
 }
@@ -621,6 +625,10 @@ body a:visited {
 
 #aggiunta_prodotti th{
 	background-color: #4a0715;
+}
+
+#aggiunta_prodotti th[scope=row]{
+	background-color: #1f1d1d;
 }
 
 #aggiunta_prodotti table>caption{
