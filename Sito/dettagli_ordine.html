@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="it">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Storico ordini - Sushi Nakamura</title>
+		<title>Dettagli Ordine n. ID - Sushi Nakamura</title>
 		<meta name="title" content="Storico ordini" />
-		<meta name="description" content="Lista ordini effettuati in corso e passati dall'utente loggato" />
+		<meta name="description" content="Dettagli dell'ordine n. ID" />
 		<meta name="keyword" content="Ordini, prodotti, dettagli" />
 		<meta name="robots" content="noindex" />
 		<meta name="language" content="italian it"/>
@@ -19,7 +19,7 @@
         	<h1 lang="ja">Sushi Nakamura</h1>
         </div>
 		<p class="aiuti">
-			<a href="#storico_ordini" tabindex="1">Salta il menu</a>
+			<a href="#dettagli_ordine" tabindex="1">Salta il menu</a>
 		</p>
 		<div id="menu">
 			<ul>
@@ -33,7 +33,7 @@
 					<span id="dropbtn">Area Riservata</span>
 					<ul id="dropdown_content">
 						<li><a href="carrello.html" tabindex="9">Carrello</a></li>
-						<li id="active">Storico ordini</li>
+						<li><a href="storico_ordini.html">Storico ordini</a></li>
 						<li><a href="gestione_profilo_utente.html" tabindex="10">Gestione profilo</a></li>
 						<li><a lang="en" href="#" tabindex="11">Logout</a></li>
 					</ul>
@@ -43,35 +43,51 @@
 		</div>
 
 		<div id="breadcrumb">
-			<p>Ti trovi in: <span xml:lang="en" lang="en"><a href="home_utente.html">Home</a></span> &gt; &gt; Storico Ordini</p>
+			<p>Ti trovi in: <a lang="en" href="home_utente.html">Home</a> &gt; &gt; <a href="storico_ordini.html">Storico Ordini</a> &gt; &gt; Dettagli Ordine n. ID</p>
 		</div>
 
 		<!-- Inizio contenuto -->
-		<div class="content" id="storico_ordini">
+		<div id="dettagli_ordine" class="content">
 
-			<!-- Inizio lista_ordini -->
-			<table class="fritzTable" summary="Lista dello storico degli ordini">
+			<h1>ID ordine</h1>
+			<h2 class="data">Data ordine</h2>
+			<h2 class="data">Data consegna</h2>
+			
+			<p>Nome Cognome</p>
+			<p>Via, n. civico, citta, cap</p>
+			<p>Pagamento</p>
+			<table class="fritzTable" summary="Lista prodotti ordinati">
 				<thead>
 					<tr>
-						<th scope="col">ID ordine</th>
-						<th scope="col">Data ordine</th>
-						<th scope="col">Data consegna</th>
-						<th scope="col">Totale</th>
-						<th scope="col">Dettagli</th>
+						<th scope="col">Nome prodotto</th>
+						<th scope="col">Categoria</th>
+						<th scope="col">Porzioni</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<th scope="row">ID</th>
-						<td>data1</td>
-						<td>data2</td>
-						<td>Totale</td>
-						<td><a href="dettagli_ordine.html">Vai a Dettagli Ordine</a></td>
+						<th scope="row" lang="ja">Uramaki Maguro</th>
+						<td><a href="prodotti.html#uramaki" lang="ja">Uramaki</a></td>
+						<td>1</td>
+					</tr>
+					<tr>
+						<th scope="row" lang="ja">Hosomaki Maguro</th>
+						<td><a href="prodotti.html#hosomaki" lang="ja">Hosomaki</a></td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<th scope="row" lang="ja">Hosomaki Sake</th>
+						<td><a href="prodotti.html#hosomaki" lang="ja">Hosomaki</a></td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<th scope="row">Tiramis&ugrave;</th>
+						<td><a href="prodotti.html#dessert"  lang="fr">Dessert</a></td>
+						<td>10</td>
 					</tr>
 				</tbody>
 			</table>
-			<!-- Fine lista_ordini -->
-			
+
 		</div>
 		<!-- Fine contenuto -->
 

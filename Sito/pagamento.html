@@ -1,167 +1,161 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+<!DOCTYPE html>
+<html lang="it">
   <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta charset="utf-8" />
       <title>Sushi Nakamura - Pagamento</title>
       <meta name="title" content="Pagamento - Sushi Nakamura"/>
       <meta name="description" content="Pagina di pagamento dell'ordine"/>
-      <meta name="keyword" content="Pagamento, Ordine, Ristorante, Sushi"/>
       <meta name="language" content="italian it"/>
       <meta name="robots" content="noindex"/>
       <meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
-      <link rel="stylesheet" type="text/css" href="css/style.css"/>
+      <link rel="stylesheet" type="text/css" media="screen" href="css/style.css"/>
+      <link rel="stylesheet" type="text/css" media="print" href="css/stampa.css"/>
   </head>
+
   <body>
     <div id="header">
-     <a id="logo" href="home_utente.html" title="Vai alla home"></a>
-      <h1 xml:lang="ja">Sushi Nakamura</h1>
+     <a id="logo" href="home_utente.html" title="Vai alla home" tabindex="-1"></a>
+      <h1 lang="ja">Sushi Nakamura</h1>
     </div>
-    <a class="aiuti" href="#pagamento">Salta il menu</a>
+    <p class="aiuti">
+        <a href="#pagamento" tabindex="1">Salta il menu</a>
+    </p>
     <div id="menu">
 			<ul>
-				<li xml:lang="en"><a href="home_utente.html">Home</a></li>
-				<li xml:lang="en"><a href="take_away.html">Take Away</a></li>
-				<li><a href="chi_siamo.html">Chi siamo</a></li>
-				<li><a href="recensioni.html">Recensioni</a></li>
-				<li><a href="prodotti.html">Prodotti</a></li>
-				<li><a href="contatti.html">Contatti</a></li>
+				<li lang="en"><a href="home_utente.html" tabindex="2">Home</a></li>
+				<li lang="en"><a href="take_away.html" tabindex="3">Take Away</a></li>
+				<li><a href="chi_siamo.html" tabindex="4">Chi siamo</a></li>
+				<li><a href="recensioni.html" tabindex="5">Recensioni</a></li>
+				<li><a href="prodotti.html" tabindex="6">Prodotti</a></li>
+				<li><a href="contatti.html" tabindex="7">Contatti</a></li>
 				<li class="impostazioni">
 					<span id="dropbtn">Area Riservata</span>
 					<ul id="dropdown_content">
-						<li><a href="carrello.html">Carrello</a></li>
-						<li><a href="storico_ordini.html">Storico ordini</a></li>
-						<li><a href="gestione_profilo_utente.html">Gestione profilo</a></li>
-						<li><a xml:lang="en" href="#">Logout</a></li>
+						<li><a href="carrello.html" tabindex="9">Carrello</a></li>
+						<li><a href="storico_ordini.html" tabindex="10">Storico ordini</a></li>
+						<li><a href="gestione_profilo_utente.html" tabindex="11">Gestione profilo</a></li>
+						<li><a lang="en" href="#" tabindex="12">Logout</a></li>
 					</ul>
 				</li>
-				<li class="login"><a href="login.html"><span xml:lang="en">Login</span>/Registrazione</a></li>
+				<li class="login"><a href="login.html" tabindex="8"><span lang="en">Login</span>/Registrazione</a></li>
 			</ul>
 		</div>
 
     <div id="breadcrumb">
-      <p>Ti trovi in: <a href="home_utente.html" xml:lang="en">Home</a> &gt; &gt; <a href="carrello.html">Carrello</a> &gt; &gt; Pagamento </p>
+      <p>Ti trovi in: <a href="home_utente.html" lang="en">Home</a> &gt; &gt; <a href="carrello.html">Carrello</a> &gt; &gt; Pagamento </p>
     </div>
 
     <div class="content" id="pagamento">
-      <fieldset>
-        <legend>Prodotti: </legend>
-        <!-- prodotti nel carrello -->
-      </fieldset>
+			<!-- manca l'attributo action-->
+			<form action="" method="post">
+				<div id="scelta_consegna">
+					<label>Tipo Consegna: </label>
+					<input type="radio" id="tipoConsegna_asporto" name="tipoConsegna" value="asporto" />
+					<label for="tipoConsegna_asporto">Asporto</label>
+					<input type="radio" id="tipoConsegna_domicilio" name="tipoConsegna" value="domicilio" />
+					<label for="tipoConsegna_domicilio">Domicilio</label>
+				</div>
+				<fieldset id="info_consegna">
+					<legend>Informazioni di consegna:</legend>
+	  			<label for="destinazione">Seleziona un indirizzo:</label>
+	  			<select id="destinazione" name="destinazione" class="selezione">
+	    			<option selected="selected">Indirizzo</option>
+	    			<option>Via - n. civico, interno, citta, cap, prov</option>
+    			</select>
 
-    	<!-- Inizio informazioni_ordini -->
-	<div>
-	  <label>Tipo Consegna:</label>
-	  <input id="tipoConsegna_domicilio" type="radio" name="tipoConsegna" value="domicilio" checked="checked" />
-	  <label for="tipoConsegna_domicilio">Domicilio</label>
-	  <input id="tipoConsegna_asporto" type="radio" name="tipoConsegna" value="asporto" />
-	  <label for="tipoConsegna_asporto">Asporto</label>
-	</div>
-	<!-- Fine informazioni_ordini -->
+					<p>Oppure inserisci un nuovo indirizzo:</p>
 
-	<!-- Inizio dati_destinazione -->
-	<div>
-	  <label for="destinazione">Destinazione:</label>
-	  <select id="destinazione" name="destinazione">
-	    <option selected="selected">Inserisci destinazioni</option>
-	    <option>Via - n. civico, interno, citta, cap, prov</option>
-          </select>
-	</div>
-	<!-- Fine Inizio dati_destinazione -->
+					<label for="nome_cognome">Nome e Cognome: </label>
+					<input type="text" name="nome_cognome" id="nome_cognome" placeholder="Mario Rossi"/>
+					<label for="indirizzo">Indirizzo: </label>
+					<input type="text" id="indirizzo" name="indirizzo" placeholder="Inserire via"/>
+					<label for="civico">Numero civico: </label>
+					<input type="text" id="civico" name="civico" placeholder="Inserire numero civico"/>
+					<label for="cap"><abbr title="Codice di Avviamento Postale">CAP</abbr>: </label>
+					<input type="text" id="cap" name="cap" placeholder="Inserire CAP"/>
+					<label for="comune">Comune: </label>
+        	<input type="text" id="comune" name="comune" value="Padova" disabled="disabled"/>
+        	<label for="provincia">Provincia: </label>
+        	<input type="text" id="provincia" name="provincia" value="Padova" disabled="disabled"/>
+        	<label for="stato">Stato: </label>
+        	<input type="text" id="stato" name="stato" value="Italia" disabled="disabled"/>
+        	<label for="tel">Numero di telefono: </label>
+        	<input type="text" id="tel" name="tel" />
+				</fieldset>
 
-      <!-- Inizio informazioni di pagamento -->
-      <!-- manca l'attributo action-->
-      <form action="" method="post">
-        <fieldset>
+        <fieldset id="info_pagamento">
           <legend>Informazioni di pagamento: </legend>
-	      <div>
-	        <input id="carta_salvata" type="radio" name="scelta_carta" value="carta_salvata" />
-			<label for="carta_salvata">Informazioni salvate</label>
-	        <input id="nuova_carta" type="radio" name="scelta_carta" value="nuova_carta" />
-			<label for="nuova_carta">Nuove informazioni</label>
-	      </div>
-          <div class="form_content">
+					<label for="carta_credito">Seleziona una carta di credito:</label>
+		  		<select id="carta_credito" name="carta_credito" class="selezione">
+		    		<option selected="selected">Carta di credito</option>
+		    		<option>XXXX-XXXX-XXXX-XXXX</option>
+	    		</select>
+					<p>Oppure usa una nuova carta:</p>
+          <div>
             <label for="intestatario_carta">Intestatario carta: </label>
-            <input type="text" name="intestatario_carta" id="intestatario_carta" />
+            <input type="text" id="intestatario_carta" name="intestatario_carta" />
           </div>
-          <div class="form_content">
-            <label for="num_carta">Numero carta: </label>
-            <input type="text" name="num_carta" id="num_carta" />
+          <div>
+            <label for="numero_carta">Numero carta: </label>
+            <input type="text" id="numero_carta" name="numero_carta" />
           </div>
-          <select name="mese_scad">
-            <option>- Mese -</option>
-            <option value="01">January</option>
-            <option value="03">March</option>
-            <option value="04">April</option>
-            <option value="05">May</option>
-            <option value="06">June</option>
-            <option value="07">July</option>
-            <option value="08">August</option>
-            <option value="09">September</option>
-            <option value="10">October</option>
-            <option value="11">November</option>
-            <option value="12">December</option>
-          </select>
-          <select name="anno_scad">
-            <option>- Anno -</option>
-            <option value="2030">2020</option>
-            <option value="2029">2020</option>
-            <option value="2028">2020</option>
-            <option value="2027">2020</option>
-            <option value="2026">2020</option>
-            <option value="2025">2020</option>
-            <option value="2024">2020</option>
-            <option value="2023">2020</option>
-            <option value="2022">2020</option>
-            <option value="2021">2020</option>
-            <option value="2020">2020</option>
-            <option value="2019">2019</option>
-            <option value="2018">2018</option>
-            <option value="2017">2017</option>
-            <option value="2016">2016</option>
-            <option value="2015">2015</option>
-            <option value="2014">2014</option>
-            <option value="2013">2013</option>
-            <option value="2012">2012</option>
-            <option value="2011">2011</option>
-            <option value="2010">2010</option>
-          </select>
-          <label for="cvv_carta">CVV: </label>
-          <input type="text" id="cvv_carta" maxlength="3"/>
+          <select name="mese_scadenza" class="selezione">
+						<option>Mese</option>
+						<option value="01">Gennaio</option>
+						<option value="02">Febbraio</option>
+						<option value="03">Marzo</option>
+						<option value="04">Aprile</option>
+						<option value="05">Maggio</option>
+						<option value="06">Giugno</option>
+          	<option value="07">Luglio</option>
+						<option value="08">Agosto</option>
+          	<option value="09">Settembre</option>
+          	<option value="10">Ottobre</option>
+          	<option value="11">Novembre</option>
+          	<option value="12">Dicembre</option>
+        	</select>
+        	<select name="anno_scad" class="selezione">
+          	<option>Anno</option>
+
+						/* Inserire anni scadenza carta */
+
+        	</select>
+          <label for="cvv_carta" lang="en"><abbr title="Card Verification Value">CVV</abbr>: </label>
+          <input type="text" id="cvv_carta" name="cvv_carta" maxlength="3"/>
         </fieldset>
       </form>
-      <!-- Fine informazioni di pagamento -->
 
-      <input type="button" value="Indietro" />
-      <input type="submit" value="Prosegui" />
+			<div id="navigazione">
+				<input type="button" value="Indietro" />
+				<input type="submit" value="Paga" />
+			</div>
 
     </div>
 
     <div id="footer">
-
-
       <div class="info">
         <h2>Contatti</h2>
-            <ul>
-                <li>35131 Padova (PD) - Piazza Eremitani, 404/2</li>
-                <li>Telefono: 049.xxxxxx</li>
-                <li>Cellulare: 348xxxxxxx</li>
-            </ul>
+					<ul>
+  					<li>35131 Padova (PD) - Piazza Eremitani, 404/2</li>
+						<li>Telefono: 049.xxxxxx</li>
+						<li>Cellulare: 348xxxxxxx</li>
+					</ul>
       </div>
 
       <div class="info">
-      <h2>Orari</h2>
+				<h2>Orari</h2>
         <ul>
           <li><abbr title="Martedì">Mar</abbr> - <abbr title="Giovedì">Gio</abbr>:  12.00 - 15.00 e 19.00 - 22.30</li>
-          <li><abbr title="Venerdì">Ven</abbr>-<abbr title="Domenica">Dom</abbr>: 19.00 - 00.00 </li>
+          <li><abbr title="Venerdì">Ven</abbr> - <abbr title="Domenica">Dom</abbr>: 19.00 - 00.00 </li>
           <li>Luned&igrave; chiuso</li>
         </ul>
       </div>
-       <p xml:lang="en">Copyright (c) 2019 Copyright Holder All Rights Reserved.</p>
-
-    <p>
-      <a href="http://validator.w3.org/check?uri=referer"><img
-      src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
-    </p>
+       <p lang="en">Copyright (c) 2019 Copyright Holder All Rights Reserved.</p>
+	<p>
+	<a href="http://validator.w3.org/check?uri=referer">
+	<img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" />
+	</a>
+	</p>
 
     </div>
   </body>
