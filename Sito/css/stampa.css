@@ -53,9 +53,9 @@ img {
 
 
 
-/*	Carrello	*/
+/*	Table Fritz	*/
 
-#carrello table {
+table.fritzTable {
 	width: calc(100% - 16em);
 	text-align: center;
 	margin: 2em 8em 1em;
@@ -63,25 +63,35 @@ img {
 	border-spacing: 0 1em;
 }
 
-#carrello td {
+table.fritzTable td {
 	border: solid 1px black;
 	border-left: none;
 	border-right: none;
 	padding: 0.5em;
 }
 
-#carrello td:first-child {
+table.fritzTable td:first-child {
 	border-top-left-radius: 16px;
 	border-bottom-left-radius: 16px;
 	border-left: solid 2px black;
-	text-align: left;
 }
 
-#carrello td:last-child {
+table.fritzTable tbody th:first-child {
+	border: solid 1px black;
+	border-top-left-radius: 16px;
+	border-bottom-left-radius: 16px;
+	border-left: solid 2px black;
+}
+
+table.fritzTable td:last-child {
 	border-top-right-radius: 16px;
 	border-bottom-right-radius: 16px;
 	border-right: solid 2px black;
 }
+
+
+
+/*	Carrello	*/
 
 #carrello input {
 	border-radius: 5px;
@@ -94,10 +104,6 @@ img {
 
 #carrello input[type="button"] {
 	cursor: pointer;
-}
-
-#carrello input[type="text"] {
-	text-align: center;
 }
 
 #carrello #paga {
@@ -371,4 +377,23 @@ img {
 /*Gestion Profilo Admin*/
 #gestione_admin>form {
     margin-left: auto;
+}
+
+/*	Dettagli Ordine (Utente e admin)	*/
+#dettagli_ordine {
+	padding: 2em 6em;
+}
+
+#dettagli_ordine .data {
+	display: inline-block;
+	margin-top: 0;
+	width: 48%;
+}
+
+#dettagli_ordine table {
+	width: 100%;
+	text-align: center;
+	margin: 2em 0 1em;
+	border-collapse: separate;
+	border-spacing: 0 1em;
 }
