@@ -165,7 +165,6 @@ INSERT INTO Prodotto (nome, categoria, pezzi, prezzo) VALUES
 ('Ebi Tempura', 'Teppanyako e tempure', 3, 6.00),
 
 ('Chips Roll', 'Uramaki', 4, 5.00),
-('Salmon Philadelphia', 'Uramaki', 4, 4.00),
 ('Black Ebiten', 'Uramaki', 4, 4.00),
 ('Black California', 'Uramaki', 4, 4.00),
 ('Ichigo Hosomaki', 'Uramaki', 6, 4.00),
