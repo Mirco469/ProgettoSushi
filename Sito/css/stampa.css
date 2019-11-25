@@ -106,10 +106,6 @@ table.fritzTable td:last-child {
 	cursor: pointer;
 }
 
-#carrello input[type="text"] {
-	text-align: center;
-}
-
 #carrello #paga {
 	display: block;
 	margin: 1em 2% 2em 88%;
