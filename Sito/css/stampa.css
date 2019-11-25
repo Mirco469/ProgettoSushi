@@ -378,3 +378,22 @@ table.fritzTable td:last-child {
 #gestione_admin>form {
     margin-left: auto;
 }
+
+/*	Dettagli Ordine (Utente e admin)	*/
+#dettagli_ordine {
+	padding: 2em 6em;
+}
+
+#dettagli_ordine .data {
+	display: inline-block;
+	margin-top: 0;
+	width: 48%;
+}
+
+#dettagli_ordine table {
+	width: 100%;
+	text-align: center;
+	margin: 2em 0 1em;
+	border-collapse: separate;
+	border-spacing: 0 1em;
+}
