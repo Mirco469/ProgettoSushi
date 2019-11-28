@@ -644,10 +644,10 @@ div#notizie {
     font-size: 2.1em;
 }
 
-#chi_siamo div{
-    margin-left: 14%;
-    margin-top: 3em;
-    width: 80%;
+#chi_siamo img{
+    display: block;
+    margin: 0px auto;
+    text-align: center;
 }
 
 /* Gestione Profilo Utente */
