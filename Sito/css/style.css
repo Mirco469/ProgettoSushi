@@ -20,6 +20,11 @@ body a:visited {
     color: #d9d9d9;
 }
 
+.content>h1 {
+    font-size: 2.1em;
+    text-align: left;
+}
+
 .aiuti{
 	position: absolute;
 	height: 0;
@@ -94,6 +99,7 @@ body a:visited {
 #header h1 {
 	margin: 0;
 }
+
 
 
 /*	Menu	*/
@@ -350,9 +356,15 @@ table.fritzTable td:last-child {
 
 
 /* Takeaway */
+
+#take_away>h1{
+
+    margin-left: 1em;
+}
+
 #menu_list {
 	width: 80%;
-	margin: auto;
+	margin-left: 2.2em;
 	list-style: none;
 	padding-top: 1em;
 }
@@ -419,8 +431,13 @@ table.fritzTable td:last-child {
 	padding: 0;
 }
 
+
 #prodotti>dl{
 	margin: 0em 2em;
+}
+
+#prodotti>h1 {
+    margin-left: 1em;
 }
 
 #prodotti>dl>dd{
@@ -464,11 +481,6 @@ table.fritzTable td:last-child {
 	margin: auto;
 }
 
-#recensioni h1 {
-  text-align: center;
-	font-variant: small-caps;
-	color: #e0ac00;
-}
 
 #recensioni h2 {
 	color: #e0ac00;
@@ -598,7 +610,7 @@ table.fritzTable td:last-child {
 /*Home Utente*/
 
 #home_utente {
-    margin: 2%;
+    margin: 1em;
 }
 
 div#notizie {
@@ -625,7 +637,7 @@ div#notizie {
 
 /* Chi Siamo */
 #chi_siamo {
-    margin: 2%;
+    margin: 1em;
 }
 
 #chi_siamo>h1 {
@@ -641,7 +653,7 @@ div#notizie {
 /* Gestione Profilo Utente */
 
 #gestione_profilo {
-    margin: 2%;
+    margin: 1em;
 }
 
 #menu_profilo>h1 {
@@ -703,12 +715,11 @@ div#notizie {
 
 /* Contatti */
 #contatti {
-    margin: 2%;
+    margin: 1em;
 }
 
 #contatti h1 {
     margin-bottom: 2em;
-    text-align: center;
 }
 
 #contatti h2 {
@@ -754,7 +765,7 @@ min-height: 465px;
 /*Home Admin*/
 
 #home_admin {
-    margin: 2%;
+    margin: 1em;
 }
 
 #home_admin div dd {
