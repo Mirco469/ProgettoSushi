@@ -213,8 +213,22 @@ body a:visited {
 }
 
 #footer p {
+	color: #d9d9d9;
   font-size: 0.8em;
-  margin-bottom: 0;
+	padding: 0;
+  margin: 0;
+}
+
+#footer p:first-of-type {
+	padding: 1em;
+}
+
+#footer p + p {
+	padding: 0.3em;
+}
+
+#footer p + p + p {
+	padding: 0.3em;
 }
 
 .info {
@@ -241,21 +255,13 @@ body a:visited {
 
 .info:nth-child(1) ul li:nth-child(2) {
     margin-top: 1em;
-    border-top: 1px solid black;
+    border-top: 1px solid;
     padding-top: 1em;
 }
 
 .info:nth-child(2) {
     margin-left: 10%;
 }
-
-#footer span {
-  margin-top: 2em;
-  text-align: center;
-  display: block;
-  clear: both;
-}
-
 
 
 /*	Table Fritz	*/
@@ -419,8 +425,14 @@ table.fritzTable td:last-child {
 }
 
 #torna_su {
-	padding: 1em;
-	text-align: right;
+	padding: 0.5em;
+	position: fixed;
+	bottom: 0.5em;
+	right: 0.5em;
+	z-index: 99;
+	border: 1px solid #000;
+	border-radius: 5px;
+	background-color: #333;
 }
 
 
@@ -833,19 +845,14 @@ min-height: 465px;
 
 #scelta_consegna input[type=radio] {
 	cursor: pointer;
+	display: inline;
+	width: 2em;
 }
 
 #scelta_consegna input[type=radio] + label {
+	display: inline;
 	cursor: pointer;
 	margin-right: 1em;
-}
-
-#pagamento input[type=text] {
-	border: none;
-    border-radius: 4px;
-	width: 65%;
-	padding: 0.6em;
-	margin-bottom: 0.5em;
 }
 
 #info_consegna label {
@@ -862,7 +869,7 @@ min-height: 465px;
 
 #navigazione input {
 	text-align: center;
-	width: 10em;
+	width: 7em;
 	height: 2em;
 	margin-left: 0.4em;
 	margin-right: 0.4em;
