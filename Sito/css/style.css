@@ -43,6 +43,11 @@ body a:visited {
  *
  */
 
+/* Titolo su pagina con tabelle*/
+.tableTitle {
+    margin-left: 3.8em;
+}
+
 /* Form */
 .defaultForm{
 	max-width: 26.875em;
@@ -323,6 +328,7 @@ table.fritzTable td:last-child {
 	background-color: #c82333;
 	border: solid 4px #c82333;
 }
+
 
 
 
@@ -643,6 +649,7 @@ div#notizie {
     text-align: center;
 }
 
+
 /* Gestione Profilo Utente */
 
 #gestione_profilo {
@@ -767,6 +774,11 @@ min-height: 465px;
     margin: 1em;
 }
 
+#home_admin>h1{
+    font-size: 2.1em;
+    margin-left: 10%
+}
+
 #home_admin div dd {
     padding-left: 2em;
     padding-bottom: 0.5em;
@@ -787,7 +799,7 @@ min-height: 465px;
 }
 
 #home_admin>form {
-	margin: auto;
+	margin-left: 10%;
 	margin-top: 1em;
 	margin-bottom: 1em;
 }
@@ -810,7 +822,6 @@ min-height: 465px;
 }
 
 #home_admin fieldset {
-    margin: auto;
     width: 20em;
 }
 #home_admin fieldset textarea ,#home_admin fieldset input[type=text]  {
