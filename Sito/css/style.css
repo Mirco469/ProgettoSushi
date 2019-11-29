@@ -760,7 +760,7 @@ min-height: 465px;
     margin-bottom: 0.5em;
 }
 
-@media screen and (min-width : 891px) and (max-width : 1050px) {
+@media screen and (min-width : 891px) and (max-width : 1075px) {
     #info_stradali a>img {
         float: none;
     }
