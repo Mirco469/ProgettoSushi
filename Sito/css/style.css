@@ -644,9 +644,7 @@ div#notizie {
     font-size: 2.1em;
 }
 
-#chi_siamo img{
-    display: block;
-    margin: 0px auto;
+#chi_siamo div{
     text-align: center;
 }
 
