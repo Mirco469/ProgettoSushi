@@ -419,7 +419,7 @@ table.fritzTable td:last-child {
 }
 
 #torna_su {
-	padding: 1em;
+	padding: 0.5em;
 	position: fixed;
 	bottom: 0.5em;
 	right: 0.5em;
