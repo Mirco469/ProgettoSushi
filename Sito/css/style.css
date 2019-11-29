@@ -779,6 +779,7 @@ min-height: 465px;
 
 #home_admin div {
     border: 2px solid white;
+    margin: 0 10%;
 }
 
 #home_admin div dl {
