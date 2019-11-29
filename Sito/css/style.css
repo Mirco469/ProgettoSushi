@@ -67,6 +67,42 @@ body a:visited {
 	font-size: 1.2em;
 }
 
+/*	Tabelle	*/
+
+table.defaultTable {
+	width: calc(100% - 16em);
+	text-align: center;
+	margin: 2em 8em 1em;
+	border-collapse: separate;
+	border-spacing: 0 1em;
+}
+
+table.defaultTable td {
+	border: solid 1px white;
+	border-left: none;
+	border-right: none;
+	padding: 0.5em;
+}
+
+table.defaultTable td:first-child {
+	border-top-left-radius: 16px;
+	border-bottom-left-radius: 16px;
+	border-left: solid 2px white;
+}
+
+table.defaultTable tbody th:first-child {
+	border: solid 1px white;
+	border-top-left-radius: 16px;
+	border-bottom-left-radius: 16px;
+	border-left: solid 2px white;
+}
+
+table.defaultTable td:last-child {
+	border-top-right-radius: 16px;
+	border-bottom-right-radius: 16px;
+	border-right: solid 2px white;
+}
+
 /*	Header	*/
 
 #logo {
@@ -255,45 +291,6 @@ body a:visited {
   display: block;
   clear: both;
 }
-
-
-
-/*	Table Fritz	*/
-
-table.fritzTable {
-	width: calc(100% - 16em);
-	text-align: center;
-	margin: 2em 8em 1em;
-	border-collapse: separate;
-	border-spacing: 0 1em;
-}
-
-table.fritzTable td {
-	border: solid 1px white;
-	border-left: none;
-	border-right: none;
-	padding: 0.5em;
-}
-
-table.fritzTable td:first-child {
-	border-top-left-radius: 16px;
-	border-bottom-left-radius: 16px;
-	border-left: solid 2px white;
-}
-
-table.fritzTable tbody th:first-child {
-	border: solid 1px white;
-	border-top-left-radius: 16px;
-	border-bottom-left-radius: 16px;
-	border-left: solid 2px white;
-}
-
-table.fritzTable td:last-child {
-	border-top-right-radius: 16px;
-	border-bottom-right-radius: 16px;
-	border-right: solid 2px white;
-}
-
 
 
 /* LATO UTENTE*/
@@ -562,7 +559,7 @@ table.fritzTable td:last-child {
 	text-align: left;
 }
 
-#aggiunta_prodotti .formGroup{ /*Da applicare solo alla classe togliendo #aggiunta_prodotti oppure da altre parti viene usato in modo diverso? */
+#aggiunta_prodotti .formGroup{
 	display: inline-block;
 	margin: 0.5em 0.5em;
 }
@@ -577,30 +574,6 @@ table.fritzTable td:last-child {
 #aggiunta_prodotti form input[type=submit]:hover{
 	background-color: #990000;
 	border: solid 4px #990000;
-}
-
-#aggiunta_prodotti table{
-	width: 90%;
-	text-align: center;
-	margin: auto;
-	margin-bottom: 2em;
-}
-
-#aggiunta_prodotti table, #aggiunta_prodotti th, #aggiunta_prodotti td{
-	border: 1px solid;
-	border-collapse: collapse;
-}
-
-#aggiunta_prodotti th, #aggiunta_prodotti td{
-	padding: 0.4em;
-}
-
-#aggiunta_prodotti th{
-	background-color: #4a0715;
-}
-
-#aggiunta_prodotti th[scope=row]{
-	background-color: #1f1d1d;
 }
 
 #aggiunta_prodotti table>caption{
