@@ -833,9 +833,12 @@ min-height: 465px;
 
 #scelta_consegna input[type=radio] {
 	cursor: pointer;
+	display: inline;
+	width: 2em;
 }
 
 #scelta_consegna input[type=radio] + label {
+	display: inline;
 	cursor: pointer;
 	margin-right: 1em;
 }
