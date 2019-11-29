@@ -426,18 +426,13 @@ table.fritzTable td:last-child {
 
 
 /* Prodotti */
+#prodotti{
+    margin: 0 2em;
+}
+
 #prodotti dl, dt, dd{ /* Da applicare a tutte le pagine così che si resetti la visualizzazione iniziale? */
 	margin: 0;
 	padding: 0;
-}
-
-
-#prodotti>dl{
-	margin: 0em 2em;
-}
-
-#prodotti>h1 {
-    margin-left: 1em;
 }
 
 #prodotti>dl>dd{
