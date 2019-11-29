@@ -213,8 +213,10 @@ body a:visited {
 }
 
 #footer p {
+	color: #d9d9d9;
   font-size: 0.8em;
   margin-bottom: 0;
+	padding: 1em;
 }
 
 .info {
@@ -241,21 +243,13 @@ body a:visited {
 
 .info:nth-child(1) ul li:nth-child(2) {
     margin-top: 1em;
-    border-top: 1px solid black;
+    border-top: 1px solid #d9d9d9;;
     padding-top: 1em;
 }
 
 .info:nth-child(2) {
     margin-left: 10%;
 }
-
-#footer span {
-  margin-top: 2em;
-  text-align: center;
-  display: block;
-  clear: both;
-}
-
 
 
 /*	Table Fritz	*/
