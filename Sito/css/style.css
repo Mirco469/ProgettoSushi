@@ -72,8 +72,44 @@ body a:visited {
 	font-size: 1.2em;
 }
 
-/*	Header	*/
+/*	Tabelle	*/
 
+table.defaultTable {
+	width: calc(100% - 16em);
+	text-align: center;
+	margin: 2em 8em 1em;
+	border-collapse: separate;
+	border-spacing: 0 1em;
+}
+
+table.defaultTable td {
+	border: solid 1px white;
+	border-left: none;
+	border-right: none;
+	padding: 0.5em;
+}
+
+table.defaultTable td:first-child {
+	border-top-left-radius: 16px;
+	border-bottom-left-radius: 16px;
+	border-left: solid 2px white;
+}
+
+table.defaultTable tbody th:first-child {
+	border: solid 1px white;
+	border-top-left-radius: 16px;
+	border-bottom-left-radius: 16px;
+	border-left: solid 2px white;
+}
+
+table.defaultTable td:last-child {
+	border-top-right-radius: 16px;
+	border-bottom-right-radius: 16px;
+	border-right: solid 2px white;
+}
+
+/*	Header	*/
+ 
 #logo {
 	display: block;
 	margin-left: 10%;
@@ -218,8 +254,22 @@ body a:visited {
 }
 
 #footer p {
+	color: #d9d9d9;
   font-size: 0.8em;
-  margin-bottom: 0;
+	padding: 0;
+  margin: 0;
+}
+
+#footer p:first-of-type {
+	padding: 1em;
+}
+
+#footer p + p {
+	padding: 0.3em;
+}
+
+#footer p + p + p {
+	padding: 0.3em;
 }
 
 .info {
@@ -246,57 +296,12 @@ body a:visited {
 
 .info:nth-child(1) ul li:nth-child(2) {
     margin-top: 1em;
-    border-top: 1px solid black;
+    border-top: 1px solid;
     padding-top: 1em;
 }
 
 .info:nth-child(2) {
     margin-left: 10%;
-}
-
-#footer span {
-  margin-top: 2em;
-  text-align: center;
-  display: block;
-  clear: both;
-}
-
-
-
-/*	Table Fritz	*/
-
-table.fritzTable {
-	width: calc(100% - 16em);
-	text-align: center;
-	margin: 2em 8em 1em;
-	border-collapse: separate;
-	border-spacing: 0 1em;
-}
-
-table.fritzTable td {
-	border: solid 1px white;
-	border-left: none;
-	border-right: none;
-	padding: 0.5em;
-}
-
-table.fritzTable td:first-child {
-	border-top-left-radius: 16px;
-	border-bottom-left-radius: 16px;
-	border-left: solid 2px white;
-}
-
-table.fritzTable tbody th:first-child {
-	border: solid 1px white;
-	border-top-left-radius: 16px;
-	border-bottom-left-radius: 16px;
-	border-left: solid 2px white;
-}
-
-table.fritzTable td:last-child {
-	border-top-right-radius: 16px;
-	border-bottom-right-radius: 16px;
-	border-right: solid 2px white;
 }
 
 
@@ -425,8 +430,14 @@ table.fritzTable td:last-child {
 }
 
 #torna_su {
-	padding: 1em;
-	text-align: right;
+	padding: 0.5em;
+	position: fixed;
+	bottom: 0.5em;
+	right: 0.5em;
+	z-index: 99;
+	border: 1px solid #000;
+	border-radius: 5px;
+	background-color: #333;
 }
 
 
@@ -562,7 +573,7 @@ table.fritzTable td:last-child {
 	text-align: left;
 }
 
-#aggiunta_prodotti .formGroup{ /*Da applicare solo alla classe togliendo #aggiunta_prodotti oppure da altre parti viene usato in modo diverso? */
+#aggiunta_prodotti .formGroup{
 	display: inline-block;
 	margin: 0.5em 0.5em;
 }
@@ -577,30 +588,6 @@ table.fritzTable td:last-child {
 #aggiunta_prodotti form input[type=submit]:hover{
 	background-color: #990000;
 	border: solid 4px #990000;
-}
-
-#aggiunta_prodotti table{
-	width: 90%;
-	text-align: center;
-	margin: auto;
-	margin-bottom: 2em;
-}
-
-#aggiunta_prodotti table, #aggiunta_prodotti th, #aggiunta_prodotti td{
-	border: 1px solid;
-	border-collapse: collapse;
-}
-
-#aggiunta_prodotti th, #aggiunta_prodotti td{
-	padding: 0.4em;
-}
-
-#aggiunta_prodotti th{
-	background-color: #4a0715;
-}
-
-#aggiunta_prodotti th[scope=row]{
-	background-color: #1f1d1d;
 }
 
 #aggiunta_prodotti table>caption{
@@ -844,19 +831,14 @@ min-height: 465px;
 
 #scelta_consegna input[type=radio] {
 	cursor: pointer;
+	display: inline;
+	width: 2em;
 }
 
 #scelta_consegna input[type=radio] + label {
+	display: inline;
 	cursor: pointer;
 	margin-right: 1em;
-}
-
-#pagamento input[type=text] {
-	border: none;
-    border-radius: 4px;
-	width: 65%;
-	padding: 0.6em;
-	margin-bottom: 0.5em;
 }
 
 #info_consegna label {
@@ -873,7 +855,7 @@ min-height: 465px;
 
 #navigazione input {
 	text-align: center;
-	width: 10em;
+	width: 7em;
 	height: 2em;
 	margin-left: 0.4em;
 	margin-right: 0.4em;
@@ -897,17 +879,17 @@ min-height: 465px;
 
 /*	errore utente e admin	*/
 #errore {
-	background: url("../img/404.png") no-repeat center top;
-	background-size: 32%;
-	background-color: white;
+	padding-left: 10%;
+	padding-right: 10%;
 	min-height: 25em;
-	color: black;
+	text-align: center;
+}
+
+#errore img {
+	width: 32%;
 }
 
 #errore #testo {
-	margin-top: 0;
-	margin-bottom: 0;
-	padding-top: 16%;
-	padding-left: 10%;
-	padding-right: 10%;
+	text-align: left;
+	font-size: 2em;
 }

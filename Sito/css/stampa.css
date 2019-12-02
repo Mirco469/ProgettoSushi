@@ -397,3 +397,26 @@ table.fritzTable td:last-child {
 	border-collapse: separate;
 	border-spacing: 0 1em;
 }
+
+
+
+/*	errore utente e admin	*/
+#errore {
+	padding-left: 10%;
+	padding-right: 10%;
+	min-height: 25em;
+	text-align: center;
+}
+
+#errore h1:after {
+	content: " - 404";
+}
+
+#errore img {
+	width: 32%;
+}
+
+#errore #testo {
+	text-align: left;
+	font-size: 2em;
+}
