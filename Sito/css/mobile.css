@@ -77,7 +77,7 @@ body a:visited {
 #menu > ul > li {
 	text-align: left;
 }
-
+*/
 /*
 #menu a {
 	display: block;
@@ -131,4 +131,63 @@ body a:visited {
 	padding-left: 0.8em;
 	text-align: left;
 }
-*/
+
+
+/* BACK END*/
+
+/* Home Admin */
+#home_admin {
+    margin: 1em;
+}
+
+#home_admin>h1{
+    font-size: 2.1em;
+    margin-left: 5%;
+}
+
+#home_admin div dd {
+    padding-bottom: 0.5em;
+}
+
+#home_admin div {
+    border: 2px solid white;
+    margin: 0 5%;
+}
+
+#home_admin div dl {
+    padding: 1em;
+}
+
+
+#home_admin div h1 {
+    padding-left: 1em;
+}
+
+#home_admin>form {
+margin-bottom: 5%; 
+}
+
+
+#home_admin input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
+	display: block;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 2px;
+	border-radius: 4px;
+    font-size: 0.8em;
+}
+
+#home_admin>form input[type=submit]{
+	display: block;
+	margin:auto;
+	font-size: 1.2em;
+}
+
+#home_admin fieldset {
+    margin: 0 5%; 
+}
+#home_admin fieldset textarea ,#home_admin fieldset input[type=text]  {
+    width: 95%;
+    font-size: 1em;
+}
