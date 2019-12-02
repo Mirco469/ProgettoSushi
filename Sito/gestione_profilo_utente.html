@@ -68,7 +68,9 @@
             <input type="password" id="password" name="password" />
             <label for="c_password">Conferma la nuova <span lang="en">password</span>: </label>
             <input type="password" id="c_password" name="c_password" value=""/>
+
             <input type="submit" name="dati_personali" value="Salva"/>  <!--Submit legato solo al cambio della password-->
+            <a href="#menu_profilo">Torna su</a>
         </fieldset>
         <fieldset>
             <legend id="is" >Modifica o inserisci informazioni sulla spedizione: </legend>
@@ -89,8 +91,9 @@
             <input type="text" id="stato" name="stato" value="Italia" disabled="disabled"/>
             <label for="tel">Numero di telefono: </label>
             <input type="tel" id="tel" name="tel" />
-
             <input type="submit" name="dati_spedizione" value="Salva"/> <!--Submit legato solo alle informazioni di spedizione-->
+            <a href="#menu_profilo">Torna su</a>
+
         </fieldset>
         <fieldset>
             <legend id="ip">Informazioni di pagamento: </legend>
@@ -136,8 +139,8 @@
                 <option value="2038">2038</option>
                 <option value="2039">2039</option>
             </select>
-
             <input type="submit" name="dati_pagamento" value="Salva">
+            <a href="#menu_profilo">Torna su</a>
             </fieldset>
         </form>
 

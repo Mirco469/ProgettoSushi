@@ -639,10 +639,6 @@ div#notizie {
 
 /* Gestione Profilo Utente */
 
-#gestione_profilo {
-    margin: 1em;
-}
-
 #menu_profilo>h1 {
     color: #d9d9d9;
     text-align: center;
