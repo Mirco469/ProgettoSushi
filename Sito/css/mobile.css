@@ -1,0 +1,134 @@
+/* Generale */
+html {
+	height: 100%;
+}
+
+body {
+  height: 100%;
+  padding: 0em;
+  margin: 0em;
+  font-family: Helvetica, Verdana, sans-serif;
+  background-color: #1f1d1d;
+  font-size: 1.1em;
+}
+
+body a {
+	color: #f5e900;
+}
+
+body a:visited {
+	color: #e0ac00;
+}
+
+.content, .info {
+    color: #d9d9d9;
+}
+
+.aiuti{
+	position: absolute;
+	height: 0;
+	overflow: hidden;
+}
+
+
+
+/*	Menu	*/
+
+#menu {
+	background-color: #4a0715;
+	width: 100%;
+	height: 50px;
+	font-size: 1.2em;
+}
+
+#menu > ul {
+	padding: 50px;
+	background: url("../img/menu_bars50.png") no-repeat;
+	background-position: top right;
+	height: 100%;
+	margin: 0;
+	overflow: hidden;
+}
+
+#menu li {
+	position: absolute;
+	right: -200px;
+}
+
+#menu > ul:hover {
+	position: fixed;
+	right: 0;
+	width: 80%;
+	background-color: #4a0715;
+}
+
+#menu > ul:hover li {
+	height: auto;
+}
+
+#menu > ul:hover li {
+	position: static;
+}
+
+#menu ul li {
+	list-style-type: none;
+}
+
+#menu > ul > li {
+	text-align: left;
+}
+
+/*
+#menu a {
+	display: block;
+	padding: 0.6em;
+	text-decoration: none;
+}
+
+#menu a:hover {
+	background-color: #33050e;
+}
+
+#active {
+	color: #f5e900;
+	display: block;
+	padding: 0.6em;
+	text-align: center;
+	font-weight: bold;
+	background-color: #1f1d1d;
+}
+
+#dropbtn {
+	display: block;
+	padding: 0.6em;
+	color: #f5e900;
+	font-size: 1em;
+	cursor: pointer;
+}
+
+#dropbtn:hover {
+	background-color: #33050e;
+}
+
+#dropdown_content {
+	position: absolute;
+	height: 0;
+    overflow: hidden;
+}
+
+#menu .impostazioni:hover #dropdown_content {
+	height: auto;
+}
+
+#dropdown_content a {
+	padding: 0.3em;
+	padding-left: 0.8em;
+	text-align: left;
+}
+
+#dropdown_content #active {
+	padding: 0.3em;
+	padding-left: 0.8em;
+	text-align: left;
+}
+*/

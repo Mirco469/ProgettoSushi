@@ -893,17 +893,17 @@ min-height: 465px;
 
 /*	errore utente e admin	*/
 #errore {
-	background: url("../img/404.png") no-repeat center top;
-	background-size: 32%;
-	background-color: white;
+	padding-left: 10%;
+	padding-right: 10%;
 	min-height: 25em;
-	color: black;
+	text-align: center;
+}
+
+#errore img {
+	width: 32%;
 }
 
 #errore #testo {
-	margin-top: 0;
-	margin-bottom: 0;
-	padding-top: 16%;
-	padding-left: 10%;
-	padding-right: 10%;
+	text-align: left;
+	font-size: 2em;
 }
