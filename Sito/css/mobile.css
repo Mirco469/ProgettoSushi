@@ -33,7 +33,7 @@ body a:visited {
 
 
 /*	Menu	*/
-
+/*
 #menu {
 	background-color: #4a0715;
 	width: 100%;
@@ -76,7 +76,7 @@ body a:visited {
 
 #menu > ul > li {
 	text-align: left;
-}
+}*/
 
 /*
 #menu a {
@@ -165,4 +165,15 @@ body a:visited {
 
 .info:nth-child(1) ul li:nth-child(2) {
 	padding-top: 1em;
+}
+
+/* Successo */
+#successo{
+	display: block;
+	text-align: center;
+	margin: 2em 0em;
+}
+
+#successo img{
+	width: 18%;
 }
