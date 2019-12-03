@@ -845,20 +845,7 @@ min-height: 465px;
 	margin-right: 1em;
 }
 
-#info_consegna label {
-	display: block;
-	padding-top: 0.3em;
-	padding-bottom: 0.3em;
-}
-
-#info_pagamento label {
-	display: block;
-	padding-top: 0.3em;
-	padding-bottom: 0.3em;
-}
-
 #navigazione input {
-	text-align: center;
 	width: 7em;
 	height: 2em;
 	margin-left: 0.4em;
@@ -873,11 +860,20 @@ min-height: 465px;
 	width: 5em;
 }
 
-.selezione {
+.selezione_big {
+	width: 100%;
 	padding: 0.3em;
 	border-radius: 4px;
 	font-size: 0.8em;
 	margin: 0.5em;
+}
+
+.selezione_small {
+	width: 6em;
+	margin: 0.5em;
+	padding: 0.3em;
+	border-radius: 4px;
+	font-size: 0.8em;
 }
 
 
