@@ -285,13 +285,17 @@ min-height: 465px;
 /* Pagamento*/
 
 #pagamento {
-	width: 80%;
+	width: 90%;
 	margin: auto;
 	text-align: center;
 }
 
 #pagamento fieldset {
 	margin-top: 1em;
+}
+
+#pagamento p {
+	font-size: 0.9em;
 }
 
 #scelta_consegna input[type=radio] {
