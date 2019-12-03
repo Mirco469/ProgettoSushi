@@ -841,18 +841,6 @@ min-height: 465px;
 	margin-right: 1em;
 }
 
-#info_consegna label {
-	display: block;
-	padding-top: 0.3em;
-	padding-bottom: 0.3em;
-}
-
-#info_pagamento label {
-	display: block;
-	padding-top: 0.3em;
-	padding-bottom: 0.3em;
-}
-
 #navigazione input {
 	width: 7em;
 	height: 2em;
