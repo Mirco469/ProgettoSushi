@@ -318,3 +318,15 @@ min-height: 465px;
     margin-bottom: 0.5em;
 }
 
+
+
+/* Successo */
+#successo{
+	display: block;
+	text-align: center;
+	margin: 2em 0em;
+}
+
+#successo img{
+	width: 18%;
+}
