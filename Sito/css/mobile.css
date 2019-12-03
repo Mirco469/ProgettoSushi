@@ -258,6 +258,10 @@ min-height: 465px;
 
 /* Takeaway */
 
+#take_away h1 {
+	margin-left: 1em;
+}
+
 #menu_list {
 	list-style: none;
 	margin-left: 1em;
