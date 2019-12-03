@@ -280,3 +280,54 @@ min-height: 465px;
 	text-align: center;
 	font-weight: bold;
 }
+
+
+/* Pagamento*/
+
+#pagamento {
+	width: 80%;
+	margin: auto;
+	text-align: center;
+}
+
+#pagamento fieldset {
+	margin-top: 1em;
+}
+
+#scelta_consegna input[type=radio] {
+	cursor: pointer;
+	display: inline;
+	width: 2em;
+}
+
+#scelta_consegna input[type=radio] + label {
+	display: inline;
+	cursor: pointer;
+	margin-right: 1em;
+}
+
+#info_pagamento input[name="cvv_carta"] {
+	display: inline;
+	width: 5em;
+}
+
+.selezione {
+	padding: 0.3em;
+	border-radius: 4px;
+	font-size: 0.8em;
+	margin: 0.5em;
+}
+
+#navigazione input {
+	margin: auto;
+	width: 7em;
+	height: 2em;
+	margin-left: 0.4em;
+	margin-right: 0.4em;
+	font-size: 1em;
+	margin-bottom: 1em;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+
