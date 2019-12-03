@@ -537,7 +537,7 @@ table.defaultTable td:last-child {
 }
 
 #recensioni textarea {
-	width: 100%;
+	width: 99%;
 }
 
 #recensioni form input[type=submit] {
