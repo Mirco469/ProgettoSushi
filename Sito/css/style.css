@@ -677,6 +677,7 @@ div#notizie {
 
 #gestione_utente fieldset {
     padding: 1em;
+    margin-right: 1em;
     padding-left: 3em;
     padding-right: 3em;
 }

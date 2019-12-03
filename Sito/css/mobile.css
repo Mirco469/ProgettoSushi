@@ -199,6 +199,16 @@ body a:visited {
 	margin: 1em;
 }
 
+#gestione_admin>form fieldset {
+	width: 80%;
+    margin: auto;
+}
+
+#gestione_admin input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
+	max-width: 20em;
+}
+
+
 
 
 /* Front End */
