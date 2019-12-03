@@ -167,6 +167,29 @@ body a:visited {
 	padding-top: 1em;
 }
 
+/* Form */
+.defaultForm{
+	max-width: 26.875em;
+	margin: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.defaultForm input:not([type=submit]){
+	display: block;
+	width: 100%;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 2px;
+	border-radius: 4px;
+}
+
+.defaultForm input[type=submit]{
+	display: block;
+	margin:auto;
+	font-size: 1.2em;
+}
 
 
 /* Front End */
@@ -241,8 +264,6 @@ min-height: 465px;
     margin-bottom: 0.5em;
 }
 
-
-
 /* Successo */
 #successo{
 	display: block;
@@ -252,6 +273,12 @@ min-height: 465px;
 
 #successo img{
 	width: 18%;
+}
+
+/* Login */
+#login>p{
+	text-align: center;
+	font-weight: bold;
 }
 
 
