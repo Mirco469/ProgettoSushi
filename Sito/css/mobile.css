@@ -33,7 +33,7 @@ body a:visited {
 
 
 /*	Menu	*/
-
+/*
 #menu {
 	background-color: #4a0715;
 	width: 100%;
@@ -258,5 +258,5 @@ min-height: 465px;
 }
 
 #chi_siamo div>img {
-	width: 100%
+	max-width: 100%
 }
