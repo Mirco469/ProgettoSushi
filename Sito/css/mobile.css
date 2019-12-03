@@ -167,6 +167,33 @@ body a:visited {
 	padding-top: 1em;
 }
 
+
+
+/* Front End */
+
+/* Home Utente */
+#home_utente {
+    margin: 1em;
+}
+
+div#notizie {
+    border: 1px solid white;
+    padding-left: 2em;
+    padding-right: 2em;
+    max-width: 85%;
+}
+
+#notizie dt {
+    font-weight: bold;
+    margin-top: 0.5em;
+}
+
+#homeUtente h1 {
+    font-size: 2.1em;
+}
+
+
+
 /* Contatti */
 #contatti {
     margin: 1em;
