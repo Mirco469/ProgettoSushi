@@ -223,10 +223,12 @@ margin-bottom: 5%;
 #home_admin fieldset {
     margin: 0 5%; 
 }
+
 #home_admin fieldset textarea ,#home_admin fieldset input[type=text]  {
     width: 95%;
     font-size: 1em;
 }
+
 
 
 
@@ -252,3 +254,67 @@ div#notizie {
 #homeUtente h1 {
     font-size: 2.1em;
 }
+
+
+
+
+/* Contatti */
+#contatti {
+    margin: 1em;
+}
+
+#contatti h1 {
+    margin-bottom: 2em;
+}
+
+#contatti h2 {
+    margin-top: 0.5em;
+    display: inline;
+}
+
+#contatti div img {
+    vertical-align: middle;
+    margin-bottom: 0.75em;
+}
+/* Fissato altezza min del div con id="info_stradali alla
+   stessa dimensione dell'immagine in quanto la dimensione
+   dell'immagine non può essere modificata */
+#info_stradali {
+min-height: 465px;
+}
+
+#info_stradali>h2 {
+    white-space:nowrap;
+}
+
+#info_stradali a>img {
+    display: block;
+    margin-right:1em;
+    width: 100%;
+}
+
+
+#info_stradali dl>dt {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+}
+
+#info_stradali dl>dd {
+    margin-bottom: 0.5em;
+}
+
+
+
+/* Successo */
+#successo{
+	display: block;
+	text-align: center;
+	margin: 2em 0em;
+}
+
+#successo img{
+	width: 18%;
+}
+
