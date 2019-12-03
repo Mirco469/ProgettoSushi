@@ -282,6 +282,69 @@ min-height: 465px;
 }
 
 
+
+/* Recensioni */
+
+#recensioni {
+	width: 95%;
+	margin: auto;
+}
+
+#recensioni h2 {
+	color: #e0ac00;
+	margin: 0;
+}
+
+#recensioni h2 + p {
+	font-size: 0.8em;
+	padding: 0.2em;
+	margin: 0;
+}
+
+#recensioni h2 + p + p {
+	font-style: italic;
+	font-size: 0.8em;
+	padding: 0.2em;
+	margin: 0;
+}
+
+#recensioni h2 + p + p + p{
+	padding: 0.5em;
+	border: 1px solid #fff;
+	border-radius: 5px;
+	margin: 1em;
+	background-color: #4a0715;
+	line-height: 1.5em;
+}
+
+#recensioni form {
+	margin:auto;
+	margin-top: 2em;
+	margin-bottom: 1.5em;
+	max-width: 90%;
+	border-radius: 5px;
+}
+
+#recensioni textarea {
+	width: 99%;
+}
+
+#titolo_recensione, #testo_recensione {
+	display: block;
+	margin-top: 0.6em;
+	margin-bottom: 0.6em;
+}
+
+#recensioni form input[type=submit] {
+	margin-top: 0.3em;
+	border-radius: 5px;
+	float: right;
+	width: 4em;
+	height: 2em;
+	font-size: 1em;
+}
+
+
 /* Pagamento*/
 
 #pagamento {
