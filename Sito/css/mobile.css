@@ -344,6 +344,7 @@ min-height: 465px;
 	font-size: 1em;
 }
 
+
 /* Prodotti */
 #prodotti{
     margin: 0 2em;
@@ -388,4 +389,66 @@ min-height: 465px;
 #prodotti>dl>dd>p{
 	margin-left: 0.5em;
 	margin-right: 0.5em;
+}
+
+
+/* Pagamento*/
+
+#pagamento {
+	width: 90%;
+	margin: auto;
+	text-align: center;
+}
+
+#pagamento fieldset {
+	margin-top: 1em;
+}
+
+#pagamento p {
+	font-size: 0.9em;
+}
+
+#scelta_consegna input[type=radio] {
+	cursor: pointer;
+	display: inline;
+	width: 2em;
+}
+
+#scelta_consegna input[type=radio] + label {
+	display: inline;
+	cursor: pointer;
+	margin-right: 1em;
+}
+
+#info_pagamento input[name="cvv_carta"] {
+	display: inline;
+	width: 5em;
+}
+
+.selezione_big {
+	width: 100%;
+	margin-top: 0.5em;
+	padding: 0.3em;
+	border-radius: 4px;
+	font-size: 0.8em;
+}
+
+.selezione_small {
+	width: 6em;
+	margin: 0.5em;
+	padding: 0.3em;
+	border-radius: 4px;
+	font-size: 0.8em;
+}
+
+#navigazione input {
+	margin: auto;
+	width: 7em;
+	height: 2em;
+	margin-left: 0.4em;
+	margin-right: 0.4em;
+	font-size: 1em;
+	margin-bottom: 1em;
+	border-radius: 4px;
+	cursor: pointer;
 }
