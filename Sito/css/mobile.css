@@ -326,6 +326,28 @@ min-height: 465px;
     margin-bottom: 0.5em;
 }
 
+
+
+/* Chi Siamo */
+
+#chi_siamo {
+    margin: 1em;
+}
+
+#chi_siamo>h1 {
+    font-size: 2.1em;
+}
+
+#chi_siamo div{
+	text-align: center;
+}
+
+#chi_siamo div>img {
+	max-width: 100%
+}
+
+
+
 /* Successo */
 #successo{
 	display: block;
@@ -516,4 +538,3 @@ min-height: 465px;
 	border-radius: 4px;
 	cursor: pointer;
 }
-
