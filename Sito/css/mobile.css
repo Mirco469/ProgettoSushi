@@ -89,14 +89,6 @@ body a:visited {
 	padding-top: 1em;
 }
 
-
-
-.defaultForm input[type=submit]{
-	display: block;
-	margin:auto;
-	font-size: 1.2em;
-}
-
 /*	Tabelle	*/
 
 table.defaultTable {
