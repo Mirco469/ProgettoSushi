@@ -515,6 +515,10 @@ min-height: 465px;
     border: solid 4px #4a0715;
     border-radius: 5px;
 	color: #d9d9d9;
+	display: block;
+	margin:auto;
+	margin-top: 1em;
+	font-size: 1.2em;
 }
 
 #aggiunta_prodotti form input[type=submit]:hover{
@@ -548,12 +552,6 @@ min-height: 465px;
 	box-sizing: border-box;
 	border: 2px;
 	border-radius: 4px;
-}
-
-#aggiunta_prodotti form input[type=submit]{
-	display: block;
-	margin:auto;
-	font-size: 1.2em;
 }
 
 #aggiunta_prodotti table.defaultTable {
