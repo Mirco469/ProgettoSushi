@@ -89,7 +89,41 @@ body a:visited {
 	padding-top: 1em;
 }
 
+/*	Tabelle	*/
 
+table.defaultTable {
+	width: calc(100% - 16em);
+	text-align: center;
+	margin: 2em auto 1em;
+	border-collapse: separate;
+	border-spacing: 0 1em;
+}
+
+table.defaultTable td {
+	border: solid 1px white;
+	border-left: none;
+	border-right: none;
+	padding: 0.5em;
+}
+
+table.defaultTable td:first-child {
+	border-top-left-radius: 16px;
+	border-bottom-left-radius: 16px;
+	border-left: solid 2px white;
+}
+
+table.defaultTable tbody th:first-child {
+	border: solid 1px white;
+	border-top-left-radius: 16px;
+	border-bottom-left-radius: 16px;
+	border-left: solid 2px white;
+}
+
+table.defaultTable td:last-child {
+	border-top-right-radius: 16px;
+	border-bottom-right-radius: 16px;
+	border-right: solid 2px white;
+}
 
 /*	Menu	*/
 /*
@@ -609,5 +643,78 @@ min-height: 465px;
 	margin-bottom: 1em;
 	border-radius: 4px;
 	cursor: pointer;
+}
+
+
+/* BACK-END */
+/* Aggiunta prodotti */
+#aggiunta_prodotti>h1{
+	margin-left: 1em;
+}
+
+#aggiunta_prodotti>form{
+	margin: 2em;
+}
+
+#aggiunta_prodotti fieldset{
+	max-width: 90em;
+	margin: auto;
+	text-align: center;
+}
+
+#aggiunta_prodotti fieldset>legend{
+	text-align: left;
+}
+
+#aggiunta_prodotti .formGroup{
+	margin: 0.5em 0.5em;
+}
+
+#aggiunta_prodotti form input[type=submit]{
+	background-color: #4a0715;
+    border: solid 4px #4a0715;
+    border-radius: 5px;
+	color: #d9d9d9;
+	display: block;
+	margin:auto;
+	margin-top: 1em;
+	font-size: 1.2em;
+}
+
+#aggiunta_prodotti form input[type=submit]:hover{
+	background-color: #990000;
+	border: solid 4px #990000;
+}
+
+#aggiunta_prodotti table>caption{
+	margin: 1em;
+	font-size:1.5em;
+}
+
+#aggiunta_prodotti form{
+	max-width: 26.875em;
+	margin: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+@media screen and (min-width : 30px) and (max-width : 530px) {
+    #aggiunta_prodotti form{
+		margin: 1em;
+	}
+}
+
+#aggiunta_prodotti form input:not([type=submit]){
+	display: block;
+	width: 100%;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 2px;
+	border-radius: 4px;
+}
+
+#aggiunta_prodotti table.defaultTable {
+	width: 95%;
 }
 
