@@ -192,6 +192,29 @@ body a:visited {
 	padding-top: 1em;
 }
 
+/* Form */
+.defaultForm{
+	max-width: 26.875em;
+	margin: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.defaultForm input:not([type=submit]){
+	display: block;
+	width: 100%;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 2px;
+	border-radius: 4px;
+}
+
+.defaultForm input[type=submit]{
+	display: block;
+	margin:auto;
+	font-size: 1.2em;
+}
 
 /*Gestione Profilo Admin*/
 
@@ -328,8 +351,6 @@ min-height: 465px;
     margin-bottom: 0.5em;
 }
 
-
-
 /* Successo */
 #successo{
 	display: block;
@@ -339,4 +360,182 @@ min-height: 465px;
 
 #successo img{
 	width: 18%;
+}
+
+/* Login */
+#login>p{
+	text-align: center;
+	font-weight: bold;
+}
+
+
+
+/* Recensioni */
+
+#recensioni {
+	width: 95%;
+	margin: auto;
+}
+
+#recensioni h2 {
+	color: #e0ac00;
+	margin: 0;
+}
+
+#recensioni h2 + p {
+	font-size: 0.8em;
+	padding: 0.2em;
+	margin: 0;
+}
+
+#recensioni h2 + p + p {
+	font-style: italic;
+	font-size: 0.8em;
+	padding: 0.2em;
+	margin: 0;
+}
+
+#recensioni h2 + p + p + p{
+	padding: 0.5em;
+	border: 1px solid #fff;
+	border-radius: 5px;
+	margin: 1em;
+	background-color: #4a0715;
+	line-height: 1.5em;
+}
+
+#recensioni form {
+	margin:auto;
+	margin-top: 2em;
+	margin-bottom: 1.5em;
+	max-width: 90%;
+	border-radius: 5px;
+}
+
+#recensioni textarea {
+	width: 99%;
+}
+
+#titolo_recensione, #testo_recensione {
+	display: block;
+	margin-top: 0.6em;
+	margin-bottom: 0.6em;
+}
+
+#recensioni form input[type=submit] {
+	margin-top: 0.3em;
+	border-radius: 5px;
+	float: right;
+	width: 4em;
+	height: 2em;
+	font-size: 1em;
+}
+
+
+/* Prodotti */
+#prodotti{
+    margin: 0 2em;
+}
+
+#prodotti dl, dt, dd{
+	margin: 0;
+	padding: 0;
+}
+
+#prodotti>dl>dd{
+	overflow: auto;
+	border: 1px solid #d9d9d9;
+    border-top: none;
+	margin-bottom: 2em;
+}
+
+#prodotti>dl>dt{
+	font-size: 1.5em;
+	padding: 0.2em 0em;
+	padding-left: 0.5em;
+	clear: both;
+	border: 1px solid #d9d9d9;
+	background-color: #4a0715;
+}
+
+#prodotti>dl>dt.prodotti_dispari+dd img{
+	float: left;
+	margin-right: 0.5em;
+}
+
+#prodotti>dl>dt.prodotti_pari+dd img{
+	float: right;
+	margin-left: 0.5em;
+}
+
+#prodotti img{
+	width: 20%;
+	min-width: 170px;
+}
+
+#prodotti>dl>dd>p{
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+}
+
+
+/* Pagamento*/
+
+#pagamento {
+	width: 90%;
+	margin: auto;
+	text-align: center;
+}
+
+#pagamento fieldset {
+	margin-top: 1em;
+}
+
+#pagamento p {
+	font-size: 0.9em;
+}
+
+#scelta_consegna input[type=radio] {
+	cursor: pointer;
+	display: inline;
+	width: 2em;
+}
+
+#scelta_consegna input[type=radio] + label {
+	display: inline;
+	cursor: pointer;
+	margin-right: 1em;
+}
+
+#info_pagamento input[name="cvv_carta"] {
+	display: inline;
+	width: 5em;
+}
+
+.selezione_big {
+	width: 100%;
+	margin-top: 0.5em;
+	padding: 0.3em;
+	border-radius: 4px;
+	font-size: 0.8em;
+}
+
+.selezione_small {
+	width: 6em;
+	margin: 0.5em;
+	padding: 0.3em;
+	border-radius: 4px;
+	font-size: 0.8em;
+}
+
+#navigazione input {
+	margin: auto;
+	width: 7em;
+	height: 2em;
+	margin-left: 0.4em;
+	margin-right: 0.4em;
+	font-size: 1em;
+	margin-bottom: 1em;
+	border-radius: 4px;
+	cursor: pointer;
 }
