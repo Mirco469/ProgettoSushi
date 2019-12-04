@@ -269,7 +269,7 @@ div#notizie {
 #menu_profilo {
     border: 2px solid grey;
     display: block;
-    width: 90%;
+    width: 95%;
     margin: auto;
     margin-top: 8%;
 }
@@ -291,7 +291,6 @@ div#notizie {
 
 
 #gestione_utente>form{
-	margin: 3%;
 	margin-top: 6%;
 	margin-bottom: 1em;
 }
