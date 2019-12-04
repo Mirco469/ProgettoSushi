@@ -54,6 +54,49 @@ body a:visited {
 	font-size: 1.2em;
 }
 
+
+/* Footer */
+
+#footer {
+  text-align: center;
+  background-color: #4a0715;
+	width: 100%;
+}
+
+#footer h2 {
+ font-size: 1em;
+}
+
+#footer p {
+	color: #d9d9d9;
+  font-size: 0.8em;
+  margin-bottom: 0;
+	padding: 0.5em;
+}
+
+.info > h2 {
+    color: #e0ac00;
+		text-align: center;
+		padding-top: 1em;
+}
+
+.info ul {
+	padding: 0;
+	list-style-type: none;
+}
+
+.info:nth-child(1) ul li:nth-child(2) {
+	padding-top: 1em;
+}
+
+
+
+.defaultForm input[type=submit]{
+	display: block;
+	margin:auto;
+	font-size: 1.2em;
+}
+
 /*	Tabelle	*/
 
 table.defaultTable {
@@ -91,7 +134,7 @@ table.defaultTable td:last-child {
 }
 
 /*	Menu	*/
-
+/*
 #menu {
 	background-color: #4a0715;
 	width: 100%;
@@ -135,7 +178,7 @@ table.defaultTable td:last-child {
 #menu > ul > li {
 	text-align: left;
 }
-
+*/
 /*
 #menu a {
 	display: block;
@@ -191,38 +234,65 @@ table.defaultTable td:last-child {
 }
 */
 
-/* Footer */
 
-#footer {
-  text-align: center;
-  background-color: #4a0715;
-	width: 100%;
+/* BACK END*/
+
+/* Home Admin */
+#home_admin {
+    margin: 1em;
 }
 
-#footer h2 {
- font-size: 1em;
+#home_admin>h1{
+    font-size: 2.1em;
+    margin-left: 5%;
 }
 
-#footer p {
-	color: #d9d9d9;
-  font-size: 0.8em;
-  margin-bottom: 0;
-	padding: 0.5em;
+#home_admin div dd {
+    padding-bottom: 0.5em;
 }
 
-.info > h2 {
-    color: #e0ac00;
-		text-align: center;
-		padding-top: 1em;
+#home_admin div {
+    border: 2px solid white;
+    margin: 0 5%;
 }
 
-.info ul {
-	padding: 0;
-	list-style-type: none;
+#home_admin div dl {
+    padding: 1em;
 }
 
-.info:nth-child(1) ul li:nth-child(2) {
-	padding-top: 1em;
+
+#home_admin div h1 {
+    padding-left: 1em;
+}
+
+#home_admin>form {
+margin-bottom: 5%; 
+}
+
+#home_admin input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
+	display: block;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 2px;
+	border-radius: 4px;
+    font-size: 0.8em;
+}
+
+#home_admin>form input[type=submit]{
+	display: block;
+	margin:auto;
+	font-size: 1.2em;
+}
+
+#home_admin fieldset {
+    margin: 0 5%; 
+}
+
+
+#home_admin fieldset textarea ,#home_admin fieldset input[type=text]  {
+    width: 95%;
+    font-size: 1em;
 }
 
 /* Front End */
@@ -247,6 +317,7 @@ div#notizie {
 #homeUtente h1 {
     font-size: 2.1em;
 }
+
 
 
 
@@ -297,6 +368,28 @@ min-height: 465px;
     margin-bottom: 0.5em;
 }
 
+
+
+/* Chi Siamo */
+
+#chi_siamo {
+    margin: 1em;
+}
+
+#chi_siamo>h1 {
+    font-size: 2.1em;
+}
+
+#chi_siamo div{
+	text-align: center;
+}
+
+#chi_siamo div>img {
+	max-width: 100%
+}
+
+
+
 /* Successo */
 #successo{
 	display: block;
@@ -307,6 +400,8 @@ min-height: 465px;
 #successo img{
 	width: 18%;
 }
+
+
 
 /* Login */
 #login>p{
