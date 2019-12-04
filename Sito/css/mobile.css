@@ -361,6 +361,78 @@ min-height: 465px;
 
 
 
+
+/* Takeaway */
+
+#take_away h1 {
+	margin-left: 0.5em;
+}
+
+#menu_list {
+	list-style: none;
+	margin-left: 1em;
+	width: 90%;
+}
+
+#menu_list dt {
+	font-variant: small-caps;
+}
+
+#menu_list  dd {
+	font-style: italic;
+	padding-bottom: 0.2em;
+	text-indent: -1em;
+}
+
+.lista_piatti {
+	width: 90%;
+	margin: auto;
+	line-height: 1.5em;
+	padding-bottom: 0.5em;
+}
+
+.lista_piatti h1 {
+	clear: both;
+	text-align: center;
+	font-variant: small-caps;
+	color: #e0ac00;
+}
+
+.lista_piatti dt {
+	clear: both;
+	padding: 0.5em;
+	margin: 0.5em;
+	border: 1px solid #000;
+	background-color: #4a0715;
+	font-weight: bold;
+}
+
+.lista_piatti dt + dd {
+	display: block;
+	float: right;
+	width: 15%;
+	text-align: right;
+	font-size: 1.2em;
+	padding-bottom: 0.5em;
+}
+
+.lista_piatti dt + dd + dd {
+	width: 80%;
+	font-style: italic;
+	padding-bottom: 0.5em;
+}
+
+#torna_su {
+	padding: 0.5em;
+	position: fixed;
+	bottom: 0.8em;
+	right: 0.8em;
+	z-index: 99;
+	border: 1px solid #000;
+	border-radius: 5px;
+	background-color: #333;
+}
+
 /* Login */
 #login>p{
 	text-align: center;
@@ -538,3 +610,4 @@ min-height: 465px;
 	border-radius: 4px;
 	cursor: pointer;
 }
+
