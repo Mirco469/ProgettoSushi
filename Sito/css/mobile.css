@@ -51,7 +51,6 @@ body a:visited {
 .defaultForm input[type=submit]{
 	display: block;
 	margin:auto;
-	font-size: 1.2em;
 }
 
 @media screen and (min-width : 30px) and (max-width : 530px) {
@@ -96,6 +95,16 @@ table.defaultTable td:last-child {
 	border-right: solid 2px white;
 }
 
+/* Bottoni */
+.defaultButton {
+	width: 7em;
+	height: 2em;
+	margin-left: 0.4em;
+	margin-right: 0.4em;
+	font-size: 1em;
+	margin-bottom: 1em;
+	border-radius: 4px;
+}
 
 /* Footer */
 
@@ -281,7 +290,6 @@ margin-bottom: 5%;
 #home_admin>form input[type=submit]{
 	display: block;
 	margin:auto;
-	font-size: 1.2em;
 }
 
 #home_admin fieldset {
@@ -638,18 +646,6 @@ min-height: 465px;
 	padding: 0.3em;
 	border-radius: 4px;
 	font-size: 0.8em;
-}
-
-#navigazione input {
-	margin: auto;
-	width: 7em;
-	height: 2em;
-	margin-left: 0.4em;
-	margin-right: 0.4em;
-	font-size: 1em;
-	margin-bottom: 1em;
-	border-radius: 4px;
-	cursor: pointer;
 }
 
 /* Gestione Profilo Utente */
