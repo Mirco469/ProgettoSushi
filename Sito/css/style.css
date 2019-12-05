@@ -816,7 +816,6 @@ min-height: 465px;
 #home_admin>form input[type=submit]{
 	display: block;
 	margin:auto;
-	font-size: 1.2em;
 }
 
 #home_admin fieldset {
