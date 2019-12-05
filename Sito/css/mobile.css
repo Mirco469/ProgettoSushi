@@ -645,6 +645,26 @@ min-height: 465px;
 	cursor: pointer;
 }
 
+/* Gestione Profilo Utente */
+#menu_profilo {
+	max-width: 26.875em;
+	margin: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	border-width: 2px;
+    border-style: groove;
+    border-color: threedface;
+}
+
+#menu_profilo h1 {
+	text-align: center;
+	color: #d9d9d9;
+}
+
+#menu_profilo ul li{
+	list-style-type: none;
+	margin-top: 1em;
+}
 
 /* BACK-END */
 /* Aggiunta prodotti */
@@ -716,5 +736,11 @@ min-height: 465px;
 
 #aggiunta_prodotti table.defaultTable {
 	width: 95%;
+}
+
+/* Gestione Profilo Admin */
+
+#gestione_admin h1 {
+	text-align: center;
 }
 
