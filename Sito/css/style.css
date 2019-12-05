@@ -108,6 +108,17 @@ table.defaultTable td:last-child {
 	border-right: solid 2px white;
 }
 
+/* Bottoni */
+.defaultButton {
+	width: 7em;
+	height: 2em;
+	margin-left: 0.4em;
+	margin-right: 0.4em;
+	font-size: 1em;
+	margin-bottom: 1em;
+	border-radius: 4px;
+}
+
 /*	Header	*/
  
 #logo {
@@ -333,9 +344,6 @@ table.defaultTable td:last-child {
 	background-color: #c82333;
 	border: solid 4px #c82333;
 }
-
-
-
 
 /*	Dettagli ordine (utente e admin)	*/
 
@@ -843,16 +851,6 @@ min-height: 465px;
 	display: inline;
 	cursor: pointer;
 	margin-right: 1em;
-}
-
-#navigazione input {
-	width: 7em;
-	height: 2em;
-	margin-left: 0.4em;
-	margin-right: 0.4em;
-	font-size: 1em;
-	margin-bottom: 1em;
-	border-radius: 4px;
 }
 
 #info_pagamento input[name="cvv_carta"] {
