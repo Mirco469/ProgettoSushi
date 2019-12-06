@@ -1,0 +1,26 @@
+\BOOKMARK [1][-]{section.1}{Introduzione}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Abstract}{section.1}% 2
+\BOOKMARK [1][-]{section.2}{Analisi}{}% 3
+\BOOKMARK [2][-]{subsection.2.1}{Analisi dell'utenza}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.2}{Casi d'uso}{section.2}% 5
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Utente non autenticato}{subsection.2.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Utente generico autenticato}{subsection.2.2}% 7
+\BOOKMARK [3][-]{subsubsection.2.2.3}{Amministratore}{subsection.2.2}% 8
+\BOOKMARK [1][-]{section.3}{Progettazione}{}% 9
+\BOOKMARK [2][-]{subsection.3.1}{Obiettivi}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.2}{Layout}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.3}{Accessibilit\340}{section.3}% 12
+\BOOKMARK [1][-]{section.4}{Implementazione}{}% 13
+\BOOKMARK [2][-]{subsection.4.1}{Linguaggi}{section.4}% 14
+\BOOKMARK [3][-]{subsubsection.4.1.1}{XHTML 1.0 Strict e HTML5}{subsection.4.1}% 15
+\BOOKMARK [3][-]{subsubsection.4.1.2}{CSS}{subsection.4.1}% 16
+\BOOKMARK [3][-]{subsubsection.4.1.3}{PHP}{subsection.4.1}% 17
+\BOOKMARK [3][-]{subsubsection.4.1.4}{SQL}{subsection.4.1}% 18
+\BOOKMARK [3][-]{subsubsection.4.1.5}{JavaScript}{subsection.4.1}% 19
+\BOOKMARK [1][-]{section.5}{Fase di test}{}% 20
+\BOOKMARK [2][-]{subsection.5.1}{Strumenti usati}{section.5}% 21
+\BOOKMARK [3][-]{subsubsection.5.1.1}{W3C HTML Validator}{subsection.5.1}% 22
+\BOOKMARK [3][-]{subsubsection.5.1.2}{W3C CSS Validator}{subsection.5.1}% 23
+\BOOKMARK [3][-]{subsubsection.5.1.3}{TotalValidator}{subsection.5.1}% 24
+\BOOKMARK [3][-]{subsubsection.5.1.4}{SonarCloud}{subsection.5.1}% 25
+\BOOKMARK [1][-]{section.6}{Organizzazione del lavoro}{}% 26
