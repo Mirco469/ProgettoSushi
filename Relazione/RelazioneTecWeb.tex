@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=blue
+}
+
+% Header e footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Sushi Nakamura}
+\fancyhead[R]{\leftmark}
+\fancyfoot[R]{pagina \thepage\ di \pageref{LastPage}}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\begin{document}
+	% Frontespizio
+	\begin{titlepage}
+		\begin{figure}[http]
+			\centering
+			\includegraphics[width=6cm]{logo.jpg}
+		\end{figure}
+	
+		\vspace*{2cm}
+		
+		{\huge\bfseries\centerline{Sushi Nakamura} }
+		\centerline{Progetto di Tecnologie Web A.A. 2019/2020}
+		
+		\vspace*{1cm}
+		{\bfseries \centerline{Informazioni sul gruppo}}
+		\begin{center}
+			\begin{tabular}{ c|l } 
+				Membri & Dindinelli Alessandro - XXXXXXX\\ 
+				& Frison Nicolò - XXXXXXX\\ 
+				& Giardina Mirco - 1136663\\
+				& Tommasin Alessandro - XXXXXXX\\ 
+			\end{tabular}
+		\end{center}
+		
+		\vspace*{\fill}
+		
+	\end{titlepage}
+	
+	% Pagina indici
+	\clearpage
+	\renewcommand*\contentsname{Indice}
+	\tableofcontents	
+	\newpage
+	
+	% Contenuto
+	\section{Introduzione}
+	\subsection{Abstract}
+	
+	\section{Analisi utenti}
+	
+	\section{Progettazione}
+	
+	\section{Implementazione}
+	
+	\section{Fase di test}
+	
+	\section{Organizzazione del lavoro}
+	
+\end{document}
