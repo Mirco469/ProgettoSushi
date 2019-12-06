@@ -83,9 +83,11 @@
 	\section{Fase di test}
 		\subsection{Strumenti usati}
 			\subsubsection{W3C HTML Validator}
+				Le pagine html sono state validate usando il validatore fornito dall'organizazione W3C per garantire la corretta visualizzazione del contenuto della pagina senza fare entrare i browser in {\bfseries Quirks Mode}. \'E stato usato anche per validare il risultato delle pagine php incollando il risultato ottenuto facendo eseguire lo script php.
 			\subsubsection{W3C CSS Validator}
 			\subsubsection{TotalValidator}
 			\subsubsection{SonarCloud}
+				Servizio integrato con GitHub per la verifica del codice nella repository. Ad ogni push veniva fatta un {\bfseries analisi statica} del codice alla ricerca di problemi e vulnerabilità come ad esempio un problema comune è stata la ripetizione rindondate di regole css. Questa fase di test era bloccante, ovvero perchè il codice venisse aggiunto dovevano prima essere risolti i problemi.
 	\section{Organizzazione del lavoro}
 		Il progetto è stato suddiviso in modo tale che ogni membro avesse la possibilità di creare sia alcune pagine HTML che il relativo CSS, facendo da verificatore nelle pagine degli altri membri.
 		Lo stesso può essere detto per quanto concerne PHP, JavaScript e la creazione ed il popolamento del database.
