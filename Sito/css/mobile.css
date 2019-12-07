@@ -744,11 +744,3 @@ min-height: 465px;
 	text-align: center;
 }
 
-
-
-/*	Gestione ordini e Storico Ordini	*/
-
-#gestione_ordini .defaultTable, #storico_ordini .defaultTable {
-	display: block;
-	overflow-x: auto;
-}
