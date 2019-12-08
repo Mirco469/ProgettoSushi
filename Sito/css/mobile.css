@@ -744,3 +744,35 @@ min-height: 465px;
 	text-align: center;
 }
 
+
+
+/*	Carrello	*/
+
+#carrello .defaultTable {
+	padding: 1em;
+}
+
+#carrello .defaultTable input {
+	white-space: nowrap;
+}
+
+#carrello input[type="text"] {
+	text-align: center;
+	width: 2.5em;
+}
+
+
+#carrello input {
+	border-radius: 5px;
+}
+
+#carrello input[name="rimuovi"] {
+    background-color: #dc3545;
+	border: solid 4px #dc3545;
+    border-radius: 5px;
+}
+
+#carrello input[name="rimuovi"]:hover {
+	background-color: #c82333;
+	border: solid 4px #c82333;
+}
