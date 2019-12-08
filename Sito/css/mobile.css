@@ -744,3 +744,11 @@ min-height: 465px;
 	text-align: center;
 }
 
+
+
+/*	Dettagli Ordine	*/
+
+#gestione_ordini .defaultTable, #storico_ordini .defaultTable {
+	display: block;
+	overflow-x: auto;
+}
