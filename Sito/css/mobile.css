@@ -62,11 +62,13 @@ body a:visited {
 /*	Tabelle	*/
 
 table.defaultTable {
-	width: 95%;
-	text-align: center;
+	display: block;
 	margin: 2em auto 1em;
 	border-collapse: separate;
 	border-spacing: 0 1em;
+	width: 95%;
+	overflow-x: auto;
+	text-align: center;
 }
 
 table.defaultTable td {
@@ -87,6 +89,7 @@ table.defaultTable tbody th:first-child {
 	border-top-left-radius: 16px;
 	border-bottom-left-radius: 16px;
 	border-left: solid 2px white;
+	padding: 0.5em;
 }
 
 table.defaultTable td:last-child {
@@ -748,7 +751,17 @@ min-height: 465px;
 
 /*	Dettagli Ordine	*/
 
-#gestione_ordini .defaultTable, #storico_ordini .defaultTable {
-	display: block;
-	overflow-x: auto;
+#dettagli_ordine {
+	padding: 1em;
+}
+
+#dettagli_ordine .data {
+	display: inline-block;
+	margin-top: 0;
+	width: 48%;
+}
+
+#dettagli_ordine .defaultTable {
+	margin-left: 0;
+	margin-right: 0;
 }
