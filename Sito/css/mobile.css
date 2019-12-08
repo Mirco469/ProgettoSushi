@@ -51,7 +51,6 @@ body a:visited {
 .defaultForm input[type=submit]{
 	display: block;
 	margin:auto;
-	font-size: 1.2em;
 }
 
 @media screen and (min-width : 30px) and (max-width : 530px) {
@@ -63,7 +62,7 @@ body a:visited {
 /*	Tabelle	*/
 
 table.defaultTable {
-	width: calc(100% - 16em);
+	width: 95%;
 	text-align: center;
 	margin: 2em auto 1em;
 	border-collapse: separate;
@@ -96,6 +95,16 @@ table.defaultTable td:last-child {
 	border-right: solid 2px white;
 }
 
+/* Bottoni */
+.defaultButton {
+	width: 7em;
+	height: 2em;
+	margin-left: 0.4em;
+	margin-right: 0.4em;
+	font-size: 1em;
+	margin-bottom: 1em;
+	border-radius: 4px;
+}
 
 /* Footer */
 
@@ -281,7 +290,6 @@ margin-bottom: 5%;
 #home_admin>form input[type=submit]{
 	display: block;
 	margin:auto;
-	font-size: 1.2em;
 }
 
 #home_admin fieldset {
@@ -535,12 +543,7 @@ min-height: 465px;
 }
 
 #recensioni form input[type=submit] {
-	margin-top: 0.3em;
-	border-radius: 5px;
 	float: right;
-	width: 4em;
-	height: 2em;
-	font-size: 1em;
 }
 
 
@@ -640,18 +643,6 @@ min-height: 465px;
 	font-size: 0.8em;
 }
 
-#navigazione input {
-	margin: auto;
-	width: 7em;
-	height: 2em;
-	margin-left: 0.4em;
-	margin-right: 0.4em;
-	font-size: 1em;
-	margin-bottom: 1em;
-	border-radius: 4px;
-	cursor: pointer;
-}
-
 /* Gestione Profilo Utente */
 #menu_profilo {
 	max-width: 26.875em;
@@ -747,14 +738,9 @@ min-height: 465px;
 	border-radius: 4px;
 }
 
-#aggiunta_prodotti table.defaultTable {
-	width: 95%;
-}
-
 /* Gestione Profilo Admin */
 
 #gestione_admin h1 {
 	text-align: center;
 }
-
 

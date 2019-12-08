@@ -2,3 +2,13 @@
 Sito/.DS_Store
 
 .DS_Store
+
+*.aux
+
+*.log
+
+*.out
+
+*.gz
+
+*.toc
