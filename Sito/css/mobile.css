@@ -744,3 +744,19 @@ min-height: 465px;
 	text-align: center;
 }
 
+
+
+/*	errore utente e admin	*/
+#errore {
+	padding-left: 1em;
+	padding-right: 1em;
+	min-height: 25em;
+}
+
+#errore img {
+	width: 100%;
+}
+
+#errore #testo {
+	font-size: 1em;
+}
