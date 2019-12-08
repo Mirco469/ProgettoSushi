@@ -62,7 +62,7 @@ body a:visited {
 /*	Tabelle	*/
 
 table.defaultTable {
-	width: calc(100% - 16em);
+	width: 95%;
 	text-align: center;
 	margin: 2em auto 1em;
 	border-collapse: separate;
@@ -738,14 +738,9 @@ min-height: 465px;
 	border-radius: 4px;
 }
 
-#aggiunta_prodotti table.defaultTable {
-	width: 95%;
-}
-
 /* Gestione Profilo Admin */
 
 #gestione_admin h1 {
 	text-align: center;
 }
-
 
