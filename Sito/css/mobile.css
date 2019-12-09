@@ -762,6 +762,15 @@ min-height: 465px;
 }
 
 #dettagli_ordine .defaultTable {
-	margin-left: 0;
-	margin-right: 0;
+	width: 100%;
+}
+
+#dettagli_ordine .defaultTable thead,
+#dettagli_ordine .defaultTable tbody {
+	width: 100%;
+}
+
+#dettagli_ordine .defaultTable th,
+#dettagli_ordine .defaultTable td {
+	width: 1%;
 }
