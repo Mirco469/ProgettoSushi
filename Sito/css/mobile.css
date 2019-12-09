@@ -71,7 +71,17 @@ table.defaultTable {
 	text-align: center;
 }
 
+table.defaultTable thead,
+table.defaultTable tbody {
+	width: 100%;
+}
+
+table.defaultTable th {
+	width: 1%;
+}
+
 table.defaultTable td {
+	width: 1%;
 	border: solid 1px white;
 	border-left: none;
 	border-right: none;
