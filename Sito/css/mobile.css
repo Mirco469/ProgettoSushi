@@ -768,4 +768,73 @@ min-height: 465px;
 #errore #testo {
 	font-size: 1em;
 	text-align: left;
+
+  
+  
+/*	Carrello	*/
+
+#carrello {
+	padding: 1em;
+}
+
+#carrello .defaultTable {
+	width: 100%;
+}
+
+#carrello .defaultTable thead,
+#carrello .defaultTable tbody {
+	width: 100%;
+}
+
+#carrello .defaultTable th,
+#carrello .defaultTable td {
+	width: 1%;
+}
+
+#carrello .defaultTable td:nth-child(3) {
+	white-space: nowrap;
+}
+
+#carrello input[type="text"] {
+	text-align: center;
+	max-width: 4em;
+}
+
+#carrello input {
+	min-width: 3em;
+	min-height: 3em;
+	border-radius: 5px;
+}
+
+#carrello input[name="rimuovi"] {
+    background-color: #dc3545;
+	border: solid 4px #dc3545;
+    border-radius: 5px;
+}
+
+#carrello input[name="rimuovi"]:hover {
+	background-color: #c82333;
+	border: solid 4px #c82333;
+}
+
+#carrello #paga {
+	display: block;
+	margin-top: 2em;
+	border: 4px solid #8a8a8a;
+	border-top-color: #dddddd;
+	border-left-color: #dddddd;
+	border-radius: 5px;
+	padding: 1em;
+	background-color: #dddddd;
+	width: calc(100% - 2em - 8px);
+	text-align: center;
+	text-decoration: none;
+	color: buttontext;
+}
+
+#carrello #paga:active {
+	border-top-color: #8a8a8a;
+	border-left-color: #8a8a8a;
+	border-bottom-color: #dddddd;
+	border-right-color: #dddddd;
 }
