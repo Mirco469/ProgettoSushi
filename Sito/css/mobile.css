@@ -749,6 +749,29 @@ min-height: 465px;
 
 
 
+/*	errore utente e admin	*/
+#errore {
+	padding-left: 1em;
+	padding-right: 1em;
+	min-height: 25em;
+	text-align: center;
+}
+
+#errore h1 {
+	text-align: left;
+}
+
+#errore img {
+	max-width: 60%;
+}
+
+#errore #testo {
+	font-size: 1em;
+	text-align: left;
+}
+  
+ 
+
 /*	Carrello	*/
 
 #carrello {
