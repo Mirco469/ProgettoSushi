@@ -71,7 +71,17 @@ table.defaultTable {
 	text-align: center;
 }
 
+table.defaultTable thead,
+table.defaultTable tbody {
+	width: 100%;
+}
+
+table.defaultTable th {
+	width: 1%;
+}
+
 table.defaultTable td {
+	width: 1%;
 	border: solid 1px white;
 	border-left: none;
 	border-right: none;
@@ -748,6 +758,44 @@ min-height: 465px;
 }
 
 
+/*	errore utente e admin	*/
+#errore {
+	padding-left: 1em;
+	padding-right: 1em;
+	min-height: 25em;
+	text-align: center;
+}
+
+#errore h1 {
+	text-align: left;
+}
+
+#errore img {
+	max-width: 60%;
+}
+
+#errore #testo {
+	font-size: 1em;
+	text-align: left;
+}
+  
+/*	Dettagli Ordine	*/
+
+#dettagli_ordine {
+	padding: 1em;
+}
+
+#dettagli_ordine .data {
+	display: inline-block;
+	margin-top: 0;
+	width: 48%;
+}
+
+#dettagli_ordine .defaultTable {
+	width: 100%;
+}
+
+
 
 /*	Carrello	*/
 
@@ -757,16 +805,6 @@ min-height: 465px;
 
 #carrello .defaultTable {
 	width: 100%;
-}
-
-#carrello .defaultTable thead,
-#carrello .defaultTable tbody {
-	width: 100%;
-}
-
-#carrello .defaultTable th,
-#carrello .defaultTable td {
-	width: 1%;
 }
 
 #carrello .defaultTable td:nth-child(3) {
