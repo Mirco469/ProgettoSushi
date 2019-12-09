@@ -751,21 +751,37 @@ min-height: 465px;
 
 /*	Carrello	*/
 
-#carrello .defaultTable {
+#carrello {
 	padding: 1em;
 }
 
-#carrello .defaultTable input {
+#carrello .defaultTable {
+	width: 100%;
+}
+
+#carrello .defaultTable thead,
+#carrello .defaultTable tbody {
+	width: 100%;
+}
+
+#carrello .defaultTable th,
+#carrello .defaultTable td {
+	width: 1%;
+}
+
+#carrello .defaultTable td:nth-child(3) {
 	white-space: nowrap;
 }
 
 #carrello input[type="text"] {
 	text-align: center;
-	width: 2.5em;
+	max-width: 4em;
 }
 
 
 #carrello input {
+	min-width: 3em;
+	min-height: 3em;
 	border-radius: 5px;
 }
 
