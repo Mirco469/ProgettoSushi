@@ -76,6 +76,21 @@
 	\section{Implementazione}
 		\subsection{Linguaggi}
 			\subsubsection{XHTML 1.0 Strict e HTML5}
+			Come già detto, per la realizzazione del sito si è optato per avere sia pagine in XHTML 1.0 Strict, che in HTML5. L'uso di XHTML 1.0 garantisce una migliore retrocompatibilità con browsers più datati ed una migliore aderenza del codice agli standard di correttezza, ma HTML5 permette di sfruttare alcune funzionalità aggiuntive che abbiamo sfruttato ad esempio in vari form per inserire input di tipo \textit{date}, utilizzare \textit{placeholder} o per rendere dei campi \textit{required} in modo da chiarire e migliorare l'usabilità del sito. In entrambi i casi per ottenere codice pulito si sono seguiti i seguenti principi:
+			\begin{itemize}
+			    \item Mantenere la separazione tra struttura e presentazione, usando file separati linkati nell'header;
+			    \item Ogni $<$tag$>$ aperto deve essere poi chiuso $<$/tag$>$ (oppure $<$tag /$>$);
+			    \item I tag di intestazione vanno usati in base all'importanza di ciò che racchiudono, e non in base all'estetica base html;
+			\end{itemize}
+			\newline In generale, per garantire un codice corretto, sono state seguite le linee guida che sono state illustrate durante il corso di Tecnologie Web e quelle dello standard W3C. La verifica del codice è stata poi effettuata  utilizzando il tool di validazione W3C Validator%
+			\footnote{Riferimento al sito di  \href{https://validator.w3.org/}{W3C Validator}.},
+			 la piattaforma SonarCloud% 
+			\footnote{Riferimento al sito di  \href{https://sonarcloud.io/about}{SonarCloud}.}
+			 integrata con GitHub
+			ed il software di validazione di siti Total Validator.%
+			\footnote{Riferimento al sito di  \href{https://www.totalvalidator.com/}{Total Validator}.}
+			\newline Si è prestata attenzione al ruolo dei metatag nell'header, il cui buon uso migliora anche l'indicizzazione del sito da parte dei motori di ricerca, aspetto fondamentale per un'attività commerciale che voglia ricevere un'adeguata visibilità nel web.
+			\newline Si è deciso di fare uso anche di tabelle, rendendole più agevolmente accessibili tramite l'uso di adeguati \textit{summary}, e di \textit{scope} su colonne e righe di interesse.
 			\subsubsection{CSS}
 			\subsubsection{PHP}
 			\subsubsection{SQL}
