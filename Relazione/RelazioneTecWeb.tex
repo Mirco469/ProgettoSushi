@@ -75,13 +75,15 @@
 		\begin{itemize}
 		    \item \textbf{Separazione tra struttura, presentazione e comportamento:}
 		    Obiettivo fondamentale, in quanto raggiungerlo permette di soddisfare più agevolmente anche gli altri punti. 
-		    La struttura è stata realizzata con documenti in XHTML 1.0 Strict dove possibile, così da garantire una maggiore retrocompatibilità con vecchi browsers, ed HTML5 dove si sono ritenute necessarie le funzionalità aggiuntive permesse dal linguaggio. Tutto il codice redatto è stato scritto secondo le raccomandazioni W3C, accertando che fossero state rispettate tramite validazione. 
+		    La struttura è stata realizzata con documenti in XHTML 1.0 Strict dove possibile, così da garantire una maggiore retrocompatibilità con vecchi browsers, ed HTML5 dove si sono ritenute necessarie le funzionalità aggiuntive permesse dal linguaggio. 
 		    La presentazione è stata sviluppata con fogli di stile CSS linkati, mentre il comportamento con script esterni realizzati in Javascript e PHP. In questo modo la struttura non dovrà cambiare, anche a seguito di modifiche alla presentazione del sito.
+		    Tutto il codice redatto è stato scritto secondo le raccomandazioni W3C, accertando poi che siano state rispettate, validando HTML e CSS con i rispettivi tool di W3C.
 		    \item \textbf{Accessibilità:}
 		    Il sito deve poter essere fruibile agevolmente dal maggior numero di utenti possibile, compresi quelli con differenti tipi di disabilità. Per garantire una buona accessibilità, alcune misure adottate sono:
 		    \begin{itemize}
 		        \item Uso dei tabindex nel menù di navigazione;
 		        \item Testo alternativo per le immagini;
+		        \item Assenza di link circolari;
 		        \item Testi e link con buoni livelli di contrasto;
 		        \item Uso dell'attributo lang per testi non in italiano;
 		    \end{itemize}
@@ -90,7 +92,7 @@
 		    \item \textbf{Fruibilità:}
 		    Per realizzare un sito navigabile intuitivamente si sono seguite alcune linee guida comuni nel web, come ad esempio:
 		    \begin{itemize}
-		        \item Sfruttare un layout a tre pannelli (per riferimento vedere il capitolo 3.2 Layout METTERE UN RIFERIMENTO?);
+		        \item Sfruttare un layout ben strutturato, che faciliti l'individuazione del contenuto di interesse;
 		        \item Agevolare lo scroll tramite link relativi per raggiungere diversi punti di una stessa pagina;
 		        \item Mantenere colorazioni diverse per link visitati e non;
 		    \end{itemize}
