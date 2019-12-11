@@ -6,12 +6,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
 	
 	if( deviceWidth <= 900 ) {
 		window.addEventListener("click",function(e) {
-			toggleMenu(e);
+			toggleMenu();
 		});
 
 		document.getElementById("menu").getElementsByTagName("ul")[0].addEventListener("click",function(e) {
 			e.stopPropagation();	// fa in modo che venga eseguito solo questo ascoltatore
-			toggleMenu(e);
+			toggleMenu();
 		});
 	}
 });
@@ -21,12 +21,12 @@ var open = false;
 function toggleMenu() {
 	if(open) {
 		document.getElementById("menu").classList.remove("open");
-		document.getElementsByTagName("body")[0].style.overflow = "auto";
+		document.getElementsByTagName("body")[0].classList.remove("noScroll");
 		open = false;
 		//console.log("Menu aperto: "+open);
 	} else {
 		document.getElementById("menu").classList.add("open");
-		document.getElementsByTagName("body")[0].style.overflow = "hidden";
+		document.getElementsByTagName("body")[0].classList.add("noScroll");
 		open = true;
 		//console.log("Menu aperto: "+open);
 	}
