@@ -176,6 +176,22 @@ body a:visited {
 
 
 
+/*	Breadcrumb	*/
+
+#breadcrumb {
+  text-align: left;
+  background-color: #1f1d1d;
+  color: #f5e900;
+  padding: 0.1em;
+  padding-left: 1em;
+}
+
+#breadcrumb > p{
+  margin:0;
+}
+
+
+
 /* Form */
 .defaultForm{
 	max-width: 26.875em;
