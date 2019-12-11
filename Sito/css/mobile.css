@@ -108,7 +108,6 @@ body a:visited {
 
 #menu > ul li {
 	margin-left: calc(100% + 0.5em);
-	height: 0;
 	list-style-type: none;
 }
 
