@@ -628,7 +628,6 @@ table.defaultTable td:last-child {
 
 /* Hide the images by default */
 .mySlides {
-	display: none;
 	text-align: center;
 }
 

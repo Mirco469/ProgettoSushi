@@ -1,7 +1,8 @@
+var slideIndex = 0;
+
 document.addEventListener('DOMContentLoaded', (event) => {
     //console.log('DOM completamente caricato e analizzato');
   
-  var slideIndex = 1;
   showSlides(slideIndex);
 
   // funzione per salvare la larghezza dello schermo
@@ -9,12 +10,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
   
   if( deviceWidth <= 900 ) {
     window.addEventListener("click",function(e) {
-      toggleMenu();
+		if( open ) {
+			toggleMenu();
+		}
     });
 
     document.getElementById("menu").getElementsByTagName("ul")[0].addEventListener("click",function(e) {
-      e.stopPropagation();  // fa in modo che venga eseguito solo questo ascoltatore
-      toggleMenu();
+		// fa in modo che venga eseguito solo questo ascoltatore
+		e.stopPropagation();  
+		toggleMenu();
     });
   }
 });
@@ -35,8 +39,6 @@ function toggleMenu() {
   }
 }
 
-  var slideIndex = 1;
-
   // Next/previous controls
   function plusSlides(n) {
     showSlides(slideIndex += n);
@@ -51,16 +53,20 @@ function toggleMenu() {
     var i;
     var slides = document.getElementsByClassName("mySlides");
     var dots = document.getElementsByClassName("dot");
-    var n = 1;
-    if (n > slides.length) {slideIndex = 1} 
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
+	
+    if (n >= slides.length) {slideIndex = 0} 
+    if (n < 0) {slideIndex = slides.length}
+    
+	// display: none a tutte le immagini dello slideshow e toglie la classe active da tutti i punti sotto le slideshow
+	for (i = 0; i < slides.length; i++) {
         slides[i].classList.add("nascondi");
     }
     for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
+        dots[i].classList.remove("active");
     }
-    slides[slideIndex-1].classList.remove("nascondi"); 
-    dots[slideIndex-1].className += " active";
+	
+	// si toglie display: none dall'immagine da mostrare corrente e si setta il punto attivo
+    slides[slideIndex].classList.remove("nascondi");
+    dots[slideIndex].classList.add("active");
   }
 
