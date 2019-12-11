@@ -1,3 +1,4 @@
+
 var slideIndex = 0;
 
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -21,11 +22,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
 		toggleMenu();
     });
   }
+
 });
 
 var open = false;
 // funzione per aprire e chiudere il menu
 function toggleMenu() {
+
   if(open) {
     document.getElementById("menu").classList.remove("open");
     document.getElementsByTagName("body")[0].classList.remove("noScroll");
@@ -69,4 +72,5 @@ function toggleMenu() {
     slides[slideIndex].classList.remove("nascondi");
     dots[slideIndex].classList.add("active");
   }
+
 
