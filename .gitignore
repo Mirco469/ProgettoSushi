@@ -12,3 +12,7 @@ Sito/.DS_Store
 *.gz
 
 *.toc
+
+*.fdb_latexmk
+
+*.fls
