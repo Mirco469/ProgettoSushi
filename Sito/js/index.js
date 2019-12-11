@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 	
 	if( deviceWidth <= 900 ) {
 		window.addEventListener("click",function(e) {
-			toggleMenu();
+			if( open ) {
+				toggleMenu();
+			}
 		});
 
 		document.getElementById("menu").getElementsByTagName("ul")[0].addEventListener("click",function(e) {
