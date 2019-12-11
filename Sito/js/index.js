@@ -40,24 +40,24 @@ function toggleMenu() {
 }
 
   // Next/previous controls
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
+  function plusSlides(selected) {
+    showSlides(slideIndex += selected);
   }
 
   // Thumbnail image controls
-  function currentSlide(n) {
-    showSlides(slideIndex = n);
+  function currentSlide(selected) {
+    showSlides(slideIndex = selected);
   }
 
-  function showSlides(n) {
-    var i;
+  function showSlides(selected) {
     var slides = document.getElementsByClassName("mySlides");
     var dots = document.getElementsByClassName("dot");
 	
-    if (n >= slides.length) {slideIndex = 0} 
-    if (n < 0) {slideIndex = slides.length}
+    if (selected >= slides.length) {slideIndex = 0} 
+    if (selected < 0) {slideIndex = slides.length}
     
 	// display: none a tutte le immagini dello slideshow e toglie la classe active da tutti i punti sotto le slideshow
+	var i = 0;
 	for (i = 0; i < slides.length; i++) {
         slides[i].classList.add("nascondi");
     }
