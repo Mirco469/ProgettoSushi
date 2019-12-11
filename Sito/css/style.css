@@ -705,6 +705,10 @@ table.defaultTable td:last-child {
 	to {opacity: 1}
 }
 
+.nascondi {
+	display: none;
+}
+
 div#notizie {
     float: right;
     border: 1px solid white;
