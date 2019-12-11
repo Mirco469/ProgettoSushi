@@ -611,8 +611,8 @@ table.defaultTable td:last-child {
     margin: 1em;
 }
 
-.mySlidesFade>img {
-	width: 100%;
+.mySlides >img {
+	max-width: 100%;
 }
 #dots {
 	text-align: center;
@@ -637,7 +637,7 @@ table.defaultTable td:last-child {
 	position: absolute;
 	top: 50%;
 	width: auto;
-	margin-top: -2em;
+	margin-top: -5.8em;
 	padding: 0.3em;
 	color: white;
 	font-weight: bold;
@@ -645,7 +645,8 @@ table.defaultTable td:last-child {
 	transition: 0.6s ease;
 	border-radius: 0 3px 3px 0;
 	user-select: none;
-	vertical-align: center;
+	padding: 5em 0.8em;
+
 }
 
 /* Position the "next button" to the right */
