@@ -235,6 +235,31 @@ table.defaultTable td:last-child {
 	text-align: left;
 }
 
+#carrello #paga {
+	display: block;
+	margin-left: auto;
+	margin-right: 2em;
+	margin-top: 1em;
+	margin-bottom: 2em;
+	border: 4px solid #8a8a8a;
+	border-top-color: #dddddd;
+	border-left-color: #dddddd;
+	border-radius: 5px;
+	padding: 1em;
+	width: 20%;
+	background-color: #dddddd;
+	text-align: center;
+	text-decoration: none;
+	color: buttontext;
+}
+
+#carrello #paga:active {
+	border-top-color: #8a8a8a;
+	border-left-color: #8a8a8a;
+	border-bottom-color: #dddddd;
+	border-right-color: #dddddd;
+}
+
 
 
 /*	Breadcrumb	*/
