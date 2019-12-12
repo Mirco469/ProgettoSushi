@@ -57,7 +57,7 @@ function toggleMenu() {
     var dots = document.getElementsByClassName("dot");
 	
     if (selected >= slides.length) {slideIndex = 0} 
-    if (selected < 0) {slideIndex = slides.length}
+    if (selected < 0) {slideIndex = slides.length - 1}
     
 	// display: none a tutte le immagini dello slideshow e toglie la classe active da tutti i punti sotto le slideshow
 	var i = 0;
