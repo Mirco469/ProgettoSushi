@@ -199,6 +199,18 @@ table.defaultTable td:last-child {
 	page-break-inside: avoid;
 }
 
+#scelta_consegna input[type=radio] + label {
+	display: inline;
+	cursor: pointer;
+	margin-right: 1em;
+}
+
+#scelta_consegna input[type=radio] {
+	cursor: pointer;
+	display: inline;
+	width: 2em;
+}
+
 #info_pagamento input[name="cvv_carta"] {
 	display: inline;
 	width: 15mm;
