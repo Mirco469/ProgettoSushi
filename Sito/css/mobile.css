@@ -328,6 +328,109 @@ table.defaultTable td:last-child {
     margin: 1em;
 }
 
+.mySlides>img {
+	max-height: 15em;
+
+}
+#dots {
+	text-align: center;
+}
+
+/* Slideshow container */
+#slideshow_home {
+	clear: both;	
+	max-width: 90%;
+	position: relative;
+	margin: auto;
+
+}
+
+/* Hide the images by default */
+.mySlides {
+	text-align: center;
+	max-width: 100%;
+	overflow: hidden;
+
+}
+
+/* Next & previous buttons */
+.prev, .next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	margin-top: -3.7em;
+	padding: 0.3em;
+	color: white;
+	font-weight: bold;
+	font-size: 2em;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+	padding-top: 3.3em;
+	padding-bottom: 3.1em;
+	}
+
+/* Position the "next button" to the right */
+.next {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+	background-color: rgba(0,0,0,0.8);
+}
+
+
+/* Number text (1/9 etc) */
+.numberText {
+	color: #f2f2f2;
+	font-size: 0.7em;
+	padding: 3% 5%;
+	position: absolute;
+	top: 0;
+}
+
+/* The dots */
+.dot {
+	cursor: pointer;
+	height: 0.7em;
+	width: 0.7em;
+	margin: 0 0.1em;
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+	background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+	margin-top: 15%;
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 1.5s;
+	animation-name: fade;
+	animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+	from {opacity: .4} 
+	to {opacity: 1}
+}
+
+@keyframes fade {
+	from {opacity: .4} 
+	to {opacity: 1}
+}
+
+.nascondi {
+	display: none;
+}
+
 #home_admin>h1{
     font-size: 2.1em;
     margin-left: 5%;
@@ -392,6 +495,7 @@ div#notizie {
     padding-left: 2em;
     padding-right: 2em;
     max-width: 85%;
+    margin-bottom: 1em;
 }
 
 #notizie dt {
