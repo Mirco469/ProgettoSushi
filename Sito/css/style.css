@@ -724,6 +724,10 @@ div#notizie {
     font-size: 1em;
 }
 
+#gestione_utente input[type=submit]	{
+	margin-top: 1em;
+}
+
 
 /*Gestione Profilo Admin*/
 
