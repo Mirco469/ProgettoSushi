@@ -495,6 +495,7 @@ div#notizie {
     padding-left: 2em;
     padding-right: 2em;
     max-width: 85%;
+    margin-bottom: 1em;
 }
 
 #notizie dt {
