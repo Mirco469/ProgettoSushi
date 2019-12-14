@@ -749,8 +749,15 @@ min-height: 465px;
 	}
 }
 
+#gestione_utente input[type=submit]	{
+	margin-top: 1em;
+}
+
+
 /* BACK-END */
+
 /* Aggiunta prodotti */
+
 #aggiunta_prodotti>h1{
 	margin-left: 1em;
 }
