@@ -537,7 +537,7 @@ min-height: 465px;
 .lista_piatti dt + dd {
 	display: block;
 	float: right;
-	width: 15%;
+	width: 20%;
 	text-align: right;
 	font-size: 1.2em;
 	padding-bottom: 0.5em;
