@@ -60,7 +60,15 @@
 					<span>Prezzo: 0.00€</span>
                 </dd>
 				
-				<dt>Uramaki Maguro - <a href="prodotti.html#uramaki" lang="ja">Uramaki</a> <input class="rimuovi" type="button" name="rimuovi" value="Rimuovi" /></dt>
+				<dt>Hosomaki Maguro - <a href="prodotti.html#uramaki" lang="ja">Uramaki</a> <input class="rimuovi" type="button" name="rimuovi" value="Rimuovi" /></dt>
+                <dd>
+					<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
+					<input type="text" name="quantita" value="1" /><!-- numero prodotto -->
+					<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
+					<span>Prezzo: 0.00€</span>
+                </dd>
+				
+				<dt>Tiramis&ugrave; - <a href="prodotti.html#dessert" lang="fr">Dessert</a> <input class="rimuovi" type="button" name="rimuovi" value="Rimuovi" /></dt>
                 <dd>
 					<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
 					<input type="text" name="quantita" value="1" /><!-- numero prodotto -->
@@ -68,76 +76,6 @@
 					<span>Prezzo: 0.00€</span>
                 </dd>
 			</dl>
-			
-			
-			
-			<!-- Inizio lista_ordini -->
-			<table class="defaultTable" summary="Lista prodotti del carrello">
-				<thead>
-					<tr>
-						<th scope="col">Nome prodotto</th>
-						<th scope="col">Categoria</th>
-						<th scope="col">Porzioni</th>
-						<th scope="col">Prezzo</th>
-						<th scope="col">Operazioni</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th scope="row" lang="ja">Uramaki Maguro</th>
-						<td><a href="prodotti.html#uramaki" lang="ja">Uramaki</a></td>
-						<td>
-							<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
-							<input type="text" name="quantita" value="1" /><!-- numero prodotto -->
-							<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
-						</td>
-						<td>0.00€</td>
-						<td>
-							<input class="rimuovi" type="button" name="rimuovi" value="Rimuovi" />
-						</td>
-					</tr>
-					<tr>
-						<th scope="row" lang="ja">Hosomaki Maguro</th>
-						<td><a href="prodotti.html#hosomaki" lang="ja">Hosomaki</a></td>
-						<td>
-							<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
-							<input type="text" name="quantita" value="4" /><!-- numero prodotto -->
-							<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
-						</td>
-						<td>0.00€</td>
-						<td>
-							<input class="rimuovi" type="button" name="rimuovi" value="Rimuovi" />
-						</td>
-					</tr>
-					<tr>
-						<th scope="row" lang="ja">Hosomaki Sake</th>
-						<td><a href="prodotti.html#hosomaki" lang="ja">Hosomaki</a></td>
-						<td>
-							<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
-							<input type="text" name="quantita" value="4" /><!-- numero prodotto -->
-							<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
-						</td>
-						<td>0.00€</td>
-						<td>
-							<input class="rimuovi" type="button" name="rimuovi" value="Rimuovi" />
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">Tiramis&ugrave;</th>
-						<td><a href="prodotti.html#dessert" lang="fr">Dessert</a></td>
-						<td>
-							<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
-							<input type="text" name="quantita" value="10" /><!-- numero prodotto -->
-							<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
-						</td>
-						<td>0.00€</td>
-						<td>
-							<input class="rimuovi" type="button" name="rimuovi" value="Rimuovi" />
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<!-- Fine lista_ordini -->
 			
 			<p class="totaleText">Totale: <span>0.00€</span></p>
 			
