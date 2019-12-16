@@ -366,10 +366,6 @@ table.defaultTable td:last-child {
 /* LATO UTENTE*/
 /*	carrello	*/
 
-#carrello table tbody td:first-child {
-	text-align: left;
-}
-
 #carrello input[type="text"] {
 	text-align: center;
 	width: 2.5em;
@@ -641,6 +637,10 @@ table.defaultTable td:last-child {
 	margin-left: 1em;
 }
 
+#aggiunta_prodotti>h2{
+	text-align: center;
+}
+
 #aggiunta_prodotti>form{
 	margin: 2em;
 }
@@ -670,11 +670,6 @@ table.defaultTable td:last-child {
 #aggiunta_prodotti form input[type=submit]:hover{
 	background-color: #990000;
 	border: solid 4px #990000;
-}
-
-#aggiunta_prodotti table>caption{
-	margin: 1em;
-	font-size:1.5em;
 }
 
 /*Home Utente*/
