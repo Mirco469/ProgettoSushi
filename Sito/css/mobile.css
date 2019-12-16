@@ -1,4 +1,9 @@
 /* Generale */
+* {
+	margin: 0;
+	padding: 0;
+}
+
 html {
 	height: 100%;
 }
@@ -20,6 +25,10 @@ body a:visited {
 	color: #e0ac00;
 }
 
+.noScroll {
+	overflow: hidden;
+}
+
 .content, .info {
     color: #d9d9d9;
 }
@@ -29,6 +38,163 @@ body a:visited {
 	height: 0;
 	overflow: hidden;
 }
+
+
+
+/*	Header	*/
+
+#logo {
+	display: block;
+	margin-top: auto;
+	margin-bottom: auto;
+	float: left;
+	width: 20%;
+	height: 100%;
+	background-image: url(../img/logo_round.png);
+	background-position: center;
+	-moz-background-size: auto 100%;
+	-webkit-background-size: auto 100%;
+	background-size: auto 100%;
+	background-repeat: no-repeat;
+	opacity: 0.8;
+}
+
+#header {
+	margin: 0em;
+	padding: 0.5em;
+	width: calc(100% - 1em);
+	height: calc(80px - 1em);
+	/*background-color: #4a0715;*/
+	text-align: center;
+	font-size: 1em;
+	color: #e0ac00;
+	z-index: 1;
+	
+	background: url(../img/menu_bars100_white.png) no-repeat;
+    background-position: 96%;
+    -moz-background-size: 3em;
+    -webkit-background-size: 3em;
+    background-size: 3em;
+    background-color: #4a0715;
+}
+
+#header h1 {
+	margin: auto;
+	width: 60%;
+	height: 100%;
+    font-size: 150%;
+    line-height: 100%;
+}
+
+
+
+/*	Menu	*/
+
+#menu {
+	position: fixed;
+	top: 0;
+	right: 0;
+	padding: 0.5em;
+	width: calc(20% - 1em);
+	height: calc(80px - 1em);
+    font-size: 1.2em;
+	z-index: 1;
+}
+
+#menu > ul {
+	width: 100%;
+	height: 100%;
+}
+
+#menu > ul li {
+	margin-left: calc(100% + 0.5em);
+	list-style-type: none;
+}
+
+#menu.open {
+	top: 80px;
+	bottom: 0;
+	width: 100%;
+	height: auto;
+	background-color: rgba(31,29,29,0.5);
+}
+
+#menu.open > ul {
+	position: fixed;
+	top: 80px;
+	bottom: 0;
+	left: 20%;
+	right: 0;
+	width: 90%;
+	background-color: #4a0715;
+	float: right;
+}
+
+#menu.open ul li {
+	margin: 0;
+	border-top: solid 1px white;
+	list-style-type: none;
+}
+
+#menu.open #dropdown_content {
+	padding-left: 2em;
+}
+
+#menu.open #dropdown_content li:first-child {
+	border-top: unset;
+}
+
+#active, #dropbtn {
+    display: block;
+    padding: 2% 0;
+    padding-left: 1em;
+    text-decoration: none;
+	color: #f5e900;
+}
+
+#menu.open a {
+	display: block;
+    padding: 2% 0;
+    padding-left: 1em;
+    text-decoration: none;
+}
+
+#active {
+	background-color: #1f1d1d;
+	font-weight: bold;
+}
+
+#dropbtn {
+    border-bottom: solid 1px white;
+    color: white;
+	cursor: pointer;
+}
+
+#menu .impostazioni li:last-child {
+    border-bottom: 1px solid white;
+}
+
+#menu .login {
+    border-bottom: 1px solid white;
+}
+
+
+
+/*	Breadcrumb	*/
+
+#breadcrumb {
+  text-align: left;
+  background-color: #1f1d1d;
+  color: #f5e900;
+  padding: 0.1em;
+  padding-left: 1em;
+}
+
+#breadcrumb > p{
+  margin:0;
+}
+
+
 
 /* Form */
 .defaultForm{
@@ -154,113 +320,115 @@ table.defaultTable td:last-child {
 }
 
 
-/*	Menu	*/
-/*
-#menu {
-	background-color: #4a0715;
-	width: 100%;
-	height: 50px;
-	font-size: 1.2em;
-}
-
-#menu > ul {
-	padding: 50px;
-	background: url("../img/menu_bars50.png") no-repeat;
-	background-position: top right;
-	height: 100%;
-	margin: 0;
-	overflow: hidden;
-}
-
-#menu li {
-	position: absolute;
-	right: -200px;
-}
-
-#menu > ul:hover {
-	position: fixed;
-	right: 0;
-	width: 80%;
-	background-color: #4a0715;
-}
-
-#menu > ul:hover li {
-	height: auto;
-}
-
-#menu > ul:hover li {
-	position: static;
-}
-
-#menu ul li {
-	list-style-type: none;
-}
-
-#menu > ul > li {
-	text-align: left;
-}
-*/
-/*
-#menu a {
-	display: block;
-	padding: 0.6em;
-	text-decoration: none;
-}
-
-#menu a:hover {
-	background-color: #33050e;
-}
-
-#active {
-	color: #f5e900;
-	display: block;
-	padding: 0.6em;
-	text-align: center;
-	font-weight: bold;
-	background-color: #1f1d1d;
-}
-
-#dropbtn {
-	display: block;
-	padding: 0.6em;
-	color: #f5e900;
-	font-size: 1em;
-	cursor: pointer;
-}
-
-#dropbtn:hover {
-	background-color: #33050e;
-}
-
-#dropdown_content {
-	position: absolute;
-	height: 0;
-    overflow: hidden;
-}
-
-#menu .impostazioni:hover #dropdown_content {
-	height: auto;
-}
-
-#dropdown_content a {
-	padding: 0.3em;
-	padding-left: 0.8em;
-	text-align: left;
-}
-
-#dropdown_content #active {
-	padding: 0.3em;
-	padding-left: 0.8em;
-	text-align: left;
-}
-*/
-
 
 /* BACK END*/
 
 /* Home Admin */
 #home_admin {
     margin: 1em;
+}
+
+.mySlides>img {
+	max-height: 15em;
+
+}
+#dots {
+	text-align: center;
+}
+
+/* Slideshow container */
+#slideshow_home {
+	clear: both;	
+	max-width: 90%;
+	position: relative;
+	margin: auto;
+
+}
+
+/* Hide the images by default */
+.mySlides {
+	text-align: center;
+	max-width: 100%;
+	overflow: hidden;
+
+}
+
+/* Next & previous buttons */
+.prev, .next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	margin-top: -3.7em;
+	padding: 0.3em;
+	color: white;
+	font-weight: bold;
+	font-size: 2em;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+	padding-top: 3.3em;
+	padding-bottom: 3.1em;
+	}
+
+/* Position the "next button" to the right */
+.next {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+	background-color: rgba(0,0,0,0.8);
+}
+
+
+/* Number text (1/9 etc) */
+.numberText {
+	color: #f2f2f2;
+	font-size: 0.7em;
+	padding: 3% 5%;
+	position: absolute;
+	top: 0;
+}
+
+/* The dots */
+.dot {
+	cursor: pointer;
+	height: 0.7em;
+	width: 0.7em;
+	margin: 0 0.1em;
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+	background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+	margin-top: 15%;
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 1.5s;
+	animation-name: fade;
+	animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+	from {opacity: .4} 
+	to {opacity: 1}
+}
+
+@keyframes fade {
+	from {opacity: .4} 
+	to {opacity: 1}
+}
+
+.nascondi {
+	display: none;
 }
 
 #home_admin>h1{
@@ -327,6 +495,7 @@ div#notizie {
     padding-left: 2em;
     padding-right: 2em;
     max-width: 85%;
+    margin-bottom: 1em;
 }
 
 #notizie dt {
