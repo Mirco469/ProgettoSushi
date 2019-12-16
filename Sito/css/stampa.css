@@ -302,22 +302,6 @@ table.defaultTable td:last-child {
 	border: solid 4px;
 }
 
-#aggiunta_prodotti table{
-	width: 90%;
-	text-align: center;
-	margin: auto;
-	margin-bottom: 2em;
-}
-
-#aggiunta_prodotti table, #aggiunta_prodotti th, #aggiunta_prodotti td{
-	border: 1px solid;
-	border-collapse: collapse;
-}
-
-#aggiunta_prodotti th, #aggiunta_prodotti td{
-	padding: 0.4em;
-}
-
 #aggiunta_prodotti table>caption{
 	margin: 1em;
 	font-size:1.5em;
