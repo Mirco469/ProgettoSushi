@@ -906,7 +906,14 @@ min-height: 465px;
 	border: solid 4px #c82333;
 }
 
+#carrello .totaleText {
+	margin-top: 0;
+	margin-bottom: 2em;
+	float: right;
+}
+
 #carrello #paga {
+	clear: both;
 	display: block;
 	margin-top: 2em;
 	border: 4px solid #8a8a8a;
