@@ -99,6 +99,23 @@
 		    \end{itemize}
 		\end{itemize}
 		\subsection{Layout}
+			Si è deciso di strutturare il sito con un layout a colonna singola, come illustrato in Figura 1. Questo modello permette una buona mantenibilità, dato che anche in caso si effettuino modifiche al contenuto della pagina la sua presentazione rimane uniforme, avendo a disposizione l'intera larghezza della finestra. 
+		    Dimostra di essere anche un layout molto flessibile in quanto la transizione dalla presentazione su desktop a quella su dispositivi mobili risulta fluida.
+		    
+		    \begin{figure}[http] %Verificare posizione immagine dopo aver scritto i capitoli precedenti;
+		        \centering
+		        \includegraphics[width=\textwidth]{schema_layout.png}
+		        \caption{Schema del layout per desktop e mobile.}
+		        \label{fig:layout}
+		    \end{figure}
+		    \bigbreak
+		    L'Header, che contiene logo e nome del ristorante, fondamentalmente varia solo in dimensione nella transizione tra i due layout.
+		    \bigbreak
+		    Il Footer invece contiene informazioni generali sul ristorante, la dichiarazione del Copyright, e l'eventuale immagine di certificata validazione delle pagine XHTML 1.0 Strict. Per garantire una lettura migliore, restringendo la finestra si passa ad una visualizzazione da doppia a singola colonna.
+		    \bigbreak
+		    La principale differenza tra i layout scelti sta nella posizione e presentazione del menù di navigazione. 
+		    \newline Nei device con finestre di visualizzazione sufficentemente larghe si è scelto di disporre le voci del menù in riga, creando quindi una barra di navigazione. I link alle varie pagine principali del sito sono disposte a partire da sinistra, mentre quelli riguardanti pagine per gli utenti e le operazioni a loro disposizione si trovano a partire da destra.
+		    \newline Nei dispositivi più piccoli si è deciso invece di creare un menù espandibile, raggiungibile premendo sull'icona ad hamburger nell'angolo in alto a destra, che mostra tutte le voci disponibili, per rispettare il comportamento più comune che un utente medio si aspetta utilizzando uno smartphone.
 		\subsection{Accessibilità}
 	\section{Implementazione}
 		\subsection{Linguaggi}
