@@ -956,3 +956,12 @@ min-height: 465px;
 #carrello .defaultLista>dd>span{
 	margin: 0 1em;
 }
+
+/* Gestione Ordini */
+#gestione_ordini{
+	padding: 1em;
+}
+
+#gestione_ordini .defaultLista>dd>span{
+	display: block;
+}
