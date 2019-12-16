@@ -106,15 +106,28 @@ table.defaultTable td:last-child {
 	cursor: pointer;
 }
 
+#carrello .totaleText {
+	margin: 0 8em 2em 0;
+	float: right;
+}
+
 #carrello #paga {
+	clear: both;
 	display: block;
-	margin: 1em 2% 2em 88%;
-	background-color: #e3e3e3;
+	margin-left: auto;
+	margin-right: 2em;
+	margin-top: 1em;
+	margin-bottom: 2em;
+	border: 4px solid #8a8a8a;
+	border-top-color: #dddddd;
+	border-left-color: #dddddd;
 	border-radius: 5px;
+	padding: 1em;
+	width: 20%;
+	background-color: #dddddd;
 	text-align: center;
-	color: rgb(61, 61, 61);
 	text-decoration: none;
-	border: solid 1px rgb(245, 246, 247);
+	color: buttontext;
 }
 
 
@@ -199,28 +212,38 @@ table.defaultTable td:last-child {
 	page-break-inside: avoid;
 }
 
-.selezione {
-	padding: 1mm;
-	margin: 2mm;
+#scelta_consegna input[type=radio] + label {
+	display: inline;
+	cursor: pointer;
+	margin-right: 1em;
 }
 
-#pagamento input[type=text] {
-	width: 65%;
-	margin-bottom: 2mm;
-	padding: 1mm;
-}
-
-#info_consegna label {
-	display: block;
-}
-
-#info_pagamento label {
-	display: block;
+#scelta_consegna input[type=radio] {
+	cursor: pointer;
+	display: inline;
+	width: 2em;
 }
 
 #info_pagamento input[name="cvv_carta"] {
 	display: inline;
 	width: 15mm;
+}
+
+
+.selezione_big {
+	width: 100%;
+	padding: 0.3em;
+	border-radius: 4px;
+	font-size: 0.8em;
+	margin: a;
+}
+
+.selezione_small {
+	width: 6em;
+	margin: 0.5em;
+	padding: 0.3em;
+	border-radius: 4px;
+	font-size: 0.8em;
 }
 
 /* Takeaway */
@@ -283,22 +306,6 @@ table.defaultTable td:last-child {
 
 #aggiunta_prodotti form input[type=submit]:hover{
 	border: solid 4px;
-}
-
-#aggiunta_prodotti table{
-	width: 90%;
-	text-align: center;
-	margin: auto;
-	margin-bottom: 2em;
-}
-
-#aggiunta_prodotti table, #aggiunta_prodotti th, #aggiunta_prodotti td{
-	border: 1px solid;
-	border-collapse: collapse;
-}
-
-#aggiunta_prodotti th, #aggiunta_prodotti td{
-	padding: 0.4em;
 }
 
 #aggiunta_prodotti table>caption{

@@ -345,6 +345,39 @@ table.defaultTable td:last-child {
 	border: solid 4px #c82333;
 }
 
+#carrello .totaleText {
+	margin: 0 8em 2em 0;
+	float: right;
+}
+
+#carrello #paga {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: 2em;
+	margin-top: 1em;
+	margin-bottom: 2em;
+	border: 4px solid #8a8a8a;
+	border-top-color: #dddddd;
+	border-left-color: #dddddd;
+	border-radius: 5px;
+	padding: 1em;
+	width: 20%;
+	background-color: #dddddd;
+	text-align: center;
+	text-decoration: none;
+	color: buttontext;
+}
+
+#carrello #paga:active {
+	border-top-color: #8a8a8a;
+	border-left-color: #8a8a8a;
+	border-bottom-color: #dddddd;
+	border-right-color: #dddddd;
+}
+
+
+
 /*	Dettagli ordine (utente e admin)	*/
 
 #dettagli_ordine {
@@ -794,6 +827,10 @@ div#notizie {
 
 #gestione_utente input:not([type=submit]){
     font-size: 1em;
+}
+
+#gestione_utente input[type=submit]	{
+	margin-top: 1em;
 }
 
 

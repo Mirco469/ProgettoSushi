@@ -1,8 +1,4 @@
 /* Generale */
-* {
-	margin: 0;
-	padding: 0;
-}
 
 html {
 	height: 100%;
@@ -89,6 +85,11 @@ body a:visited {
 
 
 /*	Menu	*/
+
+#menu * {
+	margin: 0;
+	padding: 0;
+}
 
 #menu {
 	position: fixed;
@@ -612,7 +613,6 @@ min-height: 465px;
 #menu_list  dd {
 	font-style: italic;
 	padding-bottom: 0.2em;
-	text-indent: -1em;
 }
 
 .lista_piatti {
@@ -641,7 +641,7 @@ min-height: 465px;
 .lista_piatti dt + dd {
 	display: block;
 	float: right;
-	width: 15%;
+	width: 20%;
 	text-align: right;
 	font-size: 1.2em;
 	padding-bottom: 0.5em;
@@ -852,8 +852,15 @@ min-height: 465px;
 	}
 }
 
+#gestione_utente input[type=submit]	{
+	margin-top: 1em;
+}
+
+
 /* BACK-END */
+
 /* Aggiunta prodotti */
+
 #aggiunta_prodotti>h1{
 	margin-left: 1em;
 }
@@ -1002,7 +1009,14 @@ min-height: 465px;
 	border: solid 4px #c82333;
 }
 
+#carrello .totaleText {
+	margin-top: 0;
+	margin-bottom: 2em;
+	float: right;
+}
+
 #carrello #paga {
+	clear: both;
 	display: block;
 	margin-top: 2em;
 	border: 4px solid #8a8a8a;
