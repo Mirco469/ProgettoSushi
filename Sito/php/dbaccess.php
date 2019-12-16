@@ -1,6 +1,6 @@
-<? php
+<?php
 
-    class DBAccess 
+    class DBAccess
 	{
         const HOST_DB = 'localhost';
         const USERNAME = 'XXXXXX';
@@ -8,7 +8,7 @@
         const DATABASE_NAME = 'XXXXXX'; //Ogni utente ha un database già creato con nome uguale alla propria login (scritto sulle slide)
     }
 
-    public $connection = null;
+public $connection = null;
     public function openDBConnection()
 	{
         $this->connection = mysqli_connect(static::HOST_DB,static::USERNAME, static::PASSWORD, static::DATABASE_NAME);
