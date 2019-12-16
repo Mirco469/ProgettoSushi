@@ -119,6 +119,52 @@ table.defaultTable td:last-child {
 	border-radius: 4px;
 }
 
+/* Lista */
+
+.defaultLista, dt, dd{
+	margin: 0;
+	padding: 0;
+}
+
+.defaultLista{
+    margin: 0 15%;
+}
+
+.defaultLista>dd{
+	overflow: auto;
+	border: 1px solid #d9d9d9;
+    border-top: none;
+	margin-bottom: 2em;
+	padding-left: 0.5em;
+}
+
+.defaultLista>dt{
+	font-size: 1.5em;
+	padding: 0.2em 0em;
+	padding-left: 0.5em;
+	clear: both;
+	border: 1px solid #d9d9d9;
+	background-color: #4a0715;
+}
+
+.defaultLista>dd>span{
+	margin: 0 3em;
+}
+
+.defaultLista>dd{
+	text-align: center;
+	padding: 1em 0;
+}
+
+.defaultLista>dt>input{
+	float: right;
+	margin: 0.3em;
+}
+
+.defaultLista input{
+	border-radius: 5px;
+}
+
 /*	Header	*/
  
 #logo {
@@ -329,11 +375,6 @@ table.defaultTable td:last-child {
 	width: 2.5em;
 }
 
-
-#carrello input {
-	border-radius: 5px;
-}
-
 #carrello input[name="rimuovi"] {
     background-color: #dc3545;
 	border: solid 4px #dc3545;
@@ -374,49 +415,6 @@ table.defaultTable td:last-child {
 	border-left-color: #8a8a8a;
 	border-bottom-color: #dddddd;
 	border-right-color: #dddddd;
-}
-
-
-
-
-#carrello dl, dt, dd{
-	margin: 0;
-	padding: 0;
-}
-
-#carrello dl{
-    margin: 0 15%;
-}
-
-#carrello>dl>dd{
-	overflow: auto;
-	border: 1px solid #d9d9d9;
-    border-top: none;
-	margin-bottom: 2em;
-	padding-left: 0.5em;
-}
-
-#carrello>dl>dt{
-	font-size: 1.5em;
-	padding: 0.2em 0em;
-	padding-left: 0.5em;
-	clear: both;
-	border: 1px solid #d9d9d9;
-	background-color: #4a0715;
-}
-
-#carrello>dl>dd>span{
-	margin: 0 3em;
-}
-
-#carrello>dl>dd{
-	text-align: center;
-	padding: 1em 0;
-}
-
-#carrello>dl>dt>input{
-	float: right;
-	margin: 0.3em;
 }
 
 /*	Dettagli ordine (utente e admin)	*/

@@ -286,6 +286,45 @@ table.defaultTable td:last-child {
 	border-radius: 4px;
 }
 
+/* Lista */
+
+.defaultLista, dt, dd{
+	margin: 0;
+	padding: 0;
+}
+
+.defaultLista>dd{
+	overflow: auto;
+	border: 1px solid #d9d9d9;
+    border-top: none;
+	margin-bottom: 2em;
+	padding-left: 0.5em;
+}
+
+.defaultLista>dt{
+	padding: 0.4em 0em;
+	padding-left: 0.5em;
+	clear: both;
+	border: 1px solid #d9d9d9;
+	background-color: #4a0715;
+}
+
+
+.defaultLista>dd{
+	text-align: center;
+	padding: 1em 0;
+}
+
+.defaultLista>dt>input{
+	float: right;
+	margin-right: 0.3em;
+}
+
+.defaultLista input{
+	border-radius: 5px;
+}
+
+
 /* Footer */
 
 #footer {
@@ -889,12 +928,6 @@ min-height: 465px;
 	max-width: 4em;
 }
 
-#carrello input {
-	min-width: 3em;
-	min-height: 3em;
-	border-radius: 5px;
-}
-
 #carrello input[name="rimuovi"] {
     background-color: #dc3545;
 	border: solid 4px #dc3545;
@@ -933,4 +966,8 @@ min-height: 465px;
 	border-left-color: #8a8a8a;
 	border-bottom-color: #dddddd;
 	border-right-color: #dddddd;
+}
+
+#carrello .defaultLista>dd>span{
+	margin: 0 1em;
 }
