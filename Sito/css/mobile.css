@@ -286,6 +286,16 @@ table.defaultTable td:last-child {
 	border-radius: 4px;
 }
 
+.buttonSmall {
+	float: right;
+	width: 5em;
+	height: 2em;
+	border: 1px solid #000;
+	border-radius: 4px;
+	background-color: #333;
+	color: #d9d9d9;
+}
+
 /* Lista */
 
 .defaultLista, dt, dd{
@@ -318,6 +328,8 @@ table.defaultTable td:last-child {
 
 .defaultLista>dt>input{
 	float: right;
+	height: 1.7em;
+	width: 5em;
 	margin-right: 0.3em;
 }
 
@@ -698,16 +710,6 @@ min-height: 465px;
 	padding-bottom: 0.5em;
 }
 
-.buttonSmall {
-	float: right;
-	width: 5em;
-	height: 2em;
-	border: 1px solid #000;
-	border-radius: 4px;
-	background-color: #333;
-	color: #d9d9d9;
-}
-
 #torna_su {
 	padding: 0.5em;
 	position: fixed;
@@ -1081,6 +1083,10 @@ min-height: 465px;
 	padding: 1em;
 }
 
+#gestione_ordini .buttonSmall {
+	width: 9em;
+}
+
 #gestione_ordini .defaultLista>dd>span{
 	display: block;
 }
@@ -1090,6 +1096,11 @@ min-height: 465px;
 #storico_ordini {
 	padding: 1em;
 }
+
 #storico_ordini .defaultLista>dd>span{
 	display: block;
+}
+
+#storico_ordini .buttonSmall {
+	width: 9em;
 }
