@@ -973,6 +973,11 @@ min-height: 465px;
     margin: 0 10%;
 }
 
+#home_admin #torna_su {
+	border: 1px solid #000;
+	margin: 0;
+}
+
 #home_admin div dl {
     padding: 1em;
 }
