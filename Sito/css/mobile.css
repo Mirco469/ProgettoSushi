@@ -695,6 +695,10 @@ min-height: 465px;
 	font-weight: bold;
 }
 
+.lista_piatti dd > span:first-of-type {
+	color: #e0ac00;
+}
+
 .lista_piatti dt + dd {
 	display: block;
 	float: right;
