@@ -119,6 +119,16 @@ table.defaultTable td:last-child {
 	border-radius: 4px;
 }
 
+.buttonSmall {
+	float: right;
+	width: 7em;
+	height: 2em;
+	border: 1px solid #000;
+	border-radius: 4px;
+	background-color: #333;
+	color: #d9d9d9;
+}
+
 /* Lista */
 
 .defaultLista, dt, dd{
@@ -509,16 +519,6 @@ table.defaultTable td:last-child {
 	font-style: italic;
 	padding-bottom: 1em;
 	text-indent: 3em;
-}
-
-.buttonSmall {
-	float: right;
-	width: 7em;
-	height: 2em;
-	border: 1px solid #000;
-	border-radius: 4px;
-	background-color: #333;
-	color: #d9d9d9;
 }
 
 #torna_su {
