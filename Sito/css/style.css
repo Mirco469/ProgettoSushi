@@ -446,9 +446,12 @@ table.defaultTable td:last-child {
 
 /* Takeaway */
 
-#take_away>h1{
-
+#take_away > h1{
     margin-left: 1em;
+}
+
+#take_away > p{
+    margin-left: 2.3em;
 }
 
 #menu_list {
@@ -505,6 +508,16 @@ table.defaultTable td:last-child {
 	font-style: italic;
 	padding-bottom: 1em;
 	text-indent: 3em;
+}
+
+.lista_piatti input[type="button"] {
+	float: right;
+	width: 7em;
+	height: 2em;
+	border: 1px solid #000;
+	border-radius: 4px;
+	background-color: #333;
+	color: #d9d9d9;
 }
 
 #torna_su {
