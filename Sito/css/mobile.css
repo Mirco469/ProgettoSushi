@@ -660,7 +660,7 @@ min-height: 465px;
 }
 
 .lista_piatti {
-	width: 90%;
+	width: 95%;
 	margin: auto;
 	line-height: 1.5em;
 	padding-bottom: 0.5em;
@@ -698,7 +698,7 @@ min-height: 465px;
 	padding-bottom: 0.5em;
 }
 
-.lista_piatti input[type="button"] {
+.buttonSmall {
 	float: right;
 	width: 5em;
 	height: 2em;
