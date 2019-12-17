@@ -149,6 +149,7 @@ table.defaultTable td:last-child {
 
 .defaultLista>dd>span{
 	margin: 0 3em;
+	white-space:nowrap;
 }
 
 .defaultLista>dd{
