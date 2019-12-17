@@ -508,17 +508,20 @@ table.defaultTable td:last-child {
 .lista_piatti dt + dd {
 	display: block;
 	float: right;
-	width: 25%;
+	width: 20%;
 	text-align: right;
 	font-size: 1.2em;
 	padding-bottom: 1em;
 }
 
 .lista_piatti dt + dd + dd {
-	width: 70%;
+	width: 80%;
 	font-style: italic;
 	padding-bottom: 1em;
 	text-indent: 3em;
+}
+.lista_piatti dd > span:first-of-type {
+	color: #e0ac00;
 }
 
 #torna_su {
