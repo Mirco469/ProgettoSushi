@@ -510,7 +510,7 @@ table.defaultTable td:last-child {
 	text-indent: 3em;
 }
 
-.lista_piatti input[type="button"] {
+.buttonSmall {
 	float: right;
 	width: 7em;
 	height: 2em;
