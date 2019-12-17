@@ -977,6 +977,11 @@ min-height: 465px;
 	margin: 0 0.5em;
 }
 
+#aggiunta_prodotti .defaultLista dt {
+	font-size: 0.8em;
+	line-height: 1.5em;
+}
+
 /* Gestione Profilo Admin */
 
 #gestione_admin h1 {
