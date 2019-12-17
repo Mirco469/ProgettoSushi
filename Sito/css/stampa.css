@@ -319,6 +319,10 @@ table.defaultTable td:last-child {
 	padding-bottom: 4mm;
 }
 
+.lista_piatti input[type=button] {
+	display: none;
+}
+
 #torna_su {
 	display: none;
 }
