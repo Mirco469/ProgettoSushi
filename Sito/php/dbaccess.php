@@ -1,24 +1,24 @@
-<? php
+<?php
 
-    class DBAccess 
+    class DBAccess
 	{
         const HOST_DB = 'localhost';
-        const USERNAME = 'XXXXXX';
-        const PASSWORD = 'XXXXXX';
-        const DATABASE_NAME = 'XXXXXX'; //Ogni utente ha un database già creato con nome uguale alla propria login (scritto sulle slide)
-    }
+        const USERNAME = 'root';
+        const PASSWORD = '';
+        const DATABASE_NAME = 'Sushi'; //Ogni utente ha un database già creato con nome uguale alla propria login (scritto sulle slide)
 
-    public $connection = null;
-    public function openDBConnection()
-	{
-        $this->connection = mysqli_connect(static::HOST_DB,static::USERNAME, static::PASSWORD, static::DATABASE_NAME);
-        if(!$this->connection)
+        public $connection = null;
+        public function openDBConnection()
         {
-            return false;
-        }
-        else
-        {
-            return true;
+            $this->connection = mysqli_connect(static::HOST_DB,static::USERNAME, static::PASSWORD, static::DATABASE_NAME);
+            if(!$this->connection)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 
