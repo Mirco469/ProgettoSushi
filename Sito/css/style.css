@@ -136,6 +136,7 @@ table.defaultTable td:last-child {
     border-top: none;
 	margin-bottom: 2em;
 	padding-left: 0.5em;
+	clear: both;
 }
 
 .defaultLista>dt{
