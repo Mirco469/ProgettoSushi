@@ -11,14 +11,7 @@
         public function openDBConnection()
         {
             $this->connection = mysqli_connect(static::HOST_DB,static::USERNAME, static::PASSWORD, static::DATABASE_NAME);
-            if(!$this->connection)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            return $this->connection;
         }
     }
 
