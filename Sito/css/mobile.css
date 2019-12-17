@@ -640,6 +640,10 @@ min-height: 465px;
 	margin-left: 0.5em;
 }
 
+#take_away p {
+	margin-left: 1em;
+}
+
 #menu_list {
 	list-style: none;
 	margin-left: 1em;
@@ -691,6 +695,16 @@ min-height: 465px;
 	width: 80%;
 	font-style: italic;
 	padding-bottom: 0.5em;
+}
+
+.lista_piatti input[type="button"] {
+	float: right;
+	width: 5em;
+	height: 2em;
+	border: 1px solid #000;
+	border-radius: 4px;
+	background-color: #333;
+	color: #d9d9d9;
 }
 
 #torna_su {
