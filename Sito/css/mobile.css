@@ -286,6 +286,46 @@ table.defaultTable td:last-child {
 	border-radius: 4px;
 }
 
+/* Lista */
+
+.defaultLista, dt, dd{
+	margin: 0;
+	padding: 0;
+}
+
+.defaultLista>dd{
+	overflow: auto;
+	border: 1px solid #d9d9d9;
+    border-top: none;
+	margin-bottom: 2em;
+	padding-left: 0.5em;
+	clear: both;
+}
+
+.defaultLista>dt{
+	padding: 0.4em 0em;
+	padding-left: 0.5em;
+	clear: both;
+	border: 1px solid #d9d9d9;
+	background-color: #4a0715;
+}
+
+
+.defaultLista>dd{
+	text-align: center;
+	padding: 1em 0;
+}
+
+.defaultLista>dt>input{
+	float: right;
+	margin-right: 0.3em;
+}
+
+.defaultLista input{
+	border-radius: 5px;
+}
+
+
 /* Footer */
 
 #footer {
@@ -861,8 +901,8 @@ min-height: 465px;
 
 /* Aggiunta prodotti */
 
-#aggiunta_prodotti>h1{
-	margin-left: 1em;
+#aggiunta_prodotti{
+	padding: 1em;
 }
 
 #aggiunta_prodotti>form{
@@ -899,22 +939,11 @@ min-height: 465px;
 	border: solid 4px #990000;
 }
 
-#aggiunta_prodotti table>caption{
-	margin: 1em;
-	font-size:1.5em;
-}
-
 #aggiunta_prodotti form{
 	max-width: 26.875em;
 	margin: auto;
 	margin-top: 1em;
 	margin-bottom: 1em;
-}
-
-@media screen and (min-width : 30px) and (max-width : 530px) {
-    #aggiunta_prodotti form{
-		margin: 1em;
-	}
 }
 
 #aggiunta_prodotti form input:not([type=submit]){
@@ -925,6 +954,10 @@ min-height: 465px;
 	box-sizing: border-box;
 	border: 2px;
 	border-radius: 4px;
+}
+
+#aggiunta_prodotti .defaultLista>dd>span{
+	margin: 0 0.5em;
 }
 
 /* Gestione Profilo Admin */
@@ -979,23 +1012,9 @@ min-height: 465px;
 	padding: 1em;
 }
 
-#carrello .defaultTable {
-	width: 100%;
-}
-
-#carrello .defaultTable td:nth-child(3) {
-	white-space: nowrap;
-}
-
 #carrello input[type="text"] {
 	text-align: center;
 	max-width: 4em;
-}
-
-#carrello input {
-	min-width: 3em;
-	min-height: 3em;
-	border-radius: 5px;
 }
 
 #carrello input[name="rimuovi"] {
@@ -1036,4 +1055,26 @@ min-height: 465px;
 	border-left-color: #8a8a8a;
 	border-bottom-color: #dddddd;
 	border-right-color: #dddddd;
+}
+
+#carrello .defaultLista>dd>span{
+	margin: 0 1em;
+}
+
+/* Gestione Ordini */
+#gestione_ordini{
+	padding: 1em;
+}
+
+#gestione_ordini .defaultLista>dd>span{
+	display: block;
+}
+
+/* Storico Ordini */
+
+#storico_ordini {
+	padding: 1em;
+}
+#storico_ordini .defaultLista>dd>span{
+	display: block;
 }

@@ -119,6 +119,54 @@ table.defaultTable td:last-child {
 	border-radius: 4px;
 }
 
+/* Lista */
+
+.defaultLista, dt, dd{
+	margin: 0;
+	padding: 0;
+}
+
+.defaultLista{
+    margin: 0 15%;
+}
+
+.defaultLista>dd{
+	overflow: auto;
+	border: 1px solid #d9d9d9;
+    border-top: none;
+	margin-bottom: 2em;
+	padding-left: 0.5em;
+	clear: both;
+}
+
+.defaultLista>dt{
+	font-size: 1.5em;
+	padding: 0.2em 0em;
+	padding-left: 0.5em;
+	clear: both;
+	border: 1px solid #d9d9d9;
+	background-color: #4a0715;
+}
+
+.defaultLista>dd>span{
+	margin: 0 3em;
+	white-space:nowrap;
+}
+
+.defaultLista>dd{
+	text-align: center;
+	padding: 1em 0;
+}
+
+.defaultLista>dt>input{
+	float: right;
+	margin: 0.3em;
+}
+
+.defaultLista input{
+	border-radius: 5px;
+}
+
 /*	Header	*/
  
 #logo {
@@ -320,18 +368,9 @@ table.defaultTable td:last-child {
 /* LATO UTENTE*/
 /*	carrello	*/
 
-#carrello table tbody td:first-child {
-	text-align: left;
-}
-
 #carrello input[type="text"] {
 	text-align: center;
 	width: 2.5em;
-}
-
-
-#carrello input {
-	border-radius: 5px;
 }
 
 #carrello input[name="rimuovi"] {
@@ -375,8 +414,6 @@ table.defaultTable td:last-child {
 	border-bottom-color: #dddddd;
 	border-right-color: #dddddd;
 }
-
-
 
 /*	Dettagli ordine (utente e admin)	*/
 
@@ -602,6 +639,10 @@ table.defaultTable td:last-child {
 	margin-left: 1em;
 }
 
+#aggiunta_prodotti>h2{
+	text-align: center;
+}
+
 #aggiunta_prodotti>form{
 	margin: 2em;
 }
@@ -631,11 +672,6 @@ table.defaultTable td:last-child {
 #aggiunta_prodotti form input[type=submit]:hover{
 	background-color: #990000;
 	border: solid 4px #990000;
-}
-
-#aggiunta_prodotti table>caption{
-	margin: 1em;
-	font-size:1.5em;
 }
 
 /*Home Utente*/
