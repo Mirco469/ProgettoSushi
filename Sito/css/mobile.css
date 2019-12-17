@@ -498,6 +498,11 @@ table.defaultTable td:last-child {
     margin: 0 5%;
 }
 
+#home_admin #torna_su {
+	border: 1px solid #000;
+	margin: 0;
+}
+
 #home_admin div dl {
     padding: 1em;
 }
