@@ -1,7 +1,7 @@
 /* Generale */
 html, body {
     height: 97%;
-    margin: 0;
+    margin: 1em;
 	font-family: "Times New Roman", Times, serif;
 }
 
@@ -53,7 +53,7 @@ img, .numberText, .prev, .next {
 
 
 
-/*	Table Fritz	*/
+/*	Table Default	*/
 
 table.defaultTable {
 	width: calc(100% - 16em);
@@ -88,6 +88,53 @@ table.defaultTable td:last-child {
 	border-bottom-right-radius: 16px;
 	border-right: solid 2px black;
 }
+
+/* Lista Default */
+.defaultLista, dt, dd{
+	margin: 0;
+	padding: 0;
+}
+
+.defaultLista{
+    margin: 0 15%;
+}
+
+.defaultLista>dd{
+	overflow: auto;
+	border: 1px solid #d9d9d9;
+    border-top: none;
+	margin-bottom: 2em;
+	padding-left: 0.5em;
+	clear: both;
+}
+
+.defaultLista>dt{
+	font-size: 1.5em;
+	padding: 0.2em 0em;
+	padding-left: 0.5em;
+	clear: both;
+	border: 1px solid #d9d9d9;
+}
+
+.defaultLista>dd>span{
+	margin: 0 3em;
+	white-space:nowrap;
+}
+
+.defaultLista>dd{
+	text-align: center;
+	padding: 1em 0;
+}
+
+.defaultLista>dt>input{
+	float: right;
+	margin: 0.3em;
+}
+
+.defaultLista input{
+	border-radius: 5px;
+}
+
 
 
 
@@ -397,15 +444,11 @@ table.defaultTable td:last-child {
 	width: 48%;
 }
 
-#dettagli_ordine table {
-	width: 100%;
-	text-align: center;
-	margin: 2em 0 1em;
-	border-collapse: separate;
-	border-spacing: 0 1em;
+
+#dettagli_ordine>dl {
+	width: 115%;
+	margin: 0; 
 }
-
-
 
 /*	errore utente e admin	*/
 #errore {
