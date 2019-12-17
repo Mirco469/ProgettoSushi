@@ -965,3 +965,8 @@ min-height: 465px;
 #gestione_ordini .defaultLista>dd>span{
 	display: block;
 }
+
+/* Storico Ordini */
+#storico_ordini .defaultLista>dd>span{
+	display: block;
+}
