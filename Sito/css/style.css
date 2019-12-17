@@ -160,6 +160,7 @@ table.defaultTable td:last-child {
 
 .defaultLista>dt>input{
 	float: right;
+	width: 9em;
 	margin: 0.3em;
 }
 
