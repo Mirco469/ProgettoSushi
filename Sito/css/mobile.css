@@ -967,6 +967,10 @@ min-height: 465px;
 }
 
 /* Storico Ordini */
+
+#storico_ordini {
+	padding: 1em;
+}
 #storico_ordini .defaultLista>dd>span{
 	display: block;
 }
