@@ -185,7 +185,7 @@ INSERT INTO Prodotto (nome, categoria, pezzi, prezzo) VALUES
 ('Mango Suzuki', 'Gunkan', 2, 5.00),
 ('Salmon Philadelphia', 'Gunkan', 2, 4.00),
 
-('Salmon Avocado Temaki', 'Temaki', 1, 4.00),
+('Salmon Temaki', 'Temaki', 1, 4.00),
 ('Tartara Temaki', 'Temaki', 1, 3.00),
 ('Tuna Temaki', 'Temaki', 1, 3.00),
 ('Ebiten Temaki', 'Temaki', 1, 4.00),

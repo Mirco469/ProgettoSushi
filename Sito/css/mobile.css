@@ -286,6 +286,16 @@ table.defaultTable td:last-child {
 	border-radius: 4px;
 }
 
+.buttonSmall {
+	float: right;
+	width: 5em;
+	height: 2em;
+	border: 1px solid #000;
+	border-radius: 4px;
+	background-color: #333;
+	color: #d9d9d9;
+}
+
 /* Lista */
 
 .defaultLista, dt, dd{
@@ -318,6 +328,8 @@ table.defaultTable td:last-child {
 
 .defaultLista>dt>input{
 	float: right;
+	height: 1.7em;
+	width: 5em;
 	margin-right: 0.3em;
 }
 
@@ -486,6 +498,11 @@ table.defaultTable td:last-child {
     margin: 0 5%;
 }
 
+#home_admin #torna_su {
+	border: 1px solid #000;
+	margin: 0;
+}
+
 #home_admin div dl {
     padding: 1em;
 }
@@ -640,6 +657,10 @@ min-height: 465px;
 	margin-left: 0.5em;
 }
 
+#take_away p {
+	margin-left: 1em;
+}
+
 #menu_list {
 	list-style: none;
 	margin-left: 1em;
@@ -656,7 +677,7 @@ min-height: 465px;
 }
 
 .lista_piatti {
-	width: 90%;
+	width: 95%;
 	margin: auto;
 	line-height: 1.5em;
 	padding-bottom: 0.5em;
@@ -667,6 +688,7 @@ min-height: 465px;
 	text-align: center;
 	font-variant: small-caps;
 	color: #e0ac00;
+	line-height: 1.2em;
 }
 
 .lista_piatti dt {
@@ -678,17 +700,21 @@ min-height: 465px;
 	font-weight: bold;
 }
 
+.lista_piatti dd > span:first-of-type {
+	color: #e0ac00;
+}
+
 .lista_piatti dt + dd {
 	display: block;
 	float: right;
-	width: 20%;
+	width: 22%;
 	text-align: right;
 	font-size: 1.2em;
 	padding-bottom: 0.5em;
 }
 
 .lista_piatti dt + dd + dd {
-	width: 80%;
+	width: 75%;
 	font-style: italic;
 	padding-bottom: 0.5em;
 }
@@ -960,6 +986,11 @@ min-height: 465px;
 	margin: 0 0.5em;
 }
 
+#aggiunta_prodotti .defaultLista dt {
+	font-size: 0.8em;
+	line-height: 1.5em;
+}
+
 /* Gestione Profilo Admin */
 
 #gestione_admin h1 {
@@ -1066,6 +1097,10 @@ min-height: 465px;
 	padding: 1em;
 }
 
+#gestione_ordini .buttonSmall {
+	width: 9em;
+}
+
 #gestione_ordini .defaultLista>dd>span{
 	display: block;
 }
@@ -1075,6 +1110,11 @@ min-height: 465px;
 #storico_ordini {
 	padding: 1em;
 }
+
 #storico_ordini .defaultLista>dd>span{
 	display: block;
+}
+
+#storico_ordini .buttonSmall {
+	width: 9em;
 }
