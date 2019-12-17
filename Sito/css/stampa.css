@@ -1,0 +1,476 @@
+/* Generale */
+html, body {
+    height: 97%;
+    margin: 1em;
+	font-family: "Times New Roman", Times, serif;
+}
+
+img, .numberText, .prev, .next {
+    display: none;
+}
+
+.aiuti {
+    display: none;
+}
+
+#menu {
+    display: none;
+}
+
+#footer {
+    font-size: 0.9em;
+}
+
+.info{
+    display: inline-block;
+}
+
+.hide_print {           /* Usare questa classe per nascondere i contenuti dalla stampa  */
+    display: none;
+}
+
+.defaultForm{
+	max-width: 26.875em;
+	margin: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.defaultForm input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
+	display: block;
+	width: 100%;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+
+.defaultForm input[type=submit]{
+	display: block;
+	margin:auto;
+	font-size: 1.2em;
+}
+
+
+
+/*	Table Default	*/
+
+table.defaultTable {
+	width: calc(100% - 16em);
+	text-align: center;
+	margin: 2em 8em 1em;
+	border-collapse: separate;
+	border-spacing: 0 1em;
+}
+
+table.defaultTable td {
+	border: solid 1px black;
+	border-left: none;
+	border-right: none;
+	padding: 0.5em;
+}
+
+table.defaultTable td:first-child {
+	border-top-left-radius: 16px;
+	border-bottom-left-radius: 16px;
+	border-left: solid 2px black;
+}
+
+table.defaultTable tbody th:first-child {
+	border: solid 1px black;
+	border-top-left-radius: 16px;
+	border-bottom-left-radius: 16px;
+	border-left: solid 2px black;
+}
+
+table.defaultTable td:last-child {
+	border-top-right-radius: 16px;
+	border-bottom-right-radius: 16px;
+	border-right: solid 2px black;
+}
+
+/* Lista Default */
+.defaultLista, dt, dd{
+	margin: 0;
+	padding: 0;
+}
+
+.defaultLista{
+    margin: 0 15%;
+}
+
+.defaultLista>dd{
+	overflow: auto;
+	border: 1px solid #d9d9d9;
+    border-top: none;
+	margin-bottom: 2em;
+	padding-left: 0.5em;
+	clear: both;
+}
+
+.defaultLista>dt{
+	font-size: 1.5em;
+	padding: 0.2em 0em;
+	padding-left: 0.5em;
+	clear: both;
+	border: 1px solid #d9d9d9;
+}
+
+.defaultLista>dd>span{
+	margin: 0 3em;
+	white-space:nowrap;
+}
+
+.defaultLista>dd{
+	text-align: center;
+	padding: 1em 0;
+}
+
+.defaultLista>dt>input{
+	float: right;
+	margin: 0.3em;
+}
+
+.defaultLista input{
+	border-radius: 5px;
+}
+
+
+
+
+/*	Carrello	*/
+
+#carrello input {
+	border-radius: 5px;
+}
+
+#carrello input[type="text"] {
+	text-align: center;
+	width: 2.5em;
+}
+
+#carrello input[type="button"] {
+	cursor: pointer;
+}
+
+#carrello .totaleText {
+	margin: 0 8em 2em 0;
+	float: right;
+}
+
+#carrello #paga {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: 2em;
+	margin-top: 1em;
+	margin-bottom: 2em;
+	border: 4px solid #8a8a8a;
+	border-top-color: #dddddd;
+	border-left-color: #dddddd;
+	border-radius: 5px;
+	padding: 1em;
+	width: 20%;
+	background-color: #dddddd;
+	text-align: center;
+	text-decoration: none;
+	color: buttontext;
+}
+
+
+
+/* Prodotti */
+#prodotti dl, dt, dd{
+	margin: 0;
+	padding: 0;
+}
+
+#prodotti>dl{
+	margin: 0em 2em;
+}
+
+#prodotti>dl>dd{
+	overflow: auto;
+    border-top: none;
+	margin-bottom: 2em;
+}
+
+#prodotti>dl>dt{
+	font-size: 1.5em;
+	padding: 0.2em 0em;
+	padding-left: 0.5em;
+	clear: both;
+}
+
+#prodotti>dl>dt.prodotti_dispari+dd img{
+	float: left;
+	margin-right: 0.5em;
+}
+
+#prodotti>dl>dt.prodotti_pari+dd img{
+	float: right;
+	margin-left: 0.5em;
+}
+
+#prodotti img{
+	width: 20%;
+    display: inline-block;
+}
+
+#prodotti>dl>dd>p{
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+}
+
+
+/* Home Admin */
+
+#home_admin form {
+  display: none;
+}
+
+/* Gestione Profilo Utente */
+#menu_profilo {
+  display: none;
+}
+
+#gestione_utente>form{
+	max-width: 35em;
+	margin-top: 6%;
+	margin-bottom: 1em;
+    margin-left: auto;
+}
+
+
+
+/* Pagamento */
+#pagamento {
+	width: 70%;
+	margin: auto;
+	text-align: center;
+}
+
+#scelta_consegna {
+	padding-bottom: 5mm;
+}
+
+#pagamento fieldset {
+	margin-bottom: 5mm;
+	page-break-inside: avoid;
+}
+
+#scelta_consegna input[type=radio] + label {
+	display: inline;
+	cursor: pointer;
+	margin-right: 1em;
+}
+
+#scelta_consegna input[type=radio] {
+	cursor: pointer;
+	display: inline;
+	width: 2em;
+}
+
+#info_pagamento input[name="cvv_carta"] {
+	display: inline;
+	width: 15mm;
+}
+
+
+.selezione_big {
+	width: 100%;
+	padding: 0.3em;
+	border-radius: 4px;
+	font-size: 0.8em;
+	margin: a;
+}
+
+.selezione_small {
+	width: 6em;
+	margin: 0.5em;
+	padding: 0.3em;
+	border-radius: 4px;
+	font-size: 0.8em;
+}
+
+/* Takeaway */
+.lista_piatti {
+	width: 85%;
+	margin: auto;
+	padding-bottom: 1pt;
+}
+
+.lista_piatti dt {
+	clear: both;
+	width: 100%;
+}
+
+.lista_piatti dt + dd {
+	display: block;
+	float: right;
+	width: 15%;
+	text-align: right;
+	padding-bottom: 4mm;
+}
+
+.lista_piatti dt + dd + dd {
+	width: 70%;
+	font-style: italic;
+	padding-bottom: 4mm;
+}
+
+.lista_piatti input[type=button] {
+	display: none;
+}
+
+#torna_su {
+	display: none;
+}
+
+/* Aggiunta Prodotti */
+#aggiunta_prodotti form{
+	display: none;
+}
+#aggiunta_prodotti>form{
+	margin: 2em;
+}
+
+#aggiunta_prodotti fieldset{
+	max-width: 90em;
+	margin: auto;
+	text-align: center;
+}
+
+#aggiunta_prodotti fieldset>legend{
+	text-align: left;
+}
+
+#aggiunta_prodotti .formGroup{
+	display: inline-block;
+	margin: 0.5em 0.5em;
+}
+
+#aggiunta_prodotti form input[type=submit]{
+    border: solid 4px;
+    border-radius: 5px;
+}
+
+#aggiunta_prodotti form input[type=submit]:hover{
+	border: solid 4px;
+}
+
+#aggiunta_prodotti table>caption{
+	margin: 1em;
+	font-size:1.5em;
+}
+
+/* Pagina Successo */
+#successo{
+	display: block;
+	text-align: center;
+	margin: 2em 0em;
+}
+
+#successo img{
+	display: inline-block;
+	width: 18%;
+}
+
+
+/* Recensioni */
+#recensioni h2 {
+	margin: 0;
+}
+
+#recensioni h2 + p {
+	padding: 0.2mm;
+	margin: 0;
+	font-size: 0.8em;
+}
+
+#recensioni h2 + p + p {
+	font-style: italic;
+	padding: 0.2mm;
+	margin: 0;
+}
+
+#recensioni h2 + p + p + p{
+	page-break-inside: avoid;
+	margin: 0;
+	padding-bottom: 5mm;
+}
+
+#recensioni form {
+	display: none;
+}
+
+/* Login */
+#login>p{
+	text-align: center;
+	font-weight: bold;
+}
+
+/* Contatti */
+
+#info_stradali dl>dt {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 0.5em;
+    margin-bottom: 0.7em;
+}
+
+#info_stradali>a>img {
+    float: left;
+    display: block;
+    height: 85mm;
+    width: 85mm;
+    margin-top: 8mm;
+    margin-right: 5mm;
+}
+
+#info_stradali dl dd {
+    margin-left: 90mm;
+}
+
+/*Gestion Profilo Admin*/
+#gestione_admin>form {
+    margin-left: auto;
+}
+
+/*	Dettagli Ordine (Utente e admin)	*/
+#dettagli_ordine {
+	padding: 2em 6em;
+}
+
+#dettagli_ordine .data {
+	display: inline-block;
+	margin-top: 0;
+	width: 48%;
+}
+
+
+#dettagli_ordine>dl {
+	width: 115%;
+	margin: 0; 
+}
+
+/*	errore utente e admin	*/
+#errore {
+	padding-left: 10%;
+	padding-right: 10%;
+	min-height: 25em;
+	text-align: center;
+}
+
+#errore h1:after {
+	content: " - 404";
+}
+
+#errore img {
+	width: 32%;
+}
+
+#errore #testo {
+	text-align: left;
+	font-size: 2em;
+}
