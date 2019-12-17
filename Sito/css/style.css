@@ -119,6 +119,16 @@ table.defaultTable td:last-child {
 	border-radius: 4px;
 }
 
+.buttonSmall {
+	float: right;
+	width: 7em;
+	height: 2em;
+	border: 1px solid #000;
+	border-radius: 4px;
+	background-color: #333;
+	color: #d9d9d9;
+}
+
 /* Lista */
 
 .defaultLista, dt, dd{
@@ -160,6 +170,7 @@ table.defaultTable td:last-child {
 
 .defaultLista>dt>input{
 	float: right;
+	width: 9em;
 	margin: 0.3em;
 }
 
@@ -446,9 +457,12 @@ table.defaultTable td:last-child {
 
 /* Takeaway */
 
-#take_away>h1{
-
+#take_away > h1{
     margin-left: 1em;
+}
+
+#take_away > p{
+    margin-left: 2.3em;
 }
 
 #menu_list {
@@ -494,17 +508,20 @@ table.defaultTable td:last-child {
 .lista_piatti dt + dd {
 	display: block;
 	float: right;
-	width: 25%;
+	width: 20%;
 	text-align: right;
 	font-size: 1.2em;
 	padding-bottom: 1em;
 }
 
 .lista_piatti dt + dd + dd {
-	width: 70%;
+	width: 80%;
 	font-style: italic;
 	padding-bottom: 1em;
 	text-indent: 3em;
+}
+.lista_piatti dd > span:first-of-type {
+	color: #e0ac00;
 }
 
 #torna_su {
@@ -954,6 +971,11 @@ min-height: 465px;
 #home_admin div {
     border: 2px solid white;
     margin: 0 10%;
+}
+
+#home_admin #torna_su {
+	border: 1px solid #000;
+	margin: 0;
 }
 
 #home_admin div dl {
