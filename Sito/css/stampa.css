@@ -443,15 +443,11 @@ table.defaultTable td:last-child {
 	width: 48%;
 }
 
-#dettagli_ordine table {
-	width: 100%;
-	text-align: center;
-	margin: 2em 0 1em;
-	border-collapse: separate;
-	border-spacing: 0 1em;
+
+#dettagli_ordine>dl {
+	width: 115%;
+	margin: 0; 
 }
-
-
 
 /*	errore utente e admin	*/
 #errore {
