@@ -119,6 +119,65 @@ table.defaultTable td:last-child {
 	border-radius: 4px;
 }
 
+.buttonSmall {
+	float: right;
+	width: 7em;
+	height: 2em;
+	border: 1px solid #000;
+	border-radius: 4px;
+	background-color: #333;
+	color: #d9d9d9;
+}
+
+/* Lista */
+
+.defaultLista, dt, dd{
+	margin: 0;
+	padding: 0;
+}
+
+.defaultLista{
+    margin: 0 15%;
+}
+
+.defaultLista>dd{
+	overflow: auto;
+	border: 1px solid #d9d9d9;
+    border-top: none;
+	margin-bottom: 2em;
+	padding-left: 0.5em;
+	clear: both;
+}
+
+.defaultLista>dt{
+	font-size: 1.5em;
+	padding: 0.2em 0em;
+	padding-left: 0.5em;
+	clear: both;
+	border: 1px solid #d9d9d9;
+	background-color: #4a0715;
+}
+
+.defaultLista>dd>span{
+	margin: 0 3em;
+	white-space:nowrap;
+}
+
+.defaultLista>dd{
+	text-align: center;
+	padding: 1em 0;
+}
+
+.defaultLista>dt>input{
+	float: right;
+	width: 9em;
+	margin: 0.3em;
+}
+
+.defaultLista input{
+	border-radius: 5px;
+}
+
 /*	Header	*/
  
 #logo {
@@ -320,18 +379,9 @@ table.defaultTable td:last-child {
 /* LATO UTENTE*/
 /*	carrello	*/
 
-#carrello table tbody td:first-child {
-	text-align: left;
-}
-
 #carrello input[type="text"] {
 	text-align: center;
 	width: 2.5em;
-}
-
-
-#carrello input {
-	border-radius: 5px;
 }
 
 #carrello input[name="rimuovi"] {
@@ -343,6 +393,37 @@ table.defaultTable td:last-child {
 #carrello input[name="rimuovi"]:hover {
 	background-color: #c82333;
 	border: solid 4px #c82333;
+}
+
+#carrello .totaleText {
+	margin: 0 8em 2em 0;
+	float: right;
+}
+
+#carrello #paga {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: 2em;
+	margin-top: 1em;
+	margin-bottom: 2em;
+	border: 4px solid #8a8a8a;
+	border-top-color: #dddddd;
+	border-left-color: #dddddd;
+	border-radius: 5px;
+	padding: 1em;
+	width: 20%;
+	background-color: #dddddd;
+	text-align: center;
+	text-decoration: none;
+	color: buttontext;
+}
+
+#carrello #paga:active {
+	border-top-color: #8a8a8a;
+	border-left-color: #8a8a8a;
+	border-bottom-color: #dddddd;
+	border-right-color: #dddddd;
 }
 
 /*	Dettagli ordine (utente e admin)	*/
@@ -376,9 +457,12 @@ table.defaultTable td:last-child {
 
 /* Takeaway */
 
-#take_away>h1{
-
+#take_away > h1{
     margin-left: 1em;
+}
+
+#take_away > p{
+    margin-left: 2.3em;
 }
 
 #menu_list {
@@ -424,17 +508,20 @@ table.defaultTable td:last-child {
 .lista_piatti dt + dd {
 	display: block;
 	float: right;
-	width: 25%;
+	width: 20%;
 	text-align: right;
 	font-size: 1.2em;
 	padding-bottom: 1em;
 }
 
 .lista_piatti dt + dd + dd {
-	width: 70%;
+	width: 80%;
 	font-style: italic;
 	padding-bottom: 1em;
 	text-indent: 3em;
+}
+.lista_piatti dd > span:first-of-type {
+	color: #e0ac00;
 }
 
 #torna_su {
@@ -569,6 +656,10 @@ table.defaultTable td:last-child {
 	margin-left: 1em;
 }
 
+#aggiunta_prodotti>h2{
+	text-align: center;
+}
+
 #aggiunta_prodotti>form{
 	margin: 2em;
 }
@@ -598,11 +689,6 @@ table.defaultTable td:last-child {
 #aggiunta_prodotti form input[type=submit]:hover{
 	background-color: #990000;
 	border: solid 4px #990000;
-}
-
-#aggiunta_prodotti table>caption{
-	margin: 1em;
-	font-size:1.5em;
 }
 
 /*Home Utente*/
@@ -796,6 +882,10 @@ div#notizie {
     font-size: 1em;
 }
 
+#gestione_utente input[type=submit]	{
+	margin-top: 1em;
+}
+
 
 /*Gestione Profilo Admin*/
 
@@ -881,6 +971,11 @@ min-height: 465px;
 #home_admin div {
     border: 2px solid white;
     margin: 0 10%;
+}
+
+#home_admin #torna_su {
+	border: 1px solid #000;
+	margin: 0;
 }
 
 #home_admin div dl {
