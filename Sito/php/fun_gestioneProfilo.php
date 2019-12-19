@@ -33,6 +33,7 @@ function checkMinLen($string) {
         return true;
     }
 }
+
 //Controlla che la stringa non contenga caratteri speciali
 function checkAlfanumerico($string) {
     if(!checkMinLen($string)) return false;
@@ -40,6 +41,7 @@ function checkAlfanumerico($string) {
         return false;
     } else return true;
 }
+
 //Controlla che la stringa non contenga numeri e abbia almeno due caratteri
 function checkSoloLettereEDim($string) {
     if(!checkMinLen($string)) return false;
@@ -47,39 +49,38 @@ function checkSoloLettereEDim($string) {
         return false;
     } else return true;
 }
+
 //Controlla che la stringa contenga solo numeri e che sia lunga almeno due caratteri
-function checkSoloNumerieDim($str){
+function checkSoloNumerieDim($string){
     if(!checkMinLen($string)) return false;
     if (!preg_match('/[^0-9]/', $string)) {
         return false;
     } else return true;
 }
-function cambioPassw($nome_utente) {
+
+function cambioPassw($nome_utente, $old_psw, $v_password, $n_password, $c_password) {
 
     $query = $this->connection->prepare('SELECT * from Utente WHERE username = ?');
     $query -> bind_param('s', $nome_utente);
     $query->execute();
     $result = $query->get_result();
-    if(mysqli_num_rows($result)==0) return false;
-
-    $old_psw = $result['password'];
     $paginaHTML = file_get_contents('gestione_profilo_utente.html');
-    $strErr="";
+    if(mysqli_num_rows($result)==0) {
+        str_replace('<messaggio />', '<p class="errore">C\'&egrave; stato un errore nel database, contattare l\'amministratore del sistema</p>', $paginaHTML);
+        return false;
+    }
 
-    $v_password = $_POST['v_password'];
+    $strErr="";
 
     if($v_password !== $old_psw) {
         $strErr = '<li> La <span lang="en">password</span> che hai inserito non coincide con quella salvata</li>';
-                                                               //Se la password vecchia non coincide ritorno false
     }
 
-    $n_password = trim($_POST['password']);
-    $c_password = trim($_POST['c_password']);
     if(!checkMinLen($n_password)||!checkMinLen($c_password)||$n_password !== $c_password) {
         $strErr .= '<li> Le due nuove <span lang="en">password</span> non coincidono o non sono lunghe almeno 2 caratteri</li>';
     }
     if(strlen($strErr)>0){
-        $strErr = '<ul class = messaggio>'. $strErr.'</ul>';
+        $strErr = '<ul class = "errore">'. $strErr.'</ul>';
         echo str_replace("<messaggio />", $strErr, $paginaHTML);
         return false;
     }else {
@@ -90,21 +91,19 @@ function cambioPassw($nome_utente) {
         $query -> bind_param('ss', $n_password, $nome_utente);
         $query->execute();
         $resultq = $query->get_result();
-        if(mysqli_num_rows($resultq)==0) {
+        if(!$resultq) {
+            str_replace('<messaggio />', '<p class="errore">C\'&egrave; stato un errore nel database, contattare l\'amministratore del sistema</p>', $paginaHTML);
             return false;
-        } else return true;
+        } else{
+            str_replace('<messaggio />', '<p class = "successo>">La <span lang="en">password</span> &grave; stata aggiornata!</p>', $paginaHTML);
+            return true;
+        }
 
     }
 
 }
 
-public function saveInfoSpedizione($nome_utente) {
-
-    $nome_cognome = trim($_POST['nome_cognome']);
-    $indirizzo = trim($_POST['indirizzo']);
-    $civico = trim($_POST['civico']);
-    $cap = trim($_POST['cap']);
-    $tel = trim($_POST['tel']);
+public function saveInfoSpedizione($nome_utente, $nome_cognome, $indirizzo, $civico, $cap, $tel) {
 
     $paginaHTML = file_get_contents('gestione_profilo_utente.html');
     $strErrori="";
@@ -131,26 +130,26 @@ public function saveInfoSpedizione($nome_utente) {
         $civico = "";
         $cap = "";
         $tel = "";
-        //Vedere auto increment per capire come creare l'id della destinazione da inserire
-        $query = $this->connection->prepare("INSERT into Destinazione VALUES ('???', '".$nome_cognome."', '".$tel."', '".$cap."', '".$indirizzo."', '".$civico."', '".$nome_utente."')");
+
+        $query = $this->connection->prepare("INSERT into Destinazione ('nome_cognome', 'numero_telefonico', 'CAP', 'via', 'numero_civico', 'utente') VALUES ('".$nome_cognome."', '".$tel."', '".$cap."', '".$indirizzo."', '".$civico."', '".$nome_utente."')");
         $query->execute();
         $result = $query->get_result();
-        if(mysqli_num_rows($result)==0){
+        if(!$result){
+            str_replace('<messaggio />', '<p class="errore">C\'&egrave; stato un errore nel database, contattare l\'amministratore del sistema</p>', $paginaHTML);
             return false;
-        }else return true;
+        }else{
+            str_replace('<messaggio />', '<p class = "successo>">La nuova destinazione &grave; stata inserita!</p>', $paginaHTML);
+            return true;
+        }
     }else {
-        $strErrori = '<ul class = "messaggio">'.$strErrori.'</ul>';
+        $strErrori = '<ul class = "errore">'.$strErrori.'</ul>';
         str_replace('<messaggio />', $strErrori, $paginaHTML);
         return false;
     }
 }
 
-public function saveInfoPagamento($nome_utente) {
+public function saveInfoPagamento($nome_utente, $intestatario, $num_carta, $mese_scad, $anno_scad) {
 
-    $intestatario = trim($_POST['intestatario_carta']);
-    $num_carta = trim($_POST['num_carta']);
-    $mese_scad = trim($_POST['mese_scad']);
-    $anno_scad = trim($_POST['anno_scad']);
     $paginaHTML = file_get_contents('gestione_profilo_utente.html');
     $strErrori="";
 
@@ -174,13 +173,17 @@ public function saveInfoPagamento($nome_utente) {
         $mese_scad = "- Mese -";
         $anno_scad = "- Anno -";
 
-        $query = $this->connection->prepare("UPDATE Utente SET numero_carta = ?, intestatario = ?, scadenza ='".$anno_scad."-".$mese_scad."-"."00"."'");
+        $query = $this->connection->prepare("UPDATE Utente SET numero_carta = ?, intestatario = ?, scadenza ='".$anno_scad."-".$mese_scad."-"."00"."' WHERE username = '".$nome_utente."'");
         $query -> bind_param('ss', $num_carta, $intestatario);
         $query->execute();
         $result = $query->get_result();
-        if(mysqli_num_rows($result)==0){
+        if(!$result){
+            str_replace('<messaggio />', '<p class="errore">C\'&egrave; stato un errore nel database, contattare l\'amministratore del sistema</p>', $paginaHTML);
             return false;
-        }else return true;
+        }else {
+            str_replace('<messaggio />', '<p class = "successo>">Il metodo di pagamento &grave; stato inserito con successo!</p>', $paginaHTML);
+            return true;
+        }
     }else {
         $strErrori = '<ul class = "messaggio">'.$strErrori.'</ul>';
         str_replace('<messaggio />', $strErrori, $paginaHTML);
