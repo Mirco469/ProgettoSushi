@@ -21,7 +21,7 @@ INSERT INTO Utente (username, nome, cognome, password, autorizzazione, numero_ca
 ('admin', 'Admin', 'Generico', 'admin', 'Admin', NULL, NULL, NULL),
 ('ammin1', 'Amministratore', 'Due', 'password', 'Admin', NULL, NULL, NULL),
 ('ammin2', 'Amministratore', 'Tre', 'password', 'Admin', NULL, NULL, NULL),
-('user', 'Utente', 'Generico', 'user', 'Utente', '1111222233334444', 'Utente Generico', '2021-11-00'),
+('utente', 'Utente', 'Generico', 'user', 'Utente', '1111222233334444', 'Utente Generico', '2021-11-00'),
 ('user1', 'User', 'Uno', 'password', 'Utente', '5555222211116666', 'User Uno', '2024-01-00'),
 ('user2', 'User', 'Due', 'password', 'Utente', '4444333388880000', 'User Due', '2027-06-00'),
 ('user3', 'User', 'Tre', 'password', 'Utente', NULL, NULL, NULL),
