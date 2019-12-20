@@ -39,18 +39,19 @@
 				
 				$paginaHTML = file_get_contents('dettagli_ordine.html');
 				
-				echo str_replace('<infoOrdine/>',$content,$paginaHTML);
+				echo str_replace('<id_ordine/>', $dettagliOrdine->id_ordine, str_replace('<infoOrdine/>',$content,$paginaHTML) );
 			} else {
-				header('location: errore.html');
 				/* errore
 					l'id_ordine non esiste
 					l'username non ha effettuato l'ordine con quel id_ordine
 				*/
+				header('location: errore403.html');
 			}
 		} else {
 			// errore connesione DB
+			header('location: errore500.html');
 		}
 	} else {
-		header("location: errore.html");
+		header("location: errore404.html");
 	}
 ?>
