@@ -33,7 +33,7 @@ INSERT INTO Utente (username, nome, cognome, password, autorizzazione, numero_ca
 DROP TABLE IF EXISTS Recensione;
 
 CREATE TABLE Recensione(
-	id_recensione 	INT PRIMARY KEY,
+	id_recensione 	INT PRIMARY KEY AUTO_INCREMENT,
 	titolo		  		VARCHAR(30) NOT NULL,
 	testo						VARCHAR(150) NOT NULL,
 	data						DATE NOT NULL,
@@ -54,7 +54,7 @@ INSERT INTO Recensione (id_recensione, titolo, testo, data, utente) VALUES
 DROP TABLE IF EXISTS News;
 
 CREATE TABLE News(
-	id_news		 		INT PRIMARY KEY,
+	id_news		 		INT PRIMARY KEY AUTO_INCREMENT,
 	titolo		  	VARCHAR(30) NOT NULL,
 	descrizione		VARCHAR(150),
 	data					DATE NOT NULL,
@@ -76,7 +76,7 @@ INSERT INTO News (id_news, titolo, descrizione, data, utente) VALUES
 DROP TABLE IF EXISTS Destinazione;
 
 CREATE TABLE Destinazione(
-	id_destinazione			INT PRIMARY KEY,
+	id_destinazione			INT PRIMARY KEY AUTO_INCREMENT,
 	nome_cognome				VARCHAR(40) NOT NULL,
 	numero_telefonico		VARCHAR(15),
 	CAP									VARCHAR(5) NOT NULL,
@@ -102,7 +102,7 @@ INSERT INTO Destinazione (id_destinazione, nome_cognome, numero_telefonico, CAP,
 DROP TABLE IF EXISTS Ordine;
 
 CREATE TABLE Ordine(
-	id_ordine			INT PRIMARY KEY,
+	id_ordine			INT PRIMARY KEY AUTO_INCREMENT,
 	data_ordine		DATETIME NOT NULL,
 	data_consegna		DATETIME NOT NULL,
 	totale				FLOAT NOT NULL,
@@ -210,7 +210,7 @@ INSERT INTO Prodotto (nome, categoria, pezzi, prezzo) VALUES
 DROP TABLE IF EXISTS Contiene;
 
 CREATE TABLE Contiene(
-    id_ordine 			INT,
+    id_ordine 			INT AUTO_INCREMENT,
     nome 						VARCHAR(30),
     numero_porzioni TINYINT NOT NULL,
     PRIMARY KEY (id_ordine, nome),
