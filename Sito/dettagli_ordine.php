@@ -41,7 +41,7 @@
 				
 				echo str_replace('<infoOrdine/>',$content,$paginaHTML);
 			} else {
-				header("location: errore.html");
+				header('location: errore.html');
 				/* errore
 					l'id_ordine non esiste
 					l'username non ha effettuato l'ordine con quel id_ordine
