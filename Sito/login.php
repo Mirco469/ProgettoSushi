@@ -45,7 +45,7 @@
                 }
                 else
                 {
-                    $erroreL = "<p class='errore'>L'username o la password non sono corretti!</p>";
+                    $erroreL = "<p class='errore'>L'<span lang='en'>username</span> o la <span lang='en'>password</span> non sono corretti!</p>";
                 }
             }
             else
@@ -67,11 +67,11 @@
             {
                 if($oggettoConnessione->alreadyExistsUsername($usernameR))
                 {
-                    $erroreR .= "<li>Username gi&agrave; utilizzato</li>";
+                    $erroreR .= "<li><span lang='en'>Username</span> gi&agrave; utilizzato</li>";
                 }
                 if(!checkAlfanumerico($usernameR))
                 {
-                    $erroreR .= "<li>L'username deve contenere solo caratteri alfanumerici</li>";
+                    $erroreR .= "<li>L'<span lang='en'>username</span> deve contenere solo caratteri alfanumerici</li>";
                 }
                 if(!checkSoloLettereEDim($nomeR))
                 {
@@ -84,12 +84,12 @@
 
                 if(!checkMinLen($passwordR))
                 {
-                    $erroreR .= "<li>La password deve essere lunga almeno due caratteri</li>";
+                    $erroreR .= "<li>La <span lang='en'>password</span> deve essere lunga almeno due caratteri</li>";
                 }
 
                 if(strcmp($passwordR,$passwordRepeatR)!=0)
                 {
-                    $erroreR .= "<li>Le password non coincidono</li>";
+                    $erroreR .= "<li>Le <span lang='en'>password</span> non coincidono</li>";
                 }
 
                 //Controllo se non ho riscontrato errori
