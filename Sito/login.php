@@ -27,8 +27,8 @@
         //Controllo se ho ricevuto la post dalla form di login o di registrazione o è la prima volta
         if(isset($_POST['accedi']))
         {
-            $usernameL = trim($_POST['username']);
-            $passwordL = trim($_POST['password']);
+            $usernameL = htmlentities(trim($_POST['username']));
+            $passwordL = htmlentities(trim($_POST['password']));
 
             //Mi connetto al database
             $oggettoConnessione =  new DBAccess();
@@ -55,11 +55,11 @@
         }
         elseif(isset($_POST['registrati']))
         {
-            $usernameR = trim($_POST['username']);
-            $nomeR = trim($_POST['nome']);
-            $cognomeR = trim($_POST['cognome']);
-            $passwordR = trim($_POST['password']);
-            $passwordRepeatR = trim($_POST['passwordRepeat']);
+            $usernameR = htmlentities(trim($_POST['username']));
+            $nomeR = htmlentities(trim($_POST['nome']));
+            $cognomeR = htmlentities(trim($_POST['cognome']));
+            $passwordR = htmlentities(trim($_POST['password']));
+            $passwordRepeatR = htmlentities(trim($_POST['passwordRepeat']));
 
             // Controllo gli input
             $oggettoConnessione =  new DBAccess();
