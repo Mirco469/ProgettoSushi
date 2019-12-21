@@ -30,10 +30,10 @@ $menu = '';
 						<li><a lang="en" href="#" tabindex="11">Logout</a></li>
 					</ul>
 				</li>';
-        echo str_replace('<menu />', $menu, $paginaHTML);
+        return str_replace('<menu />', $menu, $paginaHTML);
     }else {
         $menu = '<li class="login"><a href="login.html" tabindex="7"><span lang="en">Login</span>/Registrazione</a></li>';
-       echo str_replace('<menu />', $menu, $paginaHTML);
+       return str_replace('<menu />', $menu, $paginaHTML);
     }
 }
 
