@@ -16,7 +16,6 @@
 
         public function inserisciNews($titolo, $data ,$testo){
             $username = $_SESSION['username'];
-            $paginaHTML = file_get_contents('../back/home_admin.html');
 
 
             $strErrori='';
@@ -27,25 +26,33 @@
                 $strErrori .='<li>Devi inserire una data</li>';
             }
             if(!checkData($data)){
-                $strErrori .= 'Devi inserire una data nel formato AAAA-MM-GG';
+                $strErrori .= '<li>Devi inserire una data nel formato AAAA-MM-GG</li>';
             }
             if(strlen($testo)==0){
-                $strErrori .= 'Devi inserire del testo';
+                $strErrori .= '<li>Non puoi inserire una notizia vuota</li>';
             }
 
+            $paginaHTML = file_get_contents('home_admin.html');
+
             if(strlen($strErrori)==0){
-                $query = $this->connection->prepare('INSERT into News ("titolo", "descrizione", "data", "utente") VALUES (? ,? ,?, ?)');
-                $query -> bind_param('ssss', $titolo, $testo, $data, $username);
+                $query = $this->connection->prepare('INSERT into News ("titolo", "descrizione", "data", "utente") VALUES ("'.$titolo.'","'.$testo.'","'.$data.'","'.$username.'")');
                 $query->execute();
                 $result = $query->get_result();
+
                 if(!$result){
                     header('location: erroreDatabase.html');
                 }else{
-                    $notizia = '<dt>".$data." - ".$titolo."</dt>
+                    $tmp1 = str_replace('<messaggio />', '<p>Inserimento avvenuto con successo!</p>', $paginaHTML);
+                    $content = "<dt>".$data." - ".$titolo."</dt>
                                     <dd>".$testo."</dd>
-                                    <dd><input type="button" name="elimina" value="Elimina"/></dd>';
-                    echo str_replace('<notizia />', $notizia, $paginaHTML);
+                                    <dd><input type=\"button\" name=\"elimina\" value=\"Elimina\"/></dd>
+                                <notizia />";
+                    return str_replace('<notizia />', $content, $tmp1);
                 }
+            } else {
+                $strErrori= '<ul class="errore">'.$strErrori.'</ul>';
+                $tmp1 = str_replace('<messaggio />', $strErrori, $paginaHTML);
+                return $tmp1;
             }
         }
 
