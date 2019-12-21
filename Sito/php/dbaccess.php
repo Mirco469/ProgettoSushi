@@ -14,11 +14,11 @@
             return $this->connection;
         }
 
-		function getRecensione() 
+		#funzione per il get delle recensioni;
+		public function getRecensioni() 
 		{
 			#DESC o ASC in modo che prima ci sia la più recente;
 			$query = $this->connection->prepare("SELECT * FROM Recensione ORDER BY data DESC");
-			# $query->bind_param(); serve in questo caso?
 			$query->execute();
 			$queryResult = $query->get_result();
 
@@ -42,6 +42,63 @@
 			}
 			return $result;
 		}
+
+		#funzione per il get dei prodotti per categoria;
+		public function getProdotti($categoria) 
+		{
+			$query = $this->connection->prepare("SELECT * FROM Prodotto WHERE categoria = ?");
+			$query->bind_param('s', $categoria);
+			$query->execute();
+			$queryResult = $query->get_result();
+
+			if (mysqli_num_rows($queryResult) == 0)
+			{
+				return null;
+			} 
+			else
+			{
+				$result = array();
+
+				while ($row = mysqli_fetch_assoc($queryResult)) {
+					$arraySingoloProdotto = array (
+						'Nome' => $row['nome'],
+						'Prezzo' => $row['prezzo'],
+						'Pezzi' => $row['pezzi'],
+						'Descrizione' => $row['descrizione'],
+					);
+					array_push_result($result, $arraySingoloProdotto);
+				}
+			}
+			return $result;
+		}
+
+		#funzione per il get degli indirizzi per utente;
+		public function getIndirizzi($utente) 
+		{
+			$query = $this->connection->prepare("SELECT via, numero_civico FROM Destinazione WHERE utente = ?");
+			$query->bind_param('s', $utente);
+			$query->execute();
+			$queryResult = $query->get_result();
+
+			if (mysqli_num_rows($queryResult) == 0)
+			{
+				return null;
+			} 
+			else
+			{
+				$result = array();
+
+				while ($row = mysqli_fetch_assoc($queryResult)) {
+					$arraySingoloIndirizzo = array (
+						'Via' => $row['via'],
+						'Num' => $row['numero_civico'],
+					);
+					array_push_result($result, $arraySingoloProdotto);
+				}
+			}
+			return $result;
+		}
+
     }
 
 	/*	Esempio di funzione per prendere i dati
