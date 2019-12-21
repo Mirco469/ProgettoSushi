@@ -38,11 +38,13 @@
     <div class="content" id="home_admin">
         <h1>Homepage</h1>
 
-        <form action="#" method="post">
+        <form action="home_admin.php" method="post">
           <fieldset>
             <legend>Inserisci la notizia</legend>
             <label for="titolo">Inserisci il titolo: </label>
             <input type="text" id="titolo" name="titolo" value=""/>
+            <label for="data">Inserisci la data: </label>
+            <input type="text" id="data" name="data" value="AAAA-MM-GG"/>
             <label for="notizia">Inserisci il testo: </label>
             <textarea name="notizia" id="notizia" rows="4" cols="35"> </textarea>
           <input class="defaultButton" type="submit" name="inserisci" value="Inserisci"/>
@@ -57,7 +59,7 @@
           <dt>15/10/2019</dt>
             <dd>PROVA</dd>
             <dd><input type="button" name="elimina" value="Elimina"/></dd>
-      <!--SEZIONE NOTIZIE, modificabile dall'admin-->
+          <!--SEZIONE NOTIZIE, modificabile dall'admin-->
         </dl>
       </div>
 
