@@ -64,10 +64,6 @@
             $passwordR = trim($_POST['password']);
             $passwordRepeatR = trim($_POST['passwordRepeat']);
 
-            //****************************************
-            //Controllare l'input e caricare sul database il nuovo account, infine reindirizzare nella home appropriata
-            //****************************************
-
             // Controllo gli input
             $oggettoConnessione =  new DBAccess();
             if($oggettoConnessione->openDBConnection())
