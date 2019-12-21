@@ -15,68 +15,63 @@
         }
 
         public function cambioPassw($v_password, $n_password, $c_password) {
-    $nome_utente = $_SESSION['username'];
-    $query = $this->connection->prepare('SELECT * from Utente WHERE username = ?');
-    $query -> bind_param('s', $nome_utente);
-    $query->execute();
-    $result = $query->get_result();
-    $paginaHTML = file_get_contents('gestione_profilo_utente.html');
-    if(mysqli_num_rows($result)==0) {
-        header('location: erroreDatabase.html');
-        return false;
-    }
-    $old_psw = $result['password'];
-
-    $strErr="";
-
-    if($v_password !== $old_psw) {
-        $strErr = '<li> La <span lang="en">password</span> che hai inserito non coincide con quella salvata</li>';
-    }
-
-    if(!checkMinLen($n_password)||!checkMinLen($c_password)||$n_password !== $c_password) {
-        $strErr .= '<li> Le due nuove <span lang="en">password</span> non coincidono o non sono lunghe almeno 2 caratteri</li>';
-    }
-    $form = '<fieldset>
-            <legend>Informazioni personali: </legend>
-            <h2>Nome Utente</h2>
-            <label for="username">Nome utente: </label>
-            <input type="text" id="username" name="username" value="NomeUtenteVero" readonly="readonly"/>
-
-            <h2 id="cp">Cambia <span lang="en">Password:</span> </h2>
-            <label for="v_password">Inserisci la vecchia <span lang="en">password</span>: </label>
-            <input type="password" id="v_password" name="v_password" />
-            <label for="password">Inserisci la nuova <span lang="en">password</span>: </label>
-            <input type="password" id="password" name="password" />
-            <label for="c_password">Conferma la nuova <span lang="en">password</span>: </label>
-            <input type="password" id="c_password" name="c_password" value=""/>
-            <input class="defaultButton" type="submit" name="dati_personali" value="Salva"/>  <!--Submit legato solo al cambio della password-->
-        </fieldset>'; 
-        str_replace('<formPassword>', $form, $paginaHTML);
-    if(strlen($strErr)>0){
-        $strErr = '<ul class = "errore">'. $strErr.'</ul>';
-        echo str_replace("<messaggio />", $strErr, $paginaHTML);
-        return false;
-    }else {
-        $v_password = "";
-        $n_password = "";
-        $c_password = "";
-        $query = $this->connection->prepare("UPDATE Utente SET password =?  WHERE username = ? ");
-        $query -> bind_param('ss', $n_password, $nome_utente);
+        $nome_utente = $_SESSION['username'];
+        $query = $this->connection->prepare('SELECT * from Utente WHERE username = ?');
+        $query -> bind_param('s', $nome_utente);
         $query->execute();
-        $resultq = $query->get_result();
-        if(!$resultq) {
+        $result = $query->get_result();
+        $paginaHTML = file_get_contents('gestione_profilo_utente.html');
+        if(mysqli_num_rows($result)==0) {
             header('location: erroreDatabase.html');
             return false;
-        } else{
-            str_replace('<messaggio />', '<p class = "successo>">La <span lang="en">password</span> &grave; stata aggiornata!</p>', $paginaHTML);
-            return true;
         }
+        $row = mysqli_fetch_assoc($result);
+        $old_psw = $row['password'];
+
+        $strErr="";
+
+        if($v_password !== $old_psw) {
+            $strErr = '<li> La <span lang="en">password</span> che hai inserito non coincide con quella salvata</li>';
+        }
+
+        if(!checkMinLen($n_password)||!checkMinLen($c_password)||$n_password !== $c_password) {
+            $strErr .= '<li> Le due nuove <span lang="en">password</span> non coincidono o non sono lunghe almeno 2 caratteri</li>';
+        }
+
+        $form = getFormPassword();
+
+        $formPagamento = getFormPagamento();
+        $formSpedizione = getFormSpedizione();
+
+        if(strlen($strErr)>0){
+            $strErr = '<ul class = "errore">'. $strErr.'</ul>';
+            $tmp1 = str_replace('<formPassword />', $form, $paginaHTML);
+            $tmp2 = str_replace("<messaggio1 />", $strErr, $tmp1);
+
+            echo str_replace('<formPagamento />', $formPagamento, str_replace('<formSpedizione />', $formSpedizione, $tmp2));
+            return false;
+        }else {
+            $query = $this->connection->prepare("UPDATE Utente SET password =?  WHERE username = ? ");
+            $query -> bind_param('ss', $n_password, $nome_utente);
+            $query->execute();
+            $resultq = $query->get_result();
+            if(!$resultq) {
+                header('location: erroreDatabase.html');
+                return false;
+            } else{
+                $tmp1 = str_replace('<formPassword />', $form, $paginaHTML);
+                $tmp2 = str_replace('<messaggio1 />', '<p class = "successo>">La <span lang="en">password</span> &grave; stata aggiornata!</p>', $tmp1);
+                echo str_replace('<formPagamento />', $formPagamento, str_replace('<formSpedizione />', $formSpedizione, $tmp2));
+                return true;
+            }
+
+
+        }
+
 
     }
 
-}
-
-public function saveInfoSpedizione($nome_cognome, $indirizzo, $civico, $cap, $tel) {
+        public function saveInfoSpedizione($nome_cognome, $indirizzo, $civico, $cap, $tel) {
     $nome_utente = $_SESSION['username'];
     $paginaHTML = file_get_contents('gestione_profilo_utente.html');
     $strErrori="";
@@ -97,48 +92,28 @@ public function saveInfoSpedizione($nome_cognome, $indirizzo, $civico, $cap, $te
         $strErrori .= '<li>Inserire un numero telefonico valido</li>';
     }
 
-    if(str_len($strErrori)!=0){
-        $nome_cognome = "";
-        $indirizzo = "";
-        $civico = "";
-        $cap = "";
-        $tel = "";
+    $formPassword = getFormPassword();
+    $formPagamento = getFormPagamento();
 
+    if(strlen($strErrori)==0){
         $query = $this->connection->prepare("INSERT into Destinazione ('nome_cognome', 'numero_telefonico', 'CAP', 'via', 'numero_civico', 'utente') VALUES ('".$nome_cognome."', '".$tel."', '".$cap."', '".$indirizzo."', '".$civico."', '".$nome_utente."')");
         $query->execute();
         $result = $query->get_result();
         if(!$result){
             header('location: erroreDatabase.html');
-            return false;
+
         }else{
-            str_replace('<messaggio />', '<p class = "successo>">La nuova destinazione &grave; stata inserita!</p>', $paginaHTML);
-            $formSuccesso = '<legend id="is" >Modifica o inserisci informazioni sulla spedizione: </legend>
 
-            <label for="nome_cognome">Nome e Cognome: </label>
-            <input type="text" name="nome_cognome" id="nome_cognome" placeholder="Mario Rossi"/>
-            <label for="indirizzo">Indirizzo: </label>
-            <input type="text" id="indirizzo" name="indirizzo" placeholder="Inserire via"/>
-            <label for="civico">Numero civico: </label>
-            <input type="text" id="civico" name="civico" placeholder="Inserire numero civico"/>
-            <label for="cap"><abbr title="Codice di Avviamento Postale">CAP</abbr> :</label>
-            <input type="text" id="cap"  name="cap" placeholder="Inserire CAP"/>
-            <label for="comune">Comune: </label>
-            <input type="text" id="comune" name="comune" value="Padova" disabled="disabled"/>
-            <label for="provincia">Provincia: </label>
-            <input type="text" id="provincia" name="provincia" value="Padova" disabled="disabled"/>
-            <label for="stato">Stato: </label>
-            <input type="text" id="stato" name="stato" value="Italia" disabled="disabled"/>
-            <label for="tel">Numero di telefono: </label>
-            <input type="tel" id="tel" name="tel" />
+            $tmp1=str_replace('<messaggio2 />', '<p class = "successo>">La nuova destinazione &grave; stata inserita!</p>', $paginaHTML);
 
-            <input class="defaultButton" type="submit" name="dati_spedizione" value="Salva"/> <!--Submit legato solo alle informazioni di spedizione-->
-        	</fieldset>'; 
-        	str_replace('<formSpedizione />', $formSuccesso, $paginaHTML);
+            $formSuccesso = getFormSpedizione();
+            $tmp2 = str_replace('<formPassword />', $formPassword, str_replace('<formPagamento />', $formPagamento, $tmp1));
+        	echo str_replace('<formSpedizione />', $formSuccesso, $tmp2);
             return true;
         }
     }else {
         $strErrori = '<ul class = "errore">'.$strErrori.'</ul>';
-        str_replace('<messaggio />', $strErrori, $paginaHTML);
+        $tmp1 = str_replace('<messaggio2 />', $strErrori, $paginaHTML);
         $formErrore = '<fieldset>
             <legend id="is" >Modifica o inserisci informazioni sulla spedizione: </legend>
 
@@ -161,12 +136,13 @@ public function saveInfoSpedizione($nome_cognome, $indirizzo, $civico, $cap, $te
 
             <input class="defaultButton" type="submit" name="dati_spedizione" value="Salva"/> <!--Submit legato solo alle informazioni di spedizione-->
         </fieldset>';
-        str_replace('<formSpedizione />', $formErrore, $paginaHTML);
+        $tmp2 = str_replace('<formPagamento />', $formPagamento, str_replace('<formPassword />', $formPassword, $tmp1));
+        echo str_replace('<formSpedizione />', $formErrore, $tmp2);
         return false;
     }
 }
 
-public function saveInfoPagamento($intestatario, $num_carta, $mese_scad, $anno_scad) {
+        public function saveInfoPagamento($intestatario, $num_carta, $mese_scad, $anno_scad) {
     $nome_utente = $_SESSION['username'];
     $paginaHTML = file_get_contents('gestione_profilo_utente.html');
     $strErrori="";
@@ -184,13 +160,10 @@ public function saveInfoPagamento($intestatario, $num_carta, $mese_scad, $anno_s
         $strErrori .= '<li>Selezionare un anno</li>';
     }
 
+    $formPassword = getFormPassword();
+    $formSpedizione = getFormSpedizione();
 
-    if(str_len($strErrori)!=0){
-        $num_carta = "";
-        $intestatario = "";
-        $mese_scad = "- Mese -";
-        $anno_scad = "- Anno -";
-
+    if(strlen($strErrori)==0){
         $query = $this->connection->prepare("UPDATE Utente SET numero_carta = ?, intestatario = ?, scadenza ='".$anno_scad."-".$mese_scad."-"."00"."' WHERE username = '".$nome_utente."'");
         $query -> bind_param('ss', $num_carta, $intestatario);
         $query->execute();
@@ -199,64 +172,19 @@ public function saveInfoPagamento($intestatario, $num_carta, $mese_scad, $anno_s
             header('location: erroreDatabase.html');
             return false;
         }else {
-            str_replace('<messaggio />', '<p class = "successo>">Il metodo di pagamento &grave; stato inserito con successo!</p>', $paginaHTML);
-            $formSuccesso = '        <fieldset>
-            <legend id="ip">Informazioni di pagamento: </legend>
-                <label for="intestatario_carta">Intestatario carta: </label>
-                <input type="text" name="intestatario_carta" id="intestatario_carta" value="" />
-                <label for="num_carta">Numero carta: </label>
-                <input type="text" name="num_carta" id="num_carta" />
-            <select name="mese_scad">
-                <option>- Mese -</option>
-                <option value="01">January</option>
-                <option value="03">March</option>
-                <option value="04">April</option>
-                <option value="05">May</option>
-                <option value="06">June</option>
-                <option value="07">July</option>
-                <option value="08">August</option>
-                <option value="09">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-        </select>
-        <select name="anno_scad">
-                <option>- Anno -</option>
-                <option value="2019">2019</option>
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
-                <option value="2022">2022</option>
-                <option value="2023">2023</option>
-                <option value="2024">2024</option>
-                <option value="2025">2025</option>
-                <option value="2026">2026</option>
-                <option value="2027">2027</option>
-                <option value="2028">2028</option>
-                <option value="2029">2028</option>
-                <option value="2030">2030</option>
-                <option value="2031">2031</option>
-                <option value="2032">2032</option>
-                <option value="2033">2033</option>
-                <option value="2034">2034</option>
-                <option value="2035">2035</option>
-                <option value="2036">2036</option>
-                <option value="2037">2037</option>
-                <option value="2038">2038</option>
-                <option value="2039">2039</option>
-            </select>
-
-            <input class="defaultButton" type="submit" name="dati_pagamento" value="Salva">
-        </fieldset>';
-        str_replace('<formPagamento />', $formSuccesso, $paginaHTML);
+            $tmp1 = str_replace('<messaggio3 />', '<p class = "successo>">Il metodo di pagamento &grave; stato inserito con successo!</p>', $paginaHTML);
+            $formSuccesso = getFormPagamento();
+            $tmp2 = str_replace('<formPassword />', $formPassword, str_replace('<formSpedizione />', $formSpedizione, $tmp1));
+            echo str_replace('<formPagamento />', $formSuccesso, $tmp2);
             return true;
         }
     }else {
         $strErrori = '<ul class = "messaggio">'.$strErrori.'</ul>';
-        str_replace('<messaggio />', $strErrori, $paginaHTML);
+        $tmp1 = str_replace('<messaggio3 />', $strErrori, $paginaHTML);
         $formErrore = '        <fieldset>
             <legend id="ip">Informazioni di pagamento: </legend>
                 <label for="intestatario_carta">Intestatario carta: </label>
-                <input type="text" name="intestatario_carta" id="intestatario_carta" value="'.$intestatario_carta.'" />
+                <input type="text" name="intestatario_carta" id="intestatario_carta" value="'.$intestatario.'" />
                 <label for="num_carta">Numero carta: </label>
                 <input type="text" name="num_carta" id="num_carta" value="'.$num_carta.'"/>
             <select name="mese_scad">
@@ -300,12 +228,14 @@ public function saveInfoPagamento($intestatario, $num_carta, $mese_scad, $anno_s
 
             <input class="defaultButton" type="submit" name="dati_pagamento" value="Salva">
         </fieldset>';
+        $tmp2 = str_replace('<formPassword />', $formPassword, str_replace('<formSpedizione />', $formSpedizione, $tmp1));
+        echo str_replace('<formPagamento />', $formErrore, $tmp2);
         return false;
     }
 }
 
     }
-	
+
 //Controlla se viene inserito un CAP di Padova
 function checkCAP($string) {
     if(!preg_match('/35(100|121|122|123|124|125|126|127|128|129|131|132|133|134|135|136|137|138|139|141|142|143)/', $string)){
@@ -388,7 +318,98 @@ function checkSoloNumerieDim($string){
 		}
 	}
 	*/
+function getFormPassword(){
+    $nome_utente = $_SESSION['username'];
+    return '<fieldset>
+                <legend>Informazioni personali: </legend>
+                <h2>Nome Utente</h2>
+                <label for="username">Nome utente: </label>
+                <input type="text" id="username" name="username" value="'.$nome_utente.'" readonly="readonly"/>
+    
+                <h2 id="cp">Cambia <span lang="en">Password:</span> </h2>
+                <label for="v_password">Inserisci la vecchia <span lang="en">password</span>: </label>
+                <input type="password" id="v_password" name="v_password" />
+                <label for="password">Inserisci la nuova <span lang="en">password</span>: </label>
+                <input type="password" id="password" name="password" />
+                <label for="c_password">Conferma la nuova <span lang="en">password</span>: </label>
+                <input type="password" id="c_password" name="c_password" value=""/>
+                <input class="defaultButton" type="submit" name="dati_personali" value="Salva"/>  <!--Submit legato solo al cambio della password-->
+            </fieldset>';
+}
 
+function getFormSpedizione(){
+    return '<fieldset>
+            <legend id="is" >Modifica o inserisci informazioni sulla spedizione: </legend>
 
+            <label for="nome_cognome">Nome e Cognome: </label>
+            <input type="text" name="nome_cognome" id="nome_cognome" placeholder="Mario Rossi"/>
+            <label for="indirizzo">Indirizzo: </label>
+            <input type="text" id="indirizzo" name="indirizzo" placeholder="Inserire via"/>
+            <label for="civico">Numero civico: </label>
+            <input type="text" id="civico" name="civico" placeholder="Inserire numero civico"/>
+            <label for="cap"><abbr title="Codice di Avviamento Postale">CAP</abbr> :</label>
+            <input type="text" id="cap"  name="cap" placeholder="Inserire CAP"/>
+            <label for="comune">Comune: </label>
+            <input type="text" id="comune" name="comune" value="Padova" disabled="disabled"/>
+            <label for="provincia">Provincia: </label>
+            <input type="text" id="provincia" name="provincia" value="Padova" disabled="disabled"/>
+            <label for="stato">Stato: </label>
+            <input type="text" id="stato" name="stato" value="Italia" disabled="disabled"/>
+            <label for="tel">Numero di telefono: </label>
+            <input type="tel" id="tel" name="tel" />
+
+            <input class="defaultButton" type="submit" name="dati_spedizione" value="Salva"/> <!--Submit legato solo alle informazioni di spedizione-->
+        	</fieldset>';
+}
+
+function getFormPagamento(){
+    return '<fieldset>
+            <legend id="ip">Informazioni di pagamento: </legend>
+                <label for="intestatario_carta">Intestatario carta: </label>
+                <input type="text" name="intestatario_carta" id="intestatario_carta" value="" />
+                <label for="num_carta">Numero carta: </label>
+                <input type="text" name="num_carta" id="num_carta" />
+            <select name="mese_scad">
+                <option>- Mese -</option>
+                <option value="01">January</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+        </select>
+        <select name="anno_scad">
+                <option>- Anno -</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2028</option>
+                <option value="2030">2030</option>
+                <option value="2031">2031</option>
+                <option value="2032">2032</option>
+                <option value="2033">2033</option>
+                <option value="2034">2034</option>
+                <option value="2035">2035</option>
+                <option value="2036">2036</option>
+                <option value="2037">2037</option>
+                <option value="2038">2038</option>
+                <option value="2039">2039</option>
+            </select>
+
+            <input class="defaultButton" type="submit" name="dati_pagamento" value="Salva">
+        </fieldset>';
+}
 
 ?>
