@@ -1,62 +1,112 @@
 <?php
 	require_once("php/dbaccess.php");
-    $db = new DBAccess();
+
 
     session_start();
     $_SESSION['username']= 'user';
     
 	if( isset($_SESSION['username'])) {
+	         $user = $_SESSION['username'];
 
-        if($db->openDBConnection()) {
-            $user = $_SESSION['username'];
+             $old_password = '';
+             $c_old_password = '';
+             $new_password = '';
+             $c_new_password = '';
 
+             $nome_cognome = 'Mario Rossi';
+             $indirizzo = 'Inserire indirizzo';
+             $numero_civico = 'Inserire numero civico';
+             $cap = 'Inserire CAP';
+             $tel = 'Inserire numero telefonico';
 
-             $formPassword = getFormPassword();
-             $formSpedizione = getFormSpedizione();
-             $formPagamento = getFormPagamento();
+             $intestatario = 'Inserire intestatario della carta';
+             $num_carta = 'Inserire numero carta';
+             $mese_scadenza = '- Mese -';
+             $anno_scadenza = '- Anno -';
+
+             $erroriPass='';
+             $erroriSped='';
+             $erroriPaga='';
+
 
              if(isset($_POST['dati_personali'])){
-                 $formPassword = $db->cambioPassw(trim($_POST['v_password']), trim($_POST['password']), trim($_POST['c_password']));
-             }
-             elseif(isset($_POST['dati_spedizione'])){
-                 $formSpedizione = $db->saveInfoSpedizione(trim($_POST['nome_cognome']), trim($_POST['indirizzo']), trim($_POST['civico']), trim($_POST['cap']), trim($_POST['tel']));
-             }elseif (isset($_POST['dati_pagamento'])){
-                 $formPagamento = $db->saveInfoPagamento(trim($_POST['intestatario_carta']), trim($_POST['num_carta']), trim($_POST['mese_scad']), trim($_POST['anno_scad']));
-             }
 
+                 $old_password = getPassword();
+                 $c_old_password = htmlentities(trim($_POST['v_password']));
+                 $new_password = htmlentities(trim($_POST['password']));
+                 $c_new_password = htmlentities(trim($_POST['c_password']));
 
-                 $paginaHTML = file_get_contents('gestione_profilo_utente.html');
-                 $listaDestinazioni ='';
-                 $queryResult = $db->getDestinazioni($user);
+                 $db = new DBAccess();
 
-                $index = 0;
-                 while($row = mysqli_fetch_assoc($queryResult)) {
-                     $listaDestinazioni.='<dt>'.$row['nome_cognome'].', indirizzo: '.$row['via'].' '.$row['numero_civico'].', '.$row['CAP'].' </dt>
-                                          <dd><input type="button" name="elimina'.$index.'" value="Elimina"/></dd>';
-                     $index++;
+                 if($db->openDBConnection()){
+                    if($c_old_password !== $old_password){
+                        $erroriPass .= '<li>La password che ha inserito non coincide con quella salvata</li>';
+                    }
+                    if(!checkMinLen($new_password)){
+                        $erroriPass .= '<li>La nuova password che hai inserito deve essere lunga almeno 2 caratteri</li>';
+                    }
+                    if($new_password !== $c_new_password){
+                        $erroriPass .= '<li>Le due password che hai inserito non coincidono</li>';
+                    }
+
+                 }else {
+                     header('location: errore500.html');
                  }
 
-                 $listaDestinazioni = '<dl id="listaDestinazioni">'.$listaDestinazioni.'</dl>';
+             }
+             elseif(isset($_POST['dati_spedizione'])){
 
-                 $tmp0 = str_replace('<formSpedizione2 />', $listaDestinazioni, $paginaHTML);
+                 $nome_cognome = htmlentities(trim($_POST['nome_cognome']));
+                 $indirizzo = htmlentities(trim($_POST['indirizzo']));
+                 $numero_civico = htmlentities(trim($_POST['civico']));
+                 $cap = htmlentities(trim($_POST['cap']));
+                 $tel = htmlentities(trim($_POST['tel']));
 
-                 $tmp1 = str_replace('<formPassword />', $formPassword, $tmp0);
-                 $tmp2 = str_replace('<formSpedizione />', $formSpedizione, $tmp1);
-                 echo str_replace('<formPagamento />', $formPagamento, $tmp2);
+                 $db = new DBAccess();
 
+                 if($db->openDBConnection()){
+                    if(!checkSoloLettereEDim($nome_cognome)){
+                        $erroriSped .= '<li>Il nome deve contenere solo lettere e non contenere meno di due caratteri</li>';
+                    }
+                    if(!checkAlfanumerico($indirizzo)){
+                        $erroriSped .= '<li>L\'indirizzo non deve contenere caratteri speciali</li>';
+                    }
+                    if(!checkSoloNumeri($numero_civico)){
+                        $erroriSped .= '<li>Il numero civico deve contenere solo numeri</li>';
+                    }
+                    if(!checkCAP($cap)){
+                        $erroriSped .= '<li>Non hai inserito un CAP corretto</li>';
+                    }
+                    if(!checkSoloNumeriEDIm($tel)){
+                        $erroriSped .= '<li>Non hai inserito un numero corretto</li>';
+                    }
+                 }else {
+                     header('location: errore500.html');
+                 }
+             }elseif (isset($_POST['dati_pagamento'])){
+                 $intestatario = htmlentities(trim($_POST['intestatario_carta']));
+                 $num_carta = htmlentities(trim($_POST['num_carta']));
+                 $mese_scadenza = htmlentities(trim($_POST['mese_scad']));
+                 $anno_scadenza = htmlentities(trim($_POST['mese_scad']));
 
+                 if(!checkSoloLettereEDim($intestatario)){
+                     $erroriPaga .= '<li>L\'intestatario deve contenere solo lettere ed essere lungo almeno due caratteri</li>';
+                 }
+                 if(!checkNumeriEDim($num_carta)){
+                     $erroriPaga .= '<li>Non hai inserito un numero della carta corretto</li>';
+                 }
+                 if($mese_scadenza == '- Mese -'){
+                     $erroriPaga .= '<li>Seleziona il mese di scadenza</li>';
+                 }
+                 if($anno_scadenza == '- Anno -'){
+                     $erroriPaga .= '<li>Seleziona l\'anno di scadenza</li>';
+                 }
 
-        }else {
-            header('location: errore500.html');
-        }
+             }
 
-    }else {
-	    header('location: errore403.html');
-    }
+             $paginaHTML = file_get_contents('html/gestione_profilo_utente.html');
 
-function getFormPassword(){
-    $nome_utente = $_SESSION['username'];
-    return '<fieldset>
+             $formPassword = '<fieldset>
                 <legend>Informazioni personali: </legend>
                 <h2>Nome Utente</h2>
                 <label for="username">Nome utente: </label>
@@ -71,20 +121,18 @@ function getFormPassword(){
                 <input type="password" id="c_password" name="c_password" value=""/>
                 <input class="defaultButton" type="submit" name="dati_personali" value="Salva"/>  <!--Submit legato solo al cambio della password-->
             </fieldset>';
-}
 
-function getFormSpedizione(){
-    return '<fieldset>
+             $formSpedizione ='<fieldset>
             <legend id="is" >Aggiungi un metodo di spedizione: </legend>
 
             <label for="nome_cognome">Nome e Cognome: </label>
-            <input type="text" name="nome_cognome" id="nome_cognome" placeholder="Mario Rossi"/>
+            <input type="text" name="nome_cognome" id="nome_cognome" placeholder="'.$nome_cognome.'"/>
             <label for="indirizzo">Indirizzo: </label>
-            <input type="text" id="indirizzo" name="indirizzo" placeholder="Inserire via"/>
+            <input type="text" id="indirizzo" name="indirizzo" placeholder="'.$indirizzo.'"/>
             <label for="civico">Numero civico: </label>
-            <input type="text" id="civico" name="civico" placeholder="Inserire numero civico"/>
+            <input type="text" id="civico" name="civico" placeholder="'.$numero_civico.'"/>
             <label for="cap"><abbr title="Codice di Avviamento Postale">CAP</abbr> :</label>
-            <input type="text" id="cap"  name="cap" placeholder="Inserire CAP"/>
+            <input type="text" id="cap"  name="cap" placeholder="'.$cap.'"/>
             <label for="comune">Comune: </label>
             <input type="text" id="comune" name="comune" value="Padova" disabled="disabled"/>
             <label for="provincia">Provincia: </label>
@@ -92,30 +140,29 @@ function getFormSpedizione(){
             <label for="stato">Stato: </label>
             <input type="text" id="stato" name="stato" value="Italia" disabled="disabled"/>
             <label for="tel">Numero di telefono: </label>
-            <input type="tel" id="tel" name="tel" />
+            <input type="tel" id="tel" name="tel" placeholder="'.$tel.'" />
 
             <input class="defaultButton" type="submit" name="dati_spedizione" value="Salva"/> <!--Submit legato solo alle informazioni di spedizione-->
         	</fieldset>';
-}
 
-function getFormPagamento(){
-    $years ='<select name="anno_scad">
-                <option>- Anno -</option>';
-    $annoCorrente = date("Y");
-    for($i = 0; $i<20; $i++ ){
-        $years.='<option value="'.($annoCorrente+$i).'">'.($annoCorrente+$i).'</option>';
-    }
+             $years ='<select name="anno_scad">
+                    <option>- Anno -</option>';
+             $annoCorrente = date("Y");
+             for($i = 0; $i<20; $i++ ){
+                 $years.='<option value="'.($annoCorrente+$i).'">'.($annoCorrente+$i).'</option>';
+             }
 
-    $years.='</select>
-     <input class="defaultButton" type="submit" name="dati_pagamento" value="Salva"> </fieldset>';
+             $years.='</select>
+             <input class="defaultButton" type="submit" name="dati_pagamento" value="Salva"> </fieldset>';
 
 
-    return '<fieldset>
+
+             $formPagamento ='<fieldset>
             <legend id="ip">Informazioni di pagamento: </legend>
                 <label for="intestatario_carta">Intestatario carta: </label>
-                <input type="text" name="intestatario_carta" id="intestatario_carta" value="" />
+                <input type="text" name="intestatario_carta" id="intestatario_carta" value="'.$intestatario.'" />
                 <label for="num_carta">Numero carta: </label>
-                <input type="text" name="num_carta" id="num_carta" />
+                <input type="text" name="num_carta" id="'.$num_carta.'" />
             <select name="mese_scad">
                 <option>- Mese -</option>
                 <option value="01">January</option>
@@ -131,7 +178,35 @@ function getFormPagamento(){
                 <option value="12">December</option>
         </select>
         '.$years;
-}
 
+             $listaDestinazioni ='';
+
+             $queryResult = $db->getDestinazioni($user);
+
+                $index = 0;
+                 while($row = mysqli_fetch_assoc($queryResult)) {
+                     $listaDestinazioni.='<dt>'.$row['nome_cognome'].', indirizzo: '.$row['via'].' '.$row['numero_civico'].', '.$row['CAP'].' </dt>
+                                          <dd><input type="button" name="elimina'.$index.'" value="Elimina"/></dd>';
+                     $index++;
+                 }
+
+                 $listaDestinazioni = '<dl id="listaDestinazioni">'.$listaDestinazioni.'</dl>';
+
+
+                 $paginaHTML = str_replace('<formSpedizione2 />', $listaDestinazioni, $paginaHTML);
+
+
+                 $paginaHTML = str_replace('<messaggio1 />', $erroriPass, $paginaHTML);
+
+                 $paginaHTML = str_replace('<messaggio2 />', $erroriSped, $paginaHTML);
+
+                 $paginaHTML = str_replace('<messaggio3 />', $erroriPaga, $paginaHTML);
+
+                 $paginaHTML = str_replace('<formPassword />', $formPassword, $paginaHTML);
+
+                 $paginaHTML = str_replace('<formSpedizione />', $formSpedizione, $paginaHTML);
+                 echo str_replace('<formPagamento />', $formPagamento, $paginaHTML);
+
+	}
 
 ?>
