@@ -39,8 +39,9 @@
 					);
 					array_push_result($result, $arraySingolaRecensione);
 				}
+
+				return $result;
 			}
-			return $result;
 		}
 
 		#funzione per il get dei prodotti per categoria;
@@ -68,8 +69,9 @@
 					);
 					array_push_result($result, $arraySingoloProdotto);
 				}
+
+				return $result;
 			}
-			return $result;
 		}
 
 		#funzione per il get degli indirizzi per utente;
@@ -93,10 +95,29 @@
 						'Via' => $row['via'],
 						'Num' => $row['numero_civico'],
 					);
-					array_push_result($result, $arraySingoloProdotto);
+					array_push_result($result, $arraySingoloIndirizzo);
 				}
+
+				return $result;
 			}
-			return $result;
+		}
+
+		#funzione per il get della carta di credito per utente;
+		public function getPagamento($utente) 
+		{
+			$query = $this->connection->prepare("SELECT numero_carta FROM Utente WHERE username = ?");
+			$query->bind_param('s', $utente);
+			$query->execute();
+			$queryResult = $query->get_result();
+
+			if (mysqli_num_rows($queryResult) == 0)
+			{
+				return null;
+			} 
+			else
+			{
+				return $queryResult;
+			}
 		}
 
     }
