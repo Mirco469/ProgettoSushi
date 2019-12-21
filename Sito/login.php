@@ -3,9 +3,6 @@
 
     session_start();
 
-    //session_unset();
-    //session_destroy();
-
     // Se si ha già una sessione attiva si viene reindirizzati verso la home
     if(isset($_SESSION["username"]) && isset($_SESSION["autorizzazione"]))
     {
