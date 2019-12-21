@@ -836,6 +836,18 @@ div#notizie {
     margin: 1em;
 }
 
+#listaDestinazioni dt {
+	padding: 1em;
+}
+#listaDestinazioni dd{
+	padding-left: 0.3em;
+	padding-right: 0.3em; 
+}
+
+#listaDestinazioni {
+	border: 1px solid white;
+}
+
 #menu_profilo>h1 {
     color: #d9d9d9;
     text-align: center;

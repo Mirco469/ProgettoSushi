@@ -20,7 +20,7 @@
         $query -> bind_param('s', $nome_utente);
         $query->execute();
         $result = $query->get_result();
-        $paginaHTML = file_get_contents('../html/gestione_profilo_utente.html');
+        $paginaHTML = file_get_contents('gestione_profilo_utente.html');
         if(mysqli_num_rows($result)==0) {
             header('location: erroreDatabase.html');
         }
@@ -78,7 +78,7 @@
 
         public function saveInfoSpedizione($nome_cognome, $indirizzo, $civico, $cap, $tel) {
     $nome_utente = $_SESSION['username'];
-    $paginaHTML = file_get_contents('../html/gestione_profilo_utente.html');
+    $paginaHTML = file_get_contents('gestione_profilo_utente.html');
     $strErrori="";
 
     if (!checkSoloLettereEDim($nome_cognome)) {
@@ -163,7 +163,7 @@
 
         public function saveInfoPagamento($intestatario, $num_carta, $mese_scad, $anno_scad) {
             $nome_utente = $_SESSION['username'];
-            $paginaHTML = file_get_contents('../html/gestione_profilo_utente.html');
+            $paginaHTML = file_get_contents('gestione_profilo_utente.html');
             $strErrori="";
 
             if (!checkSoloLettereEDim($intestatario)) {
@@ -179,8 +179,6 @@
                 $strErrori .= '<li>Selezionare un anno</li>';
             }
 
-            $formPassword = getFormPassword();
-            $formSpedizione = getFormSpedizione();
 
             if(strlen($strErrori)==0){
                 $query = $this->connection->prepare("UPDATE Utente SET numero_carta = ?, intestatario = ?, scadenza ='".$anno_scad."-".$mese_scad."-"."00"."' WHERE username = '".$nome_utente."'");
@@ -246,6 +244,24 @@
                     <input class="defaultButton" type="submit" name="dati_pagamento" value="Salva">
                 </fieldset>';
                 return str_replace('<formPagamento />', $formErrore, $tmp1);
+            }
+        }
+
+
+        public function getDestinazioni($utente)
+        {
+            $query = $this->connection->prepare("SELECT nome_cognome, numero_telefonico, CAP, via, numero_civico  FROM Destinazione WHERE utente = ?");
+            $query->bind_param('s', $utente);
+            $query->execute();
+            $queryResult = $query->get_result();
+
+            if (mysqli_num_rows($queryResult) == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return $queryResult;
             }
         }
 

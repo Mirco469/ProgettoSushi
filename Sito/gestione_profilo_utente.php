@@ -25,21 +25,18 @@
              }
 
 
-                 $paginaHTML = file_get_contents('../html/gestione_profilo_utente.html');
+                 $paginaHTML = file_get_contents('gestione_profilo_utente.html');
                  $listaDestinazioni ='';
+                 $queryResult = $db->getDestinazioni($user);
 
-                /*
-                 Da fare query che preleva tutte le destinazioni di un certo utente
-                 $query = $db->connection->prepare('SELECT * FROM Destinazione WHERE "utente" = ? ');
-                 $query->bind_param('s', $user);
-                 $query->execute();
-                */
-
-                 while($row = $queryResult->fetch_assoc()) {
-                     $listaDestinazioni.='<li>'.$row['nome_cognome'].', indirizzo: '.$row['via'].' '.$row['civico'].' '.$row['cap'].' </li>';
+                $index = 0;
+                 while($row = mysqli_fetch_assoc($queryResult)) {
+                     $listaDestinazioni.='<dt>'.$row['nome_cognome'].', indirizzo: '.$row['via'].' '.$row['numero_civico'].', '.$row['CAP'].' </dt>
+                                          <dd><input type="button" name="elimina'.$index.'" value="Elimina"/></dd>';
+                     $index++;
                  }
 
-                 $listaDestinazioni = '<ul id="listaDestinazioni">'.$listaDestinazioni.'</ul>';
+                 $listaDestinazioni = '<dl id="listaDestinazioni">'.$listaDestinazioni.'</dl>';
 
                  $tmp0 = str_replace('<formSpedizione2 />', $listaDestinazioni, $paginaHTML);
 
