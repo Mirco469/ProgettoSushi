@@ -70,7 +70,7 @@
 
     }
 
-    //Reindirizza alla home giusta in base all'autorizzazione passata come paramentro
+    //Reindirizza alla home giusta in base all'autorizzazione passata come paramentro (Utente o Admin)
     function redirectHome($autorizzazione)
     {
         if(strcmp($autorizzazione,"Utente") == 0)
