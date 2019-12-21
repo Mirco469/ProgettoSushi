@@ -13,6 +13,35 @@
             $this->connection = mysqli_connect(static::HOST_DB,static::USERNAME, static::PASSWORD, static::DATABASE_NAME);
             return $this->connection;
         }
+
+		function getRecensione() 
+		{
+			#DESC o ASC in modo che prima ci sia la più recente;
+			$query = $this->connection->prepare("SELECT * FROM Recensione ORDER BY data DESC");
+			# $query->bind_param(); serve in questo caso?
+			$query->execute();
+			$queryResult = $query->get_result();
+
+			if (mysqli_num_rows($queryResult) == 0)
+			{
+				return null;
+			} 
+			else
+			{
+				$result = array();
+
+				while ($row = mysqli_fetch_assoc($queryResult)) {
+					$arraySingolaRecensione = array (
+						'Titolo' => $row['titolo'],
+						'Data' => $row['data'],
+						'Utente' => $row['utente'],
+						'Testo' => $row['testo'],
+					);
+					array_push_result($result, $arraySingolaRecensione);
+				}
+			}
+			return $result;
+		}
     }
 
 	/*	Esempio di funzione per prendere i dati
