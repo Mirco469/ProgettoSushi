@@ -139,7 +139,7 @@ CREATE TABLE Prodotto(
 
 -- Inserimento dati nella tabella Prodotto
 
-INSERT INTO Prodotto (nome, categoria, pezzi, prezzo) VALUES 
+INSERT INTO Prodotto (nome, categoria, pezzi, prezzo, descrizione) VALUES 
 ('Tartara di tonno', 'Antipasti', 1, 6.00, 'Salmone, avocado, mango, tobiko, olio, menta e limone.'),
 ('Takosu', 'Antipasti', 1, 5.00, 'Carpaccio di polpo in salsa ponzu, limone e wakame.'),
 ('Goma Wakame', 'Antipasti', 1, 4.00, 'Alghe giapponesi marinate.'),
