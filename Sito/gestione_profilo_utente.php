@@ -1,12 +1,7 @@
 <?php
 	require_once("php/dbaccess.php");
     $db = new DBAccess();
-
-	//DA RIMUOVERE**************************+**
-
-    session_start();
-	$_SESSION['username']='user';
-	//*****************************************
+    
 	if( isset($_SESSION['username'])) {
 
 
