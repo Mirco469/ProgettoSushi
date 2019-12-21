@@ -45,7 +45,7 @@
                 }
                 else
                 {
-                    $erroreL = "<p class='errore'>L'username o la password non sono corretti!</p>"; /*CLASSE errore DA CREARE*/
+                    $erroreL = "<p class='errore'>L'username o la password non sono corretti!</p>";
                 }
             }
             else
