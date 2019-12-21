@@ -870,6 +870,10 @@ min-height: 465px;
 	margin-right: 1em;
 }
 
+#pagamento label[for="cvv_carta"] {
+	display: block;
+}
+
 #info_pagamento input[name="cvv_carta"] {
 	display: inline;
 	width: 5em;
