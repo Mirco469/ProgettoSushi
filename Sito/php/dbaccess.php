@@ -13,6 +13,30 @@
             $this->connection = mysqli_connect(static::HOST_DB,static::USERNAME, static::PASSWORD, static::DATABASE_NAME);
             return $this->connection;
         }
+
+        public function getPassword($utente){
+            $query = $this->connection->prepare('SELECT * FROM Utente WHERE username= ?');
+            $query->bind_param('s', $utente);
+            $query->execute();
+            $queryResult = $query->get_result();
+
+            if(mysqli_num_rows($queryResult)==0){
+                return null;
+            }else{
+                $row = mysqli_fetch_assoc($queryResult);
+                return $row['password'];
+            }
+        }
+
+
+        public function modificaPassword($utente, $password){
+            $query = $this->connection->prepare('UPDATE Utente SET password=? WHERE username = ?');
+            $query->bind_param('ss', $utente, $password);
+            if(!$query->execute()){
+                header('location: errore500.html');
+            }
+        }
+
     }
 
 //Stampa il menu a seconda che l'utente sia autenticato o meno
@@ -37,7 +61,14 @@ $menu = '';
     }
 }
 
-
+    //Controlla che la stringa sia lunga almeno due caratteri
+    function checkMinLen($string) {
+        if(strlen($string)<2){
+            return false;
+        }else {
+            return true;
+        }
+}
 	/*	Esempio di funzione per prendere i dati
 	public function getPersonaggi()
 	{
