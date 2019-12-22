@@ -86,15 +86,6 @@
         }
 	}
 
-
-	function checkData($data){
-        if (preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $data)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     //Reindirizza alla home giusta in base all'autorizzazione passata come paramentro (Utente o Admin)
     function redirectHome($autorizzazione)
     {
@@ -109,6 +100,14 @@
         else
         {
             echo "Errore interno al server, contattare l'amministratore.";
+        }
+    }
+
+	function checkData($data){
+        if (preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $data)) {
+            return true;
+        } else {
+            return false;
         }
     }
 
