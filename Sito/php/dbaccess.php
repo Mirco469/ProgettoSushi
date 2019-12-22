@@ -30,11 +30,13 @@
 
 
         public function modificaPassword($utente, $password){
-            $query = $this->connection->prepare('UPDATE Utente SET password=? WHERE username = ?');
-            $query->bind_param('ss', $utente, $password);
+
+            $query = $this->connection->prepare('UPDATE Utente SET password = ? WHERE username = ?');
+            $query->bind_param('ss', $password, $utente);
             if(!$query->execute()){
                 header('location: errore500.html');
             }
+
         }
 
 

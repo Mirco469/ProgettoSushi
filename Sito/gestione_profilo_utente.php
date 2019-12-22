@@ -1,11 +1,8 @@
 <?php
 	require_once("php/dbaccess.php");
 
-
-    session_start();
-    $_SESSION['username']= 'user';
-    
 	if( isset($_SESSION['username'])) {
+	         $db = null;
 	         $user = $_SESSION['username'];
 
              $old_password = '';
@@ -55,13 +52,14 @@
                          }
                      }else {
 
-                     $erroriPass .= '<li>La password che hai inserito e\' stata trovata nel nostro database</li>';
+                     $erroriPass .= '<li>La password che hai inserito non e\' stata trovata nel nostro database</li>';
                      }
                  }else{
                      header('location: errore500.html');
                  }
 
                  if(strlen($erroriPass)==0){
+
                        $db->modificaPassword($user, $new_password);
 
                  }else {
@@ -79,6 +77,7 @@
                  $cap = htmlentities(trim($_POST['cap']));
                  $tel = htmlentities(trim($_POST['tel']));
 
+                 if($db)
                  $db = new DBAccess();
 
                  if($db->openDBConnection()){
@@ -140,6 +139,7 @@
                      }
 
                      if(strlen($erroriPaga)==0){
+                         $anno_scadenza += 19;
                          $db->modificaPagamento($user, $intestatario, $num_carta, $mese_scadenza, $anno_scadenza);
                          $intestatario = 'Inserire intestatario della carta';
                          $num_carta = 'Inserire numero carta';
@@ -236,7 +236,10 @@
              $listaDestinazioni ='';
              $queryResult=null;
 
-             $db = new DBAccess();
+             if($db == null){
+                 $db = new DBAccess();
+             }
+
              if($db->openDBConnection()){
                  $queryResult = $db->getDestinazioni($user);
              } else {
