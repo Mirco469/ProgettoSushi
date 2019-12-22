@@ -15,7 +15,7 @@
         }
 
         public function getPassword($utente){
-            $query = $this->connection->prepare('SELECT * FROM Utente WHERE username= ? ');
+            $query = $this->connection->prepare('SELECT * FROM Utente WHERE username= ?');
             $query->bind_param('s', $utente);
             $query->execute();
             $queryResult = $query->get_result();
@@ -25,6 +25,37 @@
             }else{
                $row = mysqli_fetch_assoc($queryResult);
                return $row['password'];
+            }
+        }
+
+
+        public function modificaPassword($utente, $password){
+            $query = $this->connection->prepare('UPDATE Utente SET password=? WHERE username = ?');
+            $query->bind_param('ss', $utente, $password);
+            if(!$query->execute()){
+                header('location: errore500.html');
+            }
+        }
+
+
+
+        public function addSpedizione($user, $nome_cognome, $indirizzo, $numero_civico, $cap, $tel){
+            $query = $this->connection->prepare('INSERT INTO Destinazione (nome_cognome, numero_telefonico, CAP, via, numero_civico, utente) VALUES (?,?,?,?,?,"'.$user.'")');
+            $query->bind_param('sssss',$nome_cognome, $tel, $cap, $indirizzo, $numero_civico);
+            if(!$query->execute()){
+                header('location: errore500.html');
+            }
+
+        }
+
+        public function modificaPagamento($utente, $intestatario, $num_carta, $mese_scadenza, $anno_scadenza){
+
+            $scadenza = $anno_scadenza.'-'.$mese_scadenza.'-00';
+
+            $query = $this->connection->prepare('UPDATE Utente SET numero_carta = ?, intestatario = ?, scadenza = ? WHERE username = ?');
+            $query->bind_param('ssss', $num_carta, $intestatario ,$scadenza, $utente);
+            if(!$query->execute()){
+                header('location: errore500.html');
             }
         }
 
@@ -74,7 +105,7 @@ function checkMinLen($string) {
 //Controlla che la stringa non contenga caratteri speciali
 function checkAlfanumerico($string) {
     if(!checkMinLen($string)) return false;
-    if (!preg_match('[^A-Za-z0-9]', $string)) {
+    if (!preg_match('/^[a-zA-Z0-9 ]+$/', $string)) {
         return false;
     } else return true;
 }
@@ -82,27 +113,31 @@ function checkAlfanumerico($string) {
 //Controlla che la stringa non contenga numeri e abbia almeno due caratteri
 function checkSoloLettereEDim($string) {
     if(!checkMinLen($string)) return false;
-    if (!preg_match('[^A-Za-z]', $string)) {
+    if (!preg_match('/^[a-zA-Z ]+$/', $string)) {
         return false;
     } else return true;
+
 }
 
 //Controlla che la stringa contenga solo numeri e che sia lunga almeno due caratteri
 function checkSoloNumerieDim($string){
     if(!checkMinLen($string)) return false;
-    if (!preg_match('[^0-9]', $string)) {
+    if (!checkSoloNumeri($string)) {
         return false;
     } else return true;
+
 }
 
 function checkSoloNumeri($string){
-    if (!preg_match('[^0-9]', $string)) {
+    if (!preg_match('/^[0-9]+$/', $string)) {
         return false;
     } else return true;
+
+
 }
 //Stampa il menu a seconda che l'utente sia autenticato o meno
 //Va passato il contenuto della pagina come parametro
-function printMenu($paginaHTML) {
+function getMenu($paginaHTML) {
 $menu = '';
     if(isset($_SESSION['username'])) {
 

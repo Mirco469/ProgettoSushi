@@ -31,27 +31,44 @@
 
              if(isset($_POST['dati_personali'])){
 
-                 $old_password = getPassword();
-                 $c_old_password = htmlentities(trim($_POST['v_password']));
-                 $new_password = htmlentities(trim($_POST['password']));
-                 $c_new_password = htmlentities(trim($_POST['c_password']));
-
                  $db = new DBAccess();
-
                  if($db->openDBConnection()){
-                    if($c_old_password !== $old_password){
-                        $erroriPass .= '<li>La password che ha inserito non coincide con quella salvata</li>';
-                    }
-                    if(!checkMinLen($new_password)){
-                        $erroriPass .= '<li>La nuova password che hai inserito deve essere lunga almeno 2 caratteri</li>';
-                    }
-                    if($new_password !== $c_new_password){
-                        $erroriPass .= '<li>Le due password che hai inserito non coincidono</li>';
-                    }
 
-                 }else {
+                 $old_password = $db->getPassword($user);
+                 if($old_password !== null){
+
+                     $c_old_password = htmlentities(trim($_POST['v_password']));
+                     $new_password = htmlentities(trim($_POST['password']));
+                     $c_new_password = htmlentities(trim($_POST['c_password']));
+
+
+
+
+                         if($c_old_password !== $old_password){
+                             $erroriPass .= '<li>La password che ha inserito non coincide con quella salvata</li>';
+                         }
+                         if(!checkMinLen($new_password)){
+                             $erroriPass .= '<li>La nuova password che hai inserito deve essere lunga almeno 2 caratteri</li>';
+                         }
+                         if($new_password !== $c_new_password){
+                             $erroriPass .= '<li>Le due password che hai inserito non coincidono</li>';
+                         }
+                     }else {
+
+                     $erroriPass .= '<li>La password che hai inserito e\' stata trovata nel nostro database</li>';
+                     }
+                 }else{
                      header('location: errore500.html');
                  }
+
+                 if(strlen($erroriPass)==0){
+                       $db->modificaPassword($user, $new_password);
+
+                 }else {
+                        $erroriPass = '<ul class="errore">'.$erroriPass.'</ul>';
+                 }
+
+
 
              }
              elseif(isset($_POST['dati_spedizione'])){
@@ -80,6 +97,22 @@
                     if(!checkSoloNumeriEDIm($tel)){
                         $erroriSped .= '<li>Non hai inserito un numero corretto</li>';
                     }
+
+                    if(strlen($erroriSped)==0){
+
+                        $db->addSpedizione($user, $nome_cognome, $indirizzo, $numero_civico, $cap, $tel);
+                        $nome_cognome = 'Mario Rossi';
+                        $indirizzo = 'Inserire indirizzo';
+                        $numero_civico = 'Inserire numero civico';
+                        $cap = 'Inserire CAP';
+                        $tel = 'Inserire numero telefonico';
+
+
+                    }else{
+                        $erroriSped ='<ul class="errore">'.$erroriSped.'</ul>';
+                    }
+
+
                  }else {
                      header('location: errore500.html');
                  }
@@ -89,18 +122,39 @@
                  $mese_scadenza = htmlentities(trim($_POST['mese_scad']));
                  $anno_scadenza = htmlentities(trim($_POST['mese_scad']));
 
-                 if(!checkSoloLettereEDim($intestatario)){
-                     $erroriPaga .= '<li>L\'intestatario deve contenere solo lettere ed essere lungo almeno due caratteri</li>';
+                 $db = new DBAccess();
+
+                 if($db->openDBConnection()){
+
+                     if(!checkSoloLettereEDim($intestatario)){
+                         $erroriPaga .= '<li>L\'intestatario deve contenere solo lettere ed essere lungo almeno due caratteri</li>';
+                     }
+                     if(!checkSoloNumerieDim($num_carta)){
+                         $erroriPaga .= '<li>Non hai inserito un numero della carta corretto</li>';
+                     }
+                     if($mese_scadenza == '- Mese -'){
+                         $erroriPaga .= '<li>Seleziona il mese di scadenza</li>';
+                     }
+                     if($anno_scadenza == '- Anno -'){
+                         $erroriPaga .= '<li>Seleziona l\'anno di scadenza</li>';
+                     }
+
+                     if(strlen($erroriPaga)==0){
+                         $db->modificaPagamento($user, $intestatario, $num_carta, $mese_scadenza, $anno_scadenza);
+                         $intestatario = 'Inserire intestatario della carta';
+                         $num_carta = 'Inserire numero carta';
+                         $mese_scadenza = '- Mese -';
+                         $anno_scadenza = '- Anno -';
+
+                     }
+
+
+                 }else{
+
+                     header('location: errore500.html');
                  }
-                 if(!checkNumeriEDim($num_carta)){
-                     $erroriPaga .= '<li>Non hai inserito un numero della carta corretto</li>';
-                 }
-                 if($mese_scadenza == '- Mese -'){
-                     $erroriPaga .= '<li>Seleziona il mese di scadenza</li>';
-                 }
-                 if($anno_scadenza == '- Anno -'){
-                     $erroriPaga .= '<li>Seleziona l\'anno di scadenza</li>';
-                 }
+
+
 
              }
 
@@ -110,7 +164,7 @@
                 <legend>Informazioni personali: </legend>
                 <h2>Nome Utente</h2>
                 <label for="username">Nome utente: </label>
-                <input type="text" id="username" name="username" value="'.$nome_utente.'" readonly="readonly"/>
+                <input type="text" id="username" name="username" value="'.$user.'" readonly="readonly"/>
     
                 <h2 id="cp">Cambia <span lang="en">Password:</span> </h2>
                 <label for="v_password">Inserisci la vecchia <span lang="en">password</span>: </label>
@@ -140,7 +194,7 @@
             <label for="stato">Stato: </label>
             <input type="text" id="stato" name="stato" value="Italia" disabled="disabled"/>
             <label for="tel">Numero di telefono: </label>
-            <input type="tel" id="tel" name="tel" placeholder="'.$tel.'" />
+            <input type="text" id="tel" name="tel" placeholder="'.$tel.'" />
 
             <input class="defaultButton" type="submit" name="dati_spedizione" value="Salva"/> <!--Submit legato solo alle informazioni di spedizione-->
         	</fieldset>';
@@ -160,9 +214,9 @@
              $formPagamento ='<fieldset>
             <legend id="ip">Informazioni di pagamento: </legend>
                 <label for="intestatario_carta">Intestatario carta: </label>
-                <input type="text" name="intestatario_carta" id="intestatario_carta" value="'.$intestatario.'" />
+                <input type="text" name="intestatario_carta" id="intestatario_carta" placeholder="'.$intestatario.'" />
                 <label for="num_carta">Numero carta: </label>
-                <input type="text" name="num_carta" id="'.$num_carta.'" />
+                <input type="text" name="num_carta" id="num_carta" placeholder="'.$num_carta.'" />
             <select name="mese_scad">
                 <option>- Mese -</option>
                 <option value="01">January</option>
@@ -180,8 +234,18 @@
         '.$years;
 
              $listaDestinazioni ='';
+             $queryResult=null;
 
-             $queryResult = $db->getDestinazioni($user);
+             $db = new DBAccess();
+             if($db->openDBConnection()){
+                 $queryResult = $db->getDestinazioni($user);
+             } else {
+                 header('location: errore500.html');
+             }
+
+             if($queryResult == null){
+                 header('location: errore500.html');
+             }
 
                 $index = 0;
                  while($row = mysqli_fetch_assoc($queryResult)) {
