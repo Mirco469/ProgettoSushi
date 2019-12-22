@@ -35,7 +35,14 @@ body a:visited {
 	overflow: hidden;
 }
 
+/* Stili messaggi di errore e successo PHP*/
+.errore{
+	color: red;
+}
 
+.successo{
+	color: green;
+}
 
 /*	Header	*/
 
