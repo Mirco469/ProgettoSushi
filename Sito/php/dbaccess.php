@@ -14,49 +14,21 @@
             return $this->connection;
         }
 
-        public function inserisciNews($titolo, $data ,$testo){
-            $username = $_SESSION['username'];
+        public function inserisciNews($titolo, $data ,$testo, $user){
 
-
-            $strErrori='';
-            if(strlen($titolo)==0){
-                $strErrori .= '<li>Devi inserire un titolo</li>';
-            }
-            if(strlen($data)==0){
-                $strErrori .='<li>Devi inserire una data</li>';
-            }
-            if(!checkData($data)){
-                $strErrori .= '<li>Devi inserire una data nel formato AAAA-MM-GG</li>';
-            }
-            if(strlen($testo)==0){
-                $strErrori .= '<li>Non puoi inserire una notizia vuota</li>';
-            }
-
-            $paginaHTML = file_get_contents('home_admin.html');
-
-            if(strlen($strErrori)==0){
-                $query = $this->connection->prepare('INSERT into News ("titolo", "descrizione", "data", "utente") VALUES ("'.$titolo.'","'.$testo.'","'.$data.'","'.$username.'")');
-                $query->execute();
-                $result = $query->get_result();
-
-                if(!$result){
-                    header('location: erroreDatabase.html');
-                }else{
-                    $tmp1 = str_replace('<messaggio />', '<p>Inserimento avvenuto con successo!</p>', $paginaHTML);
-                    $content = "<dt>".$data." - ".$titolo."</dt>
-                                    <dd>".$testo."</dd>
-                                    <dd><input type=\"button\" name=\"elimina\" value=\"Elimina\"/></dd>
-                                <notizia />";
-                    return str_replace('<notizia />', $content, $tmp1);
+                $query = $this->connection->prepare('INSERT INTO News (titolo, descrizione, data, utente) VALUES (?,?,?,?)');
+                $query->bind_param('ssss', $titolo, $testo, $data, $user);
+                if(!$query->execute()){
+                    header('location: errore500.html');
                 }
-            } else {
-                $strErrori= '<ul class="errore">'.$strErrori.'</ul>';
-                $tmp1 = str_replace('<messaggio />', $strErrori, $paginaHTML);
-                return $tmp1;
-            }
+
         }
 
-        public function togliNews() {}
+        public function getNews() {
+            $query = $this->connection->prepare('SELECT * FROM News');
+            $query->execute();
+            return $query->get_result();
+        }
 	}
 
 
@@ -66,6 +38,21 @@
         } else {
             return false;
         }
+    }
+
+    function checkMinLen($string) {
+        if(strlen($string)<2){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    function checkAlfanumerico($string) {
+        if(!checkMinLen($string)) return false;
+        if (!preg_match('/^[a-zA-Z0-9 ]+$/', $string)) {
+            return false;
+        } else return true;
     }
 	/*	Esempio di funzione per prendere i dati
 	public function getPersonaggi()

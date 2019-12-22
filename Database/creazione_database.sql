@@ -65,11 +65,11 @@ CREATE TABLE News(
 -- Inserimento dati nella tabella News
 
 INSERT INTO News (id_news, titolo, descrizione, data, utente) VALUES 
-(101, 'Ferragosto', 'Vi ricordiamo che dal 12 al 18 Agosto il ristorante rimarra chiuso per ferie.', '2019-08-08', 'ammin1'),
-(102, 'Cercasi Cameriera', 'Cercasi cameriera per contratto part-time ', '2019-08-22', 'ammin2'),
-(103, 'Black Friday Week', 'Dal 25 al 30 Novembre sconto del 10% su tutti gli ordini superiori ai 30€; Venerdì 29 sconto del 20%.', '2019-11-18', 'admin'),
-(104, 'Buon Natale', 'Lo staff di Sushi Nakamura augura a voi ed alle vostre famiglie un felice Natale.', '2019-12-24', 'ammin1'),
-(105, 'Felice Anno Nuovo', 'Per festeggiare il nuovo anno, sconto del 10% su tutti gli ordini superiori ai 20€ fino a Domenica 5.', '2020-01-02', 'ammin2');
+(1, 'Ferragosto', 'Vi ricordiamo che dal 12 al 18 Agosto il ristorante rimarra chiuso per ferie.', '2019-08-08', 'ammin1'),
+(2, 'Cercasi Cameriera', 'Cercasi cameriera per contratto part-time ', '2019-08-22', 'ammin2'),
+(3, 'Black Friday Week', 'Dal 25 al 30 Novembre sconto del 10% su tutti gli ordini superiori ai 30€; Venerdì 29 sconto del 20%.', '2019-11-18', 'admin'),
+(4, 'Buon Natale', 'Lo staff di Sushi Nakamura augura a voi ed alle vostre famiglie un felice Natale.', '2019-12-24', 'ammin1'),
+(5, 'Felice Anno Nuovo', 'Per festeggiare il nuovo anno, sconto del 10% su tutti gli ordini superiori ai 20€ fino a Domenica 5.', '2020-01-02', 'ammin2');
 
 -- Crea la tabella Destinazione
 
