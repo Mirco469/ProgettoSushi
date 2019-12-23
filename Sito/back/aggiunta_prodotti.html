@@ -40,7 +40,7 @@
     <div class="content" id="aggiunta_prodotti">
         <h1>Pagina dei prodotti</h1>
         <!-- Form di aggiunta prodotti -->
-        <form action="#"> <!--Manca l'attributo action e l'attributo method (get/post)-->
+        <form action="#" class="defaultForm"> <!--Manca l'attributo action e l'attributo method (get/post)-->
             <fieldset>
                 <legend>Aggiungi nuovo prodotto</legend>
                 <div class="formGroup">
@@ -72,31 +72,145 @@
                     <label for="prezzo">Prezzo:</label>
                     <input type="number" id="prezzo" name="prezzo" min="0" step="0.1" required="required"/>
                 </div>
+				<div class="formGroup">
+                    <label for="descrizione">Descrizione:</label>
+                    <textarea id="descrizione" name="descrizione" rows="4" cols="35"></textarea>
+                </div>
                 <input type="submit" value="Aggiungi"/>
             </fieldset>
         </form>
 		
 		
 		<h2>Lista dei prodotti gi&agrave; presenti</h2>
-		<dl class="defaultLista">
-			<dt>Uramaki Maguro - <a href="prodotti.html#uramaki" lang="ja">Uramaki</a> <input class="buttonSmall" type="button" value="Modifica" name="modifica"/></dt>
-			<dd>
-				<span>Pezzi: 6</span>
-				<span>Prezzo: 0.00€</span>
-			</dd>
-			
-			<dt>Hosomaki Maguro - <a href="prodotti.html#uramaki" lang="ja">Uramaki</a> <input class="buttonSmall" type="button" value="Modifica" name="modifica"/></dt>
-			<dd>
-				<span>Pezzi: 8</span>
-				<span>Prezzo: 0.00€</span>
-			</dd>
-			
-			<dt>Tiramis&ugrave; - <a href="prodotti.html#dessert" lang="fr">Dessert</a> <input class="buttonSmall" type="button" value="Modifica" name="modifica"/></dt>
-			<dd>
-				<span>Pezzi: 1</span>
-				<span>Prezzo: 0.00€</span>
-			</dd>
-		</dl>
+		<!-- lista antipasti -->
+	      <div class="lista_piatti">
+          <h1 id="antipasti">Antipasti</h1>
+          <dl>
+            <dt>Tartara di tonno<input class="buttonSmall" type="button" name="Aggiungi" value="Aggiungi" /></dt>
+              <dd>6.00 &euro;</dd>
+              <dd><span>[X<abbr title="Pezzi">pz</abbr>]</span> Salmone, avocado, mango, <span lang="ja">tobiko</span>, olio, menta e limone.</dd>
+            <dt lang="ja">Takosu<input class="buttonSmall" type="button" name="Aggiungi" value="Aggiungi" /></dt>
+              <dd>5.00 &euro;</dd>
+              <dd><span>[X<abbr title="Pezzi">pz</abbr>]</span> Carpaccio di polpo in salsa ponzu, limone e <span  lang="ja">wakame.</span></dd>
+          </dl>
+		  </div>
+
+		  <!-- lista primi piatti -->
+		  <div class="lista_piatti">
+          <h1 id="primi">Primi Piatti</h1>
+          <dl>
+            <dt lang="ja">Ramen Chasumiso<input class="buttonSmall" type="button" name="Aggiungi" value="Aggiungi" /></dt>
+              <dd>7.00 &euro;</dd>
+              <dd><span>[X<abbr title="Pezzi">pz</abbr>]</span> <span lang="ja">Ramen</span> in brodo di maialino <span lang="ja">chasu</span>, cipollotto, spinaci e alga <span lang="ja">nori.</span></dd>
+            <dt  lang="ja">Katsu Ramen<input class="buttonSmall" type="button" name="Aggiungi" value="Aggiungi" /></dt>
+              <dd>7.00 &euro;</dd>
+              <dd><span>[X<abbr title="Pezzi">pz</abbr>]</span> <span lang="ja">Ramen</span> in brodo di miso con cotoletta, cipollotto e alga nori.</dd>
+          </dl>
+		  </div>
+
+		  <!-- lista tempure -->
+		  <div class="lista_piatti">
+          <h1 id="tempure" lang="ja">Teppanyako <span  lang="it">e</span> Tempure</h1>
+          <dl>
+            <dt lang="ja">Yakitori<input class="buttonSmall" type="button" name="Aggiungi" value="Aggiungi" /></dt>
+              <dd>6.00 &euro;</dd>
+              <dd><span>[X<abbr title="Pezzi">pz</abbr>]</span> Coscia di pollo in cottura <span lang="ja">teriyaki.</span></dd>
+            <dt lang="en">Salmon <span lang="ja">Kushiyaki</span><input class="buttonSmall" type="button" name="Aggiungi" value="Aggiungi" /></dt>
+              <dd>5.00 &euro;</dd>
+              <dd><span>[X<abbr title="Pezzi">pz</abbr>]</span> Impanatura di salmone in cottura <span lang="ja">teriyaki.</span></dd>
+          </dl>
+		  </div>
+
+		  <!-- lista uramaki -->
+		  <div class="lista_piatti">
+          <h1 id="uramaki" lang="ja">Uramaki</h1>
+          <dl>
+            <dt  lang="en">Chips Roll<input class="buttonSmall" type="button" name="Aggiungi" value="Aggiungi" /></dt>
+              <dd>5.00 &euro;</dd>
+              <dd><span>[X<abbr title="Pezzi">pz</abbr>]</span> Mazzancolle in tempura, cetriolo e salmone alla fiamma.</dd>
+            <dt lang="en">Black <span lang="ja">Ebiten</span><input class="buttonSmall" type="button" name="Aggiungi" value="Aggiungi" /></dt>
+              <dd>4.00 &euro;</dd>
+              <dd><span>[X<abbr title="Pezzi">pz</abbr>]</span> <span lang="ja">Ebiten</span>, avocado, sesamo.</dd>
+          </dl>
+		  </div>
+
+		  <!-- lista nigiri -->
+		  <div class="lista_piatti">
+          <h1 id="nigiri" lang="ja">Nigiri <span lang="it">ed</span> Onigiri</h1>
+          <dl>
+            <dt><span lang="ja">Nigiri</span> al salmone<input class="buttonSmall" type="button" name="Aggiungi" value="Aggiungi" /></dt>
+              <dd>2.00 &euro;</dd>
+              <dd><span>[X<abbr title="Pezzi">pz</abbr>]</span></dd>
+            <dt><span lang="ja">Nigiri</span> al tonno<input class="buttonSmall" type="button" name="Aggiungi" value="Aggiungi" /></dt>
+              <dd>2.00 &euro;</dd>
+              <dd><span>[X<abbr title="Pezzi">pz</abbr>]</span></dd>
+          </dl>
+		  </div>
+
+		  <!-- lista gunkan -->
+		  <div class="lista_piatti">
+          <h1 id="gunkan" lang="ja">Gunkan</h1>
+          <dl>
+            <dt lang="en">Spicy Tuna<input class="buttonSmall" type="button" name="Aggiungi" value="Aggiungi" /></dt>
+              <dd>5.00 &euro;</dd>
+              <dd><span>[X<abbr title="Pezzi">pz</abbr>]</span> Tartara di tonno piccante.</dd>
+            <dt lang="ja">Tobiko<input class="buttonSmall" type="button" name="Aggiungi" value="Aggiungi" /></dt>
+              <dd>4.50 &euro;</dd>
+              <dd><span>[X<abbr title="Pezzi">pz</abbr>]</span> Uova di pesce <span lang="ja">tobiko.</span></dd>
+          </dl>
+		  </div>
+
+		  <!-- lista temaki -->
+		  <div class="lista_piatti">
+          <h1 id="temaki" lang="ja">Temaki</h1>
+          <dl>
+            <dt lang="en">Salmon <span lang="ja">Temaki</span><input class="buttonSmall" type="button" name="Aggiungi" value="Aggiungi" /></dt>
+              <dd>4.00 &euro;</dd>
+              <dd><span>[X<abbr title="Pezzi">pz</abbr>]</span> Salmone e avocado.</dd>
+            <dt>Tartara <span lang="ja">Temaki</span><input class="buttonSmall" type="button" name="Aggiungi" value="Aggiungi" /></dt>
+              <dd>3.00 &euro;</dd>
+              <dd><span>[X<abbr title="Pezzi">pz</abbr>]</span> Tartara di salmone con <span lang="ja">tobiko.</span></dd>
+          </dl>
+		  </div>
+
+		  <!-- lista hosomaki -->
+		  <div class="lista_piatti">
+          <h1 id="hosomaki" lang="ja">Hosomaki</h1>
+          <dl>
+            <dt>Salmone<input class="buttonSmall" type="button" name="Aggiungi" value="Aggiungi" /></dt>
+              <dd>3.00 &euro;</dd>
+              <dd><span>[X<abbr title="Pezzi">pz</abbr>]</span></dd>
+            <dt>Tonno<input class="buttonSmall" type="button" name="Aggiungi" value="Aggiungi" /></dt>
+              <dd>3.00 &euro;</dd>
+              <dd><span>[X<abbr title="Pezzi">pz</abbr>]</span></dd>
+          </dl>
+		  </div>
+
+		  <!-- lista sashimi -->
+		  <div class="lista_piatti">
+          <h1 id="sashimi" lang="ja">Sashimi</h1>
+          <dl>
+            <dt>Salmone<input class="buttonSmall" type="button" name="Aggiungi" value="Aggiungi" /></dt>
+              <dd>6.00 &euro;</dd>
+              <dd><span>[X<abbr title="Pezzi">pz</abbr>]</span></dd>
+            <dt>Tonno<input class="buttonSmall" type="button" name="Aggiungi" value="Aggiungi" /></dt>
+              <dd>5.00 &euro;</dd>
+              <dd><span>[X<abbr title="Pezzi">pz</abbr>]</span></dd>
+          </dl>
+		  </div>
+
+		  <!-- lista dessert -->
+		  <div class="lista_piatti">
+          <h1 id="dessert" lang="fr">Desserts</h1>
+          <dl>
+            <dt lang="fr">Profiteroles<input class="buttonSmall" type="button" name="Aggiungi" value="Aggiungi" /></dt>
+              <dd>6.00 &euro;</dd>
+              <dd><span>[X<abbr title="Pezzi">pz</abbr>]</span> <span >Profiteroles</span> ricoperti con glassa di cacao e granella di nocciola.</dd>
+            <dt><span lang="ja">Matcha</span> Tiramisù<input class="buttonSmall" type="button" name="Aggiungi" value="Aggiungi" /></dt>
+              <dd>6.50 &euro;</dd>
+              <dd><span>[X<abbr title="Pezzi">pz</abbr>]</span> Tiramisù al tè <span lang="ja">matcha</span> e cioccolato bianco.</dd>
+          </dl>
+	  	</div>
 		
         <div id="torna_su">
             <a href="#header">Torna su</a>
