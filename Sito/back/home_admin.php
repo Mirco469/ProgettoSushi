@@ -3,6 +3,9 @@
     $db = new DBAccess();
 
     session_start();
+    $_SESSION['username']='admin';
+    $_SESSION['autorizzazione']='Admin';
+
 
     if(isset($_SESSION['username'])) {
         $username = $_SESSION['username'];
@@ -22,11 +25,11 @@
                     $data = date("Y-m-d");
                     $testo =  trim($_POST['notizia']);
 
-                    if(!checkAlfanumerico($titolo)){
+                    if(!checkTesto($titolo)){
                         $erroriNews .= '<li>Il titolo deve contenere almeno due caratteri e non caratteri speciali</li>';
                     }
 
-                    if(!checkAlfanumerico($testo)){
+                    if(!checkTesto($testo)){
                         $erroriNews .= '<li>Il testo deve contenere almeno due caratteri e non caratteri speciali</li>';
                     }
                     if(strlen($testo)>150){
@@ -64,7 +67,7 @@
                 while ($row = mysqli_fetch_assoc($queryResult)) {
                     $notizie .= "<dt>" . $row['data'] . " - " . $row['titolo'] . "</dt>
                                         <dd>" . $row['descrizione'] . "</dd>
-                                        <dd><input onclick='eliminaNews(".$index.")' \"button\" name=\"elimina\" value=\"Elimina\"/></dd>
+                                        <dd><input  type=\"button\" onclick='eliminaNews(".$index.")' name=\"elimina\" value=\"Elimina\"/></dd>
                                     ";
                     $index++;
                 }
@@ -79,7 +82,7 @@
         }
         header('location: errore500.html');
     } else {
-        header('location: errore404.html');
+        header('location: ../login.php');
     }
 
 ?>

@@ -120,10 +120,17 @@
         }
     }
 
+    function checkTesto($string) {
+        if(!checkMinLen($string)) return false;
+        if (!preg_match('/^[a-zA-Z0-9 ,.?!]+$/', $string)) {
+            return false;
+        } else return true;
+    }
+
     //Controlla che la stringa non contenga caratteri speciali
     function checkAlfanumerico($string) {
         if(!checkMinLen($string)) return false;
-        if (!preg_match('/^[a-zA-Z0-9 .,]+$/', $string)) {
+        if (!preg_match('/^[a-zA-Z0-9]+$/', $string)) {
             return false;
         } else return true;
     }
