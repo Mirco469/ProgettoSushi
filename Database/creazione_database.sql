@@ -175,9 +175,9 @@ INSERT INTO Prodotto (nome, categoria, pezzi, prezzo, descrizione) VALUES
 ('Shake Fry Tobiko', 'Uramaki', 4, 4.00, 'Salmone in tempura, avocado e tobiko.'),
 ('Asparago Roll', 'Uramaki', 4, 4.50, 'Asparagi in tempura ricoperti da salmone alla fiamma.'),
 
-('Nigiri Salmone', 'Nigiri ed Onigiri', 2, 2.00),
-('Nigiri Tonno', 'Nigiri ed Onigiri', 2, 2.00),
-('Nigiri Branziono', 'Nigiri ed Onigiri', 2, 2.00),
+('Nigiri Salmone', 'Nigiri ed Onigiri', 2, 2.00,''),
+('Nigiri Tonno', 'Nigiri ed Onigiri', 2, 2.00,''),
+('Nigiri Branziono', 'Nigiri ed Onigiri', 2, 2.00,''),
 ('Onigiri Salmone', 'Nigiri ed Onigiri', 1, 2.00, 'Onigiri con cuore di salmone grigliato'),
 ('Ebiten Onigiri', 'Nigiri ed Onigiri', 1, 2.00, 'Onigiri con cuore di mazzancolla in tempura.'),
 
@@ -191,14 +191,14 @@ INSERT INTO Prodotto (nome, categoria, pezzi, prezzo, descrizione) VALUES
 ('Tuna Temaki', 'Temaki', 1, 3.00, 'Tonno e avocado.'),
 ('Ebiten Temaki', 'Temaki', 1, 4.00, 'Mazzancolla in tempura e salsa teriyaki.'),
 
-('Hosomaki Salmone', 'Hosomaki', 6, 3.00),
-('Hosomaki Tonno', 'Hosomaki', 6, 3.00),
-('Hosomaki Cetriolo', 'Hosomaki', 6, 2.00),
-('Hosomaki Avocado', 'Hosomaki', 6, 2.50),
+('Hosomaki Salmone', 'Hosomaki', 6, 3.00,''),
+('Hosomaki Tonno', 'Hosomaki', 6, 3.00,''),
+('Hosomaki Cetriolo', 'Hosomaki', 6, 2.00,''),
+('Hosomaki Avocado', 'Hosomaki', 6, 2.50,''),
 
-('Sashimi Salmone', 'Sashimi', 4, 6.00),
-('Sashimi Tonno', 'Sashimi', 4, 5.00),
-('Sashimi Branzino', 'Sashimi', 4, 6.00),
+('Sashimi Salmone', 'Sashimi', 4, 6.00,''),
+('Sashimi Tonno', 'Sashimi', 4, 5.00,''),
+('Sashimi Branzino', 'Sashimi', 4, 6.00,''),
 
 ('Profiteroles', 'Dessert', 1, 6.00, 'Profiteroles ricoperti con glassa di cacao e granella di nocciola.'),
 ('Matcha Tiramisù', 'Dessert', 1, 6.50, 'Tiramisù al tè matcha e cioccolato bianco.'),
