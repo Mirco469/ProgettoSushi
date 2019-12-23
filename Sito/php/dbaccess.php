@@ -69,6 +69,7 @@
         /* FINE FUNZIONI PAGINA LOGIN*/
 
 
+
         public function inserisciNews($titolo, $data ,$testo, $user){
 
                 $query = $this->connection->prepare('INSERT INTO News (titolo, descrizione, data, utente) VALUES (?,?,?,?)');
@@ -85,6 +86,116 @@
             return $query->get_result();
         }
 	}
+
+		#funzione per il get delle recensioni;
+		public function getRecensioni() 
+		{
+			#DESC o ASC in modo che prima ci sia la più recente;
+			$query = $this->connection->prepare("SELECT * FROM Recensione ORDER BY data DESC");
+			$query->execute();
+			$queryResult = $query->get_result();
+
+			if (mysqli_num_rows($queryResult) == 0)
+			{
+				return null;
+			} 
+			else
+			{
+				$result = array();
+
+				while ($row = mysqli_fetch_assoc($queryResult)) {
+					$arraySingolaRecensione = array (
+						'Titolo' => $row['titolo'],
+						'Data' => $row['data'],
+						'Utente' => $row['utente'],
+						'Testo' => $row['testo'],
+					);
+					array_push($result, $arraySingolaRecensione);
+				}
+
+				return $result;
+			}
+		}
+
+		#funzione per il get dei prodotti per categoria;
+		public function getProdotti($categoria) 
+		{
+			$query = $this->connection->prepare("SELECT * FROM Prodotto WHERE categoria = ?");
+			$query->bind_param('s', $categoria);
+			$query->execute();
+			$queryResult = $query->get_result();
+
+			if (mysqli_num_rows($queryResult) == 0)
+			{
+				return null;
+			} 
+			else
+			{
+				$result = array();
+
+				while ($row = mysqli_fetch_assoc($queryResult)) {
+					$arraySingoloProdotto = array (
+						'Nome' => $row['nome'],
+						'Prezzo' => $row['prezzo'],
+						'Pezzi' => $row['pezzi'],
+						'Descrizione' => $row['descrizione'],
+					);
+                    array_push($result, $arraySingoloProdotto);
+				}
+
+				return $result;
+			}
+		}
+
+		#funzione per il get degli indirizzi per utente;
+		public function getIndirizzi($utente) 
+		{
+			$query = $this->connection->prepare("SELECT via, numero_civico FROM Destinazione WHERE utente = ?");
+			$query->bind_param('s', $utente);
+			$query->execute();
+			$queryResult = $query->get_result();
+
+			if (mysqli_num_rows($queryResult) == 0)
+			{
+				return null;
+			} 
+			else
+			{
+				$result = array();
+
+				while ($row = mysqli_fetch_assoc($queryResult)) {
+					$arraySingoloIndirizzo = array (
+						'Via' => $row['via'],
+						'Num' => $row['numero_civico'],
+					);
+                    array_push($result, $arraySingoloIndirizzo);
+				}
+
+				return $result;
+			}
+		}
+
+		#funzione per il get della carta di credito per utente;
+		public function getPagamento($utente) 
+		{
+			$query = $this->connection->prepare("SELECT numero_carta FROM Utente WHERE username = ?");
+			$query->bind_param('s', $utente);
+			$query->execute();
+			$queryResult = $query->get_result();
+
+			if (mysqli_num_rows($queryResult) == 0)
+			{
+				return null;
+			} 
+			else
+			{
+			    $row = mysqli_fetch_assoc($queryResult);
+				return $row['numero_carta'];
+			}
+		}
+
+    }
+
 
     //Reindirizza alla home giusta in base all'autorizzazione passata come paramentro (Utente o Admin)
     function redirectHome($autorizzazione)
