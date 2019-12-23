@@ -8,9 +8,9 @@
         $username = $_SESSION['username'];
         if($db->openDBConnection()){
 
-            $titolo = 'Inserire un titolo';
+            $titolo = '';
             $data = 'AAAA-MM-GG';
-            $testo = 'Inserire testo';
+            $testo = '';
             $erroriNews = '';
 
             if (isset($_SESSION['autorizzazione']) && $_SESSION['autorizzazione'] == 'Admin') {
@@ -35,8 +35,8 @@
 
                     if(strlen($erroriNews)==0){
                         $db->inserisciNews($titolo, $data, $testo, $username);
-                        $titolo = 'Inserire un titolo';
-                        $testo = 'Inserire testo';
+                        $titolo = '';
+                        $testo = '';
                     }else{
                         $erroriNews = '<ul class="errore">'.$erroriNews.'</ul>';
                     }
@@ -48,6 +48,17 @@
 
                 $paginaHTML = file_get_contents('html/home_admin.html');
 
+                $formNews = '<fieldset>
+                            <messaggio />
+                                <legend>Inserisci la notizia</legend>
+                                <label for="titolo">Inserisci il titolo: </label>
+                                <input type="text" id="titolo" name="titolo" value="'.$titolo.'"/>
+                                <label for="notizia">Inserisci il testo: </label>
+                                <textarea name="notizia" id="notizia" rows="4" cols="35" />'.$testo.'</textarea>
+                                <input class="defaultButton" type="submit" name="inserisci" value="Inserisci"/>
+                              </fieldset>';
+
+
                 $notizie = '';
 
                 while ($row = mysqli_fetch_assoc($queryResult)) {
@@ -56,6 +67,7 @@
                                         <dd><input type=\"button\" name=\"elimina\" value=\"Elimina\"/></dd>
                                     ";
                 }
+                $paginaHTML = str_replace('<formNews />', $formNews, $paginaHTML);
                 $paginaHTML = str_replace('<messaggio />', $erroriNews, $paginaHTML);
                 echo str_replace('<notizie />', $notizie, $paginaHTML);
                 exit;
