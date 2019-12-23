@@ -1,6 +1,7 @@
 <?php
 	require_once("php/dbaccess.php");
-
+    session_start();
+    
 	if( isset($_SESSION['username'])) {
 	         $db = null;
 	         $user = $_SESSION['username'];
@@ -253,7 +254,7 @@
                 $index = 0;
                  while($row = mysqli_fetch_assoc($queryResult)) {
                      $listaDestinazioni.='<dt>'.$row['nome_cognome'].', indirizzo: '.$row['via'].' '.$row['numero_civico'].', '.$row['CAP'].' </dt>
-                                          <dd><input type="button" name="elimina'.$index.'" value="Elimina"/></dd>';
+                                          <dd><input onclick="eliminaDestinazione('.$index.')" type="button" name="elimina" value="Elimina"/></dd>';
                      $index++;
                  }
 
@@ -274,6 +275,6 @@
                  $paginaHTML = str_replace('<formSpedizione />', $formSpedizione, $paginaHTML);
                  echo str_replace('<formPagamento />', $formPagamento, $paginaHTML);
 
-	}
+	}else header('location: errore403.html');
 
 ?>
