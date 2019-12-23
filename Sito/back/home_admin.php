@@ -60,12 +60,13 @@
 
 
                 $notizie = '';
-
+                $index = 0;
                 while ($row = mysqli_fetch_assoc($queryResult)) {
                     $notizie .= "<dt>" . $row['data'] . " - " . $row['titolo'] . "</dt>
                                         <dd>" . $row['descrizione'] . "</dd>
-                                        <dd><input type=\"button\" name=\"elimina\" value=\"Elimina\"/></dd>
+                                        <dd><input onclick='eliminaNews(".$index.")' \"button\" name=\"elimina\" value=\"Elimina\"/></dd>
                                     ";
+                    $index++;
                 }
                 $paginaHTML = str_replace('<formNews />', $formNews, $paginaHTML);
                 $paginaHTML = str_replace('<messaggio />', $erroriNews, $paginaHTML);
