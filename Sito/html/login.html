@@ -35,34 +35,20 @@
       </div>
         <div id="login" class="content">
             <!-- Form per l'accesso -->
-            <form class="defaultForm" action="home_utente.html" autocomplete="on"> <!--Manca l'attributo action e l'attributo method (get/post)-->
+            <form class="defaultForm" action="login.php" autocomplete="on" method="post">
                 <fieldset>
                     <legend>Accedi</legend>
-                    <label for="nomeUtente">Nome Utente:</label>
-                    <input type="text" id="nomeUtente" name="username" placeholder="Utente" required="required"/>
-                    <label for="passwordAcc" lang="en">Password:</label>
-                    <input type="password" id="passwordAcc" name="password" placeholder="Password" required="required"/>
-                    <input class="defaultButton" type="submit" name="accedi" value="Accedi"/>
+                    <erroreLogin />
+                    <formLogin />
                 </fieldset>
             </form>
             <p>oppure</p>
             <!-- Form per le registrazione -->
-            <form class="defaultForm" action="home_utente.html"> <!--Manca l'attributo action e l'attributo method (get/post)-->
+            <form class="defaultForm" action="login.php" method="post">
                 <fieldset>
                     <legend>Registrati</legend>
-                    <label for="username">Nome utente:</label>
-                    <input type="text" id="username" name="username" placeholder="Utente" required="required"/>
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" placeholder="Nome" required="required"/>
-                    <label for="cognome">Cognome:</label>
-                    <input type="text" id="cognome" name="cognome" placeholder="Cognome" required="required"/>
-                    <label for="data">Data di nascita:</label>
-                    <input type="date" id="data" name="dataNascita" required="required"/> <!-- Il validatore consiglia di prendere in considerazione "polyfill" in quanto date non è supportato da tutti i browser -->
-                    <label for="passwordReg" lang="en">Password:</label>
-                    <input type="password" id="passwordReg" name="password" required="required"/>
-                    <label for="passwordRepeat">Ripeti la <span lang="en">password:</span></label>
-                    <input type="password" id="passwordRepeat" name="passwordRepeat" required="required"/>
-                    <input class="defaultButton" type="submit" name="registrati" value="Registrati"/>
+                    <erroreRegistrazione />
+                    <formRegistrazione />
                 </fieldset>
             </form>
         </div>
