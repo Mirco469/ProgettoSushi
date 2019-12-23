@@ -80,7 +80,7 @@
         }
 
         public function getNews() {
-            $query = $this->connection->prepare('SELECT * FROM News');
+            $query = $this->connection->prepare('SELECT * FROM News ORDER BY data ');
             $query->execute();
             return $query->get_result();
         }
@@ -123,7 +123,7 @@
     //Controlla che la stringa non contenga caratteri speciali
     function checkAlfanumerico($string) {
         if(!checkMinLen($string)) return false;
-        if (!preg_match('/^[a-zA-Z0-9]+$/', $string)) {
+        if (!preg_match('/^[a-zA-Z0-9 .,]+$/', $string)) {
             return false;
         } else return true;
     }
