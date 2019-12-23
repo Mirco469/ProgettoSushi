@@ -37,7 +37,7 @@
 						'Utente' => $row['utente'],
 						'Testo' => $row['testo'],
 					);
-					array_push_result($result, $arraySingolaRecensione);
+					array_push($result, $arraySingolaRecensione);
 				}
 
 				return $result;
@@ -67,7 +67,7 @@
 						'Pezzi' => $row['pezzi'],
 						'Descrizione' => $row['descrizione'],
 					);
-					array_push_result($result, $arraySingoloProdotto);
+                    array_push($result, $arraySingoloProdotto);
 				}
 
 				return $result;
@@ -95,7 +95,7 @@
 						'Via' => $row['via'],
 						'Num' => $row['numero_civico'],
 					);
-					array_push_result($result, $arraySingoloIndirizzo);
+                    array_push($result, $arraySingoloIndirizzo);
 				}
 
 				return $result;
@@ -116,7 +116,8 @@
 			} 
 			else
 			{
-				return $queryResult;
+			    $row = mysqli_fetch_assoc($queryResult);
+				return $row['numero_carta'];
 			}
 		}
 
