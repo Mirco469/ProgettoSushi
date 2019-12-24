@@ -228,13 +228,11 @@
         } else return true;
     }
 
-	//Stampa il menu a seconda che l'utente sia autenticato o meno
-	//Va passato il contenuto della pagina come parametro
-	function printMenu($paginaHTML) {
-	$menu = '';
-		if(isset($_SESSION['username'])) {
+		//Ritorna la parte di menu corretta a seconda che l'utente sia loggato o meno
+	function getMenu() {
 
-			$menu = '<li class="impostazioni">
+		if(isset($_SESSION['username'])) {
+		    return '<li class="impostazioni">
 						<span id="dropbtn">Area Riservata</span>
 						<ul id="dropdown_content">
 							<li><a href="carrello.html" tabindex="8">Carrello</a></li>
@@ -243,10 +241,9 @@
 							<li><a lang="en" href="#" tabindex="11">Logout</a></li>
 						</ul>
 					</li>';
-			return str_replace('<menu />', $menu, $paginaHTML);
+
 		}else {
-			$menu = '<li class="login"><a href="login.html" tabindex="7"><span lang="en">Login</span>/Registrazione</a></li>';
-		   return str_replace('<menu />', $menu, $paginaHTML);
+			return '<li class="login"><a href="login.html" tabindex="7"><span lang="en">Login</span>/Registrazione</a></li>';
 		}
 	}
 
