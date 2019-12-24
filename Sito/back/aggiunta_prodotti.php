@@ -104,7 +104,7 @@
                 {
                     $listaProdotti .= "
                     <div class=\"lista_piatti\">
-                    <h1 id=\"antipasti\">$categoriaSingola</h1>
+                    <h1>$categoriaSingola</h1>
                     <dl>";
                     //Per ogni prodotto di questa categoria
                     foreach($oggettoConnessione->getProdotti($categoriaSingola) as $singoloProdotto)
