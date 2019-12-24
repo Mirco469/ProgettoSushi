@@ -1,7 +1,7 @@
-<!DOCTYPE html>
-<html lang="it">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it">
   <head>
-      <meta charset="utf-8" />
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <title>Aggiunta Prodotti - Sushi Nakamura</title>
       <meta name="title" content="Aggiunta prodotti - Sushi Nakamura" />
       <meta name="description" content="Pagina per aggiungere nuovi prodotti da vendere per il sito di sushi" />
@@ -13,7 +13,7 @@
       <link rel="stylesheet" type="text/css" media="screen and (min-width: 901px)" href="../css/style.css"/>
 	<link rel="stylesheet" type="text/css" media="screen and (max-width: 900px)" href="../css/mobile.css"/>
       <link rel="stylesheet" type="text/css" media="print" href="../css/stampa.css"/>
-        <script src="../js/index.js"></script>
+        <script type="text/javascript" src="../js/index.js"></script>
   </head>
   <body>
     <div id="header">
@@ -40,43 +40,12 @@
     <div class="content" id="aggiunta_prodotti">
         <h1>Pagina dei prodotti</h1>
         <!-- Form di aggiunta prodotti -->
-        <form action="#" class="defaultForm"> <!--Manca l'attributo action e l'attributo method (get/post)-->
+        <form action="aggiunta_prodotti.php" class="defaultForm" method="post">
             <fieldset>
                 <legend>Aggiungi nuovo prodotto</legend>
-                <div class="formGroup">
-                    <label for="prodotto">Nome Prodotto:</label>
-                    <input type="text" id="prodotto" name="prodotto" placeholder="Prodotto" required="required"/>
-                </div>
-                <div class="formGroup">
-                    <label for="categoria">Categoria:</label>
-                    <!-- lista delle categorie da caricare da database (letti dal sito domosushi.it se serve hanno una foto per ogni categoria)-->
-                    <input placeholder="Categoria" name="categoria" id="categoria" list="lista_categoria" required="required">
-                    <datalist id="lista_categoria">
-                        <option>Antipasti</option>
-                        <option>Primi Piatti</option>
-                        <option lang="ja">Teppanyako e tempure</option>
-                        <option lang="ja">Uramaki</option>
-                        <option lang="ja">Nigiri e Onigiri</option>
-                        <option lang="ja">Gunkan</option>
-                        <option lang="ja">Temaki</option>
-                        <option lang="ja">Hosomaki</option>
-                        <option lang="ja">Sashimi</option>
-                        <option lang="fr">Dessert</option>
-                    </datalist>
-                </div>
-                <div class="formGroup">
-                    <label for="porzione">Numero pezzi:</label>
-                    <input type="text" id="porzione" name="porzione" placeholder="Pezzi" required="required"/>
-                </div>
-                <div class="formGroup">
-                    <label for="prezzo">Prezzo:</label>
-                    <input type="number" id="prezzo" name="prezzo" min="0" step="0.1" required="required"/>
-                </div>
-				<div class="formGroup">
-                    <label for="descrizione">Descrizione:</label>
-                    <textarea id="descrizione" name="descrizione" rows="4" cols="35"></textarea>
-                </div>
-                <input type="submit" value="Aggiungi"/>
+                <messaggioAggiunta />
+                <formAggiunta />
+                <input type="submit" name="aggiungi" value="Aggiungi"/>
             </fieldset>
         </form>
 		
