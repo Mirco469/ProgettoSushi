@@ -50,6 +50,23 @@
             }
         }
 
+        //Funzione che controlla se il prodotto è già esistente: ritorna true se esiste già false altrimenti
+        public function  alreadyExistsProdotto($prodotto)
+        {
+            $query = $this->connection->prepare('SELECT * FROM prodotto WHERE nome= ?');
+            $query->bind_param('s', $prodotto);
+            $query->execute();
+            $queryResult = $query->get_result();
+            if(mysqli_num_rows($queryResult) == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         public function addAccount($username,$nome,$cognome,$password)
         {
             $query = $this->connection->prepare('INSERT INTO utente(username,nome,cognome,password,autorizzazione) VALUES (?,?,?,?,"Utente")');
@@ -63,8 +80,6 @@
                 header("Location: /errore500.php"); /*CONTROLLARE SE LA PAGINA E' GIUSTA*/
             }
         }
-        
-
 
 		#funzione per il get delle recensioni;
 		public function getRecensioni() 
@@ -220,7 +235,27 @@
     //Controlla che la stringa contenga solo numeri e che sia lunga almeno due caratteri
     function checkSoloNumerieDim($string){
         if(!checkMinLen($string)) return false;
-        if (!preg_match('/[^0-9]+$/', $string)) {
+        if (!preg_match('/^[0-9]+$/', $string)) {
+            return false;
+        } else return true;
+    }
+
+    //Controlla che il numero sia intero e $numero non sia vuoto
+    //Ritorna true se rispetta le condizioni, false altrimenti
+    function checkNumeroIntero($numero){
+        if(empty($numero)) return false;
+        if (!preg_match('/^[0-9]+$/', $numero)) {
+            return false;
+        } else return true;
+    }
+
+    //Controlla che il parametro sia un numero consono ad essere un prezzo ovvero può essere decimale ma con al massimo due cifre dopo la virgola e
+    // tre cifre prima della virgola (228,90)(non può essere stringa vuota)
+    //Ritorna true se rispetta i vincoli sopra descritti, false altrimenti.
+    function checkPrezzo($numero)
+    {
+        if(empty($numero)) return false;
+        if (!preg_match('/^[0-9]{1,3}((.|,)[0-9]{1,2})?$/', $numero)) {
             return false;
         } else return true;
     }
@@ -246,40 +281,4 @@
 		   return str_replace('<menu />', $menu, $paginaHTML);
 		}
 	}
-
-
-	/*	Esempio di funzione per prendere i dati
-	public function getPersonaggi()
-	{
-		$query = "SELECT * FROM personaggi ORDER BY ID ASC";
-		$queryResult = myqsli_query($this->connection,$query);
-		
-		if(mysqli_num_rows($queryResult) == 0)
-		{
-			return null;
-		}
-		else
-		{
-			$result = array();
-			
-			while($row = mysqli_fetch_assoc($queryResult))
-			{
-				$arraySingoloPersonaggio = array(
-					'Nome' =>$row['nome]',
-					'Colore' => $row['colore'],
-					'Peso' => $row['peso'],
-					'Potenza' => $row['potenza'],
-					'Descrizione' => $row['descrizione'],
-					'ABR' => $row['angry_birds'],
-					'ABSW' => $row['angry_birds_star_wars'],
-					'AVS' => $row['angry_birds_space'],
-					'Immagine' => $row['immagine']
-				);
-			}
-				array_push($result,$arraySingoloPersonaggio);
-			
-			return $result;
-		}
-	}
-	*/
 ?>

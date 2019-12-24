@@ -26,6 +26,40 @@
                 $numeroPezzi = htmlentities(trim($_POST['porzione']));;
                 $prezzo = htmlentities(trim($_POST['prezzo']));;
                 $descrizione = htmlentities(trim($_POST['descrizione']));;
+
+                // Controllo gli input
+                $oggettoConnessione =  new DBAccess();
+                if($oggettoConnessione->openDBConnection())
+                {
+                    if($oggettoConnessione->alreadyExistsProdotto($nomeProdotto))
+                    {
+                        $messaggioAggiunta .= "<li>Prodotto gi&agrave; esistente</li>";
+                    }
+                    if(!checkNumeroIntero($numeroPezzi))
+                    {
+                        $messaggioAggiunta .= "<li>Il numero dei pezzi deve essere un numero intero</li>";
+                    }
+                    if(!checkPrezzo($prezzo))
+                    {
+                        $messaggioAggiunta .= "<li>Il prezzo deve essere un numero decimale con al massimo 3 cifre prima della virgola e 2 cifre dopo la virgola</li>";
+                    }
+
+
+                    //Controllo se non ho riscontrato errori
+                    if($messaggioAggiunta == "")
+                    {
+                        //$oggettoConnessione->addAccount($usernameR,$nomeR,$cognomeR,$passwordR);
+                        $messaggioAggiunta = "<p class='successo'>Prodotto aggiunto con successo!</p>";
+                    }
+                    else
+                    {
+                        $messaggioAggiunta = "<ul class='errore'>".$messaggioAggiunta."</ul>";
+                    }
+                }
+                else
+                {
+                    header("Location: /errore500.php"); /*CONTROLLARE SE LA PAGINA E' GIUSTA*/
+                }
             }
             else
             {
