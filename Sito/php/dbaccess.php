@@ -14,6 +14,8 @@
             return $this->connection;
         }
 
+        /* FUNZIONI PER CONTROLLARE LO STATO DEL DATABASE */
+
         //Funzione per controllare le credenziali: ritorna null se non esiste alcuna corrispondenza altrimenti ritorna il suo livello di autorizzazione
         public function checkLogin($username,$password)
         {
@@ -67,6 +69,8 @@
             }
         }
 
+        /* FUNZIONI PER AGGIUNGERE DATI AL DATABASE */
+
         public function addAccount($username,$nome,$cognome,$password)
         {
             $query = $this->connection->prepare('INSERT INTO utente(username,nome,cognome,password,autorizzazione) VALUES (?,?,?,?,"Utente")');
@@ -74,6 +78,22 @@
             if($query->execute())
             {
                 redirectHome("Utente");
+            }
+            else
+            {
+                header("Location: /errore500.php"); /*CONTROLLARE SE LA PAGINA E' GIUSTA*/
+            }
+        }
+
+        //Aggiunge un prodotto al database: ritorna true se ha successo, reindirzzia alla pagina di errore 500 altrimenti.
+        public function addProdotto($nome,$categoria,$pezzi,$prezzo,$descrizione)
+        {
+            $prezzo = str_replace(",",".",$prezzo);
+            $query = $this->connection->prepare('INSERT INTO prodotto(nome,categoria,pezzi,prezzo,descrizione) VALUES (?,?,?,?,?)');
+            $query->bind_param('sssss', $nome,$categoria,$pezzi,$prezzo,$descrizione);
+            if($query->execute())
+            {
+                return true;
             }
             else
             {
@@ -111,10 +131,12 @@
 			}
 		}
 
-		#funzione per il get dei prodotti per categoria;
+		/* FUNZIONI PER OTTENERE DATI DAL DATABASE */
+
+		#funzione per il get dei prodotti per categoria con i nomi in ordine alfabetico;
 		public function getProdotti($categoria) 
 		{
-			$query = $this->connection->prepare("SELECT * FROM Prodotto WHERE categoria = ?");
+			$query = $this->connection->prepare("SELECT * FROM Prodotto WHERE categoria = ? ORDER BY nome ASC");
 			$query->bind_param('s', $categoria);
 			$query->execute();
 			$queryResult = $query->get_result();
@@ -207,6 +229,8 @@
         }
     }
 
+    /* FUNZIONI PER IL CHECK DELL'INPUT */
+
     //Controlla che la stringa sia lunga almeno due caratteri
     function checkMinLen($string) {
         if(strlen($string)<2){
@@ -259,6 +283,8 @@
             return false;
         } else return true;
     }
+
+    /* ALTRO */
 
 	//Stampa il menu a seconda che l'utente sia autenticato o meno
 	//Va passato il contenuto della pagina come parametro
