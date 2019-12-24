@@ -965,7 +965,7 @@ min-height: 465px;
 }
 
 #aggiunta_prodotti .defaultForm{
-	margin: 0em;
+	margin: auto;
 }
 
 #aggiunta_prodotti .defaultForm textarea{

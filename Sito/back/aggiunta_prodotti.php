@@ -35,7 +35,7 @@
                     }
                     if (!checkSoloLettereEDim($nomeProdotto))
                     {
-                        $messaggioAggiunta .= "<li>Il nome deve contenere solo lettere e essere almeno lungo 2</li>";
+                        $messaggioAggiunta .= "<li>Il nome deve contenere solo lettere e essere almeno lungo 2 caratteri</li>";
                     }
                     if (!checkNumeroIntero($numeroPezzi))
                     {
