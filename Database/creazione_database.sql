@@ -89,8 +89,8 @@ CREATE TABLE Destinazione(
 -- Inserimento dati nella tabella Destinazione
 
 INSERT INTO Destinazione (id_destinazione, nome_cognome, numero_telefonico, CAP, via, numero_civico, utente) VALUES 
-(201, 'Utente Generico', '049XXXXXXX', '35100', 'Aldo Moro', 21, 'utente'),
-(202, 'Utente Generico', '049XXXXXXX', '35100', 'Ugo Bassi', 17, 'utente'),
+(201, 'Utente Generico', '049XXXXXXX', '35100', 'Aldo Moro', 21, 'user'),
+(202, 'Utente Generico', '049XXXXXXX', '35100', 'Ugo Bassi', 17, 'user'),
 (203, 'User Uno', '346XXXXXXX', '35133', 'Don Stefani', 10, 'user1'),
 (204, 'User Due', '339XXXXXXX', '35142', 'Monte Bianco', 15, 'user2'),
 (205, 'User Tre', '333XXXXXXX', '35129', 'Andrea Palladio', 17, 'user3'),
@@ -145,7 +145,7 @@ INSERT INTO Prodotto (nome, categoria, pezzi, prezzo, descrizione) VALUES
 ('Goma Wakame', 'Antipasti', 1, 4.00, 'Alghe giapponesi marinate.'),
 ('Edamame', 'Antipasti', 1, 3.00, 'Fagioli di soia.'),
 ('Takoyaki', 'Antipasti', 4, 4.00, 'Polpette di Osaka con polpo e fiocchi di tonno disidratato.'),
-('Domò Harumaki', 'Antipasti', 2, 2.00, 'Spinaci con fiocchi di tonno disidratato e teriyaki balsamica.'),
+('Domo Harumaki', 'Antipasti', 2, 2.00, 'Spinaci con fiocchi di tonno disidratato e teriyaki balsamica.'),
 ('Niku Harumaki', 'Antipasti', 2, 3.00, 'Stracotto di manzo con carote e patate con salsa black pepper.'),
 ('Yasai Gyoza', 'Antipasti', 4, 3.50, 'Ravioli di verdure in sfoglia di grano e riso.'),
 
