@@ -89,8 +89,8 @@ CREATE TABLE Destinazione(
 -- Inserimento dati nella tabella Destinazione
 
 INSERT INTO Destinazione (id_destinazione, nome_cognome, numero_telefonico, CAP, via, numero_civico, utente) VALUES 
-(201, 'Utente Generico', '049XXXXXXX', '35100', 'Aldo Moro', 21, 'utente'),
-(202, 'Utente Generico', '049XXXXXXX', '35100', 'Ugo Bassi', 17, 'utente'),
+(201, 'Utente Generico', '049XXXXXXX', '35100', 'Aldo Moro', 21, 'user'),
+(202, 'Utente Generico', '049XXXXXXX', '35100', 'Ugo Bassi', 17, 'user'),
 (203, 'User Uno', '346XXXXXXX', '35133', 'Don Stefani', 10, 'user1'),
 (204, 'User Due', '339XXXXXXX', '35142', 'Monte Bianco', 15, 'user2'),
 (205, 'User Tre', '333XXXXXXX', '35129', 'Andrea Palladio', 17, 'user3'),
