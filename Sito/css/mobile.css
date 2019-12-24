@@ -964,17 +964,17 @@ min-height: 465px;
 	border: solid 4px #990000;
 }
 
-.defaultForm{
+#aggiunta_prodotti .defaultForm{
 	margin: 0em;
 }
 
-.defaultForm textarea{
+aggiunta_prodotti .defaultForm textarea{
 	width: 97%;
 	display: block;
 	margin:auto;
 }
 
-.defaultForm select{
+aggiunta_prodotti .defaultForm select{
 	display: block;
 	width: 100%;
 	padding: 0.6em 0.875em;
