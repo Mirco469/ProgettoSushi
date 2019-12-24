@@ -14,8 +14,6 @@
             return $this->connection;
         }
 
-        /* INIZIO FUNZIONI PAGINA LOGIN */
-
         //Funzione per controllare le credenziali: ritorna null se non esiste alcuna corrispondenza altrimenti ritorna il suo livello di autorizzazione
         public function checkLogin($username,$password)
         {
@@ -65,8 +63,7 @@
                 header("Location: /errore500.php"); /*CONTROLLARE SE LA PAGINA E' GIUSTA*/
             }
         }
-
-        /* FINE FUNZIONI PAGINA LOGIN*/
+        
 
 
 		#funzione per il get delle recensioni;

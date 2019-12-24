@@ -21,7 +21,11 @@
             //Controlla se è stata fatta una post per aggiungere un nuovo prodotto
             if(isset($_POST['aggiungi']))
             {
-
+                $nomeProdotto = htmlentities(trim($_POST['prodotto']));;
+                $categoria = htmlentities(trim($_POST['categoria']));;
+                $numeroPezzi = htmlentities(trim($_POST['porzione']));;
+                $prezzo = htmlentities(trim($_POST['prezzo']));;
+                $descrizione = htmlentities(trim($_POST['descrizione']));;
             }
             else
             {
@@ -29,7 +33,6 @@
             }
 
             $paginaHTML = file_get_contents('html/aggiunta_prodotti.html');
-
             $formAggiunta = "
                 <div class=\"formGroup\">
                     <label for=\"prodotto\">Nome Prodotto:</label>
