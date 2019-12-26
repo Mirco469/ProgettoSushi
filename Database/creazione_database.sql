@@ -145,7 +145,7 @@ INSERT INTO Prodotto (nome, categoria, pezzi, prezzo, descrizione) VALUES
 ('Goma Wakame', 'Antipasti', 1, 4.00, 'Alghe giapponesi marinate.'),
 ('Edamame', 'Antipasti', 1, 3.00, 'Fagioli di soia.'),
 ('Takoyaki', 'Antipasti', 4, 4.00, 'Polpette di Osaka con polpo e fiocchi di tonno disidratato.'),
-('Domò Harumaki', 'Antipasti', 2, 2.00, 'Spinaci con fiocchi di tonno disidratato e teriyaki balsamica.'),
+('Domo Harumaki', 'Antipasti', 2, 2.00, 'Spinaci con fiocchi di tonno disidratato e teriyaki balsamica.'),
 ('Niku Harumaki', 'Antipasti', 2, 3.00, 'Stracotto di manzo con carote e patate con salsa black pepper.'),
 ('Yasai Gyoza', 'Antipasti', 4, 3.50, 'Ravioli di verdure in sfoglia di grano e riso.'),
 
