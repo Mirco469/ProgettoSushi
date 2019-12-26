@@ -33,12 +33,13 @@
                 }
                 if (!checkTextArea($testo))
                 {
-                    $messaggio .= "<li>Il testo deve essere lungo almeno 2 caratteri</li>";
+                    $messaggio .= "<li>Il testo deve essere lungo tra i 10 ed i 150 caratteri</li>";
                 }
 
                 if ($messaggio == "")
                 {
                     $data = getdate(); #L'array data ha anche i campi [year][mon][mday];
+                    $data = "$data[year]-$data[mon]-$data[mday]";
                     $oggettoConnessione->addRecensione($titolo, $data, $_SESSION["username"], $testo);
                     $messaggio = "<p class='successo'>Recensione aggiunta con successo!</p>";
                     $titolo = "";

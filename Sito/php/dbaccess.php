@@ -101,6 +101,21 @@
             }
         }
 
+        #Aggiunge una recensione al database, altrimenti reindirizza ad errore500.php
+        public function addRecensione ($titolo, $data, $utente, $testo)
+        {
+            $query = $this->connection->prepare('INSERT INTO Recensione(titolo, testo, data, utente) VALUES ($titolo, $testo, $data, $utente');
+            $query->bind_param('ssss', $titolo, $testo, $data, $utente);
+            if($query->execute())
+            {
+                return true;
+            }
+            else
+            {
+                header("Location: /errore500.php");
+            }
+        }   
+
 		#funzione per il get delle recensioni;
 		public function getRecensioni() 
 		{
