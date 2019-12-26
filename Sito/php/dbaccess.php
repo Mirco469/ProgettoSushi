@@ -250,7 +250,7 @@
 	//Funzione per ottenere le categorie dei prodotti
 	function getCategorie()
 	{
-		return array("Antipasti","Primi Piatti","Teppanyako e tempure","Uramaki","Nigiri ed Onigiri","Gunkan","Temaki","Hosomaki","Sashimi","Dessert");
+		return array("Antipasti","Primi Piatti","Teppanyako e Tempure","Uramaki","Nigiri ed Onigiri","Gunkan","Temaki","Hosomaki","Sashimi","Dessert");
 	}
 
 
