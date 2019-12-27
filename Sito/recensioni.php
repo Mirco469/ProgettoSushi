@@ -76,13 +76,13 @@
         {
             $titoloR = $recensione["Titolo"];
             $dataR = $recensione["Data"];
-            $UtenteR = $recensione["Utente"];
-            $TestoR = $recensione["Testo"];
+            $utenteR = $recensione["Utente"];
+            $testoR = $recensione["Testo"];
             $listaRecensioni .= "
             <dt>$titoloR</dt>
             <dd>$dataR</dd>
-            <dd>$UtenteR</dd>
-			<dd>$TestoR</dd>";
+            <dd>$utenteR</dd>
+			<dd>$testoR</dd>";
         }
         $listaRecensioni .= "
             </dl>

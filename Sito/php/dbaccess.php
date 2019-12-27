@@ -288,24 +288,24 @@
         } else return true;
     }
 
-    //Controlla che l'input contenga solo lettere e spazi interni, e sia almeno lungo $dim;
+    //Controlla che l'input contenga solo lettere e spaziature interne e sia almeno lungo $dim;
     function checkTestoSpaziDim($string, $dim)
     {
         if (strlen($string) < $dim) {
             return false;
         }
-        if (!preg_match('^[a-zA-Z]+$', $string)) {
+        if (!preg_match('/^[a-zA-Z][a-zA-Z|\s]*[a-zA-Z]$/', $string)) {
             return false;
         } else return true;
     }
 
-    //Controlla che l'input inizi con una lettera e sia lungo tra i 10 ed i 150 caratteri;
+    //Controlla che l'input non contenga numeri e sia lungo tra i 10 ed i 200 caratteri;
     function checkTextarea($string)
     {
-        if (strlen($string) < 10 || strlen($string) > 150) {
+        if (strlen($string) < 10 || strlen($string) > 200) {
             return false;
         }
-        if (!preg_match('/^[a-zA-Z]+$/', $string)) {
+        if (!preg_match('/[\D]+/', $string)) {
             return false;
         } else return true;
     }
