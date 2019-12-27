@@ -71,15 +71,15 @@
                 }
                 if(!checkAlfanumerico($usernameR))
                 {
-                    $erroreR .= "<li>L'<span lang='en'>username</span> deve contenere solo caratteri alfanumerici</li>";
+                    $erroreR .= "<li>L'<span lang='en'>username</span> deve contenere solo caratteri alfanumerici e avere almeno 2 caratteri</li>";
                 }
                 if(!checkSoloLettereEDim($nomeR))
                 {
-                    $erroreR .= "<li>Il nome deve contenere solo lettere</li>";
+                    $erroreR .= "<li>Il nome deve contenere solo lettere  e avere almeno 2 caratteri</li>";
                 }
                 if(!checkSoloLettereEDim($cognomeR))
                 {
-                    $erroreR .= "<li>Il cognome deve contenere solo lettere</li>";
+                    $erroreR .= "<li>Il cognome deve contenere solo lettere  e avere almeno 2 caratteri</li>";
                 }
 
                 if(!checkMinLen($passwordR))
@@ -113,23 +113,23 @@
         //Form di login
         $formLoginContent = "
                     <label for=\"nomeUtente\">Nome Utente:</label>
-                    <input type=\"text\" id=\"nomeUtente\" name=\"username\" placeholder=\"Utente\" required=\"required\" value=\"$usernameL\"/>
+                    <input type=\"text\" id=\"nomeUtente\" name=\"username\" value=\"$usernameL\"/>
                     <label for=\"passwordAcc\" lang=\"en\">Password:</label>
-                    <input type=\"password\" id=\"passwordAcc\" name=\"password\" placeholder=\"Password\" required=\"required\" value=\"$passwordL\"/>
+                    <input type=\"password\" id=\"passwordAcc\" name=\"password\" value=\"$passwordL\"/>
                     <input class=\"defaultButton\" type=\"submit\" name=\"accedi\" value=\"Accedi\"/>";
 
         //Form di registrazione
         $formRegistrazioneContent = "
                     <label for=\"username\">Nome utente:</label>
-                    <input type=\"text\" id=\"username\" name=\"username\" placeholder=\"Utente\" required=\"required\" value=\"$usernameR\"/>
+                    <input type=\"text\" id=\"username\" name=\"username\" value=\"$usernameR\"/>
                     <label for=\"nome\">Nome:</label>
-                    <input type=\"text\" id=\"nome\" name=\"nome\" placeholder=\"Nome\" required=\"required\" value=\"$nomeR\"/>
+                    <input type=\"text\" id=\"nome\" name=\"nome\" value=\"$nomeR\"/>
                     <label for=\"cognome\">Cognome:</label>
-                    <input type=\"text\" id=\"cognome\" name=\"cognome\" placeholder=\"Cognome\" required=\"required\" value=\"$cognomeR\"/>
+                    <input type=\"text\" id=\"cognome\" name=\"cognome\" value=\"$cognomeR\"/>
                     <label for=\"passwordReg\" lang=\"en\">Password:</label>
-                    <input type=\"password\" id=\"passwordReg\" name=\"password\" required=\"required\" value=\"$passwordR\"/>
+                    <input type=\"password\" id=\"passwordReg\" name=\"password\" value=\"$passwordR\"/>
                     <label for=\"passwordRepeat\">Ripeti la <span lang=\"en\">password:</span></label>
-                    <input type=\"password\" id=\"passwordRepeat\" name=\"passwordRepeat\" required=\"required\" value=\"$passwordRepeatR\"/>
+                    <input type=\"password\" id=\"passwordRepeat\" name=\"passwordRepeat\" value=\"$passwordRepeatR\"/>
                     <input class=\"defaultButton\" type=\"submit\" name=\"registrati\" value=\"Registrati\"/>";
 
         $paginaHTML = str_replace('<erroreLogin />', $erroreL, $paginaHTML);
