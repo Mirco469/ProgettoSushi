@@ -288,6 +288,28 @@
         } else return true;
     }
 
+    //Controlla che l'input contenga solo lettere e spazi interni, e sia almeno lungo $dim;
+    function checkTestoSpaziDim($string, $dim)
+    {
+        if (strlen($string) < $dim) {
+            return false;
+        }
+        if (!preg_match('^[a-zA-Z]+$', $string)) {
+            return false;
+        } else return true;
+    }
+
+    //Controlla che l'input inizi con una lettera e sia lungo tra i 10 ed i 150 caratteri;
+    function checkTextarea($string)
+    {
+        if (strlen($string) < 10 || strlen($string) > 150) {
+            return false;
+        }
+        if (!preg_match('/^[a-zA-Z]+$/', $string)) {
+            return false;
+        } else return true;
+    }
+
     //Controlla che il parametro sia un numero consono ad essere un prezzo ovvero può essere decimale ma con al massimo due cifre dopo la virgola e
     // tre cifre prima della virgola (228,90)(non può essere stringa vuota)
     //Ritorna true se rispetta i vincoli sopra descritti, false altrimenti.

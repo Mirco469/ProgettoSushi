@@ -24,16 +24,16 @@
             if(isset($_POST['invia']))
             {
                 $titolo = htmlentities(trim($_POST['titolo']));
-                $testo = htmlentities(trim($_POST['testo']));
+                $testo = htmlentities(stripslashes(trim($_POST['testo'])));
 
                 #Controllo gli input;
-                if (!checkTestoSpaziDim($titolo))
+                if (!checkTestoSpaziDim($titolo, 6))
                 {
-                    $messaggio .= "<li>Il titolo deve contenere solo lettere e spaziature interne ed essere almeno lungo 2 caratteri</li>";
+                    $messaggio .= "<li>Il titolo deve contenere solo lettere e spaziature interne ed essere almeno lungo 6 caratteri</li>";
                 }
                 if (!checkTextArea($testo))
                 {
-                    $messaggio .= "<li>Il testo deve essere lungo tra i 10 ed i 150 caratteri</li>";
+                    $messaggio .= "<li>Il testo deve essere lungo tra i 10 ed i 200 caratteri</li>";
                 }
 
                 if ($messaggio == "")
@@ -69,7 +69,7 @@
         $paginaHTML = str_replace('<messaggio />', $messaggio, $paginaHTML);
 
         #Stampo le recensioni esistenti nel database;
-        $listaRecensioni .= "
+        $listaRecensioni = "
     	    <div id=\"lista_recensioni\">
     		<dl>";
         foreach($oggettoConnessione->getRecensioni() as $recensione)

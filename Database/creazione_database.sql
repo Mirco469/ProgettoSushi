@@ -35,7 +35,7 @@ DROP TABLE IF EXISTS Recensione;
 CREATE TABLE Recensione(
 	id_recensione 	INT PRIMARY KEY AUTO_INCREMENT,
 	titolo		  		VARCHAR(30) NOT NULL,
-	testo						VARCHAR(150) NOT NULL,
+	testo						VARCHAR(200) NOT NULL,
 	data						DATE NOT NULL,
 	utente 					VARCHAR(20) NOT NULL,
 	FOREIGN KEY (utente) REFERENCES Utente(username) ON DELETE CASCADE
@@ -46,8 +46,8 @@ CREATE TABLE Recensione(
 INSERT INTO Recensione (id_recensione, titolo, testo, data, utente) VALUES 
 (001, 'Ristorante TOP', 'Sono un’appassionata di sushi e credo che questo ristorante possa vantare la migliore qualità e varietà della zona. Uramaki special strepitosi e servizio impeccabile.', '2018-09-11', 'user2'),
 (002, 'Bella serata', 'Ogni volta che vengo a Padova mi fermo sempre a cena in questo locale, i ragazzi dello staff sono simpatici e molto professionali, sulla qualità del cibo semplicemente ottimo.', '2019-03-22', 'user1'),
-(003, 'Consigliato', 'Bel ristorante in una zona molto accogliente di Padova. Non me ne intendo molto di sushi ma posso dire che lo consiglierò sicuramente ad amici', '2017-11-08', 'user3'),
-(004, 'Ho provato di meglio', 'Scoperto l’anno scorso, siamo tornati anche quest’anno. La qualità è sempre ottima sia dei crudi che dei cotti, con molta scelta. Peccato per i tavoli un po’ piccoli, quando arrivano più di due piatti diventa difficile gestire gli spazi. Prezzi e servizio nella media.', '2019-06-27', 'user4');
+(003, 'Consigliato', 'Bel ristorante in una zona molto accogliente di Padova. Non me ne intendo molto di sushi ma posso dire che lo consiglierò sicuramente ad amici.', '2017-11-08', 'user3'),
+(004, 'Ho provato di meglio', 'Scoperto l’anno scorso, siamo tornati anche quest’anno. La qualità è sempre ottima sia dei crudi che dei cotti, con molta scelta. Prezzi e servizio nella media.', '2019-06-27', 'user4');
 
 -- Crea la tabella News
 
