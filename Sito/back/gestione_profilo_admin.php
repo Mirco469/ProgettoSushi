@@ -3,12 +3,11 @@
 
     //***************************
     session_start();
-    $_SESSION['username']= 'admin';
-    $_SESSION['autorizzazione']='admin';
+
     //***************************
 
     if( isset($_SESSION['username'])) {
-        if(isset($_SESSION['autorizzazione']) && $_SESSION['autorizzazione']=='admin') {
+        if(isset($_SESSION['autorizzazione']) && $_SESSION['autorizzazione']=='Admin') {
             $user = $_SESSION['username'];
 
             $old_password = '';
@@ -18,6 +17,7 @@
 
 
             $erroriPass = '';
+            $successo = '';
 
 
             if (isset($_POST['dati_personali'])) {
@@ -50,6 +50,7 @@
 
                     if (strlen($erroriPass) == 0) {
                         $db->modificaPassword($user, $new_password);
+                        $successo = '<ul class="successo"><li>Cambio della password avvenuto con successo!</li></ul>';
 
                     } else {
                         $erroriPass = '<ul class="errore">' . $erroriPass . '</ul>';
@@ -62,7 +63,7 @@
 
             }
             
-            $paginaHTML = file_get_contents('gestione_profilo_admin.html');
+            $paginaHTML = file_get_contents('html/gestione_profilo_admin.html');
 
             $formPassword = '<fieldset>
                      <legend>Informazioni personali: </legend>
@@ -81,13 +82,17 @@
                  </fieldset>';
 
             $paginaHTML = str_replace('<formPassword />', $formPassword, $paginaHTML);
-            echo str_replace('<messaggio />', $erroriPass, $paginaHTML);
+            if(strlen($successo) != 0){
+                echo  str_replace('<messaggio />', $successo, $paginaHTML);
+            }else{
+                echo str_replace('<messaggio />', $erroriPass, $paginaHTML);
+            }
 
         }else {
             header('location: errore403.html');
         }
     }else {
-        header('location: errore403.html');
+        header('location: ../login.php');
     }
 
 

@@ -38,18 +38,6 @@
             }
         }
 
-    }
-
-        /* FUNZIONI PER CONTROLLARE LO STATO DEL DATABASE */
-
-    //Controlla che la stringa sia lunga almeno due caratteri
-    function checkMinLen($string) {
-        if(strlen($string)<2){
-            return false;
-        }else {
-            return true;
-        }
-    }
 
         //Funzione che controlla se l'username è già esistente: ritorna true se esiste già false altrimenti
         public function  alreadyExistsUsername($username)
@@ -118,7 +106,7 @@
         }
 
 		#funzione per il get delle recensioni;
-		public function getRecensioni() 
+		public function getRecensioni()
 		{
 			#DESC o ASC in modo che prima ci sia la più recente;
 			$query = $this->connection->prepare("SELECT * FROM Recensione ORDER BY data DESC");
@@ -128,7 +116,7 @@
 			if (mysqli_num_rows($queryResult) == 0)
 			{
 				return null;
-			} 
+			}
 			else
 			{
 				$result = array();
@@ -150,7 +138,7 @@
 		/* FUNZIONI PER OTTENERE DATI DAL DATABASE */
 
 		#funzione per il get dei prodotti per categoria con i nomi in ordine alfabetico;
-		public function getProdotti($categoria) 
+		public function getProdotti($categoria)
 		{
 			$query = $this->connection->prepare("SELECT * FROM Prodotto WHERE categoria = ? ORDER BY nome ASC");
 			$query->bind_param('s', $categoria);
@@ -160,7 +148,7 @@
 			if (mysqli_num_rows($queryResult) == 0)
 			{
 				return null;
-			} 
+			}
 			else
 			{
 				$result = array();
@@ -180,7 +168,7 @@
 		}
 
 		#funzione per il get degli indirizzi per utente;
-		public function getIndirizzi($utente) 
+		public function getIndirizzi($utente)
 		{
 			$query = $this->connection->prepare("SELECT via, numero_civico FROM Destinazione WHERE utente = ?");
 			$query->bind_param('s', $utente);
@@ -190,7 +178,7 @@
 			if (mysqli_num_rows($queryResult) == 0)
 			{
 				return null;
-			} 
+			}
 			else
 			{
 				$result = array();
@@ -208,7 +196,7 @@
 		}
 
 		#funzione per il get della carta di credito per utente;
-		public function getPagamento($utente) 
+		public function getPagamento($utente)
 		{
 			$query = $this->connection->prepare("SELECT numero_carta FROM Utente WHERE username = ?");
 			$query->bind_param('s', $utente);
@@ -218,7 +206,7 @@
 			if (mysqli_num_rows($queryResult) == 0)
 			{
 				return null;
-			} 
+			}
 			else
 			{
 			    $row = mysqli_fetch_assoc($queryResult);
@@ -226,7 +214,13 @@
 			}
 		}
 
+
+
     }
+
+        /* FUNZIONI PER CONTROLLARE LO STATO DEL DATABASE */
+
+
 
     //Reindirizza alla home giusta in base all'autorizzazione passata come paramentro (Utente o Admin)
     function redirectHome($autorizzazione)
