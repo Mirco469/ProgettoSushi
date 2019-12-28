@@ -53,7 +53,7 @@
 
         public function modificaPagamento($utente, $intestatario, $num_carta, $mese_scadenza, $anno_scadenza){
 
-            $scadenza = $anno_scadenza.'-'.$mese_scadenza.'-00';
+            $scadenza = $anno_scadenza.'-'.$mese_scadenza.'-01';
 
             $query = $this->connection->prepare('UPDATE Utente SET numero_carta = ?, intestatario = ?, scadenza = ? WHERE username = ?');
             $query->bind_param('ssss', $num_carta, $intestatario ,$scadenza, $utente);
@@ -246,32 +246,6 @@
             $queryResult = $query->get_result();
         }
 
-    
-}
-
-
-
-
-
-
-	/*	Esempio di funzione per prendere i dati
-	public function getPersonaggi()
-	{
-		$query = "SELECT * FROM personaggi ORDER BY ID ASC";
-		$queryResult = myqsli_query($this->connection,$query);
-		
-		if(mysqli_num_rows($queryResult) == 0)
-
-            if(mysqli_num_rows($queryResult) == 0)
-            {
-                return null;
-            }
-            else
-            {
-                $row = $queryResult->fetch_assoc();
-                return $row['autorizzazione'];
-            }
-    }*/
 
         //Funzione che controlla se l'username è già esistente: ritorna true se esiste già false altrimenti
         public function  alreadyExistsUsername($username)
@@ -307,6 +281,35 @@
             }
         }
 
+    
+}
+
+
+
+
+
+
+	/*	Esempio di funzione per prendere i dati
+	public function getPersonaggi()
+	{
+		$query = "SELECT * FROM personaggi ORDER BY ID ASC";
+		$queryResult = myqsli_query($this->connection,$query);
+		
+		if(mysqli_num_rows($queryResult) == 0)
+
+            if(mysqli_num_rows($queryResult) == 0)
+            {
+                return null;
+            }
+            else
+            {
+                $row = $queryResult->fetch_assoc();
+                return $row['autorizzazione'];
+            }
+    }*/
+
+
+
         
 
         
@@ -340,9 +343,25 @@
     }
 
     //Controlla che la stringa non contenga caratteri speciali
+    function checkAlfanumericoESpazi($string) {
+        if(!checkMinLen($string)) return false;
+        if (!preg_match('/^[a-zA-Z0-9 ]+$/', $string)) {
+            return false;
+        } else return true;
+    }
+
+    //Controlla che la stringa non contenga caratteri speciali
     function checkAlfanumerico($string) {
         if(!checkMinLen($string)) return false;
         if (!preg_match('/^[a-zA-Z0-9]+$/', $string)) {
+            return false;
+        } else return true;
+    }
+
+    //Controlla che la stringa non contenga numeri e abbia almeno due caratteri
+    function checkNomeCognome($string) {
+        if(!checkMinLen($string)) return false;
+        if (!preg_match('/^[a-zA-Z ]+$/', $string)) {
             return false;
         } else return true;
     }

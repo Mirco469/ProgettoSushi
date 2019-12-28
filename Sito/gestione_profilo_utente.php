@@ -18,8 +18,7 @@
              $tel = 'Inserire numero telefonico';
              $intestatario = 'Inserire intestatario della carta';
              $num_carta = 'Inserire numero carta';
-             $mese_scadenza = '- Mese -';
-             $anno_scadenza = '- Anno -';
+
 
 
             $listaDestinazioni ='';
@@ -123,20 +122,20 @@
                  $db = new DBAccess();
 
                  if($db->openDBConnection()){
-                    if(!checkSoloLettereEDim($nome_cognome)){
+                    if(!checkNomeCognome($nome_cognome)){
                         $erroriSped .= '<li>Il nome deve contenere solo lettere e non contenere meno di due caratteri</li>';
                     }
-                    if(!checkAlfanumerico($indirizzo)){
+                    if(!checkAlfanumericoESpazi($indirizzo)){
                         $erroriSped .= '<li>L\'indirizzo non deve contenere caratteri speciali</li>';
                     }
-                    if(!checkSoloNumeri($numero_civico)){
+                    if(!checkAlfanumerico($numero_civico)){ //Potrebbe essere 4b
                         $erroriSped .= '<li>Il numero civico deve contenere solo numeri</li>';
                     }
                     if(!checkCAP($cap)){
                         $erroriSped .= '<li>Non hai inserito un CAP corretto</li>';
                     }
                     if(!checkSoloNumeriEDIm($tel)){
-                        $erroriSped .= '<li>Non hai inserito un numero corretto</li>';
+                        $erroriSped .= '<li>Non hai inserito un numero telefonico corretto</li>';
                     }
 
                     if(strlen($erroriSped)==0){
@@ -167,7 +166,7 @@
 
                  if($db->openDBConnection()){
 
-                     if(!checkSoloLettereEDim($intestatario)){
+                     if(!checkNomeCognome($intestatario)){
                          $erroriPaga .= '<li>L\'intestatario deve contenere solo lettere ed essere lungo almeno due caratteri</li>';
                      }
                      if(!checkSoloNumerieDim($num_carta)){
@@ -184,8 +183,8 @@
 
                          $db->modificaPagamento($user, $intestatario, $num_carta, $mese_scadenza, $anno_scadenza);
 
-                         $mese_scadenza = '- Mese -';
-                         $anno_scadenza = '- Anno -';
+                     }else {
+                         $erroriPaga ='<ul class="errore">'.$erroriPaga.'</ul>';
 
                      }
 

@@ -906,6 +906,10 @@ div#notizie {
 	margin-top: 1em;
 }
 
+#gestione_utente>form select {
+	width: 7em;
+}
+
 
 /*Gestione Profilo Admin*/
 
