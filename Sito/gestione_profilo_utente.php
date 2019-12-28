@@ -1,7 +1,7 @@
 <?php
 	require_once("php/dbaccess.php");
     session_start();
-    
+
 	if( isset($_SESSION['username'])) {
 	         $db = null;
 	         $user = $_SESSION['username'];

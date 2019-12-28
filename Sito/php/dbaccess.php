@@ -53,7 +53,6 @@
         public function modificaPagamento($utente, $intestatario, $num_carta, $mese_scadenza, $anno_scadenza){
 
             $scadenza = $anno_scadenza.'-'.$mese_scadenza.'-00';
-            echo $scadenza;
 
             $query = $this->connection->prepare('UPDATE Utente SET numero_carta = ?, intestatario = ?, scadenza = ? WHERE username = ?');
             $query->bind_param('ssss', $num_carta, $intestatario ,$scadenza, $utente);
