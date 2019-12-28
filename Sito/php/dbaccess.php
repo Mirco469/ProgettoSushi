@@ -53,6 +53,7 @@
         public function modificaPagamento($utente, $intestatario, $num_carta, $mese_scadenza, $anno_scadenza){
 
             $scadenza = $anno_scadenza.'-'.$mese_scadenza.'-00';
+            echo $scadenza;
 
             $query = $this->connection->prepare('UPDATE Utente SET numero_carta = ?, intestatario = ?, scadenza = ? WHERE username = ?');
             $query->bind_param('ssss', $num_carta, $intestatario ,$scadenza, $utente);
@@ -75,6 +76,19 @@
             else
             {
                 return $queryResult;
+            }
+        }
+
+        public function getCartaDiCredito($utente){
+            $query = $this->connection->prepare('SELECT * FROM Utente WHERE username= ?');
+            $query->bind_param('s', $utente);
+            $query->execute();
+            $queryResult = $query->get_result();
+            $row = mysqli_fetch_assoc($queryResult);
+            if($row['numero_carta']==null){
+                return null;
+            }else{
+                return $row;
             }
         }
 

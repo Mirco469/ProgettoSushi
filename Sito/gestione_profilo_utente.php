@@ -16,15 +16,54 @@
              $numero_civico = 'Inserire numero civico';
              $cap = 'Inserire CAP';
              $tel = 'Inserire numero telefonico';
-
              $intestatario = 'Inserire intestatario della carta';
              $num_carta = 'Inserire numero carta';
              $mese_scadenza = '- Mese -';
              $anno_scadenza = '- Anno -';
 
+
+            $listaDestinazioni ='';
+            $queryResult=null;
+            $queryCarta=null;
+
+            if($db == null){
+                $db = new DBAccess();
+            }
+
+            if($db->openDBConnection()){
+
+                $queryCarta = $db->getCartaDiCredito($user);
+                $queryResult = $db->getDestinazioni($user);
+            } else {
+                header('location: errore500.html');
+            }
+
+            if($queryResult == null){
+                header('location: errore500.html');
+            }
+
+            $index = 0;
+            while($row = mysqli_fetch_assoc($queryResult)) {
+                $listaDestinazioni.='<dt>'.$row['nome_cognome'].', indirizzo: '.$row['via'].' '.$row['numero_civico'].', '.$row['CAP'].' </dt>
+                                              <dd><input onclick="eliminaDestinazione('.$index.')" type="button" name="elimina" value="Elimina"/></dd>';
+                $index++;
+            }
+
+            $listaDestinazioni = '<dl id="listaDestinazioni">'.$listaDestinazioni.'</dl>';
+
+
+            if($queryCarta!=null){
+                $intestatario = $queryCarta['intestatario'];
+                $num_carta = $queryCarta['numero_carta'];
+
+                $scad = $queryCarta['scadenza'];
+            }
+
+
              $erroriPass='';
              $erroriSped='';
              $erroriPaga='';
+             $successoPass = '';
 
 
              if(isset($_POST['dati_personali'])){
@@ -62,6 +101,8 @@
                  if(strlen($erroriPass)==0){
 
                        $db->modificaPassword($user, $new_password);
+                       $successoPass = '<ul class="successo"><li>La <span lang="en">password</span> è stata cambiata con successo</li></ul>';
+
 
                  }else {
                         $erroriPass = '<ul class="errore">'.$erroriPass.'</ul>';
@@ -78,7 +119,7 @@
                  $cap = htmlentities(trim($_POST['cap']));
                  $tel = htmlentities(trim($_POST['tel']));
 
-                 if($db)
+
                  $db = new DBAccess();
 
                  if($db->openDBConnection()){
@@ -120,7 +161,7 @@
                  $intestatario = htmlentities(trim($_POST['intestatario_carta']));
                  $num_carta = htmlentities(trim($_POST['num_carta']));
                  $mese_scadenza = htmlentities(trim($_POST['mese_scad']));
-                 $anno_scadenza = htmlentities(trim($_POST['mese_scad']));
+                 $anno_scadenza = htmlentities(trim($_POST['anno_scad']));
 
                  $db = new DBAccess();
 
@@ -140,10 +181,9 @@
                      }
 
                      if(strlen($erroriPaga)==0){
-                         $anno_scadenza += 19;
+
                          $db->modificaPagamento($user, $intestatario, $num_carta, $mese_scadenza, $anno_scadenza);
-                         $intestatario = 'Inserire intestatario della carta';
-                         $num_carta = 'Inserire numero carta';
+
                          $mese_scadenza = '- Mese -';
                          $anno_scadenza = '- Anno -';
 
@@ -163,6 +203,7 @@
 
              $formPassword = '<fieldset>
                 <legend>Informazioni personali: </legend>
+                <messaggio1 />
                 <h2>Nome Utente</h2>
                 <label for="username">Nome utente: </label>
                 <input type="text" id="username" name="username" value="'.$user.'" readonly="readonly"/>
@@ -179,7 +220,7 @@
 
              $formSpedizione ='<fieldset>
             <legend id="is" >Aggiungi un metodo di spedizione: </legend>
-
+            <messaggio2 />
             <label for="nome_cognome">Nome e Cognome: </label>
             <input type="text" name="nome_cognome" id="nome_cognome" placeholder="'.$nome_cognome.'"/>
             <label for="indirizzo">Indirizzo: </label>
@@ -214,6 +255,7 @@
 
              $formPagamento ='<fieldset>
             <legend id="ip">Informazioni di pagamento: </legend>
+            <messaggio3 />
                 <label for="intestatario_carta">Intestatario carta: </label>
                 <input type="text" name="intestatario_carta" id="intestatario_carta" placeholder="'.$intestatario.'" />
                 <label for="num_carta">Numero carta: </label>
@@ -234,47 +276,26 @@
         </select>
         '.$years;
 
-             $listaDestinazioni ='';
-             $queryResult=null;
 
-             if($db == null){
-                 $db = new DBAccess();
-             }
-
-             if($db->openDBConnection()){
-                 $queryResult = $db->getDestinazioni($user);
-             } else {
-                 header('location: errore500.html');
-             }
-
-             if($queryResult == null){
-                 header('location: errore500.html');
-             }
-
-                $index = 0;
-                 while($row = mysqli_fetch_assoc($queryResult)) {
-                     $listaDestinazioni.='<dt>'.$row['nome_cognome'].', indirizzo: '.$row['via'].' '.$row['numero_civico'].', '.$row['CAP'].' </dt>
-                                          <dd><input onclick="eliminaDestinazione('.$index.')" type="button" name="elimina" value="Elimina"/></dd>';
-                     $index++;
-                 }
-
-                 $listaDestinazioni = '<dl id="listaDestinazioni">'.$listaDestinazioni.'</dl>';
 
 
                  $paginaHTML = str_replace('<formSpedizione2 />', $listaDestinazioni, $paginaHTML);
+                 $paginaHTML = str_replace('<formPassword />', $formPassword, $paginaHTML);
+                 $paginaHTML = str_replace('<formSpedizione />', $formSpedizione, $paginaHTML);
+                 $paginaHTML = str_replace('<formPagamento />', $formPagamento, $paginaHTML);
 
-
-                 $paginaHTML = str_replace('<messaggio1 />', $erroriPass, $paginaHTML);
+                 if(strlen($successoPass)!=0){
+                     $paginaHTML = str_replace('<messaggio1 />', $successoPass, $paginaHTML);
+                 }else {
+                     $paginaHTML = str_replace('<messaggio1 />', $erroriPass, $paginaHTML);
+                 }
 
                  $paginaHTML = str_replace('<messaggio2 />', $erroriSped, $paginaHTML);
 
-                 $paginaHTML = str_replace('<messaggio3 />', $erroriPaga, $paginaHTML);
+                 echo str_replace('<messaggio3 />', $erroriPaga, $paginaHTML);
 
-                 $paginaHTML = str_replace('<formPassword />', $formPassword, $paginaHTML);
 
-                 $paginaHTML = str_replace('<formSpedizione />', $formSpedizione, $paginaHTML);
-                 echo str_replace('<formPagamento />', $formPagamento, $paginaHTML);
 
-	}else header('location: errore403.html');
+	}else header('location: login.php');
 
 ?>
