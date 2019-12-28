@@ -90,6 +90,7 @@ CREATE TABLE Destinazione(
 -- Inserimento dati nella tabella Destinazione
 
 INSERT INTO Destinazione (id_destinazione, nome_cognome, numero_telefonico, CAP, via, numero_civico, utente) VALUES 
+
 (1,'Utente Generico', '049XXXXXXX', '35100', 'Aldo Moro', '21', 'user'),
 (2,'Utente Generico', '049XXXXXXX', '35100', 'Ugo Bassi', '17', 'user'),
 (3,'User Uno', '346XXXXXXX', '35133', 'Don Stefani', '10', 'user1'),
@@ -97,6 +98,7 @@ INSERT INTO Destinazione (id_destinazione, nome_cognome, numero_telefonico, CAP,
 (5,'User Tre', '333XXXXXXX', '35129', 'Andrea Palladio', '17', 'user3'),
 (6,'User Quattro', '340XXXXXXX', '35122', 'Antonio Canova', '11', 'user4'),
 (7,'User Cinque', '348XXXXXXX', '35100', 'Aldo Moro', '22', 'user5');
+
 
 -- Crea la tabella Tabella Ordine
 
@@ -134,77 +136,78 @@ CREATE TABLE Prodotto(
 	nome 				VARCHAR(30) PRIMARY KEY,
 	categoria		ENUM('Antipasti','Primi Piatti','Teppanyako e tempure','Uramaki','Nigiri ed Onigiri','Gunkan','Temaki','Hosomaki','Sashimi','Dessert') NOT NULL,
 	pezzi				TINYINT NOT NULL,
-	prezzo 			FLOAT NOT NULL
+	prezzo 			FLOAT NOT NULL,
+	descrizione		VARCHAR(150)
 );
 
 -- Inserimento dati nella tabella Prodotto
 
-INSERT INTO Prodotto (nome, categoria, pezzi, prezzo) VALUES 
-('Tartara di tonno', 'Antipasti', 1, 6.00),
-('Takosu', 'Antipasti', 1, 5.00),
-('Goma Wakame', 'Antipasti', 1, 4.00),
-('Edamame', 'Antipasti', 1, 3.00),
-('Takoyaki', 'Antipasti', 4, 4.00),
-('Domò Harumaki', 'Antipasti', 2, 2.00),
-('Niku Harumaki', 'Antipasti', 2, 3.00),
-('Yasai Gyoza', 'Antipasti', 4, 3.50),
+INSERT INTO Prodotto (nome, categoria, pezzi, prezzo, descrizione) VALUES 
+('Tartara di tonno', 'Antipasti', 1, 6.00, 'Salmone, avocado, mango, tobiko, olio, menta e limone.'),
+('Takosu', 'Antipasti', 1, 5.00, 'Carpaccio di polpo in salsa ponzu, limone e wakame.'),
+('Goma Wakame', 'Antipasti', 1, 4.00, 'Alghe giapponesi marinate.'),
+('Edamame', 'Antipasti', 1, 3.00, 'Fagioli di soia.'),
+('Takoyaki', 'Antipasti', 4, 4.00, 'Polpette di Osaka con polpo e fiocchi di tonno disidratato.'),
+('Domo Harumaki', 'Antipasti', 2, 2.00, 'Spinaci con fiocchi di tonno disidratato e teriyaki balsamica.'),
+('Niku Harumaki', 'Antipasti', 2, 3.00, 'Stracotto di manzo con carote e patate con salsa black pepper.'),
+('Yasai Gyoza', 'Antipasti', 4, 3.50, 'Ravioli di verdure in sfoglia di grano e riso.'),
 
-('Ramen Chasumiso', 'Primi Piatti', 1, 7.00),
-('Katsu Ramen', 'Primi Piatti', 1, 7.00),
-('Black Yakimeshi', 'Primi Piatti', 1, 8.00),
-('Shakeyakidon', 'Primi Piatti', 1, 7.50),
-('Gyuyaki Noodles', 'Primi Piatti', 1, 7.00),
-('Kaisen Udon', 'Primi Piatti', 1, 8.00),
+('Ramen Chasumiso', 'Primi Piatti', 1, 7.00, 'Ramen in brodo di maialino chasu, cipollotto, spinaci e alga nori.'),
+('Katsu Ramen', 'Primi Piatti', 1, 7.00, 'Ramen in brodo di miso con cotoletta, cipollotto e alga nori.'),
+('Black Yakimeshi', 'Primi Piatti', 1, 8.00, 'Riso venere ai frutti di mare, uova tamago e fiocchi di tonno disidratato.'),
+('Shakeyakidon', 'Primi Piatti', 1, 7.50, 'Filetto di salmone in salsa teriyaki su letto di riso teppanyaki.'),
+('Gyuyaki Noodles', 'Primi Piatti', 1, 7.00, 'Tagliolini di riso con straccetti, fagiolini e sbriciolata di noci.'),
+('Kaisen Udon', 'Primi Piatti', 1, 8.00, 'Udon ai frutti di mare con mazzancolle, verdure e fiocchi di tonno disidratato.'),
 
-('Yakitori', 'Teppanyako e tempure', 2, 6.00),
-('Salmon Kushiyaki', 'Teppanyako e tempure', 2, 5.00),
-('Ebi Yaki', 'Teppanyako e tempure', 2, 6.00),
-('Salmon Tataki', 'Teppanyako e tempure', 1, 5.50),
-('Maguro Tataki', 'Teppanyako e tempure', 1, 5.50),
-('Gyu Tataki', 'Teppanyako e tempure', 4, 5.00),
-('Yasai Teppanyaki', 'Teppanyako e tempure', 1, 5.00),
-('Ebi Tempura', 'Teppanyako e tempure', 3, 6.00),
+('Yakitori', 'Teppanyako e tempure', 2, 6.00, 'Coscia di pollo in cottura teriyaki.'),
+('Salmon Kushiyaki', 'Teppanyako e tempure', 2, 5.00, 'Impanatura di salmone in cottura teriyaki.'),
+('Ebi Yaki', 'Teppanyako e tempure', 2, 6.00, 'Teppanyaki di gamberi marinati.'),
+('Salmon Tataki', 'Teppanyako e tempure', 1, 5.50, 'Filetto di salmone scottato.'),
+('Maguro Tataki', 'Teppanyako e tempure', 1, 5.50, 'Filetto di tonno scottato.'),
+('Gyu Tataki', 'Teppanyako e tempure', 4, 5.00, 'Filetto scottato di manzo marinato.'),
+('Yasai Teppanyaki', 'Teppanyako e tempure', 1, 5.00, 'Wok di verdure miste.'),
+('Ebi Tempura', 'Teppanyako e tempure', 3, 6.00, 'Mazzancolle in frittura giapponese.'),
 
-('Chips Roll', 'Uramaki', 4, 5.00),
-('Black Ebiten', 'Uramaki', 4, 4.00),
-('Black California', 'Uramaki', 4, 4.00),
-('Ichigo Hosomaki', 'Uramaki', 6, 4.00),
-('California', 'Uramaki', 4, 4.50),
-('Domò Roll', 'Uramaki', 4, 5.00),
-('Ebiten', 'Uramaki', 4, 4.50),
-('Shake Fry Tobiko', 'Uramaki', 4, 4.00),
-('Asparago Roll', 'Uramaki', 4, 4.50),
+('Chips Roll', 'Uramaki', 4, 5.00, 'Mazzancolle in tempura, cetriolo e salmone alla fiamma.'),
+('Black Ebiten', 'Uramaki', 4, 4.00, 'Ebiten, avocado, sesamo.'),
+('Black California', 'Uramaki', 4, 4.00, 'Polpa di granchio e goma wakame.'),
+('Ichigo Hosomaki', 'Uramaki', 6, 4.00, 'Hosomaki in tempura con philadelphia e fragole.'),
+('California', 'Uramaki', 4, 4.50, 'Polpa di granchio e avocado.'),
+('Domò Roll', 'Uramaki', 4, 5.00, 'Salmone, avocado, tartare e tanuki.'),
+('Ebiten', 'Uramaki', 4, 4.50, 'Mazzancolle in tempura, cetrioli e salsa teriyaki.'),
+('Shake Fry Tobiko', 'Uramaki', 4, 4.00, 'Salmone in tempura, avocado e tobiko.'),
+('Asparago Roll', 'Uramaki', 4, 4.50, 'Asparagi in tempura ricoperti da salmone alla fiamma.'),
 
-('Nigiri Salmone', 'Nigiri ed Onigiri', 2, 2.00),
-('Nigiri Tonno', 'Nigiri ed Onigiri', 2, 2.00),
-('Nigiri Branziono', 'Nigiri ed Onigiri', 2, 2.00),
-('Onigiri Salmone', 'Nigiri ed Onigiri', 1, 2.00),
-('Ebiten Onigiri', 'Nigiri ed Onigiri', 1, 2.00),
+('Nigiri Salmone', 'Nigiri ed Onigiri', 2, 2.00,''),
+('Nigiri Tonno', 'Nigiri ed Onigiri', 2, 2.00,''),
+('Nigiri Branziono', 'Nigiri ed Onigiri', 2, 2.00,''),
+('Onigiri Salmone', 'Nigiri ed Onigiri', 1, 2.00, 'Onigiri con cuore di salmone grigliato'),
+('Ebiten Onigiri', 'Nigiri ed Onigiri', 1, 2.00, 'Onigiri con cuore di mazzancolla in tempura.'),
 
-('Spicy Tuna', 'Gunkan', 2, 5.00),
-('Tobiko', 'Gunkan', 2, 4.50),
-('Mango Suzuki', 'Gunkan', 2, 5.00),
-('Salmon Philadelphia', 'Gunkan', 2, 4.00),
+('Spicy Tuna', 'Gunkan', 2, 5.00, 'Tartara di tonno piccante.'),
+('Tobiko', 'Gunkan', 2, 4.50, 'Uova di pesce tobiko.'),
+('Mango Suzuki', 'Gunkan', 2, 5.00, 'Tartara di branzino, mango e tobiko.'),
+('Salmon Philadelphia', 'Gunkan', 2, 4.00, 'Riso, salmone, philadelphia.'),
 
-('Salmon Temaki', 'Temaki', 1, 4.00),
-('Tartara Temaki', 'Temaki', 1, 3.00),
-('Tuna Temaki', 'Temaki', 1, 3.00),
-('Ebiten Temaki', 'Temaki', 1, 4.00),
+('Salmon Temaki', 'Temaki', 1, 4.00, 'Salmone e avocado.'),
+('Tartara Temaki', 'Temaki', 1, 3.00, 'Tartara di salmone con tobiko.'),
+('Tuna Temaki', 'Temaki', 1, 3.00, 'Tonno e avocado.'),
+('Ebiten Temaki', 'Temaki', 1, 4.00, 'Mazzancolla in tempura e salsa teriyaki.'),
 
-('Hosomaki Salmone', 'Hosomaki', 6, 3.00),
-('Hosomaki Tonno', 'Hosomaki', 6, 3.00),
-('Hosomaki Cetriolo', 'Hosomaki', 6, 2.00),
-('Hosomaki Avocado', 'Hosomaki', 6, 2.50),
+('Hosomaki Salmone', 'Hosomaki', 6, 3.00,''),
+('Hosomaki Tonno', 'Hosomaki', 6, 3.00,''),
+('Hosomaki Cetriolo', 'Hosomaki', 6, 2.00,''),
+('Hosomaki Avocado', 'Hosomaki', 6, 2.50,''),
 
-('Sashimi Salmone', 'Sashimi', 4, 6.00),
-('Sashimi Tonno', 'Sashimi', 4, 5.00),
-('Sashimi Branzino', 'Sashimi', 4, 6.00),
+('Sashimi Salmone', 'Sashimi', 4, 6.00,''),
+('Sashimi Tonno', 'Sashimi', 4, 5.00,''),
+('Sashimi Branzino', 'Sashimi', 4, 6.00,''),
 
-('Profiteroles', 'Dessert', 1, 6.00),
-('Matcha Tiramisù', 'Dessert', 1, 6.50),
-('Red Cheesecake', 'Dessert', 1, 5.50),
-('Semisfera al Mango', 'Dessert', 1, 6.00),
-('Semisfera ai Lamponi', 'Dessert', 1, 5.00);
+('Profiteroles', 'Dessert', 1, 6.00, 'Profiteroles ricoperti con glassa di cacao e granella di nocciola.'),
+('Matcha Tiramisù', 'Dessert', 1, 6.50, 'Tiramisù al tè matcha e cioccolato bianco.'),
+('Red Cheesecake', 'Dessert', 1, 5.50, 'Cheesecake ai frutti di bosco e purea di lamponi.'),
+('Semisfera al Mango', 'Dessert', 1, 6.00, 'Mousse al cioccolato bianco con glassa al mango e biscotti.'),
+('Semisfera ai Lamponi', 'Dessert', 1, 5.00, 'Mousse al caramello e crema di lamponi.');
 
 -- Crea la tabella Tabella Contiene
 

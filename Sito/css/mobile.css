@@ -35,7 +35,14 @@ body a:visited {
 	overflow: hidden;
 }
 
+/* Stili messaggi di errore e successo PHP*/
+.errore{
+	color: red;
+}
 
+.successo{
+	color: green;
+}
 
 /*	Header	*/
 
@@ -946,22 +953,13 @@ min-height: 465px;
 	padding: 1em;
 }
 
-#aggiunta_prodotti>form{
-	margin: 2em;
+#aggiunta_prodotti>h1{
+	margin-left: 1em;
 }
 
-#aggiunta_prodotti fieldset{
-	max-width: 90em;
-	margin: auto;
+#aggiunta_prodotti>h2{
+	margin-top: 2em;
 	text-align: center;
-}
-
-#aggiunta_prodotti fieldset>legend{
-	text-align: left;
-}
-
-#aggiunta_prodotti .formGroup{
-	margin: 0.5em 0.5em;
 }
 
 #aggiunta_prodotti form input[type=submit]{
@@ -969,10 +967,7 @@ min-height: 465px;
     border: solid 4px #4a0715;
     border-radius: 5px;
 	color: #d9d9d9;
-	display: block;
-	margin:auto;
 	margin-top: 1em;
-	font-size: 1.2em;
 }
 
 #aggiunta_prodotti form input[type=submit]:hover{
@@ -980,14 +975,17 @@ min-height: 465px;
 	border: solid 4px #990000;
 }
 
-#aggiunta_prodotti form{
-	max-width: 26.875em;
+#aggiunta_prodotti .defaultForm{
 	margin: auto;
-	margin-top: 1em;
-	margin-bottom: 1em;
 }
 
-#aggiunta_prodotti form input:not([type=submit]){
+#aggiunta_prodotti .defaultForm textarea{
+	width: 97%;
+	display: block;
+	margin:auto;
+}
+
+#aggiunta_prodotti .defaultForm select{
 	display: block;
 	width: 100%;
 	padding: 0.6em 0.875em;
@@ -995,15 +993,6 @@ min-height: 465px;
 	box-sizing: border-box;
 	border: 2px;
 	border-radius: 4px;
-}
-
-#aggiunta_prodotti .defaultLista>dd>span{
-	margin: 0 0.5em;
-}
-
-#aggiunta_prodotti .defaultLista dt {
-	font-size: 0.8em;
-	line-height: 1.5em;
 }
 
 /* Gestione Profilo Admin */
