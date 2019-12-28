@@ -77,7 +77,7 @@
                 exit;
 
             } else {
-                header('location: errore403.html');
+                header('location: ../errore403.html');
             }
         }
         header('location: errore500.html');
