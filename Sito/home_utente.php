@@ -10,7 +10,7 @@
         $queryNews = $db->getNewsUtente();
 
         $notizie = '';
-        $maxNews = 3;
+        $maxNews = 2;
         $index = 0;
 
         while ($row = mysqli_fetch_assoc($queryNews)) {
