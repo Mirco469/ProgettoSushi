@@ -301,7 +301,7 @@
 					</li>';
 
 		}else {
-			return '<li class="login"><a href="login.html" tabindex="7"><span lang="en">Login</span>/Registrazione</a></li>';
+			return '<li class="login"><a href="login.php" tabindex="7"><span lang="en">Login</span>/Registrazione</a></li>';
 		}
 	}
 
