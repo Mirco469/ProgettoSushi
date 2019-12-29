@@ -1,10 +1,12 @@
 <?php
 	require_once("php/dbaccess.php");
     session_start();
-    $_SESSION['username']='user';
+  
 	if( isset($_SESSION['username'])) {
 	         $db = null;
 	         $user = $_SESSION['username'];
+
+	         //Inizializzo i dati dei form
 
              $old_password = '';
              $c_old_password = '';
@@ -18,12 +20,11 @@
              $tel = 'Inserire numero telefonico';
              $intestatario = 'Inserire intestatario della carta';
              $num_carta = 'Inserire numero carta';
+             $listaDestinazioni ='';
+             $queryResult=null;
+             $queryCarta=null;
 
-
-
-            $listaDestinazioni ='';
-            $queryResult=null;
-            $queryCarta=null;
+             //Prendo i dati di pagamento salvati se esistono
 
             if($db == null){
                 $db = new DBAccess();
@@ -32,7 +33,6 @@
             if($db->openDBConnection()){
 
                 $queryCarta = $db->getCartaDiCredito($user);
-                $queryResult = $db->getDestinazioni($user);
             } else {
                 header('location: errore500.html');
             }
@@ -41,14 +41,7 @@
                 header('location: errore500.html');
             }
 
-            $index = 0;
-            while($row = mysqli_fetch_assoc($queryResult)) {
-                $listaDestinazioni.='<dt>'.$row['nome_cognome'].', indirizzo: '.$row['via'].' '.$row['numero_civico'].', '.$row['CAP'].' </dt>
-                                              <dd><input onclick="eliminaDestinazione('.$index.')" type="button" name="elimina" value="Elimina"/></dd>';
-                $index++;
-            }
 
-            $listaDestinazioni = '<dl id="listaDestinazioni">'.$listaDestinazioni.'</dl>';
 
 
             if($queryCarta!=null){
@@ -58,6 +51,7 @@
                 $scad = $queryCarta['scadenza'];
             }
 
+            //Inizializzo i messaggi
 
              $erroriPass='';
              $erroriSped='';
@@ -66,6 +60,7 @@
              $successoDest = '';
              $successoPaga='';
 
+             //Controllo se è stato premuto il bottone per cambiare password
 
              if(isset($_POST['dati_personali'])){
 
@@ -112,6 +107,8 @@
 
 
              }
+
+             //Controllo se è stato premuto il bottone per salvare la nuova destinazione
              elseif(isset($_POST['dati_spedizione'])){
 
                  $nome_cognome = htmlentities(trim($_POST['nome_cognome']));
@@ -159,6 +156,9 @@
                  }else {
                      header('location: errore500.html');
                  }
+
+              //Controllo se è stato premuto il bottone per salvare il metodo di pagamento
+
              }elseif (isset($_POST['dati_pagamento'])){
                  $intestatario = htmlentities(trim($_POST['intestatario_carta']));
                  $num_carta = htmlentities(trim($_POST['num_carta']));
@@ -204,6 +204,8 @@
 
              $paginaHTML = file_get_contents('html/gestione_profilo_utente.html');
 
+             //Creo il form del cambio password
+
              $formPassword = '<fieldset>
                 <legend>Informazioni personali: </legend>
                 <messaggio1 />
@@ -222,8 +224,9 @@
             </fieldset>';
 
 
+             //Creo il form della spedizione
 
-        $formSpedizione ='<fieldset>
+             $formSpedizione ='<fieldset>
                                 <legend id="is" >Aggiungi un metodo di spedizione: </legend>
                                 <messaggio2 />
                                 <label for="nome_cognome">Nome e Cognome: </label>
@@ -247,7 +250,7 @@
                            </fieldset>';
 
 
-
+            //Creo il form del pagamento
 
 
              $years ='<select name="anno_scad">
@@ -284,79 +287,103 @@
         '.$years;
 
 
+        //Creo la lista delle destinazioni dell'utente
+
+        if($db->openDBConnection()){
+
+            $queryResult = $db->getDestinazioni($user);
+        } else {
+            header('location: errore500.html');
+        }
+
+        if($queryResult == null){
+            header('location: errore500.html');
+        }
+
+        $index = 0;
+        while($row = mysqli_fetch_assoc($queryResult)) {
+            $listaDestinazioni.='<dt>'.$row['nome_cognome'].', indirizzo: '.$row['via'].' '.$row['numero_civico'].', '.$row['CAP'].' </dt>
+                                              <dd><input onclick="eliminaDestinazione('.$index.')" type="button" name="elimina" value="Elimina"/></dd>';
+            $index++;
+        }
+
+        $listaDestinazioni = '<dl id="listaDestinazioni">'.$listaDestinazioni.'</dl>';
 
 
 
 
-                if(strlen($erroriSped)!=0){
-                    $formSpedizione ='<fieldset>
-                        <legend id="is" >Aggiungi un metodo di spedizione: </legend>
-                        <messaggio2 />
-                        <label for="nome_cognome">Nome e Cognome: </label>
-                        <input type="text" name="nome_cognome" id="nome_cognome" value="'.$nome_cognome.'"/>
-                        <label for="indirizzo">Indirizzo: </label>
-                        <input type="text" id="indirizzo" name="indirizzo" value="'.$indirizzo.'"/>
-                        <label for="civico">Numero civico: </label>
-                        <input type="text" id="civico" name="civico" value="'.$numero_civico.'"/>
-                        <label for="cap"><abbr title="Codice di Avviamento Postale">CAP</abbr> :</label>
-                        <input type="text" id="cap"  name="cap" value="'.$cap.'"/>
-                        <label for="comune">Comune: </label>
-                        <input type="text" id="comune" name="comune" value="Padova" disabled="disabled"/>
-                        <label for="provincia">Provincia: </label>
-                        <input type="text" id="provincia" name="provincia" value="Padova" disabled="disabled"/>
-                        <label for="stato">Stato: </label>
-                        <input type="text" id="stato" name="stato" value="Italia" disabled="disabled"/>
-                        <label for="tel">Numero di telefono: </label>
-                        <input type="text" id="tel" name="tel" value="'.$tel.'" />
-            
-                        <input class="defaultButton" type="submit" name="dati_spedizione" value="Salva"/> <!--Submit legato solo alle informazioni di spedizione-->
-                        </fieldset>';
-                }
-                if(strlen($erroriPaga)!=0){
-                    $formPagamento ='<fieldset>
-                                        <legend id="ip">Informazioni di pagamento: </legend>
-                                        <messaggio3 />
-                                            <label for="intestatario_carta">Intestatario carta: </label>
-                                            <input type="text" name="intestatario_carta" id="intestatario_carta" value="'.$intestatario.'" />
-                                            <label for="num_carta">Numero carta: </label>
-                                            <input type="text" name="num_carta" id="num_carta" value="'.$num_carta.'" />
-                                        <select name="mese_scad">
-                                            <option>- Mese -</option>
-                                            <option value="01">January</option>
-                                            <option value="03">March</option>
-                                            <option value="04">April</option>
-                                            <option value="05">May</option>
-                                            <option value="06">June</option>
-                                            <option value="07">July</option>
-                                            <option value="08">August</option>
-                                            <option value="09">September</option>
-                                            <option value="10">October</option>
-                                            <option value="11">November</option>
-                                            <option value="12">December</option>
-                                    </select>
-                                    '.$years;
-                }
+            //Cambio i form se sono stati compiuti degli errori
+            if(strlen($erroriSped)!=0){
+                $formSpedizione ='<fieldset>
+                    <legend id="is" >Aggiungi un metodo di spedizione: </legend>
+                    <messaggio2 />
+                    <label for="nome_cognome">Nome e Cognome: </label>
+                    <input type="text" name="nome_cognome" id="nome_cognome" value="'.$nome_cognome.'"/>
+                    <label for="indirizzo">Indirizzo: </label>
+                    <input type="text" id="indirizzo" name="indirizzo" value="'.$indirizzo.'"/>
+                    <label for="civico">Numero civico: </label>
+                    <input type="text" id="civico" name="civico" value="'.$numero_civico.'"/>
+                    <label for="cap"><abbr title="Codice di Avviamento Postale">CAP</abbr> :</label>
+                    <input type="text" id="cap"  name="cap" value="'.$cap.'"/>
+                    <label for="comune">Comune: </label>
+                    <input type="text" id="comune" name="comune" value="Padova" disabled="disabled"/>
+                    <label for="provincia">Provincia: </label>
+                    <input type="text" id="provincia" name="provincia" value="Padova" disabled="disabled"/>
+                    <label for="stato">Stato: </label>
+                    <input type="text" id="stato" name="stato" value="Italia" disabled="disabled"/>
+                    <label for="tel">Numero di telefono: </label>
+                    <input type="text" id="tel" name="tel" value="'.$tel.'" />
+        
+                    <input class="defaultButton" type="submit" name="dati_spedizione" value="Salva"/> <!--Submit legato solo alle informazioni di spedizione-->
+                    </fieldset>';
+            }
+            if(strlen($erroriPaga)!=0){
+                $formPagamento ='<fieldset>
+                                    <legend id="ip">Informazioni di pagamento: </legend>
+                                    <messaggio3 />
+                                        <label for="intestatario_carta">Intestatario carta: </label>
+                                        <input type="text" name="intestatario_carta" id="intestatario_carta" value="'.$intestatario.'" />
+                                        <label for="num_carta">Numero carta: </label>
+                                        <input type="text" name="num_carta" id="num_carta" value="'.$num_carta.'" />
+                                    <select name="mese_scad">
+                                        <option>- Mese -</option>
+                                        <option value="01">January</option>
+                                        <option value="03">March</option>
+                                        <option value="04">April</option>
+                                        <option value="05">May</option>
+                                        <option value="06">June</option>
+                                        <option value="07">July</option>
+                                        <option value="08">August</option>
+                                        <option value="09">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                </select>
+                                '.$years;
+            }
 
-                 $paginaHTML = str_replace('<formSpedizione2 />', $listaDestinazioni, $paginaHTML);
-                 $paginaHTML = str_replace('<formPassword />', $formPassword, $paginaHTML);
-                 $paginaHTML = str_replace('<formSpedizione />', $formSpedizione, $paginaHTML);
-                 $paginaHTML = str_replace('<formPagamento />', $formPagamento, $paginaHTML);
+            //Inserisco i form e i messaggi nella pagina HTML
 
-                 if(strlen($successoPass)!=0){
-                     $paginaHTML = str_replace('<messaggio1 />', $successoPass, $paginaHTML);
-                 }else {
-                     $paginaHTML = str_replace('<messaggio1 />', $erroriPass, $paginaHTML);
-                 }
-                 if(strlen($successoDest)!=0){
-                     $paginaHTML = str_replace('<messaggio2 />', $successoDest, $paginaHTML);
-                 }else {
-                     $paginaHTML = str_replace('<messaggio2 />', $erroriSped, $paginaHTML);
-                 }
-                 if(strlen($successoPaga)!=0){
-                     echo str_replace('<messaggio3 />', $successoPaga, $paginaHTML);
-                 }else {
-                     echo str_replace('<messaggio3 />', $erroriPaga, $paginaHTML);
-                 }
+             $paginaHTML = str_replace('<formSpedizione2 />', $listaDestinazioni, $paginaHTML);
+             $paginaHTML = str_replace('<formPassword />', $formPassword, $paginaHTML);
+             $paginaHTML = str_replace('<formSpedizione />', $formSpedizione, $paginaHTML);
+             $paginaHTML = str_replace('<formPagamento />', $formPagamento, $paginaHTML);
+
+             if(strlen($successoPass)!=0){
+                 $paginaHTML = str_replace('<messaggio1 />', $successoPass, $paginaHTML);
+             }else {
+                 $paginaHTML = str_replace('<messaggio1 />', $erroriPass, $paginaHTML);
+             }
+             if(strlen($successoDest)!=0){
+                 $paginaHTML = str_replace('<messaggio2 />', $successoDest, $paginaHTML);
+             }else {
+                 $paginaHTML = str_replace('<messaggio2 />', $erroriSped, $paginaHTML);
+             }
+             if(strlen($successoPaga)!=0){
+                 echo str_replace('<messaggio3 />', $successoPaga, $paginaHTML);
+             }else {
+                 echo str_replace('<messaggio3 />', $erroriPaga, $paginaHTML);
+             }
 
 	}else header('location: login.php');
 
