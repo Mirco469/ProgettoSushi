@@ -1,7 +1,7 @@
 <?php
 	require_once("php/dbaccess.php");
     session_start();
-
+    $_SESSION['username']='user';
 	if( isset($_SESSION['username'])) {
 	         $db = null;
 	         $user = $_SESSION['username'];
@@ -63,6 +63,8 @@
              $erroriSped='';
              $erroriPaga='';
              $successoPass = '';
+             $successoDest = '';
+             $successoPaga='';
 
 
              if(isset($_POST['dati_personali'])){
@@ -146,6 +148,7 @@
                         $numero_civico = 'Inserire numero civico';
                         $cap = 'Inserire CAP';
                         $tel = 'Inserire numero telefonico';
+                        $successoDest = '<ul class = "successo"><li>Hai inserito una nuova destinazione con successo!</li></ul>';
 
 
                     }else{
@@ -182,6 +185,7 @@
                      if(strlen($erroriPaga)==0){
 
                          $db->modificaPagamento($user, $intestatario, $num_carta, $mese_scadenza, $anno_scadenza);
+                         $successoPaga = '<ul class = "successo"><li>Hai modificato il tuo metodo di pagamento con successo!</li></ul>';
 
                      }else {
                          $erroriPaga ='<ul class="errore">'.$erroriPaga.'</ul>';
@@ -217,28 +221,34 @@
                 <input class="defaultButton" type="submit" name="dati_personali" value="Salva"/>  <!--Submit legato solo al cambio della password-->
             </fieldset>';
 
-             $formSpedizione ='<fieldset>
-            <legend id="is" >Aggiungi un metodo di spedizione: </legend>
-            <messaggio2 />
-            <label for="nome_cognome">Nome e Cognome: </label>
-            <input type="text" name="nome_cognome" id="nome_cognome" placeholder="'.$nome_cognome.'"/>
-            <label for="indirizzo">Indirizzo: </label>
-            <input type="text" id="indirizzo" name="indirizzo" placeholder="'.$indirizzo.'"/>
-            <label for="civico">Numero civico: </label>
-            <input type="text" id="civico" name="civico" placeholder="'.$numero_civico.'"/>
-            <label for="cap"><abbr title="Codice di Avviamento Postale">CAP</abbr> :</label>
-            <input type="text" id="cap"  name="cap" placeholder="'.$cap.'"/>
-            <label for="comune">Comune: </label>
-            <input type="text" id="comune" name="comune" value="Padova" disabled="disabled"/>
-            <label for="provincia">Provincia: </label>
-            <input type="text" id="provincia" name="provincia" value="Padova" disabled="disabled"/>
-            <label for="stato">Stato: </label>
-            <input type="text" id="stato" name="stato" value="Italia" disabled="disabled"/>
-            <label for="tel">Numero di telefono: </label>
-            <input type="text" id="tel" name="tel" placeholder="'.$tel.'" />
 
-            <input class="defaultButton" type="submit" name="dati_spedizione" value="Salva"/> <!--Submit legato solo alle informazioni di spedizione-->
-        	</fieldset>';
+
+        $formSpedizione ='<fieldset>
+                                <legend id="is" >Aggiungi un metodo di spedizione: </legend>
+                                <messaggio2 />
+                                <label for="nome_cognome">Nome e Cognome: </label>
+                                <input type="text" name="nome_cognome" id="nome_cognome" placeholder="'.$nome_cognome.'"/>
+                                <label for="indirizzo">Indirizzo: </label>
+                                <input type="text" id="indirizzo" name="indirizzo" placeholder="'.$indirizzo.'"/>
+                                <label for="civico">Numero civico: </label>
+                                <input type="text" id="civico" name="civico" placeholder="'.$numero_civico.'"/>
+                                <label for="cap"><abbr title="Codice di Avviamento Postale">CAP</abbr> :</label>
+                                <input type="text" id="cap"  name="cap" placeholder="'.$cap.'"/>
+                                <label for="comune">Comune: </label>
+                                <input type="text" id="comune" name="comune" value="Padova" disabled="disabled"/>
+                                <label for="provincia">Provincia: </label>
+                                <input type="text" id="provincia" name="provincia" value="Padova" disabled="disabled"/>
+                                <label for="stato">Stato: </label>
+                                <input type="text" id="stato" name="stato" value="Italia" disabled="disabled"/>
+                                <label for="tel">Numero di telefono: </label>
+                                <input type="text" id="tel" name="tel" placeholder="'.$tel.'" />
+                    
+                                <input class="defaultButton" type="submit" name="dati_spedizione" value="Salva"/> <!--Submit legato solo alle informazioni di spedizione-->
+                           </fieldset>';
+
+
+
+
 
              $years ='<select name="anno_scad">
                     <option>- Anno -</option>';
@@ -250,9 +260,7 @@
              $years.='</select>
              <input class="defaultButton" type="submit" name="dati_pagamento" value="Salva"> </fieldset>';
 
-
-
-             $formPagamento ='<fieldset>
+        $formPagamento ='<fieldset>
             <legend id="ip">Informazioni di pagamento: </legend>
             <messaggio3 />
                 <label for="intestatario_carta">Intestatario carta: </label>
@@ -278,6 +286,57 @@
 
 
 
+
+
+                if(strlen($erroriSped)!=0){
+                    $formSpedizione ='<fieldset>
+                        <legend id="is" >Aggiungi un metodo di spedizione: </legend>
+                        <messaggio2 />
+                        <label for="nome_cognome">Nome e Cognome: </label>
+                        <input type="text" name="nome_cognome" id="nome_cognome" value="'.$nome_cognome.'"/>
+                        <label for="indirizzo">Indirizzo: </label>
+                        <input type="text" id="indirizzo" name="indirizzo" value="'.$indirizzo.'"/>
+                        <label for="civico">Numero civico: </label>
+                        <input type="text" id="civico" name="civico" value="'.$numero_civico.'"/>
+                        <label for="cap"><abbr title="Codice di Avviamento Postale">CAP</abbr> :</label>
+                        <input type="text" id="cap"  name="cap" value="'.$cap.'"/>
+                        <label for="comune">Comune: </label>
+                        <input type="text" id="comune" name="comune" value="Padova" disabled="disabled"/>
+                        <label for="provincia">Provincia: </label>
+                        <input type="text" id="provincia" name="provincia" value="Padova" disabled="disabled"/>
+                        <label for="stato">Stato: </label>
+                        <input type="text" id="stato" name="stato" value="Italia" disabled="disabled"/>
+                        <label for="tel">Numero di telefono: </label>
+                        <input type="text" id="tel" name="tel" value="'.$tel.'" />
+            
+                        <input class="defaultButton" type="submit" name="dati_spedizione" value="Salva"/> <!--Submit legato solo alle informazioni di spedizione-->
+                        </fieldset>';
+                }
+                if(strlen($erroriPaga)!=0){
+                    $formPagamento ='<fieldset>
+                                        <legend id="ip">Informazioni di pagamento: </legend>
+                                        <messaggio3 />
+                                            <label for="intestatario_carta">Intestatario carta: </label>
+                                            <input type="text" name="intestatario_carta" id="intestatario_carta" value="'.$intestatario.'" />
+                                            <label for="num_carta">Numero carta: </label>
+                                            <input type="text" name="num_carta" id="num_carta" value="'.$num_carta.'" />
+                                        <select name="mese_scad">
+                                            <option>- Mese -</option>
+                                            <option value="01">January</option>
+                                            <option value="03">March</option>
+                                            <option value="04">April</option>
+                                            <option value="05">May</option>
+                                            <option value="06">June</option>
+                                            <option value="07">July</option>
+                                            <option value="08">August</option>
+                                            <option value="09">September</option>
+                                            <option value="10">October</option>
+                                            <option value="11">November</option>
+                                            <option value="12">December</option>
+                                    </select>
+                                    '.$years;
+                }
+
                  $paginaHTML = str_replace('<formSpedizione2 />', $listaDestinazioni, $paginaHTML);
                  $paginaHTML = str_replace('<formPassword />', $formPassword, $paginaHTML);
                  $paginaHTML = str_replace('<formSpedizione />', $formSpedizione, $paginaHTML);
@@ -288,12 +347,16 @@
                  }else {
                      $paginaHTML = str_replace('<messaggio1 />', $erroriPass, $paginaHTML);
                  }
-
-                 $paginaHTML = str_replace('<messaggio2 />', $erroriSped, $paginaHTML);
-
-                 echo str_replace('<messaggio3 />', $erroriPaga, $paginaHTML);
-
-
+                 if(strlen($successoDest)!=0){
+                     $paginaHTML = str_replace('<messaggio2 />', $successoDest, $paginaHTML);
+                 }else {
+                     $paginaHTML = str_replace('<messaggio2 />', $erroriSped, $paginaHTML);
+                 }
+                 if(strlen($successoPaga)!=0){
+                     echo str_replace('<messaggio3 />', $successoPaga, $paginaHTML);
+                 }else {
+                     echo str_replace('<messaggio3 />', $erroriPaga, $paginaHTML);
+                 }
 
 	}else header('location: login.php');
 
