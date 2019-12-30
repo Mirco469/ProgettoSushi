@@ -38,6 +38,27 @@
             }
         }
 
+        /* FUNZIONI PER CONTROLLARE LO STATO DEL DATABASE */
+
+        //Funzione per controllare le credenziali: ritorna null se non esiste alcuna corrispondenza altrimenti ritorna il suo livello di autorizzazione
+        public function checkLogin($username,$password)
+        {
+            $query = $this->connection->prepare('SELECT * FROM utente WHERE username= ? AND password= ?');
+            $query->bind_param('ss', $username,$password);
+            $query->execute();
+            $queryResult = $query->get_result();
+
+            if(mysqli_num_rows($queryResult) == 0)
+            {
+                return null;
+            }
+            else
+            {
+                $row = $queryResult->fetch_assoc();
+                return $row['autorizzazione'];
+            }
+        }
+
 
         //Funzione che controlla se l'username è già esistente: ritorna true se esiste già false altrimenti
         public function  alreadyExistsUsername($username)
@@ -215,7 +236,7 @@
 		}
 
       
-    public function getNewsUtente() {
+		public function getNewsUtente() {
             $query = $this->connection->prepare('SELECT * FROM News ORDER BY data DESC ');
             $query->execute();
             return $query->get_result();
