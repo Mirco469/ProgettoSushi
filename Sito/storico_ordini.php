@@ -32,9 +32,9 @@
 			
 			echo $paginaHTML;
 		} else {
-			header("Location: errore403.php"); /*CONTROLLARE SE LA PAGINA E' GIUSTA*/
+			header("Location: errore403.php");
 		}
 	} else {
-		header("Location: errore500.php"); /*CONTROLLARE SE LA PAGINA E' GIUSTA*/
+		header("Location: errore500.php");
 	}
 ?>
