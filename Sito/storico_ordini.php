@@ -1,10 +1,11 @@
 <?php
 	require_once('php/dbaccess.php');
-	$db = new DBAccess();
-	$connected = $db->openDBConnection();
 	session_start();
-	if( $connected ) {
-		if( isset($_SESSION['username']) ) {
+	
+	if( isset($_SESSION['username']) ) {
+		$db = new DBAccess();
+		$connected = $db->openDBConnection();
+		if( $connected ) {
 			$paginaHTML = file_get_contents('html/home_utente.html');
 			$menu = getMenu();
 			$ordini = $db->getOrdini($_SESSION['username']);
@@ -32,9 +33,9 @@
 			
 			echo $paginaHTML;
 		} else {
-			header("Location: errore403.php");
+			header("Location: errore500.php");
 		}
 	} else {
-		header("Location: errore500.php");
+		header("Location: errore403.php");
 	}
 ?>

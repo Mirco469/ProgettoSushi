@@ -1093,6 +1093,10 @@ min-height: 465px;
 
 
 /*	storico_ordini	*/
+#storico_ordini h2 {
+	margin-left: 6em;
+}
+
 #storico_ordini a.buttonSmall {
     display: inline-block;
 	box-sizing: border-box;
