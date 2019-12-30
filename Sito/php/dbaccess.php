@@ -214,8 +214,12 @@
 			}
 		}
 
-
-
+      
+    public function getNewsUtente() {
+            $query = $this->connection->prepare('SELECT * FROM News ORDER BY data DESC ');
+            $query->execute();
+            return $query->get_result();
+        }
     }
 
         /* FUNZIONI PER CONTROLLARE LO STATO DEL DATABASE */
@@ -297,8 +301,6 @@
     /* ALTRO */
 		//Ritorna la parte di menu corretta a seconda che l'utente sia loggato o meno
 	function getMenu() {
-
-
 		if(isset($_SESSION['username'])) {
 		    return '<li class="impostazioni">
 						<span id="dropbtn">Area Riservata</span>
@@ -315,9 +317,38 @@
 		}
 	}
 
-	//Funzione per ottenere le categorie dei prodotti
-    function getCategorie()
-    {
-        return array("Antipasti","Primi Piatti","Teppanyako e tempure","Uramaki","Nigiri ed Onigiri","Gunkan","Temaki","Hosomaki","Sashimi","Dessert");
-    }
+	/*	Esempio di funzione per prendere i dati
+	public function getPersonaggi()
+	{
+		$query = "SELECT * FROM personaggi ORDER BY ID ASC";
+		$queryResult = myqsli_query($this->connection,$query);
+		
+		if(mysqli_num_rows($queryResult) == 0)
+		{
+			return null;
+		}
+		else
+		{
+			$result = array();
+			
+			while($row = mysqli_fetch_assoc($queryResult))
+			{
+				$arraySingoloPersonaggio = array(
+					'Nome' =>$row['nome]',
+					'Colore' => $row['colore'],
+					'Peso' => $row['peso'],
+					'Potenza' => $row['potenza'],
+					'Descrizione' => $row['descrizione'],
+					'ABR' => $row['angry_birds'],
+					'ABSW' => $row['angry_birds_star_wars'],
+					'AVS' => $row['angry_birds_space'],
+					'Immagine' => $row['immagine']
+				);
+			}
+				array_push($result,$arraySingoloPersonaggio);
+			
+			return $result;
+		}
+	}
+	*/
 ?>
