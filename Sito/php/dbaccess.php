@@ -326,9 +326,9 @@
 		    return '<li class="impostazioni">
 						<span id="dropbtn">Area Riservata</span>
 						<ul id="dropdown_content">
-							<li><a href="carrello.html" tabindex="8">Carrello</a></li>
-							<li><a href="storico_ordini.html" tabindex="9">Storico ordini</a></li>
-							<li><a href="gestione_profilo_utente.html" tabindex="10">Gestione profilo</a></li>
+							<li><a href="carrello.php" tabindex="8">Carrello</a></li>
+							<li><a href="storico_ordini.php" tabindex="9">Storico ordini</a></li>
+							<li><a href="gestione_profilo_utente.php" tabindex="10">Gestione profilo</a></li>
 							<li><a lang="en" href="logout.php" tabindex="11">Logout</a></li>
 						</ul>
 					</li>';
