@@ -345,25 +345,6 @@ table.defaultTable td:last-child {
 	text-align: left;
 }
 
-#aggiunta_prodotti .formGroup{
-	display: inline-block;
-	margin: 0.5em 0.5em;
-}
-
-#aggiunta_prodotti form input[type=submit]{
-    border: solid 4px;
-    border-radius: 5px;
-}
-
-#aggiunta_prodotti form input[type=submit]:hover{
-	border: solid 4px;
-}
-
-#aggiunta_prodotti table>caption{
-	margin: 1em;
-	font-size:1.5em;
-}
-
 /* Pagina Successo */
 #successo{
 	display: block;
