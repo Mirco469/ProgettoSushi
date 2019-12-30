@@ -38,6 +38,27 @@
             }
         }
 
+        /* FUNZIONI PER CONTROLLARE LO STATO DEL DATABASE */
+
+        //Funzione per controllare le credenziali: ritorna null se non esiste alcuna corrispondenza altrimenti ritorna il suo livello di autorizzazione
+        public function checkLogin($username,$password)
+        {
+            $query = $this->connection->prepare('SELECT * FROM utente WHERE username= ? AND password= ?');
+            $query->bind_param('ss', $username,$password);
+            $query->execute();
+            $queryResult = $query->get_result();
+
+            if(mysqli_num_rows($queryResult) == 0)
+            {
+                return null;
+            }
+            else
+            {
+                $row = $queryResult->fetch_assoc();
+                return $row['autorizzazione'];
+            }
+        }
+
 
         //Funzione che controlla se l'username è già esistente: ritorna true se esiste già false altrimenti
         public function  alreadyExistsUsername($username)
@@ -337,15 +358,15 @@
 		    return '<li class="impostazioni">
 						<span id="dropbtn">Area Riservata</span>
 						<ul id="dropdown_content">
-							<li><a href="carrello.html" tabindex="8">Carrello</a></li>
-							<li><a href="storico_ordini.html" tabindex="9">Storico ordini</a></li>
-							<li><a href="gestione_profilo_utente.html" tabindex="10">Gestione profilo</a></li>
+							<li><a href="carrello.php" tabindex="8">Carrello</a></li>
+							<li><a href="storico_ordini.php" tabindex="9">Storico ordini</a></li>
+							<li><a href="gestione_profilo_utente.php" tabindex="10">Gestione profilo</a></li>
 							<li><a lang="en" href="logout.php" tabindex="11">Logout</a></li>
 						</ul>
 					</li>';
 
 		}else {
-			return '<li class="login"><a href="login.html" tabindex="7"><span lang="en">Login</span>/Registrazione</a></li>';
+			return '<li class="login"><a href="login.php" tabindex="7"><span lang="en">Login</span>/Registrazione</a></li>';
 		}
 	}
 
