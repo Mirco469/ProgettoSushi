@@ -811,6 +811,7 @@ div#notizie {
 }
 
 #notizie dt {
+	margin-top: 5%;
     font-weight: bold;
 }
 

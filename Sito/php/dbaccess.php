@@ -14,26 +14,30 @@
             return $this->connection;
         }
 
-        /* FUNZIONI PER CONTROLLARE LO STATO DEL DATABASE */
 
-        //Funzione per controllare le credenziali: ritorna null se non esiste alcuna corrispondenza altrimenti ritorna il suo livello di autorizzazione
-        public function checkLogin($username,$password)
-        {
-            $query = $this->connection->prepare('SELECT * FROM utente WHERE username= ? AND password= ?');
-            $query->bind_param('ss', $username,$password);
+        public function getPassword($utente){
+            $query = $this->connection->prepare('SELECT * FROM Utente WHERE username= ?');
+            $query->bind_param('s', $utente);
             $query->execute();
             $queryResult = $query->get_result();
 
-            if(mysqli_num_rows($queryResult) == 0)
-            {
+            if(mysqli_num_rows($queryResult)==0){
                 return null;
-            }
-            else
-            {
-                $row = $queryResult->fetch_assoc();
-                return $row['autorizzazione'];
+            }else{
+                $row = mysqli_fetch_assoc($queryResult);
+                return $row['password'];
             }
         }
+
+
+        public function modificaPassword($utente, $password){
+            $query = $this->connection->prepare('UPDATE Utente SET password=? WHERE username = ?');
+            $query->bind_param('ss', $password, $utente);
+            if(!$query->execute()){
+                header('location: errore500.html');
+            }
+        }
+
 
         //Funzione che controlla se l'username è già esistente: ritorna true se esiste già false altrimenti
         public function  alreadyExistsUsername($username)
@@ -117,7 +121,7 @@
         }   
 
 		#funzione per il get delle recensioni;
-		public function getRecensioni() 
+		public function getRecensioni()
 		{
 			#DESC o ASC in modo che prima ci sia la più recente;
 			$query = $this->connection->prepare("SELECT * FROM Recensione ORDER BY data DESC");
@@ -127,7 +131,7 @@
 			if (mysqli_num_rows($queryResult) == 0)
 			{
 				return null;
-			} 
+			}
 			else
 			{
 				$result = array();
@@ -149,7 +153,7 @@
 		/* FUNZIONI PER OTTENERE DATI DAL DATABASE */
 
 		#funzione per il get dei prodotti per categoria con i nomi in ordine alfabetico;
-		public function getProdotti($categoria) 
+		public function getProdotti($categoria)
 		{
 			$query = $this->connection->prepare("SELECT * FROM Prodotto WHERE categoria = ? ORDER BY nome ASC");
 			$query->bind_param('s', $categoria);
@@ -159,7 +163,7 @@
 			if (mysqli_num_rows($queryResult) == 0)
 			{
 				return null;
-			} 
+			}
 			else
 			{
 				$result = array();
@@ -179,7 +183,7 @@
 		}
 
 		#funzione per il get degli indirizzi per utente;
-		public function getIndirizzi($utente) 
+		public function getIndirizzi($utente)
 		{
 			$query = $this->connection->prepare("SELECT via, numero_civico FROM Destinazione WHERE utente = ?");
 			$query->bind_param('s', $utente);
@@ -189,7 +193,7 @@
 			if (mysqli_num_rows($queryResult) == 0)
 			{
 				return null;
-			} 
+			}
 			else
 			{
 				$result = array();
@@ -207,7 +211,7 @@
 		}
 
 		#funzione per il get della carta di credito per utente;
-		public function getPagamento($utente) 
+		public function getPagamento($utente)
 		{
 			$query = $this->connection->prepare("SELECT numero_carta FROM Utente WHERE username = ?");
 			$query->bind_param('s', $utente);
@@ -217,7 +221,7 @@
 			if (mysqli_num_rows($queryResult) == 0)
 			{
 				return null;
-			} 
+			}
 			else
 			{
 			    $row = mysqli_fetch_assoc($queryResult);
@@ -225,7 +229,17 @@
 			}
 		}
 
+      
+    public function getNewsUtente() {
+            $query = $this->connection->prepare('SELECT * FROM News ORDER BY data DESC ');
+            $query->execute();
+            return $query->get_result();
+        }
     }
+
+        /* FUNZIONI PER CONTROLLARE LO STATO DEL DATABASE */
+
+
 
     //Reindirizza alla home giusta in base all'autorizzazione passata come paramentro (Utente o Admin)
     function redirectHome($autorizzazione)
@@ -324,8 +338,6 @@
     /* ALTRO */
 		//Ritorna la parte di menu corretta a seconda che l'utente sia loggato o meno
 	function getMenu() {
-
-
 		if(isset($_SESSION['username'])) {
 		    return '<li class="impostazioni">
 						<span id="dropbtn">Area Riservata</span>
@@ -342,9 +354,38 @@
 		}
 	}
 
-	//Funzione per ottenere le categorie dei prodotti
-    function getCategorie()
-    {
-        return array("Antipasti","Primi Piatti","Teppanyako e tempure","Uramaki","Nigiri ed Onigiri","Gunkan","Temaki","Hosomaki","Sashimi","Dessert");
-    }
+	/*	Esempio di funzione per prendere i dati
+	public function getPersonaggi()
+	{
+		$query = "SELECT * FROM personaggi ORDER BY ID ASC";
+		$queryResult = myqsli_query($this->connection,$query);
+		
+		if(mysqli_num_rows($queryResult) == 0)
+		{
+			return null;
+		}
+		else
+		{
+			$result = array();
+			
+			while($row = mysqli_fetch_assoc($queryResult))
+			{
+				$arraySingoloPersonaggio = array(
+					'Nome' =>$row['nome]',
+					'Colore' => $row['colore'],
+					'Peso' => $row['peso'],
+					'Potenza' => $row['potenza'],
+					'Descrizione' => $row['descrizione'],
+					'ABR' => $row['angry_birds'],
+					'ABSW' => $row['angry_birds_star_wars'],
+					'AVS' => $row['angry_birds_space'],
+					'Immagine' => $row['immagine']
+				);
+			}
+				array_push($result,$arraySingoloPersonaggio);
+			
+			return $result;
+		}
+	}
+	*/
 ?>
