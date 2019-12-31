@@ -54,7 +54,7 @@
 					}
 					if (!checkAlfanumericoESpazi($via))
 					{
-						$erroriDest .= "<li>La Via non deve contenere caratteri speciali</li>";
+						$erroriDest .= "<li>La via non deve contenere caratteri speciali</li>";
 					}
 					if (!checkSoloNumeri($civico))
 					{
@@ -62,7 +62,7 @@
 					}
 					if (!checkCAP($cap))
 					{
-						$erroriDest .= "<li>Il numero civico deve contenere solo numeri</li>";
+						$erroriDest .= "<li>Il CAP deve contenere solo numeri</li>";
 					}
 					if (!checkSoloNumeriEDIm($tel))
 					{
@@ -100,11 +100,11 @@
 					{
 						$erroriCarta .= '<li>Non hai inserito un numero di carta corretto</li>';
 					}
-					if ($mese_scadenza == 'Mese')
+					if ($mese_scad == 'Mese')
 					{
 						$erroriCarta .= '<li>Seleziona il mese di scadenza</li>';
 					}
-					if ($anno_scadenza == 'Anno')
+					if ($anno_scad == 'Anno')
 					{
 						$erroriCarta .= '<li>Seleziona l\'anno di scadenza</li>';
 					}
@@ -122,7 +122,7 @@
 					}
 				}
 			}
-
+			/*
 			if (($erroriCarta == "") && ($erroriDest == "")) #Reindirizzo alla pagina di successo;
 			{
 				if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'domicilio'))
@@ -141,29 +141,32 @@
 					$mese_scad = "";
 					$anno_scad = "";
 					$cvv = "";
-					/*
+
 					if (!$db->addOrdine())
 					{
 						header('location: errore500.php');
 					}
 
+
 					header('location: successo.php');
-					*/
+					
 				}
 				else if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'asporto'))
 				{
-					/*
+
 					if (!$db->addOrdine())
 					{
 						header('location: errore500.php');
 					}
 
+
 					header('location: successo.php');
-					*/
+					
 				}
 			}
 			else #Stampo la pagina con gli eventuali messaggi;
 			{
+			*/
 				$paginaHTML = file_get_contents('html/pagamento.html');
 				$menu = getmenu();
 			    $paginaHTML = str_replace('<menu />', $menu, $paginaHTML);
@@ -235,13 +238,13 @@
 				$formCarta = "
 				<div>
 					<label for=\"intestatario_carta\">Intestatario carta: </label>
-					<input type=\"text\" id=\"intestatario\" name=\"intestatario_carta\" value=\"$intestatario\" />
+					<input type=\"text\" id=\"intestatario_carta\" name=\"intestatario_carta\" value=\"$intestatario\" />
 				</div>
 				<div>
-					<label for=\"numero_carta\">Numero carta: </label>
-					<input type=\"text\" id=\"numero_carta\" name=\"numero_carta\" maxlength=\"16\" value=\"$num_carta\" />
+					<label for=\"num_carta\">Numero carta: </label>
+					<input type=\"text\" id=\"num_carta\" name=\"num_carta\" maxlength=\"16\" value=\"$num_carta\" />
 				</div>
-				<select name=\"mese_scadenza\" class=\"selezione_small\">
+				<select name=\"mese_scad\" class=\"selezione_small\">
 					<option>Mese</option>
 					<option value=\"01\">Gennaio</option>
 					<option value=\"02\">Febbraio</option>
@@ -266,7 +269,7 @@
 				$paginaHTML = str_replace('<formCarta />', $formCarta, $paginaHTML);
 
 				echo $paginaHTML;
-			}
+			//}
 		}
 		else
 		{
