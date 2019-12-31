@@ -44,21 +44,18 @@
 
 				<div id="scelta_consegna">
 					<p>Tipo Consegna:</p>
-					<input type="radio" id="consegna_asporto" name="tipoConsegna" value="asporto" />
-					<label for="consegna_asporto">Asporto</label>
-					<input type="radio" id="consegna_domicilio" name="tipoConsegna" value="domicilio" checked="checked"/>
-					<label for="consegna_domicilio">Domicilio</label>
+					<sceltaConsegna />
 				</div>
 
 				<fieldset id="info_consegna">
 
 					<erroreDestinazione />
 					<successoDestinazione />
-					
+
 					<legend>Informazioni di consegna:</legend>
 	  			    <label for="destinazione">Seleziona un indirizzo:</label>
 	  			    <select id="destinazione" name="destinazione" class="selezione_big">
-	    			    <option selected="selected">Indirizzo</option>
+	    			    <option>Indirizzo</option>
 						<indirizziUtente />
     			    </select>
 
@@ -69,14 +66,14 @@
 				</fieldset>
 
                 <fieldset id="info_pagamento">
-					
+
 					<erroreCarta />
 					<successoCarta />
-					
+
                     <legend>Informazioni di pagamento: </legend>
 					<label for="carta_credito">Seleziona una carta di credito:</label>
 		  		    <select id="carta_credito" name="carta_credito" class="selezione_big">
-		    		    <option selected="selected">Carta di credito</option>
+		    		    <option>Carta di credito</option>
 						<cartaUtente />
 	    		    </select>
 

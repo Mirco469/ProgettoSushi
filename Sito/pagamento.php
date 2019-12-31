@@ -31,51 +31,74 @@
 			$anno_scad = "";
 			$cvv = "";
 
+			#Stampo la pagina con gli eventuali messaggi;
+			$paginaHTML = file_get_contents('html/pagamento.html');
+			$menu = getmenu();
+			$paginaHTML = str_replace('<menu />', $menu, $paginaHTML);
+			$sceltaConsegna = "
+			<input type=\"radio\" id=\"consegna_asporto\" name=\"tipoConsegna\" value=\"asporto\" />
+			<label for=\"consegna_asporto\">Asporto</label>
+			<input type=\"radio\" id=\"consegna_domicilio\" name=\"tipoConsegna\" value=\"domicilio\" checked=\"checked\" />
+			<label for=\"consegna_domicilio\">Domicilio</label>
+			";
+
 			//Controllo se ho già ricevuto la post dalla form o no;
 			if (isset($_POST['paga']))
 			{
-				#Primo fieldset;
-				if (isset($_POST['destinazione']) && $_POST['destinazione'] != 'Indirizzo')
+				if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'domicilio'))
 				{
-					$successoDest = '<p class="successo">Informazioni di spedizione valide!</p>';
-				}
-				else
-				{
-					#Controllo i dettagli di spedizione;
-					$nome_cognome = htmlentities(trim($_POST['nome_cognome']));
-					$via = htmlentities(trim($_POST['via']));
-					$civico = htmlentities(trim($_POST['civico']));
-					$cap = htmlentities(trim($_POST['cap']));
-					$tel = htmlentities(trim($_POST['tel']));
-
-					if (!checkNomeCognome($nome_cognome))
-					{
-						$erroriDest .= "<li>Il nome deve contenere solo lettere e non contenere meno di due caratteri</li>";
-					}
-					if (!checkAlfanumericoESpazi($via))
-					{
-						$erroriDest .= "<li>La via non deve contenere caratteri speciali</li>";
-					}
-					if (!checkSoloNumeri($civico))
-					{
-						$erroriDest .= "<li>Il numero civico deve contenere solo numeri</li>";
-					}
-					if (!checkCAP($cap))
-					{
-						$erroriDest .= "<li>Il CAP deve contenere solo numeri</li>";
-					}
-					if (!checkSoloNumeriEDIm($tel))
-					{
-						$erroriDest .= "<li>Non hai inserito un numero telefonico valido</li>";
-					}
-					if (strlen($erroriDest) == 0)
+					#Primo fieldset;
+					if (isset($_POST['destinazione']) && $_POST['destinazione'] != 'Indirizzo')
 					{
 						$successoDest = '<p class="successo">Informazioni di spedizione valide!</p>';
 					}
 					else
 					{
-						$erroriDest = '<ul class="errore">' . $erroriDest . '</ul>';
+						#Controllo i dettagli di spedizione;
+						$nome_cognome = htmlentities(trim($_POST['nome_cognome']));
+						$via = htmlentities(trim($_POST['via']));
+						$civico = htmlentities(trim($_POST['civico']));
+						$cap = htmlentities(trim($_POST['cap']));
+						$tel = htmlentities(trim($_POST['tel']));
+
+						if (!checkNomeCognome($nome_cognome))
+						{
+							$erroriDest .= "<li>Il nome deve contenere solo lettere e non contenere meno di due caratteri</li>";
+						}
+						if (!checkAlfanumericoESpazi($via))
+						{
+							$erroriDest .= "<li>La via non deve contenere caratteri speciali</li>";
+						}
+						if (!checkSoloNumeri($civico))
+						{
+							$erroriDest .= "<li>Il numero civico deve contenere solo numeri</li>";
+						}
+						if (!checkCAP($cap))
+						{
+							$erroriDest .= "<li>Il CAP deve contenere solo numeri</li>";
+						}
+						if (!checkSoloNumeriEDIm($tel))
+						{
+							$erroriDest .= "<li>Non hai inserito un numero telefonico valido</li>";
+						}
+						if (strlen($erroriDest) == 0)
+						{
+							$successoDest = '<p class="successo">Informazioni di spedizione valide!</p>';
+						}
+						else
+						{
+							$erroriDest = '<ul class="errore">' . $erroriDest . '</ul>';
+						}
 					}
+				}
+				else if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'asporto'))
+				{
+					$sceltaConsegna = "
+					<input type=\"radio\" id=\"consegna_asporto\" name=\"tipoConsegna\" value=\"asporto\" checked=\"checked\" />
+					<label for=\"consegna_asporto\">Asporto</label>
+					<input type=\"radio\" id=\"consegna_domicilio\" name=\"tipoConsegna\" value=\"domicilio\" />
+					<label for=\"consegna_domicilio\">Domicilio</label>
+					";
 				}
 
 				#Seconso fieldset;
@@ -121,155 +144,158 @@
 						$erroriCarta = '<ul class="errore">' . $erroriCarta . '</ul>';
 					}
 				}
-			}
-			/*
-			if (($erroriCarta == "") && ($erroriDest == "")) #Reindirizzo alla pagina di successo;
-			{
-				if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'domicilio'))
+
+				if (($erroriCarta == "") && ($erroriDest == "")) #Reindirizzo alla pagina di successo;
 				{
-					if (!$db->addSpedizione($user, $nome_cognome, $via, $civico, $cap, $tel))
+					if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'domicilio'))
 					{
-						header('location: errore500.php');
-					}
-					$nome_cognome = "";
-					$via = "";
-					$civico = "";
-					$cap = "";
-					$tel = "";
-					$intestatario = "";
-					$num_carta = "";
-					$mese_scad = "";
-					$anno_scad = "";
-					$cvv = "";
+						if (!$db->addSpedizione($user, $nome_cognome, $via, $civico, $cap, $tel))
+						{
+							header('location: errore500.php');
+						}
+						$nome_cognome = "";
+						$via = "";
+						$civico = "";
+						$cap = "";
+						$tel = "";
+						$intestatario = "";
+						$num_carta = "";
+						$mese_scad = "";
+						$anno_scad = "";
+						$cvv = "";
 
-					if (!$db->addOrdine())
+						if (!$db->addOrdine())
+						{
+							header('location: errore500.php');
+						}
+						header('location: successo.php');
+					}
+					else if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'asporto'))
 					{
-						header('location: errore500.php');
+						if (!$db->addOrdine())
+						{
+							header('location: errore500.php');
+						}
+						header('location: successo.php');
 					}
-
-
-					header('location: successo.php');
-					
-				}
-				else if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'asporto'))
-				{
-
-					if (!$db->addOrdine())
-					{
-						header('location: errore500.php');
-					}
-
-
-					header('location: successo.php');
-					
 				}
 			}
-			else #Stampo la pagina con gli eventuali messaggi;
+
+			$paginaHTML = str_replace('<sceltaConsegna />', $sceltaConsegna, $paginaHTML);
+
+			#Primo fieldset;
+			$paginaHTML = str_replace('<erroreDestinazione />', $erroriDest, $paginaHTML);
+			$paginaHTML = str_replace('<successoDestinazione />', $successoDest, $paginaHTML);
+
+			$indirizziUtente = "";
+			if ($db->openDBConnection())
 			{
-			*/
-				$paginaHTML = file_get_contents('html/pagamento.html');
-				$menu = getmenu();
-			    $paginaHTML = str_replace('<menu />', $menu, $paginaHTML);
-
-				#Primo fieldset;
-				$paginaHTML = str_replace('<erroreDestinazione />', $erroriDest, $paginaHTML);
-				$paginaHTML = str_replace('<successoDestinazione />', $successoDest, $paginaHTML);
-
-				$indirizziUtente = "";
-				if ($db->openDBConnection())
+				$queryResult = $db->getDestinazioni($user);
+			}
+			else
+			{
+				header('location: errore500.html');
+			}
+			while ($row = mysqli_fetch_assoc($queryResult))
+			{
+				$indirizzo = "$row[via], $row[numero_civico]";
+				if (isset($_POST['destinazione']) && $_POST['destinazione'] == $indirizzo)
 				{
-                 	$queryResult = $db->getDestinazioni($user);
-             	} 
-				else
-				{
-                	header('location: errore500.html');
-             	}
-				while ($row = mysqli_fetch_assoc($queryResult))
-				{
-					$indirizziUtente .= "<option value=\"$row[id_destinazione]\">$row[via], $row[numero_civico]</option>";
+					$indirizziUtente .= "<option value=\"$row[id_destinazione]\" selected=\"selected\" >$indirizzo</option>";
 				}
-				$paginaHTML = str_replace('<indirizziUtente />', $indirizziUtente, $paginaHTML);
-
-				$formDest = "
-				<label for=\"nome_cognome\">Nome e Cognome: </label>
-				<input type=\"text\" name=\"nome_cognome\" id=\"nome_cognome\" placeholder=\"Mario Rossi\" value=\"$nome_cognome\" />
-				<label for=\"via\">Via: </label>
-				<input type=\"text\" id=\"via\" name=\"via\" placeholder=\"Inserire via\" value=\"$via\" />
-				<label for=\"civico\">Numero civico: </label>
-				<input type=\"text\" id=\"civico\" name=\"civico\" placeholder=\"Inserire numero civico\" value=\"$civico\" />
-				<label for=\"cap\"><abbr title=\"Codice di Avviamento Postale\">CAP</abbr>: </label>
-				<input type=\"text\" id=\"cap\" name=\"cap\" placeholder=\"Inserire CAP\" value=\"$cap\" />
-				<label for=\"comune\">Comune: </label>
-				<input type=\"text\" id=\"comune\" name=\"comune\" value=\"Padova\" disabled=\"disabled\"/>
-				<label for=\"provincia\">Provincia: </label>
-				<input type=\"text\" id=\"provincia\" name=\"provincia\" value=\"Padova\" disabled=\"disabled\"/>
-				<label for=\"stato\">Stato: </label>
-				<input type=\"text\" id=\"stato\" name=\"stato\" value=\"Italia\" disabled=\"disabled\"/>
-				<label for=\"tel\">Numero di telefono: </label>
-				<input type=\"text\" id=\"tel\" name=\"tel\"  value=\"$tel\" />
-				";
-				$paginaHTML = str_replace('<formDestinazione />', $formDest, $paginaHTML);
-
-				#Secondo fieldset;
-				$paginaHTML = str_replace('<erroreCarta />', $erroriCarta, $paginaHTML);
-				$paginaHTML = str_replace('<successoCarta />', $successoCarta, $paginaHTML);
-
-				$cartaUtente = null;
-				if ($db->openDBConnection())
-				{
-                 	$cartaUtente = $db->getCartaDiCredito($user);
-             	} 
 				else
 				{
-                	header('location: errore500.html');
-             	}
-				if ($cartaUtente != null)
+					$indirizziUtente .= "<option value=\"$row[id_destinazione]\">$indirizzo</option>";
+				}
+			}
+			$paginaHTML = str_replace('<indirizziUtente />', $indirizziUtente, $paginaHTML);
+
+			$formDest = "
+			<label for=\"nome_cognome\">Nome e Cognome: </label>
+			<input type=\"text\" name=\"nome_cognome\" id=\"nome_cognome\" placeholder=\"Mario Rossi\" value=\"$nome_cognome\" />
+			<label for=\"via\">Via: </label>
+			<input type=\"text\" id=\"via\" name=\"via\" placeholder=\"Inserire via\" value=\"$via\" />
+			<label for=\"civico\">Numero civico: </label>
+			<input type=\"text\" id=\"civico\" name=\"civico\" placeholder=\"Inserire numero civico\" value=\"$civico\" />
+			<label for=\"cap\"><abbr title=\"Codice di Avviamento Postale\">CAP</abbr>: </label>
+			<input type=\"text\" id=\"cap\" name=\"cap\" placeholder=\"Inserire CAP\" value=\"$cap\" />
+			<label for=\"comune\">Comune: </label>
+			<input type=\"text\" id=\"comune\" name=\"comune\" value=\"Padova\" disabled=\"disabled\"/>
+			<label for=\"provincia\">Provincia: </label>
+			<input type=\"text\" id=\"provincia\" name=\"provincia\" value=\"Padova\" disabled=\"disabled\"/>
+			<label for=\"stato\">Stato: </label>
+			<input type=\"text\" id=\"stato\" name=\"stato\" value=\"Italia\" disabled=\"disabled\"/>
+			<label for=\"tel\">Numero di telefono: </label>
+			<input type=\"text\" id=\"tel\" name=\"tel\" placeholder=\"Inserire recapito\" value=\"$tel\" />
+			";
+			$paginaHTML = str_replace('<formDestinazione />', $formDest, $paginaHTML);
+
+			#Secondo fieldset;
+			$paginaHTML = str_replace('<erroreCarta />', $erroriCarta, $paginaHTML);
+			$paginaHTML = str_replace('<successoCarta />', $successoCarta, $paginaHTML);
+
+			$cartaUtente = null;
+			if ($db->openDBConnection())
+			{
+				$cartaUtente = $db->getCartaDiCredito($user);
+			}
+			else
+			{
+				header('location: errore500.html');
+			}
+			if ($cartaUtente != null)
+			{
+				if (isset($_POST['carta_credito']) && $_POST['carta_credito'] == $cartaUtente)
+				{
+					$cartaUtente = "<option selected=\"selected\">$cartaUtente</option>";
+				}
+				else
 				{
 					$cartaUtente = "<option>$cartaUtente</option>";
 				}
-				$paginaHTML = str_replace('<cartaUtente />', $cartaUtente, $paginaHTML);
+			}
+			$paginaHTML = str_replace('<cartaUtente />', $cartaUtente, $paginaHTML);
 
-				$years = "";
-				$annoCorrente = date("Y");
-				for ($i = 0; $i<20; $i++ )
-				{
-                    $years .= '<option value="' . ($annoCorrente+$i) . '">' . ($annoCorrente+$i) . '</option>';
-                }
-				$formCarta = "
-				<div>
-					<label for=\"intestatario_carta\">Intestatario carta: </label>
-					<input type=\"text\" id=\"intestatario_carta\" name=\"intestatario_carta\" value=\"$intestatario\" />
-				</div>
-				<div>
-					<label for=\"num_carta\">Numero carta: </label>
-					<input type=\"text\" id=\"num_carta\" name=\"num_carta\" maxlength=\"16\" value=\"$num_carta\" />
-				</div>
-				<select name=\"mese_scad\" class=\"selezione_small\">
-					<option>Mese</option>
-					<option value=\"01\">Gennaio</option>
-					<option value=\"02\">Febbraio</option>
-					<option value=\"03\">Marzo</option>
-					<option value=\"04\">Aprile</option>
-					<option value=\"05\">Maggio</option>
-					<option value=\"06\">Giugno</option>
-					<option value=\"07\">Luglio</option>
-					<option value=\"08\">Agosto</option>
-					<option value=\"09\">Settembre</option>
-					<option value=\"10\">Ottobre</option>
-					<option value=\"11\">Novembre</option>
-					<option value=\"12\">Dicembre</option>
-				</select>
-				<select name=\"anno_scad\" class=\"selezione_small\">
-					<option>Anno</option>
-					$years
-				</select>
-				<label for=\"cvv_carta\" lang=\"en\"><abbr title=\"Card Verification Value\">CVV</abbr>: </label>
-				<input type=\"text\" id=\"cvv_carta\" name=\"cvv_carta\" maxlength=\"3\" value=\"$cvv\" />
-				";
-				$paginaHTML = str_replace('<formCarta />', $formCarta, $paginaHTML);
+			$years = "";
+			$annoCorrente = date("Y");
+			for ($i = 0; $i<20; $i++ )
+			{
+				$years .= '<option value="' . ($annoCorrente+$i) . '">' . ($annoCorrente+$i) . '</option>';
+			}
+			$formCarta = "
+			<div>
+				<label for=\"intestatario_carta\">Intestatario carta: </label>
+				<input type=\"text\" id=\"intestatario_carta\" name=\"intestatario_carta\" value=\"$intestatario\" />
+			</div>
+			<div>
+				<label for=\"num_carta\">Numero carta: </label>
+				<input type=\"text\" id=\"num_carta\" name=\"num_carta\" maxlength=\"16\" value=\"$num_carta\" />
+			</div>
+			<select name=\"mese_scad\" class=\"selezione_small\">
+				<option>Mese</option>
+				<option value=\"01\">Gennaio</option>
+				<option value=\"02\">Febbraio</option>
+				<option value=\"03\">Marzo</option>
+				<option value=\"04\">Aprile</option>
+				<option value=\"05\">Maggio</option>
+				<option value=\"06\">Giugno</option>
+				<option value=\"07\">Luglio</option>
+				<option value=\"08\">Agosto</option>
+				<option value=\"09\">Settembre</option>
+				<option value=\"10\">Ottobre</option>
+				<option value=\"11\">Novembre</option>
+				<option value=\"12\">Dicembre</option>
+			</select>
+			<select name=\"anno_scad\" class=\"selezione_small\">
+				<option>Anno</option>
+				$years
+			</select>
+			<label for=\"cvv_carta\" lang=\"en\"><abbr title=\"Card Verification Value\">CVV</abbr>: </label>
+			<input type=\"text\" id=\"cvv_carta\" name=\"cvv_carta\" maxlength=\"3\" value=\"$cvv\" />
+			";
+			$paginaHTML = str_replace('<formCarta />', $formCarta, $paginaHTML);
 
-				echo $paginaHTML;
-			//}
+			echo $paginaHTML;
 		}
 		else
 		{
