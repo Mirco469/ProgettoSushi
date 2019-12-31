@@ -94,6 +94,19 @@
             }
         }
 
+        public function getCartaDiCredito($utente){
+            $query = $this->connection->prepare('SELECT * FROM Utente WHERE username= ?');
+            $query->bind_param('s', $utente);
+            $query->execute();
+            $queryResult = $query->get_result();
+            $row = mysqli_fetch_assoc($queryResult);
+            if($row['numero_carta']==null){
+                return null;
+            }else{
+                return $row['numero_carta'];
+            }
+        }
+
         /* FUNZIONI PER AGGIUNGERE DATI AL DATABASE */
 
         public function addAccount($username,$nome,$cognome,$password)
@@ -206,6 +219,7 @@
 
 				while ($row = mysqli_fetch_assoc($queryResult)) {
 					$arraySingoloIndirizzo = array (
+                        'id'  => $row['id_destinazione'],
 						'Via' => $row['via'],
 						'Num' => $row['numero_civico'],
 					);
@@ -213,25 +227,6 @@
 				}
 
 				return $result;
-			}
-		}
-
-		#funzione per il get della carta di credito per utente;
-		public function getPagamento($utente)
-		{
-			$query = $this->connection->prepare("SELECT numero_carta FROM Utente WHERE username = ?");
-			$query->bind_param('s', $utente);
-			$query->execute();
-			$queryResult = $query->get_result();
-
-			if (mysqli_num_rows($queryResult) == 0)
-			{
-				return null;
-			}
-			else
-			{
-			    $row = mysqli_fetch_assoc($queryResult);
-				return $row['numero_carta'];
 			}
 		}
 
