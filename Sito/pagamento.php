@@ -3,6 +3,9 @@
 	require_once("php/dbaccess.php");
 
     session_start();
+	#Login per testare la pagina;
+	$_SESSION['username'] = "user";
+	$_SESSION['password'] = "user";
 
 	if (isset($_SESSION['username']))
 	{
@@ -87,7 +90,7 @@
 					$num_carta = htmlentities(trim($_POST['num_carta']));
 					$mese_scad = $_POST['mese_scad'];
 					$anno_scad = $_POST['anno_scad'];
-					$cvv = $_POST['cvv_carta'];
+					$cvv = htmlentities(trim($_POST['cvv_carta']));
 
 					if (!checkNomeCognome($intestatario))
 					{
@@ -120,11 +123,14 @@
 				}
 			}
 
-			if ($erroriCarta == "") && ($erroriDest == "") #Reindirizzo alla pagina di successo;
+			if (($erroriCarta == "") && ($erroriDest == "")) #Reindirizzo alla pagina di successo;
 			{
 				if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'domicilio'))
 				{
-					$db->addSpedizione($user, $nome_cognome, $via, $civico, $cap, $tel);
+					if (!$db->addSpedizione($user, $nome_cognome, $via, $civico, $cap, $tel))
+					{
+						header('location: errore500.php');
+					}
 					$nome_cognome = "";
 					$via = "";
 					$civico = "";
@@ -135,18 +141,25 @@
 					$mese_scad = "";
 					$anno_scad = "";
 					$cvv = "";
-
-					$db->addOrdine();
+					/*
+					if (!$db->addOrdine())
+					{
+						header('location: errore500.php');
+					}
 
 					header('location: successo.php');
+					*/
 				}
 				else if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'asporto'))
 				{
-					INSERITA NUOVA DESTINAZIONE (0, , , , , , 'admin'),;
-					DA FARE!!!
-					$db->addOrdine();
+					/*
+					if (!$db->addOrdine())
+					{
+						header('location: errore500.php');
+					}
 
 					header('location: successo.php');
+					*/
 				}
 			}
 			else #Stampo la pagina con gli eventuali messaggi;
@@ -159,9 +172,18 @@
 				$paginaHTML = str_replace('<erroreDestinazione />', $erroriDest, $paginaHTML);
 				$paginaHTML = str_replace('<successoDestinazione />', $successoDest, $paginaHTML);
 
-				$query = getIndirizzi($user);
-				foreach ($query as $key => $value) {
-					$indirizziUtente .= "<option value=\"$query[]\">$query[], $query[]</option>"
+				$indirizziUtente = "";
+				if ($db->openDBConnection())
+				{
+                 	$queryResult = $db->getDestinazioni($user);
+             	} 
+				else
+				{
+                	header('location: errore500.html');
+             	}
+				while ($row = mysqli_fetch_assoc($queryResult))
+				{
+					$indirizziUtente .= "<option value=\"$row[id_destinazione]\">$row[via], $row[numero_civico]</option>";
 				}
 				$paginaHTML = str_replace('<indirizziUtente />', $indirizziUtente, $paginaHTML);
 
@@ -189,10 +211,18 @@
 				$paginaHTML = str_replace('<erroreCarta />', $erroriCarta, $paginaHTML);
 				$paginaHTML = str_replace('<successoCarta />', $successoCarta, $paginaHTML);
 
-				$cartaUtente = getCartaDiCredito($user); -- RITORNARE ROW[NUM_CARTA] E CANCELLO getPagamento() --
+				$cartaUtente = null;
+				if ($db->openDBConnection())
+				{
+                 	$cartaUtente = $db->getCartaDiCredito($user);
+             	} 
+				else
+				{
+                	header('location: errore500.html');
+             	}
 				if ($cartaUtente != null)
 				{
-					$cartaUtente = "<option>$cartaUtente</option>"
+					$cartaUtente = "<option>$cartaUtente</option>";
 				}
 				$paginaHTML = str_replace('<cartaUtente />', $cartaUtente, $paginaHTML);
 

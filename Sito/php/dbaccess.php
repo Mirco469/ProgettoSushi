@@ -94,6 +94,23 @@
             }
         }
 
+        public function getDestinazioni($utente)
+        {
+            $query = $this->connection->prepare("SELECT id_destinazione, nome_cognome, numero_telefonico, CAP, via, numero_civico  FROM Destinazione WHERE utente = ?");
+            $query->bind_param('s', $utente);
+            $query->execute();
+            $queryResult = $query->get_result();
+
+            if (mysqli_num_rows($queryResult) == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return $queryResult;
+            }
+        }
+
         public function getCartaDiCredito($utente){
             $query = $this->connection->prepare('SELECT * FROM Utente WHERE username= ?');
             $query->bind_param('s', $utente);
@@ -201,35 +218,6 @@
 			}
 		}
 
-		#funzione per il get degli indirizzi per utente;
-		public function getIndirizzi($utente)
-		{
-			$query = $this->connection->prepare("SELECT via, numero_civico FROM Destinazione WHERE utente = ?");
-			$query->bind_param('s', $utente);
-			$query->execute();
-			$queryResult = $query->get_result();
-
-			if (mysqli_num_rows($queryResult) == 0)
-			{
-				return null;
-			}
-			else
-			{
-				$result = array();
-
-				while ($row = mysqli_fetch_assoc($queryResult)) {
-					$arraySingoloIndirizzo = array (
-                        'id'  => $row['id_destinazione'],
-						'Via' => $row['via'],
-						'Num' => $row['numero_civico'],
-					);
-                    array_push($result, $arraySingoloIndirizzo);
-				}
-
-				return $result;
-			}
-		}
-
       
 		public function getNewsUtente() {
             $query = $this->connection->prepare('SELECT * FROM News ORDER BY data DESC ');
@@ -278,10 +266,26 @@
         } else return true;
     }
 
+    //Controlla che la stringa non contenga caratteri speciali
+    function checkAlfanumericoESpazi($string) {
+        if(!checkMinLen($string)) return false;
+        if (!preg_match('/^[a-zA-Z0-9 ]+$/', $string)) {
+            return false;
+        } else return true;
+    }
+
     //Controlla che la stringa non contenga numeri e abbia almeno due caratteri
     function checkSoloLettereEDim($string) {
         if(!checkMinLen($string)) return false;
         if (!preg_match('/^[a-zA-Z]+$/', $string)) {
+            return false;
+        } else return true;
+    }
+
+    //Controlla che la stringa non contenga numeri e abbia almeno due caratteri
+    function checkNomeCognome($string) {
+        if(!checkMinLen($string)) return false;
+        if (!preg_match('/^[a-zA-Z ]+$/', $string)) {
             return false;
         } else return true;
     }
@@ -299,6 +303,19 @@
     function checkNumeroIntero($numero){
         if(empty($numero)) return false;
         if (!preg_match('/^[0-9]+$/', $numero)) {
+            return false;
+        } else return true;
+    }
+
+    //Controlla se viene inserito un CAP di Padova
+      function checkCAP($string) {
+          if(!preg_match('/35(100|121|122|123|124|125|126|127|128|129|131|132|133|134|135|136|137|138|139|141|142|143)/', $string)){
+              return false;
+          } else return true;
+      }
+
+      function checkSoloNumeri($string){
+        if (!preg_match('/^[0-9]+$/', $string)) {
             return false;
         } else return true;
     }
