@@ -162,17 +162,6 @@
 								}
 							}
 						}
-						
-						$nome_cognome = "";
-						$via = "";
-						$civico = "";
-						$cap = "";
-						$tel = "";
-						$intestatario = "";
-						$num_carta = "";
-						$mese_scad = "";
-						$anno_scad = "";
-						$cvv = "";
 
 						$dataConsegna = date("Y-m-d H+1:i:s");
 						$idDestinazione = "";
@@ -301,12 +290,35 @@
 			}
 			$paginaHTML = str_replace('<cartaUtente />', $cartaUtente, $paginaHTML);
 
+			$months = "";
+			$mesi = array('Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre');
+			for ($i = 0; $i<12; $i++)
+			{
+				if ($mese_scad == $i+1)
+				{
+					$months .= '<option value="' . ($i+1) . '" selected="selected">' . $mesi[$i] . '</option>';
+				}
+				else
+				{
+					$months .= '<option value="' . ($i+1) . '">' . $mesi[$i] . '</option>';
+				}
+			}
+
 			$years = "";
 			$annoCorrente = date("Y");
-			for ($i = 0; $i<20; $i++ )
+			for ($i = 0; $i<20; $i++)
 			{
-				$years .= '<option value="' . ($annoCorrente+$i) . '">' . ($annoCorrente+$i) . '</option>';
+				if ($anno_scad == ($annoCorrente+$i))
+				{
+					$years .= '<option value="' . ($annoCorrente+$i) . '" selected="selected">' . ($annoCorrente+$i) . '</option>';
+				}
+				else
+				{
+					$years .= '<option value="' . ($annoCorrente+$i) . '">' . ($annoCorrente+$i) . '</option>';
+				}
+				
 			}
+
 			$formCarta = "
 			<div>
 				<label for=\"intestatario_carta\">Intestatario carta: </label>
@@ -318,18 +330,7 @@
 			</div>
 			<select name=\"mese_scad\" class=\"selezione_small\">
 				<option>Mese</option>
-				<option value=\"01\">Gennaio</option>
-				<option value=\"02\">Febbraio</option>
-				<option value=\"03\">Marzo</option>
-				<option value=\"04\">Aprile</option>
-				<option value=\"05\">Maggio</option>
-				<option value=\"06\">Giugno</option>
-				<option value=\"07\">Luglio</option>
-				<option value=\"08\">Agosto</option>
-				<option value=\"09\">Settembre</option>
-				<option value=\"10\">Ottobre</option>
-				<option value=\"11\">Novembre</option>
-				<option value=\"12\">Dicembre</option>
+				$months
 			</select>
 			<select name=\"anno_scad\" class=\"selezione_small\">
 				<option>Anno</option>
