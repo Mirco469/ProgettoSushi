@@ -14,6 +14,30 @@
             return $this->connection;
         }
 
+
+        public function getPassword($utente){
+            $query = $this->connection->prepare('SELECT * FROM Utente WHERE username= ?');
+            $query->bind_param('s', $utente);
+            $query->execute();
+            $queryResult = $query->get_result();
+
+            if(mysqli_num_rows($queryResult)==0){
+                return null;
+            }else{
+                $row = mysqli_fetch_assoc($queryResult);
+                return $row['password'];
+            }
+        }
+
+
+        public function modificaPassword($utente, $password){
+            $query = $this->connection->prepare('UPDATE Utente SET password=? WHERE username = ?');
+            $query->bind_param('ss', $password, $utente);
+            if(!$query->execute()){
+                header('location: errore500.html');
+            }
+        }
+
         /* FUNZIONI PER CONTROLLARE LO STATO DEL DATABASE */
 
         //Funzione per controllare le credenziali: ritorna null se non esiste alcuna corrispondenza altrimenti ritorna il suo livello di autorizzazione
@@ -34,6 +58,7 @@
                 return $row['autorizzazione'];
             }
         }
+
 
         //Funzione che controlla se l'username è già esistente: ritorna true se esiste già false altrimenti
         public function  alreadyExistsUsername($username)
@@ -153,8 +178,7 @@
 		/* FUNZIONI PER OTTENERE DATI DAL DATABASE */
 
 		#funzione per il get dei prodotti per categoria con i nomi in ordine alfabetico;
-		public function getProdotti($categoria) 
-
+		public function getProdotti($categoria)
 		{
 			$query = $this->connection->prepare("SELECT * FROM Prodotto WHERE categoria = ? ORDER BY nome ASC");
 			$query->bind_param('s', $categoria);
@@ -230,9 +254,15 @@
 			}
 		}
 
+      
+		public function getNewsUtente() {
+            $query = $this->connection->prepare('SELECT * FROM News ORDER BY data DESC ');
+            $query->execute();
+            return $query->get_result();
+        }
+    }
 
-	}
-
+        /* FUNZIONI PER CONTROLLARE LO STATO DEL DATABASE */
 
 
 
@@ -326,27 +356,54 @@
     /* ALTRO */
 		//Ritorna la parte di menu corretta a seconda che l'utente sia loggato o meno
 	function getMenu() {
-
-
 		if(isset($_SESSION['username'])) {
 		    return '<li class="impostazioni">
 						<span id="dropbtn">Area Riservata</span>
 						<ul id="dropdown_content">
-							<li><a href="carrello.html" tabindex="8">Carrello</a></li>
-							<li><a href="storico_ordini.html" tabindex="9">Storico ordini</a></li>
-							<li><a href="gestione_profilo_utente.html" tabindex="10">Gestione profilo</a></li>
+							<li><a href="carrello.php" tabindex="8">Carrello</a></li>
+							<li><a href="storico_ordini.php" tabindex="9">Storico ordini</a></li>
+							<li><a href="gestione_profilo_utente.php" tabindex="10">Gestione profilo</a></li>
 							<li><a lang="en" href="logout.php" tabindex="11">Logout</a></li>
 						</ul>
 					</li>';
 
 		}else {
-			return '<li class="login"><a href="login.html" tabindex="7"><span lang="en">Login</span>/Registrazione</a></li>';
+			return '<li class="login"><a href="login.php" tabindex="7"><span lang="en">Login</span>/Registrazione</a></li>';
 		}
 	}
 
-	//Funzione per ottenere le categorie dei prodotti
-    function getCategorie()
-    {
-        return array("Antipasti","Primi Piatti","Teppanyako e tempure","Uramaki","Nigiri ed Onigiri","Gunkan","Temaki","Hosomaki","Sashimi","Dessert");
-    }
+	/*	Esempio di funzione per prendere i dati
+	public function getPersonaggi()
+	{
+		$query = "SELECT * FROM personaggi ORDER BY ID ASC";
+		$queryResult = myqsli_query($this->connection,$query);
+		
+		if(mysqli_num_rows($queryResult) == 0)
+		{
+			return null;
+		}
+		else
+		{
+			$result = array();
+			
+			while($row = mysqli_fetch_assoc($queryResult))
+			{
+				$arraySingoloPersonaggio = array(
+					'Nome' =>$row['nome]',
+					'Colore' => $row['colore'],
+					'Peso' => $row['peso'],
+					'Potenza' => $row['potenza'],
+					'Descrizione' => $row['descrizione'],
+					'ABR' => $row['angry_birds'],
+					'ABSW' => $row['angry_birds_star_wars'],
+					'AVS' => $row['angry_birds_space'],
+					'Immagine' => $row['immagine']
+				);
+			}
+				array_push($result,$arraySingoloPersonaggio);
+			
+			return $result;
+		}
+	}
+	*/
 ?>
