@@ -148,7 +148,7 @@
 				if (($erroriCarta == "") && ($erroriDest == "")) #Reindirizzo alla pagina di successo;
 				{
 					#prezzoOrdine($_SESSION['carrello'])
-					$totale = 0;
+					$totale = 15;
 					$dataOrdine = date("Y-m-d H:i:s");
 
 					if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'domicilio'))
