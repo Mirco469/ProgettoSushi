@@ -125,8 +125,7 @@
         }
 
 		#funzione per il get delle recensioni;
-		public function getRecensioni() 
-
+		public function getRecensioni()
 		{
 			#DESC o ASC in modo che prima ci sia la più recente;
 			$query = $this->connection->prepare("SELECT * FROM Recensione ORDER BY data DESC");
@@ -136,7 +135,7 @@
 			if (mysqli_num_rows($queryResult) == 0)
 			{
 				return null;
-			} 
+			}
 			else
 			{
 				$result = array();
@@ -158,7 +157,7 @@
 		/* FUNZIONI PER OTTENERE DATI DAL DATABASE */
 
 		#funzione per il get dei prodotti per categoria con i nomi in ordine alfabetico;
-		public function getProdotti($categoria) 
+		public function getProdotti($categoria)
 		{
 			$query = $this->connection->prepare("SELECT * FROM Prodotto WHERE categoria = ? ORDER BY nome ASC");
 			$query->bind_param('s', $categoria);
@@ -168,7 +167,7 @@
 			if (mysqli_num_rows($queryResult) == 0)
 			{
 				return null;
-			} 
+			}
 			else
 			{
 				$result = array();
@@ -188,7 +187,7 @@
 		}
 
 		#funzione per il get degli indirizzi per utente;
-		public function getIndirizzi($utente) 
+		public function getIndirizzi($utente)
 		{
 			$query = $this->connection->prepare("SELECT via, numero_civico FROM Destinazione WHERE utente = ?");
 			$query->bind_param('s', $utente);
@@ -198,7 +197,7 @@
 			if (mysqli_num_rows($queryResult) == 0)
 			{
 				return null;
-			} 
+			}
 			else
 			{
 				$result = array();
@@ -216,7 +215,7 @@
 		}
 
 		#funzione per il get della carta di credito per utente;
-		public function getPagamento($utente) 
+		public function getPagamento($utente)
 		{
 			$query = $this->connection->prepare("SELECT numero_carta FROM Utente WHERE username = ?");
 			$query->bind_param('s', $utente);
@@ -226,7 +225,7 @@
 			if (mysqli_num_rows($queryResult) == 0)
 			{
 				return null;
-			} 
+			}
 			else
 			{
 			    $row = mysqli_fetch_assoc($queryResult);
@@ -236,6 +235,13 @@
       
        /* FUNZIONI PER CONTROLLARE LO STATO DEL DATABASE */
 
+      
+		public function getNewsUtente() {
+            $query = $this->connection->prepare('SELECT * FROM News ORDER BY data DESC ');
+            $query->execute();
+            return $query->get_result();
+        }
+    }
 
         //Funzione per controllare le credenziali: ritorna null se non esiste alcuna corrispondenza altrimenti ritorna il suo livello di autorizzazione
         public function checkLogin($username,$password)
@@ -426,15 +432,13 @@
     /* ALTRO */
 		//Ritorna la parte di menu corretta a seconda che l'utente sia loggato o meno
 	function getMenu() {
-
-
 		if(isset($_SESSION['username'])) {
 		    return '<li class="impostazioni">
 						<span id="dropbtn">Area Riservata</span>
 						<ul id="dropdown_content">
-							<li><a href="carrello.html" tabindex="8">Carrello</a></li>
-							<li><a href="storico_ordini.html" tabindex="9">Storico ordini</a></li>
-							<li><a href="gestione_profilo_utente.html" tabindex="10">Gestione profilo</a></li>
+							<li><a href="carrello.php" tabindex="8">Carrello</a></li>
+							<li><a href="storico_ordini.php" tabindex="9">Storico ordini</a></li>
+							<li><a href="gestione_profilo_utente.php" tabindex="10">Gestione profilo</a></li>
 							<li><a lang="en" href="logout.php" tabindex="11">Logout</a></li>
 						</ul>
 					</li>';
