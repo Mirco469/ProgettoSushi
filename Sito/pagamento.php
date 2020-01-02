@@ -260,7 +260,7 @@
 			<label for=\"stato\">Stato: </label>
 			<input type=\"text\" id=\"stato\" name=\"stato\" value=\"Italia\" disabled=\"disabled\"/>
 			<label for=\"tel\">Numero di telefono: </label>
-			<input type=\"text\" id=\"tel\" name=\"tel\" placeholder=\"Inserire recapito\" value=\"$tel\" />
+			<input type=\"tel\" id=\"tel\" name=\"tel\" placeholder=\"Inserire recapito\" value=\"$tel\" />
 			";
 			$paginaHTML = str_replace('<formDestinazione />', $formDest, $paginaHTML);
 

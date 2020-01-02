@@ -859,6 +859,7 @@ min-height: 465px;
 
 #pagamento fieldset {
 	margin-top: 1em;
+	margin-bottom: 1em;
 }
 
 #pagamento p {
@@ -900,11 +901,6 @@ min-height: 465px;
 	padding: 0.3em;
 	border-radius: 4px;
 	font-size: 0.8em;
-}
-
-#pagamento .defaultButton {
-	width: 5em;
-	display: inline;
 }
 
 
