@@ -198,14 +198,14 @@
 			}
 			while ($row = mysqli_fetch_assoc($queryResult))
 			{
-				$indirizzo = "$row[via], $row[numero_civico]";
+				$indirizzo = "$row[id_destinazione]";
 				if (isset($_POST['destinazione']) && $_POST['destinazione'] == $indirizzo)
 				{
-					$indirizziUtente .= "<option value=\"$row[id_destinazione]\" selected=\"selected\" >$indirizzo</option>";
+					$indirizziUtente .= "<option value=\"$row[id_destinazione]\" selected=\"selected\" >$row[via], $row[numero_civico]</option>";
 				}
 				else
 				{
-					$indirizziUtente .= "<option value=\"$row[id_destinazione]\">$indirizzo</option>";
+					$indirizziUtente .= "<option value=\"$row[id_destinazione]\">$row[via], $row[numero_civico]</option>";
 				}
 			}
 			$paginaHTML = str_replace('<indirizziUtente />', $indirizziUtente, $paginaHTML);
