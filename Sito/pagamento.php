@@ -83,7 +83,7 @@
 						}
 						if (strlen($erroriDest) == 0)
 						{
-							successoDest = '<p class="successo">Informazioni di spedizione valide!</p>';
+							$successoDest = '<p class="successo">Informazioni di spedizione valide!</p>';
 						}
 						else
 						{

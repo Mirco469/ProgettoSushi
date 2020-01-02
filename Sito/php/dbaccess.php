@@ -77,6 +77,26 @@
             }
         }
 
+        //Funzione che controlla se esiste già la destinazione: ritorna true se esiste già false altrimenti;
+        public function alreadyExistsDest($nome_cognome, $tel, $cap, $via, $civico, $user)
+        {
+            $query = $this->connection->prepare('SELECT * FROM Destinazione WHERE $nome_cognome=?, $tel=?, $cap=?, $via=?, $civico=?, $user=?');
+            $query->bind_param('ssssss', $nome_cognome, $tel, $cap, $via, $civico, $user);
+            if (!$query->execute())
+            {
+                header('location: errore500.html');
+            }
+            $queryResult = $query->get_result();
+            if(mysqli_num_rows($queryResult) == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         //Funzione che controlla se il prodotto è già esistente: ritorna true se esiste già false altrimenti
         public function  alreadyExistsProdotto($prodotto)
         {
@@ -156,11 +176,19 @@
             }
         }
 
+        public function addSpedizione($user, $nome_cognome, $indirizzo, $numero_civico, $cap, $tel){
+            $query = $this->connection->prepare('INSERT INTO Destinazione (nome_cognome, numero_telefonico, CAP, via, numero_civico, utente) VALUES (?,?,?,?,?,"'.$user.'")');
+            $query->bind_param('sssss',$nome_cognome, $tel, $cap, $indirizzo, $numero_civico);
+            if(!$query->execute()){
+                header('location: errore500.html');
+            }
+        }
+
 		//Aggiunge un ordine al database: ritorna true se ha successo, reindirzzia alla pagina di errore 500 altrimenti.
 		public function addOrdine($dataOrdine, $dataConsegna, $totale, $destinazione, $user)
 		{
             $query = $this->connection->prepare('INSERT INTO Ordine (data_ordine, data_consegna, totale, destinazione, utente) VALUES (?,?,?,?,?)');
-			$query->bind_param('sssss', $dataOrdine, $dataConsegna, $totale, $destinazione, $user);
+			$query->bind_param('ssbss', $dataOrdine, $dataConsegna, $totale, $destinazione, $user);
             if($query->execute())
             {
                 return true;

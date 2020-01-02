@@ -78,7 +78,7 @@ DROP TABLE IF EXISTS Destinazione;
 CREATE TABLE Destinazione(
 	id_destinazione			INT PRIMARY KEY AUTO_INCREMENT,
 	nome_cognome				VARCHAR(40) NOT NULL,
-	numero_telefonico		VARCHAR(15),
+	numero_telefonico		VARCHAR(15) NOT NULL,
 	CAP									VARCHAR(5) NOT NULL,
 	via 								VARCHAR(15) NOT NULL,
 	numero_civico				SMALLINT NOT NULL,
@@ -89,13 +89,13 @@ CREATE TABLE Destinazione(
 -- Inserimento dati nella tabella Destinazione
 
 INSERT INTO Destinazione (id_destinazione, nome_cognome, numero_telefonico, CAP, via, numero_civico, utente) VALUES
-(201, 'Utente Generico', '049XXXXXXX', '35100', 'Aldo Moro', 21, 'user'),
-(202, 'Utente Generico', '049XXXXXXX', '35100', 'Ugo Bassi', 17, 'user'),
-(203, 'User Uno', '346XXXXXXX', '35133', 'Don Stefani', 10, 'user1'),
-(204, 'User Due', '339XXXXXXX', '35142', 'Monte Bianco', 15, 'user2'),
-(205, 'User Tre', '333XXXXXXX', '35129', 'Andrea Palladio', 17, 'user3'),
-(206, 'User Quattro', '340XXXXXXX', '35122', 'Antonio Canova', 11, 'user4'),
-(207, 'User Cinque', '348XXXXXXX', '35100', 'Aldo Moro', 22, 'user5');
+(201, 'Utente Generico', '0490000000', '35100', 'Aldo Moro', 21, 'user'),
+(202, 'Utente Generico', '0490000000', '35100', 'Ugo Bassi', 17, 'user'),
+(203, 'User Uno', '3460000000', '35133', 'Don Stefani', 10, 'user1'),
+(204, 'User Due', '3390000000', '35142', 'Monte Bianco', 15, 'user2'),
+(205, 'User Tre', '3330000000', '35129', 'Andrea Palladio', 17, 'user3'),
+(206, 'User Quattro', '3400000000', '35122', 'Antonio Canova', 11, 'user4'),
+(207, 'User Cinque', '3480000000', '35100', 'Aldo Moro', 22, 'user5');
 
 -- Crea la tabella Tabella Ordine
 
@@ -121,10 +121,10 @@ INSERT INTO Ordine (id_ordine, data_ordine, data_consegna, totale, destinazione,
 (305, '2019-05-07 20:30:00', '2019-05-07 21:30:00', 46.50, 205, 'user3'),
 (306, '2019-06-12 12:45:00', '2019-06-12 13:45:00', 40.00, 206, 'user4'),
 (307, '2019-07-23 13:15:00', '2019-07-23 14:15:00', 36.50, 207, 'user5'),
-(308, '2019-08-29 12:30:00', , 66.00, , 'user'),
-(309, '2019-10-16 13:00:00', , 15.50, , 'user'),
-(310, '2020-01-10 20:15:00', , 42.50, , 'user1'),
-(311, '2020-01-14 14:00:00', , 57.50, , 'user2');
+(308, '2019-08-29 12:30:00', NULL, 66.00, NULL, 'user'),
+(309, '2019-10-16 13:00:00', NULL, 15.50, NULL, 'user'),
+(310, '2020-01-10 20:15:00', NULL, 42.50, NULL, 'user1'),
+(311, '2020-01-14 14:00:00', NULL, 57.50, NULL, 'user2');
 
 -- Crea la tabella Tabella Prodotto
 
