@@ -80,7 +80,7 @@
         //Funzione che controlla se esiste già la destinazione: ritorna true se esiste già false altrimenti;
         public function alreadyExistsDest($nome_cognome, $tel, $cap, $via, $civico, $user)
         {
-            $query = $this->connection->prepare('SELECT * FROM Destinazione WHERE $nome_cognome=?, $tel=?, $cap=?, $via=?, $civico=?, $user=?');
+            $query = $this->connection->prepare('SELECT * FROM destinazione WHERE nome_cognome = ? AND numero_telefonico = ? AND CAP = ? AND via = ? AND numero_civico = ? AND utente = ?');
             $query->bind_param('ssssss', $nome_cognome, $tel, $cap, $via, $civico, $user);
             if (!$query->execute())
             {
@@ -176,9 +176,9 @@
             }
         }
 
-        public function addSpedizione($user, $nome_cognome, $indirizzo, $numero_civico, $cap, $tel){
-            $query = $this->connection->prepare('INSERT INTO Destinazione (nome_cognome, numero_telefonico, CAP, via, numero_civico, utente) VALUES (?,?,?,?,?,"'.$user.'")');
-            $query->bind_param('sssss',$nome_cognome, $tel, $cap, $indirizzo, $numero_civico);
+        public function addSpedizione($nome_cognome, $indirizzo, $numero_civico, $cap, $tel, $user){
+            $query = $this->connection->prepare('INSERT INTO Destinazione (nome_cognome, numero_telefonico, CAP, via, numero_civico, utente) VALUES (?,?,?,?,?,?)');
+            $query->bind_param('ssssss',$nome_cognome, $tel, $cap, $indirizzo, $numero_civico, $user);
             if(!$query->execute()){
                 header('location: errore500.html');
             }
@@ -392,6 +392,17 @@
 			return '<li class="login"><a href="login.php" tabindex="7"><span lang="en">Login</span>/Registrazione</a></li>';
 		}
 	}
+
+    #Calcola il prezzo totale per i prodotti nel carrello;
+    function totaleCarrello()
+    {
+        $totale = 0;
+        foreach($_SESSION['carrello'] AS $prodotto)
+        {
+            $totale += $prodotto['prezzo'];
+        }
+        return $totale;
+    }
 
 	/*	Esempio di funzione per prendere i dati
 	public function getPersonaggi()
