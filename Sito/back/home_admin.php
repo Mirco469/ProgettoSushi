@@ -3,8 +3,7 @@
     $db = new DBAccess();
 
     session_start();
-    $_SESSION['username']='admin';
-    $_SESSION['autorizzazione']='Admin';
+   
 
 
     if(isset($_SESSION['username'])) {
