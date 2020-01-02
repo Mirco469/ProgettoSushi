@@ -156,6 +156,21 @@
             }
         }
 
+		//Aggiunge un ordine al database: ritorna true se ha successo, reindirzzia alla pagina di errore 500 altrimenti.
+		public function addOrdine($dataOrdine, $dataConsegna, $totale, $destinazione, $user)
+		{
+            $query = $this->connection->prepare('INSERT INTO Ordine (data_ordine, data_consegna, totale, destinazione, utente) VALUES (?,?,?,?,?)');
+			$query->bind_param('sssss', $dataOrdine, $dataConsegna, $totale, $destinazione, $user);
+            if($query->execute())
+            {
+                return true;
+            }
+            else
+            {
+                header("Location: /errore500.php");
+            }
+		}
+
 		#funzione per il get delle recensioni;
 		public function getRecensioni()
 		{
@@ -218,7 +233,7 @@
 			}
 		}
 
-      
+
 		public function getNewsUtente() {
             $query = $this->connection->prepare('SELECT * FROM News ORDER BY data DESC ');
             $query->execute();
@@ -355,7 +370,7 @@
 	{
 		$query = "SELECT * FROM personaggi ORDER BY ID ASC";
 		$queryResult = myqsli_query($this->connection,$query);
-		
+
 		if(mysqli_num_rows($queryResult) == 0)
 		{
 			return null;
@@ -363,7 +378,7 @@
 		else
 		{
 			$result = array();
-			
+
 			while($row = mysqli_fetch_assoc($queryResult))
 			{
 				$arraySingoloPersonaggio = array(
@@ -379,7 +394,7 @@
 				);
 			}
 				array_push($result,$arraySingoloPersonaggio);
-			
+
 			return $result;
 		}
 	}

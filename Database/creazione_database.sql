@@ -17,7 +17,7 @@ CREATE TABLE Utente(
 
 -- Inserimento dati nella tabella Utente
 
-INSERT INTO Utente (username, nome, cognome, password, autorizzazione, numero_carta, intestatario, scadenza) VALUES 
+INSERT INTO Utente (username, nome, cognome, password, autorizzazione, numero_carta, intestatario, scadenza) VALUES
 ('admin', 'Admin', 'Generico', 'admin', 'Admin', NULL, NULL, NULL),
 ('ammin1', 'Amministratore', 'Due', 'password', 'Admin', NULL, NULL, NULL),
 ('ammin2', 'Amministratore', 'Tre', 'password', 'Admin', NULL, NULL, NULL),
@@ -43,7 +43,7 @@ CREATE TABLE Recensione(
 
 -- Inserimento dati nella tabella Recensione
 
-INSERT INTO Recensione (id_recensione, titolo, testo, data, utente) VALUES 
+INSERT INTO Recensione (id_recensione, titolo, testo, data, utente) VALUES
 (001, 'Ristorante TOP', 'Sono un’appassionata di sushi e credo che questo ristorante possa vantare la migliore qualità e varietà della zona. Uramaki special strepitosi e servizio impeccabile.', '2018-09-11', 'user2'),
 (002, 'Bella serata', 'Ogni volta che vengo a Padova mi fermo sempre a cena in questo locale, i ragazzi dello staff sono simpatici e molto professionali, sulla qualità del cibo semplicemente ottimo.', '2019-03-22', 'user1'),
 (003, 'Consigliato', 'Bel ristorante in una zona molto accogliente di Padova. Non me ne intendo molto di sushi ma posso dire che lo consiglierò sicuramente ad amici', '2017-11-08', 'user3'),
@@ -64,7 +64,7 @@ CREATE TABLE News(
 
 -- Inserimento dati nella tabella News
 
-INSERT INTO News (id_news, titolo, descrizione, data, utente) VALUES 
+INSERT INTO News (id_news, titolo, descrizione, data, utente) VALUES
 (101, 'Ferragosto', 'Vi ricordiamo che dal 12 al 18 Agosto il ristorante rimarra chiuso per ferie.', '2019-08-08', 'ammin1'),
 (102, 'Cercasi Cameriera', 'Cercasi cameriera per contratto part-time ', '2019-08-22', 'ammin2'),
 (103, 'Black Friday Week', 'Dal 25 al 30 Novembre sconto del 10% su tutti gli ordini superiori ai 30€; Venerdì 29 sconto del 20%.', '2019-11-18', 'admin'),
@@ -88,7 +88,7 @@ CREATE TABLE Destinazione(
 
 -- Inserimento dati nella tabella Destinazione
 
-INSERT INTO Destinazione (id_destinazione, nome_cognome, numero_telefonico, CAP, via, numero_civico, utente) VALUES 
+INSERT INTO Destinazione (id_destinazione, nome_cognome, numero_telefonico, CAP, via, numero_civico, utente) VALUES
 (201, 'Utente Generico', '049XXXXXXX', '35100', 'Aldo Moro', 21, 'user'),
 (202, 'Utente Generico', '049XXXXXXX', '35100', 'Ugo Bassi', 17, 'user'),
 (203, 'User Uno', '346XXXXXXX', '35133', 'Don Stefani', 10, 'user1'),
@@ -104,7 +104,7 @@ DROP TABLE IF EXISTS Ordine;
 CREATE TABLE Ordine(
 	id_ordine			INT PRIMARY KEY AUTO_INCREMENT,
 	data_ordine		DATETIME NOT NULL,
-	data_consegna		DATETIME NOT NULL,
+	data_consegna		DATETIME,
 	totale				FLOAT NOT NULL,
 	destinazione	INT,
 	utente 			VARCHAR(20) NOT NULL,
@@ -113,7 +113,7 @@ CREATE TABLE Ordine(
 
 -- Inserimento dati nella tabella Ordine
 
-INSERT INTO Ordine (id_ordine, data_ordine, data_consegna, totale, destinazione) VALUES 
+INSERT INTO Ordine (id_ordine, data_ordine, data_consegna, totale, destinazione, utente) VALUES 
 (301, '2019-02-19 12:30:00', '2019-02-19 13:30:00', 27.00, 201, 'user'),
 (302, '2019-03-22 20:00:00', '2019-03-22 21:00:00', 28.00, 202, 'user'),
 (303, '2019-04-11 13:30:00', '2019-04-11 14:30:00', 33.00, 203, 'user1'),
@@ -121,10 +121,10 @@ INSERT INTO Ordine (id_ordine, data_ordine, data_consegna, totale, destinazione)
 (305, '2019-05-07 20:30:00', '2019-05-07 21:30:00', 46.50, 205, 'user3'),
 (306, '2019-06-12 12:45:00', '2019-06-12 13:45:00', 40.00, 206, 'user4'),
 (307, '2019-07-23 13:15:00', '2019-07-23 14:15:00', 36.50, 207, 'user5'),
-(308, '2019-08-29 12:30:00', '2019-08-29 13:30:00', 66.00, , 'user'),
-(309, '2019-10-16 13:00:00', '2019-10-16 14:00:00', 15.50, , 'user'),
-(310, '2020-01-10 20:15:00', '2020-01-10 21:15:00', 42.50, , 'user1'),
-(311, '2020-01-14 14:00:00', '2020-01-14 15:00:00', 57.50, , 'user2');
+(308, '2019-08-29 12:30:00', , 66.00, , 'user'),
+(309, '2019-10-16 13:00:00', , 15.50, , 'user'),
+(310, '2020-01-10 20:15:00', , 42.50, , 'user1'),
+(311, '2020-01-14 14:00:00', , 57.50, , 'user2');
 
 -- Crea la tabella Tabella Prodotto
 
@@ -140,7 +140,7 @@ CREATE TABLE Prodotto(
 
 -- Inserimento dati nella tabella Prodotto
 
-INSERT INTO Prodotto (nome, categoria, pezzi, prezzo, descrizione) VALUES 
+INSERT INTO Prodotto (nome, categoria, pezzi, prezzo, descrizione) VALUES
 ('Tartara di tonno', 'Antipasti', 1, 6.00, 'Salmone, avocado, mango, tobiko, olio, menta e limone.'),
 ('Takosu', 'Antipasti', 1, 5.00, 'Carpaccio di polpo in salsa ponzu, limone e wakame.'),
 ('Goma Wakame', 'Antipasti', 1, 4.00, 'Alghe giapponesi marinate.'),
@@ -222,7 +222,7 @@ CREATE TABLE Contiene(
 
 -- Inserimento dati nella tabella Contiene
 
-INSERT INTO Contiene (id_ordine, nome, numero_porzioni) VALUES 
+INSERT INTO Contiene (id_ordine, nome, numero_porzioni) VALUES
 (301, 'Tartara di tonno', 1),
 (301, 'Kaisen Udon', 1),
 (301, 'Salmon Philadelphia', 2),

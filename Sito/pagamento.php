@@ -4,8 +4,8 @@
 
     session_start();
 	#Login per testare la pagina;
-	$_SESSION['username'] = "user";
-	$_SESSION['password'] = "user";
+	$_SESSION['username'] = "user"; #da togliere
+	$_SESSION['password'] = "user"; #da togliere
 
 	if (isset($_SESSION['username']))
 	{
@@ -147,6 +147,9 @@
 
 				if (($erroriCarta == "") && ($erroriDest == "")) #Reindirizzo alla pagina di successo;
 				{
+					$totale = prezzoOrdine($_SESSION['carrello']);
+					$dataOrdine = date("Y-m-d H:i:s");
+
 					if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'domicilio'))
 					{
 						if (!$db->addSpedizione($user, $nome_cognome, $via, $civico, $cap, $tel))
@@ -164,7 +167,38 @@
 						$anno_scad = "";
 						$cvv = "";
 
-						if (!$db->addOrdine())
+						$dataConsegna = date("Y-m-d H+1:i:s");
+						$idDestinazione = "";
+						$maxId = 0;
+						if ($db->openDBConnection())
+						{
+							$queryResult = $db->getDestinazioni($user);
+						}
+						else
+						{
+							header('location: errore500.html');
+						}
+						while ($row = mysqli_fetch_assoc($queryResult))
+						{
+							if (isset($_POST['destinazione']) && $_POST['destinazione'] == $row[id_destinazione])
+							{
+								$idDestinazione = $row[id_destinazione];
+							}
+							else
+							{
+								if ($row[id_destinazione] > $maxId)
+								{
+									$maxId = $row[id_destinazione];
+								}
+							}
+						}
+						#Se l'utente ha inserito una nuova destinazione, sarà quella con id più alto nel database;
+						if ($maxId != 0;)
+						{
+							$idDestinazione = $maxId;
+						}
+
+						if (!$db->addOrdine($dataOrdine, $dataConsegna, $totale, $idDestinazione, $user))
 						{
 							header('location: errore500.php');
 						}
@@ -172,7 +206,10 @@
 					}
 					else if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'asporto'))
 					{
-						if (!$db->addOrdine())
+						$dataConsegna = null;
+						$destinazione = null;
+
+						if (!$db->addOrdine($dataOrdine, $dataConsegna, $totale, $destinazione, $user)
 						{
 							header('location: errore500.php');
 						}
