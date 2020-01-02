@@ -17,7 +17,7 @@ CREATE TABLE Utente(
 
 -- Inserimento dati nella tabella Utente
 
-INSERT INTO Utente (username, nome, cognome, password, autorizzazione, numero_carta, intestatario, scadenza) VALUES
+INSERT INTO Utente (username, nome, cognome, password, autorizzazione, numero_carta, intestatario, scadenza) VALUES 
 ('admin', 'Admin', 'Generico', 'admin', 'Admin', NULL, NULL, NULL),
 ('ammin1', 'Amministratore', 'Due', 'password', 'Admin', NULL, NULL, NULL),
 ('ammin2', 'Amministratore', 'Tre', 'password', 'Admin', NULL, NULL, NULL),
@@ -43,7 +43,7 @@ CREATE TABLE Recensione(
 
 -- Inserimento dati nella tabella Recensione
 
-INSERT INTO Recensione (id_recensione, titolo, testo, data, utente) VALUES
+INSERT INTO Recensione (id_recensione, titolo, testo, data, utente) VALUES 
 (001, 'Ristorante TOP', 'Sono un’appassionata di sushi e credo che questo ristorante possa vantare la migliore qualità e varietà della zona. Uramaki special strepitosi e servizio impeccabile.', '2018-09-11', 'user2'),
 (002, 'Bella serata', 'Ogni volta che vengo a Padova mi fermo sempre a cena in questo locale, i ragazzi dello staff sono simpatici e molto professionali, sulla qualità del cibo semplicemente ottimo.', '2019-03-22', 'user1'),
 (003, 'Consigliato', 'Bel ristorante in una zona molto accogliente di Padova. Non me ne intendo molto di sushi ma posso dire che lo consiglierò sicuramente ad amici', '2017-11-08', 'user3'),
@@ -64,7 +64,7 @@ CREATE TABLE News(
 
 -- Inserimento dati nella tabella News
 
-INSERT INTO News (id_news, titolo, descrizione, data, utente) VALUES
+INSERT INTO News (id_news, titolo, descrizione, data, utente) VALUES 
 (101, 'Ferragosto', 'Vi ricordiamo che dal 12 al 18 Agosto il ristorante rimarra chiuso per ferie.', '2019-08-08', 'ammin1'),
 (102, 'Cercasi Cameriera', 'Cercasi cameriera per contratto part-time ', '2019-08-22', 'ammin2'),
 (103, 'Black Friday Week', 'Dal 25 al 30 Novembre sconto del 10% su tutti gli ordini superiori ai 30€; Venerdì 29 sconto del 20%.', '2019-11-18', 'admin'),
@@ -88,7 +88,7 @@ CREATE TABLE Destinazione(
 
 -- Inserimento dati nella tabella Destinazione
 
-INSERT INTO Destinazione (id_destinazione, nome_cognome, numero_telefonico, CAP, via, numero_civico, utente) VALUES
+INSERT INTO Destinazione (id_destinazione, nome_cognome, numero_telefonico, CAP, via, numero_civico, utente) VALUES 
 (201, 'Utente Generico', '0490000000', '35100', 'Aldo Moro', 21, 'user'),
 (202, 'Utente Generico', '0490000000', '35100', 'Ugo Bassi', 17, 'user'),
 (203, 'User Uno', '3460000000', '35133', 'Don Stefani', 10, 'user1'),
@@ -222,7 +222,7 @@ CREATE TABLE Contiene(
 
 -- Inserimento dati nella tabella Contiene
 
-INSERT INTO Contiene (id_ordine, nome, numero_porzioni) VALUES
+INSERT INTO Contiene (id_ordine, nome, numero_porzioni) VALUES 
 (301, 'Tartara di tonno', 1),
 (301, 'Kaisen Udon', 1),
 (301, 'Salmon Philadelphia', 2),

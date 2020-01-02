@@ -293,10 +293,6 @@ table.defaultTable td:last-child {
 	font-size: 0.8em;
 }
 
-#pagamento .defaultButton {
-	width: 5em;
-	display: inline;
-}
 
 /* Takeaway */
 .lista_piatti {
