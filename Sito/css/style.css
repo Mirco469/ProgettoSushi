@@ -1101,9 +1101,9 @@ min-height: 465px;
     display: inline-block;
 	box-sizing: border-box;
     margin-right: 0.3em;
-    padding: 1px 6px;
+    padding: 0.3em;
 	width: 9em;
     text-align: center;
     text-decoration: none;
-    font-size: 13.3333px;
+    font-size: 0.5em;
 }
