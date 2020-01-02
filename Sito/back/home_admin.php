@@ -3,8 +3,8 @@
     $db = new DBAccess();
 
     session_start();
-   // $_SESSION['username']='admin';
-//    $_SESSION['autorizzazione']='Admin';
+    $_SESSION['username']='admin';
+    $_SESSION['autorizzazione']='Admin';
 
 
     if(isset($_SESSION['username'])) {
@@ -15,6 +15,7 @@
             $data = 'AAAA-MM-GG';
             $testo = '';
             $erroriNews = '';
+            $successoNews = '';
 
             if (isset($_SESSION['autorizzazione']) && $_SESSION['autorizzazione'] == 'Admin') {
 
@@ -38,6 +39,7 @@
 
                     if(strlen($erroriNews)==0){
                         $db->inserisciNews($titolo, $data, $testo, $username);
+                        $successoNews = '<ul class="successo"><li>La notizia &egrave; stata aggiunta con successo!</li></ul>';
                         $titolo = '';
                         $testo = '';
                     }else{
@@ -71,8 +73,13 @@
                                     ";
                     $index++;
                 }
+
                 $paginaHTML = str_replace('<formNews />', $formNews, $paginaHTML);
-                $paginaHTML = str_replace('<messaggio />', $erroriNews, $paginaHTML);
+                if(strlen($successoNews)!=0){
+                    $paginaHTML = str_replace('<messaggio />', $successoNews, $paginaHTML);
+                }else{
+                    $paginaHTML = str_replace('<messaggio />', $erroriNews, $paginaHTML);
+                }
                 echo str_replace('<notizie />', $notizie, $paginaHTML);
                 exit;
 
