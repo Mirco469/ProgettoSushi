@@ -126,7 +126,26 @@
             }
         }
 
-		#funzione per il get delle recensioni;
+
+        public function inserisciNews($titolo, $data ,$testo, $user){
+
+                $query = $this->connection->prepare('INSERT INTO News (titolo, descrizione, data, utente) VALUES (?,?,?,?)');
+                $query->bind_param('ssss', $titolo, $testo, $data, $user);
+                if(!$query->execute()){
+                    header('location: errore500.html');
+                }
+
+        }
+
+        public function getNews() {
+            $query = $this->connection->prepare('SELECT * FROM News ORDER BY data ');
+            $query->execute();
+            return $query->get_result();
+        }
+
+
+
+        #funzione per il get delle recensioni;
 		public function getRecensioni()
 		{
 			#DESC o ASC in modo che prima ci sia la più recente;
@@ -264,7 +283,17 @@
         }
     }
 
+
+	function checkData($data){
+        if (preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $data)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /* FUNZIONI PER IL CHECK DELL'INPUT */
+
 
     //Controlla che la stringa sia lunga almeno due caratteri
     function checkMinLen($string) {
@@ -273,6 +302,11 @@
         }else {
             return true;
         }
+    }
+
+    function checkTesto($string) {
+        if(!checkMinLen($string)) return false;
+        else return true;
     }
 
     //Controlla che la stringa non contenga caratteri speciali
