@@ -83,7 +83,7 @@
 						}
 						if (strlen($erroriDest) == 0)
 						{
-							$successoDest = '<p class="successo">Informazioni di spedizione valide!</p>';
+							successoDest = '<p class="successo">Informazioni di spedizione valide!</p>';
 						}
 						else
 						{
@@ -147,15 +147,23 @@
 
 				if (($erroriCarta == "") && ($erroriDest == "")) #Reindirizzo alla pagina di successo;
 				{
-					$totale = prezzoOrdine($_SESSION['carrello']);
+					#prezzoOrdine($_SESSION['carrello'])
+					$totale = 0;
 					$dataOrdine = date("Y-m-d H:i:s");
 
 					if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'domicilio'))
 					{
-						if (!$db->addSpedizione($user, $nome_cognome, $via, $civico, $cap, $tel))
+						if ($_POST['destinazione'] == 'Indirizzo')
 						{
-							header('location: errore500.php');
+							if (!$db->alreadyExistsDest($nome_cognome, $tel, $cap, $via, $civico, $user))
+							{
+								if (!$db->addSpedizione($user, $nome_cognome, $via, $civico, $cap, $tel))
+								{
+									header('location: successo.php');
+								}
+							}
 						}
+						
 						$nome_cognome = "";
 						$via = "";
 						$civico = "";
@@ -169,33 +177,33 @@
 
 						$dataConsegna = date("Y-m-d H+1:i:s");
 						$idDestinazione = "";
-						$maxId = 0;
 						if ($db->openDBConnection())
 						{
+							$maxId = 0;
 							$queryResult = $db->getDestinazioni($user);
+							while ($row = mysqli_fetch_assoc($queryResult))
+							{
+								if (isset($_POST['destinazione']) && $_POST['destinazione'] == $row['id_destinazione'])
+								{
+									$idDestinazione = $row['id_destinazione'];
+								}
+								else
+								{
+									if ($row['id_destinazione'] > $maxId)
+									{
+										$maxId = $row['id_destinazione'];
+									}
+								}
+							}
+							#Se l'utente ha inserito una nuova destinazione, sarà quella con id più alto nel database;
+							if ($maxId != 0)
+							{
+								$idDestinazione = $maxId;
+							}
 						}
 						else
 						{
 							header('location: errore500.html');
-						}
-						while ($row = mysqli_fetch_assoc($queryResult))
-						{
-							if (isset($_POST['destinazione']) && $_POST['destinazione'] == $row[id_destinazione])
-							{
-								$idDestinazione = $row[id_destinazione];
-							}
-							else
-							{
-								if ($row[id_destinazione] > $maxId)
-								{
-									$maxId = $row[id_destinazione];
-								}
-							}
-						}
-						#Se l'utente ha inserito una nuova destinazione, sarà quella con id più alto nel database;
-						if ($maxId != 0;)
-						{
-							$idDestinazione = $maxId;
 						}
 
 						if (!$db->addOrdine($dataOrdine, $dataConsegna, $totale, $idDestinazione, $user))
@@ -209,7 +217,7 @@
 						$dataConsegna = null;
 						$destinazione = null;
 
-						if (!$db->addOrdine($dataOrdine, $dataConsegna, $totale, $destinazione, $user)
+						if (!$db->addOrdine($dataOrdine, $dataConsegna, $totale, $destinazione, $user))
 						{
 							header('location: errore500.php');
 						}
@@ -228,23 +236,24 @@
 			if ($db->openDBConnection())
 			{
 				$queryResult = $db->getDestinazioni($user);
+				while ($row = mysqli_fetch_assoc($queryResult))
+				{
+					$indirizzo = "$row[id_destinazione]";
+					if (isset($_POST['destinazione']) && $_POST['destinazione'] == $indirizzo)
+					{
+						$indirizziUtente .= "<option value=\"$row[id_destinazione]\" selected=\"selected\" >$row[via], $row[numero_civico]</option>";
+					}
+					else
+					{
+						$indirizziUtente .= "<option value=\"$row[id_destinazione]\">$row[via], $row[numero_civico]</option>";
+					}
+				}
 			}
 			else
 			{
 				header('location: errore500.html');
 			}
-			while ($row = mysqli_fetch_assoc($queryResult))
-			{
-				$indirizzo = "$row[id_destinazione]";
-				if (isset($_POST['destinazione']) && $_POST['destinazione'] == $indirizzo)
-				{
-					$indirizziUtente .= "<option value=\"$row[id_destinazione]\" selected=\"selected\" >$row[via], $row[numero_civico]</option>";
-				}
-				else
-				{
-					$indirizziUtente .= "<option value=\"$row[id_destinazione]\">$row[via], $row[numero_civico]</option>";
-				}
-			}
+			
 			$paginaHTML = str_replace('<indirizziUtente />', $indirizziUtente, $paginaHTML);
 
 			$formDest = "
