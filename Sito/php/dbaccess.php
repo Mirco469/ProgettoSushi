@@ -263,7 +263,6 @@
 		
 		public function getOrdini($username) {
 			$query = $this->connection->prepare("SELECT O.* FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username WHERE U.username = ?");
-			echo $this->connection->error;
 			$query->bind_param('s',$username);
 			$query->execute();
 			$queryResult = $query->get_result();
