@@ -903,6 +903,18 @@ min-height: 465px;
 	font-size: 0.8em;
 }
 
+#pagamento .defaultButton {
+	width: 5em;
+	display: inline;
+	margin: 0.5em;
+}
+
+#pagamento input[type="submit"] {
+    padding: 0.6em 0em;
+    margin: 0.5em 0;
+    border: 2px;
+}
+
 
 /* Gestione Profilo Utente */
 #menu_profilo {
