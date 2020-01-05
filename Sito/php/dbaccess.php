@@ -132,34 +132,56 @@
             }
         }
 
-        #funzione per il get delle recensioni;
-        public function getRecensioni()
-        {
-            #DESC o ASC in modo che prima ci sia la più recente;
-            $query = $this->connection->prepare("SELECT * FROM Recensione ORDER BY data DESC");
-            $query->execute();
-            $queryResult = $query->get_result();
 
-            if (mysqli_num_rows($queryResult) == 0) {
-                return null;
-            } else {
-                $result = array();
 
-                while ($row = mysqli_fetch_assoc($queryResult)) {
-                    $arraySingolaRecensione = array(
-                        'Titolo' => $row['titolo'],
-                        'Data' => $row['data'],
-                        'Utente' => $row['utente'],
-                        'Testo' => $row['testo'],
-                    );
-                    array_push($result, $arraySingolaRecensione);
+        public function inserisciNews($titolo, $data ,$testo, $user){
+
+                $query = $this->connection->prepare('INSERT INTO News (titolo, descrizione, data, utente) VALUES (?,?,?,?)');
+                $query->bind_param('ssss', $titolo, $testo, $data, $user);
+                if(!$query->execute()){
+                    header('location: errore500.html');
                 }
 
-                return $result;
-            }
         }
 
-        /* FUNZIONI PER OTTENERE DATI DAL DATABASE */
+        public function getNews() {
+            $query = $this->connection->prepare('SELECT * FROM News ORDER BY data ');
+            $query->execute();
+            return $query->get_result();
+        }
+
+
+
+        #funzione per il get delle recensioni;
+		public function getRecensioni()
+		{
+			#DESC o ASC in modo che prima ci sia la più recente;
+			$query = $this->connection->prepare("SELECT * FROM Recensione ORDER BY data DESC");
+			$query->execute();
+			$queryResult = $query->get_result();
+
+			if (mysqli_num_rows($queryResult) == 0)
+			{
+				return null;
+			}
+			else
+			{
+				$result = array();
+
+				while ($row = mysqli_fetch_assoc($queryResult)) {
+					$arraySingolaRecensione = array (
+						'Titolo' => $row['titolo'],
+						'Data' => $row['data'],
+						'Utente' => $row['utente'],
+						'Testo' => $row['testo'],
+					);
+					array_push($result, $arraySingolaRecensione);
+				}
+
+				return $result;
+			}
+		}
+
 
         #funzione per il get dei prodotti per categoria con i nomi in ordine alfabetico;
         public function getProdotti($categoria)
@@ -328,7 +350,17 @@
         }
     }
 
+
+	function checkData($data){
+        if (preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $data)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /* FUNZIONI PER IL CHECK DELL'INPUT */
+
 
     //Controlla che la stringa sia lunga almeno due caratteri
     function checkMinLen($string) {
@@ -337,6 +369,11 @@
         }else {
             return true;
         }
+    }
+
+    function checkTesto($string) {
+        if(!checkMinLen($string)) return false;
+        else return true;
     }
 
     //Controlla che la stringa non contenga caratteri speciali
