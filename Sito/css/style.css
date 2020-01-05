@@ -812,6 +812,7 @@ div#notizie {
 }
 
 #notizie dt {
+	margin-top: 5%;
     font-weight: bold;
 }
 
@@ -1087,4 +1088,22 @@ min-height: 465px;
 #errore #testo {
 	text-align: left;
 	font-size: 2em;
+}
+
+
+
+/*	storico_ordini	*/
+#storico_ordini h2 {
+	margin-left: 6em;
+}
+
+#storico_ordini a.buttonSmall {
+    display: inline-block;
+	box-sizing: border-box;
+    margin-right: 0.3em;
+    padding: 0.3em;
+	width: 9em;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.5em;
 }

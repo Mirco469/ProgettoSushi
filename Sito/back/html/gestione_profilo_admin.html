@@ -28,7 +28,7 @@
             <li><a href="aggiunta_prodotti.html" tabindex="3">Aggiungi Prodotto</a></li>
             <li><a href="gestione_ordini.html" tabindex="4">Gestione Ordini</a></li>
             <li class="impostazioni" id="active">Gestione Profilo</li>
-            <li class="login"><a href="#" lang="en" tabindex="5">Logout</a></li>
+            <li class="login"><a href="../logout.php" lang="en" tabindex="5">Logout</a></li>
         </ul>
     </div>
 
@@ -38,21 +38,9 @@
 
     <div class="content" id="gestione_admin">
         <h1>Gestione profilo</h1>
-        <form class="defaultForm" action="index.html" method="post">
-        <fieldset>
-            <legend>Informazioni personali: </legend>
-            <h2>Nome Utente</h2>
-            <label for="username">Nome utente: </label>
-            <input type="text" id="username" name="username" value="NomeUtenteVero" readonly="readonly"/>
-            <h2 id="cp">Cambia <span lang="en">Password:</span> </h2>
-            <label for="v_password">Inserisci la vecchia <span lang="en">password</span>: </label>
-            <input type="password" id="v_password" name="v_password" />
-            <label for="password">Inserisci la nuova <span lang="en">password</span>: </label>
-            <input type="password" id="password" name="password" />
-            <label for="c_password">Conferma la nuova <span lang="en">password</span>: </label>
-            <input type="password" id="c_password" name="c_password" />
-            <input type="submit" name="dati_personali" value="Salva"/>  <!--Submit legato solo al cambio della password-->
-        </fieldset>
+        <form class="defaultForm" action="gestione_profilo_admin.php" method="post">
+          <messaggio />
+          <formPassword />
         </form>
     </div>
 
