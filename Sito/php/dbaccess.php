@@ -67,7 +67,7 @@
             $query->bind_param('s', $username);
             $query->execute();
             $queryResult = $query->get_result();
-            return mysqli_num_rows($queryResult) == 0)
+            if( mysqli_num_rows($queryResult) == 0)
             {
                 return false;
             }
