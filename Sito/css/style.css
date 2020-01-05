@@ -845,6 +845,7 @@ div#notizie {
     margin: 1em;
 }
 
+
 #listaDestinazioni dt {
 	padding: 1em;
 }
@@ -909,6 +910,10 @@ div#notizie {
 
 #gestione_utente>form select {
 	width: 7em;
+}
+
+#listaDestinazioni .destIndex{
+	display: none;
 }
 
 

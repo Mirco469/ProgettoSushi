@@ -1,7 +1,8 @@
 <?php
 	require_once("php/dbaccess.php");
     session_start();
-  
+    $_SESSION['username']='user';
+
 	if( isset($_SESSION['username'])) {
 	         $db = null;
 	         $user = $_SESSION['username'];
@@ -26,20 +27,18 @@
 
              //Prendo i dati di pagamento salvati se esistono
 
-            if($db == null){
-                $db = new DBAccess();
-            }
+
+            $db = new DBAccess();
+
 
             if($db->openDBConnection()){
 
                 $queryCarta = $db->getCartaDiCredito($user);
             } else {
-                header('location: errore500.html');
+                header('location: errore500.php');
             }
 
-            if($queryResult == null){
-                header('location: errore500.html');
-            }
+
 
 
 
@@ -91,7 +90,7 @@
                      $erroriPass .= '<li>La password che hai inserito non e\' stata trovata nel nostro database</li>';
                      }
                  }else{
-                     header('location: errore500.html');
+                     header('location: errore500.php');
                  }
 
                  if(strlen($erroriPass)==0){
@@ -154,7 +153,7 @@
 
 
                  }else {
-                     header('location: errore500.html');
+                     header('location: errore500.php');
                  }
 
               //Controllo se è stato premuto il bottone per salvare il metodo di pagamento
@@ -195,11 +194,18 @@
 
                  }else{
 
-                     header('location: errore500.html');
+                     header('location: errore500.php');
                  }
 
 
 
+             }elseif(isset($_POST['eliminaDestinazione'])){
+                $indice = $_POST['indiceDestinazione'] + 1;
+                $db = new DBAccess();
+
+                if($db->openDBConection()){
+                    $db->eliminaDestinazione($user, $indice);
+                }
              }
 
              $paginaHTML = file_get_contents('html/gestione_profilo_utente.html');
@@ -290,24 +296,24 @@
         //Creo la lista delle destinazioni dell'utente
 
         if($db->openDBConnection()){
-
             $queryResult = $db->getDestinazioni($user);
         } else {
-            header('location: errore500.html');
+            header('location: errore500.php');
         }
 
         if($queryResult == null){
-            header('location: errore500.html');
+            header('location: errore500.php');
         }
 
         $index = 0;
         while($row = mysqli_fetch_assoc($queryResult)) {
-            $listaDestinazioni.='<dt>'.$row['nome_cognome'].', indirizzo: '.$row['via'].' '.$row['numero_civico'].', '.$row['CAP'].' </dt>
-                                              <dd><input onclick="eliminaDestinazione('.$index.')" type="button" name="elimina" value="Elimina"/></dd>';
+            $listaDestinazioni.='<input type="text" class="destIndex" value="'.$index.'" id="indiceDestinazione'.$index.'" name = "indiceDestinazione" readonly="readonly"/>
+                                    <span>'.$row['nome_cognome'].', indirizzo: '.$row['via'].' '.$row['numero_civico'].', '.$row['CAP'].'</span>
+                                    <input type="button" name="eliminaDestinazione" value="Elimina"/>';
             $index++;
         }
 
-        $listaDestinazioni = '<dl id="listaDestinazioni">'.$listaDestinazioni.'</dl>';
+        $listaDestinazioni = '<fieldset id="listaDestinazioni"><legend> Lista delle destinazioni</legend>'.$listaDestinazioni.'</fieldset>';
 
 
 
