@@ -317,6 +317,8 @@ table.defaultTable td:last-child {
 	margin-bottom: 2em;
 	padding-left: 0.5em;
 	clear: both;
+	text-align: center;
+	padding: 1em 0;
 }
 
 .defaultLista>dt{
@@ -325,12 +327,6 @@ table.defaultTable td:last-child {
 	clear: both;
 	border: 1px solid #d9d9d9;
 	background-color: #4a0715;
-}
-
-
-.defaultLista>dd{
-	text-align: center;
-	padding: 1em 0;
 }
 
 .defaultLista>dt>input{

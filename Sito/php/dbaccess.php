@@ -67,7 +67,7 @@
             $query->bind_param('s', $username);
             $query->execute();
             $queryResult = $query->get_result();
-            if(mysqli_num_rows($queryResult) == 0)
+            return mysqli_num_rows($queryResult) == 0)
             {
                 return false;
             }
@@ -145,10 +145,10 @@
 
 
 
-        #funzione per il get delle recensioni;
+        #funzione per il get delle recensioni
 		public function getRecensioni()
 		{
-			#DESC o ASC in modo che prima ci sia la più recente;
+			#DESC o ASC in modo che prima ci sia la più recente
 			$query = $this->connection->prepare("SELECT * FROM Recensione ORDER BY data DESC");
 			$query->execute();
 			$queryResult = $query->get_result();
@@ -177,7 +177,7 @@
 
 		/* FUNZIONI PER OTTENERE DATI DAL DATABASE */
 
-		#funzione per il get dei prodotti per categoria con i nomi in ordine alfabetico;
+		#funzione per il get dei prodotti per categoria con i nomi in ordine alfabetico
 		public function getProdotti($categoria)
 		{
 			$query = $this->connection->prepare("SELECT * FROM Prodotto WHERE categoria = ? ORDER BY nome ASC");
@@ -207,7 +207,7 @@
 			}
 		}
 
-		#funzione per il get degli indirizzi per utente;
+		#funzione per il get degli indirizzi per utente
 		public function getIndirizzi($utente)
 		{
 			$query = $this->connection->prepare("SELECT via, numero_civico FROM Destinazione WHERE utente = ?");
@@ -235,7 +235,7 @@
 			}
 		}
 
-		#funzione per il get della carta di credito per utente;
+		#funzione per il get della carta di credito per utente
 		public function getPagamento($utente)
 		{
 			$query = $this->connection->prepare("SELECT numero_carta FROM Utente WHERE username = ?");
@@ -320,41 +320,50 @@
     }
 
     function checkTesto($string) {
-        if(!checkMinLen($string)) return false;
-        else return true;
+        if(!checkMinLen($string))
+		{
+			return false;
+		}
+        else 
+		{
+			return true;
+		}
     }
 
     //Controlla che la stringa non contenga caratteri speciali
     function checkAlfanumerico($string) {
-        if(!checkMinLen($string)) return false;
+        if(!checkMinLen($string))
+		{
+			return false;
+		}
         if (!preg_match('/^[a-zA-Z0-9]+$/', $string)) {
             return false;
-        } else return true;
+        } else {return true;}
     }
 
     //Controlla che la stringa non contenga numeri e abbia almeno due caratteri
     function checkSoloLettereEDim($string) {
-        if(!checkMinLen($string)) return false;
+        if(!checkMinLen($string)){ return false;}
         if (!preg_match('/^[a-zA-Z]+$/', $string)) {
             return false;
-        } else return true;
+        } else {return true;}
     }
 
     //Controlla che la stringa contenga solo numeri e che sia lunga almeno due caratteri
     function checkSoloNumerieDim($string){
-        if(!checkMinLen($string)) return false;
+        if(!checkMinLen($string)){ return false;}
         if (!preg_match('/^[0-9]+$/', $string)) {
             return false;
-        } else return true;
+        } else {return true;}
     }
 
     //Controlla che il numero sia intero e $numero non sia vuoto
     //Ritorna true se rispetta le condizioni, false altrimenti
     function checkNumeroIntero($numero){
-        if(empty($numero)) return false;
+        if(empty($numero)){ return false;}
         if (!preg_match('/^[0-9]+$/', $numero)) {
             return false;
-        } else return true;
+        } else {return true;}
     }
 
     //Controlla che il parametro sia un numero consono ad essere un prezzo ovvero può essere decimale ma con al massimo due cifre dopo la virgola e
@@ -362,10 +371,10 @@
     //Ritorna true se rispetta i vincoli sopra descritti, false altrimenti.
     function checkPrezzo($numero)
     {
-        if(empty($numero)) return false;
+        if(empty($numero)){return false;}
         if (!preg_match('/^[0-9]{1,3}((.|,)[0-9]{1,2})?$/', $numero)) {
             return false;
-        } else return true;
+        } else {return true;}
     }
 
     /* ALTRO */
