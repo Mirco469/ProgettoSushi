@@ -261,6 +261,21 @@
             return $query->get_result();
         }
 		
+		public function getOrdini($username) {
+			$query = $this->connection->prepare("SELECT O.* FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username WHERE U.username = ?");
+			$query->bind_param('s',$username);
+			$query->execute();
+			$queryResult = $query->get_result();
+			
+			$result = array();
+			
+			while ($row = $queryResult->fetch_object()) {
+				array_push($result, $row);
+			}
+			
+			return $result;
+		}
+		
 		public function getDettagliOrdine($id_ordine,$username) {
 			$query = $this->connection->prepare("SELECT O.*, D.* FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username WHERE U.username = ? AND O.id_ordine = ?");
 			$query->bind_param('ss',$username,$id_ordine);
