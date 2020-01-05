@@ -260,6 +260,21 @@
             $query->execute();
             return $query->get_result();
         }
+		
+		public function getOrdini($username) {
+			$query = $this->connection->prepare("SELECT O.* FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username WHERE U.username = ?");
+			$query->bind_param('s',$username);
+			$query->execute();
+			$queryResult = $query->get_result();
+			
+			$result = array();
+			
+			while ($row = $queryResult->fetch_object()) {
+				array_push($result, $row);
+			}
+			
+			return $result;
+		}
     }
 
         /* FUNZIONI PER CONTROLLARE LO STATO DEL DATABASE */
