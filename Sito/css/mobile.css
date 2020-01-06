@@ -908,6 +908,17 @@ min-height: 465px;
     border-color: threedface;
 }
 
+#listaDestinazioni dt {
+	padding: 1em;
+}
+#listaDestinazioni dd{
+	padding-left: 0.3em;
+	padding-right: 0.3em; 
+}
+#listaDestinazioni {
+	border: 1px solid white;
+}
+
 #menu_profilo h1 {
 	text-align: center;
 	color: #d9d9d9;

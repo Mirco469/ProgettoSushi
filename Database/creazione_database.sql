@@ -21,12 +21,12 @@ INSERT INTO Utente (username, nome, cognome, password, autorizzazione, numero_ca
 ('admin', 'Admin', 'Generico', 'admin', 'Admin', NULL, NULL, NULL),
 ('ammin1', 'Amministratore', 'Due', 'password', 'Admin', NULL, NULL, NULL),
 ('ammin2', 'Amministratore', 'Tre', 'password', 'Admin', NULL, NULL, NULL),
-('user', 'Utente', 'Generico', 'user', 'Utente', '1111222233334444', 'Utente Generico', '2021-11-00'),
-('user1', 'User', 'Uno', 'password', 'Utente', '5555222211116666', 'User Uno', '2024-01-00'),
-('user2', 'User', 'Due', 'password', 'Utente', '4444333388880000', 'User Due', '2027-06-00'),
+('user', 'Utente', 'Generico', 'user', 'Utente', '1111222233334444', 'Utente Generico', '2021-11-01'),
+('user1', 'User', 'Uno', 'password', 'Utente', '5555222211116666', 'User Uno', '2024-01-01'),
+('user2', 'User', 'Due', 'password', 'Utente', '4444333388880000', 'User Due', '2027-06-01'),
 ('user3', 'User', 'Tre', 'password', 'Utente', NULL, NULL, NULL),
 ('user4', 'User', 'Quattro', 'password', 'Utente', NULL, NULL, NULL),
-('user5', 'User', 'Cinque', 'password', 'Utente', '2222111100009999', 'User Cinque', '2025-09-00');
+('user5', 'User', 'Cinque', 'password', 'Utente', '2222111100009999', 'User Cinque', '2025-09-01');
 
 -- Crea la tabella Recensione
 
@@ -44,10 +44,10 @@ CREATE TABLE Recensione(
 -- Inserimento dati nella tabella Recensione
 
 INSERT INTO Recensione (id_recensione, titolo, testo, data, utente) VALUES 
-(001, 'Ristorante TOP', 'Sono un’appassionata di sushi e credo che questo ristorante possa vantare la migliore qualità e varietà della zona. Uramaki special strepitosi e servizio impeccabile.', '2018-09-11', 'user2'),
-(002, 'Bella serata', 'Ogni volta che vengo a Padova mi fermo sempre a cena in questo locale, i ragazzi dello staff sono simpatici e molto professionali, sulla qualità del cibo semplicemente ottimo.', '2019-03-22', 'user1'),
-(003, 'Consigliato', 'Bel ristorante in una zona molto accogliente di Padova. Non me ne intendo molto di sushi ma posso dire che lo consiglierò sicuramente ad amici', '2017-11-08', 'user3'),
-(004, 'Ho provato di meglio', 'Scoperto l’anno scorso, siamo tornati anche quest’anno. La qualità è sempre ottima sia dei crudi che dei cotti, con molta scelta. Peccato per i tavoli un po’ piccoli, quando arrivano più di due piatti diventa difficile gestire gli spazi. Prezzi e servizio nella media.', '2019-06-27', 'user4');
+(1, 'Ristorante TOP', 'Sono un’appassionata di sushi e credo che questo ristorante possa vantare la migliore qualità e varietà della zona.', '2018-09-11', 'user2'),
+(2, 'Bella serata', 'Ogni volta che vengo a Padova mi fermo sempre a cena in questo locale, i ragazzi dello staff sono simpatici e molto professionali.', '2019-03-22', 'user1'),
+(3, 'Consigliato', 'Bel ristorante in una zona molto accogliente di Padova. Non me ne intendo molto di sushi ma posso dire che lo consiglierò sicuramente ad amici', '2017-11-08', 'user3'),
+(4, 'Ho provato di meglio', 'Scoperto l’anno scorso, siamo tornati anche quest’anno.', '2019-06-27', 'user4');
 
 -- Crea la tabella News
 
@@ -62,14 +62,17 @@ CREATE TABLE News(
 	FOREIGN KEY (utente) REFERENCES Utente(username) ON DELETE CASCADE
 );
 
+
 -- Inserimento dati nella tabella News
 
 INSERT INTO News (id_news, titolo, descrizione, data, utente) VALUES 
-(1, 'Ferragosto', 'Vi ricordiamo che dal 12 al 18 Agosto il ristorante rimarra chiuso per ferie.', '2019-08-08', 'ammin1'),
-(2, 'Cercasi Cameriera', 'Cercasi cameriera per contratto part-time ', '2019-08-22', 'ammin2'),
-(3, 'Black Friday Week', 'Dal 25 al 30 Novembre sconto del 10% su tutti gli ordini superiori ai 30€; Venerdì 29 sconto del 20%.', '2019-11-18', 'admin'),
-(4, 'Buon Natale', 'Lo staff di Sushi Nakamura augura a voi ed alle vostre famiglie un felice Natale.', '2019-12-24', 'ammin1'),
-(5, 'Felice Anno Nuovo', 'Per festeggiare il nuovo anno, sconto del 10% su tutti gli ordini superiori ai 20€ fino a Domenica 5.', '2020-01-02', 'ammin2');
+
+(1,'Ferragosto', 'Vi ricordiamo che dal 12 al 18 Agosto il ristorante rimarra chiuso per ferie.', '2019-08-08', 'ammin1'),
+(2,'Cercasi Cameriera', 'Cercasi cameriera per contratto part-time ', '2019-08-22', 'ammin2'),
+(3,'Black Friday Week', 'Dal 25 al 30 Novembre sconto del 10% su tutti gli ordini superiori ai 30€; Venerdì 29 sconto del 20%.', '2019-11-18', 'admin'),
+(4,'Buon Natale', 'Lo staff di Sushi Nakamura augura a voi ed alle vostre famiglie un felice Natale.', '2019-12-24', 'ammin1'),
+(5,'Felice Anno Nuovo', 'Per festeggiare il nuovo anno, sconto del 10% su tutti gli ordini superiori ai 20€ fino a Domenica 5.', '2020-01-02', 'ammin2');
+
 
 -- Crea la tabella Destinazione
 
@@ -81,7 +84,7 @@ CREATE TABLE Destinazione(
 	numero_telefonico		VARCHAR(15),
 	CAP									VARCHAR(5) NOT NULL,
 	via 								VARCHAR(15) NOT NULL,
-	numero_civico				SMALLINT NOT NULL,
+	numero_civico				VARCHAR(10) NOT NULL,
 	utente 							VARCHAR(20) NOT NULL,
 	FOREIGN KEY (utente) REFERENCES Utente(username) ON DELETE CASCADE
 );
@@ -89,13 +92,15 @@ CREATE TABLE Destinazione(
 -- Inserimento dati nella tabella Destinazione
 
 INSERT INTO Destinazione (id_destinazione, nome_cognome, numero_telefonico, CAP, via, numero_civico, utente) VALUES 
-(201, 'Utente Generico', '049XXXXXXX', '35100', 'Aldo Moro', 21, 'user'),
-(202, 'Utente Generico', '049XXXXXXX', '35100', 'Ugo Bassi', 17, 'user'),
-(203, 'User Uno', '346XXXXXXX', '35133', 'Don Stefani', 10, 'user1'),
-(204, 'User Due', '339XXXXXXX', '35142', 'Monte Bianco', 15, 'user2'),
-(205, 'User Tre', '333XXXXXXX', '35129', 'Andrea Palladio', 17, 'user3'),
-(206, 'User Quattro', '340XXXXXXX', '35122', 'Antonio Canova', 11, 'user4'),
-(207, 'User Cinque', '348XXXXXXX', '35100', 'Aldo Moro', 22, 'user5');
+
+(1,'Utente Generico', '049XXXXXXX', '35100', 'Aldo Moro', '21', 'user'),
+(2,'Utente Generico', '049XXXXXXX', '35100', 'Ugo Bassi', '17', 'user'),
+(3,'User Uno', '346XXXXXXX', '35133', 'Don Stefani', '10', 'user1'),
+(4,'User Due', '339XXXXXXX', '35142', 'Monte Bianco', '15a', 'user2'),
+(5,'User Tre', '333XXXXXXX', '35129', 'Andrea Palladio', '17', 'user3'),
+(6,'User Quattro', '340XXXXXXX', '35122', 'Antonio Canova', '11', 'user4'),
+(7,'User Cinque', '348XXXXXXX', '35100', 'Aldo Moro', '22', 'user5');
+
 
 -- Crea la tabella Tabella Ordine
 
@@ -113,17 +118,17 @@ CREATE TABLE Ordine(
 -- Inserimento dati nella tabella Ordine
 
 INSERT INTO Ordine (id_ordine, data_ordine, data_consegna, totale, destinazione) VALUES 
-(301, '2019-02-19 12:30:00', '2019-02-19 13:30:00', 27.00, 201),
-(302, '2019-03-22 20:00:00', '2019-03-22 21:00:00', 28.00, 202),
-(303, '2019-04-11 13:30:00', '2019-04-11 14:30:00', 33.00, 203),
-(304, '2019-05-09 19:00:00', '2019-05-09 20:00:00', 31.50, 204),
-(305, '2019-05-07 20:30:00', '2019-05-07 21:30:00', 46.50, 205),
-(306, '2019-06-12 12:45:00', '2019-06-12 13:45:00', 40.00, 206),
-(307, '2019-07-23 13:15:00', '2019-07-23 14:15:00', 36.50, 207),
-(308, '2019-08-29 12:30:00', '2019-08-29 13:30:00', 66.00, 201),
-(309, '2019-10-16 13:00:00', '2019-10-16 14:00:00', 15.50, 202),
-(310, '2020-01-10 20:15:00', '2020-01-10 21:15:00', 42.50, 203),
-(311, '2020-01-14 14:00:00', '2020-01-14 15:00:00', 57.50, 204);
+(301, '2019-02-19 12:30:00', '2019-02-19 13:30:00', 27.00, 1),
+(302, '2019-03-22 20:00:00', '2019-03-22 21:00:00', 28.00, 2),
+(303, '2019-04-11 13:30:00', '2019-04-11 14:30:00', 33.00, 3),
+(304, '2019-05-09 19:00:00', '2019-05-09 20:00:00', 31.50, 4),
+(305, '2019-05-07 20:30:00', '2019-05-07 21:30:00', 46.50, 5),
+(306, '2019-06-12 12:45:00', '2019-06-12 13:45:00', 40.00, 6),
+(307, '2019-07-23 13:15:00', '2019-07-23 14:15:00', 36.50, 7),
+(308, '2019-08-29 12:30:00', '2019-08-29 13:30:00', 66.00, 1),
+(309, '2019-10-16 13:00:00', '2019-10-16 14:00:00', 15.50, 2),
+(310, '2020-01-10 20:15:00', '2020-01-10 21:15:00', 42.50, 3),
+(311, '2020-01-14 14:00:00', '2020-01-14 15:00:00', 57.50, 4);
 
 -- Crea la tabella Tabella Prodotto
 
