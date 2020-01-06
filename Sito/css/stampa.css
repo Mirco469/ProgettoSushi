@@ -349,6 +349,8 @@ table.defaultTable td:last-child {
 	text-align: left;
 }
 
+
+
 /* Pagina Successo */
 #successo{
 	display: block;
@@ -432,9 +434,6 @@ table.defaultTable td:last-child {
 
 
 /*	Dettagli Ordine (Utente e admin)	*/
-#dettagli_ordine {
-	padding: 2em 6em;
-}
 
 #dettagli_ordine .data {
 	display: inline-block;
@@ -446,6 +445,11 @@ table.defaultTable td:last-child {
 #dettagli_ordine>dl {
 	width: 115%;
 	margin: 0; 
+}
+
+#dettagli_ordine .defaultTable {
+    margin: 2em 0 1em;
+	width: 100%;
 }
 
 #dettagli_ordine .totaleText {
