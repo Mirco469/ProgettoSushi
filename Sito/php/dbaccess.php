@@ -72,7 +72,6 @@
             $query->bind_param('s', $utente);
             $query->execute();
             $queryResult = $query->get_result();
-
             if (mysqli_num_rows($queryResult) == 0) {
                 return null;
             } else {
@@ -152,10 +151,10 @@
 
 
 
-        #funzione per il get delle recensioni;
+        #funzione per il get delle recensioni
 		public function getRecensioni()
 		{
-			#DESC o ASC in modo che prima ci sia la più recente;
+			#DESC o ASC in modo che prima ci sia la più recente
 			$query = $this->connection->prepare("SELECT * FROM Recensione ORDER BY data DESC");
 			$query->execute();
 			$queryResult = $query->get_result();
@@ -183,13 +182,24 @@
 		}
 
 
-        #funzione per il get dei prodotti per categoria con i nomi in ordine alfabetico;
-        public function getProdotti($categoria)
-        {
-            $query = $this->connection->prepare("SELECT * FROM Prodotto WHERE categoria = ? ORDER BY nome ASC");
-            $query->bind_param('s', $categoria);
-            $query->execute();
-            $queryResult = $query->get_result();
+    
+
+		#funzione per il get dei prodotti per categoria con i nomi in ordine alfabetico
+		public function getProdotti($categoria)
+		{
+			$query = $this->connection->prepare("SELECT * FROM Prodotto WHERE categoria = ? ORDER BY nome ASC");
+			$query->bind_param('s', $categoria);
+			$query->execute();
+			$queryResult = $query->get_result();
+
+			if (mysqli_num_rows($queryResult) == 0)
+			{
+				return null;
+			}
+			else
+			{
+				$result = array();
+
 
             if (mysqli_num_rows($queryResult) == 0) {
                 return null;
@@ -206,9 +216,11 @@
                     array_push($result, $arraySingoloProdotto);
                 }
 
+
                 return $result;
             }
         }
+
 
         #funzione per il get degli indirizzi per utente;
         public function getIndirizzi($utente)
@@ -235,6 +247,7 @@
             }
         }
 
+
         #funzione per il get della carta di credito per utente;
         public function getPagamento($utente)
         {
@@ -242,7 +255,6 @@
             $query->bind_param('s', $utente);
             $query->execute();
             $queryResult = $query->get_result();
-
             if (mysqli_num_rows($queryResult) == 0) {
                 return null;
             } else {
@@ -260,6 +272,7 @@
             $query->execute();
             return $query->get_result();
         }
+
 
 
         //Funzione per controllare le credenziali: ritorna null se non esiste alcuna corrispondenza altrimenti ritorna il suo livello di autorizzazione
@@ -299,6 +312,23 @@
                 return true;
             }
         }
+
+
+		
+		public function getOrdini($username) {
+			$query = $this->connection->prepare("SELECT O.* FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username WHERE U.username = ?");
+			$query->bind_param('s',$username);
+			$query->execute();
+			$queryResult = $query->get_result();
+			
+			$result = array();
+			
+			while ($row = $queryResult->fetch_object()) {
+				array_push($result, $row);
+			}
+			
+			return $result;
+		}
 
     }
 
@@ -372,8 +402,14 @@
     }
 
     function checkTesto($string) {
-        if(!checkMinLen($string)) return false;
-        else return true;
+        if(!checkMinLen($string))
+		{
+			return false;
+		}
+        else 
+		{
+			return true;
+		}
     }
 
     //Controlla che la stringa non contenga caratteri speciali
@@ -386,10 +422,13 @@
 
     //Controlla che la stringa non contenga caratteri speciali
     function checkAlfanumerico($string) {
-        if(!checkMinLen($string)) return false;
+        if(!checkMinLen($string))
+		{
+			return false;
+		}
         if (!preg_match('/^[a-zA-Z0-9]+$/', $string)) {
             return false;
-        } else return true;
+        } else {return true;}
     }
 
     //Controlla che la stringa non contenga numeri e abbia almeno due caratteri
@@ -402,18 +441,18 @@
 
     //Controlla che la stringa non contenga numeri e abbia almeno due caratteri
     function checkSoloLettereEDim($string) {
-        if(!checkMinLen($string)) return false;
+        if(!checkMinLen($string)){ return false;}
         if (!preg_match('/^[a-zA-Z]+$/', $string)) {
             return false;
-        } else return true;
+        } else {return true;}
     }
 
     //Controlla che la stringa contenga solo numeri e che sia lunga almeno due caratteri
     function checkSoloNumerieDim($string){
-        if(!checkMinLen($string)) return false;
+        if(!checkMinLen($string)){ return false;}
         if (!preg_match('/^[0-9]+$/', $string)) {
             return false;
-        } else return true;
+        } else {return true;}
     }
 
     //Controlla se viene inserito un CAP di Padova
@@ -440,10 +479,10 @@
     //Controlla che il numero sia intero e $numero non sia vuoto
     //Ritorna true se rispetta le condizioni, false altrimenti
     function checkNumeroIntero($numero){
-        if(empty($numero)) return false;
+        if(empty($numero)){ return false;}
         if (!preg_match('/^[0-9]+$/', $numero)) {
             return false;
-        } else return true;
+        } else {return true;}
     }
 
     //Controlla che il parametro sia un numero consono ad essere un prezzo ovvero può essere decimale ma con al massimo due cifre dopo la virgola e
@@ -451,10 +490,10 @@
     //Ritorna true se rispetta i vincoli sopra descritti, false altrimenti.
     function checkPrezzo($numero)
     {
-        if(empty($numero)) return false;
+        if(empty($numero)){return false;}
         if (!preg_match('/^[0-9]{1,3}((.|,)[0-9]{1,2})?$/', $numero)) {
             return false;
-        } else return true;
+        } else {return true;}
     }
 
     /* ALTRO */
@@ -477,10 +516,49 @@
 	}
 
 
+
+
+
 	//Funzione per ottenere le categorie dei prodotti
-    function getCategorie()
-    {
-        return array("Antipasti","Primi Piatti","Teppanyako e tempure","Uramaki","Nigiri ed Onigiri","Gunkan","Temaki","Hosomaki","Sashimi","Dessert");
-    }
+	function getCategorie()
+	{
+		return array("Antipasti","Primi Piatti","Teppanyako e Tempure","Uramaki","Nigiri ed Onigiri","Gunkan","Temaki","Hosomaki","Sashimi","Dessert");
+	}
+
+
+	/*	Esempio di funzione per prendere i dati
+	public function getPersonaggi()
+	{
+		$query = "SELECT * FROM personaggi ORDER BY ID ASC";
+		$queryResult = myqsli_query($this->connection,$query);
+		
+		if(mysqli_num_rows($queryResult) == 0)
+		{
+			return null;
+		}
+		else
+		{
+			$result = array();
+			
+			while($row = mysqli_fetch_assoc($queryResult))
+			{
+				$arraySingoloPersonaggio = array(
+					'Nome' =>$row['nome]',
+					'Colore' => $row['colore'],
+					'Peso' => $row['peso'],
+					'Potenza' => $row['potenza'],
+					'Descrizione' => $row['descrizione'],
+					'ABR' => $row['angry_birds'],
+					'ABSW' => $row['angry_birds_star_wars'],
+					'AVS' => $row['angry_birds_space'],
+					'Immagine' => $row['immagine']
+				);
+			}
+				array_push($result,$arraySingoloPersonaggio);
+			
+			return $result;
+		}
+	}
+	*/
 
 ?>
