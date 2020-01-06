@@ -276,34 +276,68 @@
 			return $result;
 		}
 		
-		public function getDettagliOrdine($id_ordine,$username) {
-			$query = $this->connection->prepare("SELECT O.*, D.* FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username WHERE U.username = ? AND O.id_ordine = ?");
-			$query->bind_param('ss',$username,$id_ordine);
-			$query->execute();
-			$queryResult = $query->get_result();
-			
-			if( $queryResult->num_rows > 0 ) {
-				$result = $queryResult->fetch_object();
-				
-				$query = $this->connection->prepare("SELECT C.*, P.categoria FROM Contiene C INNER JOIN Prodotto P ON C.nome = P.nome WHERE id_ordine = ?");
-				$query->bind_param('s',$id_ordine);
+		public function getDettagliOrdine($id_ordine,$username='') {
+			if( $username !== '' ) {
+				$query = $this->connection->prepare("SELECT O.*, D.* FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username WHERE U.username = ? AND O.id_ordine = ?");
+				$query->bind_param('ss',$username,$id_ordine);
 				$query->execute();
 				$queryResult = $query->get_result();
 				
-				$listaProdotti = array();
-				
-				while ($row = $queryResult->fetch_object()) {
-					array_push($listaProdotti, $row);
+				if( $queryResult->num_rows > 0 ) {
+					$result = $queryResult->fetch_object();
+					
+					$query = $this->connection->prepare("SELECT C.*, P.categoria FROM Contiene C INNER JOIN Prodotto P ON C.nome = P.nome WHERE id_ordine = ?");
+					$query->bind_param('s',$id_ordine);
+					$query->execute();
+					$queryResult = $query->get_result();
+					
+					$listaProdotti = array();
+					
+					while ($row = $queryResult->fetch_object()) {
+						array_push($listaProdotti, $row);
+					}
+					
+					$result->listaProdotti = $listaProdotti;
+					
+					return $result;
+				} else {
+					/* errore
+						l'id_ordine non esiste
+						l'username non ha effettuato l'ordine con quel id_ordine
+					*/
+					return -1;
 				}
-				
-				$result->listaProdotti = $listaProdotti;
-				
-				return $result;
 			} else {
-				/* errore
-					l'id_ordine non esiste
-					l'username non ha effettuato l'ordine con quel id_ordine
-				*/
+				$query = $this->connection->prepare("SELECT O.*, D.*, U.username FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username WHERE O.id_ordine = ?");
+				$query->bind_param('s',$id_ordine);
+				$query->execute();
+				//echo $query->info; exit;
+				$queryResult = $query->get_result();
+				
+				if( $queryResult->num_rows > 0 ) {
+					$result = $queryResult->fetch_object();
+					
+					$query = $this->connection->prepare("SELECT C.*, P.categoria FROM Contiene C INNER JOIN Prodotto P ON C.nome = P.nome WHERE id_ordine = ?");
+					$query->bind_param('s',$id_ordine);
+					$query->execute();
+					$queryResult = $query->get_result();
+					
+					$listaProdotti = array();
+					
+					while ($row = $queryResult->fetch_object()) {
+						array_push($listaProdotti, $row);
+					}
+					
+					$result->listaProdotti = $listaProdotti;
+					
+					return $result;
+				} else {
+					/* errore
+						l'id_ordine non esiste
+						l'username non ha effettuato l'ordine con quel id_ordine
+					*/
+					return -1;
+				}
 			}
 		}
 		

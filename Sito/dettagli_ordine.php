@@ -38,7 +38,8 @@
 					
 					$content .= '
 							</tbody>
-						</table>';
+						</table>
+						<p class="totaleText">Totale: <span>'.number_format($dettagliOrdine->totale,2,',','.').'€</span></p>';
 					
 					$paginaHTML = file_get_contents('html/dettagli_ordine.html');
 					
