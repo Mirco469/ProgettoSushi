@@ -31,7 +31,6 @@
 			$anno_scad = "";
 			$cvv = "";
 
-			#Stampo la pagina con gli eventuali messaggi;
 			$paginaHTML = file_get_contents('html/pagamento.html');
 			$menu = getmenu();
 			$paginaHTML = str_replace('<menu />', $menu, $paginaHTML);
@@ -42,19 +41,16 @@
 			<label for=\"consegna_domicilio\">Domicilio</label>
 			";
 
-			//Controllo se ho già ricevuto la post dalla form o no;
 			if (isset($_POST['paga']))
 			{
 				if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'domicilio'))
 				{
-					#Primo fieldset;
 					if (isset($_POST['destinazione']) && $_POST['destinazione'] != 'Indirizzo')
 					{
 						$successoDest = '<p class="successo">Informazioni di spedizione valide!</p>';
 					}
 					else
 					{
-						#Controllo i dettagli di spedizione;
 						$nome_cognome = htmlentities(trim($_POST['nome_cognome']));
 						$via = htmlentities(trim($_POST['via']));
 						$civico = htmlentities(trim($_POST['civico']));
@@ -101,14 +97,12 @@
 					";
 				}
 
-				#Seconso fieldset;
 				if (isset($_POST['carta_credito']) && $_POST['carta_credito'] != 'Carta di credito')
 				{
 					$successoCarta = '<p class="successo">Informazioni di pagamento valide!</p>';
 				}
 				else
 				{
-					#Controllo la carta di credito;
 					$intestatario = htmlentities(trim($_POST['intestatario_carta']));
 					$num_carta = htmlentities(trim($_POST['num_carta']));
 					$mese_scad = $_POST['mese_scad'];
@@ -145,22 +139,16 @@
 					}
 				}
 
-				if (($erroriCarta == "") && ($erroriDest == "")) #Reindirizzo alla pagina di successo;
+				if (($erroriCarta == "") && ($erroriDest == ""))
 				{
 					$totale = totaleCarrello();
 					$dataOrdine = date("Y-m-d H:i:s");
 
 					if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'domicilio'))
 					{
-						if ($_POST['destinazione'] == 'Indirizzo')
+						if (($_POST['destinazione'] == 'Indirizzo') && (!$db->alreadyExistsDest($nome_cognome, $tel, $cap, $via, $civico, $user)) && (!$db->addSpedizione($user, $nome_cognome, $via, $civico, $cap, $tel)))
 						{
-							if (!$db->alreadyExistsDest($nome_cognome, $tel, $cap, $via, $civico, $user))
-							{
-								if (!$db->addSpedizione($user, $nome_cognome, $via, $civico, $cap, $tel))
-								{
-									header('location: successo.php');
-								}
-							}
+							header('location: errore500.php');
 						}
 
 						$dataConsegna = date("Y-m-d H+1:i:s");
@@ -183,7 +171,6 @@
 									}
 								}
 							}
-							#Se l'utente ha inserito una nuova destinazione, sarà quella con id più alto nel database;
 							if ($maxId != 0)
 							{
 								$idDestinazione = $maxId;
@@ -209,6 +196,7 @@
 						{
 							header('location: errore500.php');
 						}
+						
 						header('location: successo.php');
 					}
 				}
@@ -216,7 +204,6 @@
 
 			$paginaHTML = str_replace('<sceltaConsegna />', $sceltaConsegna, $paginaHTML);
 
-			#Primo fieldset;
 			$paginaHTML = str_replace('<erroreDestinazione />', $erroriDest, $paginaHTML);
 			$paginaHTML = str_replace('<successoDestinazione />', $successoDest, $paginaHTML);
 
@@ -264,7 +251,6 @@
 			";
 			$paginaHTML = str_replace('<formDestinazione />', $formDest, $paginaHTML);
 
-			#Secondo fieldset;
 			$paginaHTML = str_replace('<erroreCarta />', $erroriCarta, $paginaHTML);
 			$paginaHTML = str_replace('<successoCarta />', $successoCarta, $paginaHTML);
 
