@@ -176,6 +176,7 @@
             }
         }
 
+
         public function addSpedizione($nome_cognome, $indirizzo, $numero_civico, $cap, $tel, $user){
             $query = $this->connection->prepare('INSERT INTO Destinazione (nome_cognome, numero_telefonico, CAP, via, numero_civico, utente) VALUES (?,?,?,?,?,?)');
             $query->bind_param('ssssss',$nome_cognome, $tel, $cap, $indirizzo, $numero_civico, $user);
@@ -199,7 +200,26 @@
             }
 		}
 
-		#funzione per il get delle recensioni;
+
+        public function inserisciNews($titolo, $data ,$testo, $user){
+
+                $query = $this->connection->prepare('INSERT INTO News (titolo, descrizione, data, utente) VALUES (?,?,?,?)');
+                $query->bind_param('ssss', $titolo, $testo, $data, $user);
+                if(!$query->execute()){
+                    header('location: errore500.html');
+                }
+
+        }
+
+        public function getNews() {
+            $query = $this->connection->prepare('SELECT * FROM News ORDER BY data ');
+            $query->execute();
+            return $query->get_result();
+        }
+
+
+
+        #funzione per il get delle recensioni;
 		public function getRecensioni()
 		{
 			#DESC o ASC in modo che prima ci sia la più recente;
@@ -311,6 +331,21 @@
             $query->execute();
             return $query->get_result();
         }
+		
+		public function getOrdini($username) {
+			$query = $this->connection->prepare("SELECT O.* FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username WHERE U.username = ?");
+			$query->bind_param('s',$username);
+			$query->execute();
+			$queryResult = $query->get_result();
+			
+			$result = array();
+			
+			while ($row = $queryResult->fetch_object()) {
+				array_push($result, $row);
+			}
+			
+			return $result;
+		}
     }
 
         /* FUNZIONI PER CONTROLLARE LO STATO DEL DATABASE */
@@ -334,7 +369,17 @@
         }
     }
 
+
+	function checkData($data){
+        if (preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $data)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /* FUNZIONI PER IL CHECK DELL'INPUT */
+
 
     //Controlla che la stringa sia lunga almeno due caratteri
     function checkMinLen($string) {
@@ -343,6 +388,11 @@
         }else {
             return true;
         }
+    }
+
+    function checkTesto($string) {
+        if(!checkMinLen($string)) return false;
+        else return true;
     }
 
     //Controlla che la stringa non contenga caratteri speciali
@@ -437,6 +487,7 @@
 		}
 	}
 
+
     #Calcola il prezzo totale per i prodotti nel carrello;
     function totaleCarrello()
     {
@@ -447,6 +498,14 @@
         }
         return $totale;
     }
+
+	//Funzione per ottenere le categorie dei prodotti
+	function getCategorie()
+	{
+		return array("Antipasti","Primi Piatti","Teppanyako e Tempure","Uramaki","Nigiri ed Onigiri","Gunkan","Temaki","Hosomaki","Sashimi","Dessert");
+	}
+
+
 
 	/*	Esempio di funzione per prendere i dati
 	public function getPersonaggi()

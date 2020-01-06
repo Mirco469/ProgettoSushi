@@ -65,11 +65,11 @@ CREATE TABLE News(
 -- Inserimento dati nella tabella News
 
 INSERT INTO News (id_news, titolo, descrizione, data, utente) VALUES 
-(101, 'Ferragosto', 'Vi ricordiamo che dal 12 al 18 Agosto il ristorante rimarra chiuso per ferie.', '2019-08-08', 'ammin1'),
-(102, 'Cercasi Cameriera', 'Cercasi cameriera per contratto part-time ', '2019-08-22', 'ammin2'),
-(103, 'Black Friday Week', 'Dal 25 al 30 Novembre sconto del 10% su tutti gli ordini superiori ai 30€; Venerdì 29 sconto del 20%.', '2019-11-18', 'admin'),
-(104, 'Buon Natale', 'Lo staff di Sushi Nakamura augura a voi ed alle vostre famiglie un felice Natale.', '2019-12-24', 'ammin1'),
-(105, 'Felice Anno Nuovo', 'Per festeggiare il nuovo anno, sconto del 10% su tutti gli ordini superiori ai 20€ fino a Domenica 5.', '2020-01-02', 'ammin2');
+(1, 'Ferragosto', 'Vi ricordiamo che dal 12 al 18 Agosto il ristorante rimarra chiuso per ferie.', '2019-08-08', 'ammin1'),
+(2, 'Cercasi Cameriera', 'Cercasi cameriera per contratto part-time ', '2019-08-22', 'ammin2'),
+(3, 'Black Friday Week', 'Dal 25 al 30 Novembre sconto del 10% su tutti gli ordini superiori ai 30€; Venerdì 29 sconto del 20%.', '2019-11-18', 'admin'),
+(4, 'Buon Natale', 'Lo staff di Sushi Nakamura augura a voi ed alle vostre famiglie un felice Natale.', '2019-12-24', 'ammin1'),
+(5, 'Felice Anno Nuovo', 'Per festeggiare il nuovo anno, sconto del 10% su tutti gli ordini superiori ai 20€ fino a Domenica 5.', '2020-01-02', 'ammin2');
 
 -- Crea la tabella Destinazione
 
@@ -132,7 +132,7 @@ DROP TABLE IF EXISTS Prodotto;
 
 CREATE TABLE Prodotto(
 	nome 				VARCHAR(30) PRIMARY KEY,
-	categoria		ENUM('Antipasti','Primi Piatti','Teppanyako e tempure','Uramaki','Nigiri ed Onigiri','Gunkan','Temaki','Hosomaki','Sashimi','Dessert') NOT NULL,
+	categoria		ENUM('Antipasti','Primi Piatti','Teppanyako e Tempure','Uramaki','Nigiri ed Onigiri','Gunkan','Temaki','Hosomaki','Sashimi','Dessert') NOT NULL,
 	pezzi				TINYINT NOT NULL,
 	prezzo 			FLOAT NOT NULL,
 	descrizione		VARCHAR(150)
@@ -157,14 +157,14 @@ INSERT INTO Prodotto (nome, categoria, pezzi, prezzo, descrizione) VALUES
 ('Gyuyaki Noodles', 'Primi Piatti', 1, 7.00, 'Tagliolini di riso con straccetti, fagiolini e sbriciolata di noci.'),
 ('Kaisen Udon', 'Primi Piatti', 1, 8.00, 'Udon ai frutti di mare con mazzancolle, verdure e fiocchi di tonno disidratato.'),
 
-('Yakitori', 'Teppanyako e tempure', 2, 6.00, 'Coscia di pollo in cottura teriyaki.'),
-('Salmon Kushiyaki', 'Teppanyako e tempure', 2, 5.00, 'Impanatura di salmone in cottura teriyaki.'),
-('Ebi Yaki', 'Teppanyako e tempure', 2, 6.00, 'Teppanyaki di gamberi marinati.'),
-('Salmon Tataki', 'Teppanyako e tempure', 1, 5.50, 'Filetto di salmone scottato.'),
-('Maguro Tataki', 'Teppanyako e tempure', 1, 5.50, 'Filetto di tonno scottato.'),
-('Gyu Tataki', 'Teppanyako e tempure', 4, 5.00, 'Filetto scottato di manzo marinato.'),
-('Yasai Teppanyaki', 'Teppanyako e tempure', 1, 5.00, 'Wok di verdure miste.'),
-('Ebi Tempura', 'Teppanyako e tempure', 3, 6.00, 'Mazzancolle in frittura giapponese.'),
+('Yakitori', 'Teppanyako e Tempure', 2, 6.00, 'Coscia di pollo in cottura teriyaki.'),
+('Salmon Kushiyaki', 'Teppanyako e Tempure', 2, 5.00, 'Impanatura di salmone in cottura teriyaki.'),
+('Ebi Yaki', 'Teppanyako e Tempure', 2, 6.00, 'Teppanyaki di gamberi marinati.'),
+('Salmon Tataki', 'Teppanyako e Tempure', 1, 5.50, 'Filetto di salmone scottato.'),
+('Maguro Tataki', 'Teppanyako e Tempure', 1, 5.50, 'Filetto di tonno scottato.'),
+('Gyu Tataki', 'Teppanyako e Tempure', 4, 5.00, 'Filetto scottato di manzo marinato.'),
+('Yasai Teppanyaki', 'Teppanyako e Tempure', 1, 5.00, 'Wok di verdure miste.'),
+('Ebi Tempura', 'Teppanyako e Tempure', 3, 6.00, 'Mazzancolle in frittura giapponese.'),
 
 ('Chips Roll', 'Uramaki', 4, 5.00, 'Mazzancolle in tempura, cetriolo e salmone alla fiamma.'),
 ('Black Ebiten', 'Uramaki', 4, 4.00, 'Ebiten, avocado, sesamo.'),
