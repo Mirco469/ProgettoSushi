@@ -31,7 +31,7 @@
 					foreach( $dettagliOrdine->listaProdotti AS $row ) {
 						$content .=	'<tr>
 									<th scope="row" lang="ja">'.$row->nome.'</th>
-									<td><a href="prodotti.html#'.$row->categoria.'" lang="ja">'.$row->categoria.'</a></td>
+									<td><a href="prodotti.php#'.$row->categoria.'" lang="ja">'.$row->categoria.'</a></td>
 									<td>'.$row->numero_porzioni.'</td>
 								</tr>';
 					}
@@ -43,7 +43,11 @@
 					
 					$paginaHTML = file_get_contents('html/dettagli_ordine.html');
 					
-					echo str_replace('<id_ordine/>', $dettagliOrdine->id_ordine, str_replace('<infoOrdine/>',$content,$paginaHTML) );
+					$paginaHTML = str_replace('<menu />',getMenu(),$paginaHTML);
+					$paginaHTML = str_replace('<id_ordine/>',$dettagliOrdine->id_ordine,$paginaHTML);
+					$paginaHTML = str_replace('<infoOrdine/>',$content,$paginaHTML);
+					
+					echo $paginaHTML;
 				} else {
 					/* errore
 						l'id_ordine non esiste
