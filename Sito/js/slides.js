@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     if (selected < 0) {slideIndex = slides.length - 1}
     
 	// display: none a tutte le immagini dello slideshow e toglie la classe active da tutti i punti sotto le slideshow
-	var i = 0;
+	var i;
 	for (i = 0; i < slides.length; i++) {
         slides[i].classList.add("nascondi");
     }
