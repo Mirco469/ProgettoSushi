@@ -186,41 +186,38 @@
 
 		#funzione per il get dei prodotti per categoria con i nomi in ordine alfabetico
 		public function getProdotti($categoria)
-		{
-			$query = $this->connection->prepare("SELECT * FROM Prodotto WHERE categoria = ? ORDER BY nome ASC");
-			$query->bind_param('s', $categoria);
-			$query->execute();
-			$queryResult = $query->get_result();
-
-			if (mysqli_num_rows($queryResult) == 0)
-			{
-				return null;
-			}
-			else
-			{
-				$result = array();
-
+        {
+            $query = $this->connection->prepare("SELECT * FROM Prodotto WHERE categoria = ? ORDER BY nome ASC");
+            $query->bind_param('s', $categoria);
+            $query->execute();
+            $queryResult = $query->get_result();
 
             if (mysqli_num_rows($queryResult) == 0) {
                 return null;
             } else {
                 $result = array();
 
-                while ($row = mysqli_fetch_assoc($queryResult)) {
-                    $arraySingoloProdotto = array(
-                        'Nome' => $row['nome'],
-                        'Prezzo' => $row['prezzo'],
-                        'Pezzi' => $row['pezzi'],
-                        'Descrizione' => $row['descrizione'],
-                    );
-                    array_push($result, $arraySingoloProdotto);
+
+                if (mysqli_num_rows($queryResult) == 0) {
+                    return null;
+                } else {
+                    $result = array();
+
+                    while ($row = mysqli_fetch_assoc($queryResult)) {
+                        $arraySingoloProdotto = array(
+                            'Nome' => $row['nome'],
+                            'Prezzo' => $row['prezzo'],
+                            'Pezzi' => $row['pezzi'],
+                            'Descrizione' => $row['descrizione'],
+                        );
+                        array_push($result, $arraySingoloProdotto);
+                    }
+
+
+                    return $result;
                 }
-
-
-                return $result;
             }
         }
-
 
         #funzione per il get degli indirizzi per utente;
         public function getIndirizzi($utente)
