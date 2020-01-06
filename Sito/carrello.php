@@ -39,9 +39,12 @@
 		} else {
 			$content = '<p>Il carrello attualmente è vuoto. Se vuoi ordinare qualcosa recati alla pagina <a href="takeaway.php" lang="en">Take Away</a></p>';
 		}
-		$paginaHTML = file_get_contents('carrello.html');
+		$paginaHTML = file_get_contents('html/carrello.html');
 		
-		echo str_replace('<carrello/>',$content,$paginaHTML);
+		$paginaHTML = str_replace('<menu />',getMenu(),$paginaHTML);
+		$paginaHTML = str_replace('<carrello/>',$content,$paginaHTML);
+		
+		echo $paginaHTML;
 	} else {
 		header("location: errore403.html");
 	}
