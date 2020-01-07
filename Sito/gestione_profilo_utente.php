@@ -313,7 +313,7 @@
                                     '.$row['nome_cognome'].', indirizzo: '.$row['via'].' '.$row['numero_civico'].', '.$row['CAP'].'</option>';
         }
 
-        $listaDestinazioni = '<fieldset id="listaDestinazioni"><legend> Lista delle destinazioni</legend><select name="indirizzoDest">'.$listaDestinazioni.'</select><input type="submit" value="Elimina"/></fieldset>';
+        $listaDestinazioni = '<fieldset id="listaDestinazioni"><legend> Lista delle destinazioni</legend><select name="indirizzoDest">'.$listaDestinazioni.'</select><input class="defaultButton" type="submit" value="Elimina"/></fieldset>';
 
 
 
