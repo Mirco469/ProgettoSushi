@@ -1124,3 +1124,13 @@ min-height: 465px;
     text-decoration: none;
     font-size: 0.5em;
 }
+
+/* Modifica prodotto */
+#modifica_prodotto{
+	text-align: center;
+}
+
+#modifica_prodotto .defaultForm input[type=submit]{
+	margin: 0.5em;
+	display: inline;
+}

@@ -1127,3 +1127,29 @@ min-height: 465px;
     margin-right: 0.3em;
     padding: 1px 6px;
 }
+
+/* Modifica prodotto */
+#modifica_prodotto{
+    text-align: center;
+}
+
+#modifica_prodotto .defaultForm input[type=submit]{
+	margin: 0.5em;
+	display: inline;
+}
+
+#modifica_prodotto .defaultForm textarea{
+	width: 97%;
+	display: block;
+	margin:auto;
+}
+
+#modifica_prodotto .defaultForm select{
+	display: block;
+	width: 100%;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 2px;
+	border-radius: 4px;
+}
