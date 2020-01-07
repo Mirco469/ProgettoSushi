@@ -695,6 +695,20 @@ table.defaultTable td:last-child {
 	border-radius: 4px;
 }
 
+#aggiunta_prodotti a.buttonSmall {
+    width: 9em;
+    box-sizing: border-box;
+    text-decoration: none;
+    text-align: center;
+    height: 1.7em;
+    font-weight: 400;
+    font-size: 13.3333px;
+    display: inline-block;
+    line-height: normal;
+    margin-right: 0.3em;
+    padding: 3px 6px;
+}
+
 /*Home Utente*/
 
 #home_utente {
