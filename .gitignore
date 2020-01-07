@@ -20,3 +20,9 @@ Sito/.DS_Store
 Sito/php/.idea/
 
 *.xml
+
+*.xml
+
+*.iml
+
+Sito/php/gestione_profilo.php
