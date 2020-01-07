@@ -111,8 +111,8 @@ CREATE TABLE Ordine(
 	data_ordine		DATETIME NOT NULL,
 	data_consegna		DATETIME NOT NULL,
 	totale				FLOAT NOT NULL,
-	destinazione	INT NOT NULL,
-	FOREIGN KEY (destinazione) REFERENCES Destinazione(id_destinazione) ON DELETE NO ACTION
+	destinazione	INT,
+	FOREIGN KEY (destinazione) REFERENCES Destinazione(id_destinazione) ON DELETE SET NULL
 );
 
 -- Inserimento dati nella tabella Ordine
