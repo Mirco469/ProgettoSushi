@@ -178,14 +178,14 @@
 						}
 						else
 						{
-							header('location: errore500.html');
+							header('location: errore500.php');
 						}
 
 						if (!$db->addOrdine($dataOrdine, $dataConsegna, $totale, $idDestinazione, $user))
 						{
 							header('location: errore500.php');
 						}
-						header('location: successo.php');
+						header('location: successo.html');
 					}
 					else if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'asporto'))
 					{
@@ -196,8 +196,7 @@
 						{
 							header('location: errore500.php');
 						}
-						
-						header('location: successo.php');
+						header('location: successo.html');
 					}
 				}
 			}
@@ -226,7 +225,7 @@
 			}
 			else
 			{
-				header('location: errore500.html');
+				header('location: errore500.php');
 			}
 			
 			$paginaHTML = str_replace('<indirizziUtente />', $indirizziUtente, $paginaHTML);
@@ -261,7 +260,7 @@
 			}
 			else
 			{
-				header('location: errore500.html');
+				header('location: errore500.php');
 			}
 			if ($cartaUtente != null)
 			{
