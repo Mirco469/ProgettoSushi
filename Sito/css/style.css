@@ -1035,7 +1035,7 @@ min-height: 465px;
 	margin:auto;
 }
 
-#home_admin fieldset {
+#addNews {
     width: 20em;
 }
 #home_admin fieldset textarea ,#home_admin fieldset input[type=text]  {
@@ -1043,6 +1043,24 @@ min-height: 465px;
     font-size: 1em;
 }
 
+#formNews {
+	width: auto;
+}
+
+#formNews label {
+	font-size: 1.4em;
+	vertical-align: middle;
+	margin-left: 1em;
+}
+
+#formNews span {
+	display: block;
+	margin: 1em;
+}
+
+#formNews input[type=radio] {
+	display: inline;
+}
 /* Pagamento */
 
 #pagamento {

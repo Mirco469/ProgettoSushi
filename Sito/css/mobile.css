@@ -379,6 +379,26 @@ table.defaultTable td:last-child {
 /* BACK END*/
 
 /* Home Admin */
+
+#formNews {
+	width: auto;
+}
+
+#formNews label {
+	font-size: 1.4em;
+	vertical-align: middle;
+	margin-left: 1em;
+}
+
+#formNews span {
+	display: block;
+	margin: 1em;
+}
+
+#formNews input[type=radio] {
+	display: inline;
+}
+
 #home_admin {
     margin: 1em;
 }
@@ -390,6 +410,7 @@ table.defaultTable td:last-child {
 #dots {
 	text-align: center;
 }
+
 
 /* Slideshow container */
 #slideshow_home {
@@ -518,7 +539,7 @@ table.defaultTable td:last-child {
 margin-bottom: 5%; 
 }
 
-#home_admin input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
+#addNews input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
 	display: block;
 	padding: 0.6em 0.875em;
 	margin: 0.5em 0;
