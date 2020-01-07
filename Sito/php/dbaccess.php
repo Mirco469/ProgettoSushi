@@ -219,6 +219,23 @@
             }
         }
 
+        //Dato il nome di un prodotto ritorna le sue informazioni
+        public function getInfoProdotto($nome)
+        {
+            $query = $this->connection->prepare("SELECT * FROM Prodotto WHERE nome = ?");
+            $query->bind_param('s', $nome);
+            $query->execute();
+            $queryResult = $query->get_result();
+            if (mysqli_num_rows($queryResult) == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return mysqli_fetch_assoc($queryResult);
+            }
+        }
+
         #funzione per il get degli indirizzi per utente;
         public function getIndirizzi($utente)
         {

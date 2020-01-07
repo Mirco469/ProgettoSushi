@@ -2,7 +2,7 @@
 <html lang="it">
 	<head>
 		<meta charset="utf-8" />
-		<title>Sushi Nakamura - Pagamento</title>
+		<title>Modifica prodotti - Sushi Nakamura</title>
 		<meta name="title" content="Modifica prodotti - Sushi Nakamura"/>
 		<meta name="description" content="Pagina di modifica dei prodotti"/>
 		<meta name="language" content="italian it"/>
@@ -51,37 +51,7 @@
 		<form class="defaultForm" action="#" method="post">
 			<fieldset>
 				<legend>Modifica prodotto: </legend>
-				<div class="formGroup">
-                        <label for="prodotto">Nome Prodotto:</label>
-                        <input type="text" id="prodotto" name="prodotto" value=""/>
-                    </div>
-                    <div class="formGroup">
-                        <label for="categoria">Categoria:</label>
-                        <select id="categoria" name="categoria">
-                            <option value="Antipasti">Antipasti</option>
-                            <option value="Primi Piatti">Primi Piatti</option>
-                            <option value="Teppanyako e tempure" lang="ja">Teppanyako e tempure</option>
-                            <option value="Uramaki" lang="ja">Uramaki</option>
-                            <option value="Nigiri ed Onigiri" lang="ja">Nigiri ed Onigiri</option>
-                            <option value="Gunkan" lang="ja">Gunkan</option>
-                            <option value="Temaki" lang="ja">Temaki</option>
-                            <option value="Hosomaki" lang="ja">Hosomaki</option>
-                            <option value="Sashimi" lang="ja">Sashimi</option>
-                            <option value="Dessert" lang="fr">Dessert</option>
-                        </select>
-                    </div>
-                    <div class="formGroup">
-                        <label for="porzione">Numero pezzi:</label>
-                        <input type="text" id="porzione" name="porzione" value=""/>
-                    </div>
-                    <div class="formGroup">
-                        <label for="prezzo">Prezzo:</label>
-                        <input type="text" id="prezzo" name="prezzo" value=""/>
-                    </div>
-                    <div class="formGroup">
-                        <label for="descrizione">Descrizione:</label>
-                        <textarea id="descrizione" name="descrizione" rows="4" cols="35"></textarea>
-                    </div>
+					<formModifica />
 			</fieldset>
 			<input class="defaultButton" type="submit" name="annulla" value="Annulla" />
 			<input class="defaultButton" type="submit" name="Modifica" value="Modifica" />

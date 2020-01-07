@@ -73,7 +73,7 @@
                         <select id=\"categoria\" name=\"categoria\">
                             <option value=\"Antipasti\">Antipasti</option>
                             <option value=\"Primi Piatti\">Primi Piatti</option>
-                            <option value=\"Teppanyako e tempure\" lang=\"ja\">Teppanyako e tempure</option>
+                            <option value=\"Teppanyako e Tempure\" lang=\"ja\">Teppanyako e tempure</option>
                             <option value=\"Uramaki\" lang=\"ja\">Uramaki</option>
                             <option value=\"Nigiri ed Onigiri\" lang=\"ja\">Nigiri ed Onigiri</option>
                             <option value=\"Gunkan\" lang=\"ja\">Gunkan</option>

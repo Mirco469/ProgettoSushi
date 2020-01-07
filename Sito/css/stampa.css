@@ -457,7 +457,7 @@ table.defaultTable td:last-child {
 /*	Storico ordini	*/
 #storico_ordini a.buttonSmall {
 	float: right;
-	width: 9em;
+	width: 6em;
 	box-sizing: border-box;
     text-decoration: none;
     text-align: center;
