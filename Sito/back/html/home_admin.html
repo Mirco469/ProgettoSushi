@@ -28,7 +28,7 @@
             <li><a href="aggiunta_prodotti.html" tabindex="2">Aggiungi Prodotto</a></li>
             <li><a href="gestione_ordini.html" tabindex="3">Gestione Ordini</a></li>
             <li class="impostazioni"><a href="gestione_profilo_admin.html" tabindex="5">Gestione Profilo</a></li>
-            <li class="login"><a href="#" lang="en" tabindex="4">Logout</a></li>
+            <li class="login"><a href="../logout.php" lang="en" tabindex="4">Logout</a></li>
         </ul>
     </div>
     <div id="breadcrumb">
@@ -38,26 +38,13 @@
     <div class="content" id="home_admin">
         <h1>Homepage</h1>
 
-        <form action="#" method="post">
-          <fieldset>
-            <legend>Inserisci la notizia</legend>
-            <label for="titolo">Inserisci il titolo: </label>
-            <input type="text" id="titolo" name="titolo" value=""/>
-            <label for="notizia">Inserisci il testo: </label>
-            <textarea name="notizia" id="notizia" rows="4" cols="35"> </textarea>
-          <input class="defaultButton" type="submit" name="inserisci" value="Inserisci"/>
-          </fieldset>
+        <form action="home_admin.php" method="post">
+          <formNews />
         </form>
       <div>
-        <h1 >News</h1>
+        <h1>News</h1>
         <dl>
-          <dt>11/10/2019</dt>
-            <dd>Per la serata di <span lang="en">Halloween</span>, le persone in costume avranno uno sconto del 20% </dd>
-            <dd><input type="button" name="elimina" value="Elimina"/></dd>
-          <dt>15/10/2019</dt>
-            <dd>PROVA</dd>
-            <dd><input type="button" name="elimina" value="Elimina"/></dd>
-      <!--SEZIONE NOTIZIE, modificabile dall'admin-->
+          <notizie />    
         </dl>
       </div>
 

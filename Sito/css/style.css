@@ -154,8 +154,9 @@ table.defaultTable td:last-child {
 	border: 1px solid #d9d9d9;
     border-top: none;
 	margin-bottom: 2em;
-	padding-left: 0.5em;
 	clear: both;
+	text-align: center;
+	padding: 1em 0;
 }
 
 .defaultLista>dt{
@@ -170,11 +171,6 @@ table.defaultTable td:last-child {
 .defaultLista>dd>span{
 	margin: 0 3em;
 	white-space:nowrap;
-}
-
-.defaultLista>dd{
-	text-align: center;
-	padding: 1em 0;
 }
 
 .defaultLista>dt>input{
@@ -844,6 +840,19 @@ div#notizie {
     margin: 1em;
 }
 
+
+#listaDestinazioni dt {
+	padding: 1em;
+}
+#listaDestinazioni dd{
+	padding-left: 0.3em;
+	padding-right: 0.3em; 
+}
+
+#listaDestinazioni {
+	border: 1px solid white;
+}
+
 #menu_profilo>h1 {
     color: #d9d9d9;
     text-align: center;
@@ -892,6 +901,14 @@ div#notizie {
 
 #gestione_utente input[type=submit]	{
 	margin-top: 1em;
+}
+
+#gestione_utente>form select {
+	width: 7em;
+}
+
+#listaDestinazioni .destIndex{
+	display: none;
 }
 
 
@@ -1087,4 +1104,22 @@ min-height: 465px;
 #errore #testo {
 	text-align: left;
 	font-size: 2em;
+}
+
+
+
+/*	storico_ordini	*/
+#storico_ordini h2 {
+	margin-left: 6em;
+}
+
+#storico_ordini a.buttonSmall {
+    display: inline-block;
+	box-sizing: border-box;
+    margin-right: 0.3em;
+    padding: 0.3em;
+	width: 9em;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.5em;
 }

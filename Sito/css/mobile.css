@@ -315,8 +315,9 @@ table.defaultTable td:last-child {
 	border: 1px solid #d9d9d9;
     border-top: none;
 	margin-bottom: 2em;
-	padding-left: 0.5em;
 	clear: both;
+	text-align: center;
+	padding: 1em 0;
 }
 
 .defaultLista>dt{
@@ -325,12 +326,6 @@ table.defaultTable td:last-child {
 	clear: both;
 	border: 1px solid #d9d9d9;
 	background-color: #4a0715;
-}
-
-
-.defaultLista>dd{
-	text-align: center;
-	padding: 1em 0;
 }
 
 .defaultLista>dt>input{
@@ -913,6 +908,17 @@ min-height: 465px;
     border-color: threedface;
 }
 
+#listaDestinazioni dt {
+	padding: 1em;
+}
+#listaDestinazioni dd{
+	padding-left: 0.3em;
+	padding-right: 0.3em; 
+}
+#listaDestinazioni {
+	border: 1px solid white;
+}
+
 #menu_profilo h1 {
 	text-align: center;
 	color: #d9d9d9;
@@ -1108,6 +1114,16 @@ min-height: 465px;
 	display: block;
 }
 
-#storico_ordini .buttonSmall {
+#storico_ordini a.buttonSmall {
 	width: 9em;
+	box-sizing: border-box;
+    text-decoration: none;
+    text-align: center;
+    height: 1.7em;
+    font-weight: 400;
+    font-size: 13.3333px;
+    display: inline-block;
+    line-height: normal;
+    margin-right: 0.3em;
+    padding: 1px 6px;
 }
