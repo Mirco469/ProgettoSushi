@@ -33,7 +33,7 @@
                     if ($oggettoConnessione->alreadyExistsProdotto($nomeProdotto)) {
                         $messaggioAggiunta .= "<li>Prodotto gi&agrave; esistente</li>";
                     }
-                    if (!checkSoloLettereEDim($nomeProdotto))
+                    if (!checkAlfanumericoESpazi($nomeProdotto))
                     {
                         $messaggioAggiunta .= "<li>Il nome deve contenere solo lettere e essere almeno lungo 2 caratteri</li>";
                     }

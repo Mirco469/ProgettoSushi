@@ -131,6 +131,13 @@
             }
         }
 
+        public function  deleteProdotto($nome)
+        {
+            $query = $this->connection->prepare("DELETE FROM Prodotto WHERE nome = ?");
+            $query->bind_param('s', $nome);
+            return $query->execute();
+        }
+
 
 
         public function inserisciNews($titolo, $data ,$testo, $user){

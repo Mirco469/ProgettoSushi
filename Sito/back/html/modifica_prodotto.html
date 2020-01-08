@@ -21,27 +21,17 @@
       <h1 lang="ja">Sushi Nakamura</h1>
     </div>
     <p class="aiuti">
-        <a href="#pagamento" tabindex="1">Salta il menu</a>
+        <a href="#modifica_prodotto" tabindex="1">Salta il menu</a>
     </p>
     <div id="menu">
-			<ul>
-				<li lang="en"><a href="home_utente.html" tabindex="2">Home</a></li>
-				<li lang="en"><a href="take_away.html" tabindex="3">Take Away</a></li>
-				<li><a href="chi_siamo.html" tabindex="4">Chi siamo</a></li>
-				<li><a href="recensioni.html" tabindex="5">Recensioni</a></li>
-				<li><a href="prodotti.html" tabindex="6">Prodotti</a></li>
-				<li><a href="contatti.html" tabindex="7">Contatti</a></li>
-				<li class="impostazioni">
-					<span id="dropbtn">Area Riservata</span>
-					<ul id="dropdown_content">
-						<li><a href="carrello.html" tabindex="8">Carrello</a></li>
-						<li><a href="storico_ordini.html" tabindex="9">Storico ordini</a></li>
-						<li><a href="gestione_profilo_utente.html" tabindex="10">Gestione profilo</a></li>
-						<li><a lang="en" href="logout.php" tabindex="11">Logout</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
+        <ul>
+            <li><a href="home_admin.html" lang="en" tabindex="2">Home</a></li>
+            <li><a href="aggiunta_prodotti.php" tabindex="3">Aggiungi Prodotto</a></li>
+            <li><a href="gestione_ordini.html" tabindex="4">Gestione Ordini</a></li>
+            <li class="impostazioni"><a href="gestione_profilo_admin.html" tabindex="6">Gestione Profilo</a></li>
+            <li class="login"><a href="../logout.php" lang="en" tabindex="5">Logout</a></li>
+        </ul>
+    </div>
 
     <div id="breadcrumb">
       <p>Ti trovi in: <a href="home_admin.php" lang="en">Home</a> &gt; &gt; <a href="aggiunta_prodotti.php">Aggiunta prodotti</a> &gt; &gt; Modifica prodotto </p>
@@ -51,9 +41,11 @@
 		<form class="defaultForm" action="#" method="post">
 			<fieldset>
 				<legend>Modifica prodotto: </legend>
+					<erroreModifica />
 					<formModifica />
 			</fieldset>
 			<p>
+				<input class="defaultButton" type="submit" name="elimina" value="Elimina" />
 				<input class="defaultButton" type="submit" name="annulla" value="Annulla" />
 				<input class="defaultButton" type="submit" name="Modifica" value="Modifica" />
 			</p>

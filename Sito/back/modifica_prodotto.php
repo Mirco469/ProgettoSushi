@@ -13,6 +13,24 @@
             $oggettoConnessione =  new DBAccess();
             if($oggettoConnessione->openDBConnection())
             {
+                if(isset($_POST['annulla']))
+                {
+                    header('location: aggiunta_prodotti.php');
+                }
+                else if(isset($_POST['elimina']))
+                {
+                    if($oggettoConnessione->deleteProdotto($_GET['nome']))
+                    {
+                        header('location: aggiunta_prodotti.php');
+                        exit;
+                    }
+                    else
+                    {
+                        header("Location: errore500.html");
+                    }
+                }
+
+
                 $prodotto = $oggettoConnessione->getInfoProdotto($_GET['nome']);
                 if(isset($prodotto))
                 {
@@ -26,7 +44,7 @@
                             <option value="Hosomaki" lang="ja">Hosomaki</option>
                             <option value="Sashimi" lang="ja">Sashimi</option>
                             <option value="Dessert" lang="fr">Dessert</option>';
-                    $option = preg_replace('/'.$prodotto["categoria"].'"/', $prodotto["categoria"].'" selected', $option, 1);
+                    $option = preg_replace('/'.$prodotto["categoria"].'"/', $prodotto["categoria"].'" selected="selected"', $option, 1);
 
                     $formModifica = "
                         <label for=\"prodotto\">Nome Prodotto:</label>
@@ -49,12 +67,12 @@
                 }
                 else
                 {
-                    header("Location: /errore500.php"); /*CONTROLLARE SE LA PAGINA E' GIUSTA*/
+                    header("Location: errore500.html"); /*CONTROLLARE SE LA PAGINA E' GIUSTA*/
                 }
             }
             else
             {
-                header("Location: /errore500.php"); /*CONTROLLARE SE LA PAGINA E' GIUSTA*/
+                header("Location: errore500.html"); /*CONTROLLARE SE LA PAGINA E' GIUSTA*/
             }
         }
         else
