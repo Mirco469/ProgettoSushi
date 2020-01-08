@@ -109,7 +109,7 @@
 
         public function addAccount($username, $nome, $cognome, $password)
         {
-            $query = $this->connection->prepare('INSERT INTO utente(username,nome,cognome,password,autorizzazione) VALUES (?,?,?,?,"Utente")');
+            $query = $this->connection->prepare('INSERT INTO Utente(username,nome,cognome,password,autorizzazione) VALUES (?,?,?,?,"Utente")');
             $query->bind_param('ssss', $username, $nome, $cognome, $password);
             if ($query->execute()) {
                 redirectHome("Utente");
@@ -122,7 +122,7 @@
         public function addProdotto($nome, $categoria, $pezzi, $prezzo, $descrizione)
         {
             $prezzo = str_replace(",", ".", $prezzo);
-            $query = $this->connection->prepare('INSERT INTO prodotto(nome,categoria,pezzi,prezzo,descrizione) VALUES (?,?,?,?,?)');
+            $query = $this->connection->prepare('INSERT INTO Prodotto(nome,categoria,pezzi,prezzo,descrizione) VALUES (?,?,?,?,?)');
             $query->bind_param('sssss', $nome, $categoria, $pezzi, $prezzo, $descrizione);
             if ($query->execute()) {
                 return true;
@@ -275,7 +275,7 @@
         //Funzione per controllare le credenziali: ritorna null se non esiste alcuna corrispondenza altrimenti ritorna il suo livello di autorizzazione
         public function checkLogin($username,$password)
         {
-            $query = $this->connection->prepare('SELECT * FROM utente WHERE username= ? AND password= ?');
+            $query = $this->connection->prepare('SELECT * FROM Utente WHERE username= ? AND password= ?');
             $query->bind_param('ss', $username,$password);
             $query->execute();
             $queryResult = $query->get_result();
@@ -295,7 +295,7 @@
         //Funzione che controlla se l'username è già esistente: ritorna true se esiste già false altrimenti
         public function alreadyExistsUsername($username)
         {
-            $query = $this->connection->prepare('SELECT * FROM utente WHERE username= ?');
+            $query = $this->connection->prepare('SELECT * FROM Utente WHERE username= ?');
             $query->bind_param('s', $username);
             $query->execute();
             $queryResult = $query->get_result();
@@ -309,7 +309,7 @@
         //Funzione che controlla se il prodotto è già esistente: ritorna true se esiste già false altrimenti
         public function alreadyExistsProdotto($prodotto)
         {
-            $query = $this->connection->prepare('SELECT * FROM prodotto WHERE nome= ?');
+            $query = $this->connection->prepare('SELECT * FROM Prodotto WHERE nome= ?');
             $query->bind_param('s', $prodotto);
             $query->execute();
             $queryResult = $query->get_result();
