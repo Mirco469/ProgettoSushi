@@ -231,22 +231,38 @@
 			$paginaHTML = str_replace('<indirizziUtente />', $indirizziUtente, $paginaHTML);
 
 			$formDest = "
+			<p>
 			<label for=\"nome_cognome\">Nome e Cognome: </label>
 			<input type=\"text\" name=\"nome_cognome\" id=\"nome_cognome\" placeholder=\"Mario Rossi\" value=\"$nome_cognome\" />
+			</p>
+			<p>
 			<label for=\"via\">Via: </label>
 			<input type=\"text\" id=\"via\" name=\"via\" placeholder=\"Inserire via\" value=\"$via\" />
+			</p>
+			<p>
 			<label for=\"civico\">Numero civico: </label>
 			<input type=\"text\" id=\"civico\" name=\"civico\" placeholder=\"Inserire numero civico\" value=\"$civico\" />
+			</p>
+			<p>
 			<label for=\"cap\"><abbr title=\"Codice di Avviamento Postale\">CAP</abbr>: </label>
 			<input type=\"text\" id=\"cap\" name=\"cap\" placeholder=\"Inserire CAP\" value=\"$cap\" />
+			</p>
+			<p>
 			<label for=\"comune\">Comune: </label>
 			<input type=\"text\" id=\"comune\" name=\"comune\" value=\"Padova\" disabled=\"disabled\"/>
+			</p>
+			<p>
 			<label for=\"provincia\">Provincia: </label>
 			<input type=\"text\" id=\"provincia\" name=\"provincia\" value=\"Padova\" disabled=\"disabled\"/>
+			</p>
+			<p>
 			<label for=\"stato\">Stato: </label>
 			<input type=\"text\" id=\"stato\" name=\"stato\" value=\"Italia\" disabled=\"disabled\"/>
+			</p>
+			<p>
 			<label for=\"tel\">Numero di telefono: </label>
 			<input type=\"tel\" id=\"tel\" name=\"tel\" placeholder=\"Inserire recapito\" value=\"$tel\" />
+			</p>
 			";
 			$paginaHTML = str_replace('<formDestinazione />', $formDest, $paginaHTML);
 
@@ -275,7 +291,7 @@
 			}
 			$paginaHTML = str_replace('<cartaUtente />', $cartaUtente, $paginaHTML);
 
-			$months = "";
+			$months = "<p>";
 			$mesi = array('Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre');
 			for ($i = 0; $i<12; $i++)
 			{
@@ -288,8 +304,9 @@
 					$months .= '<option value="' . ($i+1) . '">' . $mesi[$i] . '</option>';
 				}
 			}
+			$months .= "</p>";
 
-			$years = "";
+			$years = "<p>";
 			$annoCorrente = date("Y");
 			for ($i = 0; $i<20; $i++)
 			{
@@ -301,28 +318,34 @@
 				{
 					$years .= '<option value="' . ($annoCorrente+$i) . '">' . ($annoCorrente+$i) . '</option>';
 				}
-				
 			}
+			$years .= "</p>";
 
 			$formCarta = "
-			<div>
+			<p>
 				<label for=\"intestatario_carta\">Intestatario carta: </label>
 				<input type=\"text\" id=\"intestatario_carta\" name=\"intestatario_carta\" value=\"$intestatario\" />
-			</div>
-			<div>
+			</p>
+			<p>
 				<label for=\"num_carta\">Numero carta: </label>
 				<input type=\"text\" id=\"num_carta\" name=\"num_carta\" maxlength=\"16\" value=\"$num_carta\" />
-			</div>
+			</p>
+			<p>
 			<select name=\"mese_scad\" class=\"selezione_small\">
 				<option>Mese</option>
 				$months
 			</select>
+			</p>
+			<p>
 			<select name=\"anno_scad\" class=\"selezione_small\">
 				<option>Anno</option>
 				$years
 			</select>
+			</p>
+			<p>
 			<label for=\"cvv_carta\" lang=\"en\"><abbr title=\"Card Verification Value\">CVV</abbr>: </label>
 			<input type=\"text\" id=\"cvv_carta\" name=\"cvv_carta\" maxlength=\"3\" value=\"$cvv\" />
+			</p>
 			";
 			$paginaHTML = str_replace('<formCarta />', $formCarta, $paginaHTML);
 

@@ -853,12 +853,9 @@ min-height: 465px;
 }
 
 #pagamento fieldset {
+	text-align: left;
 	margin-top: 1em;
 	margin-bottom: 1em;
-}
-
-#pagamento p {
-	font-size: 0.9em;
 }
 
 #scelta_consegna input[type=radio] {
@@ -873,16 +870,12 @@ min-height: 465px;
 	margin-right: 1em;
 }
 
-#pagamento label[for="cvv_carta"] {
-	display: block;
-}
-
 #info_pagamento input[name="cvv_carta"] {
 	display: inline;
 	width: 5em;
 }
 
-.selezione_big {
+#pagamento .selezione_big {
 	width: 100%;
 	margin-top: 0.5em;
 	padding: 0.3em;
@@ -890,9 +883,13 @@ min-height: 465px;
 	font-size: 0.8em;
 }
 
-.selezione_small {
+.selezione_big + p {
+	text-align: center;
+}
+
+#pagamento .selezione_small {
 	width: 6em;
-	margin: 0.5em;
+	margin: 0;
 	padding: 0.3em;
 	border-radius: 4px;
 	font-size: 0.8em;

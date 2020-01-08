@@ -246,25 +246,27 @@ table.defaultTable td:last-child {
 	text-align: center;
 }
 
-#scelta_consegna {
-	padding-bottom: 5mm;
+#pagamento fieldset {
+	text-align: left;
+	margin-bottom: 5mm;
 }
 
-#pagamento fieldset {
-	margin-bottom: 5mm;
-	page-break-inside: avoid;
+#scelta_consegna p {
+	margin: 0;
+	display: inline;
 }
 
 #scelta_consegna input[type=radio] + label {
 	display: inline;
-	cursor: pointer;
-	margin-right: 1em;
 }
 
 #scelta_consegna input[type=radio] {
-	cursor: pointer;
 	display: inline;
 	width: 2em;
+}
+
+#info_pagamento {
+	page-break-inside: avoid;
 }
 
 #info_pagamento input[name="cvv_carta"] {
@@ -272,18 +274,20 @@ table.defaultTable td:last-child {
 	width: 15mm;
 }
 
-
-.selezione_big {
+#pagamento .selezione_big {
 	width: 100%;
 	padding: 0.3em;
 	border-radius: 4px;
 	font-size: 0.8em;
-	margin: a;
 }
 
-.selezione_small {
+.selezione_big + p {
+	text-align: center;
+}
+
+#pagamento .selezione_small {
 	width: 6em;
-	margin: 0.5em;
+	margin: 0;
 	padding: 0.3em;
 	border-radius: 4px;
 	font-size: 0.8em;
