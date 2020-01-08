@@ -131,6 +131,7 @@
             }
         }
 
+        //Dato il nome di un prodotto lo cancella
         public function  deleteProdotto($nome)
         {
             $query = $this->connection->prepare("DELETE FROM Prodotto WHERE nome = ?");
@@ -138,7 +139,13 @@
             return $query->execute();
         }
 
-
+        //Dato il nome di un prodotto e le sue nuove informazioni lo modifica
+        public function modifyProdotto($nome, $categoria, $pezzi, $prezzo, $descrizione)
+        {
+            $query = $this->connection->prepare("UPDATE Prodotto SET categoria = ?, pezzi = ?, prezzo = ? , descrizione = ? WHERE nome = ?");
+            $query->bind_param('sssss', $categoria, $pezzi, $prezzo, $descrizione, $nome);
+            return $query->execute();
+        }
 
         public function inserisciNews($titolo, $data ,$testo, $user){
 

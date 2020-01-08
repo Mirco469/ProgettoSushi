@@ -10,6 +10,14 @@
         if(strcmp($_SESSION["autorizzazione"],"Admin") == 0)
         {
 
+            $erroreModifica = "";
+            //Campi per il form di aggiunta
+            $nomeProdotto = "";
+            $categoria = "";
+            $numeroPezzi = "";
+            $prezzo = "";
+            $descrizione = "";
+
             $oggettoConnessione =  new DBAccess();
             if($oggettoConnessione->openDBConnection())
             {
@@ -27,6 +35,43 @@
                     else
                     {
                         header("Location: errore500.html");
+                    }
+                }
+                else if(isset($_POST['modifica']))
+                {
+                    $nomeProdotto = htmlentities(trim($_POST['prodotto']));
+                    $categoria = htmlentities(trim($_POST['categoria']));
+                    $numeroPezzi = htmlentities(trim($_POST['porzione']));
+                    $prezzo = htmlentities(trim($_POST['prezzo']));
+                    $descrizione = htmlentities(trim($_POST['descrizione']));
+
+                    // Controllo gli input
+                    if (!checkNumeroIntero($numeroPezzi))
+                    {
+                        $erroreModifica .= "<li>Il numero dei pezzi deve essere un numero intero</li>";
+                    }
+                    if (!checkPrezzo($prezzo))
+                    {
+                        $erroreModifica .= "<li>Il prezzo deve essere un numero decimale con al massimo 3 cifre prima della virgola e 2 cifre dopo la virgola</li>";
+                    }
+
+                    //Controllo se non ho riscontrato errori
+                    if ($erroreModifica == "")
+                    {
+                        //Modifico il prodotto e reindirizzo
+                        if($oggettoConnessione->modifyProdotto($nomeProdotto,$categoria,$numeroPezzi,$prezzo,$descrizione))
+                        {
+                            header('location: aggiunta_prodotti.php');
+                            exit;
+                        }
+                        else
+                        {
+                            header("Location: errore500.html");
+                        }
+                    }
+                    else
+                    {
+                        $erroreModifica = "<ul class='errore'>" . $erroreModifica . "</ul>";
                     }
                 }
 
@@ -48,7 +93,7 @@
 
                     $formModifica = "
                         <label for=\"prodotto\">Nome Prodotto:</label>
-					    <input type=\"text\" id=\"prodotto\" name=\"prodotto\" value=\"".$_GET['nome']."\"/>
+					    <input type=\"text\" id=\"prodotto\" name=\"prodotto\" value=\"".$_GET['nome']."\" readonly=\"readonly\"/>
 					    <label for=\"categoria\">Categoria:</label>
                         <select id=\"categoria\" name=\"categoria\">
                             ".$option."
@@ -62,6 +107,7 @@
 
 
                     $paginaHTML = file_get_contents('html/modifica_prodotto.html');
+                    $paginaHTML = str_replace('<erroreModifica />', $erroreModifica, $paginaHTML);
                     $paginaHTML = str_replace('<formModifica />', $formModifica, $paginaHTML);
                     echo $paginaHTML;
                 }

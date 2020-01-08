@@ -471,7 +471,7 @@ table.defaultTable td:last-child {
 }
 
 /* Modifica prodotto */
-#modifica_prodotto{
+#modifica_prodotto p{
     text-align: center;
 }
 
