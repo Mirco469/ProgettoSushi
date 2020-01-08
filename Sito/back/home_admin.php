@@ -65,10 +65,15 @@
                 $formNews = '<fieldset id="addNews">
                             <messaggio />
                                 <legend>Inserisci la notizia</legend>
+                             
+		<p>
                                 <label for="titolo">Inserisci il titolo: </label>
                                 <input type="text" id="titolo" name="titolo" value="'.$titolo.'"/>
+                                </p>
+		<p>
                                 <label for="notizia">Inserisci il testo: </label>
                                 <textarea name="notizia" id="notizia" rows="4" cols="35" />'.$testo.'</textarea>
+                                </p>
                                 <input class="defaultButton" type="submit" name="inserisci" value="Inserisci"/>
                               </fieldset>';
 
