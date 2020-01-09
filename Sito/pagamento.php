@@ -35,9 +35,9 @@
 			$menu = getmenu();
 			$paginaHTML = str_replace('<menu />', $menu, $paginaHTML);
 			$sceltaConsegna = "
-			<input type=\"radio\" id=\"consegna_asporto\" name=\"tipoConsegna\" value=\"asporto\" />
+			<input type=\"radio\" id=\"consegna_asporto\" name=\"tipoConsegna\" value=\"asporto\" onclick=\"disableInput()\" />
 			<label for=\"consegna_asporto\">Asporto</label>
-			<input type=\"radio\" id=\"consegna_domicilio\" name=\"tipoConsegna\" value=\"domicilio\" checked=\"checked\" />
+			<input type=\"radio\" id=\"consegna_domicilio\" name=\"tipoConsegna\" value=\"domicilio\" checked=\"checked\" onclick=\"enableInput()\" />
 			<label for=\"consegna_domicilio\">Domicilio</label>
 			";
 
@@ -90,9 +90,9 @@
 				else if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'asporto'))
 				{
 					$sceltaConsegna = "
-					<input type=\"radio\" id=\"consegna_asporto\" name=\"tipoConsegna\" value=\"asporto\" checked=\"checked\" />
+					<input type=\"radio\" id=\"consegna_asporto\" name=\"tipoConsegna\" value=\"asporto\" checked=\"checked\" onclick=\"disableInput()\" />
 					<label for=\"consegna_asporto\">Asporto</label>
-					<input type=\"radio\" id=\"consegna_domicilio\" name=\"tipoConsegna\" value=\"domicilio\" />
+					<input type=\"radio\" id=\"consegna_domicilio\" name=\"tipoConsegna\" value=\"domicilio\" onclick=\"enableInput()\" />
 					<label for=\"consegna_domicilio\">Domicilio</label>
 					";
 				}

@@ -1058,7 +1058,7 @@ min-height: 465px;
 	padding: 0.3em;
 	border-radius: 4px;
 	font-size: 0.8em;
-	margin: 0.5em;
+	margin: auto;
 }
 
 .selezione_big + p {
