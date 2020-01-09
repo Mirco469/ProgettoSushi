@@ -12,7 +12,7 @@ function checkData(input) {
 }
 
 function checkMinLen(input) {
-    testoInput = input.value;
+    var testoInput = input.value;
     if(testoInput.length>1){
         togliErrore(input);
         return true;
@@ -23,7 +23,7 @@ function checkMinLen(input) {
 }
 
 function checkTesto(input) {
-    testoInput = input.value;
+    var testoInput = input.value;
     if(testoInput.length>1 && testoInput.length<=150){
         togliErrore(input);
         return true;
@@ -166,7 +166,6 @@ function validazioneFormNews_homeAdmin() {
 
 // Funzione di validazione form password gestione_profilo_admin e gestione_profilo_utente
 function validazioneFormPassw_gestioneProfilo() {
-    var v_password = document.getElementById("v_password");
     var password = document.getElementById("password");
     var c_password = document.getElementById("c_password");
 
