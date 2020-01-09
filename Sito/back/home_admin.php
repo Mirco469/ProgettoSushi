@@ -26,11 +26,11 @@
                     $testo =  trim($_POST['notizia']);
 
                     if(!checkTesto($titolo)){
-                        $erroriNews .= '<li>Il titolo deve contenere almeno due caratteri e non caratteri speciali</li>';
+                        $erroriNews .= '<li>Il titolo deve contenere almeno due caratteri</li>';
                     }
 
                     if(!checkTesto($testo)){
-                        $erroriNews .= '<li>Il testo deve contenere almeno due caratteri e non caratteri speciali</li>';
+                        $erroriNews .= '<li>Il testo deve contenere almeno due caratteri</li>';
                     }
                     if(strlen($testo)>150){
                         $erroriNews .= '<li>Il testo deve contenere meno di 151 caratteri</li>';
@@ -55,10 +55,14 @@
                 $formNews = '<fieldset>
                             <messaggio />
                                 <legend>Inserisci la notizia</legend>
+                                <p>
                                 <label for="titolo">Inserisci il titolo: </label>
                                 <input type="text" id="titolo" name="titolo" value="'.$titolo.'"/>
+                                </p>
+                                <p>
                                 <label for="notizia">Inserisci il testo: </label>
                                 <textarea name="notizia" id="notizia" rows="4" cols="35" />'.$testo.'</textarea>
+                                </p>
                                 <input class="defaultButton" type="submit" name="inserisci" value="Inserisci"/>
                               </fieldset>';
 
