@@ -9,11 +9,11 @@
 
 	if ($oggettoConnessione->openDBConnection())
 	{
-		#Stampo la porzione di menu corretta;
+		#Stampo la porzione di menu corretta
 		$menu = getmenu();
 		$paginaHTML = str_replace('<menu />', $menu, $paginaHTML);
 
-		#Prendo tutti i prodotti e li stampo per categoria;
+		#Prendo tutti i prodotti e li stampo per categoria
         $listaProdotti = "";
         foreach(getCategorie() as $categoriaSingola)
         {
@@ -40,7 +40,7 @@
 		$paginaHTML = str_replace('<listaProdotti />', $listaProdotti, $paginaHTML);
         echo $paginaHTML;
 	}
-	else #Errore di connessione al databse;
+	else #Errore di connessione al databse
 	{
 		header("Location: /errore500.php");
 	}
