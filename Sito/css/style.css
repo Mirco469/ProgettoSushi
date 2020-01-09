@@ -604,26 +604,25 @@ table.defaultTable td:last-child {
 }
 
 
-#recensioni h2 {
+#lista_recensioni dt {
 	color: #e0ac00;
 	font-size: 1.3em;
 	margin: 0;
 }
 
-#recensioni h2 + p {
+#lista_recensioni dt + dd {
 	font-size: 0.8em;
 	padding: 0.2em;
 	margin: 0;
 }
 
-#recensioni h2 + p + p {
+#lista_recensioni dt + dd + dd {
 	font-style: italic;
-	font-size: 0.8em;
-	padding: 0.2em;
+	font-size: 0.9em;
 	margin: 0;
 }
 
-#recensioni h2 + p + p + p{
+#lista_recensioni dt + dd + dd + dd {
 	padding: 0.5em;
 	border: 1px solid #fff;
 	border-radius: 5px;

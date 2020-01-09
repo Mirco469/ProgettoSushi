@@ -34,13 +34,11 @@
 
         public function modificaPassword($utente, $password)
         {
-
             $query = $this->connection->prepare('UPDATE Utente SET password = ? WHERE username = ?');
             $query->bind_param('ss', $password, $utente);
             if (!$query->execute()) {
                 header('location: errore500.html');
             }
-
         }
 
 
@@ -51,12 +49,10 @@
             if (!$query->execute()) {
                 header('location: errore500.html');
             }
-
         }
 
         public function modificaPagamento($utente, $intestatario, $num_carta, $mese_scadenza, $anno_scadenza)
         {
-
             $scadenza = $anno_scadenza . '-' . $mese_scadenza . '-01';
 
             $query = $this->connection->prepare('UPDATE Utente SET numero_carta = ?, intestatario = ?, scadenza = ? WHERE username = ?');
@@ -131,6 +127,20 @@
             }
         }
 
+        #Aggiunge una recensione al database, altrimenti reindirizza ad errore500.php
+        public function addRecensione ($titolo, $data, $utente, $testo)
+        {
+            $query = $this->connection->prepare('INSERT INTO Recensione(titolo, testo, data, utente) VALUES (?,?,?,?)');
+            $query->bind_param('ssss', $titolo, $testo, $data, $utente);
+            if($query->execute())
+            {
+                return true;
+            }
+            else
+            {
+                header("Location: /errore500.php");
+            }
+        }
 
 
         public function inserisciNews($titolo, $data ,$testo, $user){
@@ -555,6 +565,28 @@
         if (!preg_match('/^[0-9]+$/', $numero)) {
             return false;
         } else {return true;}
+    }
+
+    //Controlla che l'input contenga solo lettere e spaziature interne e sia almeno lungo $dim;
+    function checkTestoSpaziDim($string, $dim)
+    {
+        if (strlen($string) < $dim) {
+            return false;
+        }
+        if (!preg_match('/^[a-zA-Z][a-zA-Z|\s]*[a-zA-Z]$/', $string)) {
+            return false;
+        } else return true;
+    }
+
+    //Controlla che l'input non contenga numeri e sia lungo tra i 10 ed i 200 caratteri;
+    function checkTextarea($string)
+    {
+        if (strlen($string) < 10 || strlen($string) > 200) {
+            return false;
+        }
+        if (!preg_match('/[\D]+/', $string)) {
+            return false;
+        } else return true;
     }
 
     //Controlla che il parametro sia un numero consono ad essere un prezzo ovvero può essere decimale ma con al massimo due cifre dopo la virgola e
