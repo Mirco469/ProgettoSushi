@@ -347,6 +347,14 @@
 			return $result;
 		}
 
+        public function getInfoProdotto($prodotto)
+	    {
+		    $query = $this->connection->prepare("SELECT * FROM Prodotto WHERE nome = ?");
+		    $query->bind_param('s', $prodotto);
+		    $query->execute();
+		    $result = $query->get_result();
+		    return $result;
+	    }
     }
 
 
