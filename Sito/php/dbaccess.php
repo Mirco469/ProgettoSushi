@@ -185,7 +185,6 @@
             }
         }
 
-		//Aggiunge un ordine al database: ritorna true se ha successo, reindirzzia alla pagina di errore 500 altrimenti.
 		public function addOrdine($dataOrdine, $dataConsegna, $totale, $destinazione, $user)
 		{
             $query = $this->connection->prepare('INSERT INTO Ordine (data_ordine, data_consegna, totale, destinazione, utente) VALUES (?,?,?,?,?)');
@@ -196,9 +195,23 @@
             }
             else
             {
-                header("Location: /errore500.php");
+                header("Location: errore500.php");
             }
 		}
+
+        public function addContiene($idOrdine, $prodotto, $quantita)
+        {
+            $query = $this->connection->prepare('INSERT INTO Contiene (id_Ordine, nome, numero_porzioni) VALUES (?,?,?)');
+			$query->bind_param('sss', $idOrdine, $prodotto, $quantita);
+            if($query->execute())
+            {
+                return true;
+            }
+            else
+            {
+                header("Location: errore500.php");
+            }
+        }
 
 
         public function inserisciNews($titolo, $data ,$testo, $user){

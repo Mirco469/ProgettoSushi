@@ -32,12 +32,11 @@
 			$cvv = "";
 
 			$paginaHTML = file_get_contents('html/pagamento.html');
-			$menu = getmenu();
-			$paginaHTML = str_replace('<menu />', $menu, $paginaHTML);
+			
 			$sceltaConsegna = "
-			<input type=\"radio\" id=\"consegna_asporto\" name=\"tipoConsegna\" value=\"asporto\" onclick=\"disableInput()\" />
+			<input type=\"radio\" id=\"consegna_asporto\" name=\"tipoConsegna\" value=\"asporto\" />
 			<label for=\"consegna_asporto\">Asporto</label>
-			<input type=\"radio\" id=\"consegna_domicilio\" name=\"tipoConsegna\" value=\"domicilio\" checked=\"checked\" onclick=\"enableInput()\" />
+			<input type=\"radio\" id=\"consegna_domicilio\" name=\"tipoConsegna\" value=\"domicilio\" checked=\"checked\" />
 			<label for=\"consegna_domicilio\">Domicilio</label>
 			";
 
@@ -90,9 +89,9 @@
 				else if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'asporto'))
 				{
 					$sceltaConsegna = "
-					<input type=\"radio\" id=\"consegna_asporto\" name=\"tipoConsegna\" value=\"asporto\" checked=\"checked\" onclick=\"disableInput()\" />
+					<input type=\"radio\" id=\"consegna_asporto\" name=\"tipoConsegna\" value=\"asporto\" checked=\"checked\" />
 					<label for=\"consegna_asporto\">Asporto</label>
-					<input type=\"radio\" id=\"consegna_domicilio\" name=\"tipoConsegna\" value=\"domicilio\" onclick=\"enableInput()\" />
+					<input type=\"radio\" id=\"consegna_domicilio\" name=\"tipoConsegna\" value=\"domicilio\" />
 					<label for=\"consegna_domicilio\">Domicilio</label>
 					";
 				}
@@ -153,38 +152,50 @@
 
 						$dataConsegna = date("Y-m-d H+1:i:s");
 						$idDestinazione = "";
-						if ($db->openDBConnection())
+						$maxId = 0;
+						$queryResult = $db->getDestinazioni($user);
+						while ($row = mysqli_fetch_assoc($queryResult))
 						{
-							$maxId = 0;
-							$queryResult = $db->getDestinazioni($user);
-							while ($row = mysqli_fetch_assoc($queryResult))
+							if (isset($_POST['destinazione']) && $_POST['destinazione'] == $row['id_destinazione'])
 							{
-								if (isset($_POST['destinazione']) && $_POST['destinazione'] == $row['id_destinazione'])
-								{
-									$idDestinazione = $row['id_destinazione'];
-								}
-								else
-								{
-									if ($row['id_destinazione'] > $maxId)
-									{
-										$maxId = $row['id_destinazione'];
-									}
-								}
+								$idDestinazione = $row['id_destinazione'];
 							}
-							if ($maxId != 0)
+							else
 							{
-								$idDestinazione = $maxId;
+								if ($row['id_destinazione'] > $maxId)
+								{
+									$maxId = $row['id_destinazione'];
+								}
 							}
 						}
-						else
+						if ($maxId != 0 && $idDestinazione == "")
 						{
-							header('location: errore500.php');
+							$idDestinazione = $maxId;
 						}
 
 						if (!$db->addOrdine($dataOrdine, $dataConsegna, $totale, $idDestinazione, $user))
 						{
 							header('location: errore500.php');
 						}
+
+						$idOrdine = 0;
+						$queryResult = $db->getOrdini($user);
+						while ($row = mysqli_fetch_assoc($queryResult))
+						{
+							if ($row['id_ordine'] > $idOrdine)
+							{
+								$idOrdine = $row['id_ordine'];
+							}
+						}
+						foreach ($_SESSION['carrello'] AS $prodotto => $row) 
+						{
+							$quantita = $row['quantita'];
+							if (!$db->addContiene($idOrdine, $prodotto, $quantita))
+							{
+								header('location: errore500.php');
+							}
+						}
+						
 						header('location: successo.html');
 					}
 					else if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'asporto'))
@@ -196,6 +207,25 @@
 						{
 							header('location: errore500.php');
 						}
+
+						$idOrdine = 0;
+						$queryResult = $db->getOrdini($user);
+						while ($row = mysqli_fetch_assoc($queryResult))
+						{
+							if ($row['id_ordine'] > $idOrdine)
+							{
+								$idOrdine = $row['id_ordine'];
+							}
+						}
+						foreach ($_SESSION['carrello'] AS $prodotto => $row) 
+						{
+							$quantita = $row['quantita'];
+							if (!$db->addContiene($idOrdine, $prodotto, $quantita))
+							{
+								header('location: errore500.php');
+							}
+						}
+
 						header('location: successo.html');
 					}
 				}
