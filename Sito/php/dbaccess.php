@@ -474,7 +474,7 @@
 
     //Controlla se viene inserito un CAP di Padova
       function checkCAP($string) {
-          if(!preg_match('/35(100|121|122|123|124|125|126|127|128|129|131|132|133|134|135|136|137|138|139|141|142|143)/', $string)){
+          if(!preg_match('/^35(100|121|122|123|124|125|126|127|128|129|131|132|133|134|135|136|137|138|139|141|142|143)$/', $string)){
               return false;
           } else return true;
       }
