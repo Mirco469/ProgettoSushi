@@ -104,8 +104,9 @@ table.defaultTable td:last-child {
 	border: 1px solid #d9d9d9;
     border-top: none;
 	margin-bottom: 2em;
-	padding-left: 0.5em;
 	clear: both;
+	text-align: center;
+	padding: 1em 0;
 }
 
 .defaultLista>dt{
@@ -119,11 +120,6 @@ table.defaultTable td:last-child {
 .defaultLista>dd>span{
 	margin: 0 3em;
 	white-space:nowrap;
-}
-
-.defaultLista>dd{
-	text-align: center;
-	padding: 1em 0;
 }
 
 .defaultLista>dt>input{
@@ -293,6 +289,8 @@ table.defaultTable td:last-child {
 	font-size: 0.8em;
 }
 
+
+
 /* Takeaway */
 .lista_piatti {
 	width: 85%;
@@ -327,6 +325,8 @@ table.defaultTable td:last-child {
 	display: none;
 }
 
+
+
 /* Aggiunta Prodotti */
 #aggiunta_prodotti form{
 	display: none;
@@ -345,6 +345,8 @@ table.defaultTable td:last-child {
 	text-align: left;
 }
 
+
+
 /* Pagina Successo */
 #successo{
 	display: block;
@@ -358,24 +360,25 @@ table.defaultTable td:last-child {
 }
 
 
+
 /* Recensioni */
-#recensioni h2 {
+#recensioni dt {
 	margin: 0;
 }
 
-#recensioni h2 + p {
+#recensioni dt + dd {
 	padding: 0.2mm;
 	margin: 0;
 	font-size: 0.8em;
 }
 
-#recensioni h2 + p + p {
+#recensioni dt + dd + dd {
 	font-style: italic;
 	padding: 0.2mm;
 	margin: 0;
 }
 
-#recensioni h2 + p + p + p{
+#recensioni dt + dd + dd + dd {
 	page-break-inside: avoid;
 	margin: 0;
 	padding-bottom: 5mm;
@@ -385,11 +388,15 @@ table.defaultTable td:last-child {
 	display: none;
 }
 
+
+
 /* Login */
 #login>p{
 	text-align: center;
 	font-weight: bold;
 }
+
+
 
 /* Contatti */
 
@@ -413,15 +420,16 @@ table.defaultTable td:last-child {
     margin-left: 90mm;
 }
 
+
+
 /*Gestion Profilo Admin*/
 #gestione_admin>form {
     margin-left: auto;
 }
 
+
+
 /*	Dettagli Ordine (Utente e admin)	*/
-#dettagli_ordine {
-	padding: 2em 6em;
-}
 
 #dettagli_ordine .data {
 	display: inline-block;
@@ -434,6 +442,23 @@ table.defaultTable td:last-child {
 	width: 115%;
 	margin: 0; 
 }
+
+#dettagli_ordine .defaultTable {
+    margin: 2em 0 1em;
+	width: 100%;
+}
+
+#dettagli_ordine .totaleText {
+	margin-top: 0;
+	margin-bottom: 2em;
+	float: right;
+}
+
+#dettagli_ordine + #footer {
+    clear: both;
+}
+
+
 
 /*	errore utente e admin	*/
 #errore {
@@ -454,6 +479,24 @@ table.defaultTable td:last-child {
 #errore #testo {
 	text-align: left;
 	font-size: 2em;
+}
+
+
+
+/*	Storico ordini	*/
+#storico_ordini a.buttonSmall {
+	float: right;
+	width: 9em;
+	box-sizing: border-box;
+    text-decoration: none;
+    text-align: center;
+    height: 1.7em;
+    font-weight: 400;
+    font-size: 13.3333px;
+    display: inline-block;
+    line-height: normal;
+    margin-right: 0.3em;
+    padding: 1px 6px;
 }
 
 
