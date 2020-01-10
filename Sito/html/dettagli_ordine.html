@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="it">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Dettagli Ordine n. ID - Sushi Nakamura</title>
+		<title>Ordine <id_ordine/> - Sushi Nakamura</title>
 		<meta name="title" content="Storico ordini" />
-		<meta name="description" content="Dettagli dell'ordine n. ID" />
+		<meta name="description" content="Dettagli dell'ordine n. <id_ordine/>" />
 		<meta name="keyword" content="Ordini, prodotti, dettagli" />
 		<meta name="robots" content="noindex" />
 		<meta name="language" content="italian it"/>
@@ -18,7 +18,7 @@
 
 	<body>
 		<div id="header">
-        	<a id="logo" href="home_utente.html" title="Vai alla home"  tabindex="-1"></a>
+        	<a id="logo" href="home_utente.php" title="Vai alla home"  tabindex="-1"></a>
         	<h1 lang="ja">Sushi Nakamura</h1>
         </div>
 		<p class="aiuti">
@@ -26,69 +26,24 @@
 		</p>
 		<div id="menu">
 			<ul>
-				<li lang="en"><a href="home_utente.html" tabindex="2">Home</a></li>
-				<li lang="en"><a href="take_away.html" tabindex="3">Take Away</a></li>
-				<li><a href="chi_siamo.html" tabindex="4">Chi siamo</a></li>
-				<li><a href="recensioni.html" tabindex="5">Recensioni</a></li>
-				<li><a href="prodotti.html" tabindex="6">Prodotti</a></li>
-				<li><a href="contatti.html" tabindex="7">Contatti</a></li>
-				<li class="impostazioni">
-					<span id="dropbtn">Area Riservata</span>
-					<ul id="dropdown_content">
-						<li><a href="carrello.html" tabindex="8">Carrello</a></li>
-						<li><a href="storico_ordini.html">Storico ordini</a></li>
-						<li><a href="gestione_profilo_utente.html" tabindex="9">Gestione profilo</a></li>
-						<li><a lang="en" href="logout.php" tabindex="10">Logout</a></li>
-					</ul>
-				</li>
+				<li lang="en"><a href="home_utente.php" tabindex="2">Home</a></li>
+				<li lang="en"><a href="take_away.php" tabindex="3">Take Away</a></li>
+				<li><a href="chi_siamo.php" tabindex="4">Chi siamo</a></li>
+				<li><a href="recensioni.php" tabindex="5">Recensioni</a></li>
+				<li><a href="prodotti.php" tabindex="6">Prodotti</a></li>
+				<li><a href="contatti.php" tabindex="7">Contatti</a></li>
+				<menu />
 			</ul>
 		</div>
 
 		<div id="breadcrumb">
-			<p>Ti trovi in: <a lang="en" href="home_utente.html">Home</a> &gt; &gt; <a href="storico_ordini.html">Storico Ordini</a> &gt; &gt; Dettagli Ordine n. ID</p>
+			<p>Ti trovi in: <a lang="en" href="home_utente.php">Home</a> &gt; &gt; <a href="storico_ordini.php">Storico Ordini</a> &gt; &gt; Dettagli Ordine n. <id_ordine/></p>
 		</div>
 
 		<!-- Inizio contenuto -->
 		<div id="dettagli_ordine" class="content">
 
-			<h1>ID ordine</h1>
-			<h2 class="data">Data ordine</h2>
-			<h2 class="data">Data consegna</h2>
-
-			<p>Nome Cognome</p>
-			<p>Via, n. civico, citta, cap</p>
-			<p>Pagamento</p>
-			<table class="defaultTable" summary="Lista prodotti ordinati">
-				<thead>
-					<tr>
-						<th scope="col">Nome prodotto</th>
-						<th scope="col">Categoria</th>
-						<th scope="col">Porzioni</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th scope="row" lang="ja">Uramaki Maguro</th>
-						<td><a href="prodotti.html#uramaki" lang="ja">Uramaki</a></td>
-						<td>1</td>
-					</tr>
-					<tr>
-						<th scope="row" lang="ja">Hosomaki Maguro</th>
-						<td><a href="prodotti.html#hosomaki" lang="ja">Hosomaki</a></td>
-						<td>4</td>
-					</tr>
-					<tr>
-						<th scope="row" lang="ja">Hosomaki Sake</th>
-						<td><a href="prodotti.html#hosomaki" lang="ja">Hosomaki</a></td>
-						<td>4</td>
-					</tr>
-					<tr>
-						<th scope="row">Tiramis&ugrave;</th>
-						<td><a href="prodotti.html#dessert"  lang="fr">Dessert</a></td>
-						<td>10</td>
-					</tr>
-				</tbody>
-			</table>
+			<infoOrdine/>
 
 		</div>
 		<!-- Fine contenuto -->
