@@ -120,13 +120,13 @@
 	\section{Implementazione}
 		\subsection{Linguaggi}
 			\subsubsection{XHTML 1.0 Strict e HTML5}
-			Come già detto, per la realizzazione del sito si è optato per avere sia pagine in XHTML 1.0 Strict, che in HTML5. L'uso di XHTML 1.0 garantisce una migliore retrocompatibilità con browsers più datati ed una migliore aderenza del codice agli standard di correttezza, ma HTML5 permette di sfruttare alcune funzionalità aggiuntive che abbiamo sfruttato ad esempio in vari form per inserire input di tipo \textit{date}, utilizzare \textit{placeholder} o per rendere dei campi \textit{required} in modo da chiarire e migliorare l'usabilità del sito. In entrambi i casi per ottenere codice pulito si sono seguiti i seguenti principi:
+			Come già detto, per la realizzazione del sito si è optato per avere sia pagine in XHTML 1.0 Strict, che in HTML5. L'uso di XHTML 1.0 garantisce una migliore retrocompatibilità con browsers più datati ed una migliore aderenza del codice agli standard di correttezza, ma HTML5 permette di sfruttare alcune funzionalità aggiuntive che abbiamo sfruttato ad esempio in vari form per utilizzare \textit{placeholder} o per rendere dei campi \textit{required} in modo da chiarire e migliorare l'usabilità del sito. In entrambi i casi per ottenere codice pulito si sono seguiti i seguenti principi:
 			\begin{itemize}
 			    \item Mantenere la separazione tra struttura e presentazione, usando file separati linkati nell'header;
 			    \item Ogni $<$tag$>$ aperto deve essere poi chiuso $<$/tag$>$ (oppure $<$tag /$>$);
 			    \item I tag di intestazione vanno usati in base all'importanza di ciò che racchiudono, e non in base all'estetica base html;
 			\end{itemize}
-			\newline In generale, per garantire un codice corretto, sono state seguite le linee guida che sono state illustrate durante il corso di Tecnologie Web e quelle dello standard W3C. La verifica del codice è stata poi effettuata  utilizzando il tool di validazione W3C Validator%
+			In generale, per garantire un codice corretto, sono state seguite le linee guida che sono state illustrate durante il corso di Tecnologie Web e quelle dello standard W3C. La verifica del codice è stata poi effettuata  utilizzando il tool di validazione W3C Validator%
 			\footnote{Riferimento al sito di  \href{https://validator.w3.org/}{W3C Validator}.},
 			 la piattaforma SonarCloud% 
 			\footnote{Riferimento al sito di  \href{https://sonarcloud.io/about}{SonarCloud}.}
@@ -136,6 +136,7 @@
 			\newline Si è prestata attenzione al ruolo dei metatag nell'header, il cui buon uso migliora anche l'indicizzazione del sito da parte dei motori di ricerca, aspetto fondamentale per un'attività commerciale che voglia ricevere un'adeguata visibilità nel web.
 			\newline Si è deciso di fare uso anche di tabelle, rendendole più agevolmente accessibili tramite l'uso di adeguati \textit{summary}, e di \textit{scope} su colonne e righe di interesse.
 			\subsubsection{CSS}
+				CSS è stato usato per la presentazione grafica delle pagine HTML. Si è cercato di puntare ad un discreto riutilizzo del codice creando classi da poter usare su più pagine, come per esempio bottoni e form preimpostati, che poi potevano venire personalizzati dove necessario sovrascrivendo le regole necessarie. Il contenuto di ogni pagina è identificato da una classe così da avere una formattazione del testo omogenea mentre per impaginare le pagine specifiche si è optato per un identificativo univoco per ogni pagina.
 			\subsubsection{PHP}
 			\subsubsection{SQL}
 			Sql è stato usato per codificare il database. Si rimanda al file \textit{creazione\_database.sql} nella cartella \textit{Database} [\href{https://github.com/Mirco469/ProgettoSushi/tree/master/Database}{url}] della repository per il file di costruzione del database. Di seguito il diagramma ER del database:\newline
@@ -144,8 +145,9 @@
 	\section{Fase di test}
 		\subsection{Strumenti usati}
 			\subsubsection{W3C HTML Validator}
-				Le pagine html sono state validate usando il validatore fornito dall'organizazione W3C per garantire la corretta visualizzazione del contenuto della pagina senza fare entrare i browser in {\bfseries Quirks Mode}. \'E stato usato anche per validare il risultato delle pagine php incollando il risultato ottenuto facendo eseguire lo script php.
+				Le pagine html sono state validate usando il validatore fornito dall'organizazione W3C per garantire la corretta visualizzazione del contenuto della pagina senza fare entrare i browser in {\bfseries Quirks Mode}. \'E stato usato anche per validare il risultato delle pagine php incollando il sorgente ottenuto facendo eseguire lo script php.
 			\subsubsection{W3C CSS Validator}
+				Tutti i file CSS sono stati validati usando lo strumento di validazione fornito da W3C per assicurarsi che fossero strutturati correttamente.
 			\subsubsection{TotalValidator}
 			\subsubsection{SonarCloud}
 				Servizio integrato con GitHub per la verifica del codice nella repository. Ad ogni push veniva fatta un {\bfseries analisi statica} del codice alla ricerca di problemi e vulnerabilità come ad esempio un problema comune è stata la ripetizione rindondate di regole css. Questa fase di test era bloccante, ovvero perchè il codice venisse aggiunto dovevano prima essere risolti i problemi.
