@@ -13,7 +13,7 @@
 		{
 			$nomeProdotto = ; #da dove lo prendo?
 			$prodotto = $db->getInfoProdotto($nomeProdotto);
-			if (!alreadyInCart($prodotto['nome'], $prodotto['categoria'])
+			if (!alreadyInCart($prodotto['nome'])
 			{
 				addToCart($prodotto['nome'], $prodotto['categoria'], $prodotto['prezzo']);
 			}
@@ -69,26 +69,16 @@
 		}
 	}
 
-	function getIndexByNameCategory($name,$category)
+	function alreadyInCart($nome)
 	{
-		foreach($_SESSION['carrello'] AS $index => $row)
+		foreach($_SESSION['carrello'] AS $prodotto => $row)
 		{
-			if (($row['nome'] === $name) && ($row['categoria'] === $category))
+			if ($prodotto == $nome)
 			{
-				return $index;
+				return true;
 			}
 		}
-		return -1;
-	}
-
-	function alreadyInCart($nome, $categoria)
-	{
-		$i = getIndexByNameCategory($nome, $categoria);
-		if ($i == -1)
-		{
-			return false;
-		}
-		return true;
+		return false;
 	}
 
 	function addToCart($nome, $categoria, $prezzo)
