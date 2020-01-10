@@ -1,7 +1,7 @@
 <?php
 	require_once("php/dbaccess.php");
     session_start();
-    $_SESSION['username']='user';
+  
 
 	if( isset($_SESSION['username'])) {
 	         $db = null;
@@ -130,7 +130,7 @@
                         $erroriSped .= '<li>Il numero civico deve contenere solo numeri o lettere</li>';
                     }
                     if(!checkCAP($cap)){
-                        $erroriSped .= '<li>Non hai inserito un CAP corretto</li>';
+                        $erroriSped .= '<li>Non hai inserito un CAP del comune di Padova</li>';
                     }
                     if(!checkSoloNumeriEDIm($tel)){
                         $erroriSped .= '<li>Non hai inserito un numero telefonico corretto</li>';
@@ -199,12 +199,14 @@
 
 
 
-             }elseif(isset($_POST['eliminaDestinazione'])){
-                $indice = $_POST['indiceDestinazione'] + 1;
+             }elseif(isset($_POST['indirizzoDest'])){
+                $indice = $_POST['indirizzoDest'];
                 $db = new DBAccess();
 
-                if($db->openDBConection()){
-                    $db->eliminaDestinazione($user, $indice);
+                if($db->openDBConnection()){
+                    $db->eliminaDestinazione($indice);
+                }else {
+                    header('location: errore500.php');
                 }
              }
 
@@ -266,7 +268,6 @@
                                 <input type="text" id="provincia" name="provincia" value="Padova" disabled="disabled"/>
                                 <label for="stato">Stato: </label>
                                 <input type="text" id="stato" name="stato" value="Italia" disabled="disabled"/>
-				                </p>
 				                <p>
                                 <label for="tel">Numero di telefono: </label>
                                 <input type="text" id="tel" name="tel" placeholder="'.$tel.'" />
@@ -334,15 +335,13 @@
             header('location: errore500.php');
         }
 
-        $index = 0;
+
         while($row = mysqli_fetch_assoc($queryResult)) {
-            $listaDestinazioni.='<input type="text" class="destIndex" value="'.$index.'" id="indiceDestinazione'.$index.'" name = "indiceDestinazione" readonly="readonly"/>
-                                    <span>'.$row['nome_cognome'].', indirizzo: '.$row['via'].' '.$row['numero_civico'].', '.$row['CAP'].'</span>
-                                    <input type="button" name="eliminaDestinazione" value="Elimina"/>';
-            $index++;
+            $listaDestinazioni.='<option value ="'.$row['id_destinazione'].'">
+                                    '.$row['nome_cognome'].', indirizzo: '.$row['via'].' '.$row['numero_civico'].', '.$row['CAP'].'</option>';
         }
 
-        $listaDestinazioni = '<fieldset id="listaDestinazioni"><legend> Lista delle destinazioni</legend>'.$listaDestinazioni.'</fieldset>';
+        $listaDestinazioni = '<fieldset id="listaDestinazioni"><legend> Lista delle destinazioni</legend><select name="indirizzoDest">'.$listaDestinazioni.'</select><input class="defaultButton" type="submit" value="Elimina"/></fieldset>';
 
 
 
@@ -352,7 +351,6 @@
                 $formSpedizione ='<fieldset>
                     <legend id="is" >Aggiungi un metodo di spedizione: </legend>
                     <messaggio2 />
-		    
 		          <p>
                     <label for="nome_cognome">Nome e Cognome: </label>
                     <input type="text" name="nome_cognome" id="nome_cognome" value="'.$nome_cognome.'"/>
@@ -375,7 +373,6 @@
                     <input type="text" id="provincia" name="provincia" value="Padova" disabled="disabled"/>
                     <label for="stato">Stato: </label>
                     <input type="text" id="stato" name="stato" value="Italia" disabled="disabled"/>
-		   
 		          <p>
                     <label for="tel">Numero di telefono: </label>
                     <input type="text" id="tel" name="tel" value="'.$tel.'" />

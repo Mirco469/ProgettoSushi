@@ -64,7 +64,7 @@
 
         public function getDestinazioni($utente)
         {
-            $query = $this->connection->prepare("SELECT nome_cognome, numero_telefonico, CAP, via, numero_civico  FROM Destinazione WHERE utente = ? ORDER BY id_destinazione");
+            $query = $this->connection->prepare("SELECT * FROM Destinazione WHERE utente = ? ORDER BY id_destinazione");
             $query->bind_param('s', $utente);
             $query->execute();
             $queryResult = $query->get_result();
@@ -74,19 +74,23 @@
                 return $queryResult;
             }
         }
-/*
-        public function eliminaDestinazione($utente, $indice)
+
+        public function eliminaDestinazione($indice)
         {
-            $query = $this->connection->prepare("DELETE FROM Destinazione WHERE id_destinazione = (SELECT id_destinazione FROM (SELECT id_destinazione FROM Destinazione WHERE username = ? ORDER BY id_destinazione LIMIT " . $indice . ",1)) ");
-            $query->bind_param('s', $utente);
+
+            $query = $this->connection->prepare("DELETE FROM Destinazione WHERE id_destinazione = ".$indice." ");
+
             if ($query->execute()) {
                 return true;
             } else {
+                echo $this->connection->error;
+                exit;
                 header("Location: /errore500.php");
             }
 
+
         }
-*/
+
         public function getCartaDiCredito($utente)
         {
             $query = $this->connection->prepare('SELECT * FROM Utente WHERE username= ?');
@@ -410,7 +414,6 @@
 				}
 			}
 		}
-
     }
 
 
@@ -503,10 +506,6 @@
 
     //Controlla che la stringa non contenga caratteri speciali
     function checkAlfanumerico($string) {
-        if(!checkMinLen($string))
-		{
-			return false;
-		}
         if (!preg_match('/^[a-zA-Z0-9]+$/', $string)) {
             return false;
         } else {return true;}
