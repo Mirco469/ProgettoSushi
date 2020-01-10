@@ -261,3 +261,40 @@ function validazioneFormPaga_gestione_profilo_utente() {
 
 }
 
+//Funzione per la validazione del form di aggiunta prodotti
+function validazioneFormAggiuntaProdotti() {
+    var prodotto = document.getElementById("prodotto");
+    var porzione = document.getElementById("porzione");
+	var prezzo = document.getElementById("prezzo");
+	
+	var risProdotto = checkSoloLettereEDim(prodotto);
+	var risPorzione = checkNumeroIntero(porzione);
+	var risPrezzo = checkPrezzo(prezzo);
+	
+	if(risProdotto)
+	{
+		togliErrore(prodotto);
+	}
+	else
+	{
+		mostraErrore(prodotto, "Il nome deve contenere solo lettere e essere almeno lungo 2 caratteri");
+	}
+	if(risPorzione)
+	{
+		togliErrore(porzione);
+	}
+	else
+	{
+		mostraErrore(porzione, "Il numero dei pezzi deve essere un numero intero");
+	}
+	if(risPrezzo)
+	{
+		togliErrore(prezzo);
+	}
+	else
+	{
+		mostraErrore(prezzo, "Il prezzo deve essere un numero decimale con al massimo 3 cifre prima della virgola e 2 cifre dopo la virgola");
+	}
+	
+	return risProdotto && risPorzione && risPrezzo;
+}
