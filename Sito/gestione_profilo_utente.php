@@ -130,7 +130,7 @@
                         $erroriSped .= '<li>Il numero civico deve contenere solo numeri</li>';
                     }
                     if(!checkCAP($cap)){
-                        $erroriSped .= '<li>Non hai inserito un CAP corretto</li>';
+                        $erroriSped .= '<li>Non hai inserito un CAP del comune di Padova</li>';
                     }
                     if(!checkSoloNumeriEDIm($tel)){
                         $erroriSped .= '<li>Non hai inserito un numero telefonico corretto</li>';
