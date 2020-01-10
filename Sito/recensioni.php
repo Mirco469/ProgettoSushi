@@ -64,7 +64,7 @@
                         <label for=\"testo_recensione\">Testo: </label>
                         <textarea id=\"testo_recensione\" name=\"testo\" rows=\"5\" cols=\"85\">$testo</textarea>
                         </p>
-                        <input class=\"defaultButton\" type=\"submit\" name=\"invia\" value=\"Invia\" onclick=\"\"/>
+                        <input class=\"defaultButton\" type=\"submit\" name=\"invia\" value=\"Invia\" onclick=\"return validazioneForm_recensioni();\"/>
                     </fieldset>
                 </form>
                 ";
