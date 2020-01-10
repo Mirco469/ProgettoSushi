@@ -5,7 +5,7 @@
         const HOST_DB = 'localhost';
         const USERNAME = 'root';
         const PASSWORD = '';
-        const DATABASE_NAME = 'Sushi'; //Ogni utente ha un database già creato con nome uguale alla propria login (scritto sulle slide)
+        const DATABASE_NAME = 'sushi'; //Ogni utente ha un database già creato con nome uguale alla propria login (scritto sulle slide)
 
         public $connection = null;
 
@@ -34,13 +34,11 @@
 
         public function modificaPassword($utente, $password)
         {
-
             $query = $this->connection->prepare('UPDATE Utente SET password = ? WHERE username = ?');
             $query->bind_param('ss', $password, $utente);
             if (!$query->execute()) {
                 header('location: errore500.html');
             }
-
         }
 
 
@@ -51,12 +49,10 @@
             if (!$query->execute()) {
                 header('location: errore500.html');
             }
-
         }
 
         public function modificaPagamento($utente, $intestatario, $num_carta, $mese_scadenza, $anno_scadenza)
         {
-
             $scadenza = $anno_scadenza . '-' . $mese_scadenza . '-01';
 
             $query = $this->connection->prepare('UPDATE Utente SET numero_carta = ?, intestatario = ?, scadenza = ? WHERE username = ?');
@@ -68,7 +64,7 @@
 
         public function getDestinazioni($utente)
         {
-            $query = $this->connection->prepare("SELECT nome_cognome, numero_telefonico, CAP, via, numero_civico  FROM Destinazione WHERE utente = ? ORDER BY id_destinazione");
+            $query = $this->connection->prepare("SELECT * FROM Destinazione WHERE utente = ? ORDER BY id_destinazione");
             $query->bind_param('s', $utente);
             $query->execute();
             $queryResult = $query->get_result();
@@ -78,19 +74,23 @@
                 return $queryResult;
             }
         }
-/*
-        public function eliminaDestinazione($utente, $indice)
+
+        public function eliminaDestinazione($indice)
         {
-            $query = $this->connection->prepare("DELETE FROM Destinazione WHERE id_destinazione = (SELECT id_destinazione FROM (SELECT id_destinazione FROM Destinazione WHERE username = ? ORDER BY id_destinazione LIMIT " . $indice . ",1)) ");
-            $query->bind_param('s', $utente);
+
+            $query = $this->connection->prepare("DELETE FROM Destinazione WHERE id_destinazione = ".$indice." ");
+
             if ($query->execute()) {
                 return true;
             } else {
+                echo $this->connection->error;
+                exit;
                 header("Location: /errore500.php");
             }
 
+
         }
-*/
+
         public function getCartaDiCredito($utente)
         {
             $query = $this->connection->prepare('SELECT * FROM Utente WHERE username= ?');
@@ -109,7 +109,7 @@
 
         public function addAccount($username, $nome, $cognome, $password)
         {
-            $query = $this->connection->prepare('INSERT INTO utente(username,nome,cognome,password,autorizzazione) VALUES (?,?,?,?,"Utente")');
+            $query = $this->connection->prepare('INSERT INTO Utente(username,nome,cognome,password,autorizzazione) VALUES (?,?,?,?,"Utente")');
             $query->bind_param('ssss', $username, $nome, $cognome, $password);
             if ($query->execute()) {
                 redirectHome("Utente");
@@ -122,7 +122,7 @@
         public function addProdotto($nome, $categoria, $pezzi, $prezzo, $descrizione)
         {
             $prezzo = str_replace(",", ".", $prezzo);
-            $query = $this->connection->prepare('INSERT INTO prodotto(nome,categoria,pezzi,prezzo,descrizione) VALUES (?,?,?,?,?)');
+            $query = $this->connection->prepare('INSERT INTO Prodotto(nome,categoria,pezzi,prezzo,descrizione) VALUES (?,?,?,?,?)');
             $query->bind_param('sssss', $nome, $categoria, $pezzi, $prezzo, $descrizione);
             if ($query->execute()) {
                 return true;
@@ -131,6 +131,20 @@
             }
         }
 
+        #Aggiunge una recensione al database, altrimenti reindirizza ad errore500.php
+        public function addRecensione ($titolo, $data, $utente, $testo)
+        {
+            $query = $this->connection->prepare('INSERT INTO Recensione(titolo, testo, data, utente) VALUES (?,?,?,?)');
+            $query->bind_param('ssss', $titolo, $testo, $data, $utente);
+            if($query->execute())
+            {
+                return true;
+            }
+            else
+            {
+                header("Location: /errore500.php");
+            }
+        }
 
 
         public function inserisciNews($titolo, $data ,$testo, $user){
@@ -190,9 +204,6 @@
 				return $result;
 			}
 		}
-
-
-    
 
 		#funzione per il get dei prodotti per categoria con i nomi in ordine alfabetico
 		public function getProdotti($categoria)
@@ -279,13 +290,32 @@
             $query->execute();
             return $query->get_result();
         }
-
-
+		
+		public function getOrdini($username='') {
+			if($username == '') {
+				$query = $this->connection->prepare("SELECT O.*, U.username FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username ORDER BY O.data_ordine DESC");
+				$query->execute();
+				$queryResult = $query->get_result();
+			} else {
+				$query = $this->connection->prepare("SELECT O.* FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username WHERE U.username = ? ORDER BY O.data_ordine DESC");
+				$query->bind_param('s',$username);
+				$query->execute();
+				$queryResult = $query->get_result();
+			}
+			
+			$result = array();
+			
+			while ($row = $queryResult->fetch_object()) {
+				array_push($result, $row);
+			}
+			
+			return $result;
+		}
 
         //Funzione per controllare le credenziali: ritorna null se non esiste alcuna corrispondenza altrimenti ritorna il suo livello di autorizzazione
         public function checkLogin($username,$password)
         {
-            $query = $this->connection->prepare('SELECT * FROM utente WHERE username= ? AND password= ?');
+            $query = $this->connection->prepare('SELECT * FROM Utente WHERE username= ? AND password= ?');
             $query->bind_param('ss', $username,$password);
             $query->execute();
             $queryResult = $query->get_result();
@@ -305,7 +335,7 @@
         //Funzione che controlla se l'username è già esistente: ritorna true se esiste già false altrimenti
         public function alreadyExistsUsername($username)
         {
-            $query = $this->connection->prepare('SELECT * FROM utente WHERE username= ?');
+            $query = $this->connection->prepare('SELECT * FROM Utente WHERE username= ?');
             $query->bind_param('s', $username);
             $query->execute();
             $queryResult = $query->get_result();
@@ -319,7 +349,7 @@
         //Funzione che controlla se il prodotto è già esistente: ritorna true se esiste già false altrimenti
         public function alreadyExistsProdotto($prodotto)
         {
-            $query = $this->connection->prepare('SELECT * FROM prodotto WHERE nome= ?');
+            $query = $this->connection->prepare('SELECT * FROM Prodotto WHERE nome= ?');
             $query->bind_param('s', $prodotto);
             $query->execute();
             $queryResult = $query->get_result();
@@ -329,24 +359,71 @@
                 return true;
             }
         }
-
-
 		
-		public function getOrdini($username) {
-			$query = $this->connection->prepare("SELECT O.* FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username WHERE U.username = ?");
-			$query->bind_param('s',$username);
-			$query->execute();
-			$queryResult = $query->get_result();
-			
-			$result = array();
-			
-			while ($row = $queryResult->fetch_object()) {
-				array_push($result, $row);
+		public function getDettagliOrdine($id_ordine,$username='') {
+			if( $username !== '' ) {
+				$query = $this->connection->prepare("SELECT O.*, D.* FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username WHERE U.username = ? AND O.id_ordine = ?");
+				$query->bind_param('ss',$username,$id_ordine);
+				$query->execute();
+				$queryResult = $query->get_result();
+				
+				if( $queryResult->num_rows > 0 ) {
+					$result = $queryResult->fetch_object();
+					
+					$query = $this->connection->prepare("SELECT C.*, P.categoria FROM Contiene C INNER JOIN Prodotto P ON C.nome = P.nome WHERE id_ordine = ?");
+					$query->bind_param('s',$id_ordine);
+					$query->execute();
+					$queryResult = $query->get_result();
+					
+					$listaProdotti = array();
+					
+					while ($row = $queryResult->fetch_object()) {
+						array_push($listaProdotti, $row);
+					}
+					
+					$result->listaProdotti = $listaProdotti;
+					
+					return $result;
+				} else {
+					/* errore
+						l'id_ordine non esiste
+						l'username non ha effettuato l'ordine con quel id_ordine
+					*/
+					return -1;
+				}
+			} else {
+				$query = $this->connection->prepare("SELECT O.*, D.*, U.username FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username WHERE O.id_ordine = ?");
+				$query->bind_param('s',$id_ordine);
+				$query->execute();
+				//echo $query->info; exit;
+				$queryResult = $query->get_result();
+				
+				if( $queryResult->num_rows > 0 ) {
+					$result = $queryResult->fetch_object();
+					
+					$query = $this->connection->prepare("SELECT C.*, P.categoria FROM Contiene C INNER JOIN Prodotto P ON C.nome = P.nome WHERE id_ordine = ?");
+					$query->bind_param('s',$id_ordine);
+					$query->execute();
+					$queryResult = $query->get_result();
+					
+					$listaProdotti = array();
+					
+					while ($row = $queryResult->fetch_object()) {
+						array_push($listaProdotti, $row);
+					}
+					
+					$result->listaProdotti = $listaProdotti;
+					
+					return $result;
+				} else {
+					/* errore
+						l'id_ordine non esiste
+						l'username non ha effettuato l'ordine con quel id_ordine
+					*/
+					return -1;
+				}
 			}
-			
-			return $result;
 		}
-
     }
 
 
@@ -439,10 +516,6 @@
 
     //Controlla che la stringa non contenga caratteri speciali
     function checkAlfanumerico($string) {
-        if(!checkMinLen($string))
-		{
-			return false;
-		}
         if (!preg_match('/^[a-zA-Z0-9]+$/', $string)) {
             return false;
         } else {return true;}
@@ -474,7 +547,7 @@
 
     //Controlla se viene inserito un CAP di Padova
       function checkCAP($string) {
-          if(!preg_match('/35(100|121|122|123|124|125|126|127|128|129|131|132|133|134|135|136|137|138|139|141|142|143)/', $string)){
+          if(!preg_match('/^35(100|121|122|123|124|125|126|127|128|129|131|132|133|134|135|136|137|138|139|141|142|143)$/', $string)){
               return false;
           } else return true;
       }
@@ -500,6 +573,28 @@
         if (!preg_match('/^[0-9]+$/', $numero)) {
             return false;
         } else {return true;}
+    }
+
+    //Controlla che l'input contenga solo lettere e spaziature interne e sia almeno lungo $dim;
+    function checkTestoSpaziDim($string, $dim)
+    {
+        if (strlen($string) < $dim) {
+            return false;
+        }
+        if (!preg_match('/^[a-zA-Z][a-zA-Z|\s]*[a-zA-Z]$/', $string)) {
+            return false;
+        } else return true;
+    }
+
+    //Controlla che l'input non contenga numeri e sia lungo tra i 10 ed i 200 caratteri;
+    function checkTextarea($string)
+    {
+        if (strlen($string) < 10 || strlen($string) > 200) {
+            return false;
+        }
+        if (!preg_match('/[\D]+/', $string)) {
+            return false;
+        } else return true;
     }
 
     //Controlla che il parametro sia un numero consono ad essere un prezzo ovvero può essere decimale ma con al massimo due cifre dopo la virgola e
