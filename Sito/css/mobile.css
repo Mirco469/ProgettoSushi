@@ -747,25 +747,25 @@ min-height: 465px;
 	margin: auto;
 }
 
-#recensioni h2 {
+#recensioni dt {
 	color: #e0ac00;
 	margin: 0;
 }
 
-#recensioni h2 + p {
+#recensioni dt + dd {
 	font-size: 0.8em;
 	padding: 0.2em;
 	margin: 0;
 }
 
-#recensioni h2 + p + p {
+#recensioni dt + dd + dd {
 	font-style: italic;
 	font-size: 0.8em;
 	padding: 0.2em;
 	margin: 0;
 }
 
-#recensioni h2 + p + p + p{
+#recensioni dt + dd + dd + dd {
 	padding: 0.5em;
 	border: 1px solid #fff;
 	border-radius: 5px;
@@ -1034,6 +1034,16 @@ min-height: 465px;
 	width: 100%;
 }
 
+#dettagli_ordine .totaleText {
+	margin-top: 0;
+	margin-bottom: 2em;
+	float: right;
+}
+
+#dettagli_ordine + #footer {
+    clear: both;
+}
+
 
 
 /*	Carrello	*/
@@ -1115,6 +1125,23 @@ min-height: 465px;
 }
 
 #storico_ordini a.buttonSmall {
+	width: 9em;
+	box-sizing: border-box;
+    text-decoration: none;
+    text-align: center;
+    height: 1.7em;
+    font-weight: 400;
+    font-size: 13.3333px;
+    display: inline-block;
+    line-height: normal;
+    margin-right: 0.3em;
+    padding: 1px 6px;
+}
+
+
+
+/*	Gestione ordini	*/
+#gestione_ordini a.buttonSmall {
 	width: 9em;
 	box-sizing: border-box;
     text-decoration: none;

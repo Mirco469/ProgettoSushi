@@ -127,7 +127,7 @@
                         $erroriSped .= '<li>L\'indirizzo non deve contenere caratteri speciali</li>';
                     }
                     if(!checkAlfanumerico($numero_civico)){ //Potrebbe essere 4b
-                        $erroriSped .= '<li>Il numero civico deve contenere solo numeri</li>';
+                        $erroriSped .= '<li>Il numero civico deve contenere solo numeri o lettere</li>';
                     }
                     if(!checkCAP($cap)){
                         $erroriSped .= '<li>Non hai inserito un CAP del comune di Padova</li>';
@@ -218,11 +218,11 @@
                 <legend>Informazioni personali: </legend>
                 <messaggio1 />
                 <h2>Nome Utente</h2>
+		<p>
                 <label for="username">Nome utente: </label>
                 <input type="text" id="username" name="username" value="'.$user.'" readonly="readonly"/>
-    
+    		</p>
                 <h2 id="cp">Cambia <span lang="en">Password:</span> </h2>
-		
 		<p>
                 <label for="v_password">Inserisci la vecchia <span lang="en">password</span>: </label>
                 <input type="password" id="v_password" name="v_password" />
@@ -235,7 +235,8 @@
                 <label for="c_password">Conferma la nuova <span lang="en">password</span>: </label>
                 <input type="password" id="c_password" name="c_password" value=""/>
 		</p>
-                <input class="defaultButton" type="submit" name="dati_personali" value="Salva"/>  <!--Submit legato solo al cambio della password-->
+	
+                <input class="defaultButton" type="submit" name="dati_personali" value="Salva" onclick="return validazioneFormPassw_gestioneProfilo();"/>  <!--Submit legato solo al cambio della password-->
             </fieldset>';
 
 
@@ -245,44 +246,43 @@
                                 <legend id="is" >Aggiungi un metodo di spedizione: </legend>
                                 <messaggio2 />
 				
-		<p>
+				                <p>
                                 <label for="nome_cognome">Nome e Cognome: </label>
                                 <input type="text" name="nome_cognome" id="nome_cognome" placeholder="'.$nome_cognome.'"/>
-				</p>
-		<p>
+				                </p>
+				                <p>
                                 <label for="indirizzo">Indirizzo: </label>
                                 <input type="text" id="indirizzo" name="indirizzo" placeholder="'.$indirizzo.'"/>
-				</p>
-		<p>
+				                </p>
+				                <p>
                                 <label for="civico">Numero civico: </label>
                                 <input type="text" id="civico" name="civico" placeholder="'.$numero_civico.'"/>
-				</p>
-		<p>
+				                </p>
+				                <p>
                                 <label for="cap"><abbr title="Codice di Avviamento Postale">CAP</abbr> :</label>
                                 <input type="text" id="cap"  name="cap" placeholder="'.$cap.'"/>
-				</p>
-	
+				                </p>
                                 <label for="comune">Comune: </label>
                                 <input type="text" id="comune" name="comune" value="Padova" disabled="disabled"/>
                                 <label for="provincia">Provincia: </label>
                                 <input type="text" id="provincia" name="provincia" value="Padova" disabled="disabled"/>
                                 <label for="stato">Stato: </label>
                                 <input type="text" id="stato" name="stato" value="Italia" disabled="disabled"/>
-				</p>
-		<p>
+				                <p>
                                 <label for="tel">Numero di telefono: </label>
                                 <input type="text" id="tel" name="tel" placeholder="'.$tel.'" />
-				</p>
-		
-                    
-                                <input class="defaultButton" type="submit" name="dati_spedizione" value="Salva"/> <!--Submit legato solo alle informazioni di spedizione-->
+                    	       	</p>
+	
+                                <input class="defaultButton" type="submit" name="dati_spedizione" value="Salva" onclick="return validazioneFormDest_gestione_profilo_utente();" /> <!--Submit legato solo alle informazioni di spedizione-->
                            </fieldset>';
 
 
             //Creo il form del pagamento
 
 
-             $years ='<p><select name="anno_scad">
+             $years ='<p>
+                    <label for="anno_scad">Anno di scadenza: </label>
+                    <select name="anno_scad" id="anno_scad">
                     <option>- Anno -</option>';
              $annoCorrente = date("Y");
              for($i = 0; $i<20; $i++ ){
@@ -290,21 +290,22 @@
              }
 
              $years.='</select></p>
-             <input class="defaultButton" type="submit" name="dati_pagamento" value="Salva"> </fieldset>';
+             <input class="defaultButton" type="submit" name="dati_pagamento" value="Salva" onclick="return validazioneFormPaga_gestione_profilo_utente();" /> </fieldset>';
 
         $formPagamento ='<fieldset>
             <legend id="ip">Informazioni di pagamento: </legend>
             <messaggio3 />
-		<p>
+		      <p>
                 <label for="intestatario_carta">Intestatario carta: </label>
                 <input type="text" name="intestatario_carta" id="intestatario_carta" placeholder="'.$intestatario.'" />
-		</p>
-		<p>
+		      </p>
+		      <p>
                 <label for="num_carta">Numero carta: </label>
                 <input type="text" name="num_carta" id="num_carta" placeholder="'.$num_carta.'" />
-		</p>
-		<p>
-            <select name="mese_scad">
+		      </p>
+		      <p>
+            <label for="mese_scad">Mese di scadenza: </label>  
+            <select name="mese_scad" id="mese_scad">
                 <option>- Mese -</option>
                 <option value="01">January</option>
                 <option value="03">March</option>
@@ -317,8 +318,8 @@
                 <option value="10">October</option>
                 <option value="11">November</option>
                 <option value="12">December</option>
-        </select>
-	</p>
+       	     </select>
+	     </p>
         '.$years;
 
 
@@ -350,51 +351,53 @@
                 $formSpedizione ='<fieldset>
                     <legend id="is" >Aggiungi un metodo di spedizione: </legend>
                     <messaggio2 />
-		<p>
+		          <p>
                     <label for="nome_cognome">Nome e Cognome: </label>
                     <input type="text" name="nome_cognome" id="nome_cognome" value="'.$nome_cognome.'"/>
-		    </p>
-		<p>
+		          </p>
+		          <p>
                     <label for="indirizzo">Indirizzo: </label>
                     <input type="text" id="indirizzo" name="indirizzo" value="'.$indirizzo.'"/>
-		    </p>
-		<p>
+		          </p>
+		          <p>
                     <label for="civico">Numero civico: </label>
                     <input type="text" id="civico" name="civico" value="'.$numero_civico.'"/>
-		    </p>
-		<p>
+		           </p>
+		          <p>
                     <label for="cap"><abbr title="Codice di Avviamento Postale">CAP</abbr> :</label>
                     <input type="text" id="cap"  name="cap" value="'.$cap.'"/>
-		    </p>
+		           </p>
                     <label for="comune">Comune: </label>
                     <input type="text" id="comune" name="comune" value="Padova" disabled="disabled"/>
                     <label for="provincia">Provincia: </label>
                     <input type="text" id="provincia" name="provincia" value="Padova" disabled="disabled"/>
                     <label for="stato">Stato: </label>
                     <input type="text" id="stato" name="stato" value="Italia" disabled="disabled"/>
-		<p>
+		          <p>
                     <label for="tel">Numero di telefono: </label>
                     <input type="text" id="tel" name="tel" value="'.$tel.'" />
-        </p>
-
-                    <input class="defaultButton" type="submit" name="dati_spedizione" value="Salva"/> <!--Submit legato solo alle informazioni di spedizione-->
+		           </p>
+		
+        
+                    <input class="defaultButton" type="submit" name="dati_spedizione" value="Salva" onclick="return validazioneFormDest_gestione_profilo_utente();" /> <!--Submit legato solo alle informazioni di spedizione-->
                     </fieldset>';
             }
             if(strlen($erroriPaga)!=0){
                 $formPagamento ='<fieldset>
                                     <legend id="ip">Informazioni di pagamento: </legend>
                                     <messaggio3 />
-		
-		<p>
+				    
+		                              <p>
                                         <label for="intestatario_carta">Intestatario carta: </label>
                                         <input type="text" name="intestatario_carta" id="intestatario_carta" value="'.$intestatario.'" />
-					</p>
-		<p>
-                                        <label for="num_carta">Numero carta: </label>
+                                        </p>
+		                              <p>
+					<label for="num_carta">Numero carta: </label>
                                         <input type="text" name="num_carta" id="num_carta" value="'.$num_carta.'" />
-					</p>
-		<p>
-                                    <select name="mese_scad">
+				                </p>
+		                          <p>
+                                    <label for="mese_scad">Mese di scadenza: </label>
+                                    <select name="mese_scad" id="mese_scad">
                                         <option>- Mese -</option>
                                         <option value="01">January</option>
                                         <option value="03">March</option>
@@ -408,8 +411,8 @@
                                         <option value="11">November</option>
                                         <option value="12">December</option>
                                 </select>
-				</p>
-
+				                </p>
+		
                                 '.$years;
             }
 
