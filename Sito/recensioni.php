@@ -56,10 +56,14 @@
                     <fieldset>
                         <legend>La tua recensione</legend>
                         <messaggio />
+                        <p>
                         <label for=\"titolo_recensione\">Titolo: </label>
                         <input type=\"text\" id=\"titolo_recensione\" name=\"titolo\" value=\"$titolo\" />
-	  		            <label for=\"testo_recensione\">Testo: </label>
+	  		            </p>
+			            <p>
+                        <label for=\"testo_recensione\">Testo: </label>
                         <textarea id=\"testo_recensione\" name=\"testo\" rows=\"5\" cols=\"85\">$testo</textarea>
+                        </p>
                         <input class=\"defaultButton\" type=\"submit\" name=\"invia\" value=\"Invia\" onclick=\"\"/>
                     </fieldset>
                 </form>
