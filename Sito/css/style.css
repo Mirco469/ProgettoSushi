@@ -451,6 +451,16 @@ table.defaultTable td:last-child {
 	border-spacing: 0 1em;
 }
 
+#dettagli_ordine .totaleText {
+	margin-top: 0;
+	margin-bottom: 2em;
+	float: right;
+}
+
+#dettagli_ordine + #footer {
+    clear: both;
+}
+
 
 
 /* Login */

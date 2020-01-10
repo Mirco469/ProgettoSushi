@@ -289,6 +289,8 @@ table.defaultTable td:last-child {
 	font-size: 0.8em;
 }
 
+
+
 /* Takeaway */
 .lista_piatti {
 	width: 85%;
@@ -323,6 +325,8 @@ table.defaultTable td:last-child {
 	display: none;
 }
 
+
+
 /* Aggiunta Prodotti */
 #aggiunta_prodotti form{
 	display: none;
@@ -341,6 +345,8 @@ table.defaultTable td:last-child {
 	text-align: left;
 }
 
+
+
 /* Pagina Successo */
 #successo{
 	display: block;
@@ -352,6 +358,7 @@ table.defaultTable td:last-child {
 	display: inline-block;
 	width: 18%;
 }
+
 
 
 /* Recensioni */
@@ -381,11 +388,15 @@ table.defaultTable td:last-child {
 	display: none;
 }
 
+
+
 /* Login */
 #login>p{
 	text-align: center;
 	font-weight: bold;
 }
+
+
 
 /* Contatti */
 
@@ -409,15 +420,16 @@ table.defaultTable td:last-child {
     margin-left: 90mm;
 }
 
+
+
 /*Gestion Profilo Admin*/
 #gestione_admin>form {
     margin-left: auto;
 }
 
+
+
 /*	Dettagli Ordine (Utente e admin)	*/
-#dettagli_ordine {
-	padding: 2em 6em;
-}
 
 #dettagli_ordine .data {
 	display: inline-block;
@@ -430,6 +442,23 @@ table.defaultTable td:last-child {
 	width: 115%;
 	margin: 0; 
 }
+
+#dettagli_ordine .defaultTable {
+    margin: 2em 0 1em;
+	width: 100%;
+}
+
+#dettagli_ordine .totaleText {
+	margin-top: 0;
+	margin-bottom: 2em;
+	float: right;
+}
+
+#dettagli_ordine + #footer {
+    clear: both;
+}
+
+
 
 /*	errore utente e admin	*/
 #errore {
