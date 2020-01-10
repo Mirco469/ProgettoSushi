@@ -3,10 +3,13 @@
 	require_once("php/dbaccess.php");
 
     session_start();
+    #Login per testare la pagina;
+	$_SESSION['username'] = "user"; #da togliere
+	$_SESSION['password'] = "user"; #da togliere
 
-    $oggettoConnessione =  new DBAccess();
+    $db =  new DBAccess();
 
-	if ($oggettoConnessione->openDBConnection())
+	if ($db->openDBConnection())
 	{
         $paginaHTML = file_get_contents('html/recensioni.html');
         $menu = getmenu();
@@ -30,14 +33,14 @@
                 }
                 if (!checkTextArea($testo))
                 {
-                    $messaggio .= "<li>Il testo deve essere lungo tra i 10 ed i 200 caratteri</li>";
+                    $messaggio .= "<li>Il testo deve essere lungo tra i 10 ed i 200 caratteri e non contenere numeri</li>";
                 }
 
                 if ($messaggio == "")
                 {
                     $data = getdate();
                     $data = "$data[year]-$data[mon]-$data[mday]";
-                    $oggettoConnessione->addRecensione($titolo, $data, $_SESSION["username"], $testo);
+                    $db->addRecensione($titolo, $data, $_SESSION["username"], $testo);
                     $messaggio = "<p class='successo'>Recensione aggiunta con successo!</p>";
                     $titolo = "";
                     $testo = "";
@@ -57,7 +60,7 @@
                         <input type=\"text\" id=\"titolo_recensione\" name=\"titolo\" value=\"$titolo\" />
 	  		            <label for=\"testo_recensione\">Testo: </label>
                         <textarea id=\"testo_recensione\" name=\"testo\" rows=\"5\" cols=\"85\">$testo</textarea>
-                        <input class=\"defaultButton\" type=\"submit\" name=\"invia\" value=\"Invia\" />
+                        <input class=\"defaultButton\" type=\"submit\" name=\"invia\" value=\"Invia\" onclick=\"\"/>
                     </fieldset>
                 </form>
                 ";
@@ -68,12 +71,12 @@
         $listaRecensioni = "
     	    <div id=\"lista_recensioni\">
     		<dl>";
-        foreach($oggettoConnessione->getRecensioni() as $recensione)
+        foreach($db->getRecensioni() as $recensione)
         {
             $titoloR = $recensione["Titolo"];
             $dataR = $recensione["Data"];
             $utenteR = $recensione["Utente"];
-            $testoR = $recensione["Testo"];
+            $testoR = htmlentities($recensione["Testo"]);
             $listaRecensioni .= "
             <dt>$titoloR</dt>
             <dd>$dataR</dd>
@@ -89,7 +92,6 @@
     }
     else
 	{
-		header("Location: /errore500.php");
+		header("Location: errore500.php");
 	}
-    
 ?>

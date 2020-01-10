@@ -125,6 +125,28 @@ function checkPrezzo(input) {
     }
 }
 
+function checkTitolo(input) {
+    var testoInput = input.value;
+    var patt = new RegExp('^[a-zA-Z][a-zA-Z|\s]*[a-zA-Z]$');
+    if (patt.test(testoInput) && (6 < testoInput.length)) {
+        togliErrore(input);
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function checkTextarea(input) {
+    var testoInput = input.value;
+    var patt = new RegExp('[\D]+');
+    if (patt.test(testoInput) && (10 < testoInput.length < 200)) {
+        togliErrore(input);
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 //FUNZIONI PER MOSTRARE E RIMUOVERE ERRORI
 
@@ -259,5 +281,30 @@ function validazioneFormPaga_gestione_profilo_utente() {
 
     return risNumCarta && risIntestatario && !risMeseScad && !risAnnoScad;
 
+}
+
+// Funzione di validazione form password gestione_profilo_admin e gestione_profilo_utente
+function validazioneForm_recensioni() {
+    var titolo = document.getElementById("titolo_recensione");
+    var testo = document.getElementById("testo_recensione");
+
+    var risTitolo = checkTitolo(titolo);
+    var risTesto = checkTextarea(testo);
+
+    if (!risTitolo) {
+        togliErrore(titolo);
+        mostraErrore(titolo, "Il titolo deve contenere solo lettere e spaziature interne ed essere almeno lungo 6 caratteri");
+    } else {
+        togliErrore(titolo);
+    }
+
+    if (!risTesto) {
+        togliErrore(testo);
+        mostraErrore(testo, "Il testo deve essere lungo tra i 10 ed i 200 caratteri e non contenere numeri");
+    } else {
+        togliErrore(testo);
+    }
+
+    return risTitolo && risTesto;
 }
 
