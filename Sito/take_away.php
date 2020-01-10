@@ -92,27 +92,15 @@
 	}
 
 	function addToCart($nome, $categoria, $prezzo)
-	{
-		$prodotto = array("nome"=>$nome, "categoria"=>$categoria, "quantita"=>1, "prezzo"=>$prezzo);
-		if (!isset($_SESSION['carrello']))
-		{
-			$_SESSION['carrello'] = array(0=>$prodotto);
-		}
-		else
-		{
-			array_push($_SESSION['carrello'], $prodotto);
-		}
-	}
-
-	/*
-	FUNZIONE IN DBACCESS.PHP
-	public function getInfoProdotto($prodotto)
-	{
-		$query = $this->connection->prepare("SELECT * FROM Prodotto WHERE nome = ?");
-		$query->bind_param('s', $prodotto);
-		$query->execute();
-		$result = $query->get_result();
-		return $result;
-	}
-	*/
+ 	{
+  		$prodotto = array("nome"=>$nome, "categoria"=>$categoria, "quantita"=>1, "prezzo"=>$prezzo);
+  		if (!isset($_SESSION['carrello']))
+  		{
+   			$_SESSION['carrello'] = array($nome=>$prodotto);
+  		}
+  		else
+  		{
+   			$_SESSION['carrello'][$nome] = $prodotto;
+  		}
+ 	}
 ?>
