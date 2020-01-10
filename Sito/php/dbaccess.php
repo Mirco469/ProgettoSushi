@@ -5,7 +5,7 @@
         const HOST_DB = 'localhost';
         const USERNAME = 'root';
         const PASSWORD = '';
-        const DATABASE_NAME = 'Sushi'; //Ogni utente ha un database già creato con nome uguale alla propria login (scritto sulle slide)
+        const DATABASE_NAME = 'sushi'; //Ogni utente ha un database già creato con nome uguale alla propria login (scritto sulle slide)
 
         public $connection = null;
 
@@ -191,9 +191,6 @@
 			}
 		}
 
-
-    
-
 		#funzione per il get dei prodotti per categoria con i nomi in ordine alfabetico
 		public function getProdotti($categoria)
         {
@@ -279,8 +276,27 @@
             $query->execute();
             return $query->get_result();
         }
-
-
+		
+		public function getOrdini($username='') {
+			if($username == '') {
+				$query = $this->connection->prepare("SELECT O.*, U.username FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username ORDER BY O.data_ordine DESC");
+				$query->execute();
+				$queryResult = $query->get_result();
+			} else {
+				$query = $this->connection->prepare("SELECT O.* FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username WHERE U.username = ? ORDER BY O.data_ordine DESC");
+				$query->bind_param('s',$username);
+				$query->execute();
+				$queryResult = $query->get_result();
+			}
+			
+			$result = array();
+			
+			while ($row = $queryResult->fetch_object()) {
+				array_push($result, $row);
+			}
+			
+			return $result;
+		}
 
         //Funzione per controllare le credenziali: ritorna null se non esiste alcuna corrispondenza altrimenti ritorna il suo livello di autorizzazione
         public function checkLogin($username,$password)
@@ -329,23 +345,6 @@
                 return true;
             }
         }
-
-
-		
-		public function getOrdini($username) {
-			$query = $this->connection->prepare("SELECT O.* FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username WHERE U.username = ?");
-			$query->bind_param('s',$username);
-			$query->execute();
-			$queryResult = $query->get_result();
-			
-			$result = array();
-			
-			while ($row = $queryResult->fetch_object()) {
-				array_push($result, $row);
-			}
-			
-			return $result;
-		}
 		
 		public function getDettagliOrdine($id_ordine,$username='') {
 			if( $username !== '' ) {
@@ -411,6 +410,7 @@
 				}
 			}
 		}
+
     }
 
 
