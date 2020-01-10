@@ -259,7 +259,7 @@ table.defaultTable td {
 	border: solid 1px white;
 	border-left: none;
 	border-right: none;
-	padding: 0.5em;
+	padding: 4px;
 }
 
 table.defaultTable td:first-child {
@@ -273,7 +273,7 @@ table.defaultTable tbody th:first-child {
 	border-top-left-radius: 16px;
 	border-bottom-left-radius: 16px;
 	border-left: solid 2px white;
-	padding: 0.5em;
+	padding: 4px;
 }
 
 table.defaultTable td:last-child {
