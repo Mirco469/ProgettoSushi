@@ -11,9 +11,9 @@
 		$db =  new DBAccess();
 		if ($db->openDBConnection())
 		{
-			$nomeProdotto = ; #da dove lo prendo?
+			$nomeProdotto = $_POST['name'];
 			$prodotto = $db->getInfoProdotto($nomeProdotto);
-			if (!alreadyInCart($prodotto['nome'])
+			if (!alreadyInCart($prodotto['nome']))
 			{
 				addToCart($prodotto['nome'], $prodotto['categoria'], $prodotto['prezzo']);
 			}
@@ -38,7 +38,7 @@
 			$paginaHTML = str_replace('<menu />', $menu, $paginaHTML);
 
 	        $listaProdotti = "";
-	        foreach($db->getCategorie() as $categoriaSingola)
+	        foreach(getCategorie() as $categoriaSingola)
 	        {
 				$id = str_replace(' ', '_', $categoriaSingola);
 	    	    $listaProdotti .= "
@@ -71,7 +71,7 @@
 
 	function alreadyInCart($nome)
 	{
-		foreach($_SESSION['carrello'] AS $prodotto => $row)
+		foreach($_SESSION['carrello'] AS $prodotto)
 		{
 			if ($prodotto == $nome)
 			{

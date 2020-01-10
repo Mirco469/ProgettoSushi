@@ -206,26 +206,16 @@
                 return null;
             } else {
                 $result = array();
-
-
-                if (mysqli_num_rows($queryResult) == 0) {
-                    return null;
-                } else {
-                    $result = array();
-
-                    while ($row = mysqli_fetch_assoc($queryResult)) {
-                        $arraySingoloProdotto = array(
-                            'Nome' => $row['nome'],
-                            'Prezzo' => $row['prezzo'],
-                            'Pezzi' => $row['pezzi'],
-                            'Descrizione' => $row['descrizione'],
-                        );
-                        array_push($result, $arraySingoloProdotto);
-                    }
-
-
-                    return $result;
+                while ($row = mysqli_fetch_assoc($queryResult)) {
+                    $arraySingoloProdotto = array(
+                        'Nome' => $row['nome'],
+                        'Prezzo' => $row['prezzo'],
+                        'Pezzi' => $row['pezzi'],
+                        'Descrizione' => $row['descrizione'],
+                    );
+                    array_push($result, $arraySingoloProdotto);
                 }
+                return $result;
             }
         }
 
@@ -352,7 +342,8 @@
 		    $query = $this->connection->prepare("SELECT * FROM Prodotto WHERE nome = ?");
 		    $query->bind_param('s', $prodotto);
 		    $query->execute();
-		    $result = $query->get_result();
+            $queryResult = $query->get_result();
+            $result = $queryResult->fetch_assoc();
 		    return $result;
 	    }
     }
@@ -561,10 +552,6 @@
 			return '<li class="login"><a href="login.php" tabindex="7"><span lang="en">Login</span>/Registrazione</a></li>';
 		}
 	}
-
-
-
-
 
 	//Funzione per ottenere le categorie dei prodotti
 	function getCategorie()
