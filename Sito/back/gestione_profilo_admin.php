@@ -43,6 +43,10 @@
                             $erroriPass .= '<li>Le due password che hai inserito non coincidono</li>';
                         }
 
+                        if(!checkMaxLen($new_password, 20)){
+                            $erroriPass .= '<li>La password non deve contenere più di 20 caratteri</li>';
+                        }
+
                     } else {
 
                         $erroriPass .= '<li>La password che hai inserito non e\' stata trovata nel nostro database</li>';

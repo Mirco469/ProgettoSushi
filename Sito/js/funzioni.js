@@ -44,8 +44,19 @@ function checkAlfanumericoESpazi(input) {
     }
 }
 
+function checkCivico(input) {
+    var patt = new RegExp('^[0-9]{1,}[/-]{0,1}[a-z0-9]{0,1}$');
+    if(patt.test(input.value)){
+        togliErrore(input);
+        return true;
+    }else{
+       
+        return false;
+    }
+}
+
 function checkAlfanumerico(input) {
-    var patt = new RegExp('^[a-zA-Z0-9]{1,}$');
+    var patt = new RegExp('^[a-zA-Z0-9]{2,}$');
     if(patt.test(input.value)){
         togliErrore(input);
         return true;
@@ -197,7 +208,7 @@ function validazioneFormDest_gestione_profilo_utente() {
 
     var risNomeCognome = checkNomeCognome(nome_cognome);
     var risIndirizzo = checkAlfanumericoESpazi(indirizzo);
-    var risCivico = checkAlfanumerico(civico);
+    var risCivico = checkCivico(civico);
     var risCAP = checkCAP(cap);
     var risTel = checkSoloNumerieDim(tel);
 
@@ -208,7 +219,7 @@ function validazioneFormDest_gestione_profilo_utente() {
         mostraErrore(indirizzo,"L'indirizzo non deve contenere caratteri speciali");
     }
     if(!risCivico){
-        mostraErrore(civico,"Il numero civico deve contenere solo numeri o lettere");
+        mostraErrore(civico,"Il numero civico deve essere del formato corretto (e.g. 4, 4b, 4-b o 4/1)");
     }
     if(!risCAP){
         mostraErrore(cap,"Non hai inserito un CAP corretto");
