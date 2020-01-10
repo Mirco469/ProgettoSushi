@@ -261,3 +261,61 @@ function validazioneFormPaga_gestione_profilo_utente() {
 
 }
 
+//Funzione per la validazione del form di registrazione della pagina di login
+function validazioneFormRegistrazione() {
+    var username = document.getElementById("username");
+    var nome = document.getElementById("nome");
+	var cognome = document.getElementById("cognome");
+	var password = document.getElementById("passwordReg");
+	var password_r = document.getElementById("passwordRepeat");
+	
+	var risUsername = checkAlfanumerico(username);
+	var risNome = checkSoloLettereEDim(nome);
+	var risCognome = checkSoloLettereEDim(cognome);
+	var risPassword = checkMinLen(password);
+	var risPasswordUguali = password.value == password_r.value;
+	
+	if(risUsername)
+	{
+		togliErrore(username);
+	}
+	else
+	{
+		mostraErrore(username, "L'username deve contenere solo caratteri alfanumerici e avere almeno 2 caratteri");
+	}
+	if(risNome)
+	{
+		togliErrore(nome);
+	}
+	else
+	{
+		mostraErrore(nome, "Il nome deve contenere solo lettere  e avere almeno 2 caratteri");
+	}
+	if(risCognome)
+	{
+		togliErrore(cognome);
+	}
+	else
+	{
+		mostraErrore(cognome, "Il cognome deve contenere solo lettere  e avere almeno 2 caratteri");
+	}
+	if(risPassword)
+	{
+		togliErrore(password);
+	}
+	else
+	{
+		mostraErrore(password, "La password deve essere lunga almeno due caratteri");
+	}
+	if(risPasswordUguali)
+	{
+		togliErrore(password_r);
+	}
+	else
+	{
+		mostraErrore(password_r, "Le password non coincidono");
+	}
+	
+	return risUsername && risNome && risCognome && risPassword && risPasswordUguali;
+}
+
