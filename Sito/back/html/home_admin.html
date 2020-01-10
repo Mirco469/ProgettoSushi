@@ -13,6 +13,7 @@
 <link rel="stylesheet" type="text/css" media="screen and (max-width: 900px)" href="../css/mobile.css"/>
       <link rel="stylesheet" type="text/css" media="print" href="../css/stampa.css"/>
         <script type="text/javascript" src="../js/index.js"></script>
+        <script type="text/javascript" src="../js/funzioni.js"></script>
   </head>
   <body>
     <div id="header">
@@ -38,7 +39,7 @@
     <div class="content" id="home_admin">
         <h1>Homepage</h1>
 
-        <form action="home_admin.php" method="post">
+        <form action="home_admin.php" onsubmit= "return validazioneFormNews_homeAdmin();" method="post">
           <formNews />
         </form>
       <div>

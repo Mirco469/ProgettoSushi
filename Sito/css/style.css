@@ -154,8 +154,9 @@ table.defaultTable td:last-child {
 	border: 1px solid #d9d9d9;
     border-top: none;
 	margin-bottom: 2em;
-	padding-left: 0.5em;
 	clear: both;
+	text-align: center;
+	padding: 1em 0;
 }
 
 .defaultLista>dt{
@@ -170,11 +171,6 @@ table.defaultTable td:last-child {
 .defaultLista>dd>span{
 	margin: 0 3em;
 	white-space:nowrap;
-}
-
-.defaultLista>dd{
-	text-align: center;
-	padding: 1em 0;
 }
 
 .defaultLista>dt>input{
@@ -608,26 +604,25 @@ table.defaultTable td:last-child {
 }
 
 
-#recensioni h2 {
+#lista_recensioni dt {
 	color: #e0ac00;
 	font-size: 1.3em;
 	margin: 0;
 }
 
-#recensioni h2 + p {
+#lista_recensioni dt + dd {
 	font-size: 0.8em;
 	padding: 0.2em;
 	margin: 0;
 }
 
-#recensioni h2 + p + p {
+#lista_recensioni dt + dd + dd {
 	font-style: italic;
-	font-size: 0.8em;
-	padding: 0.2em;
+	font-size: 0.9em;
 	margin: 0;
 }
 
-#recensioni h2 + p + p + p{
+#lista_recensioni dt + dd + dd + dd {
 	padding: 0.5em;
 	border: 1px solid #fff;
 	border-radius: 5px;
@@ -855,6 +850,19 @@ div#notizie {
     margin: 1em;
 }
 
+
+#listaDestinazioni dt {
+	padding: 1em;
+}
+#listaDestinazioni dd{
+	padding-left: 0.3em;
+	padding-right: 0.3em; 
+}
+
+#listaDestinazioni {
+	border: 1px solid white;
+}
+
 #menu_profilo>h1 {
     color: #d9d9d9;
     text-align: center;
@@ -903,6 +911,14 @@ div#notizie {
 
 #gestione_utente input[type=submit]	{
 	margin-top: 1em;
+}
+
+#gestione_utente>form select {
+	width: 7em;
+}
+
+#listaDestinazioni .destIndex{
+	display: none;
 }
 
 

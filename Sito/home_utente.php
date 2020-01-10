@@ -19,7 +19,10 @@
             $notizie .= "<dt>" . $row['data'] . " - " . $row['titolo'] . "</dt>
                                         <dd>" . $row['descrizione'] . "</dd>";
 
-            if($index == $maxNews) break;
+            if($index == $maxNews) 
+			{
+				break;
+			}
         }
 
 
