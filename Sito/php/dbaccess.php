@@ -157,6 +157,16 @@
 
         }
 
+        public function eliminaNews($indice){
+            $query = $this->connection->prepare('DELETE FROM News WHERE id_news = ?');
+            $query->bind_param('s', $indice);
+            if ($query->execute()) {
+                return true;
+            } else {
+                header("Location: /errore500.php");
+            }
+        }
+
         public function getNews() {
             $query = $this->connection->prepare('SELECT * FROM News ORDER BY data ');
             $query->execute();
