@@ -45,7 +45,7 @@ function checkAlfanumericoESpazi(input) {
 }
 
 function checkAlfanumerico(input) {
-    var patt = new RegExp('^[a-zA-Z0-9]{2,}$');
+    var patt = new RegExp('^[a-zA-Z0-9]{1,}$');
     if(patt.test(input.value)){
         togliErrore(input);
         return true;
