@@ -128,7 +128,7 @@ function checkPrezzo(input) {
 function checkTitolo(input) {
     var testoInput = input.value;
     var patt = new RegExp('^[a-zA-Z][a-zA-Z ]*[a-zA-Z]$');
-    if (patt.test(testoInput) && (6 < testoInput.length)) {
+    if (patt.test(input.value) && (6 < testoInput.length)) {
         togliErrore(input);
         return true;
     } else {
@@ -139,7 +139,7 @@ function checkTitolo(input) {
 function checkTextarea(input) {
     var testoInput = input.value;
     var patt = new RegExp('^[^0-9]+$');
-    if (patt.test(testoInput) && (10 < testoInput.length < 200)) {
+    if (patt.test(input.value) && (10 < testoInput.length < 200)) {
         togliErrore(input);
         return true;
     } else {
