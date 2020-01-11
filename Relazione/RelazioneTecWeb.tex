@@ -72,36 +72,35 @@
 			Si ritiene possa essere un'aggiunta interessante avere la possibilità di salvare i metodi di pagamento e di spedizione in modo tale da non doverli reinserire ad ogni acquisto (nel caso di utente autenticato).	
 	\section{Progettazione}
 		\subsection{Obiettivi}
-		Gli obiettivi principali perseguiti durante la progettazione del sito sono i seguenti:
-		\begin{itemize}
-		    \item \textbf{Separazione tra struttura, presentazione e comportamento:}
-		    Obiettivo fondamentale, in quanto raggiungerlo permette di soddisfare più agevolmente anche gli altri punti. 
-		    La struttura è stata realizzata con documenti in XHTML 1.0 Strict dove possibile, così da garantire una maggiore retrocompatibilità con vecchi browsers, ed HTML5 dove si sono ritenute necessarie le funzionalità aggiuntive permesse dal linguaggio. 
-		    La presentazione è stata sviluppata con fogli di stile CSS linkati, mentre il comportamento con script esterni realizzati in Javascript e PHP. In questo modo la struttura non dovrà cambiare, anche a seguito di modifiche alla presentazione del sito.
-		    Tutto il codice redatto è stato scritto secondo le raccomandazioni W3C, accertando poi che siano state rispettate, validando HTML e CSS con i rispettivi tool di W3C.
-		    \item \textbf{Accessibilità:}
-		    Il sito deve poter essere fruibile agevolmente dal maggior numero di utenti possibile, compresi quelli con differenti tipi di disabilità. Per garantire una buona accessibilità, alcune misure adottate sono:
+		    Gli obiettivi principali perseguiti durante la progettazione del sito sono i seguenti:
 		    \begin{itemize}
-		        \item Uso dei tabindex nel menù di navigazione;
-		        \item Testo alternativo per le immagini;
-		        \item Assenza di link circolari;
-		        \item Testi e link con buoni livelli di contrasto;
-		        \item Uso dell'attributo lang per testi non in italiano;
+		        \item \textbf{Separazione tra struttura, presentazione e comportamento:}
+		        Obiettivo fondamentale, in quanto raggiungerlo permette di soddisfare più agevolmente anche gli altri punti. 
+		        La struttura è stata realizzata con documenti in XHTML 1.0 Strict dove possibile, così da garantire una maggiore retrocompatibilità con vecchi browsers, ed HTML5 dove si sono ritenute necessarie le funzionalità aggiuntive permesse dal linguaggio. 
+		        La presentazione è stata sviluppata con fogli di stile CSS linkati, mentre il comportamento con script esterni realizzati in Javascript e PHP. In questo modo la struttura non dovrà cambiare, anche a seguito di modifiche alla presentazione del sito.
+		        Tutto il codice redatto è stato scritto secondo le raccomandazioni W3C, accertando poi che siano state rispettate, validando HTML e CSS con i rispettivi tool di W3C.
+		        \item \textbf{Accessibilità:}
+		        Il sito deve poter essere fruibile agevolmente dal maggior numero di utenti possibile, compresi quelli con differenti tipi di disabilità. Per garantire una buona accessibilità, alcune misure adottate sono:
+		        \begin{itemize}
+		            \item Uso dei tabindex nel menù di navigazione;
+		            \item Testo alternativo per le immagini;
+		            \item Assenza di link circolari;
+		            \item Testi e link con buoni livelli di contrasto;
+		            \item Uso dell'attributo lang per testi non in italiano;
+		        \end{itemize}
+		        \item \textbf{Fluidità:}
+		        Il sito deve poter essere consultabile tramite varie tipologie di dispositivi, tra cui PC desktop, tablet e smartphone. Bisogna quindi garantire una buona adattabilità alle differenti dimensioni di schermo.
+		        \item \textbf{Fruibilità:}
+		        Per realizzare un sito navigabile intuitivamente si sono seguite alcune linee guida comuni nel web, come ad esempio:
+		        \begin{itemize}
+		            \item Sfruttare un layout ben strutturato, che faciliti l'individuazione del contenuto di interesse;
+		            \item Agevolare lo scroll tramite link relativi per raggiungere diversi punti di una stessa pagina;
+		            \item Mantenere colorazioni diverse per link visitati e non;
+		        \end{itemize}
 		    \end{itemize}
-		    \item \textbf{Fluidità:}
-		    Il sito deve poter essere consultabile tramite varie tipologie di dispositivi, tra cui PC desktop, tablet e smartphone. Bisogna quindi garantire una buona adattabilità alle differenti dimensioni di schermo.
-		    \item \textbf{Fruibilità:}
-		    Per realizzare un sito navigabile intuitivamente si sono seguite alcune linee guida comuni nel web, come ad esempio:
-		    \begin{itemize}
-		        \item Sfruttare un layout ben strutturato, che faciliti l'individuazione del contenuto di interesse;
-		        \item Agevolare lo scroll tramite link relativi per raggiungere diversi punti di una stessa pagina;
-		        \item Mantenere colorazioni diverse per link visitati e non;
-		    \end{itemize}
-		\end{itemize}
 		\subsection{Layout}
 			Si è deciso di strutturare il sito con un layout a colonna singola, come illustrato in Figura 1. Questo modello permette una buona mantenibilità, dato che anche in caso si effettuino modifiche al contenuto della pagina la sua presentazione rimane uniforme, avendo a disposizione l'intera larghezza della finestra. 
 		    Dimostra di essere anche un layout molto flessibile in quanto la transizione dalla presentazione su desktop a quella su dispositivi mobili risulta fluida.
-		    
 		    \begin{figure}[http] %Verificare posizione immagine dopo aver scritto i capitoli precedenti;
 		        \centering
 		        \includegraphics[width=\textwidth]{schema_layout.png}
@@ -120,21 +119,21 @@
 	\section{Implementazione}
 		\subsection{Linguaggi}
 			\subsubsection{XHTML 1.0 Strict e HTML5}
-			Come già detto, per la realizzazione del sito si è optato per avere sia pagine in XHTML 1.0 Strict, che in HTML5. L'uso di XHTML 1.0 garantisce una migliore retrocompatibilità con browsers più datati ed una migliore aderenza del codice agli standard di correttezza, ma HTML5 permette di sfruttare alcune funzionalità aggiuntive che abbiamo sfruttato ad esempio in vari form per utilizzare \textit{placeholder} o per rendere dei campi \textit{required} in modo da chiarire e migliorare l'usabilità del sito. In entrambi i casi per ottenere codice pulito si sono seguiti i seguenti principi:
-			\begin{itemize}
-			    \item Mantenere la separazione tra struttura e presentazione, usando file separati linkati nell'header;
-			    \item Ogni $<$tag$>$ aperto deve essere poi chiuso $<$/tag$>$ (oppure $<$tag /$>$);
-			    \item I tag di intestazione vanno usati in base all'importanza di ciò che racchiudono, e non in base all'estetica base html;
-			\end{itemize}
-			In generale, per garantire un codice corretto, sono state seguite le linee guida che sono state illustrate durante il corso di Tecnologie Web e quelle dello standard W3C. La verifica del codice è stata poi effettuata  utilizzando il tool di validazione W3C Validator%
-			\footnote{Riferimento al sito di  \href{https://validator.w3.org/}{W3C Validator}.},
-			 la piattaforma SonarCloud% 
-			\footnote{Riferimento al sito di  \href{https://sonarcloud.io/about}{SonarCloud}.}
-			 integrata con GitHub
-			ed il software di validazione di siti Total Validator.%
-			\footnote{Riferimento al sito di  \href{https://www.totalvalidator.com/}{Total Validator}.}
-			\newline Si è prestata attenzione al ruolo dei metatag nell'header, il cui buon uso migliora anche l'indicizzazione del sito da parte dei motori di ricerca, aspetto fondamentale per un'attività commerciale che voglia ricevere un'adeguata visibilità nel web.
-			\newline Si è deciso di fare uso anche di tabelle, rendendole più agevolmente accessibili tramite l'uso di adeguati \textit{summary}, e di \textit{scope} su colonne e righe di interesse.
+			    Come già detto, per la realizzazione del sito si è optato per avere sia pagine in XHTML 1.0 Strict, che in HTML5. L'uso di XHTML 1.0 garantisce una migliore retrocompatibilità con browsers più datati ed una migliore aderenza del codice agli standard di correttezza, ma HTML5 permette di sfruttare alcune funzionalità aggiuntive che abbiamo sfruttato ad esempio in vari form per inserire input di tipo \textit{date}, utilizzare \textit{placeholder} o per rendere dei campi \textit{required} in modo da chiarire e migliorare l'usabilità del sito. In entrambi i casi per ottenere codice pulito si sono seguiti i seguenti principi:
+			    \begin{itemize}
+			        \item Mantenere la separazione tra struttura e presentazione, usando file separati linkati nell'header;
+			        \item Ogni $<$tag$>$ aperto deve essere poi chiuso $<$/tag$>$ (oppure $<$tag /$>$);
+			        \item I tag di intestazione vanno usati in base all'importanza di ciò che racchiudono, e non in base all'estetica base html;
+			    \end{itemize}
+			    \newline In generale, per garantire un codice corretto, sono state seguite le linee guida che sono state illustrate durante il corso di Tecnologie Web e quelle dello standard W3C. La verifica del codice è stata poi effettuata  utilizzando il tool di validazione W3C Validator%
+			    \footnote{Riferimento al sito di W3C Validator \url{https://validator.w3.org/}},
+			    la piattaforma SonarCloud% 
+			    \footnote{Riferimento al sito di SonarCloud \url{https://sonarcloud.io/about}}
+			    integrata con GitHub
+			    ed il software di validazione di siti Total Validator.%
+			    \footnote{Riferimento al sito di Total Validator \url{https://www.totalvalidator.com/}}
+			    \newline Si è prestata attenzione al ruolo dei metatag nell'header, il cui buon uso migliora anche l'indicizzazione del sito da parte dei motori di ricerca, aspetto fondamentale per un'attività commerciale che voglia ricevere un'adeguata visibilità nel web.
+			    \newline Si è deciso di fare uso anche di tabelle, rendendole più agevolmente accessibili tramite l'uso di adeguati \textit{summary}, e di \textit{scope} su colonne e righe di interesse.
 			\subsubsection{CSS}
 				CSS è stato usato per la presentazione grafica delle pagine HTML. Si è cercato di puntare ad un discreto riutilizzo del codice creando classi da poter usare su più pagine, come per esempio bottoni e form preimpostati, che poi potevano venire personalizzati dove necessario sovrascrivendo le regole necessarie. Il contenuto di ogni pagina è identificato da una classe così da avere una formattazione del testo omogenea mentre per impaginare le pagine specifiche si è optato per un identificativo univoco per ogni pagina.
 			\subsubsection{PHP}
@@ -149,6 +148,9 @@
 			\subsubsection{W3C CSS Validator}
 				Tutti i file CSS sono stati validati usando lo strumento di validazione fornito da W3C per assicurarsi che fossero strutturati correttamente.
 			\subsubsection{TotalValidator}
+			    Con questo strumento abbiamo validato tutto il codice HTML. Principalmente errori segnalati dal programma riguardano direttive sull'uso delle regole WAI-ARIA% 
+			    \footnote{Web Accessibility Initiative - Accessible Rich Internet Applications -  \url{https://www.w3.org/WAI/standards-guidelines/aria/}}
+			    relative all'utilizzo delle \textit{aria-label}, cosa che non è necessaria in questo caso, in quanto i vari link e buttons sono facilmente indiduabili ed interpretabili.
 			\subsubsection{SonarCloud}
 				Servizio integrato con GitHub per la verifica del codice nella repository. Ad ogni push veniva fatta un {\bfseries analisi statica} del codice alla ricerca di problemi e vulnerabilità come ad esempio un problema comune è stata la ripetizione rindondate di regole css. Questa fase di test era bloccante, ovvero perchè il codice venisse aggiunto dovevano prima essere risolti i problemi.
 	\section{Organizzazione del lavoro}
