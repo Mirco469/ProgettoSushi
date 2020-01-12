@@ -127,8 +127,8 @@ function checkPrezzo(input) {
 
 function checkTitolo(input) {
     var testoInput = input.value;
-    var patt = new RegExp('^[a-zA-Z][a-zA-Z ]*[a-zA-Z]$');
-    if (patt.test(input.value) && (6 < testoInput.length)) {
+    var patt = new RegExp('^[a-zA-Z ]+$');
+    if (patt.test(input.value) && (5 < testoInput.length)) {
         togliErrore(input);
         return true;
     } else {
@@ -139,7 +139,7 @@ function checkTitolo(input) {
 function checkTextarea(input) {
     var testoInput = input.value;
     var patt = new RegExp('^[^0-9]+$');
-    if (patt.test(input.value) && (10 < testoInput.length < 200)) {
+    if (patt.test(input.value) && (9 < testoInput.length < 201)) {
         togliErrore(input);
         return true;
     } else {
@@ -293,7 +293,7 @@ function validazioneForm_recensioni() {
 
     if (!risTitolo) {
         togliErrore(titolo);
-        mostraErrore(titolo, "Il titolo deve contenere solo lettere e spaziature interne ed essere almeno lungo 6 caratteri");
+        mostraErrore(titolo, "Il titolo deve contenere solo lettere ed essere almeno lungo 6 caratteri");
     } else {
         togliErrore(titolo);
     }

@@ -26,7 +26,7 @@
 
                 if (!checkTestoSpaziDim($titolo, 6))
                 {
-                    $messaggio .= "<li>Il titolo deve contenere solo lettere e spaziature interne ed essere almeno lungo 6 caratteri</li>";
+                    $messaggio .= "<li>Il titolo deve contenere solo lettere ed essere almeno lungo 6 caratteri</li>";
                 }
                 if (!checkTextArea($testo))
                 {
