@@ -35,7 +35,7 @@ function checkTesto(input) {
 
 function checkAlfanumericoESpazi(input) {
     var patt = new RegExp('^[a-zA-Z0-9 ]{2,}$');
-    if(patt.test(input.value)){
+    if(patt.test(input.value.trim())) {
         togliErrore(input);
         return true;
     }else{
@@ -125,21 +125,10 @@ function checkPrezzo(input) {
     }
 }
 
-function checkTitolo(input) {
-    var testoInput = input.value;
-    var patt = new RegExp('^[a-zA-Z ]+$');
-    if (patt.test(input.value) && (5 < testoInput.length)) {
-        togliErrore(input);
-        return true;
-    } else {
-        return false;
-    }
-}
-
 function checkTextarea(input) {
-    var testoInput = input.value;
+    var testoInput = input.value.trim();
     var patt = new RegExp('^[^0-9]+$');
-    if (patt.test(input.value) && (9 < testoInput.length < 201)) {
+    if (patt.test(input.value.trim()) && (9 < testoInput.length < 201)) {
         togliErrore(input);
         return true;
     } else {
@@ -289,12 +278,12 @@ function validazioneForm_recensioni() {
     var titolo = document.getElementById("titolo_recensione");
     var testo = document.getElementById("testo_recensione");
 
-    var risTitolo = checkTitolo(titolo);
+    var risTitolo = checkAlfanumericoESpazi(titolo);
     var risTesto = checkTextarea(testo);
 
     if (!risTitolo) {
         togliErrore(titolo);
-        mostraErrore(titolo, "Il titolo deve contenere solo lettere ed essere almeno lungo 6 caratteri");
+        mostraErrore(titolo, "Il titolo non può contenere caratteri speciali e deve essere almeno lungo 2 caratteri");
     } else {
         togliErrore(titolo);
     }

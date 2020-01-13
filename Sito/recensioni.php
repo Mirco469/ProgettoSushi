@@ -24,9 +24,9 @@
                 $titolo = htmlentities(trim($_POST['titolo']));
                 $testo = htmlentities(stripslashes(trim($_POST['testo'])));
 
-                if (!checkTestoSpaziDim($titolo, 6))
+                if (!checkAlfanumericoESpazi($titolo))
                 {
-                    $messaggio .= "<li>Il titolo deve contenere solo lettere ed essere almeno lungo 6 caratteri</li>";
+                    $messaggio .= "<li>Il titolo non può contenere caratteri speciali e deve essere almeno lungo 2 caratteri</li>";
                 }
                 if (!checkTextArea($testo))
                 {
