@@ -22,7 +22,7 @@
             if(isset($_POST['invia']))
             {
                 $titolo = htmlentities(trim($_POST['titolo']));
-                $testo = htmlentities(stripslashes(trim($_POST['testo'])));
+                $testo = htmlentities(trim($_POST['testo']));
 
                 if (!checkAlfanumericoESpazi($titolo))
                 {
@@ -77,7 +77,7 @@
             $titoloR = $recensione["Titolo"];
             $dataR = $recensione["Data"];
             $utenteR = $recensione["Utente"];
-            $testoR = htmlentities($recensione["Testo"]);
+            $testoR = $recensione["Testo"];
             $listaRecensioni .= "
             <dt>$titoloR</dt>
             <dd>$dataR</dd>

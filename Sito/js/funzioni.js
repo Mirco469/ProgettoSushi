@@ -127,8 +127,8 @@ function checkPrezzo(input) {
 
 function checkTextarea(input) {
     var testoInput = input.value.trim();
-    var patt = new RegExp('^[^0-9]+$');
-    if (patt.test(input.value.trim()) && (9 < testoInput.length < 201)) {
+    var patt = new RegExp('^[^0-9]{10,200}$');
+    if (patt.test(input.value.trim())) {
         togliErrore(input);
         return true;
     } else {
