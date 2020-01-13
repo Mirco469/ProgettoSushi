@@ -575,13 +575,13 @@
         } else {return true;}
     }
 
-    //Controlla che l'input contenga solo lettere e spaziature interne e sia almeno lungo $dim;
+    //Controlla che l'input contenga solo lettere sia almeno lungo $dim;
     function checkTestoSpaziDim($string, $dim)
     {
         if (strlen($string) < $dim) {
             return false;
         }
-        if (!preg_match('/^[a-zA-Z][a-zA-Z|\s]*[a-zA-Z]$/', $string)) {
+        if (!preg_match('/^[a-zA-Z ]+$/', $string)) {
             return false;
         } else return true;
     }

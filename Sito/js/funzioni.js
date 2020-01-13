@@ -35,7 +35,7 @@ function checkTesto(input) {
 
 function checkAlfanumericoESpazi(input) {
     var patt = new RegExp('^[a-zA-Z0-9 ]{2,}$');
-    if(patt.test(input.value)){
+    if(patt.test(input.value.trim())) {
         togliErrore(input);
         return true;
     }else{
@@ -121,6 +121,16 @@ function checkPrezzo(input) {
         return true;
     }else{
        
+        return false;
+    }
+}
+
+function checkTextarea(input) {
+    var patt = new RegExp('^[^0-9]{10,200}$');
+    if (patt.test(input.value.trim())) {
+        togliErrore(input);
+        return true;
+    } else {
         return false;
     }
 }
@@ -260,6 +270,33 @@ function validazioneFormPaga_gestione_profilo_utente() {
     return risNumCarta && risIntestatario && !risMeseScad && !risAnnoScad;
 
 }
+
+
+// Funzione di validazione form recensioni
+function validazioneForm_recensioni() {
+    var titolo = document.getElementById("titolo_recensione");
+    var testo = document.getElementById("testo_recensione");
+
+    var risTitolo = checkAlfanumericoESpazi(titolo);
+    var risTesto = checkTextarea(testo);
+
+    if (!risTitolo) {
+        togliErrore(titolo);
+        mostraErrore(titolo, "Il titolo non può contenere caratteri speciali e deve essere almeno lungo 2 caratteri");
+    } else {
+        togliErrore(titolo);
+    }
+
+    if (!risTesto) {
+        togliErrore(testo);
+        mostraErrore(testo, "Il testo deve essere lungo tra i 10 ed i 200 caratteri e non contenere numeri");
+    } else {
+        togliErrore(testo);
+    }
+
+    return risTitolo && risTesto;
+}
+
 
 //Funzione per la validazione del form di aggiunta prodotti
 function validazioneFormAggiuntaProdotti() {
