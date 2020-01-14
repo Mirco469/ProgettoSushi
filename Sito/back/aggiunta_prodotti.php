@@ -33,7 +33,7 @@
                     if ($oggettoConnessione->alreadyExistsProdotto($nomeProdotto)) {
                         $messaggioAggiunta .= "<li>Prodotto gi&agrave; esistente</li>";
                     }
-                    if (!checkSoloLettereEDim($nomeProdotto))
+                    if (!checkAlfanumericoESpazi($nomeProdotto))
                     {
                         $messaggioAggiunta .= "<li>Il nome deve contenere solo lettere e essere almeno lungo 2 caratteri</li>";
                     }
@@ -73,7 +73,7 @@
                         <select id=\"categoria\" name=\"categoria\">
                             <option value=\"Antipasti\">Antipasti</option>
                             <option value=\"Primi Piatti\">Primi Piatti</option>
-                            <option value=\"Teppanyako e tempure\" lang=\"ja\">Teppanyako e tempure</option>
+                            <option value=\"Teppanyako e Tempure\" lang=\"ja\">Teppanyako e tempure</option>
                             <option value=\"Uramaki\" lang=\"ja\">Uramaki</option>
                             <option value=\"Nigiri ed Onigiri\" lang=\"ja\">Nigiri ed Onigiri</option>
                             <option value=\"Gunkan\" lang=\"ja\">Gunkan</option>
@@ -114,7 +114,7 @@
                         $prezzoP = $singoloProdotto["Prezzo"];
                         $descrizioneP = $singoloProdotto["Descrizione"];
                         $listaProdotti .= "
-                            <dt>$nomeP<input class=\"buttonSmall\" type=\"button\" name=\"Modifica\" value=\"Modifica\" /></dt>
+                            <dt>$nomeP<a class=\"buttonSmall\" href=\"modifica_prodotto.php?nome=$nomeP\">Modifica</a></dt>
                             <dd>$prezzoP &euro;</dd>
                             <dd><span>[$pezziP<abbr title=\"Pezzi\">pz</abbr>]</span> $descrizioneP</dd>";
                     }

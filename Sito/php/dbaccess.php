@@ -145,7 +145,21 @@
                 header("Location: /errore500.php");
             }
         }
+        //Dato il nome di un prodotto lo cancella
+        public function  deleteProdotto($nome)
+        {
+            $query = $this->connection->prepare("DELETE FROM Prodotto WHERE nome = ?");
+            $query->bind_param('s', $nome);
+            return $query->execute();
+        }
 
+        //Dato il nome di un prodotto e le sue nuove informazioni lo modifica
+        public function modifyProdotto($nome, $categoria, $pezzi, $prezzo, $descrizione)
+        {
+            $query = $this->connection->prepare("UPDATE Prodotto SET categoria = ?, pezzi = ?, prezzo = ? , descrizione = ? WHERE nome = ?");
+            $query->bind_param('sssss', $categoria, $pezzi, $prezzo, $descrizione, $nome);
+            return $query->execute();
+        }
 
         public function inserisciNews($titolo, $data ,$testo, $user){
 
@@ -237,6 +251,23 @@
 
                     return $result;
                 }
+            }
+        }
+
+        //Dato il nome di un prodotto ritorna le sue informazioni
+        public function getInfoProdotto($nome)
+        {
+            $query = $this->connection->prepare("SELECT * FROM Prodotto WHERE nome = ?");
+            $query->bind_param('s', $nome);
+            $query->execute();
+            $queryResult = $query->get_result();
+            if (mysqli_num_rows($queryResult) == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return mysqli_fetch_assoc($queryResult);
             }
         }
 
