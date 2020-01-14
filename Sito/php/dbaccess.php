@@ -87,9 +87,8 @@
                 exit;
                 header("Location: /errore500.php");
             }
-
-
         }
+
 
         public function getCartaDiCredito($utente)
         {
@@ -239,50 +238,6 @@
                 }
             }
         }
-
-        #funzione per il get degli indirizzi per utente;
-        public function getIndirizzi($utente)
-        {
-            $query = $this->connection->prepare("SELECT via, numero_civico FROM Destinazione WHERE utente = ?");
-            $query->bind_param('s', $utente);
-            $query->execute();
-            $queryResult = $query->get_result();
-
-            if (mysqli_num_rows($queryResult) == 0) {
-                return null;
-            } else {
-                $result = array();
-
-                while ($row = mysqli_fetch_assoc($queryResult)) {
-                    $arraySingoloIndirizzo = array(
-                        'Via' => $row['via'],
-                        'Num' => $row['numero_civico'],
-                    );
-                    array_push($result, $arraySingoloIndirizzo);
-                }
-
-                return $result;
-            }
-        }
-
-
-        #funzione per il get della carta di credito per utente;
-        public function getPagamento($utente)
-        {
-            $query = $this->connection->prepare("SELECT numero_carta FROM Utente WHERE username = ?");
-            $query->bind_param('s', $utente);
-            $query->execute();
-            $queryResult = $query->get_result();
-            if (mysqli_num_rows($queryResult) == 0) {
-                return null;
-            } else {
-                $row = mysqli_fetch_assoc($queryResult);
-                return $row['numero_carta'];
-            }
-        }
-
-        /* FUNZIONI PER CONTROLLARE LO STATO DEL DATABASE */
-
 
         public function getNewsUtente()
         {
