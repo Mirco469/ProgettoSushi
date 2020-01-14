@@ -115,9 +115,13 @@
 		    La principale differenza tra i layout scelti sta nella posizione e presentazione del menù di navigazione. 
 		    \newline Nei device con finestre di visualizzazione sufficentemente larghe si è scelto di disporre le voci del menù in riga, creando quindi una barra di navigazione. I link alle varie pagine principali del sito sono disposte a partire da sinistra, mentre quelli riguardanti pagine per gli utenti e le operazioni a loro disposizione si trovano a partire da destra.
 		    \newline Nei dispositivi più piccoli si è deciso invece di creare un menù espandibile, raggiungibile premendo sull'icona ad hamburger nell'angolo in alto a destra, che mostra tutte le voci disponibili, per rispettare il comportamento più comune che un utente medio si aspetta utilizzando uno smartphone.
+		
 		\subsection{Accessibilità}
+	
 	\section{Implementazione}
+		
 		\subsection{Linguaggi}
+			
 			\subsubsection{XHTML 1.0 Strict e HTML5}
 			    Come già detto, per la realizzazione del sito si è optato per avere sia pagine in XHTML 1.0 Strict, che in HTML5. L'uso di XHTML 1.0 garantisce una migliore retrocompatibilità con browsers più datati ed una migliore aderenza del codice agli standard di correttezza, ma HTML5 permette di sfruttare alcune funzionalità aggiuntive che abbiamo sfruttato ad esempio in vari form per inserire input di tipo \textit{date}, utilizzare \textit{placeholder} o per rendere dei campi \textit{required} in modo da chiarire e migliorare l'usabilità del sito. In entrambi i casi per ottenere codice pulito si sono seguiti i seguenti principi:
 			    \begin{itemize}
@@ -136,30 +140,42 @@
 			    \footnote{Riferimento al sito di Total Validator \url{https://www.totalvalidator.com/}}
 			    \newline Si è prestata attenzione al ruolo dei metatag nell'header, il cui buon uso migliora anche l'indicizzazione del sito da parte dei motori di ricerca, aspetto fondamentale per un'attività commerciale che voglia ricevere un'adeguata visibilità nel web.
 			    \newline Si è deciso di fare uso anche di tabelle, rendendole più agevolmente accessibili tramite l'uso di adeguati \textit{summary}, e di \textit{scope} su colonne e righe di interesse.
+			
 			\subsubsection{CSS}
 				CSS è stato usato per la presentazione grafica delle pagine HTML. Si è cercato di puntare ad un discreto riutilizzo del codice creando classi da poter usare su più pagine, come per esempio bottoni e form preimpostati, che poi potevano venire personalizzati dove necessario sovrascrivendo le regole necessarie. Il contenuto di ogni pagina è identificato da una classe così da avere una formattazione del testo omogenea mentre per impaginare le pagine specifiche si è optato per un identificativo univoco per ogni pagina.
+			
 			\subsubsection{PHP}
-			Il linguaggio PHP è stato utilizzato per creare tutte le interazioni del sito con il database, oltre che ad effettuare dei controlli lato server per quanto riguarda la validità e la bontà degli input forniti dagli utenti. Un altro uso che è stato fatto di questo linguaggio è stato quello di creare delle pagine web dinamiche che avessero un menù personalizzato, in base al fatto che un utente fosse autenticato o meno, e dei contenuti diversi in base ai dati presenti nel database (e.g. le destinazioni salvate o le notizie pubblicate dagli amministratori).
-			Per quanto riguarda la codifica si è cercato, ove possibile, di definire delle funzioni che realizzassero i compiti che più si sarebbero ripetuti all'interno del sito, come il controllo degli input, e generalmente si è cercato di separare la logica della pagina dalle funzioni chiamate in modo tale da diminuire il più possibile le dipendenze ed agevolare un'eventuale manutenzione del sito.
+				Il linguaggio PHP è stato utilizzato per creare tutte le interazioni del sito con il database, oltre che ad effettuare dei controlli lato server per quanto riguarda la validità e la bontà degli input forniti dagli utenti. Un altro uso che è stato fatto di questo linguaggio è stato quello di creare delle pagine web dinamiche che avessero un menù personalizzato, in base al fatto che un utente fosse autenticato o meno, e dei contenuti diversi in base ai dati presenti nel database (e.g. le destinazioni salvate o le notizie pubblicate dagli amministratori).
+				Per quanto riguarda la codifica si è cercato, ove possibile, di definire delle funzioni che realizzassero i compiti che più si sarebbero ripetuti all'interno del sito, come il controllo degli input, e generalmente si è cercato di separare la logica della pagina dalle funzioni chiamate in modo tale da diminuire il più possibile le dipendenze ed agevolare un'eventuale manutenzione del sito.
+			
 			\subsubsection{SQL}
-			Sql è stato usato per codificare il database. Si rimanda al file \textit{creazione\_database.sql} nella cartella \textit{Database} [\href{https://github.com/Mirco469/ProgettoSushi/tree/master/Database}{url}] della repository per il file di costruzione del database. Di seguito il diagramma ER del database:\newline
+				Sql è stato usato per codificare il database. Si rimanda al file \textit{creazione\_database.sql} nella cartella \textit{Database} [\href{https://github.com/Mirco469/ProgettoSushi/tree/master/Database}{url}] della repository per il file di costruzione del database. Di seguito il diagramma ER del database:\newline
+			
 			\includegraphics[width=12cm]{DiagrammaER.png}
+			
 			\subsubsection{JavaScript}
-			Il linguaggio JavaScript è stato utilizzato per lo più per fare un controllo preventivo dei campi di input, senza richiedere la ricarica della pagina per dei semplici controlli tramite delle espressioni regolari. Il linguaggio è stato anche utilizzato per creare uno slideshow a scorrimento manuale nella pagina di inizio dell'utente, con delle immagini che rappresentassero il clima del ristorante, senza però scordarsi dell'accessibilità e del disturbo che potrebbe arrecare un carousel automatico. Un altro utilizzo di JavaScript è stato riguardo la creazione di un menù a scomparsa nella versione mobile del sito in modo tale da sfruttare al massimo la dimensione ridotta delle pagine ed evitare degli scroll verticali aggiuntivi che sarebbero stati richiesti nel caso di un menù verticale non a scomparsa. 
-			Infine JavaScript è stato ritenuto utile per effettuare l'aggiunta dei prodotti dalla pagina di takeaway alla pagina con il carrello tramite delle chiamate AJAX.
-		    Come per il linguaggio PHP si è puntato al riutilizzo del codice definendo funzioni per effettuare i controlli e riutilizzando le funzioni dove possibile.
+				Il linguaggio JavaScript è stato utilizzato per lo più per fare un controllo preventivo dei campi di input, senza richiedere la ricarica della pagina per dei semplici controlli tramite delle espressioni regolari. Il linguaggio è stato anche utilizzato per creare uno slideshow a scorrimento manuale nella pagina di inizio dell'utente, con delle immagini che rappresentassero il clima del ristorante, senza però scordarsi dell'accessibilità e del disturbo che potrebbe arrecare un carousel automatico. Un altro utilizzo di JavaScript è stato riguardo la creazione di un menù a scomparsa nella versione mobile del sito in modo tale da sfruttare al massimo la dimensione ridotta delle pagine ed evitare degli scroll verticali aggiuntivi che sarebbero stati richiesti nel caso di un menù verticale non a scomparsa. 
+				Infine JavaScript è stato ritenuto utile per nelle pagine di takeaway, carrello e pagamento per spostare i  prodotti selezionati da una pagina ad un altra o per disabilitare degli input in base alle selezioni dell'utente.
+		    	Come per il linguaggio PHP si è puntato al riutilizzo del codice definendo funzioni per effettuare i controlli e riutilizzando le funzioni dove possibile.
+	
 	\section{Fase di test}
+		
 		\subsection{Strumenti usati}
+		
 			\subsubsection{W3C HTML Validator}
 				Le pagine html sono state validate usando il validatore fornito dall'organizzazione W3C per garantire la corretta visualizzazione del contenuto della pagina senza fare entrare i browser in {\bfseries Quirks Mode}. \'E stato usato anche per validare il risultato delle pagine php incollando il sorgente ottenuto facendo eseguire lo script php.
+			
 			\subsubsection{W3C CSS Validator}
 				Tutti i file CSS sono stati validati usando lo strumento di validazione fornito da W3C per assicurarsi che fossero strutturati correttamente.
+			
 			\subsubsection{TotalValidator}
 			    Con questo strumento abbiamo validato tutto il codice HTML. Principalmente errori segnalati dal programma riguardano direttive sull'uso delle regole WAI-ARIA% 
 			    \footnote{Web Accessibility Initiative - Accessible Rich Internet Applications -  \url{https://www.w3.org/WAI/standards-guidelines/aria/}}
 			    relative all'utilizzo delle \textit{aria-label}, cosa che non è necessaria in questo caso, in quanto i vari link e buttons sono facilmente indiduabili ed interpretabili.
+			
 			\subsubsection{SonarCloud}
 				Servizio integrato con GitHub per la verifica del codice nella repository. Ad ogni push veniva fatta un {\bfseries analisi statica} del codice alla ricerca di problemi e vulnerabilità come ad esempio un problema comune è stata la ripetizione rindondate di regole css. Questa fase di test era bloccante, ovvero perchè il codice venisse aggiunto dovevano prima essere risolti i problemi.
+	
 	\section{Organizzazione del lavoro}
 		Il progetto è stato suddiviso in modo tale che ogni membro avesse la possibilità di creare sia alcune pagine HTML che il relativo CSS, facendo da verificatore nelle pagine degli altri membri.
 		Lo stesso può essere detto per quanto concerne PHP, JavaScript e la creazione ed il popolamento del database.
