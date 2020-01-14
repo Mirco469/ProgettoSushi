@@ -1,10 +1,7 @@
 <?php
     require_once("../php/dbaccess.php");
 
-    //***************************
     session_start();
-
-    //***************************
 
     if( isset($_SESSION['username'])) {
         if(isset($_SESSION['autorizzazione']) && $_SESSION['autorizzazione']=='Admin') {
@@ -96,12 +93,10 @@
             }
 
         }else {
-            header('location: errore403.html');
+            header('location: ../errore403.php');
         }
     }else {
         header('location: ../login.php');
     }
-
-
 
 ?>

@@ -163,6 +163,13 @@
                 header("Location: /errore500.php");
             }
         }
+        //Dato il nome di un prodotto lo cancella
+        public function  deleteProdotto($nome)
+        {
+            $query = $this->connection->prepare("DELETE FROM Prodotto WHERE nome = ?");
+            $query->bind_param('s', $nome);
+            return $query->execute();
+        }
 
 		public function addOrdine($dataOrdine, $dataConsegna, $totale, $destinazione, $user)
 		{
@@ -177,6 +184,14 @@
                 header("Location: errore500.php");
             }
 		}
+        
+        //Dato il nome di un prodotto e le sue nuove informazioni lo modifica
+        public function modifyProdotto($nome, $categoria, $pezzi, $prezzo, $descrizione)
+        {
+            $query = $this->connection->prepare("UPDATE Prodotto SET categoria = ?, pezzi = ?, prezzo = ? , descrizione = ? WHERE nome = ?");
+            $query->bind_param('sssss', $categoria, $pezzi, $prezzo, $descrizione, $nome);
+            return $query->execute();
+        }
 
         public function addContiene($idOrdine, $prodotto, $quantita)
         {
@@ -282,6 +297,67 @@
                 }
             }
         }
+
+        //Dato il nome di un prodotto ritorna le sue informazioni
+        public function getInfoProdotto($nome)
+        {
+            $query = $this->connection->prepare("SELECT * FROM Prodotto WHERE nome = ?");
+            $query->bind_param('s', $nome);
+            $query->execute();
+            $queryResult = $query->get_result();
+            if (mysqli_num_rows($queryResult) == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return mysqli_fetch_assoc($queryResult);
+            }
+        }
+
+        #funzione per il get degli indirizzi per utente;
+        public function getIndirizzi($utente)
+        {
+            $query = $this->connection->prepare("SELECT via, numero_civico FROM Destinazione WHERE utente = ?");
+            $query->bind_param('s', $utente);
+            $query->execute();
+            $queryResult = $query->get_result();
+
+            if (mysqli_num_rows($queryResult) == 0) {
+                return null;
+            } else {
+                $result = array();
+
+                while ($row = mysqli_fetch_assoc($queryResult)) {
+                    $arraySingoloIndirizzo = array(
+                        'Via' => $row['via'],
+                        'Num' => $row['numero_civico'],
+                    );
+                    array_push($result, $arraySingoloIndirizzo);
+                }
+
+                return $result;
+            }
+        }
+
+
+        #funzione per il get della carta di credito per utente;
+        public function getPagamento($utente)
+        {
+            $query = $this->connection->prepare("SELECT numero_carta FROM Utente WHERE username = ?");
+            $query->bind_param('s', $utente);
+            $query->execute();
+            $queryResult = $query->get_result();
+            if (mysqli_num_rows($queryResult) == 0) {
+                return null;
+            } else {
+                $row = mysqli_fetch_assoc($queryResult);
+                return $row['numero_carta'];
+            }
+        }
+
+        /* FUNZIONI PER CONTROLLARE LO STATO DEL DATABASE */
+
 
         public function getNewsUtente()
         {

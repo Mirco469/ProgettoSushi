@@ -2,7 +2,7 @@
 
 function checkData(input) {
     var patt = new RegExp('^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$');
-    if(patt.test(input.value)){
+    if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
     }else{
@@ -46,7 +46,7 @@ function checkAlfanumericoESpazi(input) {
 
 function checkAlfanumerico(input) {
     var patt = new RegExp('^[a-zA-Z0-9]{1,}$');
-    if(patt.test(input.value)){
+    if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
     }else{
@@ -56,7 +56,7 @@ function checkAlfanumerico(input) {
 }
 function checkNomeCognome(input) {
     var patt = new RegExp('^[a-zA-Z]{1,}[ ]{1,}[a-zA-Z]{1,}$');
-    if(patt.test(input.value)){
+    if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
     }else{
@@ -66,7 +66,7 @@ function checkNomeCognome(input) {
 }
 function checkSoloLettereEDim(input) {
     var patt = new RegExp('^[a-zA-Z]{2,}$');
-    if(patt.test(input.value)){
+    if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
     }else{
@@ -76,7 +76,7 @@ function checkSoloLettereEDim(input) {
 }
 function checkSoloNumerieDim(input) {
     var patt = new RegExp('^[0-9]{2,}$');
-    if(patt.test(input.value)){
+    if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
     }else{
@@ -86,7 +86,7 @@ function checkSoloNumerieDim(input) {
 }
 function checkCAP(input) {
     var patt = new RegExp('^35(100|121|122|123|124|125|126|127|128|129|131|132|133|134|135|136|137|138|139|141|142|143)$');
-    if(patt.test(input.value)){
+    if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
     }else{
@@ -96,7 +96,7 @@ function checkCAP(input) {
 }
 function checkSoloNumeri(input) {
     var patt = new RegExp('^[0-9]+$');
-    if(patt.test(input.value)){
+    if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
     }else{
@@ -106,7 +106,7 @@ function checkSoloNumeri(input) {
 }
 function checkNumeroIntero(input) {
     var patt = new RegExp('^[0-9]+$');
-    if(patt.test(input.value)){
+    if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
     }else{
@@ -116,7 +116,7 @@ function checkNumeroIntero(input) {
 }
 function checkPrezzo(input) {
     var patt = new RegExp('^[0-9]{1,3}((.|,)[0-9]{1,2})?$');
-    if(patt.test(input.value)){
+    if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
     }else{
@@ -271,6 +271,91 @@ function validazioneFormPaga_gestione_profilo_utente() {
 
 }
 
+//Funzione per la validazione del form di accesso della pagina di login
+function validazioneFormAccesso() {
+    var username = document.getElementById("nomeUtente");
+	var password = document.getElementById("passwordAcc");
+	
+	var risUsername = checkAlfanumerico(username);
+	var risPassword = checkMinLen(password);
+	
+	if(risUsername)
+	{
+		togliErrore(username);
+	}
+	else
+	{
+		mostraErrore(username, "L'username deve contenere solo caratteri alfanumerici e avere almeno 2 caratteri");
+	}
+	if(risPassword)
+	{
+		togliErrore(password);
+	}
+	else
+	{
+		mostraErrore(password, "La password deve essere lunga almeno due caratteri");
+	}
+	
+	return risUsername && risPassword;
+}
+
+//Funzione per la validazione del form di registrazione della pagina di login
+function validazioneFormRegistrazione() {
+    var username = document.getElementById("username");
+    var nome = document.getElementById("nome");
+	var cognome = document.getElementById("cognome");
+	var password = document.getElementById("passwordReg");
+	var password_r = document.getElementById("passwordRepeat");
+	
+	var risUsername = checkAlfanumerico(username);
+	var risNome = checkSoloLettereEDim(nome);
+	var risCognome = checkSoloLettereEDim(cognome);
+	var risPassword = checkMinLen(password);
+	var risPasswordUguali = password.value == password_r.value;
+	
+	if(risUsername)
+	{
+		togliErrore(username);
+	}
+	else
+	{
+		mostraErrore(username, "L'username deve contenere solo caratteri alfanumerici e avere almeno 2 caratteri");
+	}
+	if(risNome)
+	{
+		togliErrore(nome);
+	}
+	else
+	{
+		mostraErrore(nome, "Il nome deve contenere solo lettere  e avere almeno 2 caratteri");
+	}
+	if(risCognome)
+	{
+		togliErrore(cognome);
+	}
+	else
+	{
+		mostraErrore(cognome, "Il cognome deve contenere solo lettere  e avere almeno 2 caratteri");
+	}
+	if(risPassword)
+	{
+		togliErrore(password);
+	}
+	else
+	{
+		mostraErrore(password, "La password deve essere lunga almeno due caratteri");
+	}
+	if(risPasswordUguali)
+	{
+		togliErrore(password_r);
+	}
+	else
+	{
+		mostraErrore(password_r, "Le password non coincidono");
+	}
+	
+	return risUsername && risNome && risCognome && risPassword && risPasswordUguali;
+}
 
 // Funzione di validazione form recensioni
 function validazioneForm_recensioni() {
@@ -296,7 +381,6 @@ function validazioneForm_recensioni() {
 
     return risTitolo && risTesto;
 }
-
 
 //Funzione per la validazione del form di aggiunta prodotti
 function validazioneFormAggiuntaProdotti() {
@@ -334,4 +418,32 @@ function validazioneFormAggiuntaProdotti() {
 	}
 	
 	return risProdotto && risPorzione && risPrezzo;
+}
+
+//Funzione per la validazione del form di modifica prodotto
+function validazioneFormModificaProdotto() {
+    var porzione = document.getElementById("porzione");
+	var prezzo = document.getElementById("prezzo");
+	
+	var risPorzione = checkNumeroIntero(porzione);
+	var risPrezzo = checkPrezzo(prezzo);
+	
+	if(risPorzione)
+	{
+		togliErrore(porzione);
+	}
+	else
+	{
+		mostraErrore(porzione, "Il numero dei pezzi deve essere un numero intero");
+	}
+	if(risPrezzo)
+	{
+		togliErrore(prezzo);
+	}
+	else
+	{
+		mostraErrore(prezzo, "Il prezzo deve essere un numero decimale con al massimo 3 cifre prima della virgola e 2 cifre dopo la virgola");
+	}
+	
+	return risPorzione && risPrezzo;
 }
