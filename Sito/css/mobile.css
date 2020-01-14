@@ -1011,6 +1011,16 @@ min-height: 465px;
 	border-radius: 4px;
 }
 
+#aggiunta_prodotti a.buttonSmall {
+    display: inline-block;
+	box-sizing: border-box;
+    margin-right: 0.3em;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.6em;
+	height: auto;
+}
+
 /* Gestione Profilo Admin */
 
 #gestione_admin h1 {
@@ -1174,4 +1184,31 @@ min-height: 465px;
     line-height: normal;
     margin-right: 0.3em;
     padding: 1px 6px;
+}
+
+
+/* Modifica prodotto */
+#modifica_prodotto>form>p{
+	text-align: center;
+}
+
+#modifica_prodotto .defaultForm input[type=submit]{
+	margin: 0.5em;
+	display: inline;
+}
+
+#modifica_prodotto .defaultForm textarea{
+	width: 97%;
+	display: block;
+	margin:auto;
+}
+
+#modifica_prodotto .defaultForm select{
+	display: block;
+	width: 100%;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 2px;
+	border-radius: 4px;
 }

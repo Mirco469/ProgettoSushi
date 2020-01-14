@@ -419,3 +419,31 @@ function validazioneFormAggiuntaProdotti() {
 	
 	return risProdotto && risPorzione && risPrezzo;
 }
+
+//Funzione per la validazione del form di modifica prodotto
+function validazioneFormModificaProdotto() {
+    var porzione = document.getElementById("porzione");
+	var prezzo = document.getElementById("prezzo");
+	
+	var risPorzione = checkNumeroIntero(porzione);
+	var risPrezzo = checkPrezzo(prezzo);
+	
+	if(risPorzione)
+	{
+		togliErrore(porzione);
+	}
+	else
+	{
+		mostraErrore(porzione, "Il numero dei pezzi deve essere un numero intero");
+	}
+	if(risPrezzo)
+	{
+		togliErrore(prezzo);
+	}
+	else
+	{
+		mostraErrore(prezzo, "Il prezzo deve essere un numero decimale con al massimo 3 cifre prima della virgola e 2 cifre dopo la virgola");
+	}
+	
+	return risPorzione && risPrezzo;
+}
