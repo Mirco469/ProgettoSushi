@@ -50,7 +50,7 @@
             }
             else
             {
-                header("Location: /errore500.php"); /*CONTROLLARE SE LA PAGINA E' GIUSTA*/
+                header("Location: errore500.php");
             }
         }
         elseif(isset($_POST['registrati']))
@@ -104,7 +104,7 @@
             }
             else
             {
-                header("Location: /errore500.php"); /*CONTROLLARE SE LA PAGINA E' GIUSTA*/
+                header("Location: errore500.php");
             }
         }
 
