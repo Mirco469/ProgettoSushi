@@ -2,7 +2,7 @@
 
 function checkData(input) {
     var patt = new RegExp('^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$');
-    if(patt.test(input.value)){
+    if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
     }else{
@@ -46,7 +46,7 @@ function checkAlfanumericoESpazi(input) {
 
 function checkAlfanumerico(input) {
     var patt = new RegExp('^[a-zA-Z0-9]{1,}$');
-    if(patt.test(input.value)){
+    if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
     }else{
@@ -56,7 +56,7 @@ function checkAlfanumerico(input) {
 }
 function checkNomeCognome(input) {
     var patt = new RegExp('^[a-zA-Z]{1,}[ ]{1,}[a-zA-Z]{1,}$');
-    if(patt.test(input.value)){
+    if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
     }else{
@@ -66,7 +66,7 @@ function checkNomeCognome(input) {
 }
 function checkSoloLettereEDim(input) {
     var patt = new RegExp('^[a-zA-Z]{2,}$');
-    if(patt.test(input.value)){
+    if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
     }else{
@@ -76,7 +76,7 @@ function checkSoloLettereEDim(input) {
 }
 function checkSoloNumerieDim(input) {
     var patt = new RegExp('^[0-9]{2,}$');
-    if(patt.test(input.value)){
+    if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
     }else{
@@ -86,7 +86,7 @@ function checkSoloNumerieDim(input) {
 }
 function checkCAP(input) {
     var patt = new RegExp('^35(100|121|122|123|124|125|126|127|128|129|131|132|133|134|135|136|137|138|139|141|142|143)$');
-    if(patt.test(input.value)){
+    if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
     }else{
@@ -96,7 +96,7 @@ function checkCAP(input) {
 }
 function checkSoloNumeri(input) {
     var patt = new RegExp('^[0-9]+$');
-    if(patt.test(input.value)){
+    if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
     }else{
@@ -106,7 +106,7 @@ function checkSoloNumeri(input) {
 }
 function checkNumeroIntero(input) {
     var patt = new RegExp('^[0-9]+$');
-    if(patt.test(input.value)){
+    if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
     }else{
@@ -116,7 +116,7 @@ function checkNumeroIntero(input) {
 }
 function checkPrezzo(input) {
     var patt = new RegExp('^[0-9]{1,3}((.|,)[0-9]{1,2})?$');
-    if(patt.test(input.value)){
+    if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
     }else{
