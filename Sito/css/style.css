@@ -1156,8 +1156,6 @@ min-height: 465px;
     font-size: 0.5em;
 }
 
-
-
 /*	Gestione ordini	*/
 #gestione_ordini a.buttonSmall {
     display: inline-block;
@@ -1171,7 +1169,7 @@ min-height: 465px;
 }
 
 /* Modifica prodotto */
-#modifica_prodotto p{
+#modifica_prodotto>form>p{
 	text-align: center;
 }
 
