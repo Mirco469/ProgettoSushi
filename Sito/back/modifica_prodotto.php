@@ -103,18 +103,28 @@
 				$option = preg_replace('/'.$categoria.'"/', $categoria.'" selected="selected"', $option, 1);
 
 				$formModifica = "
-					<label for=\"prodotto\">Nome Prodotto:</label>
-					<input type=\"text\" id=\"prodotto\" name=\"prodotto\" value=\"".$nomeProdotto."\" readonly=\"readonly\"/>
-					<label for=\"categoria\">Categoria:</label>
-					<select id=\"categoria\" name=\"categoria\">
-						".$option."
-					</select>
-					<label for=\"porzione\">Numero pezzi:</label>
-					<input type=\"text\" id=\"porzione\" name=\"porzione\" value=\"".$numeroPezzi."\"/>
-					<label for=\"prezzo\">Prezzo:</label>
-					<input type=\"text\" id=\"prezzo\" name=\"prezzo\" value=\"".$prezzo."\"/>
-					<label for=\"descrizione\">Descrizione:</label>
-					<textarea id=\"descrizione\" name=\"descrizione\" rows=\"4\" cols=\"35\">".$descrizione."</textarea>";
+				    <p>
+                        <label for=\"prodotto\">Nome Prodotto:</label>
+                        <input type=\"text\" id=\"prodotto\" name=\"prodotto\" value=\"".$nomeProdotto."\" readonly=\"readonly\"/>
+                    </p>
+                    <p>
+                        <label for=\"categoria\">Categoria:</label>
+                        <select id=\"categoria\" name=\"categoria\">
+                            ".$option."
+                        </select>
+                    </p>
+                    <p>
+                        <label for=\"porzione\">Numero pezzi:</label>
+                        <input type=\"text\" id=\"porzione\" name=\"porzione\" value=\"".$numeroPezzi."\"/>
+                    </p>
+                    <p>
+                        <label for=\"prezzo\">Prezzo:</label>
+                        <input type=\"text\" id=\"prezzo\" name=\"prezzo\" value=\"".$prezzo."\"/>
+                    </p>
+                    <p>
+                        <label for=\"descrizione\">Descrizione:</label>
+                        <textarea id=\"descrizione\" name=\"descrizione\" rows=\"4\" cols=\"35\">".$descrizione."</textarea>
+                    </p>";
 
 
 				$paginaHTML = file_get_contents('html/modifica_prodotto.html');
