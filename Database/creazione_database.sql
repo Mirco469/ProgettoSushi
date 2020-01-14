@@ -221,7 +221,7 @@ CREATE TABLE Contiene(
     numero_porzioni TINYINT NOT NULL,
     PRIMARY KEY (id_ordine, nome),
 	FOREIGN KEY (id_ordine) REFERENCES Ordine(id_ordine) ON DELETE CASCADE,
-	FOREIGN KEY (nome) REFERENCES Prodotto(nome) ON DELETE NO ACTION
+	FOREIGN KEY (nome) REFERENCES Prodotto(nome) ON DELETE CASCADE
 );
 
 -- Inserimento dati nella tabella Contiene
