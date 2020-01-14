@@ -705,17 +705,13 @@ table.defaultTable td:last-child {
 }
 
 #aggiunta_prodotti a.buttonSmall {
-    width: 6em;
-    box-sizing: border-box;
-    text-decoration: none;
-    text-align: center;
-    height: 1.7em;
-    font-weight: 400;
-    font-size: 13.3333px;
     display: inline-block;
-    line-height: normal;
+	box-sizing: border-box;
     margin-right: 0.3em;
-    padding: 3px 6px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.6em;
+	height: auto;
 }
 
 /*Home Utente*/
