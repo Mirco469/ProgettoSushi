@@ -305,6 +305,7 @@
 			if ($db->openDBConnection())
 			{
 				$cartaUtente = $db->getCartaDiCredito($user);
+				$cartaUtente = $cartaUtente['numero_carta'];
 			}
 			else
 			{
