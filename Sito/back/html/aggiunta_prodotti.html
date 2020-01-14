@@ -1,19 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="it">
   <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <title>Aggiunta Prodotti - Sushi Nakamura</title>
-      <meta name="title" content="Aggiunta prodotti - Sushi Nakamura" />
-      <meta name="description" content="Pagina per aggiungere nuovi prodotti da vendere per il sito di sushi" />
-      <meta name="keyword" content="aggiunta, prodotto" />
-      <meta name="language" content="italian it"/>
-      <meta name="robots" content="noindex"/>
-      <meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Aggiunta Prodotti - Sushi Nakamura</title>
+		<meta name="title" content="Aggiunta prodotti - Sushi Nakamura" />
+		<meta name="description" content="Pagina per aggiungere nuovi prodotti da vendere per il sito di sushi" />
+		<meta name="keyword" content="aggiunta, prodotto" />
+		<meta name="language" content="italian it"/>
+		<meta name="robots" content="noindex"/>
+		<meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-      <link rel="stylesheet" type="text/css" media="screen and (min-width: 901px)" href="../css/style.css"/>
-	<link rel="stylesheet" type="text/css" media="screen and (max-width: 900px)" href="../css/mobile.css"/>
-      <link rel="stylesheet" type="text/css" media="print" href="../css/stampa.css"/>
+		<link rel="stylesheet" type="text/css" media="screen and (min-width: 901px)" href="../css/style.css"/>
+		<link rel="stylesheet" type="text/css" media="screen and (max-width: 900px)" href="../css/mobile.css"/>
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stampa.css"/>
         <script type="text/javascript" src="../js/index.js"></script>
+		<script type="text/javascript" src="../js/funzioni.js"></script>
   </head>
   <body>
     <div id="header">
@@ -40,7 +41,7 @@
     <div class="content" id="aggiunta_prodotti">
         <h1>Pagina dei prodotti</h1>
         <!-- Form di aggiunta prodotti -->
-        <form action="aggiunta_prodotti.php" class="defaultForm" method="post">
+        <form action="aggiunta_prodotti.php" class="defaultForm" method="post" onsubmit= "return validazioneFormAggiuntaProdotti();">
             <fieldset>
                 <legend>Aggiungi nuovo prodotto</legend>
                 <messaggioAggiunta />
