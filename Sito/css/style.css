@@ -1074,6 +1074,7 @@ min-height: 465px;
 }
 
 #pagamento fieldset {
+	text-align: left;
 	margin: 1em;
 }
 
@@ -1094,22 +1095,37 @@ min-height: 465px;
 	width: 5em;
 }
 
-.selezione_big {
+#pagamento .selezione_big {
 	width: 100%;
 	padding: 0.3em;
 	border-radius: 4px;
 	font-size: 0.8em;
-	margin: 0.5em;
+	margin: auto;
 }
 
-.selezione_small {
+.selezione_big + p {
+	text-align: center;
+}
+
+#pagamento .selezione_small {
 	width: 6em;
-	margin: 0.5em;
+	margin: 0;
 	padding: 0.3em;
 	border-radius: 4px;
 	font-size: 0.8em;
 }
 
+#pagamento .defaultButton {
+	width: 6em;
+	display: inline;
+	margin: 0.7em;
+}
+
+#pagamento input[type="submit"] {
+    padding: 0.6em 0em;
+    margin: 0.5em 0;
+    border: 2px;
+}
 
 /*	errore utente e admin	*/
 #errore {
