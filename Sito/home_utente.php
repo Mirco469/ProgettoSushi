@@ -31,7 +31,7 @@
 
 
     }else {
-        header('location: errore500.html');
+        header('location: errore500.php');
     }
 
 

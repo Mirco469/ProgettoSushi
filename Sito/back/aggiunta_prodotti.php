@@ -131,12 +131,12 @@
             }
             else
             {
-                header("Location: /errore500.php"); /*CONTROLLARE SE LA PAGINA E' GIUSTA*/
+                header("Location: errore500.html");
             }
         }
         else
         {
-            header('location: ../errore403.php'); /* CONTROLLARE SE LA PAGINA E' GIUSTA */
+            header('location: ../errore403.php');
         }
     }
     else
