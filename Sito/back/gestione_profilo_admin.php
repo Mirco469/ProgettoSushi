@@ -1,10 +1,7 @@
 <?php
     require_once("../php/dbaccess.php");
 
-    //***************************
     session_start();
-
-    //***************************
 
     if( isset($_SESSION['username'])) {
         if(isset($_SESSION['autorizzazione']) && $_SESSION['autorizzazione']=='Admin') {
@@ -72,12 +69,19 @@
                      <input type="text" id="username" name="username" value="' . $user . '" readonly="readonly"/>
          
                      <h2 id="cp">Cambia <span lang="en">Password:</span> </h2>
+                    <p>
                      <label for="v_password">Inserisci la vecchia <span lang="en">password</span>: </label>
                      <input type="password" id="v_password" name="v_password" />
+                    </p>
+                    <p>
                      <label for="password">Inserisci la nuova <span lang="en">password</span>: </label>
                      <input type="password" id="password" name="password" />
+                    </p>
+                    <p>
                      <label for="c_password">Conferma la nuova <span lang="en">password</span>: </label>
                      <input type="password" id="c_password" name="c_password" value=""/>
+                    </p>
+                     
                      <input class="defaultButton" type="submit" name="dati_personali" value="Salva"/>  <!--Submit legato solo al cambio della password-->
                  </fieldset>';
 
@@ -89,12 +93,10 @@
             }
 
         }else {
-            header('location: errore403.html');
+            header('location: ../errore403.php');
         }
     }else {
         header('location: ../login.php');
     }
-
-
 
 ?>
