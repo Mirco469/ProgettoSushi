@@ -259,7 +259,7 @@ table.defaultTable td {
 	border: solid 1px white;
 	border-left: none;
 	border-right: none;
-	padding: 0.5em;
+	padding: 4px;
 }
 
 table.defaultTable td:first-child {
@@ -273,7 +273,7 @@ table.defaultTable tbody th:first-child {
 	border-top-left-radius: 16px;
 	border-bottom-left-radius: 16px;
 	border-left: solid 2px white;
-	padding: 0.5em;
+	padding: 4px;
 }
 
 table.defaultTable td:last-child {
@@ -379,6 +379,26 @@ table.defaultTable td:last-child {
 /* BACK END*/
 
 /* Home Admin */
+
+#formNews {
+	width: auto;
+}
+
+#formNews label {
+	font-size: 1.4em;
+	vertical-align: middle;
+	margin-left: 1em;
+}
+
+#formNews span {
+	display: block;
+	margin: 1em;
+}
+
+#formNews input[type=radio] {
+	display: inline;
+}
+
 #home_admin {
     margin: 1em;
 }
@@ -390,6 +410,7 @@ table.defaultTable td:last-child {
 #dots {
 	text-align: center;
 }
+
 
 /* Slideshow container */
 #slideshow_home {
@@ -518,7 +539,7 @@ table.defaultTable td:last-child {
 margin-bottom: 5%; 
 }
 
-#home_admin input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
+#addNews input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
 	display: block;
 	padding: 0.6em 0.875em;
 	margin: 0.5em 0;
@@ -1034,6 +1055,16 @@ min-height: 465px;
 	width: 100%;
 }
 
+#dettagli_ordine .totaleText {
+	margin-top: 0;
+	margin-bottom: 2em;
+	float: right;
+}
+
+#dettagli_ordine + #footer {
+    clear: both;
+}
+
 
 
 /*	Carrello	*/
@@ -1115,6 +1146,23 @@ min-height: 465px;
 }
 
 #storico_ordini a.buttonSmall {
+	width: 9em;
+	box-sizing: border-box;
+    text-decoration: none;
+    text-align: center;
+    height: 1.7em;
+    font-weight: 400;
+    font-size: 13.3333px;
+    display: inline-block;
+    line-height: normal;
+    margin-right: 0.3em;
+    padding: 1px 6px;
+}
+
+
+
+/*	Gestione ordini	*/
+#gestione_ordini a.buttonSmall {
 	width: 9em;
 	box-sizing: border-box;
     text-decoration: none;

@@ -1,57 +1,58 @@
 <!DOCTYPE html>
 <html lang="it">
-  <head>
-      <meta charset="utf-8" />
-      <title>Gestione profilo - Sushi Nakamura</title>
-      <meta name="title" content="Gestione profilo" />
-      <meta name="description" content="Pagina di gestione del profilo" />
-      <meta name="robots" content="noindex"/>
-      <meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-      <link rel="stylesheet" type="text/css" media="screen and (min-width: 901px)" href="../css/style.css"/>
-<link rel="stylesheet" type="text/css" media="screen and (max-width: 900px)" href="../css/mobile.css"/>
-      <link rel="stylesheet" type="text/css" media="print" href="../css/stampa.css"/>
+    <head>
+        <meta charset="utf-8" />
+        <title>Gestione profilo - Sushi Nakamura</title>
+        <meta name="title" content="Gestione profilo" />
+        <meta name="description" content="Pagina di gestione del profilo" />
+        <meta name="robots" content="noindex"/>
+        <meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
+	    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" type="text/css" media="screen and (min-width: 901px)" href="../css/style.css"/>
+        <link rel="stylesheet" type="text/css" media="screen and (max-width: 900px)" href="../css/mobile.css"/>
+        <link rel="stylesheet" type="text/css" media="print" href="../css/stampa.css"/>
         <script src="../js/index.js"></script>
- </head>
+        <script type="text/javascript" src="../js/funzioni.js"></script>
+    </head>
 
-  <body>
-    <div id="header">
-      <a id="logo" href="home_admin.html" title="Vai alla home" tabindex="-1"></a>
-      <h1 lang="ja">Sushi Nakamura</h1>
-    </div>
-    <p class="aiuti">
-        <a href="#gestione_admin" tabindex="1">Salta il menu</a>
-    </p>
-    <div id="menu">
-        <ul>
-            <li><a href="home_admin.html" lang="en" tabindex="2">Home</a></li>
-            <li><a href="aggiunta_prodotti.html" tabindex="3">Aggiungi Prodotto</a></li>
-            <li><a href="gestione_ordini.html" tabindex="4">Gestione Ordini</a></li>
-            <li class="impostazioni" id="active">Gestione Profilo</li>
-            <li class="login"><a href="../logout.php" lang="en" tabindex="5">Logout</a></li>
-        </ul>
-    </div>
+    <body>
+        <div id="header">
+            <a id="logo" href="home_admin.php" title="Vai alla home" tabindex="-1"></a>
+            <h1 lang="ja">Sushi Nakamura</h1>
+        </div>
+        <p class="aiuti">
+            <a href="#gestione_admin" tabindex="1">Salta il menu</a>
+        </p>
+        <div id="menu">
+            <ul>
+                <li><a href="home_admin.php" lang="en" tabindex="2">Home</a></li>
+                <li><a href="aggiunta_prodotti.php" tabindex="3">Aggiungi Prodotto</a></li>
+                <li><a href="gestione_ordini.php" tabindex="4">Gestione Ordini</a></li>
+                <li class="impostazioni" id="active">Gestione Profilo</li>
+                <li class="login"><a href="../logout.php" lang="en" tabindex="5">Logout</a></li>
+            </ul>
+        </div>
 
-    <div id="breadcrumb">
-      <p>Ti trovi in: <a href="home_admin.html" lang="en">Home</a> &gt; &gt; Gestione Profilo </p>
-    </div>
+        <div id="breadcrumb">
+            <p>Ti trovi in: <a href="home_admin.php" lang="en">Home</a> &gt; &gt; Gestione Profilo </p>
+        </div>
 
-    <div class="content" id="gestione_admin">
-        <h1>Gestione profilo</h1>
-        <form class="defaultForm" action="gestione_profilo_admin.php" method="post">
-          <messaggio />
-          <formPassword />
-        </form>
-    </div>
+        <div class="content" id="gestione_admin">
+            <h1>Gestione profilo</h1>
+            <form class="defaultForm" action="gestione_profilo_admin.php" onsubmit="return validazioneFormPassw_gestioneProfilo();" method="post">
+                <messaggio />
+                <formPassword />
+            </form>
+        </div>
 
-    <div id="footer">
-      <p lang="en">Copyright (c) 2019 Copyright Holder All Rights Reserved.</p>
-      <p>
-          <a href="http://jigsaw.w3.org/css-validator/check/referer">
-            <img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="CSS Valido!" />
-        </a>
-      </p>
-    </div>
+        <div id="footer">
+            <p lang="en">Copyright (c) 2019 Copyright Holder All Rights Reserved.</p>
+            <p>
+                <a href="http://jigsaw.w3.org/css-validator/check/referer">
+                <img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="CSS Valido!" />
+                </a>
+            </p>
+        </div>
 
-  </body>
+    </body>
 </html>

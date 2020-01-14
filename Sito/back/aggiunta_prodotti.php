@@ -64,11 +64,11 @@
 
                 $paginaHTML = file_get_contents('html/aggiunta_prodotti.html');
                 $formAggiunta = "
-                    <div class=\"formGroup\">
+                    <p>
                         <label for=\"prodotto\">Nome Prodotto:</label>
                         <input type=\"text\" id=\"prodotto\" name=\"prodotto\" value=\"$nomeProdotto\"/>
-                    </div>
-                    <div class=\"formGroup\">
+                    </p>
+                    <p>
                         <label for=\"categoria\">Categoria:</label>
                         <select id=\"categoria\" name=\"categoria\">
                             <option value=\"Antipasti\">Antipasti</option>
@@ -82,19 +82,19 @@
                             <option value=\"Sashimi\" lang=\"ja\">Sashimi</option>
                             <option value=\"Dessert\" lang=\"fr\">Dessert</option>
                         </select>
-                    </div>
-                    <div class=\"formGroup\">
+                    </p>
+                    <p>
                         <label for=\"porzione\">Numero pezzi:</label>
                         <input type=\"text\" id=\"porzione\" name=\"porzione\" value=\"$numeroPezzi\"/>
-                    </div>
-                    <div class=\"formGroup\">
+                    </p>
+                    <p>
                         <label for=\"prezzo\">Prezzo:</label>
                         <input type=\"text\" id=\"prezzo\" name=\"prezzo\" value=\"$prezzo\"/>
-                    </div>
-                    <div class=\"formGroup\">
+                    </p>
+                    <p>
                         <label for=\"descrizione\">Descrizione:</label>
                         <textarea id=\"descrizione\" name=\"descrizione\" rows=\"4\" cols=\"35\">$descrizione</textarea>
-                    </div>";
+                    </p>";
 
 
                 //Prendo tutti i prodotti e li stampo per categoria
@@ -131,12 +131,12 @@
             }
             else
             {
-                header("Location: /errore500.php"); /*CONTROLLARE SE LA PAGINA E' GIUSTA*/
+                header("Location: errore500.html");
             }
         }
         else
         {
-            header('location: ../errore403.php'); /* CONTROLLARE SE LA PAGINA E' GIUSTA */
+            header('location: ../errore403.php');
         }
     }
     else
