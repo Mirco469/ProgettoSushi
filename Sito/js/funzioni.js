@@ -35,7 +35,7 @@ function checkTesto(input) {
 
 function checkAlfanumericoESpazi(input) {
     var patt = new RegExp('^[a-zA-Z0-9 ]{2,}$');
-    if(patt.test(input.value)){
+    if(patt.test(input.value.trim())) {
         togliErrore(input);
         return true;
     }else{
@@ -45,7 +45,7 @@ function checkAlfanumericoESpazi(input) {
 }
 
 function checkAlfanumerico(input) {
-    var patt = new RegExp('^[a-zA-Z0-9]{2,}$');
+    var patt = new RegExp('^[a-zA-Z0-9]{1,}$');
     if(patt.test(input.value)){
         togliErrore(input);
         return true;
@@ -121,6 +121,16 @@ function checkPrezzo(input) {
         return true;
     }else{
        
+        return false;
+    }
+}
+
+function checkTextarea(input) {
+    var patt = new RegExp('^[^0-9]{10,200}$');
+    if (patt.test(input.value.trim())) {
+        togliErrore(input);
+        return true;
+    } else {
         return false;
     }
 }
@@ -347,3 +357,65 @@ function validazioneFormRegistrazione() {
 	return risUsername && risNome && risCognome && risPassword && risPasswordUguali;
 }
 
+// Funzione di validazione form recensioni
+function validazioneForm_recensioni() {
+    var titolo = document.getElementById("titolo_recensione");
+    var testo = document.getElementById("testo_recensione");
+
+    var risTitolo = checkAlfanumericoESpazi(titolo);
+    var risTesto = checkTextarea(testo);
+
+    if (!risTitolo) {
+        togliErrore(titolo);
+        mostraErrore(titolo, "Il titolo non può contenere caratteri speciali e deve essere almeno lungo 2 caratteri");
+    } else {
+        togliErrore(titolo);
+    }
+
+    if (!risTesto) {
+        togliErrore(testo);
+        mostraErrore(testo, "Il testo deve essere lungo tra i 10 ed i 200 caratteri e non contenere numeri");
+    } else {
+        togliErrore(testo);
+    }
+
+    return risTitolo && risTesto;
+}
+
+//Funzione per la validazione del form di aggiunta prodotti
+function validazioneFormAggiuntaProdotti() {
+    var prodotto = document.getElementById("prodotto");
+    var porzione = document.getElementById("porzione");
+	var prezzo = document.getElementById("prezzo");
+	
+	var risProdotto = checkSoloLettereEDim(prodotto);
+	var risPorzione = checkNumeroIntero(porzione);
+	var risPrezzo = checkPrezzo(prezzo);
+	
+	if(risProdotto)
+	{
+		togliErrore(prodotto);
+	}
+	else
+	{
+		mostraErrore(prodotto, "Il nome deve contenere solo lettere e essere almeno lungo 2 caratteri");
+	}
+	if(risPorzione)
+	{
+		togliErrore(porzione);
+	}
+	else
+	{
+		mostraErrore(porzione, "Il numero dei pezzi deve essere un numero intero");
+	}
+	if(risPrezzo)
+	{
+		togliErrore(prezzo);
+	}
+	else
+	{
+		mostraErrore(prezzo, "Il prezzo deve essere un numero decimale con al massimo 3 cifre prima della virgola e 2 cifre dopo la virgola");
+	}
+	
+	return risProdotto && risPorzione && risPrezzo;
+}
