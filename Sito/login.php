@@ -120,7 +120,7 @@
 						<label for=\"passwordAcc\" lang=\"en\">Password:</label>
 						<input type=\"password\" id=\"passwordAcc\" name=\"password\" value=\"$passwordL\"/>
 					</p>
-                    <input class=\"defaultButton\" type=\"submit\" name=\"accedi\" value=\"Accedi\"/>";
+                    <input class=\"defaultButton\" type=\"submit\" name=\"accedi\" value=\"Accedi\" onclick=\"return validazioneFormAccesso();\"/>";
 
         //Form di registrazione
         $formRegistrazioneContent = "

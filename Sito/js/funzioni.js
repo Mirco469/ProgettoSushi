@@ -261,6 +261,34 @@ function validazioneFormPaga_gestione_profilo_utente() {
 
 }
 
+//Funzione per la validazione del form di accesso della pagina di login
+function validazioneFormAccesso() {
+    var username = document.getElementById("nomeUtente");
+	var password = document.getElementById("passwordAcc");
+	
+	var risUsername = checkAlfanumerico(username);
+	var risPassword = checkMinLen(password);
+	
+	if(risUsername)
+	{
+		togliErrore(username);
+	}
+	else
+	{
+		mostraErrore(username, "L'username deve contenere solo caratteri alfanumerici e avere almeno 2 caratteri");
+	}
+	if(risPassword)
+	{
+		togliErrore(password);
+	}
+	else
+	{
+		mostraErrore(password, "La password deve essere lunga almeno due caratteri");
+	}
+	
+	return risUsername && risPassword;
+}
+
 //Funzione per la validazione del form di registrazione della pagina di login
 function validazioneFormRegistrazione() {
     var username = document.getElementById("username");
