@@ -1,7 +1,7 @@
 <?php
 	require_once("php/dbaccess.php");
     session_start();
-  
+ 
 
 	if( isset($_SESSION['username'])) {
 	         $db = null;
@@ -74,7 +74,9 @@
                      $c_new_password = htmlentities(trim($_POST['c_password']));
 
 
-
+                        if(!checkMaxLen($new_password, 20)){
+                            $erroriPass.='<li>La password non deve contenere più di 16 caratteri</li>';
+                        }
 
                          if($c_old_password !== $old_password){
                              $erroriPass .= '<li>La password che ha inserito non coincide con quella salvata</li>';
@@ -126,14 +128,34 @@
                     if(!checkAlfanumericoESpazi($indirizzo)){
                         $erroriSped .= '<li>L\'indirizzo non deve contenere caratteri speciali</li>';
                     }
-                    if(!checkAlfanumerico($numero_civico)){ //Potrebbe essere 4b
-                        $erroriSped .= '<li>Il numero civico deve contenere solo numeri o lettere</li>';
+                    if(!checkCivico($numero_civico)){ //Potrebbe essere 4b o 4 o 4/b o 4-b
+                        $erroriSped .= '<li>Il numero civico deve essere nel formato corretto (e.g. 4, 4b, 4/b, 4-b)</li>';
                     }
                     if(!checkCAP($cap)){
                         $erroriSped .= '<li>Non hai inserito un CAP del comune di Padova</li>';
                     }
                     if(!checkSoloNumeriEDIm($tel)){
                         $erroriSped .= '<li>Non hai inserito un numero telefonico corretto</li>';
+                    }
+
+                    if(!checkMaxLen($nome_cognome, 40)){
+                        $erroriSped.='<li>Il campo nome e cognome non deve contenere più di 40 caratteri</li>';
+                    }
+
+                    if(!checkMaxLen($tel, 15)){
+                        $erroriSped.='<li>Il numero telefonico non deve contenere più di 16 caratteri</li>';
+                    }
+
+                    if(!checkMaxLen($numero_civico, 10)){
+                        $erroriSped.='<li>Il numero civico non deve contenere più di 10 caratteri</li>';
+                    }
+
+                    if(!checkMaxLen($cap, 5)){
+                        $erroriSped.='<li>Il CAP non deve contenere più di 5 caratteri</li>';
+                    }
+
+                    if(!checkMaxLen($indirizzo, 15)){
+                        $erroriSped.='<li>Il nome dell\'indirizzo non deve contenere più di 15 caratteri</li>';
                     }
 
                     if(strlen($erroriSped)==0){
@@ -180,6 +202,14 @@
                      if($anno_scadenza == '- Anno -'){
                          $erroriPaga .= '<li>Seleziona l\'anno di scadenza</li>';
                      }
+
+                    if(!checkMaxLen($intestatario, 40)){
+                        $erroriPaga.='<li>Il campo intestatario non deve contenere più di 40 caratteri</li>';
+                    }
+                    if(!checkMaxLen($num_carta, 16)){
+                        $erroriPaga.='<li>Il numero della carta non deve contenere più di 16 caratteri</li>';
+                    }
+
 
                      if(strlen($erroriPaga)==0){
 
