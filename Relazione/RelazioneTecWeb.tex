@@ -12,6 +12,10 @@
 	linkcolor=black,
 	urlcolor=blue
 }
+\usepackage[table]{xcolor}
+\usepackage{caption}
+% Colore rosso custom, linea in ogni pagina
+\definecolor{custom}{RGB}{192,53,53}
 
 % Header e footer
 \pagestyle{fancy}
@@ -115,9 +119,39 @@
 		    La principale differenza tra i layout scelti sta nella posizione e presentazione del menù di navigazione. 
 		    \newline Nei device con finestre di visualizzazione sufficentemente larghe si è scelto di disporre le voci del menù in riga, creando quindi una barra di navigazione. I link alle varie pagine principali del sito sono disposte a partire da sinistra, mentre quelli riguardanti pagine per gli utenti e le operazioni a loro disposizione si trovano a partire da destra.
 		    \newline Nei dispositivi più piccoli si è deciso invece di creare un menù espandibile, raggiungibile premendo sull'icona ad hamburger nell'angolo in alto a destra, che mostra tutte le voci disponibili, per rispettare il comportamento più comune che un utente medio si aspetta utilizzando uno smartphone.
-		
+		\newpage
 		\subsection{Accessibilità}
-	
+			\subsubsection{Attributi HTML}
+				Per rendere il sito più accessibile agli screen reader sono stati usati diversi attributi HTML.
+					\begin{itemize}
+						\item {\bfseries Lang}: utilizzato per indicare in che lingua deve essere pronunciata una parola o frase. Facendo dei test con il software gratuito NVDA abbiamo notato che le parole identificate usando {\textit xml:lang} non venivano lette nella lingua corretta, si è quindi optato di usare l'attributo HTML5 {\textit lang} in tutte le pagine e testato che queste continuassero ad essere validate dal validatore W3C per xhtml1.0 strict.
+						\item  {\bfseries Alt}: utilizzato nelle immagini per fornire una breve descrizione di quello che viene raffigurato.
+						\item {\bfseries Scope}: utilizzato per facilitare la lettura delle tabelle.
+						\item  {\bfseries Tabindex}: utilizzato per assicurarsi un ordine corretto di spostamento tra i link utilizzando il tab.
+					\end{itemize}
+				\'E stato inoltre usato un'aiuto per gli screen reader fornendo un link prima del menu così da poterlo saltare e andare direttamente al contenuto della pagina.
+			\subsubsection{Colori}
+				I colori del sito sono stati selezionati apposta per passare il test WCAG AAA che richiede un rapporto di contrasto di almeno 7:1 per il testo normale e 4.5:1 per il testo in grassetto. Di seguito è riportata la tabella dei colori del testo e del loro sfondo e il loro rapporto di contrasto.
+				\captionsetup[table]{name=Tabella}
+				\setlength{\tabcolsep}{18pt}
+				\renewcommand{\arraystretch}{1.5}
+				\begin{table}[htp] %placecement parameter H
+					\begin{center}
+						\caption {Rapporto contrasti testo-sfondo}
+						\rowcolors{2}{black!5}{black!17} \normalsize\mdseries
+						\begin{tabular}{ c c c }
+							\rowcolor{custom}
+							\bfseries\color{white} Colore testo & \bfseries\color{white} Colore sfondo & \bfseries\color{white} Rapporto \\
+							\#D9D9D9 & \#1F1D1D & 11.88:1  \\ %bianco cenere su nero
+							\#E0AC00 & \#4A0715 & 7.55:1  \\ %giallo scuro menu visitato su rosso bordò
+							\#F5E900 & \#4A0715 & 12.41:1  \\ %giallo chiaro menu NON visitato su rosso bordò
+							\#E0AC00 & \#1F1D1D & 8.04:1  \\ %
+							\#F5E900 & \#1F1D1D & 13.21:1  \\ %
+							\#D9D9D9 & \#333333 & 8.95:1  \\ %
+							\#D9D9D9 & \#4A0715 & 12.41:1  \\ %
+						\end{tabular}
+					\end{center}
+				\end{table}
 	\section{Implementazione}
 		
 		\subsection{Linguaggi}
