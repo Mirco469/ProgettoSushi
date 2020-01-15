@@ -1,6 +1,6 @@
 function addQuantita(nome) {
 	var quantita = parseInt(document.getElementById('qt-'+nome).value);
-	if( quantita != NaN ) {
+	if( !isNaN(quantita) ) {
 		quantita += 1;
 		
 		if(quantita<=100) {	// limito la quantita massima di un prodotto a 100 porzioni
@@ -13,7 +13,7 @@ function addQuantita(nome) {
 
 function rmQuantita(nome) {
 	var quantita = parseInt(document.getElementById('qt-'+nome).value);
-	if( quantita != NaN ) {
+	if( !isNaN(quantita) ) {
 		quantita -= 1;
 		
 		if(quantita>0) {	// limito la quantita minima a 1 porzione
