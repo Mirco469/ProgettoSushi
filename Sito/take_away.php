@@ -40,9 +40,9 @@
 		$paginaHTML = str_replace('<listaProdotti />', $listaProdotti, $paginaHTML);
         echo $paginaHTML;
 	}
-	else #Errore di connessione al databse
+	else
 	{
-		header("Location: /errore500.php");
+		header("Location: errore500.php");
 	}
 
 ?>
