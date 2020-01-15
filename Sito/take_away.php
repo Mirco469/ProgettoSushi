@@ -48,8 +48,12 @@
 	          	    $pezziP = $singoloProdotto["Pezzi"];
 					$prezzoP = $singoloProdotto["Prezzo"];
 					$descrizioneP = $singoloProdotto["Descrizione"];
-					$listaProdotti .= "
-						<dt>$nomeP<input class=\"buttonSmall\" type=\"button\" name=\"Aggiungi\" value=\"Aggiungi\" /></dt>
+					$listaProdotti .= "<dt>$nomeP";
+						if (isset($_SESSION['username']))
+						{
+							$listaProdotti .= "<input class=\"buttonSmall\" type=\"button\" name=\"Aggiungi\" value=\"Aggiungi\" />";
+						}
+						$listaProdotti .= "</dt>
 						<dd>$prezzoP &euro;</dd>
 						<dd><span>[$pezziP<abbr title=\"Pezzi\">pz</abbr>]</span> $descrizioneP</dd>";
 				}
