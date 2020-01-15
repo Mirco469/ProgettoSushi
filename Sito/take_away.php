@@ -2,9 +2,6 @@
 	require_once("php/dbaccess.php");
 
 	session_start();
-	#Login per testare la pagina;
-	$_SESSION['username'] = "user"; #da togliere
-	$_SESSION['password'] = "user"; #da togliere
 
 	if (isset($_SESSION['username']) && isset($_POST['action']) && $_POST['action'] == 'aggiungi')
 	{
