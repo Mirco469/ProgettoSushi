@@ -62,22 +62,43 @@
 						{
 							$erroriDest .= "<li>Il nome deve contenere solo lettere e non contenere meno di due caratteri</li>";
 						}
+						if (!checkMaxLen($nome_cognome, 40))
+						{
+                        	$erroriDest .= '<li>Il campo nome e cognome non deve contenere più di 40 caratteri</li>';
+                    	}
 						if (!checkAlfanumericoESpazi($via))
 						{
 							$erroriDest .= "<li>La via non deve contenere caratteri speciali</li>";
 						}
-						if (!checkSoloNumeri($civico))
+						if (!checkMaxLen($via, 20))
 						{
-							$erroriDest .= "<li>Il numero civico deve contenere solo numeri</li>";
+	                        $erroriDest .= '<li>Il nome dell\'indirizzo non deve contenere più di 15 caratteri</li>';
+	                    }
+						if (!checkCivico($civico))
+						{
+							$erroriDest .= "<li>Il numero civico deve essere nel formato corretto (e.g. 4, 4b, 4/b, 4-b)</li>";
 						}
+						if (!checkMaxLen($civico, 10))
+						{
+	                        $erroriDest .= '<li>Il numero civico non deve contenere più di 10 caratteri</li>';
+	                    }
 						if (!checkCAP($cap))
 						{
 							$erroriDest .= "<li>Il CAP deve contenere solo numeri</li>";
 						}
+						if (!checkMaxLen($cap, 5))
+						{
+	                        $erroriDest .= '<li>Il CAP non deve contenere più di 5 caratteri</li>';
+	                    }
 						if (!checkSoloNumeriEDIm($tel))
 						{
 							$erroriDest .= "<li>Non hai inserito un numero telefonico valido</li>";
 						}
+						if (!checkMaxLen($tel, 15))
+						{
+	                        $erroriDest .= '<li>Il numero telefonico non deve contenere più di 15 caratteri</li>';
+	                    }
+
 						if (strlen($erroriDest) == 0)
 						{
 							$successoDest = '<p class="successo">Informazioni di spedizione valide!</p>';
@@ -114,10 +135,18 @@
 					{
 						$erroriCarta .= '<li>L\'intestatario deve contenere solo lettere ed essere lungo almeno due caratteri</li>';
 					}
+					if (!checkMaxLen($intestatario, 40))
+					{
+                        $erroriCarta .= '<li>Il campo intestatario non deve contenere più di 40 caratteri</li>';
+                    }
 					if (!checkSoloNumerieDim($num_carta))
 					{
 						$erroriCarta .= '<li>Non hai inserito un numero di carta corretto</li>';
 					}
+					if (!checkMaxLen($num_carta, 16))
+					{
+                        $erroriPaga .= '<li>Il numero della carta non deve contenere più di 16 caratteri</li>';
+                    }
 					if ($mese_scad == 'Mese')
 					{
 						$erroriCarta .= '<li>Seleziona il mese di scadenza</li>';
