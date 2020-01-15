@@ -12,7 +12,7 @@ function checkData(input) {
 }
 
 function checkMinLen(input) {
-    var testoInput = input.value;
+    var testoInput = input.value.trim();
     if(testoInput.length>1){
         togliErrore(input);
         return true;
@@ -23,7 +23,7 @@ function checkMinLen(input) {
 }
 
 function checkTesto(input) {
-    var testoInput = input.value;
+    var testoInput = input.value.trim();
     if(testoInput.length>1 && testoInput.length<=150){
         togliErrore(input);
         return true;
