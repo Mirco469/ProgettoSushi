@@ -1,35 +1,28 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-	document.getElementsByName('minus').forEach(function(item, index) {
-		item.onclick = function(e) {
-			var quantita = parseInt(document.getElementsByName('quantita')[index].value)-1;
-			
-			if(quantita>=1) {
-				var dt = document.getElementsByTagName('dt')[index].textContent.split(' - ');
-				changeQuantity(index, dt[0].trim(), dt[1].trim(), quantita);
-			}
-		};
-	}); 
-	
-	document.getElementsByName('plus').forEach(function(item, index) {;
-		item.onclick = function(e) {
-			var quantita = parseInt(document.getElementsByName('quantita')[index].value)+1;
-			
-			if(quantita<=100) {	// limito la quantita massima di un prodotto a 100 porzioni
-				var dt = document.getElementsByTagName('dt')[index].textContent.split(' - ');
-				changeQuantity(index, dt[0].trim(), dt[1].trim(), quantita);
-			}
-		};
-	}); 
-	
-	document.getElementsByName('rimuovi').forEach(function(item, index) {
-		item.addEventListener("click",function(e) {
-			var dt = document.getElementsByTagName('dt')[index].textContent.split(' - ');
-			removeProduct(index, dt[0].trim(), dt[1].trim());
-		});
-	}); 
-});
+function addQuantita(nome) {
+	if( Number.isInteger(document.getElementById('qt-'+nome).value) ) {
+		var quantita = parseInt(document.getElementById('qt-'+nome).value)+1;
+		
+		if(quantita<=100) {	// limito la quantita massima di un prodotto a 100 porzioni
+			setQuantita(nome, quantita);
+		}
+	} else {
+		alert('Quantità inserita per '+nome+' non valida');
+	}
+}
 
-function changeQuantity(index, name, category, quantity) {
+function rmQuantita(nome) {
+	if( Number.isInteger(document.getElementById('qt-'+nome).value) ) {
+		var quantita = parseInt(document.getElementById('qt-'+nome).value)-1;
+		
+		if(quantita>0) {	// limito la quantita minima a 1 porzione
+			setQuantita(nome, quantita);
+		}
+	} else {
+		alert('Quantità inserita per '+nome+' non valida');
+	}
+}
+
+function setQuantita(nome, quantita) {
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function(){ //quando l’operazione è completata
 		if(xhr.readyState ==4){
@@ -37,20 +30,26 @@ function changeQuantity(index, name, category, quantity) {
 			console.log(data);
 			
 			if( data.success ) {
-				document.getElementsByName('quantita')[index].value = data.quantity;
-				document.getElementsByTagName('dd')[index].getElementsByTagName('span')[0].textContent = 'Prezzo: '+parseFloat(data.price).toFixed(2).replace('.',',')+'€';
-				document.getElementsByClassName('totaleText')[0].getElementsByTagName('span')[0].textContent = parseFloat(data.total).toFixed(2).replace('.',',')+'€';
-			} else {
-				// errore modifica quantita
+				document.getElementById('qt-'+nome).value = data.quantity;
+				document.getElementById('tot-'+nome).textContent = 'Prezzo: '+parseFloat(data.price).toFixed(2).replace('.',',')+'€';
+				
+				document.getElementById('totaleValue').textContent = parseFloat(data.total).toFixed(2).replace('.',',');
+			} else if(data.error == 'invalid quantita') {	// quantita prodotto inserita non valida
+				alert('Quantità inserita per '+nome+' non valida');
+			} else if(data.error == 'not found') {	// prodotto non trovato a carrello
+				alert('Il prodotto richiesto non è presente a carrello');
+				
+				document.getElementById('dt-'+nome).remove();
+				document.getElementById('dd-'+nome).remove();
 			}
 		}	
 	}
 	xhr.open("POST", "carrello.php", true);
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhr.send("action=edit&name="+name+"&category="+category+"&quantity="+quantity);
+	xhr.send("action=edit&name="+nome+"&quantity="+quantita);
 }
 
-function removeProduct(index, name, category) {
+function rmProdotto(nome) {
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function(){ //quando l’operazione è completata
 		if(xhr.readyState ==4){
@@ -59,18 +58,30 @@ function removeProduct(index, name, category) {
 			
 			if(data.success) {
 				if( document.getElementsByTagName('dt').length > 1 ) {
-					document.getElementsByTagName('dt')[index].remove();
-					document.getElementsByTagName('dd')[index].remove();
+					document.getElementById('dt-'+nome).remove();
+					document.getElementById('dd-'+nome).remove();
 					
-					document.getElementsByClassName('totaleText')[0].getElementsByTagName('span')[0].textContent = parseFloat(data.total).toFixed(2).replace('.',',')+'€';
+					document.getElementById('totaleValue').textContent = parseFloat(data.total).toFixed(2).replace('.',',');
+					
+					alert('Prodotto rimosso con successo!');
 				} else {
 					window.location.reload();
 				}
+			} else if(data.error == 'not found') {
+				alert('Il prodotto richiesto non è presente a carrello');
+				
+				if( document.getElementById('dt-'+nome) != null ) {
+					document.getElementById('dt-'+nome).remove();
+				}
+				if( document.getElementById('dd-'+nome) != null ) {
+					document.getElementById('dd-'+nome).remove();
+				}
+				
 			}
 		}	
 	}
 	xhr.open("POST", "carrello.php", true);
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhr.send("action=remove&name="+name+"&category="+category);
+	xhr.send("action=remove&name="+nome);
 }
 

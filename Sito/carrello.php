@@ -5,20 +5,20 @@
 	
 	if( isset($_POST['action']) ) {
 		if( $_POST['action'] == 'edit' ) {
-			changeQuantity($_POST['name'],$_POST['category'],intval($_POST['quantity']));
+			changeQuantity($_POST['name'],$_POST['quantity']);
 		} else if($_POST['action'] == 'remove') {
-			removeProduct($_POST['name'],$_POST['category']);
+			removeProduct($_POST['name']);
 		}
 		//echo json_encode(array('index'=>$_POST['index'],'amount'=>$_POST['amount']));exit;
 	} else {
 		$_SESSION['carrello'] = array(
-			0 => array(
+			'maguro' => array(
 				'nome' => 'maguro',
 				'categoria' => 'uramaki',
 				'quantita' => 2,
 				'prezzo' => 4
 			),
-			1 => array(
+			'tartara di tonno' => array(
 				'nome' => 'tartara di tonno',
 				'categoria' => 'antipasti',
 				'quantita' => 1,
@@ -30,7 +30,6 @@
 		
 	function loadPage() {
 		if( session_status() != PHP_SESSION_NONE && $_SESSION['username'] != null ) {
-			$db = new DBAccess();
 			
 			$carrello = $_SESSION['carrello'];
 			if( $_SESSION['carrello'] != null ) {
@@ -39,17 +38,20 @@
 				$content = '<dl class="defaultLista">';
 				
 				foreach( $carrello AS $row ) {
-					$content .= '<dt>'.$row['nome'].' - <a href="prodotti.html#'.$row['categoria'].'">'.$row['categoria'].'</a><input class="rimuovi" type="button" name="rimuovi" value="Rimuovi" /></dt>
-					<dd>
-						<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
-						<input type="number" name="quantita" readonly="readonly" value="'.$row['quantita'].'" /><!-- numero prodotto -->
-						<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
-						<span>Prezzo: '.number_format($row['prezzo'], 2, ',', '.').'€</span>
+					$content .= '<dt id="dt-'.$row['nome'].'">'.
+						$row['nome'].' - <a href="prodotti.html#'.$row['categoria'].'">'.$row['categoria'].'</a>
+						<input title="Rimuovi '.$row['nome'].'" class="rimuovi" type="button" name="rimuovi" onclick="rmProdotto(\''.$row['nome'].'\')" value="Rimuovi" />
+					</dt>
+					<dd id="dd-'.$row['nome'].'">
+						<input title="sottrai '.$row['nome'].' di 1" type="button" name="minus" onclick="rmQuantita(\''.$row['nome'].'\')" value="-" /><!-- togli_prodotto -->
+						<input id="qt-'.$row['nome'].'" type="number" name="quantita" readonly="readonly" value="'.$row['quantita'].'" /><!-- numero prodotto -->
+						<input title="aggiungi '.$row['nome'].' di 1" type="button" name="plus" onclick="addQuantita(\''.$row['nome'].'\')" value="+" /><!-- aggiungi_prodotto -->
+						<span id="tot-'.$row['nome'].'">Prezzo: '.number_format($row['prezzo'], 2, ',', '.').'€</span>
 					</dd>';
 				}
 				
 				$content .= '</dl>
-				<p class="totaleText">Totale: <span>'.number_format(getCartTotal(), 2, ',', '.').'€</span></p>
+				<p class="totaleText">Totale: <span id="totaleValue">'.number_format(getCartTotal(), 2, ',', '.').'</span>€</p>
 				<a id="paga" href="pagamento.html">Vai a pagamento</a>';
 			
 			} else {
@@ -62,51 +64,61 @@
 			
 			echo $paginaHTML;
 		} else {
-			header("location: errore403.html");
+			header("location: errore403.php");
 		}
 	}
 	
-	function changeQuantity($name,$category,$newQuantity) {
-		$i = getIndexByNameCategory($name,$category);
+	function changeQuantity($name,$newQuantity) {
+		$result = array(
+			'success' => false
+		);
 		
-		$oldQuantity = $_SESSION['carrello'][$i]['quantita'];
-		$newPrezzo = $_SESSION['carrello'][$i]['prezzo']/$oldQuantity*$newQuantity;
-		
-		$_SESSION['carrello'][$i]['quantita'] = $newQuantity;
-		$_SESSION['carrello'][$i]['prezzo'] = $newPrezzo;
-		
-		header('Content-Type: application/json');
-		echo json_encode(array(
-			'success'=>true,
-			'price'=>$newPrezzo,
-			'quantity'=>$newQuantity,
-			'total'=>getCartTotal(),
-			'carrello'=>$_SESSION['carrello'],
-			'index'=>$i
-		));
-	}
-	
-	function removeProduct($name,$category) {
-		$i = getIndexByNameCategory($name,$category);
-		
-		unset($_SESSION['carrello'][$i]);
-		
-		header('Content-Type: application/json');
-		echo json_encode(array(
-			'success'=>true,
-			'total'=>getCartTotal()
-		));
-	}
-	
-	function getIndexByNameCategory($name,$category) {
-		foreach( $_SESSION['carrello'] AS $index => $row ) {
-			if( $row['nome'] === $name ) {
-				if( $row['categoria'] === $category ) {
-					return $index;
-				}
+		if(isset($_SESSION['carrello'][$name])) {
+			if( checkNumeroIntero($newQuantity) ) {
+				
+				$oldQuantity = $_SESSION['carrello'][$name]['quantita'];
+				$newPrezzo = $_SESSION['carrello'][$name]['prezzo']/$oldQuantity*$newQuantity;
+				
+				$_SESSION['carrello'][$name]['quantita'] = $newQuantity;
+				$_SESSION['carrello'][$name]['prezzo'] = $newPrezzo;
+				
+				$result['success'] = true;
+				$result['price'] = $newPrezzo;
+				$result['quantity'] = $newQuantity;
+				$result['total'] = getCartTotal();
+			} else {
+				$result['error'] = 'invalid quantity';
+				$result['total'] = getCartTotal();
 			}
+		} else {
+			$result['error'] = 'not found';
+			$result['total'] = getCartTotal();
 		}
-		return -1;
+		$result['carrello'] = $_SESSION['carrello'];
+		
+		
+		header('Content-Type: application/json');
+		echo json_encode($result);
+	}
+	
+	function removeProduct($name) {
+		$prodotto = &$_SESSION['carrello'][$name];
+		
+		$result = array();
+		
+		if( isset($_SESSION['carrello'][$name]) ) {
+			unset($_SESSION['carrello'][$name]);
+			
+			$result['success'] = true;
+			$result['total'] = getCartTotal();
+		} else {
+			$result['success'] = false;
+			$result['error'] = 'not found';
+			$result['total'] = getCartTotal();
+		}
+		
+		header('Content-Type: application/json');
+		echo json_encode($result);
 	}
 
 	function getCartTotal() {
