@@ -5,7 +5,7 @@
         const HOST_DB = 'localhost';
         const USERNAME = 'root';
         const PASSWORD = '';
-        const DATABASE_NAME = 'Sushi'; //Ogni utente ha un database già creato con nome uguale alla propria login (scritto sulle slide)
+        const DATABASE_NAME = 'sushi'; //Ogni utente ha un database già creato con nome uguale alla propria login (scritto sulle slide)
 
         public $connection = null;
 
@@ -79,7 +79,6 @@
         {
 
             $query = $this->connection->prepare("DELETE FROM Destinazione WHERE id_destinazione = ".$indice." ");
-
             if ($query->execute()) {
                 return true;
             } else {
@@ -313,11 +312,18 @@
         /* FUNZIONI PER CONTROLLARE LO STATO DEL DATABASE */
 
 
-        public function getNewsUtente()
+        public function getNewsUtente($maxNews)
         {
-            $query = $this->connection->prepare('SELECT * FROM News ORDER BY data DESC ');
+            $query = $this->connection->prepare('SELECT * FROM News  ORDER BY data DESC LIMIT ? ');
+            $query->bind_param('i', $maxNews);
             $query->execute();
-            return $query->get_result();
+            $result = $query->get_result();
+            if(mysqli_num_rows($result) == 0){
+                return null;
+            }else {
+               return $result; 
+            }
+            
         }
 		
 		public function getOrdini($username='') {

@@ -83,7 +83,7 @@ CREATE TABLE Destinazione(
 	nome_cognome				VARCHAR(40) NOT NULL,
 	numero_telefonico		VARCHAR(15),
 	CAP									VARCHAR(5) NOT NULL,
-	via 								VARCHAR(15) NOT NULL,
+	via 								VARCHAR(30) NOT NULL,
 	numero_civico				VARCHAR(10) NOT NULL,
 	utente 							VARCHAR(20) NOT NULL,
 	FOREIGN KEY (utente) REFERENCES Utente(username) ON DELETE CASCADE

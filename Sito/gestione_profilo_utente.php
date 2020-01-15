@@ -154,8 +154,8 @@
                         $erroriSped.='<li>Il CAP non deve contenere più di 5 caratteri</li>';
                     }
 
-                    if(!checkMaxLen($indirizzo, 15)){
-                        $erroriSped.='<li>Il nome dell\'indirizzo non deve contenere più di 15 caratteri</li>';
+                    if(!checkMaxLen($indirizzo, 30)){
+                        $erroriSped.='<li>Il nome dell\'indirizzo non deve contenere più di 30 caratteri</li>';
                     }
 
                     if(strlen($erroriSped)==0){
@@ -223,7 +223,6 @@
 
 
                  }else{
-
                      header('location: errore500.php');
                  }
 
@@ -362,16 +361,20 @@
         }
 
         if($queryResult == null){
-            header('location: errore500.php');
-        }
+            $listaDestinazioni = '<fieldset id="listaDestinazioni"><legend> Lista delle destinazioni</legend><select disabled="disabled" name="indirizzoDest"><option value="00">Non è presente nessuna destinazione salvata!</option></select><input class="defaultButton" type="submit" value="Elimina"/></fieldset>';
+        }else{
 
-
-        while($row = mysqli_fetch_assoc($queryResult)) {
+            while($row = mysqli_fetch_assoc($queryResult)) {
             $listaDestinazioni.='<option value ="'.$row['id_destinazione'].'">
                                     '.$row['nome_cognome'].', indirizzo: '.$row['via'].' '.$row['numero_civico'].', '.$row['CAP'].'</option>';
+            }
+
+            $listaDestinazioni = '<fieldset id="listaDestinazioni"><legend> Lista delle destinazioni</legend><select name="indirizzoDest">'.$listaDestinazioni.'</select><input class="defaultButton" type="submit" value="Elimina"/></fieldset>';
+
         }
 
-        $listaDestinazioni = '<fieldset id="listaDestinazioni"><legend> Lista delle destinazioni</legend><select name="indirizzoDest">'.$listaDestinazioni.'</select><input class="defaultButton" type="submit" value="Elimina"/></fieldset>';
+
+        
 
 
 
