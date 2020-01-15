@@ -33,8 +33,11 @@
                     if(!checkTesto($testo)){
                         $erroriNews .= '<li>Il testo deve contenere almeno due caratteri</li>';
                     }
-                    if(strlen($testo)>150){
+                    if(!checkMaxLen($testo, 150)){
                         $erroriNews .= '<li>Il testo deve contenere meno di 151 caratteri</li>';
+                    }
+                    if(!checkMaxLen($titolo, 30)){
+                        $erroriNews .= '<li>Il titolo deve contenere meno di 31 caratteri</li>';
                     }
 
                     if(strlen($erroriNews)==0){
