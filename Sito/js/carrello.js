@@ -1,6 +1,7 @@
 function addQuantita(nome) {
-	if( Number.isInteger(document.getElementById('qt-'+nome).value) ) {
-		var quantita = parseInt(document.getElementById('qt-'+nome).value)+1;
+	var quantita = parseInt(document.getElementById('qt-'+nome).value);
+	if( quantita != NaN ) {
+		quantita += 1;
 		
 		if(quantita<=100) {	// limito la quantita massima di un prodotto a 100 porzioni
 			setQuantita(nome, quantita);
@@ -11,8 +12,9 @@ function addQuantita(nome) {
 }
 
 function rmQuantita(nome) {
-	if( Number.isInteger(document.getElementById('qt-'+nome).value) ) {
-		var quantita = parseInt(document.getElementById('qt-'+nome).value)-1;
+	var quantita = parseInt(document.getElementById('qt-'+nome).value);
+	if( quantita != NaN ) {
+		quantita -= 1;
 		
 		if(quantita>0) {	// limito la quantita minima a 1 porzione
 			setQuantita(nome, quantita);

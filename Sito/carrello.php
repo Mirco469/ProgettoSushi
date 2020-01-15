@@ -11,6 +11,7 @@
 		}
 		//echo json_encode(array('index'=>$_POST['index'],'amount'=>$_POST['amount']));exit;
 	} else {
+		/*
 		$_SESSION['carrello'] = array(
 			'maguro' => array(
 				'nome' => 'maguro',
@@ -25,6 +26,7 @@
 				'prezzo' => 6
 			)
 		);
+		*/
 		loadPagina();
 	}
 		
