@@ -445,16 +445,6 @@
 				}
 			}
 		}
-
-        public function getInfoProdotto($prodotto)
-	    {
-		    $query = $this->connection->prepare("SELECT * FROM Prodotto WHERE nome = ?");
-		    $query->bind_param('s', $prodotto);
-		    $query->execute();
-            $queryResult = $query->get_result();
-            $result = $queryResult->fetch_assoc();
-		    return $result;
-	    }
     }
 
 
