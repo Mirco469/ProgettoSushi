@@ -10,6 +10,10 @@
 		{
 			$nomeProdotto = $_POST['name'];
 			$prodotto = $db->getInfoProdotto($nomeProdotto);
+			if ($prodotto == null) 
+			{
+				header('location: errore500.php');
+			}
 			if (!alreadyInCart($prodotto['nome']))
 			{
 				addToCart($prodotto['nome'], $prodotto['categoria'], $prodotto['prezzo']);
@@ -54,8 +58,8 @@
 							$listaProdotti .= "<input class=\"buttonSmall\" type=\"button\" name=\"Aggiungi\" value=\"Aggiungi\" />";
 						}
 						$listaProdotti .= "</dt>
-						<dd>$prezzoP &euro;</dd>
-						<dd><span>[$pezziP<abbr title=\"Pezzi\">pz</abbr>]</span> $descrizioneP</dd>";
+						<dd id=\"prezzo\">$prezzoP &euro;</dd>
+						<dd id=\"dettagli\"><span>[$pezziP<abbr title=\"Pezzi\">pz</abbr>]</span> $descrizioneP</dd>";
 				}
 				$listaProdotti .= "
 					</dl>
@@ -72,16 +76,10 @@
 
 	function alreadyInCart($nome)
 	{
-		if (isset($_SESSION['carrello']))
-		{
-			foreach($_SESSION['carrello'] AS $prodotto)
-			{
-				if ($prodotto == $nome)
-				{
-					return true;
-				}
-			}
-		}
+		if (isset($_SESSION['carrello']) && isset($_SESSION['carrello'][$nome])) 
+		{ 
+			return true;
+		} 
 		return false;
 	}
 

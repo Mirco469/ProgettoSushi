@@ -520,7 +520,7 @@ table.defaultTable td:last-child {
 	font-size: 1.2em;
 }
 
-.lista_piatti dt + dd {
+.lista_piatti #prezzo {
 	display: block;
 	float: right;
 	width: 20%;
@@ -529,12 +529,21 @@ table.defaultTable td:last-child {
 	padding-bottom: 1em;
 }
 
-.lista_piatti dt + dd + dd {
+.lista_piatti #dettagli {
 	width: 80%;
 	font-style: italic;
 	padding-bottom: 1em;
 	text-indent: 3em;
 }
+
+#take_away dd.successo {
+	text-indent: 3em;
+}
+
+#take_away dd.errore {
+	text-indent: 3em;
+}
+
 .lista_piatti dd > span:first-of-type {
 	color: #e0ac00;
 }
