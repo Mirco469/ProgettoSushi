@@ -2,6 +2,10 @@
 	require_once "php/dbaccess.php";
 	
 	session_start();
+		
+	if(!isset($_SESSION['carrello'])) {
+		$_SESSION['carrello'] = array();
+	}
 	
 	if( isset($_POST['action']) ) {
 		if( $_POST['action'] == 'edit' ) {
@@ -33,8 +37,8 @@
 	function loadPagina() {
 		if( session_status() != PHP_SESSION_NONE && $_SESSION['username'] != null ) {
 			
-			$carrello = $_SESSION['carrello'];
-			if( $_SESSION['carrello'] != null ) {
+			if( count($_SESSION['carrello']) > 0 ) {
+				$carrello = $_SESSION['carrello'];
 				
 				$totale = 0;
 				$content = '<dl class="defaultLista">';
