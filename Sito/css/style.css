@@ -724,6 +724,16 @@ table.defaultTable td:last-child {
 	border-radius: 4px;
 }
 
+#aggiunta_prodotti a.buttonSmall {
+    display: inline-block;
+	box-sizing: border-box;
+    margin-right: 0.3em;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.6em;
+	height: auto;
+}
+
 /*Home Utente*/
 
 #home_utente {
@@ -871,13 +881,6 @@ div#notizie {
 }
 
 
-#listaDestinazioni dt {
-	padding: 1em;
-}
-#listaDestinazioni dd{
-	padding-left: 0.3em;
-	padding-right: 0.3em; 
-}
 
 #listaDestinazioni {
 	border: 1px solid white;
@@ -934,8 +937,9 @@ div#notizie {
 }
 
 #gestione_utente>form select {
-	width: 7em;
+	width: auto;
 }
+
 
 #listaDestinazioni .destIndex{
 	display: none;
@@ -1064,7 +1068,7 @@ min-height: 465px;
 	margin:auto;
 }
 
-#home_admin fieldset {
+#addNews {
     width: 20em;
 }
 #home_admin fieldset textarea ,#home_admin fieldset input[type=text]  {
@@ -1072,6 +1076,24 @@ min-height: 465px;
     font-size: 1em;
 }
 
+#formNews {
+	width: auto;
+}
+
+#formNews label {
+	font-size: 1.4em;
+	vertical-align: middle;
+	margin-left: 1em;
+}
+
+#formNews span {
+	display: block;
+	margin: 1em;
+}
+
+#formNews input[type=radio] {
+	display: inline;
+}
 /* Pagamento */
 
 #pagamento {
@@ -1154,8 +1176,6 @@ min-height: 465px;
     font-size: 0.5em;
 }
 
-
-
 /*	Gestione ordini	*/
 #gestione_ordini a.buttonSmall {
     display: inline-block;
@@ -1166,4 +1186,14 @@ min-height: 465px;
     text-align: center;
     text-decoration: none;
     font-size: 0.5em;
+}
+
+/* Modifica prodotto */
+#modifica_prodotto>form>p{
+	text-align: center;
+}
+
+#modifica_prodotto .defaultForm input[type=submit]{
+	margin: 0.5em;
+	display: inline;
 }

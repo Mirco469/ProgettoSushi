@@ -64,7 +64,7 @@
 
         public function getDestinazioni($utente)
         {
-            $query = $this->connection->prepare("SELECT nome_cognome, numero_telefonico, CAP, via, numero_civico  FROM Destinazione WHERE utente = ? ORDER BY id_destinazione");
+            $query = $this->connection->prepare("SELECT * FROM Destinazione WHERE utente = ? ORDER BY id_destinazione");
             $query->bind_param('s', $utente);
             $query->execute();
             $queryResult = $query->get_result();
@@ -74,19 +74,23 @@
                 return $queryResult;
             }
         }
-/*
-        public function eliminaDestinazione($utente, $indice)
+
+        public function eliminaDestinazione($indice)
         {
-            $query = $this->connection->prepare("DELETE FROM Destinazione WHERE id_destinazione = (SELECT id_destinazione FROM (SELECT id_destinazione FROM Destinazione WHERE username = ? ORDER BY id_destinazione LIMIT " . $indice . ",1)) ");
-            $query->bind_param('s', $utente);
+
+            $query = $this->connection->prepare("DELETE FROM Destinazione WHERE id_destinazione = ".$indice." ");
+
             if ($query->execute()) {
                 return true;
             } else {
+                echo $this->connection->error;
+                exit;
                 header("Location: /errore500.php");
             }
 
+
         }
-*/
+
         public function getCartaDiCredito($utente)
         {
             $query = $this->connection->prepare('SELECT * FROM Utente WHERE username= ?');
@@ -141,7 +145,21 @@
                 header("Location: /errore500.php");
             }
         }
+        //Dato il nome di un prodotto lo cancella
+        public function  deleteProdotto($nome)
+        {
+            $query = $this->connection->prepare("DELETE FROM Prodotto WHERE nome = ?");
+            $query->bind_param('s', $nome);
+            return $query->execute();
+        }
 
+        //Dato il nome di un prodotto e le sue nuove informazioni lo modifica
+        public function modifyProdotto($nome, $categoria, $pezzi, $prezzo, $descrizione)
+        {
+            $query = $this->connection->prepare("UPDATE Prodotto SET categoria = ?, pezzi = ?, prezzo = ? , descrizione = ? WHERE nome = ?");
+            $query->bind_param('sssss', $categoria, $pezzi, $prezzo, $descrizione, $nome);
+            return $query->execute();
+        }
 
         public function inserisciNews($titolo, $data ,$testo, $user){
 
@@ -151,6 +169,16 @@
                     header('location: errore500.html');
                 }
 
+        }
+
+        public function eliminaNews($indice){
+            $query = $this->connection->prepare('DELETE FROM News WHERE id_news = ?');
+            $query->bind_param('s', $indice);
+            if ($query->execute()) {
+                return true;
+            } else {
+                header("Location: /errore500.php");
+            }
         }
 
         public function getNews() {
@@ -223,6 +251,23 @@
 
                     return $result;
                 }
+            }
+        }
+
+        //Dato il nome di un prodotto ritorna le sue informazioni
+        public function getInfoProdotto($nome)
+        {
+            $query = $this->connection->prepare("SELECT * FROM Prodotto WHERE nome = ?");
+            $query->bind_param('s', $nome);
+            $query->execute();
+            $queryResult = $query->get_result();
+            if (mysqli_num_rows($queryResult) == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return mysqli_fetch_assoc($queryResult);
             }
         }
 
@@ -410,7 +455,6 @@
 				}
 			}
 		}
-
     }
 
 
@@ -503,10 +547,6 @@
 
     //Controlla che la stringa non contenga caratteri speciali
     function checkAlfanumerico($string) {
-        if(!checkMinLen($string))
-		{
-			return false;
-		}
         if (!preg_match('/^[a-zA-Z0-9]+$/', $string)) {
             return false;
         } else {return true;}
@@ -566,13 +606,13 @@
         } else {return true;}
     }
 
-    //Controlla che l'input contenga solo lettere e spaziature interne e sia almeno lungo $dim;
+    //Controlla che l'input contenga solo lettere sia almeno lungo $dim;
     function checkTestoSpaziDim($string, $dim)
     {
         if (strlen($string) < $dim) {
             return false;
         }
-        if (!preg_match('/^[a-zA-Z][a-zA-Z|\s]*[a-zA-Z]$/', $string)) {
+        if (!preg_match('/^[a-zA-Z ]+$/', $string)) {
             return false;
         } else return true;
     }

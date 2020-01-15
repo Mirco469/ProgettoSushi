@@ -33,7 +33,7 @@
                     if ($oggettoConnessione->alreadyExistsProdotto($nomeProdotto)) {
                         $messaggioAggiunta .= "<li>Prodotto gi&agrave; esistente</li>";
                     }
-                    if (!checkSoloLettereEDim($nomeProdotto))
+                    if (!checkAlfanumericoESpazi($nomeProdotto))
                     {
                         $messaggioAggiunta .= "<li>Il nome deve contenere solo lettere e essere almeno lungo 2 caratteri</li>";
                     }
@@ -64,16 +64,16 @@
 
                 $paginaHTML = file_get_contents('html/aggiunta_prodotti.html');
                 $formAggiunta = "
-                    <div class=\"formGroup\">
+                    <p>
                         <label for=\"prodotto\">Nome Prodotto:</label>
                         <input type=\"text\" id=\"prodotto\" name=\"prodotto\" value=\"$nomeProdotto\"/>
-                    </div>
-                    <div class=\"formGroup\">
+                    </p>
+                    <p>
                         <label for=\"categoria\">Categoria:</label>
                         <select id=\"categoria\" name=\"categoria\">
                             <option value=\"Antipasti\">Antipasti</option>
                             <option value=\"Primi Piatti\">Primi Piatti</option>
-                            <option value=\"Teppanyako e tempure\" lang=\"ja\">Teppanyako e tempure</option>
+                            <option value=\"Teppanyako e Tempure\" lang=\"ja\">Teppanyako e tempure</option>
                             <option value=\"Uramaki\" lang=\"ja\">Uramaki</option>
                             <option value=\"Nigiri ed Onigiri\" lang=\"ja\">Nigiri ed Onigiri</option>
                             <option value=\"Gunkan\" lang=\"ja\">Gunkan</option>
@@ -82,19 +82,19 @@
                             <option value=\"Sashimi\" lang=\"ja\">Sashimi</option>
                             <option value=\"Dessert\" lang=\"fr\">Dessert</option>
                         </select>
-                    </div>
-                    <div class=\"formGroup\">
+                    </p>
+                    <p>
                         <label for=\"porzione\">Numero pezzi:</label>
                         <input type=\"text\" id=\"porzione\" name=\"porzione\" value=\"$numeroPezzi\"/>
-                    </div>
-                    <div class=\"formGroup\">
+                    </p>
+                    <p>
                         <label for=\"prezzo\">Prezzo:</label>
                         <input type=\"text\" id=\"prezzo\" name=\"prezzo\" value=\"$prezzo\"/>
-                    </div>
-                    <div class=\"formGroup\">
+                    </p>
+                    <p>
                         <label for=\"descrizione\">Descrizione:</label>
                         <textarea id=\"descrizione\" name=\"descrizione\" rows=\"4\" cols=\"35\">$descrizione</textarea>
-                    </div>";
+                    </p>";
 
 
                 //Prendo tutti i prodotti e li stampo per categoria
@@ -114,7 +114,7 @@
                         $prezzoP = $singoloProdotto["Prezzo"];
                         $descrizioneP = $singoloProdotto["Descrizione"];
                         $listaProdotti .= "
-                            <dt>$nomeP<input class=\"buttonSmall\" type=\"button\" name=\"Modifica\" value=\"Modifica\" /></dt>
+                            <dt>$nomeP<a class=\"buttonSmall\" href=\"modifica_prodotto.php?nome=$nomeP\">Modifica</a></dt>
                             <dd>$prezzoP &euro;</dd>
                             <dd><span>[$pezziP<abbr title=\"Pezzi\">pz</abbr>]</span> $descrizioneP</dd>";
                     }
@@ -131,12 +131,12 @@
             }
             else
             {
-                header("Location: /errore500.php"); /*CONTROLLARE SE LA PAGINA E' GIUSTA*/
+                header("Location: errore500.html");
             }
         }
         else
         {
-            header('location: ../errore403.php'); /* CONTROLLARE SE LA PAGINA E' GIUSTA */
+            header('location: ../errore403.php');
         }
     }
     else

@@ -2,22 +2,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="it">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Dettagli Ordine n. ID - Sushi Nakamura</title>
+        <title>Ordine <id_ordine/> - Sushi Nakamura</title>
         <meta name="title" content="Gestione ordini" />
-        <meta name="description" content="Dettagli Ordine n. ID" />
+        <meta name="description" content="Dettagli Ordine n. <id_ordine/>" />
         <meta name="keyword" content="ordini, gestione, dettagli" />
-	      <meta name="robots" content="noindex"/>
+	    <meta name="robots" content="noindex"/>
         <meta name="language" content="italian it"/>
         <meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" type="text/css" media="screen and (min-width: 901px)" href="../css/style.css"/>
-<link rel="stylesheet" type="text/css" media="screen and (max-width: 900px)" href="../css/mobile.css"/>
+        <link rel="stylesheet" type="text/css" media="screen and (max-width: 900px)" href="../css/mobile.css"/>
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stampa.css"/>
         <script type="text/javascript" src="../js/index.js"></script>
     </head>
     <body>
         <div id="header">
-            <a id="logo" href="home_admin.html" title="Vai alla home" tabindex="-1"></a>
+            <a id="logo" href="home_admin.php" title="Vai alla home" tabindex="-1"></a>
             <h1 lang="ja">Sushi Nakamura</h1>
         </div>
 		<p class="aiuti">
@@ -25,46 +25,21 @@
 		</p>
 		<div id="menu">
 			<ul>
-				<li><a href="home_admin.html" lang="en" tabindex="2">Home</a></li>
-				<li><a href="aggiunta_prodotti.html" tabindex="3">Aggiungi Prodotto</a></li>
-				<li><a href="gestione_ordini.html">Gestione Ordini</a></li>
-				<li class="impostazioni"><a href="gestione_profilo_admin.html" tabindex="5">Gestione Profilo</a></li>
+				<li><a href="home_admin.php" lang="en" tabindex="2">Home</a></li>
+				<li><a href="aggiunta_prodotti.php" tabindex="3">Aggiungi Prodotto</a></li>
+				<li><a href="gestione_ordini.php">Gestione Ordini</a></li>
+				<li class="impostazioni"><a href="gestione_profilo_admin.php" tabindex="5">Gestione Profilo</a></li>
 				<li class="login"><a href="../logout.php" lang="en" tabindex="4">Logout</a></li>
 			</ul>
 		</div>
 		
         <div id="breadcrumb">
-                <p>Ti trovi in: <a href="home_admin.html" lang="en">Home</a> &gt; &gt; <a href="gestione_ordini.html">Gestione Ordini</a> &gt; &gt; Dettagli Ordine n. ID</p>
+                <p>Ti trovi in: <a href="home_admin.php" lang="en">Home</a> &gt; &gt; <a href="gestione_ordini.php">Gestione Ordini</a> &gt; &gt; Dettagli Ordine n. <id_ordine/></p>
         </div>
 
         <div id="dettagli_ordine" class="content">
 		
-			<h1>ID - Username</h1>
-			<h2 class="data">data1</h2>
-			<h2 class="data">data2</h2>
-			
-			<p>Nome Cognome</p>
-			<p>Via, n. civico, citt&agrave;, cap</p>
-			<p>Pagamento</p>
-			
-			
-			<dl class="defaultLista">
-			<dt>Uramaki Maguro - <a href="prodotti.html#uramaki" lang="ja">Uramaki</a></dt>
-				<dd>
-					<span>Porzioni: 6</span>
-				</dd>
-				
-				<dt>Hosomaki Maguro - <a href="prodotti.html#uramaki" lang="ja">Uramaki</a></dt>
-				<dd>
-					<span>Porzioni: 8</span>
-				</dd>
-				
-				<dt>Tiramis&ugrave; - <a href="prodotti.html#dessert" lang="fr">Dessert</a></dt>
-				<dd>
-					<span>Porzioni: 1</span>
-				</dd>
-			</dl>
-			
+			<infoOrdine/>
 
         </div>
 

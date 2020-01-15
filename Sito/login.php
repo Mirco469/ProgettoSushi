@@ -50,7 +50,7 @@
             }
             else
             {
-                header("Location: /errore500.php"); /*CONTROLLARE SE LA PAGINA E' GIUSTA*/
+                header("Location: errore500.php");
             }
         }
         elseif(isset($_POST['registrati']))
@@ -104,7 +104,7 @@
             }
             else
             {
-                header("Location: /errore500.php"); /*CONTROLLARE SE LA PAGINA E' GIUSTA*/
+                header("Location: errore500.php");
             }
         }
 
@@ -112,25 +112,39 @@
 
         //Form di login
         $formLoginContent = "
-                    <label for=\"nomeUtente\">Nome Utente:</label>
-                    <input type=\"text\" id=\"nomeUtente\" name=\"username\" value=\"$usernameL\"/>
-                    <label for=\"passwordAcc\" lang=\"en\">Password:</label>
-                    <input type=\"password\" id=\"passwordAcc\" name=\"password\" value=\"$passwordL\"/>
-                    <input class=\"defaultButton\" type=\"submit\" name=\"accedi\" value=\"Accedi\"/>";
+					<p>
+						<label for=\"nomeUtente\">Nome Utente:</label>
+						<input type=\"text\" id=\"nomeUtente\" name=\"username\" value=\"$usernameL\"/>
+					</p>
+					<p>
+						<label for=\"passwordAcc\" lang=\"en\">Password:</label>
+						<input type=\"password\" id=\"passwordAcc\" name=\"password\" value=\"$passwordL\"/>
+					</p>
+                    <input class=\"defaultButton\" type=\"submit\" name=\"accedi\" value=\"Accedi\" onclick=\"return validazioneFormAccesso();\"/>";
 
         //Form di registrazione
         $formRegistrazioneContent = "
-                    <label for=\"username\">Nome utente:</label>
-                    <input type=\"text\" id=\"username\" name=\"username\" value=\"$usernameR\"/>
-                    <label for=\"nome\">Nome:</label>
-                    <input type=\"text\" id=\"nome\" name=\"nome\" value=\"$nomeR\"/>
-                    <label for=\"cognome\">Cognome:</label>
-                    <input type=\"text\" id=\"cognome\" name=\"cognome\" value=\"$cognomeR\"/>
-                    <label for=\"passwordReg\" lang=\"en\">Password:</label>
-                    <input type=\"password\" id=\"passwordReg\" name=\"password\" value=\"$passwordR\"/>
-                    <label for=\"passwordRepeat\">Ripeti la <span lang=\"en\">password:</span></label>
-                    <input type=\"password\" id=\"passwordRepeat\" name=\"passwordRepeat\" value=\"$passwordRepeatR\"/>
-                    <input class=\"defaultButton\" type=\"submit\" name=\"registrati\" value=\"Registrati\"/>";
+					<p>
+						<label for=\"username\">Nome utente:</label>
+						<input type=\"text\" id=\"username\" name=\"username\" value=\"$usernameR\"/>
+					</p>
+					<p>
+						<label for=\"nome\">Nome:</label>
+						<input type=\"text\" id=\"nome\" name=\"nome\" value=\"$nomeR\"/>
+					</p>
+					<p>
+						<label for=\"cognome\">Cognome:</label>
+						<input type=\"text\" id=\"cognome\" name=\"cognome\" value=\"$cognomeR\"/>
+					</p>
+					<p>
+						<label for=\"passwordReg\" lang=\"en\">Password:</label>
+						<input type=\"password\" id=\"passwordReg\" name=\"password\" value=\"$passwordR\"/>
+					</p>
+					<p>
+						<label for=\"passwordRepeat\">Ripeti la <span lang=\"en\">password:</span></label>
+						<input type=\"password\" id=\"passwordRepeat\" name=\"passwordRepeat\" value=\"$passwordRepeatR\"/>
+					</p>
+                    <input class=\"defaultButton\" type=\"submit\" name=\"registrati\" value=\"Registrati\" onclick=\"return validazioneFormRegistrazione();\"/>";
 
         $paginaHTML = str_replace('<erroreLogin />', $erroreL, $paginaHTML);
         $paginaHTML = str_replace('<formLogin />', $formLoginContent, $paginaHTML);

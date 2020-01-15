@@ -4,9 +4,9 @@
 
     session_start();
 
-    $oggettoConnessione =  new DBAccess();
+    $db =  new DBAccess();
 
-	if ($oggettoConnessione->openDBConnection())
+	if ($db->openDBConnection())
 	{
         $paginaHTML = file_get_contents('html/recensioni.html');
         $menu = getmenu();
@@ -22,22 +22,22 @@
             if(isset($_POST['invia']))
             {
                 $titolo = htmlentities(trim($_POST['titolo']));
-                $testo = htmlentities(stripslashes(trim($_POST['testo'])));
+                $testo = htmlentities(trim($_POST['testo']));
 
-                if (!checkTestoSpaziDim($titolo, 6))
+                if (!checkAlfanumericoESpazi($titolo))
                 {
-                    $messaggio .= "<li>Il titolo deve contenere solo lettere e spaziature interne ed essere almeno lungo 6 caratteri</li>";
+                    $messaggio .= "<li>Il titolo non può contenere caratteri speciali e deve essere almeno lungo 2 caratteri</li>";
                 }
                 if (!checkTextArea($testo))
                 {
-                    $messaggio .= "<li>Il testo deve essere lungo tra i 10 ed i 200 caratteri</li>";
+                    $messaggio .= "<li>Il testo deve essere lungo tra i 10 ed i 200 caratteri e non contenere numeri</li>";
                 }
 
                 if ($messaggio == "")
                 {
                     $data = getdate();
                     $data = "$data[year]-$data[mon]-$data[mday]";
-                    $oggettoConnessione->addRecensione($titolo, $data, $_SESSION["username"], $testo);
+                    $db->addRecensione($titolo, $data, $_SESSION["username"], $testo);
                     $messaggio = "<p class='successo'>Recensione aggiunta con successo!</p>";
                     $titolo = "";
                     $testo = "";
@@ -53,11 +53,15 @@
                     <fieldset>
                         <legend>La tua recensione</legend>
                         <messaggio />
+                        <p>
                         <label for=\"titolo_recensione\">Titolo: </label>
                         <input type=\"text\" id=\"titolo_recensione\" name=\"titolo\" value=\"$titolo\" />
-	  		            <label for=\"testo_recensione\">Testo: </label>
+	  		            </p>
+			            <p>
+                        <label for=\"testo_recensione\">Testo: </label>
                         <textarea id=\"testo_recensione\" name=\"testo\" rows=\"5\" cols=\"85\">$testo</textarea>
-                        <input class=\"defaultButton\" type=\"submit\" name=\"invia\" value=\"Invia\" />
+                        </p>
+                        <input class=\"defaultButton\" type=\"submit\" name=\"invia\" value=\"Invia\" onclick=\"return validazioneForm_recensioni();\"/>
                     </fieldset>
                 </form>
                 ";
@@ -68,7 +72,7 @@
         $listaRecensioni = "
     	    <div id=\"lista_recensioni\">
     		<dl>";
-        foreach($oggettoConnessione->getRecensioni() as $recensione)
+        foreach($db->getRecensioni() as $recensione)
         {
             $titoloR = $recensione["Titolo"];
             $dataR = $recensione["Data"];
@@ -89,7 +93,6 @@
     }
     else
 	{
-		header("Location: /errore500.php");
+		header("Location: errore500.php");
 	}
-    
 ?>
