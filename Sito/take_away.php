@@ -71,11 +71,14 @@
 
 	function alreadyInCart($nome)
 	{
-		foreach($_SESSION['carrello'] AS $prodotto)
+		if (isset($_SESSION['carrello']))
 		{
-			if ($prodotto == $nome)
+			foreach($_SESSION['carrello'] AS $prodotto)
 			{
-				return true;
+				if ($prodotto == $nome)
+				{
+					return true;
+				}
 			}
 		}
 		return false;
