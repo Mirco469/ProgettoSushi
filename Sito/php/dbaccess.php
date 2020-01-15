@@ -5,7 +5,7 @@
         const HOST_DB = 'localhost';
         const USERNAME = 'root';
         const PASSWORD = '';
-        const DATABASE_NAME = 'sushi'; //Ogni utente ha un database già creato con nome uguale alla propria login (scritto sulle slide)
+        const DATABASE_NAME = 'Sushi'; //Ogni utente ha un database già creato con nome uguale alla propria login (scritto sulle slide)
 
         public $connection = null;
 
@@ -102,8 +102,6 @@
             if ($query->execute()) {
                 return true;
             } else {
-                echo $this->connection->error;
-                exit;
                 header("Location: /errore500.php");
             }
         }
@@ -537,6 +535,14 @@
         }
     }
 
+    function checkMaxLen($string, $len){
+        if(strlen($string)>$len){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
     function checkTesto($string) {
         if(!checkMinLen($string))
 		{
@@ -556,8 +562,17 @@
         } else return true;
     }
 
+    //Controlla se è stato inserito un civico nel formato numero/interno o numero o numero-interno dove interno può essere una lettera o un numero. Per brevità si omettono alcune casistiche nel messaggio di errore.
+    function checkCivico($string) {
+        if (!preg_match('/^[0-9]+[\/-]?[a-z0-9]?$/', $string)) {
+            return false;
+        } else {return true;}
+    }
+
+
     //Controlla che la stringa non contenga caratteri speciali
     function checkAlfanumerico($string) {
+        if(!checkMinLen($string)) return false;
         if (!preg_match('/^[a-zA-Z0-9]+$/', $string)) {
             return false;
         } else {return true;}
