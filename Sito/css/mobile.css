@@ -1188,8 +1188,8 @@ min-height: 465px;
 
 
 /* Modifica prodotto */
-#modifica_prodotto p{
-    text-align: center;
+#modifica_prodotto>form>p{
+	text-align: center;
 }
 
 #modifica_prodotto .defaultForm input[type=submit]{
