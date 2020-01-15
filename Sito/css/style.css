@@ -1110,7 +1110,7 @@ min-height: 465px;
 	padding: 0.3em;
 	border-radius: 4px;
 	font-size: 0.8em;
-	margin: auto;
+	margin-top: 0.5em;
 }
 
 .selezione_big + p {
@@ -1119,7 +1119,7 @@ min-height: 465px;
 
 #pagamento .selezione_small {
 	width: 6em;
-	margin: 0;
+	margin-top: 0.5em;
 	padding: 0.3em;
 	border-radius: 4px;
 	font-size: 0.8em;

@@ -34,7 +34,7 @@
 			$cvv = "";
 
 			$paginaHTML = file_get_contents('html/pagamento.html');
-			
+
 			$sceltaConsegna = "
 			<input type=\"radio\" id=\"consegna_asporto\" name=\"tipoConsegna\" value=\"asporto\" />
 			<label for=\"consegna_asporto\">Asporto</label>
@@ -189,7 +189,7 @@
 								$idOrdine = $row['id_ordine'];
 							}
 						}
-						foreach ($_SESSION['carrello'] AS $prodotto => $row) 
+						foreach ($_SESSION['carrello'] AS $prodotto => $row)
 						{
 							$quantita = $row['quantita'];
 							if (!$db->addContiene($idOrdine, $prodotto, $quantita))
@@ -197,7 +197,7 @@
 								header('location: errore500.php');
 							}
 						}
-						
+
 						header('location: successo.html');
 					}
 					else if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'asporto'))
@@ -219,7 +219,7 @@
 								$idOrdine = $row['id_ordine'];
 							}
 						}
-						foreach ($_SESSION['carrello'] AS $prodotto => $row) 
+						foreach ($_SESSION['carrello'] AS $prodotto => $row)
 						{
 							$quantita = $row['quantita'];
 							if (!$db->addContiene($idOrdine, $prodotto, $quantita))
@@ -259,7 +259,7 @@
 			{
 				header('location: errore500.php');
 			}
-			
+
 			$paginaHTML = str_replace('<indirizziUtente />', $indirizziUtente, $paginaHTML);
 
 			$formDest = "
@@ -357,19 +357,21 @@
 			$formCarta = "
 			<p>
 				<label for=\"intestatario_carta\">Intestatario carta: </label>
-				<input type=\"text\" id=\"intestatario_carta\" name=\"intestatario_carta\" value=\"$intestatario\" />
+				<input type=\"text\" id=\"intestatario_carta\" name=\"intestatario_carta\" placeholder=\"Mario Rossi\" value=\"$intestatario\" />
 			</p>
 			<p>
 				<label for=\"num_carta\">Numero carta: </label>
-				<input type=\"text\" id=\"num_carta\" name=\"num_carta\" maxlength=\"16\" value=\"$num_carta\" />
+				<input type=\"text\" id=\"num_carta\" name=\"num_carta\" maxlength=\"16\" placeholder=\"Inserire numero\" value=\"$num_carta\" />
 			</p>
 			<p>
+			<label for=\"mese_scad\">Mese di scadenza: </label>
 			<select name=\"mese_scad\" class=\"selezione_small\">
 				<option>Mese</option>
 				$months
 			</select>
 			</p>
 			<p>
+			<label for=\"anno_scad\">Anno di scadenza: </label>
 			<select name=\"anno_scad\" class=\"selezione_small\">
 				<option>Anno</option>
 				$years
