@@ -38,12 +38,11 @@
 		if( session_status() != PHP_SESSION_NONE && $_SESSION['username'] != null ) {
 			
 			if( count($_SESSION['carrello']) > 0 ) {
-				$carrello = $_SESSION['carrello'];
 				
 				$totale = 0;
 				$content = '<dl class="defaultLista">';
 				
-				foreach( $carrello AS $row ) {
+				foreach( $_SESSION['carrello'] AS $row ) {
 					$content .= '<dt id="dt-'.$row['nome'].'">'.
 						$row['nome'].' - <a href="prodotti.html#'.$row['categoria'].'">'.$row['categoria'].'</a>
 						<input title="Rimuovi '.$row['nome'].'" class="rimuovi" type="button" name="rimuovi" onclick="rmProdotto(\''.$row['nome'].'\')" value="Rimuovi" />
@@ -81,12 +80,13 @@
 		
 		if(isset($_SESSION['carrello'][$nome])) {
 			if( checkNumeroIntero($nuovaQuantita) ) {
+				$prodotto = &$_SESSION['carrello'][$nome];
 				
-				$vecchiaQuantita = $_SESSION['carrello'][$nome]['quantita'];
-				$newPrezzo = $_SESSION['carrello'][$nome]['prezzo']/$vecchiaQuantita*$nuovaQuantita;
+				$vecchiaQuantita = $prodotto['quantita'];
+				$newPrezzo = $prodotto['prezzo']/$vecchiaQuantita*$nuovaQuantita;
 				
-				$_SESSION['carrello'][$nome]['quantita'] = $nuovaQuantita;
-				$_SESSION['carrello'][$nome]['prezzo'] = $newPrezzo;
+				$prodotto['quantita'] = $nuovaQuantita;
+				$prodotto['prezzo'] = $newPrezzo;
 				
 				$result['success'] = true;
 				$result['price'] = $newPrezzo;
@@ -100,7 +100,6 @@
 			$result['error'] = 'not found';
 			$result['total'] = getTotaleCarrello();
 		}
-		$result['carrello'] = $_SESSION['carrello'];
 		
 		
 		header('Content-Type: application/json');
@@ -108,7 +107,6 @@
 	}
 	
 	function rmProdotto($nome) {
-		$prodotto = &$_SESSION['carrello'][$nome];
 		
 		$result = array();
 		
