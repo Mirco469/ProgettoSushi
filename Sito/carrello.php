@@ -5,9 +5,9 @@
 	
 	if( isset($_POST['action']) ) {
 		if( $_POST['action'] == 'edit' ) {
-			changeQuantity($_POST['name'],$_POST['quantity']);
+			setQuantita($_POST['name'],$_POST['quantity']);
 		} else if($_POST['action'] == 'remove') {
-			removeProduct($_POST['name']);
+			rmProdotto($_POST['name']);
 		}
 		//echo json_encode(array('index'=>$_POST['index'],'amount'=>$_POST['amount']));exit;
 	} else {
@@ -25,10 +25,10 @@
 				'prezzo' => 6
 			)
 		);
-		loadPage();
+		loadPagina();
 	}
 		
-	function loadPage() {
+	function loadPagina() {
 		if( session_status() != PHP_SESSION_NONE && $_SESSION['username'] != null ) {
 			
 			$carrello = $_SESSION['carrello'];
@@ -51,7 +51,7 @@
 				}
 				
 				$content .= '</dl>
-				<p class="totaleText">Totale: <span id="totaleValue">'.number_format(getCartTotal(), 2, ',', '.').'</span>€</p>
+				<p class="totaleText">Totale: <span id="totaleValue">'.number_format(getTotaleCarrello(), 2, ',', '.').'</span>€</p>
 				<a id="paga" href="pagamento.html">Vai a pagamento</a>';
 			
 			} else {
@@ -68,31 +68,31 @@
 		}
 	}
 	
-	function changeQuantity($name,$newQuantity) {
+	function setQuantita($nome,$nuovaQuantita) {
 		$result = array(
 			'success' => false
 		);
 		
-		if(isset($_SESSION['carrello'][$name])) {
-			if( checkNumeroIntero($newQuantity) ) {
+		if(isset($_SESSION['carrello'][$nome])) {
+			if( checkNumeroIntero($nuovaQuantita) ) {
 				
-				$oldQuantity = $_SESSION['carrello'][$name]['quantita'];
-				$newPrezzo = $_SESSION['carrello'][$name]['prezzo']/$oldQuantity*$newQuantity;
+				$vecchiaQuantita = $_SESSION['carrello'][$nome]['quantita'];
+				$newPrezzo = $_SESSION['carrello'][$nome]['prezzo']/$vecchiaQuantita*$nuovaQuantita;
 				
-				$_SESSION['carrello'][$name]['quantita'] = $newQuantity;
-				$_SESSION['carrello'][$name]['prezzo'] = $newPrezzo;
+				$_SESSION['carrello'][$nome]['quantita'] = $nuovaQuantita;
+				$_SESSION['carrello'][$nome]['prezzo'] = $newPrezzo;
 				
 				$result['success'] = true;
 				$result['price'] = $newPrezzo;
-				$result['quantity'] = $newQuantity;
-				$result['total'] = getCartTotal();
+				$result['quantity'] = $nuovaQuantita;
+				$result['total'] = getTotaleCarrello();
 			} else {
 				$result['error'] = 'invalid quantity';
-				$result['total'] = getCartTotal();
+				$result['total'] = getTotaleCarrello();
 			}
 		} else {
 			$result['error'] = 'not found';
-			$result['total'] = getCartTotal();
+			$result['total'] = getTotaleCarrello();
 		}
 		$result['carrello'] = $_SESSION['carrello'];
 		
@@ -101,27 +101,27 @@
 		echo json_encode($result);
 	}
 	
-	function removeProduct($name) {
-		$prodotto = &$_SESSION['carrello'][$name];
+	function rmProdotto($nome) {
+		$prodotto = &$_SESSION['carrello'][$nome];
 		
 		$result = array();
 		
-		if( isset($_SESSION['carrello'][$name]) ) {
-			unset($_SESSION['carrello'][$name]);
+		if( isset($_SESSION['carrello'][$nome]) ) {
+			unset($_SESSION['carrello'][$nome]);
 			
 			$result['success'] = true;
-			$result['total'] = getCartTotal();
+			$result['total'] = getTotaleCarrello();
 		} else {
 			$result['success'] = false;
 			$result['error'] = 'not found';
-			$result['total'] = getCartTotal();
+			$result['total'] = getTotaleCarrello();
 		}
 		
 		header('Content-Type: application/json');
 		echo json_encode($result);
 	}
 
-	function getCartTotal() {
+	function getTotaleCarrello() {
 		$totale = 0;
 		
 		foreach( $_SESSION['carrello'] AS $row ) {
