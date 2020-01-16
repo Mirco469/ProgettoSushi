@@ -520,7 +520,7 @@ table.defaultTable td:last-child {
 	font-size: 1.2em;
 }
 
-.lista_piatti .prezzo {
+.prezzo {
 	display: block;
 	float: right;
 	width: 20%;
@@ -529,7 +529,7 @@ table.defaultTable td:last-child {
 	padding-bottom: 1em;
 }
 
-.lista_piatti .dettagli {
+.dettagli {
 	width: 80%;
 	font-style: italic;
 	padding-bottom: 1em;
