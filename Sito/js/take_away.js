@@ -23,16 +23,19 @@ function aggiungi(name, dt) {
 			else if (data.error == 'already present')
 			{
 				dd.textContent = "Prodotto già nel carrello!"; // scrivo il testo del messaggio
-				dd.classList.add("errore"); // assegno la classe al dd
+				dd.classList.add("successo"); // assegno la classe al dd
 			}
 			else if (data.error == 'unknown')
 			{
 				dd.textContent = "Errore nell'aggiunta al carrello!"; // scrivo il testo del messaggio
 				dd.classList.add("errore"); // assegno la classe al dd
 			}
-			
-			
-			// cancello il messaggio esistente
+			// cancello il messaggio esistente se c'è
+			var mess = dt.nextSibling;
+			if (mess.className == "errore" || mess.className == "successo")
+			{
+				mess.remove();
+			}
 			dt.parentNode.insertBefore(dd, dt.nextSibling); // inserisco il dd
 		}
 	}
