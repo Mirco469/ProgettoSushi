@@ -7,8 +7,6 @@
 	$_SESSION['username'] = "user"; #da togliere
 	$_SESSION['password'] = "user"; #da togliere
 
-    #Creare un carrello per testare la pagina?
-
 	if (isset($_SESSION['username']))
 	{
 		$user = $_SESSION['username'];
@@ -35,90 +33,73 @@
 
 			$paginaHTML = file_get_contents('html/pagamento.html');
 
-			$sceltaConsegna = "
-			<input type=\"radio\" id=\"consegna_asporto\" name=\"tipoConsegna\" value=\"asporto\" />
-			<label for=\"consegna_asporto\">Asporto</label>
-			<input type=\"radio\" id=\"consegna_domicilio\" name=\"tipoConsegna\" value=\"domicilio\" checked=\"checked\" />
-			<label for=\"consegna_domicilio\">Domicilio</label>
-			";
-
 			if (isset($_POST['paga']))
 			{
-				if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'domicilio'))
+				# Controllo primo fieldset
+				if (isset($_POST['destinazione']) && $_POST['destinazione'] != 'Indirizzo')
 				{
-					if (isset($_POST['destinazione']) && $_POST['destinazione'] != 'Indirizzo')
+					$successoDest = '<p class="successo">Informazioni di spedizione valide!</p>';
+				}
+				else
+				{
+					$nome_cognome = htmlentities(trim($_POST['nome_cognome']));
+					$via = htmlentities(trim($_POST['via']));
+					$civico = htmlentities(trim($_POST['civico']));
+					$cap = htmlentities(trim($_POST['cap']));
+					$tel = htmlentities(trim($_POST['tel']));
+
+					if (!checkNomeCognome($nome_cognome))
+					{
+						$erroriDest .= "<li>Il nome deve contenere solo lettere e non contenere meno di due caratteri</li>";
+					}
+					if (!checkMaxLen($nome_cognome, 40))
+					{
+						$erroriDest .= '<li>Il campo nome e cognome non deve contenere più di 40 caratteri</li>';
+					}
+					if (!checkAlfanumericoESpazi($via))
+					{
+						$erroriDest .= "<li>La via non deve contenere caratteri speciali</li>";
+					}
+					if (!checkMaxLen($via, 20))
+					{
+						$erroriDest .= '<li>Il nome dell\'indirizzo non deve contenere più di 15 caratteri</li>';
+					}
+					if (!checkCivico($civico))
+					{
+						$erroriDest .= "<li>Il numero civico deve essere nel formato corretto (e.g. 4, 4b, 4/b, 4-b)</li>";
+					}
+					if (!checkMaxLen($civico, 10))
+					{
+						$erroriDest .= '<li>Il numero civico non deve contenere più di 10 caratteri</li>';
+					}
+					if (!checkCAP($cap))
+					{
+						$erroriDest .= "<li>Il CAP deve contenere solo numeri</li>";
+					}
+					if (!checkMaxLen($cap, 5))
+					{
+						$erroriDest .= '<li>Il CAP non deve contenere più di 5 caratteri</li>';
+					}
+					if (!checkSoloNumeriEDIm($tel))
+					{
+						$erroriDest .= "<li>Non hai inserito un numero telefonico valido</li>";
+					}
+					if (!checkMaxLen($tel, 15))
+					{
+						$erroriDest .= '<li>Il numero telefonico non deve contenere più di 15 caratteri</li>';
+					}
+
+					if (strlen($erroriDest) == 0)
 					{
 						$successoDest = '<p class="successo">Informazioni di spedizione valide!</p>';
 					}
 					else
 					{
-						$nome_cognome = htmlentities(trim($_POST['nome_cognome']));
-						$via = htmlentities(trim($_POST['via']));
-						$civico = htmlentities(trim($_POST['civico']));
-						$cap = htmlentities(trim($_POST['cap']));
-						$tel = htmlentities(trim($_POST['tel']));
-
-						if (!checkNomeCognome($nome_cognome))
-						{
-							$erroriDest .= "<li>Il nome deve contenere solo lettere e non contenere meno di due caratteri</li>";
-						}
-						if (!checkMaxLen($nome_cognome, 40))
-						{
-                        	$erroriDest .= '<li>Il campo nome e cognome non deve contenere più di 40 caratteri</li>';
-                    	}
-						if (!checkAlfanumericoESpazi($via))
-						{
-							$erroriDest .= "<li>La via non deve contenere caratteri speciali</li>";
-						}
-						if (!checkMaxLen($via, 20))
-						{
-	                        $erroriDest .= '<li>Il nome dell\'indirizzo non deve contenere più di 15 caratteri</li>';
-	                    }
-						if (!checkCivico($civico))
-						{
-							$erroriDest .= "<li>Il numero civico deve essere nel formato corretto (e.g. 4, 4b, 4/b, 4-b)</li>";
-						}
-						if (!checkMaxLen($civico, 10))
-						{
-	                        $erroriDest .= '<li>Il numero civico non deve contenere più di 10 caratteri</li>';
-	                    }
-						if (!checkCAP($cap))
-						{
-							$erroriDest .= "<li>Il CAP deve contenere solo numeri</li>";
-						}
-						if (!checkMaxLen($cap, 5))
-						{
-	                        $erroriDest .= '<li>Il CAP non deve contenere più di 5 caratteri</li>';
-	                    }
-						if (!checkSoloNumeriEDIm($tel))
-						{
-							$erroriDest .= "<li>Non hai inserito un numero telefonico valido</li>";
-						}
-						if (!checkMaxLen($tel, 15))
-						{
-	                        $erroriDest .= '<li>Il numero telefonico non deve contenere più di 15 caratteri</li>';
-	                    }
-
-						if (strlen($erroriDest) == 0)
-						{
-							$successoDest = '<p class="successo">Informazioni di spedizione valide!</p>';
-						}
-						else
-						{
-							$erroriDest = '<ul class="errore">' . $erroriDest . '</ul>';
-						}
+						$erroriDest = '<ul class="errore">' . $erroriDest . '</ul>';
 					}
 				}
-				else if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'asporto'))
-				{
-					$sceltaConsegna = "
-					<input type=\"radio\" id=\"consegna_asporto\" name=\"tipoConsegna\" value=\"asporto\" checked=\"checked\" />
-					<label for=\"consegna_asporto\">Asporto</label>
-					<input type=\"radio\" id=\"consegna_domicilio\" name=\"tipoConsegna\" value=\"domicilio\" />
-					<label for=\"consegna_domicilio\">Domicilio</label>
-					";
-				}
 
+				# Controllo secondo fieldset
 				if (isset($_POST['carta_credito']) && $_POST['carta_credito'] != 'Carta di credito')
 				{
 					$successoCarta = '<p class="successo">Informazioni di pagamento valide!</p>';
@@ -169,100 +150,69 @@
 					}
 				}
 
+				# Informazioni corrette => Successo
 				if (($erroriCarta == "") && ($erroriDest == ""))
 				{
+					if (($_POST['destinazione'] == 'Indirizzo') && (!$db->alreadyExistsDest($nome_cognome, $tel, $cap, $via, $civico, $user)) && (!$db->addSpedizione($user, $nome_cognome, $via, $civico, $cap, $tel)))
+					{
+						header('location: errore500.php');
+					}
+
 					$totale = totaleCarrello();
 					$dataOrdine = date("Y-m-d H:i:s");
+					$dataConsegna = date("Y-m-d H+1:i:s");
 
-					if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'domicilio'))
+					$idDestinazione = "";
+					$maxId = 0;
+					$queryResult = $db->getDestinazioni($user);
+					while ($row = mysqli_fetch_assoc($queryResult))
 					{
-						if (($_POST['destinazione'] == 'Indirizzo') && (!$db->alreadyExistsDest($nome_cognome, $tel, $cap, $via, $civico, $user)) && (!$db->addSpedizione($user, $nome_cognome, $via, $civico, $cap, $tel)))
+						if (isset($_POST['destinazione']) && $_POST['destinazione'] == $row['id_destinazione'])
 						{
-							header('location: errore500.php');
+							$idDestinazione = $row['id_destinazione'];
 						}
-
-						$dataConsegna = date("Y-m-d H+1:i:s");
-						$idDestinazione = "";
-						$maxId = 0;
-						$queryResult = $db->getDestinazioni($user);
-						while ($row = mysqli_fetch_assoc($queryResult))
+						else
 						{
-							if (isset($_POST['destinazione']) && $_POST['destinazione'] == $row['id_destinazione'])
+							if ($row['id_destinazione'] > $maxId)
 							{
-								$idDestinazione = $row['id_destinazione'];
-							}
-							else
-							{
-								if ($row['id_destinazione'] > $maxId)
-								{
-									$maxId = $row['id_destinazione'];
-								}
+								$maxId = $row['id_destinazione'];
 							}
 						}
-						if ($maxId != 0 && $idDestinazione == "")
-						{
-							$idDestinazione = $maxId;
-						}
-
-						if (!$db->addOrdine($dataOrdine, $dataConsegna, $totale, $idDestinazione, $user))
-						{
-							header('location: errore500.php');
-						}
-
-						$idOrdine = 0;
-						$queryResult = $db->getOrdini($user);
-						while ($row = mysqli_fetch_assoc($queryResult))
-						{
-							if ($row['id_ordine'] > $idOrdine)
-							{
-								$idOrdine = $row['id_ordine'];
-							}
-						}
-						foreach ($_SESSION['carrello'] AS $prodotto => $row)
-						{
-							$quantita = $row['quantita'];
-							if (!$db->addContiene($idOrdine, $prodotto, $quantita))
-							{
-								header('location: errore500.php');
-							}
-						}
-
-						header('location: successo.html');
 					}
-					else if (isset($_POST['tipoConsegna']) && ($_POST['tipoConsegna'] == 'asporto'))
+					if ($idDestinazione == "")
 					{
-						$dataConsegna = null;
-						$destinazione = null;
+						$idDestinazione = $maxId;
+					}
 
-						if (!$db->addOrdine($dataOrdine, $dataConsegna, $totale, $destinazione, $user))
+					if (!$db->addOrdine($dataOrdine, $dataConsegna, $totale, $idDestinazione, $user))
+					{
+						header('location: errore500.php');
+					}
+
+					$idOrdine = 0;
+					$queryResult = $db->getOrdini($user);
+					while ($row = mysqli_fetch_assoc($queryResult))
+					{
+						if ($row['id_ordine'] > $idOrdine)
+						{
+							$idOrdine = $row['id_ordine'];
+						}
+					}
+					foreach ($_SESSION['carrello'] AS $prodotto => $row)
+					{
+						$quantita = $row['quantita'];
+						if (!$db->addContiene($idOrdine, $prodotto, $quantita))
 						{
 							header('location: errore500.php');
 						}
-
-						$idOrdine = 0;
-						$queryResult = $db->getOrdini($user);
-						while ($row = mysqli_fetch_assoc($queryResult))
-						{
-							if ($row['id_ordine'] > $idOrdine)
-							{
-								$idOrdine = $row['id_ordine'];
-							}
-						}
-						foreach ($_SESSION['carrello'] AS $prodotto => $row)
-						{
-							$quantita = $row['quantita'];
-							if (!$db->addContiene($idOrdine, $prodotto, $quantita))
-							{
-								header('location: errore500.php');
-							}
-						}
-
-						header('location: successo.html');
 					}
+
+					header('location: successo.html');
 				}
 			}
 
-			$paginaHTML = str_replace('<sceltaConsegna />', $sceltaConsegna, $paginaHTML);
+			$paginaHTML = file_get_contents('html/pagamento.html');
+			$paginaHTML = str_replace('<menu />', getMenu(), $paginaHTML);
 
 			$paginaHTML = str_replace('<erroreDestinazione />', $erroriDest, $paginaHTML);
 			$paginaHTML = str_replace('<successoDestinazione />', $successoDest, $paginaHTML);
@@ -330,7 +280,7 @@
 			$paginaHTML = str_replace('<erroreCarta />', $erroriCarta, $paginaHTML);
 			$paginaHTML = str_replace('<successoCarta />', $successoCarta, $paginaHTML);
 
-			$cartaUtente = null;
+			$cartaUtente = "";
 			if ($db->openDBConnection())
 			{
 				$cartaUtente = $db->getCartaDiCredito($user);
@@ -340,7 +290,7 @@
 			{
 				header('location: errore500.php');
 			}
-			if ($cartaUtente != null)
+			if ($cartaUtente != "")
 			{
 				if (isset($_POST['carta_credito']) && $_POST['carta_credito'] == $cartaUtente)
 				{
