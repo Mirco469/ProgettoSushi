@@ -303,7 +303,7 @@ table.defaultTable td:last-child {
 	width: 100%;
 }
 
-.lista_piatti #prezzo {
+.lista_piatti .prezzo {
 	display: block;
 	float: right;
 	width: 15%;
@@ -311,7 +311,7 @@ table.defaultTable td:last-child {
 	padding-bottom: 4mm;
 }
 
-.lista_piatti #dettagli {
+.lista_piatti .dettagli {
 	width: 70%;
 	font-style: italic;
 	padding-bottom: 4mm;

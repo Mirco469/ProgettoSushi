@@ -14,10 +14,7 @@
 			{
 				header('location: errore500.php');
 			}
-			if (!alreadyInCart($prodotto['nome']))
-			{
-				addToCart($prodotto['nome'], $prodotto['categoria'], $prodotto['prezzo']);
-			}
+			addToCart($prodotto['nome'], $prodotto['categoria'], $prodotto['prezzo']);
 		}
 		else
 		{
@@ -58,8 +55,8 @@
 							$listaProdotti .= "<input class=\"buttonSmall\" type=\"button\" name=\"Aggiungi\" value=\"Aggiungi\" />";
 						}
 						$listaProdotti .= "</dt>
-						<dd id=\"prezzo\">$prezzoP &euro;</dd>
-						<dd id=\"dettagli\"><span>[$pezziP<abbr title=\"Pezzi\">pz</abbr>]</span> $descrizioneP</dd>";
+						<dd class=\"prezzo\">$prezzoP &euro;</dd>
+						<dd class=\"dettagli\"><span>[$pezziP<abbr title=\"Pezzi\">pz</abbr>]</span> $descrizioneP</dd>";
 				}
 				$listaProdotti .= "
 					</dl>
@@ -74,25 +71,33 @@
 		}
 	}
 
-	function alreadyInCart($nome)
-	{
-		if (isset($_SESSION['carrello']) && isset($_SESSION['carrello'][$nome])) 
-		{ 
-			return true;
-		} 
-		return false;
-	}
-
 	function addToCart($nome, $categoria, $prezzo)
  	{
+		$result = array('success' => false);
   		$prodotto = array("nome"=>$nome, "categoria"=>$categoria, "quantita"=>1, "prezzo"=>$prezzo);
   		if (!isset($_SESSION['carrello']))
   		{
    			$_SESSION['carrello'] = array($nome=>$prodotto);
+			$result['success'] = true;
   		}
   		else
   		{
-   			$_SESSION['carrello'][$nome] = $prodotto;
+			if (!isset($_SESSION['carrello'][$nome]))
+			{
+				$_SESSION['carrello'][$nome] = $prodotto;
+				$result['success'] = true;
+			}
+			else 
+			{
+				$result['error'] = 'already present';
+			}
   		}
+		if (($result['success'] == false) && !isset($result['error']))
+		{
+			$result['error'] = 'unknown';
+		}
+		header('Content-Type: application/json');
+		echo json_encode($result);
  	}
+
 ?>
