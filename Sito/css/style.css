@@ -184,7 +184,7 @@ table.defaultTable td:last-child {
 }
 
 /*	Header	*/
- 
+
 #logo {
 	display: block;
 	margin-left: 10%;
@@ -729,7 +729,7 @@ table.defaultTable td:last-child {
 
 /* Slideshow container */
 #slideshow_home {
-	clear: both;	
+	clear: both;
 	max-width: 90%;
 	position: relative;
 	margin: auto;
@@ -804,12 +804,12 @@ table.defaultTable td:last-child {
 }
 
 @-webkit-keyframes fade {
-	from {opacity: .4} 
+	from {opacity: .4}
 	to {opacity: 1}
 }
 
 @keyframes fade {
-	from {opacity: .4} 
+	from {opacity: .4}
 	to {opacity: 1}
 }
 
@@ -1086,18 +1086,6 @@ min-height: 465px;
 #pagamento fieldset {
 	text-align: left;
 	margin: 1em;
-}
-
-#scelta_consegna input[type=radio] {
-	cursor: pointer;
-	display: inline;
-	width: 2em;
-}
-
-#scelta_consegna input[type=radio] + label {
-	display: inline;
-	cursor: pointer;
-	margin-right: 1em;
 }
 
 #info_pagamento input[name="cvv_carta"] {

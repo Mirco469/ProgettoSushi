@@ -258,15 +258,6 @@ table.defaultTable td:last-child {
 	display: inline;
 }
 
-#scelta_consegna input[type=radio] + label {
-	display: inline;
-}
-
-#scelta_consegna input[type=radio] {
-	display: inline;
-	width: 2em;
-}
-
 #info_pagamento {
 	page-break-inside: avoid;
 }
@@ -456,7 +447,7 @@ table.defaultTable td:last-child {
 
 #dettagli_ordine>dl {
 	width: 115%;
-	margin: 0; 
+	margin: 0;
 }
 
 #dettagli_ordine .defaultTable {

@@ -136,7 +136,7 @@
 					{
 						$erroriCarta .= '<li>Seleziona l\'anno di scadenza</li>';
 					}
-					if (!checkSoloNumeri($cvv))
+					if (!checkSoloNumeri($cvv) || strlen($cvv)!=3)
 					{
 						$erroriCarta .= '<li>Il CVV deve essere composto da tre cifre</li>';
 					}
@@ -158,7 +158,7 @@
 						header('location: errore500.php');
 					}
 
-					$totale = totaleCarrello();
+					$totale = getTotaleCarrello();
 					$dataOrdine = date("Y-m-d H:i:s");
 					$dataConsegna = date("Y-m-d H+1:i:s");
 
@@ -373,6 +373,14 @@
 	else
 	{
 		header('location: login.php');
+	}
+
+	function getTotaleCarrello() {
+		$totale = 0;
+		foreach($_SESSION['carrello'] AS $row) {
+			$totale += $row['prezzo'];
+		}
+		return $totale;
 	}
 
 ?>
