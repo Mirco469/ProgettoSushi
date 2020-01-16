@@ -124,12 +124,13 @@
 			\subsubsection{Attributi HTML}
 				Per rendere il sito più accessibile agli screen reader sono stati usati diversi attributi HTML.
 					\begin{itemize}
-						\item {\bfseries Lang}: utilizzato per indicare in che lingua deve essere pronunciata una parola o frase. Facendo dei test con il software gratuito NVDA abbiamo notato che le parole identificate usando {\textit xml:lang} non venivano lette nella lingua corretta, si è quindi optato di usare l'attributo HTML5 {\textit lang} in tutte le pagine e testato che queste continuassero ad essere validate dal validatore W3C per xhtml1.0 strict.
-						\item  {\bfseries Alt}: utilizzato nelle immagini per fornire una breve descrizione di quello che viene raffigurato.
-						\item {\bfseries Scope}: utilizzato per facilitare la lettura delle tabelle.
-						\item  {\bfseries Tabindex}: utilizzato per assicurarsi un ordine corretto di spostamento tra i link utilizzando il tab.
+						\item {\bfseries lang}: utilizzato per indicare in che lingua deve essere pronunciata una parola o frase. Facendo dei test con il software gratuito NVDA abbiamo notato che le parole identificate usando {\textit xml:lang} non venivano lette nella lingua corretta, si è quindi optato di usare l'attributo HTML5 {\textit lang} in tutte le pagine e testato che queste continuassero ad essere validate dal validatore W3C per xhtml1.0 strict.
+						\item  {\bfseries aAlt}: utilizzato nelle immagini per fornire una breve descrizione di quello che viene raffigurato.
+						\item {\bfseries scope}: utilizzato per facilitare la lettura delle tabelle.
+						\item  {\bfseries tabindex}: utilizzato per assicurarsi un ordine corretto di spostamento tra i link utilizzando il tab.
+						\item  {\bfseries label}: utilizzato nei form per collegare la label al campo di input e facilitare la selezione di quest'ultimo.
 					\end{itemize}
-				\'E stato inoltre usato un'aiuto per gli screen reader fornendo un link prima del menu così da poterlo saltare e andare direttamente al contenuto della pagina.
+				\'E stato inoltre usato un suggerimento per gli screen reader fornendo un link prima del menu così da poterlo saltare e andare direttamente al contenuto della pagina. 
 			\subsubsection{Colori}
 				I colori del sito sono stati selezionati apposta per passare il test WCAG AAA che richiede un rapporto di contrasto di almeno 7:1 per il testo normale e 4.5:1 per il testo in grassetto. Di seguito è riportata la tabella dei colori del testo e del loro sfondo e il loro rapporto di contrasto.
 				\captionsetup[table]{name=Tabella}
@@ -152,6 +153,8 @@
 						\end{tabular}
 					\end{center}
 				\end{table}
+			\subsubsection{Altri elementi di accessibilità}
+				%colore link visitati, link circolari, accessibilità mobile, breadcrumb, uso di standard web (w3c validated), carousel non atuomatico, torna su, evitato font scorrevoli/lampeggianti/troppo elaborati/testo sbarrato, immagine logo come sfondo perchè non costrituisce parte del contenuto, menu ad hamburger cmq visibile dagli screen reader perchè non è stato usato display:none, suggerimento screen reader (ora si trova nel paragrafo attributi html)
 	\section{Implementazione}
 		
 		\subsection{Linguaggi}
