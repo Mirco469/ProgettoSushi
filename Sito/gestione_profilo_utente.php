@@ -58,6 +58,7 @@
              $successoPass = '';
              $successoDest = '';
              $successoPaga='';
+             $successoEliminaDest = '';
 
              //Controllo se è stato premuto il bottone per cambiare password
 
@@ -234,6 +235,7 @@
 
                 if($db->openDBConnection()){
                     $db->eliminaDestinazione($indice);
+                    $successoEliminaDest = '<ul class="successo"><li>Destinazione eliminata con successo!</li></ul>';
                 }else {
                     header('location: errore500.php');
                 }
@@ -361,7 +363,8 @@
         }
 
         if($queryResult == null){
-            $listaDestinazioni = '<fieldset id="listaDestinazioni"><legend> Lista delle destinazioni</legend><select disabled="disabled" name="indirizzoDest"><option value="00">Non è presente nessuna destinazione salvata!</option></select><input class="defaultButton" type="submit" value="Elimina"/></fieldset>';
+            $listaDestinazioni = '<fieldset id="listaDestinazioni"><messaggioEliminaz />
+                <legend> Lista delle destinazioni</legend><select disabled="disabled" name="indirizzoDest"><option value="00">Non è presente nessuna destinazione salvata!</option></select><input class="defaultButton" type="submit" value="Elimina"/></fieldset>';
         }else{
 
             while($row = mysqli_fetch_assoc($queryResult)) {
@@ -450,12 +453,12 @@
             }
 
             //Inserisco i form e i messaggi nella pagina HTML
-
              $paginaHTML = str_replace('<formSpedizione2 />', $listaDestinazioni, $paginaHTML);
              $paginaHTML = str_replace('<formPassword />', $formPassword, $paginaHTML);
              $paginaHTML = str_replace('<formSpedizione />', $formSpedizione, $paginaHTML);
              $paginaHTML = str_replace('<formPagamento />', $formPagamento, $paginaHTML);
 
+             $paginaHTML = str_replace('<messaggioEliminaz />', $messaggioEliminaz, $paginaHTML);
              if(strlen($successoPass)!=0){
                  $paginaHTML = str_replace('<messaggio1 />', $successoPass, $paginaHTML);
              }else {
