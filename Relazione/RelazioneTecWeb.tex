@@ -49,7 +49,18 @@
 				& Tommasin Alessandro - 1189293\\ 
 			\end{tabular}
 		\end{center}
-		
+		\vspace*{2cm}
+		{\bfseries \centerline{Account disponibili}}
+		\begin{center}
+			\begin{tabular}{ c|c|c } 
+			\textbf{Classe di utenza} & \textbf{Username} & \textbf{Password} \\
+				\hline
+				 Amministratore &  admin &  admin  \\ 
+				\hline
+				 Utente &  user &  user  \\ 
+				\hline
+			\end{tabular}
+		\end{center}
 		\vspace*{\fill}
 		
 	\end{titlepage}
@@ -119,20 +130,19 @@
 		    La principale differenza tra i layout scelti sta nella posizione e presentazione del menù di navigazione. 
 		    \newline Nei device con finestre di visualizzazione sufficentemente larghe si è scelto di disporre le voci del menù in riga, creando quindi una barra di navigazione. I link alle varie pagine principali del sito sono disposte a partire da sinistra, mentre quelli riguardanti pagine per gli utenti e le operazioni a loro disposizione si trovano a partire da destra.
 		    \newline Nei dispositivi più piccoli si è deciso invece di creare un menù espandibile, raggiungibile premendo sull'icona ad hamburger nell'angolo in alto a destra, che mostra tutte le voci disponibili, per rispettare il comportamento più comune che un utente medio si aspetta utilizzando uno smartphone.
-		\newpage
 		\subsection{Accessibilità}
 			\subsubsection{Attributi HTML}
 				Per rendere il sito più accessibile agli screen reader sono stati usati diversi attributi HTML.
 					\begin{itemize}
 						\item {\bfseries lang}: utilizzato per indicare in che lingua deve essere pronunciata una parola o frase. Facendo dei test con il software gratuito NVDA abbiamo notato che le parole identificate usando {\textit xml:lang} non venivano lette nella lingua corretta, si è quindi optato di usare l'attributo HTML5 {\textit lang} in tutte le pagine e testato che queste continuassero ad essere validate dal validatore W3C per xhtml1.0 strict.
-						\item  {\bfseries aAlt}: utilizzato nelle immagini per fornire una breve descrizione di quello che viene raffigurato.
+						\item  {\bfseries alt}: utilizzato nelle immagini per fornire una breve descrizione di quello che viene raffigurato.
 						\item {\bfseries scope}: utilizzato per facilitare la lettura delle tabelle.
 						\item  {\bfseries tabindex}: utilizzato per assicurarsi un ordine corretto di spostamento tra i link utilizzando il tab.
 						\item  {\bfseries label}: utilizzato nei form per collegare la label al campo di input e facilitare la selezione di quest'ultimo.
 					\end{itemize}
-				\'E stato inoltre usato un suggerimento per gli screen reader fornendo un link prima del menu così da poterlo saltare e andare direttamente al contenuto della pagina. 
 			\subsubsection{Colori}
 				I colori del sito sono stati selezionati apposta per passare il test WCAG AAA che richiede un rapporto di contrasto di almeno 7:1 per il testo normale e 4.5:1 per il testo in grassetto. Di seguito è riportata la tabella dei colori del testo e del loro sfondo e il loro rapporto di contrasto.
+				Sempre riguardo alla scelta dei colori, si è scelto un colore differente per i link visitati in modo tale da facilitare all'utente la ricostruzione del percorso che ha compiuto fino a quel momento nel sito. A questo proposito si è utilizzata anche una sezione "breadcrumb" per facilitare lo stesso compito.
 				\captionsetup[table]{name=Tabella}
 				\setlength{\tabcolsep}{18pt}
 				\renewcommand{\arraystretch}{1.5}
@@ -153,9 +163,17 @@
 						\end{tabular}
 					\end{center}
 				\end{table}
+			
 			\subsubsection{Altri elementi di accessibilità}
-				%colore link visitati, link circolari, accessibilità mobile, breadcrumb, uso di standard web (w3c validated), carousel non atuomatico, torna su, evitato font scorrevoli/lampeggianti/troppo elaborati/testo sbarrato, immagine logo come sfondo perchè non costrituisce parte del contenuto, menu ad hamburger cmq visibile dagli screen reader perchè non è stato usato display:none, suggerimento screen reader (ora si trova nel paragrafo attributi html)
-	\section{Implementazione}
+			\begin{itemize}
+				\item \'E stato usato un suggerimento per gli screen reader fornendo un link prima del menu così da poterlo saltare e andare direttamente al contenuto della pagina. 
+				\item Sono stati rimossi i link circolari per evitare confusione negli utenti e permettere di identificare univocamente il percorso raggiunto.
+				\item Sono state utilizzate delle strutture responsive per rendere l'impatto di un passaggio da visualizzazione desktop a visualizzazione mobile e viceversa il meno forte possibile. Sempre riguardo al mobile, ma non solo, sono stati introdotti dei link di "torna su" per facilitare la navigazione nelle pagine più lunghe.
+				\item Nella creazione dello slideshow presente nella home dell'utente si è tenuto conto del possibile disagio che potrebbero arrecare immagini in continuo movimento e quindi si è deciso di abilitare il cambio immagine solo manualmente.
+				\item Si sono evitati testi scorrevoli, lampeggianti, barrati ed in generale font troppo elaborati per agevolare la lettura.
+				\item Il logo della pagina, non essendo parte del contenuto della pagina, è stato inserito come elemento di background.
+				\item Il menù ad hamburger presente nella modalità di visualizzazione mobile, anche se non visibile dal'utente quando è chiuso, rimane comunque visibile agli screenreader in quanto non è stata utilizzata la proprietà display:none bensì è stato spostato fuori dall'interfaccia visualizzata. 
+			\end{itemize}
 		
 		\subsection{Linguaggi}
 			
