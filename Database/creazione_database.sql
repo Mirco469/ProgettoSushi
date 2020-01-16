@@ -109,27 +109,26 @@ DROP TABLE IF EXISTS Ordine;
 CREATE TABLE Ordine(
 	id_ordine			INT PRIMARY KEY AUTO_INCREMENT,
 	data_ordine		DATETIME NOT NULL,
-	data_consegna		DATETIME,
+	data_consegna		DATETIME NOT NULL,
 	totale				FLOAT NOT NULL,
 	destinazione	INT,
-	utente 			VARCHAR(20) NOT NULL,
-	FOREIGN KEY (destinazione) REFERENCES Destinazione(id_destinazione) ON DELETE NO ACTION
+	FOREIGN KEY (destinazione) REFERENCES Destinazione(id_destinazione) ON DELETE SET NULL
 );
 
 -- Inserimento dati nella tabella Ordine
 
-INSERT INTO Ordine (id_ordine, data_ordine, data_consegna, totale, destinazione, utente) VALUES 
-(301, '2019-02-19 12:30:00', '2019-02-19 13:30:00', 27.00, 1, 'user'),
-(302, '2019-03-22 20:00:00', '2019-03-22 21:00:00', 28.00, 2, 'user'),
-(303, '2019-04-11 13:30:00', '2019-04-11 14:30:00', 33.00, 3, 'user1'),
-(304, '2019-05-09 19:00:00', '2019-05-09 20:00:00', 31.50, 4, 'user2'),
-(305, '2019-05-07 20:30:00', '2019-05-07 21:30:00', 46.50, 5, 'user3'),
-(306, '2019-06-12 12:45:00', '2019-06-12 13:45:00', 40.00, 6, 'user4'),
-(307, '2019-07-23 13:15:00', '2019-07-23 14:15:00', 36.50, 7, 'user5'),
-(308, '2019-08-29 12:30:00', NULL, 66.00, NULL, 'user'),
-(309, '2019-10-16 13:00:00', NULL, 15.50, NULL, 'user'),
-(310, '2020-01-10 20:15:00', NULL, 42.50, NULL, 'user1'),
-(311, '2020-01-14 14:00:00', NULL, 57.50, NULL, 'user2');
+INSERT INTO Ordine (id_ordine, data_ordine, data_consegna, totale, destinazione) VALUES 
+(301, '2019-02-19 12:30:00', '2019-02-19 13:30:00', 27.00, 1),
+(302, '2019-03-22 20:00:00', '2019-03-22 21:00:00', 28.00, 2),
+(303, '2019-04-11 13:30:00', '2019-04-11 14:30:00', 33.00, 3),
+(304, '2019-05-09 19:00:00', '2019-05-09 20:00:00', 31.50, 4),
+(305, '2019-05-07 20:30:00', '2019-05-07 21:30:00', 46.50, 5),
+(306, '2019-06-12 12:45:00', '2019-06-12 13:45:00', 40.00, 6),
+(307, '2019-07-23 13:15:00', '2019-07-23 14:15:00', 36.50, 7),
+(308, '2019-08-29 12:30:00', '2019-08-29 13:30:00', 66.00, 1),
+(309, '2019-10-16 13:00:00', '2019-10-16 14:00:00', 15.50, 2),
+(310, '2020-01-10 20:15:00', '2020-01-10 21:15:00', 42.50, 3),
+(311, '2020-01-14 14:00:00', '2020-01-14 15:00:00', 57.50, 4);
 
 -- Crea la tabella Tabella Prodotto
 
