@@ -33,7 +33,7 @@ body a:visited {
 
 /* Stili messaggi di errore e successo PHP*/
 .errore{
-	color: red;
+	color: #FF8F8F;
 }
 
 .successo{
