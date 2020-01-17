@@ -140,7 +140,7 @@ table.defaultTable td:last-child {
 	border-radius: 5px;
 }
 
-#carrello input[type="text"] {
+#carrello input[type="number"] {
 	text-align: center;
 	width: 2.5em;
 }

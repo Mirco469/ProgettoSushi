@@ -1072,7 +1072,15 @@ min-height: 465px;
 	padding: 1em;
 }
 
-#carrello input[type="text"] {
+/*	Rimozione delle frecciette per aumentare e diminuire il numero	*/
+#carrello input[type="number"]::-webkit-outer-spin-button,
+#carrello input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#carrello input[type="number"] {
+	-moz-appearance:textfield;
 	text-align: center;
 	max-width: 4em;
 }
