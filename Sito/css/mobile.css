@@ -978,17 +978,8 @@ min-height: 465px;
 	text-align: center;
 }
 
-#aggiunta_prodotti form input[type=submit]{
-	background-color: #4a0715;
-    border: solid 4px #4a0715;
-    border-radius: 5px;
-	color: #d9d9d9;
-	margin-top: 1em;
-}
-
-#aggiunta_prodotti form input[type=submit]:hover{
-	background-color: #990000;
-	border: solid 4px #990000;
+.defaultForm .buttonSmall{
+	float: none;
 }
 
 #aggiunta_prodotti .defaultForm{
@@ -1083,7 +1074,15 @@ min-height: 465px;
 	padding: 1em;
 }
 
-#carrello input[type="text"] {
+/*	Rimozione delle frecciette per aumentare e diminuire il numero	*/
+#carrello input[type="number"]::-webkit-outer-spin-button,
+#carrello input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#carrello input[type="number"] {
+	-moz-appearance:textfield;
 	text-align: center;
 	max-width: 4em;
 }
