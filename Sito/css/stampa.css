@@ -140,7 +140,7 @@ table.defaultTable td:last-child {
 	border-radius: 5px;
 }
 
-#carrello input[type="text"] {
+#carrello input[type="number"] {
 	text-align: center;
 	width: 2.5em;
 }
@@ -345,7 +345,9 @@ table.defaultTable td:last-child {
 	text-align: left;
 }
 
-
+#aggiunta_prodotti a.buttonSmall {
+    display: none;
+}
 
 /* Pagina Successo */
 #successo{
