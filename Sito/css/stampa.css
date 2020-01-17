@@ -352,7 +352,9 @@ table.defaultTable td:last-child {
 	text-align: left;
 }
 
-
+#aggiunta_prodotti a.buttonSmall {
+    display: none;
+}
 
 /* Pagina Successo */
 #successo{
