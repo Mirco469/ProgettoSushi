@@ -71,7 +71,7 @@
 					}
 					if (!checkCAP($cap))
 					{
-						$erroriDest .= '<li>Il CAP deve contenere solo numeri</li>';
+						$erroriDest .= '<li>Il CAP deve essere di Padova e contenere solo numeri</li>';
 					}
 					if (!checkMaxLen($cap, 5))
 					{
