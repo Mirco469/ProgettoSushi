@@ -27,6 +27,10 @@
 				exit;
 			}
 		}
+		else
+		{
+			caricaPagina();
+		}
 	}
 	else if (isset($_POST['action']) && $_POST['action'] == 'aggiungi')
 	{
@@ -34,7 +38,10 @@
 		echo json_encode(array('result'=>false,'error'=>'login error'));
 		exit;
 	}
-	caricaPagina();
+	else
+	{
+		caricaPagina();
+	}
 
 	function caricaPagina()
 	{
