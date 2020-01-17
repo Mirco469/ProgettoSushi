@@ -363,7 +363,11 @@
 
 		public function getOrdini($username='') {
 			if($username == '') {
-				$query = $this->connection->prepare("SELECT O.*, U.username FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username ORDER BY O.data_ordine DESC");
+				$query = $this->connection->prepare("SELECT * FROM (
+					SELECT O.*, U.username FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username
+					UNION ALL
+					SELECT O.*, '' AS username FROM Ordine O WHERE O.destinazione IS NULL
+				) A ORDER BY A.data_ordine DESC");
 				$query->execute();
 				$queryResult = $query->get_result();
 			} else {
@@ -461,8 +465,12 @@
 					return -1;
 				}
 			} else {
-				$query = $this->connection->prepare("SELECT O.*, D.*, U.username FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username WHERE O.id_ordine = ?");
-				$query->bind_param('s',$id_ordine);
+				$query = $this->connection->prepare("SELECT * FROM (
+					SELECT O.*, D.*, U.username FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username WHERE O.id_ordine = ?
+					UNION ALL
+					SELECT O.*, '' AS id_destinazione, '' AS nome_cognome, '' AS numero_telefonico, '' AS CAP, '' AS via, '' AS numero_civico, '' AS utente, '' AS username FROM Ordine O WHERE O.id_ordine = ?
+				) A");
+				$query->bind_param('ss',$id_ordine,$id_ordine);
 				$query->execute();
 				//echo $query->info; exit;
 				$queryResult = $query->get_result();
