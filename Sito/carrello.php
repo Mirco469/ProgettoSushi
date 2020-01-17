@@ -57,7 +57,7 @@
 				
 				$content .= '</dl>
 				<p class="totaleText">Totale: <span id="totaleValue">'.number_format(getTotaleCarrello(), 2, ',', '.').'</span>€</p>
-				<a id="paga" href="pagamento.html">Vai a pagamento</a>';
+				<a id="paga" href="pagamento.php">Vai a pagamento</a>';
 			
 			} else {
 				$content = '<p>Il carrello attualmente è vuoto. Se vuoi ordinare qualcosa recati alla pagina <a href="take_away.php" lang="en">Take Away</a></p>';
