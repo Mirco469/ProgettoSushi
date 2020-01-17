@@ -55,7 +55,7 @@
 					}
 					if (!checkAlfanumericoESpazi($via))
 					{
-						$erroriDest .= '<li>La via non deve contenere caratteri speciali</li>';
+						$erroriDest .= '<li>La via non deve contenere caratteri speciali ed essere lunga almeno due caratteri</li>';
 					}
 					if (!checkMaxLen($via, 20))
 					{
@@ -79,11 +79,11 @@
 					}
 					if (!checkSoloNumeriEDIm($tel))
 					{
-						$erroriDest .= '<li>Non hai inserito un numero telefonico valido</li>';
+						$erroriDest .= '<li>Il numero telefonico può contenere solo cifre</li>';
 					}
 					if (!checkMaxLen($tel, 15))
 					{
-						$erroriDest .= '<li>Il numero telefonico non deve contenere più di 15 caratteri</li>';
+						$erroriDest .= '<li>Il numero telefonico non deve contenere più di 15 cifre</li>';
 					}
 
 					if (strlen($erroriDest) == 0)
