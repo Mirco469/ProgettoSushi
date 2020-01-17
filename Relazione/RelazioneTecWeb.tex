@@ -12,6 +12,10 @@
 	linkcolor=black,
 	urlcolor=blue
 }
+\usepackage[table]{xcolor}
+\usepackage{caption}
+% Colore rosso custom, linea in ogni pagina
+\definecolor{custom}{RGB}{192,53,53}
 
 % Header e footer
 \pagestyle{fancy}
@@ -45,7 +49,18 @@
 				& Tommasin Alessandro - 1189293\\ 
 			\end{tabular}
 		\end{center}
-		
+		\vspace*{2cm}
+		{\bfseries \centerline{Account disponibili}}
+		\begin{center}
+			\begin{tabular}{ c|c|c } 
+			\textbf{Classe di utenza} & \textbf{Username} & \textbf{Password} \\
+				\hline
+				 Amministratore &  admin &  admin  \\ 
+				\hline
+				 Utente &  user &  user  \\ 
+				\hline
+			\end{tabular}
+		\end{center}
 		\vspace*{\fill}
 		
 	\end{titlepage}
@@ -115,10 +130,53 @@
 		    La principale differenza tra i layout scelti sta nella posizione e presentazione del menù di navigazione. 
 		    \newline Nei device con finestre di visualizzazione sufficentemente larghe si è scelto di disporre le voci del menù in riga, creando quindi una barra di navigazione. I link alle varie pagine principali del sito sono disposte a partire da sinistra, mentre quelli riguardanti pagine per gli utenti e le operazioni a loro disposizione si trovano a partire da destra.
 		    \newline Nei dispositivi più piccoli si è deciso invece di creare un menù espandibile, raggiungibile premendo sull'icona ad hamburger nell'angolo in alto a destra, che mostra tutte le voci disponibili, per rispettare il comportamento più comune che un utente medio si aspetta utilizzando uno smartphone.
-		
 		\subsection{Accessibilità}
-	
-	\section{Implementazione}
+			\subsubsection{Attributi HTML}
+				Per rendere il sito più accessibile agli screen reader sono stati usati diversi attributi HTML.
+					\begin{itemize}
+						\item {\bfseries lang}: utilizzato per indicare in che lingua deve essere pronunciata una parola o frase. Facendo dei test con il software gratuito NVDA abbiamo notato che le parole identificate usando {\textit xml:lang} non venivano lette nella lingua corretta, si è quindi optato di usare l'attributo HTML5 {\textit lang} in tutte le pagine e testato che queste continuassero ad essere validate dal validatore W3C per xhtml1.0 strict.
+						\item  {\bfseries alt}: utilizzato nelle immagini per fornire una breve descrizione di quello che viene raffigurato.
+						\item {\bfseries scope}: utilizzato per facilitare la lettura delle tabelle.
+						\item  {\bfseries tabindex}: utilizzato per assicurarsi un ordine corretto di spostamento tra i link utilizzando il tab.
+						\item  {\bfseries label}: utilizzato nei form per collegare la label al campo di input e facilitare la selezione di quest'ultimo.
+					\end{itemize}
+			\subsubsection{Colori}
+				I colori del sito sono stati selezionati apposta per passare il test WCAG AAA che richiede un rapporto di contrasto di almeno 7:1 per il testo normale e 4.5:1 per il testo in grassetto. Di seguito è riportata la tabella dei colori del testo e del loro sfondo e il loro rapporto di contrasto.
+				\captionsetup[table]{name=Tabella}
+				\setlength{\tabcolsep}{18pt}
+				\renewcommand{\arraystretch}{1.5}
+				\begin{table}[htp] %placecement parameter H
+					\begin{center}
+						\caption {Rapporto contrasti testo-sfondo}
+						\rowcolors{2}{black!5}{black!17} \normalsize\mdseries
+						\begin{tabular}{ c c c }
+							\rowcolor{custom}
+							\bfseries\color{white} Colore testo & \bfseries\color{white} Colore sfondo & \bfseries\color{white} Rapporto \\
+							\#D9D9D9 & \#1F1D1D & 11.88:1  \\ %bianco cenere su nero
+							\#E0AC00 & \#4A0715 & 7.55:1  \\ %giallo scuro menu visitato su rosso bordò
+							\#F5E900 & \#4A0715 & 12.41:1  \\ %giallo chiaro menu NON visitato su rosso bordò
+							\#E0AC00 & \#1F1D1D & 8.04:1  \\ %
+							\#F5E900 & \#1F1D1D & 13.21:1  \\ %
+							\#D9D9D9 & \#333333 & 8.95:1  \\ %
+							\#D9D9D9 & \#4A0715 & 11.16:1  \\ %
+							\#00C700 & \#1F1D1D & 8.59:1  \\ % Colore scritta successo
+							\#FF8F8F & \#1F1D1D & 7.65:1  \\ 
+						\end{tabular}
+					\end{center}
+				\end{table}
+				\newline
+				Sempre riguardo alla scelta dei colori, si è scelto un colore differente per i link visitati in modo tale da facilitare all'utente la ricostruzione del percorso che ha compiuto fino a quel momento nel sito. A questo proposito si è utilizzata anche una sezione "breadcrumb" per facilitare lo stesso compito.
+			\subsubsection{Altri elementi di accessibilità}
+			\begin{itemize}
+				\item \'E stato usato un suggerimento per gli screen reader fornendo un link prima del menu così da poterlo saltare e andare direttamente al contenuto della pagina. 
+				\item Sono stati rimossi i link circolari per evitare confusione negli utenti e permettere di identificare univocamente il percorso raggiunto.
+				\item Sono state utilizzate delle strutture responsive per rendere l'impatto di un passaggio da visualizzazione desktop a visualizzazione mobile e viceversa il meno forte possibile. Sempre riguardo al mobile, ma non solo, sono stati introdotti dei link di "torna su" per facilitare la navigazione nelle pagine più lunghe.
+				\item Nella creazione dello slideshow presente nella home dell'utente si è tenuto conto del possibile disagio che potrebbero arrecare immagini in continuo movimento e quindi si è deciso di abilitare il cambio immagine solo manualmente.
+				\item Si sono evitati testi scorrevoli, lampeggianti, barrati ed in generale font troppo elaborati per agevolare la lettura.
+				\item Il logo della pagina, non essendo parte del contenuto della pagina, è stato inserito come elemento di background.
+				\item Il menù ad hamburger presente nella modalità di visualizzazione mobile, anche se non visibile dal'utente quando è chiuso, rimane comunque visibile agli screenreader in quanto non è stata utilizzata la proprietà display:none bensì è stato spostato fuori dall'interfaccia visualizzata. 
+				\item La dimensione originale delle immagini è stata ridimensionata per coincidere con la dimensione effettivamente usata nel sito così da far scaricare meno dati all'utente e rendere il caricamento delle pagine più veloce.
+			\end{itemize}
 		
 		\subsection{Linguaggi}
 			
@@ -180,7 +238,7 @@
 	\section{Organizzazione del lavoro}
 		Il progetto è stato suddiviso in modo tale che ogni membro avesse la possibilità di creare sia alcune pagine HTML che il relativo CSS, facendo da verificatore nelle pagine degli altri membri.
 		Lo stesso può essere detto per quanto concerne PHP, JavaScript e la creazione ed il popolamento del database.
-		La sviluppo può essere seguito nella repository di GitHub utilizzata:
+		Lo sviluppo può essere seguito nella repository di GitHub utilizzata:
 		\newline
 		\newline
 		\centerline{ \url{https://github.com/Mirco469/ProgettoSushi}}
