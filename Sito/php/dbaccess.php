@@ -169,10 +169,10 @@
             return $query->execute();
         }
 
-		public function addOrdine($dataOrdine, $dataConsegna, $totale, $destinazione, $user)
+		public function addOrdine($dataOrdine, $dataConsegna, $totale, $destinazione)
 		{
-            $query = $this->connection->prepare('INSERT INTO Ordine (data_ordine, data_consegna, totale, destinazione, utente) VALUES (?,?,?,?,?)');
-			$query->bind_param('ssbss', $dataOrdine, $dataConsegna, $totale, $destinazione, $user);
+            $query = $this->connection->prepare('INSERT INTO Ordine (data_ordine, data_consegna, totale, destinazione) VALUES (?,?,?,?)');
+			$query->bind_param('ssss', $dataOrdine, $dataConsegna, $totale, $destinazione);
             if($query->execute())
             {
                 return true;
@@ -182,7 +182,7 @@
                 header("Location: errore500.php");
             }
 		}
-        
+
         //Dato il nome di un prodotto e le sue nuove informazioni lo modifica
         public function modifyProdotto($nome, $categoria, $pezzi, $prezzo, $descrizione)
         {

@@ -3,9 +3,6 @@
 	require_once("php/dbaccess.php");
 
     session_start();
-	#Login per testare la pagina;
-	$_SESSION['username'] = "user"; #da togliere
-	$_SESSION['password'] = "user"; #da togliere
 
 	if (isset($_SESSION['username']))
 	{
@@ -50,7 +47,7 @@
 
 					if (!checkNomeCognome($nome_cognome))
 					{
-						$erroriDest .= "<li>Il nome deve contenere solo lettere e non contenere meno di due caratteri</li>";
+						$erroriDest .= '<li>Il nome deve contenere solo lettere ed essere lungo almeno due caratteri</li>';
 					}
 					if (!checkMaxLen($nome_cognome, 40))
 					{
@@ -58,15 +55,15 @@
 					}
 					if (!checkAlfanumericoESpazi($via))
 					{
-						$erroriDest .= "<li>La via non deve contenere caratteri speciali</li>";
+						$erroriDest .= '<li>La via non deve contenere caratteri speciali</li>';
 					}
 					if (!checkMaxLen($via, 20))
 					{
-						$erroriDest .= '<li>Il nome dell\'indirizzo non deve contenere più di 15 caratteri</li>';
+						$erroriDest .= '<li>La via non deve contenere più di 20 caratteri</li>';
 					}
 					if (!checkCivico($civico))
 					{
-						$erroriDest .= "<li>Il numero civico deve essere nel formato corretto (e.g. 4, 4b, 4/b, 4-b)</li>";
+						$erroriDest .= '<li>Il numero civico deve essere nel formato corretto (e.g. 4, 4b, 4/b, 4-b)</li>';
 					}
 					if (!checkMaxLen($civico, 10))
 					{
@@ -74,7 +71,7 @@
 					}
 					if (!checkCAP($cap))
 					{
-						$erroriDest .= "<li>Il CAP deve contenere solo numeri</li>";
+						$erroriDest .= '<li>Il CAP deve contenere solo numeri</li>';
 					}
 					if (!checkMaxLen($cap, 5))
 					{
@@ -82,7 +79,7 @@
 					}
 					if (!checkSoloNumeriEDIm($tel))
 					{
-						$erroriDest .= "<li>Non hai inserito un numero telefonico valido</li>";
+						$erroriDest .= '<li>Non hai inserito un numero telefonico valido</li>';
 					}
 					if (!checkMaxLen($tel, 15))
 					{
@@ -162,6 +159,7 @@
 					$dataOrdine = date("Y-m-d H:i:s");
 					$dataConsegna = date("Y-m-d H+1:i:s");
 
+					# Prendo o la destinazione scelta tra quelle salvate, oppure l'ultima inserita relativa all'utente
 					$idDestinazione = "";
 					$maxId = 0;
 					$queryResult = $db->getDestinazioni($user);
@@ -184,11 +182,12 @@
 						$idDestinazione = $maxId;
 					}
 
-					if (!$db->addOrdine($dataOrdine, $dataConsegna, $totale, $idDestinazione, $user))
+					if (!$db->addOrdine($dataOrdine, $dataConsegna, $totale, $idDestinazione))
 					{
 						header('location: errore500.php');
 					}
 
+					# Prendo l'ultimo ordine relativo all'utente
 					$idOrdine = 0;
 					$queryResult = $db->getOrdini($user);
 					while ($row = mysqli_fetch_assoc($queryResult))
@@ -358,7 +357,7 @@
 			</p>
 			<p>
 			<label for=\"cvv_carta\" lang=\"en\"><abbr title=\"Card Verification Value\">CVV</abbr>: </label>
-			<input type=\"text\" id=\"cvv_carta\" name=\"cvv_carta\" maxlength=\"3\" value=\"$cvv\" />
+			<input type=\"text\" id=\"cvv_carta\" name=\"cvv_carta\" value=\"$cvv\" />
 			</p>
 			";
 			$paginaHTML = str_replace('<formCarta />', $formCarta, $paginaHTML);
