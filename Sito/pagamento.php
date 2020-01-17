@@ -190,17 +190,18 @@
 					# Prendo l'ultimo ordine relativo all'utente
 					$idOrdine = 0;
 					$queryResult = $db->getOrdini($user);
-					while ($row = mysqli_fetch_assoc($queryResult))
+					foreach($queryResult AS $row )
 					{
-						if ($row['id_ordine'] > $idOrdine)
+						if ($row->id_ordine > $idOrdine)
 						{
-							$idOrdine = $row['id_ordine'];
+							$idOrdine = $row->id_ordine;
 						}
 					}
-					foreach ($_SESSION['carrello'] AS $prodotto => $row)
+					foreach ($_SESSION['carrello'] AS $row)
 					{
+						$nomeProdotto = $row['nome'];
 						$quantita = $row['quantita'];
-						if (!$db->addContiene($idOrdine, $prodotto, $quantita))
+						if (!$db->addContiene($idOrdine, $nomeProdotto, $quantita))
 						{
 							header('location: errore500.php');
 						}

@@ -64,10 +64,7 @@
             {
                 return false;
             }
-            else
-            {
-                return true;
-            }
+            return true;
         }
 
         public function modificaPagamento($utente, $intestatario, $num_carta, $mese_scadenza, $anno_scadenza)
