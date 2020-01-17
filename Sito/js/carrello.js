@@ -43,6 +43,8 @@ function setQuantita(nome, quantita) {
 				
 				document.getElementById('dt-'+nome).remove();
 				document.getElementById('dd-'+nome).remove();
+			} else if(data.error == 'The request is not valid') {
+				window.location.reload();
 			}
 		}	
 	}
@@ -79,6 +81,8 @@ function rmProdotto(nome) {
 					document.getElementById('dd-'+nome).remove();
 				}
 				
+			} else if(data.error == 'The request is not valid') {
+				window.location.reload();
 			}
 		}	
 	}

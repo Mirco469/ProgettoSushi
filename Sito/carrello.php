@@ -7,70 +7,85 @@
 		$_SESSION['carrello'] = array();
 	}
 	
-	if( isset($_POST['action']) ) {
-		if( $_POST['action'] == 'edit' ) {
-			setQuantita($_POST['name'],$_POST['quantity']);
-		} else if($_POST['action'] == 'remove') {
-			rmProdotto($_POST['name']);
-		}
-		//echo json_encode(array('index'=>$_POST['index'],'amount'=>$_POST['amount']));exit;
-	} else {
-		/*
-		$_SESSION['carrello'] = array(
-			'maguro' => array(
-				'nome' => 'maguro',
-				'categoria' => 'uramaki',
-				'quantita' => 2,
-				'prezzo' => 4
-			),
-			'tartara di tonno' => array(
-				'nome' => 'tartara di tonno',
-				'categoria' => 'antipasti',
-				'quantita' => 1,
-				'prezzo' => 6
-			)
-		);
-		*/
-		loadPagina();
-	}
-		
-	function loadPagina() {
-		if( session_status() != PHP_SESSION_NONE && $_SESSION['username'] != null ) {
-			
-			if( count($_SESSION['carrello']) > 0 ) {
-				
-				$totale = 0;
-				$content = '<dl class="defaultLista">';
-				
-				foreach( $_SESSION['carrello'] AS $row ) {
-					$content .= '<dt id="dt-'.$row['nome'].'">'.
-						$row['nome'].' - <a href="prodotti.html#'.$row['categoria'].'">'.$row['categoria'].'</a>
-						<input title="Rimuovi '.$row['nome'].'" class="rimuovi" type="button" name="rimuovi" onclick="rmProdotto(\''.$row['nome'].'\')" value="Rimuovi" />
-					</dt>
-					<dd id="dd-'.$row['nome'].'">
-						<input title="sottrai '.$row['nome'].' di 1" type="button" name="minus" onclick="rmQuantita(\''.$row['nome'].'\')" value="-" /><!-- togli_prodotto -->
-						<input id="qt-'.$row['nome'].'" type="number" name="quantita" readonly="readonly" value="'.$row['quantita'].'" /><!-- numero prodotto -->
-						<input title="aggiungi '.$row['nome'].' di 1" type="button" name="plus" onclick="addQuantita(\''.$row['nome'].'\')" value="+" /><!-- aggiungi_prodotto -->
-						<span id="tot-'.$row['nome'].'">Prezzo: '.number_format($row['prezzo'], 2, ',', '.').'€</span>
-					</dd>';
+	if( isset($_SESSION['username']) ) {
+		if( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
+			if( isset($_POST['action']) ) {
+				if( $_POST['action'] == 'edit' ) {
+					setQuantita($_POST['name'],$_POST['quantity']);
+				} else if($_POST['action'] == 'remove') {
+					rmProdotto($_POST['name']);
+				} else {
+					header('Content-Type: application/json');
+					echo json_encode(array('result'=>false,'error'=>'The request is not valid'));
+					exit;
 				}
-				
-				$content .= '</dl>
-				<p class="totaleText">Totale: <span id="totaleValue">'.number_format(getTotaleCarrello(), 2, ',', '.').'</span>€</p>
-				<a id="paga" href="pagamento.html">Vai a pagamento</a>';
-			
 			} else {
-				$content = '<p>Il carrello attualmente è vuoto. Se vuoi ordinare qualcosa recati alla pagina <a href="takeaway.php" lang="en">Take Away</a></p>';
+				header('Content-Type: application/json');
+				echo json_encode(array('result'=>false,'error'=>'The request is not valid'));
+				exit;
 			}
-			$paginaHTML = file_get_contents('html/carrello.html');
-		
-			$paginaHTML = str_replace('<menu />',getMenu(),$paginaHTML);
-			$paginaHTML = str_replace('<carrello/>',$content,$paginaHTML);
-			
-			echo $paginaHTML;
+				//echo json_encode(array('index'=>$_POST['index'],'amount'=>$_POST['amount']));exit;
+		} else {
+			/*
+			$_SESSION['carrello'] = array(
+				'maguro' => array(
+					'nome' => 'maguro',
+					'categoria' => 'uramaki',
+					'quantita' => 2,
+					'prezzo' => 4
+				),
+				'tartara di tonno' => array(
+					'nome' => 'tartara di tonno',
+					'categoria' => 'antipasti',
+					'quantita' => 1,
+					'prezzo' => 6
+				)
+			);
+			*/
+			loadPagina();
+		}
+	} else {
+		if( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
+			header('Content-Type: application/json');
+			echo json_encode(array('result'=>false,'error'=>'The request is not valid'));
+			exit;
 		} else {
 			header("location: errore403.php");
 		}
+	}
+		
+	function loadPagina() {
+		if( count($_SESSION['carrello']) > 0 ) {
+			
+			$totale = 0;
+			$content = '<dl class="defaultLista">';
+			
+			foreach( $_SESSION['carrello'] AS $row ) {
+				$content .= '<dt id="dt-'.$row['nome'].'">'.
+					$row['nome'].' - <a href="prodotti.html#'.$row['categoria'].'">'.$row['categoria'].'</a>
+					<input title="Rimuovi '.$row['nome'].'" class="rimuovi" type="button" name="rimuovi" onclick="rmProdotto(\''.$row['nome'].'\')" value="Rimuovi" />
+				</dt>
+				<dd id="dd-'.$row['nome'].'">
+					<input title="sottrai '.$row['nome'].' di 1" type="button" name="minus" onclick="rmQuantita(\''.$row['nome'].'\')" value="-" /><!-- togli_prodotto -->
+					<input id="qt-'.$row['nome'].'" type="number" name="quantita" readonly="readonly" value="'.$row['quantita'].'" /><!-- numero prodotto -->
+					<input title="aggiungi '.$row['nome'].' di 1" type="button" name="plus" onclick="addQuantita(\''.$row['nome'].'\')" value="+" /><!-- aggiungi_prodotto -->
+					<span id="tot-'.$row['nome'].'">Prezzo: '.number_format($row['prezzo'], 2, ',', '.').'€</span>
+				</dd>';
+			}
+			
+			$content .= '</dl>
+			<p class="totaleText">Totale: <span id="totaleValue">'.number_format(getTotaleCarrello(), 2, ',', '.').'</span>€</p>
+			<a id="paga" href="pagamento.html">Vai a pagamento</a>';
+		
+		} else {
+			$content = '<p>Il carrello attualmente è vuoto. Se vuoi ordinare qualcosa recati alla pagina <a href="take_away.php" lang="en">Take Away</a></p>';
+		}
+		$paginaHTML = file_get_contents('html/carrello.html');
+	
+		$paginaHTML = str_replace('<menu />',getMenu(),$paginaHTML);
+		$paginaHTML = str_replace('<carrello/>',$content,$paginaHTML);
+		
+		echo $paginaHTML;
 	}
 	
 	function setQuantita($nome,$nuovaQuantita) {
@@ -104,6 +119,7 @@
 		
 		header('Content-Type: application/json');
 		echo json_encode($result);
+		exit;
 	}
 	
 	function rmProdotto($nome) {
@@ -123,6 +139,7 @@
 		
 		header('Content-Type: application/json');
 		echo json_encode($result);
+		exit;
 	}
 
 	function getTotaleCarrello() {
