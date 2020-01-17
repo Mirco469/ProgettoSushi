@@ -14,19 +14,19 @@
 				$prodotto = $db->getInfoProdotto($nomeProdotto);
 				if ($prodotto == null) 
 				{
-					window.location.replace("errore500.php");
+					# reindirizzare a errore500.php
 				}
 				addToCart($prodotto['nome'], $prodotto['categoria'], $prodotto['prezzo']);
 			}
 			else 
 			{
-				window.location.replace("errore500.php");
+				# reindirizzare a errore500.php
 			}
 		}
 	}
 	else if (isset($_POST['action']) && $_POST['action'] == 'aggiungi')
 	{
-		window.location.replace("login.php");
+		# reindirizzare a login.php
 	}
 	caricaPagina();
 
