@@ -3,28 +3,32 @@
 
 	session_start();
 
-	if (isset($_SESSION['username']) && isset($_POST['action']) && $_POST['action'] == 'aggiungi')
+	if (isset($_SESSION['username']))
 	{
-		$db =  new DBAccess();
-		if ($db->openDBConnection())
+		if (isset($_POST['action']) && $_POST['action'] == 'aggiungi')
 		{
-			$nomeProdotto = $_POST['name'];
-			$prodotto = $db->getInfoProdotto($nomeProdotto);
-			if ($prodotto == null) 
+			$db =  new DBAccess();
+			if ($db->openDBConnection())
 			{
-				header('location: errore500.php');
+				$nomeProdotto = $_POST['name'];
+				$prodotto = $db->getInfoProdotto($nomeProdotto);
+				if ($prodotto == null) 
+				{
+					window.location.replace("errore500.php");
+				}
+				addToCart($prodotto['nome'], $prodotto['categoria'], $prodotto['prezzo']);
 			}
-			addToCart($prodotto['nome'], $prodotto['categoria'], $prodotto['prezzo']);
-		}
-		else
-		{
-			header('location: errore500.php');
+			else 
+			{
+				window.location.replace("errore500.php");
+			}
 		}
 	}
-	else
+	else if (isset($_POST['action']) && $_POST['action'] == 'aggiungi')
 	{
-		caricaPagina();
+		window.location.replace("login.php");
 	}
+	caricaPagina();
 
 	function caricaPagina()
 	{
