@@ -13,7 +13,7 @@
 				$listaOrdini = '<dl class="defaultLista">';
 				
 				foreach( $ordini AS $row ) {
-					$listaOrdini .= '<dt class="idordine">ID ordine: '.$row->id_ordine.' - '.$row->username.'<a class="buttonSmall" href="dettagli_ordine.php?id_ordine='.$row->id_ordine.'">Dettagli Ordine</a></dt>
+					$listaOrdini .= '<dt class="idordine">ID ordine: '.$row->id_ordine.($row->username != '' ? ' - '.$row->username : '' ).'<a class="buttonSmall" href="dettagli_ordine.php?id_ordine='.$row->id_ordine.'">Dettagli Ordine</a></dt>
 					<dd>
 						<span>Data ordine: '.$row->data_ordine.'</span>
 						<span>Data consegna: '.$row->data_consegna.'</span>
