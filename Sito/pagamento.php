@@ -157,7 +157,7 @@
 
 					$totale = getTotaleCarrello();
 					$dataOrdine = date("Y-m-d H:i:s");
-					$dataConsegna = date("Y-m-d H+1:i:s");
+					$dataConsegna = date("Y-m-d H:i:s",time()+3600);
 
 					# Prendo o la destinazione scelta tra quelle salvate, oppure l'ultima inserita relativa all'utente
 					$idDestinazione = "";

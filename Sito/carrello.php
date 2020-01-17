@@ -44,7 +44,7 @@
 				
 				foreach( $_SESSION['carrello'] AS $row ) {
 					$content .= '<dt id="dt-'.$row['nome'].'">'.
-						$row['nome'].' - <a href="prodotti.html#'.$row['categoria'].'">'.$row['categoria'].'</a>
+						$row['nome'].' - <a href="prodotti.php#'.$row['categoria'].'">'.$row['categoria'].'</a>
 						<input title="Rimuovi '.$row['nome'].'" class="rimuovi" type="button" name="rimuovi" onclick="rmProdotto(\''.$row['nome'].'\')" value="Rimuovi" />
 					</dt>
 					<dd id="dd-'.$row['nome'].'">
