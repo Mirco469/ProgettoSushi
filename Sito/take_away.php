@@ -14,19 +14,25 @@
 				$prodotto = $db->getInfoProdotto($nomeProdotto);
 				if ($prodotto == null) 
 				{
-					# redirect to 'errore500.php';
+					header('Content-Type: application/json');
+					echo json_encode(array('result'=>false,'error'=>'database error'));
+					exit;
 				}
 				addToCart($prodotto['nome'], $prodotto['categoria'], $prodotto['prezzo']);
 			}
 			else 
 			{
-				# redirect to 'errore500.php';
+				header('Content-Type: application/json');
+				echo json_encode(array('result'=>false,'error'=>'database error'));
+				exit;
 			}
 		}
 	}
 	else if (isset($_POST['action']) && $_POST['action'] == 'aggiungi')
 	{
-		# redirect to 'errore500.php';
+		header('Content-Type: application/json');
+		echo json_encode(array('result'=>false,'error'=>'login error'));
+		exit;
 	}
 	caricaPagina();
 

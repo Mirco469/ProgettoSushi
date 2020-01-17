@@ -14,11 +14,20 @@ function aggiungi(name, dt) {
 		if(xhr.readyState ==4) { // se è andata a buon fine
 			var data = JSON.parse(xhr.responseText);
 			console.log(data); // Stampo a console il contenuto della risposta da parte del server
+
 			var dd = document.createElement("dd"); // creo il dd
 			if (data.success)
 			{
 				dd.textContent = "Prodotto aggiunto al carrello!"; // scrivo il testo del messaggio
 				dd.classList.add("successo"); // assegno la classe al dd
+			}
+			else if (data.error == 'database error')
+			{
+				window.location.href='errore500.php';
+			}
+			else if (data.error == 'login error')
+			{
+				window.location.href='login.php';
 			}
 			else if (data.error == 'already present')
 			{
