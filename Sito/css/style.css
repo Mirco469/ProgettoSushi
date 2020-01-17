@@ -184,7 +184,7 @@ table.defaultTable td:last-child {
 }
 
 /*	Header	*/
- 
+
 #logo {
 	display: block;
 	margin-left: 10%;
@@ -749,7 +749,7 @@ table.defaultTable td:last-child {
 
 /* Slideshow container */
 #slideshow_home {
-	clear: both;	
+	clear: both;
 	max-width: 90%;
 	position: relative;
 	margin: auto;
@@ -824,12 +824,12 @@ table.defaultTable td:last-child {
 }
 
 @-webkit-keyframes fade {
-	from {opacity: .4} 
+	from {opacity: .4}
 	to {opacity: 1}
 }
 
 @keyframes fade {
-	from {opacity: .4} 
+	from {opacity: .4}
 	to {opacity: 1}
 }
 
@@ -1104,19 +1104,8 @@ min-height: 465px;
 }
 
 #pagamento fieldset {
+	text-align: left;
 	margin: 1em;
-}
-
-#scelta_consegna input[type=radio] {
-	cursor: pointer;
-	display: inline;
-	width: 2em;
-}
-
-#scelta_consegna input[type=radio] + label {
-	display: inline;
-	cursor: pointer;
-	margin-right: 1em;
 }
 
 #info_pagamento input[name="cvv_carta"] {
@@ -1124,22 +1113,37 @@ min-height: 465px;
 	width: 5em;
 }
 
-.selezione_big {
+#pagamento .selezione_big {
 	width: 100%;
 	padding: 0.3em;
 	border-radius: 4px;
 	font-size: 0.8em;
-	margin: 0.5em;
+	margin-top: 0.5em;
 }
 
-.selezione_small {
+.selezione_big + p {
+	text-align: center;
+}
+
+#pagamento .selezione_small {
 	width: 6em;
-	margin: 0.5em;
+	margin-top: 0.5em;
 	padding: 0.3em;
 	border-radius: 4px;
 	font-size: 0.8em;
 }
 
+#pagamento .defaultButton {
+	width: 6em;
+	display: inline;
+	margin: 0.7em;
+}
+
+#pagamento input[type="submit"] {
+    padding: 0.6em 0em;
+    margin: 0.5em 0;
+    border: 2px;
+}
 
 /*	errore utente e admin	*/
 #errore {

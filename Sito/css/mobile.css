@@ -72,7 +72,7 @@ body a:visited {
 	font-size: 1em;
 	color: #e0ac00;
 	z-index: 1;
-	
+
 	background: url(../img/menu_bars100_white.png) no-repeat;
     background-position: 96%;
     -moz-background-size: 3em;
@@ -414,7 +414,7 @@ table.defaultTable td:last-child {
 
 /* Slideshow container */
 #slideshow_home {
-	clear: both;	
+	clear: both;
 	max-width: 90%;
 	position: relative;
 	margin: auto;
@@ -494,12 +494,12 @@ table.defaultTable td:last-child {
 }
 
 @-webkit-keyframes fade {
-	from {opacity: .4} 
+	from {opacity: .4}
 	to {opacity: 1}
 }
 
 @keyframes fade {
-	from {opacity: .4} 
+	from {opacity: .4}
 	to {opacity: 1}
 }
 
@@ -536,7 +536,7 @@ table.defaultTable td:last-child {
 }
 
 #home_admin>form {
-margin-bottom: 5%; 
+margin-bottom: 5%;
 }
 
 #addNews input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
@@ -555,7 +555,7 @@ margin-bottom: 5%;
 }
 
 #home_admin fieldset {
-    margin: 0 5%; 
+    margin: 0 5%;
 }
 
 
@@ -874,27 +874,9 @@ min-height: 465px;
 }
 
 #pagamento fieldset {
+	text-align: left;
 	margin-top: 1em;
-}
-
-#pagamento p {
-	font-size: 0.9em;
-}
-
-#scelta_consegna input[type=radio] {
-	cursor: pointer;
-	display: inline;
-	width: 2em;
-}
-
-#scelta_consegna input[type=radio] + label {
-	display: inline;
-	cursor: pointer;
-	margin-right: 1em;
-}
-
-#pagamento label[for="cvv_carta"] {
-	display: block;
+	margin-bottom: 1em;
 }
 
 #info_pagamento input[name="cvv_carta"] {
@@ -902,7 +884,7 @@ min-height: 465px;
 	width: 5em;
 }
 
-.selezione_big {
+#pagamento .selezione_big {
 	width: 100%;
 	margin-top: 0.5em;
 	padding: 0.3em;
@@ -910,12 +892,28 @@ min-height: 465px;
 	font-size: 0.8em;
 }
 
-.selezione_small {
+.selezione_big + p {
+	text-align: center;
+}
+
+#pagamento .selezione_small {
 	width: 6em;
-	margin: 0.5em;
+	margin: 0;
 	padding: 0.3em;
 	border-radius: 4px;
 	font-size: 0.8em;
+}
+
+#pagamento .defaultButton {
+	width: 5em;
+	display: inline;
+	margin: 0.5em;
+}
+
+#pagamento input[type="submit"] {
+    padding: 0.6em 0em;
+    margin: 0.5em 0;
+    border: 2px;
 }
 
 /* Gestione Profilo Utente */
@@ -934,7 +932,7 @@ min-height: 465px;
 }
 #listaDestinazioni dd{
 	padding-left: 0.3em;
-	padding-right: 0.3em; 
+	padding-right: 0.3em;
 }
 #listaDestinazioni {
 	border: 1px solid white;
@@ -1039,7 +1037,7 @@ min-height: 465px;
 	font-size: 1em;
 	text-align: left;
 }
-  
+
 /*	Dettagli Ordine	*/
 
 #dettagli_ordine {
