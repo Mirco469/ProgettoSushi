@@ -207,6 +207,7 @@
 						}
 					}
 
+					unset($_SESSION['carrello']);
 					header('location: successo.html');
 				}
 			}
