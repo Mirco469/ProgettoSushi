@@ -272,24 +272,16 @@
                 return null;
             } else {
                 $result = array();
-
-                if (mysqli_num_rows($queryResult) == 0) {
-                    return null;
-                } else {
-                    $result = array();
-
-                    while ($row = mysqli_fetch_assoc($queryResult)) {
-                        $arraySingoloProdotto = array(
-                            'Nome' => $row['nome'],
-                            'Prezzo' => $row['prezzo'],
-                            'Pezzi' => $row['pezzi'],
-                            'Descrizione' => $row['descrizione'],
-                        );
-                        array_push($result, $arraySingoloProdotto);
-                    }
-
-                    return $result;
+                while ($row = mysqli_fetch_assoc($queryResult)) {
+                    $arraySingoloProdotto = array(
+                        'Nome' => $row['nome'],
+                        'Prezzo' => $row['prezzo'],
+                        'Pezzi' => $row['pezzi'],
+                        'Descrizione' => $row['descrizione'],
+                    );
+                    array_push($result, $arraySingoloProdotto);
                 }
+                return $result;
             }
         }
 
