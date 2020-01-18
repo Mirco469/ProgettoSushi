@@ -13,7 +13,7 @@
         <link rel="stylesheet" type="text/css" media="screen and (max-width: 900px)" href="css/mobile.css"/>
         <link rel="stylesheet" type="text/css" media="print" href="css/stampa.css"/>
         <script src="js/index.js"></script>
-        <script type="text/javascript" src="js/funzioni.js"></script>
+        <script src="js/funzioni.js"></script>
     </head>
     <body>
         <div id="header">
@@ -44,11 +44,11 @@
 			<form class="defaultForm" action="pagamento.php" method="post">
 
 				<fieldset id="info_consegna">
+                    <legend>Informazioni di consegna:</legend>
 
 					<erroreDestinazione />
 					<successoDestinazione />
 
-					<legend>Informazioni di consegna:</legend>
 	  			    <label for="destinazione">Seleziona un indirizzo:</label>
 	  			    <select id="destinazione" name="destinazione" class="selezione_big">
 	    			    <option>Indirizzo</option>
@@ -62,11 +62,11 @@
 				</fieldset>
 
                 <fieldset id="info_pagamento">
+                    <legend>Informazioni di pagamento: </legend>
 
 					<erroreCarta />
 					<successoCarta />
 
-                    <legend>Informazioni di pagamento: </legend>
 					<label for="carta_credito">Seleziona una carta di credito:</label>
 		  		    <select id="carta_credito" name="carta_credito" class="selezione_big">
 		    		    <option>Carta di credito</option>
@@ -80,7 +80,7 @@
                 </fieldset>
 
 				<input class="defaultButton" type="button" name="indietro" value="Indietro" onclick="window.location.href='carrello.php';" />
-		    	<input class="defaultButton" type="submit" name="paga" value="Paga" onclick="return validazioneFormPagamento();" />
+		    	<input class="defaultButton" type="submit" name="paga" value="Paga" onclick="return validazioneForm_pagamento();" />
 				
             </form>
 
