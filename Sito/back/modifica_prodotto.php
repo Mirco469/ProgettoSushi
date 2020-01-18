@@ -67,7 +67,7 @@
                     }
                     if (!checkPrezzo($prezzo))
                     {
-                        $erroreModifica .= "<li>Il prezzo deve essere un numero decimale con al massimo 3 cifre prima della virgola e 2 cifre dopo la virgola</li>";
+                        $erroreModifica .= "<li>Il prezzo deve essere un numero decimale con al massimo 3 cifre prima del punto e 2 cifre dopo il punto</li>";
                     }
 
                     //Controllo se non ho riscontrato errori
