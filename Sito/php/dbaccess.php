@@ -95,7 +95,6 @@
         {
 
             $query = $this->connection->prepare("DELETE FROM Destinazione WHERE id_destinazione = ".$indice." ");
-
             if ($query->execute()) {
                 return true;
             } else {
@@ -225,7 +224,12 @@
         public function getNews() {
             $query = $this->connection->prepare('SELECT * FROM News ORDER BY data ');
             $query->execute();
-            return $query->get_result();
+            $queryResult = $query->get_result();
+            if (mysqli_num_rows($queryResult) == 0) {
+                return null;
+            }else {
+                return $queryResult;
+            }
         }
 
 
@@ -272,24 +276,16 @@
                 return null;
             } else {
                 $result = array();
-
-                if (mysqli_num_rows($queryResult) == 0) {
-                    return null;
-                } else {
-                    $result = array();
-
-                    while ($row = mysqli_fetch_assoc($queryResult)) {
-                        $arraySingoloProdotto = array(
-                            'Nome' => $row['nome'],
-                            'Prezzo' => $row['prezzo'],
-                            'Pezzi' => $row['pezzi'],
-                            'Descrizione' => $row['descrizione'],
-                        );
-                        array_push($result, $arraySingoloProdotto);
-                    }
-
-                    return $result;
+                while ($row = mysqli_fetch_assoc($queryResult)) {
+                    $arraySingoloProdotto = array(
+                        'Nome' => $row['nome'],
+                        'Prezzo' => $row['prezzo'],
+                        'Pezzi' => $row['pezzi'],
+                        'Descrizione' => $row['descrizione'],
+                    );
+                    array_push($result, $arraySingoloProdotto);
                 }
+                return $result;
             }
         }
 
@@ -354,11 +350,18 @@
         /* FUNZIONI PER CONTROLLARE LO STATO DEL DATABASE */
 
 
-        public function getNewsUtente()
+        public function getNewsUtente($maxNews)
         {
-            $query = $this->connection->prepare('SELECT * FROM News ORDER BY data DESC ');
+            $query = $this->connection->prepare('SELECT * FROM News  ORDER BY data DESC LIMIT ? ');
+            $query->bind_param('i', $maxNews);
             $query->execute();
-            return $query->get_result();
+            $result = $query->get_result();
+            if(mysqli_num_rows($result) == 0){
+                return null;
+            }else {
+               return $result; 
+            }
+            
         }
 
 		public function getOrdini($username='') {
