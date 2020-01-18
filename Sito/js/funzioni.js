@@ -76,7 +76,7 @@ function checkNomeCognome(input) {
     }
 }
 function checkSoloLettereEDim(input) {
-    var patt = new RegExp('^[a-zA-Z]{2,}$');
+    var patt = new RegExp('^[a-zA-Z ]{2,}$');
     if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
@@ -126,7 +126,7 @@ function checkNumeroIntero(input) {
     }
 }
 function checkPrezzo(input) {
-    var patt = new RegExp('^[0-9]{1,3}((.|,)[0-9]{1,2})?$');
+    var patt = new RegExp('^[0-9]{1,3}([.][0-9]{1,2})?$');
     if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
@@ -453,7 +453,7 @@ function validazioneFormModificaProdotto() {
 	}
 	else
 	{
-		mostraErrore(prezzo, "Il prezzo deve essere un numero decimale con al massimo 3 cifre prima della virgola e 2 cifre dopo la virgola");
+		mostraErrore(prezzo, "Il prezzo deve essere un numero decimale con al massimo 3 cifre prima del punto e 2 cifre dopo il punto");
 	}
 	
 	return risPorzione && risPrezzo;

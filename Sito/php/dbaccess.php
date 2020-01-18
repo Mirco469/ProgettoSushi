@@ -53,7 +53,7 @@
 
 		public function alreadyExistsDest($nome_cognome, $tel, $cap, $via, $civico, $user)
         {
-            $query = $this->connection->prepare('SELECT * FROM destinazione WHERE nome_cognome = ? AND numero_telefonico = ? AND CAP = ? AND via = ? AND numero_civico = ? AND utente = ?');
+            $query = $this->connection->prepare('SELECT * FROM Destinazione WHERE nome_cognome = ? AND numero_telefonico = ? AND CAP = ? AND via = ? AND numero_civico = ? AND utente = ?');
             $query->bind_param('ssssss', $nome_cognome, $tel, $cap, $via, $civico, $user);
             if (!$query->execute())
             {
@@ -668,7 +668,7 @@
     function checkPrezzo($numero)
     {
         if(empty($numero)){return false;}
-        if (!preg_match('/^[0-9]{1,3}((.|,)[0-9]{1,2})?$/', $numero)) {
+        if (!preg_match('/^[0-9]{1,3}([.][0-9]{1,2})?$/', $numero)) {
             return false;
         } else {return true;}
     }

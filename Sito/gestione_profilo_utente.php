@@ -454,11 +454,12 @@
 
             //Inserisco i form e i messaggi nella pagina HTML
              $paginaHTML = str_replace('<formSpedizione2 />', $listaDestinazioni, $paginaHTML);
+             $paginaHTML = str_replace('<messaggioEliminaz />', $successoEliminaDest, $paginaHTML);
              $paginaHTML = str_replace('<formPassword />', $formPassword, $paginaHTML);
              $paginaHTML = str_replace('<formSpedizione />', $formSpedizione, $paginaHTML);
              $paginaHTML = str_replace('<formPagamento />', $formPagamento, $paginaHTML);
 
-             $paginaHTML = str_replace('<messaggioEliminaz />', $messaggioEliminaz, $paginaHTML);
+             
              if(strlen($successoPass)!=0){
                  $paginaHTML = str_replace('<messaggio1 />', $successoPass, $paginaHTML);
              }else {
