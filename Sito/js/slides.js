@@ -1,12 +1,10 @@
 var slideIndex = 0;
 
-document.addEventListener('DOMContentLoaded', (event) => {
-    //console.log('DOM completamente caricato e analizzato');
-  
-  showSlides(slideIndex);
+document.addEventListener("readystatechange", function() {
+	if(document.readyState === "complete") {
+		showSlides(slideIndex);
+	}
 });
-
-
 
   // Next/previous controls
   function plusSlides(selected) {
@@ -20,7 +18,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   function showSlides(selected) {
     var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("dot");
+	var dots = document.getElementsByClassName("dot");
 	
     if (selected >= slides.length) {slideIndex = 0} 
     if (selected < 0) {slideIndex = slides.length - 1}
@@ -35,6 +33,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 	
 	// si toglie display: none dall'immagine da mostrare corrente e si setta il punto attivo
-    slides[slideIndex].classList.remove("nascondi");
+	slides[slideIndex].classList.remove("nascondi");
     dots[slideIndex].classList.add("active");
   }
