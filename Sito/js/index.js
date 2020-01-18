@@ -1,25 +1,24 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    //console.log('DOM completamente caricato e analizzato');
-  
+document.addEventListener('readystatechange', function() {
+	if(document.readyState === "complete") {
+		//console.log('DOM completamente caricato e analizzato');
+		
+		// funzione per salvare la larghezza dello schermo
+		var deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
 
+		if( deviceWidth <= 900 ) {
+			window.addEventListener("click",function(e) {
+				if( open ) {
+					toggleMenu();
+				}
+			});
 
-  // funzione per salvare la larghezza dello schermo
-  var deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-  
-  if( deviceWidth <= 900 ) {
-    window.addEventListener("click",function(e) {
-		if( open ) {
-			toggleMenu();
+			document.getElementById("menu").getElementsByTagName("ul")[0].addEventListener("click",function(e) {
+				// fa in modo che venga eseguito solo questo ascoltatore
+				e.stopPropagation();  
+				toggleMenu();
+			});
 		}
-    });
-
-    document.getElementById("menu").getElementsByTagName("ul")[0].addEventListener("click",function(e) {
-		// fa in modo che venga eseguito solo questo ascoltatore
-		e.stopPropagation();  
-		toggleMenu();
-    });
-  }
-
+	}
 });
 
 var open = false;
