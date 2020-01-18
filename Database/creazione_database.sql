@@ -44,10 +44,10 @@ CREATE TABLE Recensione(
 -- Inserimento dati nella tabella Recensione
 
 INSERT INTO Recensione (id_recensione, titolo, testo, data, utente) VALUES 
-(001, 'Ristorante TOP', 'Sono un’appassionata di sushi e credo che questo ristorante possa vantare la migliore qualità e varietà della zona. Uramaki special strepitosi e servizio impeccabile.', '2018-09-11', 'user2'),
-(002, 'Bella serata', 'Ogni volta che vengo a Padova mi fermo sempre a cena in questo locale, i ragazzi dello staff sono simpatici e molto professionali, sulla qualità del cibo semplicemente ottimo.', '2019-03-22', 'user1'),
-(003, 'Consigliato', 'Bel ristorante in una zona molto accogliente di Padova. Non me ne intendo molto di sushi ma posso dire che lo consiglierò sicuramente ad amici.', '2017-11-08', 'user3'),
-(004, 'Ho provato di meglio', 'La qualità è sempre ottima sia dei crudi che dei cotti. Peccato per i tavoli un po’ piccoli, quando arrivano più di due piatti diventa difficile gestire gli spazi. Prezzi e servizio nella media.', '2019-06-27', 'user4');
+(1, 'Ristorante TOP', 'Sono un’appassionata di sushi e credo che questo ristorante possa vantare la migliore qualità e varietà della zona. Uramaki special strepitosi e servizio impeccabile.', '2018-09-11', 'user2'),
+(2, 'Bella serata', 'Ogni volta che vengo a Padova mi fermo sempre a cena in questo locale, i ragazzi dello staff sono simpatici e molto professionali, sulla qualità del cibo semplicemente ottimo.', '2019-03-22', 'user1'),
+(3, 'Consigliato', 'Bel ristorante in una zona molto accogliente di Padova. Non me ne intendo molto di sushi ma posso dire che lo consiglierò sicuramente ad amici.', '2017-11-08', 'user3'),
+(4, 'Ho provato di meglio', 'La qualità è sempre ottima sia dei crudi che dei cotti. Peccato per i tavoli un po’ piccoli, quando arrivano più di due piatti diventa difficile gestire gli spazi. Prezzi e servizio nella media.', '2019-06-27', 'user4');
 
 -- Crea la tabella News
 
@@ -118,17 +118,17 @@ CREATE TABLE Ordine(
 -- Inserimento dati nella tabella Ordine
 
 INSERT INTO Ordine (id_ordine, data_ordine, data_consegna, totale, destinazione) VALUES 
-(301, '2019-02-19 12:30:00', '2019-02-19 13:30:00', 27.00, 1),
-(302, '2019-03-22 20:00:00', '2019-03-22 21:00:00', 28.00, 2),
-(303, '2019-04-11 13:30:00', '2019-04-11 14:30:00', 33.00, 3),
-(304, '2019-05-09 19:00:00', '2019-05-09 20:00:00', 31.50, 4),
-(305, '2019-05-07 20:30:00', '2019-05-07 21:30:00', 46.50, 5),
-(306, '2019-06-12 12:45:00', '2019-06-12 13:45:00', 40.00, 6),
-(307, '2019-07-23 13:15:00', '2019-07-23 14:15:00', 36.50, 7),
-(308, '2019-08-29 12:30:00', '2019-08-29 13:30:00', 66.00, 1),
-(309, '2019-10-16 13:00:00', '2019-10-16 14:00:00', 15.50, 2),
-(310, '2020-01-10 20:15:00', '2020-01-10 21:15:00', 42.50, 3),
-(311, '2020-01-14 14:00:00', '2020-01-14 15:00:00', 57.50, 4);
+(1, '2019-02-19 12:30:00', '2019-02-19 13:30:00', 27.00, 1),
+(2, '2019-03-22 20:00:00', '2019-03-22 21:00:00', 28.00, 2),
+(3, '2019-04-11 13:30:00', '2019-04-11 14:30:00', 33.00, 3),
+(4, '2019-05-09 19:00:00', '2019-05-09 20:00:00', 31.50, 4),
+(5, '2019-05-07 20:30:00', '2019-05-07 21:30:00', 46.50, 5),
+(6, '2019-06-12 12:45:00', '2019-06-12 13:45:00', 40.00, 6),
+(7, '2019-07-23 13:15:00', '2019-07-23 14:15:00', 36.50, 7),
+(8, '2019-08-29 12:30:00', '2019-08-29 13:30:00', 66.00, 1),
+(9, '2019-10-16 13:00:00', '2019-10-16 14:00:00', 15.50, 2),
+(10, '2020-01-10 20:15:00', '2020-01-10 21:15:00', 42.50, 3),
+(11, '2020-01-14 14:00:00', '2020-01-14 15:00:00', 57.50, 4);
 
 -- Crea la tabella Tabella Prodotto
 
@@ -227,54 +227,54 @@ CREATE TABLE Contiene(
 -- Inserimento dati nella tabella Contiene
 
 INSERT INTO Contiene (id_ordine, nome, numero_porzioni) VALUES 
-(301, 'Tartara di tonno', 1),
-(301, 'Kaisen Udon', 1),
-(301, 'Salmon Philadelphia', 2),
-(301, 'Spicy Tuna', 1),
+(1, 'Tartara di tonno', 1),
+(1, 'Kaisen Udon', 1),
+(1, 'Salmon Philadelphia', 2),
+(1, 'Spicy Tuna', 1),
 
-(302, 'Katsu Ramen', 2),
-(302, 'Shake Fry Tobiko', 2),
-(302, 'Nigiri Branziono', 3),
+(2, 'Katsu Ramen', 2),
+(2, 'Shake Fry Tobiko', 2),
+(2, 'Nigiri Branziono', 3),
 
-(303, 'Ebiten Onigiri', 2),
-(303, 'Tuna Temaki', 3),
-(303, 'Sashimi Tonno', 2),
-(303, 'Semisfera ai Lamponi', 2),
+(3, 'Ebiten Onigiri', 2),
+(3, 'Tuna Temaki', 3),
+(3, 'Sashimi Tonno', 2),
+(3, 'Semisfera ai Lamponi', 2),
 
-(304, 'Hosomaki Avocado', 3),
-(304, 'Sashimi Salmone', 2),
-(304, 'Profiteroles', 2),
+(4, 'Hosomaki Avocado', 3),
+(4, 'Sashimi Salmone', 2),
+(4, 'Profiteroles', 2),
 
-(305, 'Goma Wakame', 3),
-(305, 'Ramen Chasumiso', 2),
-(305, 'Salmon Tataki', 1),
-(305, 'Yasai Teppanyaki', 3),
+(5, 'Goma Wakame', 3),
+(5, 'Ramen Chasumiso', 2),
+(5, 'Salmon Tataki', 1),
+(5, 'Yasai Teppanyaki', 3),
 
-(306, 'Domò Harumaki', 4),
-(306, 'Ebi Yaki', 4),
-(306, 'Ebiten Onigiri', 4),
+(6, 'Domò Harumaki', 4),
+(6, 'Ebi Yaki', 4),
+(6, 'Ebiten Onigiri', 4),
 
-(307, 'Edamame', 3),
-(307, 'Maguro Tataki', 3),
-(307, 'Asparago Roll', 2),
-(307, 'Onigiri Salmone', 6),
+(7, 'Edamame', 3),
+(7, 'Maguro Tataki', 3),
+(7, 'Asparago Roll', 2),
+(7, 'Onigiri Salmone', 6),
 
-(308, 'Ebi Yaki', 4),
-(308, 'Sashimi Salmone', 3),
-(308, 'Tuna Temaki', 4),
-(308, 'Tartara di tonno', 2),
+(8, 'Ebi Yaki', 4),
+(8, 'Sashimi Salmone', 3),
+(8, 'Tuna Temaki', 4),
+(8, 'Tartara di tonno', 2),
 
-(309, 'Salmon Philadelphia', 1),
-(309, 'Hosomaki Salmone', 2),
-(309, 'Red Cheesecake', 1),
+(9, 'Salmon Philadelphia', 1),
+(9, 'Hosomaki Salmone', 2),
+(9, 'Red Cheesecake', 1),
 
-(310, 'Spicy Tuna', 2),
-(310, 'Sashimi Salmone', 3),
-(310, 'Shake Fry Tobiko', 2),
-(310, 'Matcha Tiramisù', 2),
+(10, 'Spicy Tuna', 2),
+(10, 'Sashimi Salmone', 3),
+(10, 'Shake Fry Tobiko', 2),
+(10, 'Matcha Tiramisù', 2),
 
-(311, 'Hosomaki Avocado', 3),
-(311, 'Sashimi Tonno', 4),
-(311, 'Profiteroles', 5);
+(10, 'Hosomaki Avocado', 3),
+(10, 'Sashimi Tonno', 4),
+(10, 'Profiteroles', 5);
 
 SET FOREIGN_KEY_CHECKS=1;

@@ -12,11 +12,12 @@
 		<link rel="stylesheet" type="text/css" media="screen and (max-width: 900px)" href="css/mobile.css"/>
 		<link rel="stylesheet" type="text/css" media="print" href="css/stampa.css"/>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/carrello.js"></script>
 	</head>
 
 	<body>
 		<div id="header">
-            <a id="logo" href="home_utente.html" title="Vai alla home" tabindex="-1"></a>
+            <a id="logo" href="home_utente.php" title="Vai alla home" tabindex="-1"></a>
             <h1 lang="ja">Sushi Nakamura</h1>
         </div>
 		<p class="aiuti">
@@ -24,62 +25,25 @@
 		</p>
 		<div id="menu">
 			<ul>
-				<li lang="en"><a href="home_utente.html" tabindex="2">Home</a></li>
-				<li lang="en"><a href="take_away.html" tabindex="3">Take Away</a></li>
-				<li><a href="chi_siamo.html" tabindex="4">Chi siamo</a></li>
-				<li><a href="recensioni.html" tabindex="5">Recensioni</a></li>
-				<li><a href="prodotti.html" tabindex="6">Prodotti</a></li>
-				<li><a href="contatti.html" tabindex="7">Contatti</a></li>
-				<li class="impostazioni">
-					<span id="dropbtn">Area Riservata</span>
-					<ul id="dropdown_content">
-						<li id="active">Carrello</li>
-						<li><a href="storico_ordini.html" tabindex="8">Storico ordini</a></li>
-						<li><a href="gestione_profilo_utente.html" tabindex="9">Gestione profilo</a></li>
-						<li><a lang="en" href="logout.php" tabindex="10">Logout</a></li>
-					</ul>
-				</li>
+				<li lang="en"><a href="home_utente.php" tabindex="2">Home</a></li>
+				<li lang="en"><a href="take_away.php" tabindex="3">Take Away</a></li>
+				<li><a href="chi_siamo.php" tabindex="4">Chi siamo</a></li>
+				<li><a href="recensioni.php" tabindex="5">Recensioni</a></li>
+				<li><a href="prodotti.php" tabindex="6">Prodotti</a></li>
+				<li><a href="contatti.php" tabindex="7">Contatti</a></li>
+				<menu />
 			</ul>
 		</div>
 
 		<div id="breadcrumb">
-			<p>Ti trovi in: <a href="home_utente.html" lang="en">Home</a> &gt; &gt; Carrello</p>
+			<p>Ti trovi in: <a href="home_utente.php" lang="en">Home</a> &gt; &gt; Carrello</p>
 		</div>
 
 		<!-- Inizio contenuto -->
 		<div class="content" id="carrello">
 			<h1 class="tableTitle" >Carrello</h1>
 			
-			
-			<dl class="defaultLista">
-                <dt>Uramaki Maguro - <a href="prodotti.html#uramaki" lang="ja">Uramaki</a> <input class="rimuovi" type="button" name="rimuovi" value="Rimuovi" /></dt>
-                <dd>
-					<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
-					<input type="text" name="quantita" value="1" /><!-- numero prodotto -->
-					<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
-					<span>Prezzo: 0.00€</span>
-                </dd>
-				
-				<dt>Hosomaki Maguro - <a href="prodotti.html#uramaki" lang="ja">Uramaki</a> <input class="rimuovi" type="button" name="rimuovi" value="Rimuovi" /></dt>
-                <dd>
-					<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
-					<input type="text" name="quantita" value="1" /><!-- numero prodotto -->
-					<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
-					<span>Prezzo: 0.00€</span>
-                </dd>
-				
-				<dt>Tiramis&ugrave; - <a href="prodotti.html#dessert" lang="fr">Dessert</a> <input class="rimuovi" type="button" name="rimuovi" value="Rimuovi" /></dt>
-                <dd>
-					<input type="button" name="minus" value="-" /><!-- togli_prodotto -->
-					<input type="text" name="quantita" value="1" /><!-- numero prodotto -->
-					<input type="button" name="plus" value="+" /><!-- aggiungi_prodotto -->
-					<span>Prezzo: 0.00€</span>
-                </dd>
-			</dl>
-			
-			<p class="totaleText">Totale: <span>0.00€</span></p>
-			
-			<a id="paga" href="pagamento.html">Vai a pagamento</a>
+			<carrello/>
 		
 			<div id="torna_su">
 				<a href="#header">Torna su</a>
