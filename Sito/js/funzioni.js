@@ -232,10 +232,10 @@ function validazioneFormDest_gestione_profilo_utente() {
         mostraErrore(civico,"Il numero civico deve essere del formato corretto (e.g. 4, 4b, 4-b o 4/1)");
     }
     if(!risCAP){
-        mostraErrore(cap,"Non hai inserito un CAP corretto");
+        mostraErrore(cap,"Non hai inserito un CAP del comune di Padova");
     }
     if(!risTel){
-        mostraErrore(tel,"Non hai inserito un numero telefonico corretto");
+        mostraErrore(tel,"Non hai inserito un numero telefonico valido");
     }
     return risNomeCognome && risIndirizzo && risCivico && risCAP && risTel;
 
