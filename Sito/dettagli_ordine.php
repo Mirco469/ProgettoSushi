@@ -7,7 +7,7 @@
 			$db = new DBAccess();
 			
 			if( $db->openDBConnection() ) {
-				$username = 'user';	// da prendere a sessione
+				$username = $_SESSION['username'];
 				$dettagliOrdine = $db->getDettagliOrdine($_GET['id_ordine'],$username);
 				
 				if( is_object( $dettagliOrdine ) ) {
