@@ -81,19 +81,31 @@
 
 
                 $notizie = '';
-                if(mysqli_num_rows($queryResult)>=1){
+
+                if($queryResult == null){
+
+                    $notizie = '<span> Non &egrave; presente nessuna notizia! </span>';
+
+                }else {
+                    
                     $row = mysqli_fetch_assoc($queryResult);
                     $notizie = '<input checked="checked" type="radio" name="scegliNews" value="'.$row['id_news'].'" id="radio' . $row['id_news'] . '" aria-labelledby="radio' . $row['id_news'] . '-help"/>
                                <label for="radio' . $row['id_news'] .'">'.$row['data']." - ".$row['titolo'].'</label>
                                <span id="radio' . $row['id_news'] . '-help">'.$row['descrizione'].'</span>';
-                }
-                while ($row = mysqli_fetch_assoc($queryResult)) {
+                    
+                    
+                     while ($row = mysqli_fetch_assoc($queryResult)) {
 
-                    $notizie .= '<input type="radio" name="scegliNews" value="'.$row['id_news'].'" id="radio' . $row['id_news'] . '" aria-labelledby="radio' . $row['id_news'] . '-help"/>
+                        $notizie .= '<input type="radio" name="scegliNews" value="'.$row['id_news'].'" id="radio' . $row['id_news'] . '" aria-labelledby="radio' . $row['id_news'] . '-help"/>
                                <label for="radio' . $row['id_news'] .'">'.$row['data']." - ".$row['titolo'].'</label>
                                <span id="radio' . $row['id_news'] . '-help">'.$row['descrizione'].'</span>';
 
+                    }
                 }
+
+                
+
+
 
 
 

@@ -5,7 +5,7 @@
         const HOST_DB = 'localhost';
         const USERNAME = 'root';
         const PASSWORD = '';
-        const DATABASE_NAME = 'sushi'; //Ogni utente ha un database già creato con nome uguale alla propria login (scritto sulle slide)
+        const DATABASE_NAME = 'Sushi'; //Ogni utente ha un database già creato con nome uguale alla propria login (scritto sulle slide)
 
         public $connection = null;
 
@@ -181,7 +181,12 @@
         public function getNews() {
             $query = $this->connection->prepare('SELECT * FROM News ORDER BY data ');
             $query->execute();
-            return $query->get_result();
+            $queryResult = $query->get_result();
+            if (mysqli_num_rows($queryResult) == 0) {
+                return null;
+            }else {
+                return $queryResult;
+            }
         }
 
 
