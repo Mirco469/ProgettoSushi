@@ -80,6 +80,10 @@ body a:visited {
 	margin:auto;
 }
 
+.defaultForm legend{
+	color: #d9d9d9;
+}
+
 /*	Tabelle	*/
 
 table.defaultTable {
@@ -659,6 +663,10 @@ table.defaultTable td:last-child {
 	border-radius: 5px;
 }
 
+#recensioni legend{
+	color: #d9d9d9;
+}
+
 #titolo_recensione, #testo_recensione {
 	display: block;
 	margin-top: 0.6em;
@@ -1041,6 +1049,10 @@ min-height: 465px;
 	margin-left: 10%;
 	margin-top: 1em;
 	margin-bottom: 1em;
+}
+
+#home_admin legend{
+	color: #d9d9d9;
 }
 
 
