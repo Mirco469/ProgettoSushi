@@ -182,6 +182,7 @@
         //Dato il nome di un prodotto e le sue nuove informazioni lo modifica
         public function modifyProdotto($nome, $categoria, $pezzi, $prezzo, $descrizione)
         {
+			$prezzo = str_replace(",", ".", $prezzo);
             $query = $this->connection->prepare("UPDATE Prodotto SET categoria = ?, pezzi = ?, prezzo = ? , descrizione = ? WHERE nome = ?");
             $query->bind_param('sssss', $categoria, $pezzi, $prezzo, $descrizione, $nome);
             return $query->execute();
