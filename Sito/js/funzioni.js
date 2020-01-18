@@ -479,16 +479,16 @@ function validazioneForm_pagamento()
 	var risCAP = false;
 	var risTel = false;
 
+    var nome_cognome = document.getElementById("nome_cognome");
+	var via = document.getElementById("via");
+	var civico = document.getElementById("civico");
+	var cap = document.getElementById("cap");
+	var tel = document.getElementById("tel");
+
     var sceltaIndirizzo = document.getElementById("destinazione");
     var indirizzo_val = sceltaIndirizzo.options[sceltaIndirizzo.selectedIndex].text;
     if (indirizzo_val == "Indirizzo")
     {
-        var nome_cognome = document.getElementById("nome_cognome");
-	    var via = document.getElementById("via");
-	    var civico = document.getElementById("civico");
-	    var cap = document.getElementById("cap");
-	    var tel = document.getElementById("tel");
-
         risNomeCognome = checkNomeCognome(nome_cognome);
 	    risVia = checkAlfanumericoESpazi(via);
 	    risCivico = checkCivico(civico);
@@ -533,16 +533,16 @@ function validazioneForm_pagamento()
 	var risAnnoScad = true;
 	var risCvv = false;
 
+    var intestatario = document.getElementById("intestatario_carta");
+	var num_carta = document.getElementById("num_carta");
+	var meseScad = document.getElementsByName("mese_scad")[0];
+	var annoScad = document.getElementsByName("anno_scad")[0];
+	var cvv = document.getElementById("cvv_carta");
+
 	var sceltaCarta = document.getElementById("carta_credito");
     var carta_val = sceltaCarta.options[sceltaCarta.selectedIndex].text;
     if (carta_val == "Carta di credito")
     {
-        var intestatario = document.getElementById("intestatario_carta");
-	    var num_carta = document.getElementById("num_carta");
-	    var meseScad = document.getElementsByName("mese_scad")[0];
-	    var annoScad = document.getElementsByName("anno_scad")[0];
-	    var cvv = document.getElementById("cvv_carta");
-
         var meseScad_val = meseScad.options[meseScad.selectedIndex].text;
 	    var annoScad_val = annoScad.options[annoScad.selectedIndex].text;
 	    risMeseScad = meseScad_val == "Mese";
