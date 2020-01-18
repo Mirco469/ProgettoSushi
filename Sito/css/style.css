@@ -33,11 +33,11 @@ body a:visited {
 
 /* Stili messaggi di errore e successo PHP*/
 .errore{
-	color: red;
+	color: #FF8F8F;
 }
 
 .successo{
-	color: green;
+	color: #00C700;
 }
 
 /*
@@ -184,7 +184,7 @@ table.defaultTable td:last-child {
 }
 
 /*	Header	*/
- 
+
 #logo {
 	display: block;
 	margin-left: 10%;
@@ -384,7 +384,27 @@ table.defaultTable td:last-child {
 /* LATO UTENTE*/
 /*	carrello	*/
 
-#carrello input[type="text"] {
+#carrello {
+	margin: 0 15%;
+}
+
+#carrello .tableTitle {
+	margin-left: 0;
+}
+
+#carrello .defaultLista {
+	margin: 0;
+}
+
+/*	Rimozione delle frecciette per aumentare e diminuire il numero	*/
+#carrello input[type="number"]::-webkit-outer-spin-button,
+#carrello input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#carrello input[type="number"] {
+	-moz-appearance:textfield;
 	text-align: center;
 	width: 2.5em;
 }
@@ -401,7 +421,7 @@ table.defaultTable td:last-child {
 }
 
 #carrello .totaleText {
-	margin: 0 8em 2em 0;
+	margin: 0 0 2em 0;
 	float: right;
 }
 
@@ -409,7 +429,7 @@ table.defaultTable td:last-child {
 	clear: both;
 	display: block;
 	margin-left: auto;
-	margin-right: 2em;
+	margin-right: 0;
 	margin-top: 1em;
 	margin-bottom: 2em;
 	border: 4px solid #8a8a8a;
@@ -675,17 +695,8 @@ table.defaultTable td:last-child {
 	text-align: center;
 }
 
-#aggiunta_prodotti form input[type=submit]{
-	background-color: #4a0715;
-    border: solid 4px #4a0715;
-    border-radius: 5px;
-	color: #d9d9d9;
-	margin-top: 1em;
-}
-
-#aggiunta_prodotti form input[type=submit]:hover{
-	background-color: #990000;
-	border: solid 4px #990000;
+.defaultForm .buttonSmall{
+	float: none;
 }
 
 .defaultForm textarea{
@@ -729,7 +740,7 @@ table.defaultTable td:last-child {
 
 /* Slideshow container */
 #slideshow_home {
-	clear: both;	
+	clear: both;
 	max-width: 90%;
 	position: relative;
 	margin: auto;
@@ -804,12 +815,12 @@ table.defaultTable td:last-child {
 }
 
 @-webkit-keyframes fade {
-	from {opacity: .4} 
+	from {opacity: .4}
 	to {opacity: 1}
 }
 
 @keyframes fade {
-	from {opacity: .4} 
+	from {opacity: .4}
 	to {opacity: 1}
 }
 
@@ -1084,19 +1095,8 @@ min-height: 465px;
 }
 
 #pagamento fieldset {
+	text-align: left;
 	margin: 1em;
-}
-
-#scelta_consegna input[type=radio] {
-	cursor: pointer;
-	display: inline;
-	width: 2em;
-}
-
-#scelta_consegna input[type=radio] + label {
-	display: inline;
-	cursor: pointer;
-	margin-right: 1em;
 }
 
 #info_pagamento input[name="cvv_carta"] {
@@ -1104,22 +1104,37 @@ min-height: 465px;
 	width: 5em;
 }
 
-.selezione_big {
+#pagamento .selezione_big {
 	width: 100%;
 	padding: 0.3em;
 	border-radius: 4px;
 	font-size: 0.8em;
-	margin: 0.5em;
+	margin-top: 0.5em;
 }
 
-.selezione_small {
+.selezione_big + p {
+	text-align: center;
+}
+
+#pagamento .selezione_small {
 	width: 6em;
-	margin: 0.5em;
+	margin-top: 0.5em;
 	padding: 0.3em;
 	border-radius: 4px;
 	font-size: 0.8em;
 }
 
+#pagamento .defaultButton {
+	width: 6em;
+	display: inline;
+	margin: 0.7em;
+}
+
+#pagamento input[type="submit"] {
+    padding: 0.6em 0em;
+    margin: 0.5em 0;
+    border: 2px;
+}
 
 /*	errore utente e admin	*/
 #errore {

@@ -51,6 +51,22 @@
             }
         }
 
+		public function alreadyExistsDest($nome_cognome, $tel, $cap, $via, $civico, $user)
+        {
+            $query = $this->connection->prepare('SELECT * FROM destinazione WHERE nome_cognome = ? AND numero_telefonico = ? AND CAP = ? AND via = ? AND numero_civico = ? AND utente = ?');
+            $query->bind_param('ssssss', $nome_cognome, $tel, $cap, $via, $civico, $user);
+            if (!$query->execute())
+            {
+                header('location: errore500.html');
+            }
+            $queryResult = $query->get_result();
+            if(mysqli_num_rows($queryResult) == 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
         public function modificaPagamento($utente, $intestatario, $num_carta, $mese_scadenza, $anno_scadenza)
         {
             $scadenza = $anno_scadenza . '-' . $mese_scadenza . '-01';
@@ -84,9 +100,8 @@
             } else {
                 header("Location: /errore500.php");
             }
-
-
         }
+
 
         public function getCartaDiCredito($utente)
         {
@@ -150,12 +165,40 @@
             return $query->execute();
         }
 
+		public function addOrdine($dataOrdine, $dataConsegna, $totale, $destinazione)
+		{
+            $query = $this->connection->prepare('INSERT INTO Ordine (data_ordine, data_consegna, totale, destinazione) VALUES (?,?,?,?)');
+			$query->bind_param('ssss', $dataOrdine, $dataConsegna, $totale, $destinazione);
+            if($query->execute())
+            {
+                return true;
+            }
+            else
+            {
+                header("Location: errore500.php");
+            }
+		}
+
         //Dato il nome di un prodotto e le sue nuove informazioni lo modifica
         public function modifyProdotto($nome, $categoria, $pezzi, $prezzo, $descrizione)
         {
             $query = $this->connection->prepare("UPDATE Prodotto SET categoria = ?, pezzi = ?, prezzo = ? , descrizione = ? WHERE nome = ?");
             $query->bind_param('sssss', $categoria, $pezzi, $prezzo, $descrizione, $nome);
             return $query->execute();
+        }
+
+        public function addContiene($idOrdine, $prodotto, $quantita)
+        {
+            $query = $this->connection->prepare('INSERT INTO Contiene (id_Ordine, nome, numero_porzioni) VALUES (?,?,?)');
+			$query->bind_param('sss', $idOrdine, $prodotto, $quantita);
+            if($query->execute())
+            {
+                return true;
+            }
+            else
+            {
+                header("Location: errore500.php");
+            }
         }
 
         public function inserisciNews($titolo, $data ,$testo, $user){
@@ -229,7 +272,6 @@
             } else {
                 $result = array();
 
-
                 if (mysqli_num_rows($queryResult) == 0) {
                     return null;
                 } else {
@@ -244,7 +286,6 @@
                         );
                         array_push($result, $arraySingoloProdotto);
                     }
-
 
                     return $result;
                 }
@@ -325,10 +366,14 @@
             }
             
         }
-		
+
 		public function getOrdini($username='') {
 			if($username == '') {
-				$query = $this->connection->prepare("SELECT O.*, U.username FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username ORDER BY O.data_ordine DESC");
+				$query = $this->connection->prepare("SELECT * FROM (
+					SELECT O.*, U.username FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username
+					UNION ALL
+					SELECT O.*, '' AS username FROM Ordine O WHERE O.destinazione IS NULL
+				) A ORDER BY A.data_ordine DESC");
 				$query->execute();
 				$queryResult = $query->get_result();
 			} else {
@@ -337,13 +382,13 @@
 				$query->execute();
 				$queryResult = $query->get_result();
 			}
-			
+
 			$result = array();
-			
+
 			while ($row = $queryResult->fetch_object()) {
 				array_push($result, $row);
 			}
-			
+
 			return $result;
 		}
 
@@ -365,7 +410,6 @@
                 return $row['autorizzazione'];
             }
         }
-
 
         //Funzione che controlla se l'username è già esistente: ritorna true se esiste già false altrimenti
         public function alreadyExistsUsername($username)
@@ -394,30 +438,30 @@
                 return true;
             }
         }
-		
+
 		public function getDettagliOrdine($id_ordine,$username='') {
 			if( $username !== '' ) {
 				$query = $this->connection->prepare("SELECT O.*, D.* FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username WHERE U.username = ? AND O.id_ordine = ?");
 				$query->bind_param('ss',$username,$id_ordine);
 				$query->execute();
 				$queryResult = $query->get_result();
-				
+
 				if( $queryResult->num_rows > 0 ) {
 					$result = $queryResult->fetch_object();
-					
+
 					$query = $this->connection->prepare("SELECT C.*, P.categoria FROM Contiene C INNER JOIN Prodotto P ON C.nome = P.nome WHERE id_ordine = ?");
 					$query->bind_param('s',$id_ordine);
 					$query->execute();
 					$queryResult = $query->get_result();
-					
+
 					$listaProdotti = array();
-					
+
 					while ($row = $queryResult->fetch_object()) {
 						array_push($listaProdotti, $row);
 					}
-					
+
 					$result->listaProdotti = $listaProdotti;
-					
+
 					return $result;
 				} else {
 					/* errore
@@ -427,28 +471,32 @@
 					return -1;
 				}
 			} else {
-				$query = $this->connection->prepare("SELECT O.*, D.*, U.username FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username WHERE O.id_ordine = ?");
-				$query->bind_param('s',$id_ordine);
+				$query = $this->connection->prepare("SELECT * FROM (
+					SELECT O.*, D.*, U.username FROM Ordine O INNER JOIN Destinazione D ON O.destinazione = D.id_destinazione INNER JOIN Utente U ON D.utente = U.username WHERE O.id_ordine = ?
+					UNION ALL
+					SELECT O.*, '' AS id_destinazione, '' AS nome_cognome, '' AS numero_telefonico, '' AS CAP, '' AS via, '' AS numero_civico, '' AS utente, '' AS username FROM Ordine O WHERE O.id_ordine = ?
+				) A");
+				$query->bind_param('ss',$id_ordine,$id_ordine);
 				$query->execute();
 				//echo $query->info; exit;
 				$queryResult = $query->get_result();
-				
+
 				if( $queryResult->num_rows > 0 ) {
 					$result = $queryResult->fetch_object();
-					
+
 					$query = $this->connection->prepare("SELECT C.*, P.categoria FROM Contiene C INNER JOIN Prodotto P ON C.nome = P.nome WHERE id_ordine = ?");
 					$query->bind_param('s',$id_ordine);
 					$query->execute();
 					$queryResult = $query->get_result();
-					
+
 					$listaProdotti = array();
-					
+
 					while ($row = $queryResult->fetch_object()) {
 						array_push($listaProdotti, $row);
 					}
-					
+
 					$result->listaProdotti = $listaProdotti;
-					
+
 					return $result;
 				} else {
 					/* errore
@@ -461,36 +509,6 @@
 		}
     }
 
-
-
-
-
-
-
-	/*	Esempio di funzione per prendere i dati
-	public function getPersonaggi()
-	{
-		$query = "SELECT * FROM personaggi ORDER BY ID ASC";
-		$queryResult = myqsli_query($this->connection,$query);
-		
-		if(mysqli_num_rows($queryResult) == 0)
-
-            if(mysqli_num_rows($queryResult) == 0)
-            {
-                return null;
-            }
-            else
-            {
-                $row = $queryResult->fetch_assoc();
-                return $row['autorizzazione'];
-            }
-    }*/
-
-
-
-        
-
-        
 
     //Reindirizza alla home giusta in base all'autorizzazione passata come paramentro (Utente o Admin)
     function redirectHome($autorizzazione)
@@ -509,6 +527,7 @@
         }
     }
 
+    /* FUNZIONI PER IL CHECK DELL'INPUT */
 
 	function checkData($data){
         if (preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $data)) {
@@ -517,9 +536,6 @@
             return false;
         }
     }
-
-    /* FUNZIONI PER IL CHECK DELL'INPUT */
-
 
     //Controlla che la stringa sia lunga almeno due caratteri
     function checkMinLen($string) {
@@ -543,7 +559,7 @@
 		{
 			return false;
 		}
-        else 
+        else
 		{
 			return true;
 		}
@@ -679,10 +695,6 @@
 		}
 	}
 
-
-
-
-
 	//Funzione per ottenere le categorie dei prodotti
 	function getCategorie()
 	{
@@ -695,7 +707,7 @@
 	{
 		$query = "SELECT * FROM personaggi ORDER BY ID ASC";
 		$queryResult = myqsli_query($this->connection,$query);
-		
+
 		if(mysqli_num_rows($queryResult) == 0)
 		{
 			return null;
@@ -703,7 +715,7 @@
 		else
 		{
 			$result = array();
-			
+
 			while($row = mysqli_fetch_assoc($queryResult))
 			{
 				$arraySingoloPersonaggio = array(
@@ -719,7 +731,7 @@
 				);
 			}
 				array_push($result,$arraySingoloPersonaggio);
-			
+
 			return $result;
 		}
 	}
