@@ -513,6 +513,12 @@ function validazioneForm_pagamento()
     }
     else 
     {
+        togliErrore(nome_cognome);
+        togliErrore(via);
+        togliErrore(civico);
+        togliErrore(cap);
+        togliErrore(tel);
+
         risNomeCognome = true;
 	    risVia = true;
 	    risCivico = true;
@@ -571,6 +577,12 @@ function validazioneForm_pagamento()
     }
     else
     {
+        togliErrore(intestatario_carta);
+        togliErrore(num_carta);
+        togliErrore(meseScad);
+        togliErrore(annoScad);
+        togliErrore(cvv);
+
         risIntestatario = true;
 	    risNum = true;
         risMeseScad = false;
