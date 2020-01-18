@@ -14,6 +14,7 @@
         <link rel="stylesheet" type="text/css" media="print" href="css/stampa.css"/>
         <script src="js/index.js"></script>
         <script src="js/funzioni.js"></script>
+        <script src="js/pagamento.js"></script>
     </head>
     <body>
         <div id="header">
@@ -50,7 +51,7 @@
 					<successoDestinazione />
 
 	  			    <label for="destinazione">Seleziona un indirizzo:</label>
-	  			    <select id="destinazione" name="destinazione" class="selezione_big">
+	  			    <select id="destinazione" name="destinazione" class="selezione_big" onchange="changeStateDest();" >
 	    			    <option>Indirizzo</option>
 						<indirizziUtente />
     			    </select>
@@ -68,7 +69,7 @@
 					<successoCarta />
 
 					<label for="carta_credito">Seleziona una carta di credito:</label>
-		  		    <select id="carta_credito" name="carta_credito" class="selezione_big">
+		  		    <select id="carta_credito" name="carta_credito" class="selezione_big" onchange="changeStateCarta();" >
 		    		    <option>Carta di credito</option>
 						<cartaUtente />
 	    		    </select>
