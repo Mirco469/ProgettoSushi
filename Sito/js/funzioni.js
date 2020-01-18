@@ -126,7 +126,7 @@ function checkNumeroIntero(input) {
     }
 }
 function checkPrezzo(input) {
-    var patt = new RegExp('^[0-9]{1,3}([.][0-9]{1,2})?$');
+    var patt = new RegExp('^[0-9]{1,3}([.|,][0-9]{1,2})?$');
     if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;

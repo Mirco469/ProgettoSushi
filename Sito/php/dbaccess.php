@@ -668,7 +668,7 @@
     function checkPrezzo($numero)
     {
         if(empty($numero)){return false;}
-        if (!preg_match('/^[0-9]{1,3}([.][0-9]{1,2})?$/', $numero)) {
+        if (!preg_match('/^[0-9]{1,3}([.|,][0-9]{1,2})?$/', $numero)) {
             return false;
         } else {return true;}
     }
