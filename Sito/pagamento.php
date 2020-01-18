@@ -29,7 +29,7 @@
 			$cvv = "";
 
 			$paginaHTML = file_get_contents('html/pagamento.html');
-
+			/*
 			if (isset($_POST['paga']))
 			{
 				# Controllo primo fieldset
@@ -211,6 +211,7 @@
 					header('location: successo.html');
 				}
 			}
+			*/
 
 			$paginaHTML = file_get_contents('html/pagamento.html');
 			$paginaHTML = str_replace('<menu />', getMenu(), $paginaHTML);
@@ -259,18 +260,12 @@
 			<label for=\"cap\"><abbr title=\"Codice di Avviamento Postale\">CAP</abbr>: </label>
 			<input type=\"text\" id=\"cap\" name=\"cap\" placeholder=\"Inserire CAP\" value=\"$cap\" />
 			</p>
-			<p>
 			<label for=\"comune\">Comune: </label>
 			<input type=\"text\" id=\"comune\" name=\"comune\" value=\"Padova\" disabled=\"disabled\"/>
-			</p>
-			<p>
 			<label for=\"provincia\">Provincia: </label>
 			<input type=\"text\" id=\"provincia\" name=\"provincia\" value=\"Padova\" disabled=\"disabled\"/>
-			</p>
-			<p>
 			<label for=\"stato\">Stato: </label>
 			<input type=\"text\" id=\"stato\" name=\"stato\" value=\"Italia\" disabled=\"disabled\"/>
-			</p>
 			<p>
 			<label for=\"tel\">Numero di telefono: </label>
 			<input type=\"tel\" id=\"tel\" name=\"tel\" placeholder=\"Inserire recapito\" value=\"$tel\" />

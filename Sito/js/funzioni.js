@@ -537,7 +537,7 @@ function validazioneForm_pagamento()
     var carta_val = sceltaCarta.options[sceltaCarta.selectedIndex].text;
     if (carta_val == "Carta di credito")
     {
-        var intestatario_carta = document.getElementById("intestatario_carta");
+        var intestatario = document.getElementById("intestatario_carta");
 	    var num_carta = document.getElementById("num_carta");
 	    var meseScad = document.getElementsByName("mese_scad")[0];
 	    var annoScad = document.getElementsByName("anno_scad")[0];
@@ -561,12 +561,12 @@ function validazioneForm_pagamento()
 		    togliErrore(annoScad);
 	    }
 
-        risIntestatario = checkNomeCognome(intestatario_carta);
+        risIntestatario = checkNomeCognome(intestatario);
 	    risNum = checkSoloNumerieDim(num_carta);
 	    risCvv = checkCVV(cvv);
     
 	    if (!risIntestatario) {
-		    mostraErrore(intestatario_carta, "L'intestatario deve contenere solo lettere ed essere lungo almeno due caratteri");
+		    mostraErrore(intestatario, "L'intestatario deve contenere solo lettere ed essere lungo almeno due caratteri");
 	    }
 	    if (!risNum) {
 		    mostraErrore(num_carta, "Non hai inserito un numero della carta corretto");
@@ -577,7 +577,7 @@ function validazioneForm_pagamento()
     }
     else
     {
-        togliErrore(intestatario_carta);
+        togliErrore(intestatario);
         togliErrore(num_carta);
         togliErrore(meseScad);
         togliErrore(annoScad);
