@@ -590,5 +590,5 @@ function validazioneForm_pagamento()
         risCvv = true;
     }
 
-    return risNomeCognome && risVia && risCivico && risCAP && risTel && risNumCarta && risIntestatario && !risMeseScad && !risAnnoScad && risCvv;
+    return risNomeCognome && risVia && risCivico && risCAP && risTel && risNum && risIntestatario && !risMeseScad && !risAnnoScad && risCvv;
 }

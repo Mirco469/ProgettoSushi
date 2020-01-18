@@ -29,7 +29,7 @@
 			$cvv = "";
 
 			$paginaHTML = file_get_contents('html/pagamento.html');
-			/*
+			
 			if (isset($_POST['paga']))
 			{
 				# Controllo primo fieldset
@@ -211,7 +211,6 @@
 					header('location: successo.html');
 				}
 			}
-			*/
 
 			$paginaHTML = file_get_contents('html/pagamento.html');
 			$paginaHTML = str_replace('<menu />', getMenu(), $paginaHTML);
