@@ -590,7 +590,7 @@
     //Controlla che la stringa non contenga numeri e abbia almeno due caratteri
     function checkNomeCognome($string) {
         if(!checkMinLen($string)) return false;
-        if (!preg_match('/^[a-zA-Z ]+$/', $string)) {
+        if (!preg_match('/^[a-zA-Z]{1,}([ ][a-zA-Z]{1,}){1,}$/', $string)) {
             return false;
         } else return true;
     }
@@ -663,8 +663,9 @@
         } else return true;
     }
 
-    //Controlla che il parametro sia un numero consono ad essere un prezzo ovvero può essere decimale ma con al massimo due cifre dopo la virgola e
+    //Controlla che il parametro sia un numero consono ad essere un prezzo ovvero può essere decimale ma con al massimo due cifre dopo la virgola (o il punto) e
     // tre cifre prima della virgola (228,90)(non può essere stringa vuota)
+    // NB: Prima dell'inserimento nel database verranno rimpiazzate le virgole con il punto
     //Ritorna true se rispetta i vincoli sopra descritti, false altrimenti.
     function checkPrezzo($numero)
     {
