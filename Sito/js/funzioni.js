@@ -473,11 +473,11 @@ function validazioneFormModificaProdotto() {
 function validazioneForm_pagamento()
 {
     // Controllo il primo fieldset
-    var risNomeCognome;
-	var risVia;
-	var risCivico;
-	var risCAP;
-	var risTel;
+    var risNomeCognome = false;
+	var risVia = false;
+	var risCivico = false;
+	var risCAP = false;
+	var risTel = false;
 
     var sceltaIndirizzo = document.getElementById("destinazione");
     var indirizzo_val = sceltaIndirizzo.options[sceltaIndirizzo.selectedIndex].text;
@@ -521,11 +521,11 @@ function validazioneForm_pagamento()
     }
 
     // Controllo il secondo fieldset
-    var risIntestatario;
-	var risNum;
-    var risMeseScad;
-	var risAnnoScad;
-	var risCvv;
+    var risIntestatario = false;
+	var risNum = false;
+    var risMeseScad = true;
+	var risAnnoScad = true;
+	var risCvv = false;
 
 	var sceltaCarta = document.getElementById("carta_credito");
     var carta_val = sceltaCarta.options[sceltaCarta.selectedIndex].text;
@@ -539,8 +539,8 @@ function validazioneForm_pagamento()
 
         var meseScad_val = meseScad.options[meseScad.selectedIndex].text;
 	    var annoScad_val = annoScad.options[annoScad.selectedIndex].text;
-	    var risMeseScad = meseScad_val == "Mese";
-	    var risAnnoScad = annoScad_val == "Anno";
+	    risMeseScad = meseScad_val == "Mese";
+	    risAnnoScad = annoScad_val == "Anno";
 
 	    if (risMeseScad) {
 		    togliErrore(meseScad);
@@ -555,9 +555,9 @@ function validazioneForm_pagamento()
 		    togliErrore(annoScad);
 	    }
 
-        var risIntestatario = checkNomeCognome(intestatario_carta);
-	    var risNum = checkSoloNumerieDim(num_carta);
-	    var risCvv = checkCVV(cvv);
+        risIntestatario = checkNomeCognome(intestatario_carta);
+	    risNum = checkSoloNumerieDim(num_carta);
+	    risCvv = checkCVV(cvv);
     
 	    if (!risIntestatario) {
 		    mostraErrore(intestatario_carta, "L'intestatario deve contenere solo lettere ed essere lungo almeno due caratteri");
@@ -571,11 +571,11 @@ function validazioneForm_pagamento()
     }
     else
     {
-        var risIntestatario = true;
-	    var risNum = true;
-        var risMeseScad = false;
-	    var risAnnoScad = false;
-        var risCvv = true;
+        risIntestatario = true;
+	    risNum = true;
+        risMeseScad = false;
+	    risAnnoScad = false;
+        risCvv = true;
     }
 
     return risNomeCognome && risVia && risCivico && risCAP && risTel && risNumCarta && risIntestatario && !risMeseScad && !risAnnoScad && risCvv;
