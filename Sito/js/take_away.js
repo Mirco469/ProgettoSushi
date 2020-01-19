@@ -1,11 +1,20 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-	document.getElementsByName('Aggiungi').forEach(function(item,index) { // cerco gli elementi per input perchè so che gli unici input presenti sono per l'aggiungi
-		item.onclick = function(e) {
-			var name = item.parentNode.textContent; // prendo il nome del prodotto
-			var dt = item.parentNode; // seleziono il dt
-			aggiungi(name, dt);
-		};
-	});
+document.addEventListener('readystatechange', function() {
+	if(document.readyState === "complete") {
+		for( var i = 0 ; i < document.getElementsByName('Aggiungi').length ; i++ ) {
+			document.getElementsByName('Aggiungi')[i].onclick = function(e) {
+				var name = this.parentNode.textContent; // prendo il nome del prodotto
+				var dt = this.parentNode; // seleziono il dt
+				aggiungi(name, dt);
+			};
+		}/*
+		document.getElementsByName('Aggiungi').forEach(function(item,index) { // cerco gli elementi per input perchè so che gli unici input presenti sono per l'aggiungi
+			item.onclick = function(e) {
+				var name = item.parentNode.textContent; // prendo il nome del prodotto
+				var dt = item.parentNode; // seleziono il dt
+				aggiungi(name, dt);
+			};
+		});*/
+	}
 });
 
 function aggiungi(name, dt) {
@@ -43,7 +52,7 @@ function aggiungi(name, dt) {
 			var mess = dt.nextSibling;
 			if (mess.className == "errore" || mess.className == "successo")
 			{
-				mess.remove();
+				mess.parentNode.removeChild(mess);
 			}
 			dt.parentNode.insertBefore(dd, dt.nextSibling); // inserisco il dd
 		}
