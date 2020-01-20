@@ -273,8 +273,8 @@ INSERT INTO Contiene (id_ordine, nome, numero_porzioni) VALUES
 (10, 'Shake Fry Tobiko', 2),
 (10, 'Matcha Tiramisù', 2),
 
-(10, 'Hosomaki Avocado', 3),
-(10, 'Sashimi Tonno', 4),
-(10, 'Profiteroles', 5);
+(11, 'Hosomaki Avocado', 3),
+(11, 'Sashimi Tonno', 4),
+(11, 'Profiteroles', 5);
 
 SET FOREIGN_KEY_CHECKS=1;

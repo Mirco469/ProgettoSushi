@@ -66,7 +66,7 @@ function checkAlfanumerico(input) {
     }
 }
 function checkNomeCognome(input) {
-    var patt = new RegExp('^[a-zA-Z]{1,}[ ]{1,}[a-zA-Z]{1,}$');
+    var patt = new RegExp('^[a-zA-Z]{1,}([ ][a-zA-Z]{1,}){1,}$');
     if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
@@ -76,7 +76,7 @@ function checkNomeCognome(input) {
     }
 }
 function checkSoloLettereEDim(input) {
-    var patt = new RegExp('^[a-zA-Z]{2,}$');
+    var patt = new RegExp('^[a-zA-Z ]{2,}$');
     if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
@@ -125,8 +125,11 @@ function checkNumeroIntero(input) {
         return false;
     }
 }
+//N.B. Controlla che il prezzo inserito sia un numero con 3 cifre prima della virgola (o punto)
+// e due cifre dopo la virgola (o punto). Prima dell'inserimento nel database verranno sostituiti le eventuali 
+// virgole con il punto.
 function checkPrezzo(input) {
-    var patt = new RegExp('^[0-9]{1,3}((.|,)[0-9]{1,2})?$');
+    var patt = new RegExp('^[0-9]{1,3}([.|,][0-9]{1,2})?$');
     if(patt.test(input.value.trim())){
         togliErrore(input);
         return true;
@@ -463,7 +466,7 @@ function validazioneFormModificaProdotto() {
 	}
 	else
 	{
-		mostraErrore(prezzo, "Il prezzo deve essere un numero decimale con al massimo 3 cifre prima della virgola e 2 cifre dopo la virgola");
+		mostraErrore(prezzo, "Il prezzo deve essere un numero decimale con al massimo 3 cifre prima del punto e 2 cifre dopo il punto");
 	}
 	
 	return risPorzione && risPrezzo;
