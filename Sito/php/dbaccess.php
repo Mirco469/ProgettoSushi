@@ -53,7 +53,7 @@
 
 		public function alreadyExistsDest($nome_cognome, $tel, $cap, $via, $civico, $user)
         {
-            $query = $this->connection->prepare('SELECT * FROM destinazione WHERE nome_cognome = ? AND numero_telefonico = ? AND CAP = ? AND via = ? AND numero_civico = ? AND utente = ?');
+            $query = $this->connection->prepare('SELECT * FROM Destinazione WHERE nome_cognome = ? AND numero_telefonico = ? AND CAP = ? AND via = ? AND numero_civico = ? AND utente = ?');
             $query->bind_param('ssssss', $nome_cognome, $tel, $cap, $via, $civico, $user);
             if (!$query->execute())
             {
@@ -95,7 +95,6 @@
         {
 
             $query = $this->connection->prepare("DELETE FROM Destinazione WHERE id_destinazione = ".$indice." ");
-
             if ($query->execute()) {
                 return true;
             } else {
@@ -183,6 +182,7 @@
         //Dato il nome di un prodotto e le sue nuove informazioni lo modifica
         public function modifyProdotto($nome, $categoria, $pezzi, $prezzo, $descrizione)
         {
+			$prezzo = str_replace(",", ".", $prezzo);
             $query = $this->connection->prepare("UPDATE Prodotto SET categoria = ?, pezzi = ?, prezzo = ? , descrizione = ? WHERE nome = ?");
             $query->bind_param('sssss', $categoria, $pezzi, $prezzo, $descrizione, $nome);
             return $query->execute();
@@ -225,7 +225,12 @@
         public function getNews() {
             $query = $this->connection->prepare('SELECT * FROM News ORDER BY data ');
             $query->execute();
-            return $query->get_result();
+            $queryResult = $query->get_result();
+            if (mysqli_num_rows($queryResult) == 0) {
+                return null;
+            }else {
+                return $queryResult;
+            }
         }
 
 
@@ -272,24 +277,16 @@
                 return null;
             } else {
                 $result = array();
-
-                if (mysqli_num_rows($queryResult) == 0) {
-                    return null;
-                } else {
-                    $result = array();
-
-                    while ($row = mysqli_fetch_assoc($queryResult)) {
-                        $arraySingoloProdotto = array(
-                            'Nome' => $row['nome'],
-                            'Prezzo' => $row['prezzo'],
-                            'Pezzi' => $row['pezzi'],
-                            'Descrizione' => $row['descrizione'],
-                        );
-                        array_push($result, $arraySingoloProdotto);
-                    }
-
-                    return $result;
+                while ($row = mysqli_fetch_assoc($queryResult)) {
+                    $arraySingoloProdotto = array(
+                        'Nome' => $row['nome'],
+                        'Prezzo' => $row['prezzo'],
+                        'Pezzi' => $row['pezzi'],
+                        'Descrizione' => $row['descrizione'],
+                    );
+                    array_push($result, $arraySingoloProdotto);
                 }
+                return $result;
             }
         }
 
@@ -354,11 +351,18 @@
         /* FUNZIONI PER CONTROLLARE LO STATO DEL DATABASE */
 
 
-        public function getNewsUtente()
+        public function getNewsUtente($maxNews)
         {
-            $query = $this->connection->prepare('SELECT * FROM News ORDER BY data DESC ');
+            $query = $this->connection->prepare('SELECT * FROM News  ORDER BY data DESC LIMIT ? ');
+            $query->bind_param('i', $maxNews);
             $query->execute();
-            return $query->get_result();
+            $result = $query->get_result();
+            if(mysqli_num_rows($result) == 0){
+                return null;
+            }else {
+               return $result; 
+            }
+            
         }
 
 		public function getOrdini($username='') {
@@ -586,7 +590,7 @@
     //Controlla che la stringa non contenga numeri e abbia almeno due caratteri
     function checkNomeCognome($string) {
         if(!checkMinLen($string)) return false;
-        if (!preg_match('/^[a-zA-Z ]+$/', $string)) {
+        if (!preg_match('/^[a-zA-Z]{1,}([ ][a-zA-Z]{1,}){1,}$/', $string)) {
             return false;
         } else return true;
     }
@@ -659,13 +663,14 @@
         } else return true;
     }
 
-    //Controlla che il parametro sia un numero consono ad essere un prezzo ovvero può essere decimale ma con al massimo due cifre dopo la virgola e
+    //Controlla che il parametro sia un numero consono ad essere un prezzo ovvero può essere decimale ma con al massimo due cifre dopo la virgola (o il punto) e
     // tre cifre prima della virgola (228,90)(non può essere stringa vuota)
+    // NB: Prima dell'inserimento nel database verranno rimpiazzate le virgole con il punto
     //Ritorna true se rispetta i vincoli sopra descritti, false altrimenti.
     function checkPrezzo($numero)
     {
         if(empty($numero)){return false;}
-        if (!preg_match('/^[0-9]{1,3}((.|,)[0-9]{1,2})?$/', $numero)) {
+        if (!preg_match('/^[0-9]{1,3}([.|,][0-9]{1,2})?$/', $numero)) {
             return false;
         } else {return true;}
     }

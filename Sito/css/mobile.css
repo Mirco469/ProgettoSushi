@@ -734,7 +734,7 @@ min-height: 465px;
 	color: #e0ac00;
 }
 
-.lista_piatti dt + dd {
+.lista_piatti .prezzo {
 	display: block;
 	float: right;
 	width: 22%;
@@ -743,7 +743,7 @@ min-height: 465px;
 	padding-bottom: 0.5em;
 }
 
-.lista_piatti dt + dd + dd {
+.lista_piatti .dettagli {
 	width: 75%;
 	font-style: italic;
 	padding-bottom: 0.5em;

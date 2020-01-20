@@ -115,8 +115,8 @@
                         $descrizioneP = $singoloProdotto["Descrizione"];
                         $listaProdotti .= "
                             <dt>$nomeP<a class=\"buttonSmall\" href=\"modifica_prodotto.php?nome=$nomeP\">Modifica</a></dt>
-                            <dd>$prezzoP &euro;</dd>
-                            <dd><span>[$pezziP<abbr title=\"Pezzi\">pz</abbr>]</span> $descrizioneP</dd>";
+                            <dd class=\"prezzo\">$prezzoP &euro;</dd>
+                            <dd class=\"dettagli\"><span>[$pezziP<abbr title=\"Pezzi\">pz</abbr>]</span> $descrizioneP</dd>";
                     }
                     $listaProdotti .= "
                     </dl>

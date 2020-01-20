@@ -7,23 +7,21 @@
         $paginaHTML = file_get_contents('html/home_utente.html');
         $menu = getMenu();
 
-        $queryNews = $db->getNewsUtente();
+        $maxNews = 2;
+        $queryNews = $db->getNewsUtente($maxNews);
 
         $notizie = '';
-        $maxNews = 2;
-        $index = 0;
-
-        while ($row = mysqli_fetch_assoc($queryNews)) {
-            $index  = $index+1;
-
+      
+        if($queryNews == null){
+            $notizie ="<dt>Al momento non ci sono notizie!<dt>
+                          <dd>Appena ne avremo una sarai il/la prim* a saperlo!</dd>"; 
+        }else{
+            while ($row = mysqli_fetch_assoc($queryNews)) {
             $notizie .= "<dt>" . $row['data'] . " - " . $row['titolo'] . "</dt>
-                                        <dd>" . $row['descrizione'] . "</dd>";
-
-            if($index == $maxNews) 
-			{
-				break;
-			}
+                            <dd>" . $row['descrizione'] . "</dd>";
+            }
         }
+        
 
 
         $paginaHTML = str_replace('<menu />', $menu, $paginaHTML);
