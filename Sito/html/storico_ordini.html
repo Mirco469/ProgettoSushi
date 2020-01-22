@@ -1,29 +1,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="it">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Successo - Sushi Nakamura</title>
-        <meta name="title" content="Successo - Sushi Nakamura" />
-        <meta name="description" content="Pagina di ordine andato a buon fine" />
-        <meta name="keyword" content="Ordine,Successo" />
-        <meta name="language" content="italian it"/>
-        <meta name="robots" content="noindex"/>
-        <meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Storico ordini - Sushi Nakamura</title>
+		<meta name="title" content="Storico ordini" />
+		<meta name="description" content="Lista ordini effettuati in corso e passati dall'utente loggato" />
+		<meta name="keyword" content="Ordini, prodotti, dettagli" />
+		<meta name="robots" content="noindex" />
+		<meta name="language" content="italian it"/>
+		<meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" type="text/css" media="screen and (min-width: 901px)" href="css/style.css"/>
+		<link rel="stylesheet" type="text/css" media="screen and (min-width: 901px)" href="css/style.css"/>
 		<link rel="stylesheet" type="text/css" media="screen and (max-width: 900px)" href="css/mobile.css"/>
 		<link rel="stylesheet" type="text/css" media="print" href="css/stampa.css"/>
         <script type="text/javascript" src="js/index.js"></script>
-    </head>
-    <body>
-        <div id="header">
-            <a id="logo" href="home_utente.php" title="Vai alla home" tabindex="-1"></a>
-            <h1 lang="ja">Sushi Nakamura</h1>
+	</head>
+
+	<body>
+		<div id="header">
+        	<a id="logo" href="home_utente.php" title="Vai alla home"  tabindex="-1"></a>
+        	<h1 lang="ja">Sushi Nakamura</h1>
         </div>
 		<p class="aiuti">
-			<a href="#successo" tabindex="1">Salta il menu</a>
+			<a href="#storico_ordini" tabindex="1">Salta il menu</a>
 		</p>
-        <div id="menu">
+		<div id="menu">
 			<ul>
 				<li lang="en"><a href="home_utente.php" tabindex="2">Home</a></li>
 				<li lang="en"><a href="take_away.php" tabindex="3">Take Away</a></li>
@@ -31,24 +32,30 @@
 				<li><a href="recensioni.php" tabindex="5">Recensioni</a></li>
 				<li><a href="prodotti.php" tabindex="6">Prodotti</a></li>
 				<li><a href="contatti.php" tabindex="7">Contatti</a></li>
-				<li class="impostazioni">
-					<span id="dropbtn">Area Riservata</span>
-					<ul id="dropdown_content">
-						<li><a href="carrello.php" tabindex="8">Carrello</a></li>
-						<li><a href="storico_ordini.php" tabindex="9">Storico ordini</a></li>
-						<li><a href="gestione_profilo_utente.php" tabindex="10">Gestione profilo</a></li>
-						<li><a lang="en" href="logout.php" tabindex="11">Logout</a></li>
-					</ul>
-				</li>
+				<menu />
 			</ul>
 		</div>
 
-        <div class="content" id="successo">
-            <img src="img/check_mark.png" alt="Immagine di un segno di spunta verde"></img>
-            <p>Ordine effettuato con <em>successo</em>! Il tuo ordine arriver&agrave; tra un'ora.</p>
-            <a href="home_utente.php">Torna alla <span lang="en">home</span></a>
-        </div>
-        <div id="footer">
+		<div id="breadcrumb">
+			<p>Ti trovi in: <span xml:lang="en" lang="en"><a href="home_utente.php">Home</a></span> &gt; &gt; Storico Ordini</p>
+		</div>
+
+		<!-- Inizio contenuto -->
+		<div class="content" id="storico_ordini">
+			<h1 class="tableTitle" >Storico Ordini</h1>
+			<p> Visualizzati gli ordini per le tue destinazioni salvate </p>
+			
+			
+			<listaOrdini/>
+
+			<div id="torna_su">
+				<a href="#header">Torna su</a>
+			</div>
+		</div>
+		<!-- Fine contenuto -->
+
+
+		<div id="footer">
 
 
 	      <div class="info">
@@ -68,7 +75,7 @@
 	          <li>Luned&igrave; chiuso</li>
 			</ul>
 	      </div>
-	       <p  lang="en">Copyright (c) 2019 Copyright Holder All Rights Reserved.</p>
+	       <p lang="en">Copyright (c) 2019 Copyright Holder All Rights Reserved.</p>
 
 	    <p>
 	      <a href="http://validator.w3.org/check?uri=referer"><img
@@ -79,5 +86,6 @@
 	    </p>
 
 	    </div>
-    </body>
+
+	</body>
 </html>

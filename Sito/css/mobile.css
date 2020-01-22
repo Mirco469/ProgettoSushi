@@ -35,7 +35,14 @@ body a:visited {
 	overflow: hidden;
 }
 
+/* Stili messaggi di errore e successo PHP*/
+.errore{
+	color: #FF8F8F;
+}
 
+.successo{
+	color: #00C700;
+}
 
 /*	Header	*/
 
@@ -65,7 +72,7 @@ body a:visited {
 	font-size: 1em;
 	color: #e0ac00;
 	z-index: 1;
-	
+
 	background: url(../img/menu_bars100_white.png) no-repeat;
     background-position: 96%;
     -moz-background-size: 3em;
@@ -92,14 +99,14 @@ body a:visited {
 }
 
 #menu {
-	position: fixed;
+	position: absolute;
 	top: 0;
 	right: 0;
 	padding: 0.5em;
 	width: calc(20% - 1em);
 	height: calc(80px - 1em);
     font-size: 1.2em;
-	z-index: 1;
+	z-index: 2;
 }
 
 #menu > ul {
@@ -110,6 +117,7 @@ body a:visited {
 #menu > ul li {
 	margin-left: calc(100% + 0.5em);
 	list-style-type: none;
+	font-size: 0;
 }
 
 #menu.open {
@@ -121,12 +129,12 @@ body a:visited {
 }
 
 #menu.open > ul {
-	position: fixed;
-	top: 80px;
+	position: absolute;
+	overflow-y: auto;
 	bottom: 0;
 	left: 20%;
 	right: 0;
-	width: 90%;
+	width: 80%;
 	background-color: #4a0715;
 	float: right;
 }
@@ -135,6 +143,11 @@ body a:visited {
 	margin: 0;
 	border-top: solid 1px white;
 	list-style-type: none;
+	font-size: 1em;
+}
+
+#menu.open > ul > li {
+	font-size: 1.2em;
 }
 
 #menu.open #dropdown_content {
@@ -215,6 +228,10 @@ body a:visited {
 	border-radius: 4px;
 }
 
+.defaultForm legend{
+	color: #d9d9d9;
+}
+
 .defaultForm input[type=submit]{
 	display: block;
 	margin:auto;
@@ -252,7 +269,7 @@ table.defaultTable td {
 	border: solid 1px white;
 	border-left: none;
 	border-right: none;
-	padding: 0.5em;
+	padding: 4px;
 }
 
 table.defaultTable td:first-child {
@@ -266,7 +283,7 @@ table.defaultTable tbody th:first-child {
 	border-top-left-radius: 16px;
 	border-bottom-left-radius: 16px;
 	border-left: solid 2px white;
-	padding: 0.5em;
+	padding: 4px;
 }
 
 table.defaultTable td:last-child {
@@ -308,8 +325,9 @@ table.defaultTable td:last-child {
 	border: 1px solid #d9d9d9;
     border-top: none;
 	margin-bottom: 2em;
-	padding-left: 0.5em;
 	clear: both;
+	text-align: center;
+	padding: 1em 0;
 }
 
 .defaultLista>dt{
@@ -318,12 +336,6 @@ table.defaultTable td:last-child {
 	clear: both;
 	border: 1px solid #d9d9d9;
 	background-color: #4a0715;
-}
-
-
-.defaultLista>dd{
-	text-align: center;
-	padding: 1em 0;
 }
 
 .defaultLista>dt>input{
@@ -377,8 +389,32 @@ table.defaultTable td:last-child {
 /* BACK END*/
 
 /* Home Admin */
+
+#formNews {
+	width: auto;
+}
+
+#formNews label {
+	font-size: 1.4em;
+	vertical-align: middle;
+	margin-left: 1em;
+}
+
+#formNews span {
+	display: block;
+	margin: 1em;
+}
+
+#formNews input[type=radio] {
+	display: inline;
+}
+
 #home_admin {
     margin: 1em;
+}
+
+#home_admin legend{
+	color: #d9d9d9;
 }
 
 .mySlides>img {
@@ -391,7 +427,7 @@ table.defaultTable td:last-child {
 
 /* Slideshow container */
 #slideshow_home {
-	clear: both;	
+	clear: both;
 	max-width: 90%;
 	position: relative;
 	margin: auto;
@@ -471,12 +507,12 @@ table.defaultTable td:last-child {
 }
 
 @-webkit-keyframes fade {
-	from {opacity: .4} 
+	from {opacity: .4}
 	to {opacity: 1}
 }
 
 @keyframes fade {
-	from {opacity: .4} 
+	from {opacity: .4}
 	to {opacity: 1}
 }
 
@@ -513,10 +549,10 @@ table.defaultTable td:last-child {
 }
 
 #home_admin>form {
-margin-bottom: 5%; 
+margin-bottom: 5%;
 }
 
-#home_admin input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
+#addNews input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
 	display: block;
 	padding: 0.6em 0.875em;
 	margin: 0.5em 0;
@@ -532,7 +568,7 @@ margin-bottom: 5%;
 }
 
 #home_admin fieldset {
-    margin: 0 5%; 
+    margin: 0 5%;
 }
 
 
@@ -704,7 +740,7 @@ min-height: 465px;
 	color: #e0ac00;
 }
 
-.lista_piatti dt + dd {
+.lista_piatti .prezzo {
 	display: block;
 	float: right;
 	width: 22%;
@@ -713,7 +749,7 @@ min-height: 465px;
 	padding-bottom: 0.5em;
 }
 
-.lista_piatti dt + dd + dd {
+.lista_piatti .dettagli {
 	width: 75%;
 	font-style: italic;
 	padding-bottom: 0.5em;
@@ -724,10 +760,10 @@ min-height: 465px;
 	position: fixed;
 	bottom: 0.8em;
 	right: 0.8em;
-	z-index: 99;
 	border: 1px solid #000;
 	border-radius: 5px;
 	background-color: #333;
+	z-index: 1;
 }
 
 /* Login */
@@ -745,25 +781,25 @@ min-height: 465px;
 	margin: auto;
 }
 
-#recensioni h2 {
+#recensioni dt {
 	color: #e0ac00;
 	margin: 0;
 }
 
-#recensioni h2 + p {
+#recensioni dt + dd {
 	font-size: 0.8em;
 	padding: 0.2em;
 	margin: 0;
 }
 
-#recensioni h2 + p + p {
+#recensioni dt + dd + dd {
 	font-style: italic;
 	font-size: 0.8em;
 	padding: 0.2em;
 	margin: 0;
 }
 
-#recensioni h2 + p + p + p{
+#recensioni dt + dd + dd + dd {
 	padding: 0.5em;
 	border: 1px solid #fff;
 	border-radius: 5px;
@@ -778,6 +814,10 @@ min-height: 465px;
 	margin-bottom: 1.5em;
 	max-width: 90%;
 	border-radius: 5px;
+}
+
+#recensioni legend{
+	color: #d9d9d9;
 }
 
 #recensioni textarea {
@@ -851,23 +891,9 @@ min-height: 465px;
 }
 
 #pagamento fieldset {
+	text-align: left;
 	margin-top: 1em;
-}
-
-#pagamento p {
-	font-size: 0.9em;
-}
-
-#scelta_consegna input[type=radio] {
-	cursor: pointer;
-	display: inline;
-	width: 2em;
-}
-
-#scelta_consegna input[type=radio] + label {
-	display: inline;
-	cursor: pointer;
-	margin-right: 1em;
+	margin-bottom: 1em;
 }
 
 #info_pagamento input[name="cvv_carta"] {
@@ -875,7 +901,7 @@ min-height: 465px;
 	width: 5em;
 }
 
-.selezione_big {
+#pagamento .selezione_big {
 	width: 100%;
 	margin-top: 0.5em;
 	padding: 0.3em;
@@ -883,12 +909,28 @@ min-height: 465px;
 	font-size: 0.8em;
 }
 
-.selezione_small {
+.selezione_big + p {
+	text-align: center;
+}
+
+#pagamento .selezione_small {
 	width: 6em;
-	margin: 0.5em;
+	margin: 0;
 	padding: 0.3em;
 	border-radius: 4px;
 	font-size: 0.8em;
+}
+
+#pagamento .defaultButton {
+	width: 5em;
+	display: inline;
+	margin: 0.5em;
+}
+
+#pagamento input[type="submit"] {
+    padding: 0.6em 0em;
+    margin: 0.5em 0;
+    border: 2px;
 }
 
 /* Gestione Profilo Utente */
@@ -900,6 +942,17 @@ min-height: 465px;
 	border-width: 2px;
     border-style: groove;
     border-color: threedface;
+}
+
+#listaDestinazioni dt {
+	padding: 1em;
+}
+#listaDestinazioni dd{
+	padding-left: 0.3em;
+	padding-right: 0.3em;
+}
+#listaDestinazioni {
+	border: 1px solid white;
 }
 
 #menu_profilo h1 {
@@ -931,48 +984,30 @@ min-height: 465px;
 	padding: 1em;
 }
 
-#aggiunta_prodotti>form{
-	margin: 2em;
+#aggiunta_prodotti>h1{
+	margin-left: 1em;
 }
 
-#aggiunta_prodotti fieldset{
-	max-width: 90em;
-	margin: auto;
+#aggiunta_prodotti>h2{
+	margin-top: 2em;
 	text-align: center;
 }
 
-#aggiunta_prodotti fieldset>legend{
-	text-align: left;
+.defaultForm .buttonSmall{
+	float: none;
 }
 
-#aggiunta_prodotti .formGroup{
-	margin: 0.5em 0.5em;
+#aggiunta_prodotti .defaultForm{
+	margin: auto;
 }
 
-#aggiunta_prodotti form input[type=submit]{
-	background-color: #4a0715;
-    border: solid 4px #4a0715;
-    border-radius: 5px;
-	color: #d9d9d9;
+#aggiunta_prodotti .defaultForm textarea{
+	width: 97%;
 	display: block;
 	margin:auto;
-	margin-top: 1em;
-	font-size: 1.2em;
 }
 
-#aggiunta_prodotti form input[type=submit]:hover{
-	background-color: #990000;
-	border: solid 4px #990000;
-}
-
-#aggiunta_prodotti form{
-	max-width: 26.875em;
-	margin: auto;
-	margin-top: 1em;
-	margin-bottom: 1em;
-}
-
-#aggiunta_prodotti form input:not([type=submit]){
+#aggiunta_prodotti .defaultForm select{
 	display: block;
 	width: 100%;
 	padding: 0.6em 0.875em;
@@ -982,13 +1017,14 @@ min-height: 465px;
 	border-radius: 4px;
 }
 
-#aggiunta_prodotti .defaultLista>dd>span{
-	margin: 0 0.5em;
-}
-
-#aggiunta_prodotti .defaultLista dt {
-	font-size: 0.8em;
-	line-height: 1.5em;
+#aggiunta_prodotti a.buttonSmall {
+    display: inline-block;
+	box-sizing: border-box;
+    margin-right: 0.3em;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.6em;
+	height: auto;
 }
 
 /* Gestione Profilo Admin */
@@ -1018,7 +1054,7 @@ min-height: 465px;
 	font-size: 1em;
 	text-align: left;
 }
-  
+
 /*	Dettagli Ordine	*/
 
 #dettagli_ordine {
@@ -1035,6 +1071,16 @@ min-height: 465px;
 	width: 100%;
 }
 
+#dettagli_ordine .totaleText {
+	margin-top: 0;
+	margin-bottom: 2em;
+	float: right;
+}
+
+#dettagli_ordine + #footer {
+    clear: both;
+}
+
 
 
 /*	Carrello	*/
@@ -1043,7 +1089,15 @@ min-height: 465px;
 	padding: 1em;
 }
 
+/*	Rimozione delle frecciette per aumentare e diminuire il numero	*/
+#carrello input[type="text"]::-webkit-outer-spin-button,
+#carrello input[type="text"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 #carrello input[type="text"] {
+	-moz-appearance:textfield;
 	text-align: center;
 	max-width: 4em;
 }
@@ -1115,6 +1169,60 @@ min-height: 465px;
 	display: block;
 }
 
-#storico_ordini .buttonSmall {
+#storico_ordini a.buttonSmall {
 	width: 9em;
+	box-sizing: border-box;
+    text-decoration: none;
+    text-align: center;
+    height: 1.7em;
+    font-weight: 400;
+    font-size: 13.3333px;
+    display: inline-block;
+    line-height: normal;
+    margin-right: 0.3em;
+    padding: 1px 6px;
+}
+
+
+
+/*	Gestione ordini	*/
+#gestione_ordini a.buttonSmall {
+	width: 9em;
+	box-sizing: border-box;
+    text-decoration: none;
+    text-align: center;
+    height: 1.7em;
+    font-weight: 400;
+    font-size: 13.3333px;
+    display: inline-block;
+    line-height: normal;
+    margin-right: 0.3em;
+    padding: 1px 6px;
+}
+
+
+/* Modifica prodotto */
+#modifica_prodotto>form>p{
+	text-align: center;
+}
+
+#modifica_prodotto .defaultForm input[type=submit]{
+	margin: 0.5em;
+	display: inline;
+}
+
+#modifica_prodotto .defaultForm textarea{
+	width: 97%;
+	display: block;
+	margin:auto;
+}
+
+#modifica_prodotto .defaultForm select{
+	display: block;
+	width: 100%;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 2px;
+	border-radius: 4px;
 }

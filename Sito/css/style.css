@@ -31,6 +31,15 @@ body a:visited {
 	overflow: hidden;
 }
 
+/* Stili messaggi di errore e successo PHP*/
+.errore{
+	color: #FF8F8F;
+}
+
+.successo{
+	color: #00C700;
+}
+
 /*
  * Palette
  *
@@ -69,6 +78,10 @@ body a:visited {
 .defaultForm input[type=submit]{
 	display: block;
 	margin:auto;
+}
+
+.defaultForm legend{
+	color: #d9d9d9;
 }
 
 /*	Tabelle	*/
@@ -145,8 +158,9 @@ table.defaultTable td:last-child {
 	border: 1px solid #d9d9d9;
     border-top: none;
 	margin-bottom: 2em;
-	padding-left: 0.5em;
 	clear: both;
+	text-align: center;
+	padding: 1em 0;
 }
 
 .defaultLista>dt{
@@ -163,11 +177,6 @@ table.defaultTable td:last-child {
 	white-space:nowrap;
 }
 
-.defaultLista>dd{
-	text-align: center;
-	padding: 1em 0;
-}
-
 .defaultLista>dt>input{
 	float: right;
 	width: 9em;
@@ -179,7 +188,7 @@ table.defaultTable td:last-child {
 }
 
 /*	Header	*/
- 
+
 #logo {
 	display: block;
 	margin-left: 10%;
@@ -379,7 +388,27 @@ table.defaultTable td:last-child {
 /* LATO UTENTE*/
 /*	carrello	*/
 
+#carrello {
+	margin: 0 15%;
+}
+
+#carrello .tableTitle {
+	margin-left: 0;
+}
+
+#carrello .defaultLista {
+	margin: 0;
+}
+
+/*	Rimozione delle frecciette per aumentare e diminuire il numero	*/
+#carrello input[type="text"]::-webkit-outer-spin-button,
+#carrello input[type="text"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 #carrello input[type="text"] {
+	-moz-appearance:textfield;
 	text-align: center;
 	width: 2.5em;
 }
@@ -396,7 +425,7 @@ table.defaultTable td:last-child {
 }
 
 #carrello .totaleText {
-	margin: 0 8em 2em 0;
+	margin: 0 0 2em 0;
 	float: right;
 }
 
@@ -404,7 +433,7 @@ table.defaultTable td:last-child {
 	clear: both;
 	display: block;
 	margin-left: auto;
-	margin-right: 2em;
+	margin-right: 0;
 	margin-top: 1em;
 	margin-bottom: 2em;
 	border: 4px solid #8a8a8a;
@@ -444,6 +473,16 @@ table.defaultTable td:last-child {
 	margin: 2em 0 1em;
 	border-collapse: separate;
 	border-spacing: 0 1em;
+}
+
+#dettagli_ordine .totaleText {
+	margin-top: 0;
+	margin-bottom: 2em;
+	float: right;
+}
+
+#dettagli_ordine + #footer {
+    clear: both;
 }
 
 
@@ -505,7 +544,7 @@ table.defaultTable td:last-child {
 	font-size: 1.2em;
 }
 
-.lista_piatti dt + dd {
+.prezzo {
 	display: block;
 	float: right;
 	width: 20%;
@@ -514,12 +553,21 @@ table.defaultTable td:last-child {
 	padding-bottom: 1em;
 }
 
-.lista_piatti dt + dd + dd {
+.dettagli {
 	width: 80%;
 	font-style: italic;
 	padding-bottom: 1em;
 	text-indent: 3em;
 }
+
+#take_away dd.successo {
+	text-indent: 3em;
+}
+
+#take_away dd.errore {
+	text-indent: 3em;
+}
+
 .lista_piatti dd > span:first-of-type {
 	color: #e0ac00;
 }
@@ -589,26 +637,25 @@ table.defaultTable td:last-child {
 }
 
 
-#recensioni h2 {
+#lista_recensioni dt {
 	color: #e0ac00;
 	font-size: 1.3em;
 	margin: 0;
 }
 
-#recensioni h2 + p {
+#lista_recensioni dt + dd {
 	font-size: 0.8em;
 	padding: 0.2em;
 	margin: 0;
 }
 
-#recensioni h2 + p + p {
+#lista_recensioni dt + dd + dd {
 	font-style: italic;
-	font-size: 0.8em;
-	padding: 0.2em;
+	font-size: 0.9em;
 	margin: 0;
 }
 
-#recensioni h2 + p + p + p{
+#lista_recensioni dt + dd + dd + dd {
 	padding: 0.5em;
 	border: 1px solid #fff;
 	border-radius: 5px;
@@ -623,6 +670,10 @@ table.defaultTable td:last-child {
 	margin-bottom: 1.5em;
 	max-width: 70%;
 	border-radius: 5px;
+}
+
+#recensioni legend{
+	color: #d9d9d9;
 }
 
 #titolo_recensione, #testo_recensione {
@@ -657,38 +708,38 @@ table.defaultTable td:last-child {
 }
 
 #aggiunta_prodotti>h2{
+	margin-top: 2em;
 	text-align: center;
 }
 
-#aggiunta_prodotti>form{
-	margin: 2em;
+.defaultForm .buttonSmall{
+	float: none;
 }
 
-#aggiunta_prodotti fieldset{
-	max-width: 90em;
-	margin: auto;
-	text-align: center;
+.defaultForm textarea{
+	width: 97%;
+	display: block;
+	margin:auto;
 }
 
-#aggiunta_prodotti fieldset>legend{
-	text-align: left;
+.defaultForm select{
+	display: block;
+	width: 100%;
+	padding: 0.6em 0.875em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 2px;
+	border-radius: 4px;
 }
 
-#aggiunta_prodotti .formGroup{
-	display: inline-block;
-	margin: 0.5em 0.5em;
-}
-
-#aggiunta_prodotti form input[type=submit]{
-	background-color: #4a0715;
-    border: solid 4px #4a0715;
-    border-radius: 5px;
-	color: #d9d9d9;
-}
-
-#aggiunta_prodotti form input[type=submit]:hover{
-	background-color: #990000;
-	border: solid 4px #990000;
+#aggiunta_prodotti a.buttonSmall {
+    display: inline-block;
+	box-sizing: border-box;
+    margin-right: 0.3em;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.6em;
+	height: auto;
 }
 
 /*Home Utente*/
@@ -706,7 +757,7 @@ table.defaultTable td:last-child {
 
 /* Slideshow container */
 #slideshow_home {
-	clear: both;	
+	clear: both;
 	max-width: 90%;
 	position: relative;
 	margin: auto;
@@ -781,12 +832,12 @@ table.defaultTable td:last-child {
 }
 
 @-webkit-keyframes fade {
-	from {opacity: .4} 
+	from {opacity: .4}
 	to {opacity: 1}
 }
 
 @keyframes fade {
-	from {opacity: .4} 
+	from {opacity: .4}
 	to {opacity: 1}
 }
 
@@ -804,6 +855,7 @@ div#notizie {
 }
 
 #notizie dt {
+	margin-top: 5%;
     font-weight: bold;
 }
 
@@ -834,6 +886,12 @@ div#notizie {
 
 #gestione_profilo {
     margin: 1em;
+}
+
+
+
+#listaDestinazioni {
+	border: 1px solid white;
 }
 
 #menu_profilo>h1 {
@@ -884,6 +942,15 @@ div#notizie {
 
 #gestione_utente input[type=submit]	{
 	margin-top: 1em;
+}
+
+#gestione_utente>form select {
+	width: auto;
+}
+
+
+#listaDestinazioni .destIndex{
+	display: none;
 }
 
 
@@ -993,6 +1060,10 @@ min-height: 465px;
 	margin-bottom: 1em;
 }
 
+#home_admin legend{
+	color: #d9d9d9;
+}
+
 
 #home_admin input:not([type=submit]){ /* Da mettere uguale per tutti i form del sito? */
 	display: block;
@@ -1009,7 +1080,7 @@ min-height: 465px;
 	margin:auto;
 }
 
-#home_admin fieldset {
+#addNews {
     width: 20em;
 }
 #home_admin fieldset textarea ,#home_admin fieldset input[type=text]  {
@@ -1017,6 +1088,24 @@ min-height: 465px;
     font-size: 1em;
 }
 
+#formNews {
+	width: auto;
+}
+
+#formNews label {
+	font-size: 1.4em;
+	vertical-align: middle;
+	margin-left: 1em;
+}
+
+#formNews span {
+	display: block;
+	margin: 1em;
+}
+
+#formNews input[type=radio] {
+	display: inline;
+}
 /* Pagamento */
 
 #pagamento {
@@ -1027,19 +1116,8 @@ min-height: 465px;
 }
 
 #pagamento fieldset {
+	text-align: left;
 	margin: 1em;
-}
-
-#scelta_consegna input[type=radio] {
-	cursor: pointer;
-	display: inline;
-	width: 2em;
-}
-
-#scelta_consegna input[type=radio] + label {
-	display: inline;
-	cursor: pointer;
-	margin-right: 1em;
 }
 
 #info_pagamento input[name="cvv_carta"] {
@@ -1047,22 +1125,37 @@ min-height: 465px;
 	width: 5em;
 }
 
-.selezione_big {
+#pagamento .selezione_big {
 	width: 100%;
 	padding: 0.3em;
 	border-radius: 4px;
 	font-size: 0.8em;
-	margin: 0.5em;
+	margin-top: 0.5em;
 }
 
-.selezione_small {
+.selezione_big + p {
+	text-align: center;
+}
+
+#pagamento .selezione_small {
 	width: 6em;
-	margin: 0.5em;
+	margin-top: 0.5em;
 	padding: 0.3em;
 	border-radius: 4px;
 	font-size: 0.8em;
 }
 
+#pagamento .defaultButton {
+	width: 6em;
+	display: inline;
+	margin: 0.7em;
+}
+
+#pagamento input[type="submit"] {
+    padding: 0.6em 0em;
+    margin: 0.5em 0;
+    border: 2px;
+}
 
 /*	errore utente e admin	*/
 #errore {
@@ -1079,4 +1172,48 @@ min-height: 465px;
 #errore #testo {
 	text-align: left;
 	font-size: 2em;
+}
+
+
+
+/*	storico_ordini	*/
+#storico_ordini h2 {
+	margin-left: 6em;
+}
+
+#storico_ordini>p {
+	margin-left: 8em;
+}
+
+#storico_ordini a.buttonSmall {
+    display: inline-block;
+	box-sizing: border-box;
+    margin-right: 0.3em;
+    padding: 0.3em;
+	width: 9em;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.5em;
+}
+
+/*	Gestione ordini	*/
+#gestione_ordini a.buttonSmall {
+    display: inline-block;
+	box-sizing: border-box;
+    margin-right: 0.3em;
+    padding: 0.3em;
+	width: 9em;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.5em;
+}
+
+/* Modifica prodotto */
+#modifica_prodotto>form>p{
+	text-align: center;
+}
+
+#modifica_prodotto .defaultForm input[type=submit]{
+	margin: 0.5em;
+	display: inline;
 }

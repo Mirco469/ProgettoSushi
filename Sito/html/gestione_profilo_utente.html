@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+      <meta charset="utf-8" />
+      <title>Gestione profilo - Sushi Nakamura</title>
+      <meta name="title" content="Gestione profilo" />
+      <meta name="description" content="Pagina di gestione del profilo" />
+      <meta name="robots" content="noindex"/>
+      <meta name="author" content="Dindinelli Alessandro, Tommasin Alessandro, Frison Nicol&ograve;, Giardina Mirco"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <link rel="stylesheet" type="text/css" media="screen and (min-width: 901px)" href="css/style.css"/>
+<link rel="stylesheet" type="text/css" media="screen and (max-width: 900px)" href="css/mobile.css"/>
+      <link rel="stylesheet" type="text/css" media="print" href="css/stampa.css"/>
+        <script src="js/index.js"></script>
+        <script src="js/funzioni.js"></script>
+  </head>
+
+  <body>
+    <div id="header">
+      <a id="logo" href="home_utente.php" title="Vai alla home" tabindex="-1"></a>
+      <h1 lang="ja">Sushi Nakamura</h1>
+    </div>
+    <p class="aiuti">
+        <a href="#gestione_utente" tabindex="1">Salta il menu</a>
+    </p>
+	
+    <div id="menu">
+        <ul>
+            <li lang="en"><a href="home_utente.php" tabindex="2">Home</a></li>
+            <li lang="en"><a href="take_away.php" tabindex="3">Take Away</a></li>
+            <li><a href="chi_siamo.php" tabindex="4">Chi siamo</a></li>
+            <li><a href="recensioni.php" tabindex="5">Recensioni</a></li>
+            <li><a href="prodotti.php" tabindex="6">Prodotti</a></li>
+            <li><a href="contatti.php" tabindex="7">Contatti</a></li>
+            <li class="impostazioni">
+                <span id="dropbtn">Area Riservata</span>
+                <ul id="dropdown_content">
+                    <li><a href="carrello.php" tabindex="8">Carrello</a></li>
+                    <li><a href="storico_ordini.php" tabindex="9">Storico ordini</a></li>
+                    <li id="active">Gestione profilo</li>
+                    <li><a lang="en" href="logout.php" tabindex="10">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div id="breadcrumb">
+      <p>Ti trovi in: <a href="home_utente.php" lang="en">Home</a> &gt; &gt; Gestione Profilo </p>
+    </div>
+    
+    <div id="menu_profilo">
+        <h1>Gestione profilo</h1>
+      <ul>
+        <li><a href="#cp">Cambia <span lang="en">password</span></a></li>
+        <li><a href="#is">Modifica le informazioni di spedizione</a></li>
+        <li><a href="#ip">Modifica le informazioni di pagamento</a></li>
+      </ul>
+    </div>
+
+    <div class="content" id="gestione_utente">
+        <form class="defaultForm" action="gestione_profilo_utente.php" method="post">
+         
+            <formPassword />
+          
+            <formSpedizione />
+            <formSpedizione2 />
+          
+            <formPagamento />
+        </form>
+            <div id="torna_su">
+                <a href="#header">Torna su</a>
+            </div>
+    </div>
+
+    <div id="footer">
+
+
+      <div class="info">
+        <h2>Contatti</h2>
+			<ul>
+				<li>35131 Padova (PD) - Piazza Eremitani, 404/2</li>
+				<li>Telefono: 049.xxxxxx</li>
+				<li>Cellulare: 348xxxxxxx</li>
+			</ul>
+      </div>
+
+      <div class="info">
+	  <h2>Orari</h2>
+		<ul>
+          <li><abbr title="Martedì">Mar</abbr> - <abbr title="Giovedì">Gio</abbr>:  12.00 - 15.00 e 19.00 - 22.30</li>
+          <li><abbr title="Venerdì">Ven</abbr> - <abbr title="Domenica">Dom</abbr>: 19.00 - 00.00 </li>
+          <li>Luned&igrave; chiuso</li>
+		</ul>
+      </div>
+       <p lang="en">Copyright (c) 2019 Copyright Holder All Rights Reserved.</p>
+        <p>
+            <a href="http://jigsaw.w3.org/css-validator/check/referer">
+                <img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="CSS Valido!" />
+            </a>
+        </p>
+    </div>
+
+  </body>
+</html>

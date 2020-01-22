@@ -12,6 +12,10 @@
 	linkcolor=black,
 	urlcolor=blue
 }
+\usepackage[table]{xcolor}
+\usepackage{caption}
+% Colore rosso custom, linea in ogni pagina
+\definecolor{custom}{RGB}{192,53,53}
 
 % Header e footer
 \pagestyle{fancy}
@@ -45,7 +49,25 @@
 				& Tommasin Alessandro - 1189293\\ 
 			\end{tabular}
 		\end{center}
-		
+		\vspace*{1cm}
+		{\bfseries \centerline{Informazioni sul sito}}
+		\vspace*{0.5cm}
+		{\bfseries Email referente del gruppo}: alessandro.tommasin.2@studenti.unipd.it
+		\newline
+		{\bfseries Indirizzo web del sito}: \url{http://tecweb.studenti.math.unipd.it/atommasi}
+		\vspace*{0cm}
+		\newline
+		{\bfseries \centerline{Account disponibili}}
+		\begin{center}
+			\begin{tabular}{ c|c|c } 
+			\textbf{Classe di utenza} & \textbf{Username} & \textbf{Password} \\
+				\hline
+				 Amministratore &  admin &  admin  \\ 
+				\hline
+				 Utente &  user &  user  \\ 
+				\hline
+			\end{tabular}
+		\end{center}
 		\vspace*{\fill}
 		
 	\end{titlepage}
@@ -65,43 +87,62 @@
 	\section{Analisi}
 		\subsection{Analisi dell'utenza}
 			Questo sito possiede un bacino di utenza variegato in quanto si è ritenuto possibile che sia utenti molto giovani che utenti in età più adulta possano essere interessati ad accedere al sito e ai suoi servizi.
-			La parte più giovane molto probababilmente è abituata all'utilizzo di servizi di take away da dispositivi mobile e probabilmente sfrutterà la parte del sito adibita all'esposizione dei prodotti disponibili e all'ordinazione take away.
+			La parte più giovane molto probababilmente è abituata all'utilizzo di servizi di take away da dispositivi mobile e probabilmente sfrutterà la parte del sito adibita all'esposizione dei prodotti disponibili ed all'ordinazione take away.
 			La controparte adulta, invece, probabilmente sfrutterà di più il sito per consultare sia i prodotti disponibili che per trovare le informazioni riguardanti l'ubicazione del ristorante ed eventualmente il contatto telefonico per prenotare. 
+			\subsection{Utente non loggato}
+			    Un utente non loggato, può visitare la maggior parte delle pagine del sito disponibili agli utenti senza però poter interagire con i loro contenuti. Può diventare utente loggato inserendo le proprie credenziali nella pagina di login, oppure registrandosi qual'ora sia un nuovo utente.
+			\subsection{Utente loggato}
+			    Un utente loggato, ha la possibilità di eseguire le seguenti azioni:
+			    \begin{itemize}
+			        \item In \textit{Gestione Profilo} può modificare la propria password, le informazioni di spedizione e pagamento;
+			        \item In \textit{Take Away} ha la possibilità di aggiungere prodotti al proprio carrello;
+			        \item In \textit{Carrello} può verificare e modificare la quantità dei prodotti presenti in esso;
+			        \item In \textit{Pagamento} può inserire le informazioni di spedizione e pagamento per l'ordine;
+			        \item In \textit{Storico Ordini} può controllare i propri ordini effettuati nel tempo, e visionarne i dettagli nelle rispettive pagine di \textit{Dettagli Ordine};
+			        \item In \textit{Recensioni} può inserire delle nuove recensioni.
+			    \end{itemize}
+			\subsection{Amministratore}
+			    Un amministratore, può eseguire le seguenti azioni:
+			    \begin{itemize}
+			        \item In \textit{Home Admin} può vedere le news già inserite, cancellarle, oppure scriverne di nuove;
+			        \item In \textit{Gestione Profilo} può modificare la propria password;
+			        \item In \textit{Aggiunta Prodotti} può aggiungere nuovi prodotti, vedere tutti quelli attualmente presenti, oppure modificarli nelle rispettive pagine di \textit{Modifica Prodotto};
+			        \item In \textit{Gestione Ordini} può controllare tutti gli ordini effettuati nel sito nel tempo, e visionarne i dettagli nelle rispettive pagine di \textit{Dettagli Ordine}.
+			    \end{itemize}
 		\subsection{Conclusione}
-			Il sito dovrà quindi essere fornito di una sezione che permetta agli utenti di trovare i prodotti divisi in categorie. Dovrà inoltre gestire l'ordinazione, il pagamento e l'eventuale spedizione del prodotto, nel caso in cui si selezioni la spedizione a domicilio.
-			Si ritiene possa essere un'aggiunta interessante avere la possibilità di salvare i metodi di pagamento e di spedizione in modo tale da non doverli reinserire ad ogni acquisto (nel caso di utente autenticato).	
+			Il sito dovrà quindi essere fornito di una sezione che permetta agli utenti di trovare i prodotti divisi in categorie. Dovrà inoltre gestire l'ordinazione, il pagamento e la spedizione del prodotto.
+			Si ritiene possa essere un'aggiunta interessante avere la possibilità di salvare più metodi di pagamento in modo tale da non doverli reinserire ad ogni acquisto (nel caso di utente autenticato).	
 	\section{Progettazione}
 		\subsection{Obiettivi}
-		Gli obiettivi principali perseguiti durante la progettazione del sito sono i seguenti:
-		\begin{itemize}
-		    \item \textbf{Separazione tra struttura, presentazione e comportamento:}
-		    Obiettivo fondamentale, in quanto raggiungerlo permette di soddisfare più agevolmente anche gli altri punti. 
-		    La struttura è stata realizzata con documenti in XHTML 1.0 Strict dove possibile, così da garantire una maggiore retrocompatibilità con vecchi browsers, ed HTML5 dove si sono ritenute necessarie le funzionalità aggiuntive permesse dal linguaggio. 
-		    La presentazione è stata sviluppata con fogli di stile CSS linkati, mentre il comportamento con script esterni realizzati in Javascript e PHP. In questo modo la struttura non dovrà cambiare, anche a seguito di modifiche alla presentazione del sito.
-		    Tutto il codice redatto è stato scritto secondo le raccomandazioni W3C, accertando poi che siano state rispettate, validando HTML e CSS con i rispettivi tool di W3C.
-		    \item \textbf{Accessibilità:}
-		    Il sito deve poter essere fruibile agevolmente dal maggior numero di utenti possibile, compresi quelli con differenti tipi di disabilità. Per garantire una buona accessibilità, alcune misure adottate sono:
+		    Gli obiettivi principali perseguiti durante la progettazione del sito sono i seguenti:
 		    \begin{itemize}
-		        \item Uso dei tabindex nel menù di navigazione;
-		        \item Testo alternativo per le immagini;
-		        \item Assenza di link circolari;
-		        \item Testi e link con buoni livelli di contrasto;
-		        \item Uso dell'attributo lang per testi non in italiano;
+		        \item \textbf{Separazione tra struttura, presentazione e comportamento:}
+		        Obiettivo fondamentale, in quanto raggiungerlo permette di soddisfare più agevolmente anche gli altri punti. 
+		        La struttura è stata realizzata con documenti in XHTML 1.0 Strict dove possibile, così da garantire una maggiore retrocompatibilità con vecchi browsers, ed HTML5 dove si sono ritenute necessarie le funzionalità aggiuntive permesse dal linguaggio. 
+		        La presentazione è stata sviluppata con fogli di stile CSS linkati, mentre il comportamento con script esterni realizzati in Javascript e PHP. In questo modo la struttura non dovrà cambiare, anche a seguito di modifiche alla presentazione del sito.
+		        Tutto il codice redatto è stato scritto secondo le raccomandazioni W3C, accertando poi che siano state rispettate, validando HTML e CSS con i rispettivi tool di W3C.
+		        \item \textbf{Accessibilità:}
+		        Il sito deve poter essere fruibile agevolmente dal maggior numero di utenti possibile, compresi quelli con differenti tipi di disabilità. Per garantire una buona accessibilità, alcune misure adottate sono:
+		        \begin{itemize}
+		            \item Uso dei tabindex nel menù di navigazione;
+		            \item Testo alternativo per le immagini;
+		            \item Assenza di link circolari;
+		            \item Testi e link con buoni livelli di contrasto;
+		            \item Uso dell'attributo lang per testi non in italiano;
+		        \end{itemize}
+		        \item \textbf{Fluidità:}
+		        Il sito deve poter essere consultabile tramite varie tipologie di dispositivi, tra cui PC desktop, tablet e smartphone. Bisogna quindi garantire una buona adattabilità alle differenti dimensioni di schermo.
+		        \item \textbf{Fruibilità:}
+		        Per realizzare un sito navigabile intuitivamente si sono seguite alcune linee guida comuni nel web, come ad esempio:
+		        \begin{itemize}
+		            \item Sfruttare un layout ben strutturato, che faciliti l'individuazione del contenuto di interesse;
+		            \item Agevolare lo scroll tramite link relativi per raggiungere diversi punti di una stessa pagina;
+		            \item Mantenere colorazioni diverse per link visitati e non;
+		        \end{itemize}
 		    \end{itemize}
-		    \item \textbf{Fluidità:}
-		    Il sito deve poter essere consultabile tramite varie tipologie di dispositivi, tra cui PC desktop, tablet e smartphone. Bisogna quindi garantire una buona adattabilità alle differenti dimensioni di schermo.
-		    \item \textbf{Fruibilità:}
-		    Per realizzare un sito navigabile intuitivamente si sono seguite alcune linee guida comuni nel web, come ad esempio:
-		    \begin{itemize}
-		        \item Sfruttare un layout ben strutturato, che faciliti l'individuazione del contenuto di interesse;
-		        \item Agevolare lo scroll tramite link relativi per raggiungere diversi punti di una stessa pagina;
-		        \item Mantenere colorazioni diverse per link visitati e non;
-		    \end{itemize}
-		\end{itemize}
 		\subsection{Layout}
 			Si è deciso di strutturare il sito con un layout a colonna singola, come illustrato in Figura 1. Questo modello permette una buona mantenibilità, dato che anche in caso si effettuino modifiche al contenuto della pagina la sua presentazione rimane uniforme, avendo a disposizione l'intera larghezza della finestra. 
 		    Dimostra di essere anche un layout molto flessibile in quanto la transizione dalla presentazione su desktop a quella su dispositivi mobili risulta fluida.
-		    
 		    \begin{figure}[http] %Verificare posizione immagine dopo aver scritto i capitoli precedenti;
 		        \centering
 		        \includegraphics[width=\textwidth]{schema_layout.png}
@@ -111,50 +152,166 @@
 		    \bigbreak
 		    L'Header, che contiene logo e nome del ristorante, fondamentalmente varia solo in dimensione nella transizione tra i due layout.
 		    \bigbreak
-		    Il Footer invece contiene informazioni generali sul ristorante, la dichiarazione del Copyright, e l'eventuale immagine di certificata validazione delle pagine XHTML 1.0 Strict. Per garantire una lettura migliore, restringendo la finestra si passa ad una visualizzazione da doppia a singola colonna.
+		    Il Footer invece contiene informazioni generali sul ristorante, la dichiarazione del Copyright, e l'eventuale immagine di certificata validazione delle pagine XHTML 1.0 Strict e del codice CSS. Per garantire una lettura migliore, restringendo la finestra si passa ad una visualizzazione da doppia a singola colonna.
 		    \bigbreak
 		    La principale differenza tra i layout scelti sta nella posizione e presentazione del menù di navigazione. 
 		    \newline Nei device con finestre di visualizzazione sufficentemente larghe si è scelto di disporre le voci del menù in riga, creando quindi una barra di navigazione. I link alle varie pagine principali del sito sono disposte a partire da sinistra, mentre quelli riguardanti pagine per gli utenti e le operazioni a loro disposizione si trovano a partire da destra.
 		    \newline Nei dispositivi più piccoli si è deciso invece di creare un menù espandibile, raggiungibile premendo sull'icona ad hamburger nell'angolo in alto a destra, che mostra tutte le voci disponibili, per rispettare il comportamento più comune che un utente medio si aspetta utilizzando uno smartphone.
 		\subsection{Accessibilità}
-	\section{Implementazione}
-		\subsection{Linguaggi}
-			\subsubsection{XHTML 1.0 Strict e HTML5}
-			Come già detto, per la realizzazione del sito si è optato per avere sia pagine in XHTML 1.0 Strict, che in HTML5. L'uso di XHTML 1.0 garantisce una migliore retrocompatibilità con browsers più datati ed una migliore aderenza del codice agli standard di correttezza, ma HTML5 permette di sfruttare alcune funzionalità aggiuntive che abbiamo sfruttato ad esempio in vari form per inserire input di tipo \textit{date}, utilizzare \textit{placeholder} o per rendere dei campi \textit{required} in modo da chiarire e migliorare l'usabilità del sito. In entrambi i casi per ottenere codice pulito si sono seguiti i seguenti principi:
+			\subsubsection{Attributi HTML}
+				Per rendere il sito più accessibile agli screen reader sono stati usati diversi attributi HTML.
+					\begin{itemize}
+						\item {\bfseries lang}: utilizzato per indicare in che lingua deve essere pronunciata una parola o frase. Facendo dei test con il software gratuito NVDA abbiamo notato che le parole identificate usando {\textit xml:lang} non venivano lette nella lingua corretta, si è quindi optato di usare l'attributo HTML5 {\textit lang} in tutte le pagine e testato che queste continuassero ad essere validate dal validatore W3C per xhtml1.0 strict.
+						\item  {\bfseries alt}: utilizzato nelle immagini per fornire una breve descrizione di quello che viene raffigurato.
+						\item {\bfseries scope}: utilizzato per facilitare la lettura delle tabelle.
+						\item  {\bfseries tabindex}: utilizzato per assicurarsi un ordine corretto di spostamento tra i link utilizzando il tab.
+						\item  {\bfseries label}: utilizzato nei form per collegare la label al campo di input e facilitare la selezione di quest'ultimo.
+					\end{itemize}
+			\subsubsection{Colori}
+				I colori del sito sono stati selezionati apposta per passare il test WCAG AAA che richiede un rapporto di contrasto di almeno 7:1 per il testo normale e 4.5:1 per il testo in grassetto. Di seguito è riportata la tabella dei colori del testo e del loro sfondo e il loro rapporto di contrasto.
+				\captionsetup[table]{name=Tabella}
+				\setlength{\tabcolsep}{18pt}
+				\renewcommand{\arraystretch}{1.5}
+				\begin{table}[htp] %placecement parameter H
+					\begin{center}
+						\caption {Rapporto contrasti testo-sfondo}
+						\rowcolors{2}{black!5}{black!17} \normalsize\mdseries
+						\begin{tabular}{ c c c }
+							\rowcolor{custom}
+							\bfseries\color{white} Colore testo & \bfseries\color{white} Colore sfondo & \bfseries\color{white} Rapporto \\
+							\#D9D9D9 & \#1F1D1D & 11.88:1  \\ %bianco cenere su nero
+							\#E0AC00 & \#4A0715 & 7.55:1  \\ %giallo scuro menu visitato su rosso bordò
+							\#F5E900 & \#4A0715 & 12.41:1  \\ %giallo chiaro menu NON visitato su rosso bordò
+							\#E0AC00 & \#1F1D1D & 8.04:1  \\ %
+							\#F5E900 & \#1F1D1D & 13.21:1  \\ %
+							\#D9D9D9 & \#333333 & 8.95:1  \\ %
+							\#D9D9D9 & \#4A0715 & 11.16:1  \\ %
+							\#00C700 & \#1F1D1D & 8.59:1  \\ % Colore scritta successo
+							\#FF8F8F & \#1F1D1D & 7.65:1  \\ 
+						\end{tabular}
+					\end{center}
+				\end{table}
+				\newline
+				Sempre riguardo alla scelta dei colori, si è scelto un colore differente per i link visitati in modo tale da facilitare all'utente la ricostruzione del percorso che ha compiuto fino a quel momento nel sito. A questo proposito si è utilizzata anche una sezione "breadcrumb" per facilitare lo stesso compito.
+			\subsubsection{Altri elementi di accessibilità}
 			\begin{itemize}
-			    \item Mantenere la separazione tra struttura e presentazione, usando file separati linkati nell'header;
-			    \item Ogni $<$tag$>$ aperto deve essere poi chiuso $<$/tag$>$ (oppure $<$tag /$>$);
-			    \item I tag di intestazione vanno usati in base all'importanza di ciò che racchiudono, e non in base all'estetica base html;
+				\item \'E stato usato un suggerimento per gli screen reader fornendo un link prima del menu così da poterlo saltare e andare direttamente al contenuto della pagina. 
+				\item Sono stati rimossi i link circolari per evitare confusione negli utenti e permettere di identificare univocamente il percorso raggiunto.
+				\item Sono state utilizzate delle strutture responsive per rendere l'impatto di un passaggio da visualizzazione desktop a visualizzazione mobile e viceversa il meno forte possibile. Sempre riguardo al mobile, ma non solo, sono stati introdotti dei link di "torna su" per facilitare la navigazione nelle pagine più lunghe.
+				\item Nella creazione dello slideshow presente nella home dell'utente si è tenuto conto del possibile disagio che potrebbero arrecare immagini in continuo movimento e quindi si è deciso di abilitare il cambio immagine solo manualmente.
+				\item Si sono evitati testi scorrevoli, lampeggianti, barrati ed in generale font troppo elaborati per agevolare la lettura.
+				\item Il logo della pagina, non essendo parte del contenuto della pagina, è stato inserito come elemento di background.
+				\item Il menù ad hamburger presente nella modalità di visualizzazione mobile, anche se non visibile dal'utente quando è chiuso, rimane comunque visibile agli screenreader in quanto non è stata utilizzata la proprietà display:none bensì è stato spostato fuori dall'interfaccia visualizzata. 
+				\item La dimensione originale delle immagini è stata ridimensionata per coincidere con la dimensione effettivamente usata nel sito così da far scaricare meno dati all'utente e rendere il caricamento delle pagine più veloce.
 			\end{itemize}
-			\newline In generale, per garantire un codice corretto, sono state seguite le linee guida che sono state illustrate durante il corso di Tecnologie Web e quelle dello standard W3C. La verifica del codice è stata poi effettuata  utilizzando il tool di validazione W3C Validator%
-			\footnote{Riferimento al sito di  \href{https://validator.w3.org/}{W3C Validator}.},
-			 la piattaforma SonarCloud% 
-			\footnote{Riferimento al sito di  \href{https://sonarcloud.io/about}{SonarCloud}.}
-			 integrata con GitHub
-			ed il software di validazione di siti Total Validator.%
-			\footnote{Riferimento al sito di  \href{https://www.totalvalidator.com/}{Total Validator}.}
-			\newline Si è prestata attenzione al ruolo dei metatag nell'header, il cui buon uso migliora anche l'indicizzazione del sito da parte dei motori di ricerca, aspetto fondamentale per un'attività commerciale che voglia ricevere un'adeguata visibilità nel web.
-			\newline Si è deciso di fare uso anche di tabelle, rendendole più agevolmente accessibili tramite l'uso di adeguati \textit{summary}, e di \textit{scope} su colonne e righe di interesse.
+		
+		\subsection{Linguaggi}
+			
+			\subsubsection{XHTML 1.0 Strict e HTML5}
+			    Come già detto, per la realizzazione del sito si è optato per avere sia pagine in XHTML 1.0 Strict, che in HTML5. L'uso di XHTML 1.0 garantisce una migliore retrocompatibilità con browsers più datati ed una migliore aderenza del codice agli standard di correttezza, ma HTML5 permette di sfruttare alcune funzionalità aggiuntive che abbiamo sfruttato ad esempio in vari form per inserire input di tipo \textit{date}, utilizzare \textit{placeholder} o per rendere dei campi \textit{required} in modo da chiarire e migliorare l'usabilità del sito. In entrambi i casi per ottenere codice pulito si sono seguiti i seguenti principi:
+			    \begin{itemize}
+			        \item Mantenere la separazione tra struttura e presentazione, usando file separati linkati nell'header;
+			        \item Ogni $<$tag$>$ aperto deve essere poi chiuso $<$/tag$>$ (oppure $<$tag /$>$);
+			        \item I tag di intestazione vanno usati in base all'importanza di ciò che racchiudono, e non in base all'estetica base html;
+			    \end{itemize}
+			    
+			     In generale, per garantire un codice corretto, sono state seguite le linee guida che sono state illustrate durante il corso di Tecnologie Web e quelle dello standard W3C. La verifica del codice è stata poi effettuata  utilizzando il tool di validazione W3C Validator%
+			    \footnote{Riferimento al sito di W3C Validator \url{https://validator.w3.org/}},
+			    la piattaforma SonarCloud 
+			    \footnote{Riferimento al sito di SonarCloud \url{https://sonarcloud.io/about}}
+			    integrata con GitHub
+			    ed il software di validazione di siti Total Validator.%
+
+			    \footnote{Riferimento al sito di Total Validator \url{https://www.totalvalidator.com/}}
+			    \newline Si è prestata attenzione al ruolo dei metatag nell'header, il cui buon uso migliora anche l'indicizzazione del sito da parte dei motori di ricerca, aspetto fondamentale per un'attività commerciale che voglia ricevere un'adeguata visibilità nel web.
+			    \newline Si è deciso di fare uso anche di tabelle, rendendole più agevolmente accessibili tramite l'uso di adeguati \textit{summary}, e di \textit{scope} su colonne e righe di interesse.
+			
 			\subsubsection{CSS}
+				CSS è stato usato per la presentazione grafica delle pagine HTML. Si è cercato di puntare ad un discreto riutilizzo del codice creando classi da poter usare su più pagine, come per esempio bottoni e form preimpostati, che poi potevano venire personalizzati dove necessario sovrascrivendo le regole necessarie. Il contenuto di ogni pagina è identificato da una classe così da avere una formattazione del testo omogenea mentre per impaginare le pagine specifiche si è optato per un identificativo univoco per ogni pagina.
+			
 			\subsubsection{PHP}
+				Il linguaggio PHP è stato utilizzato per creare tutte le interazioni del sito con il database, dopo aver effettuato un controllo ed una  sanificazione degli input dell'utente, al fine di evitare sia l'inserimento di contenuto malevolo e/o non corretto nel database che eventuali comportamenti anomali dello stesso.
+				Un altro uso che è stato fatto di questo linguaggio è stato quello di creare delle pagine web dinamiche che avessero un menù personalizzato, in base al fatto che un utente fosse autenticato o meno, e dei contenuti diversi in base ai dati presenti nel database (e.g. le destinazioni salvate o le notizie pubblicate dagli amministratori).
+				Per quanto riguarda la codifica si è cercato, ove possibile, di definire delle funzioni che realizzassero i compiti che più si sarebbero ripetuti all'interno del sito, come il controllo degli input, e generalmente si è cercato di separare la logica della pagina dalle funzioni chiamate in modo tale da diminuire il più possibile le dipendenze ed agevolare un'eventuale manutenzione del sito.
+			
 			\subsubsection{SQL}
-			Sql è stato usato per codificare il database. Si rimanda al file \textit{creazione\_database.sql} nella cartella \textit{Database} [\href{https://github.com/Mirco469/ProgettoSushi/tree/master/Database}{url}] della repository per il file di costruzione del database. Di seguito il diagramma ER del database:\newline
+				Sql è stato usato per codificare il database. Si rimanda al file \textit{creazione\_database.sql} nella cartella \textit{Database} [\href{https://github.com/Mirco469/ProgettoSushi/tree/master/Database}{url}] della repository per il file di costruzione del database. Di seguito il diagramma ER del database:\newline
+			
 			\includegraphics[width=12cm]{DiagrammaER.png}
+			
 			\subsubsection{JavaScript}
+				Il linguaggio JavaScript è stato utilizzato per lo più per fare un controllo preventivo dei campi di input; in questo modo abbiamo evitato al server un compito che poteva essere effettuato in precedenza lato client. Il linguaggio è stato anche utilizzato per creare uno slideshow a scorrimento manuale nella pagina di inizio dell'utente, con delle immagini che rappresentassero il clima del ristorante, senza però scordarsi dell'accessibilità e del disturbo che potrebbe arrecare un carousel automatico. Un altro utilizzo di JavaScript è stato riguardo la creazione di un menù a scomparsa nella versione mobile del sito in modo tale da sfruttare al massimo la dimensione ridotta delle pagine ed evitare degli scroll verticali aggiuntivi che sarebbero stati richiesti nel caso di un menù verticale non a scomparsa. 
+				Infine JavaScript è stato ritenuto utile nelle pagine di takeaway, carrello e pagamento per spostare i  prodotti selezionati da una pagina ad un altra o per disabilitare degli input in base alle selezioni dell'utente.
+		    	Come per il linguaggio PHP si è puntato al riutilizzo del codice definendo funzioni per effettuare i controlli e riutilizzando le funzioni dove possibile.
+	
 	\section{Fase di test}
+		
 		\subsection{Strumenti usati}
+		
 			\subsubsection{W3C HTML Validator}
-				Le pagine html sono state validate usando il validatore fornito dall'organizazione W3C per garantire la corretta visualizzazione del contenuto della pagina senza fare entrare i browser in {\bfseries Quirks Mode}. \'E stato usato anche per validare il risultato delle pagine php incollando il risultato ottenuto facendo eseguire lo script php.
+				Le pagine html sono state validate usando il validatore fornito dall'organizzazione W3C per garantire la corretta visualizzazione del contenuto della pagina senza fare entrare i browser in {\bfseries Quirks Mode}. \'E stato usato anche per validare il risultato delle pagine php incollando il sorgente ottenuto facendo eseguire lo script php.
+			
 			\subsubsection{W3C CSS Validator}
+				Tutti i file CSS sono stati validati usando lo strumento di validazione fornito da W3C per assicurarsi che fossero strutturati correttamente.
+			
 			\subsubsection{TotalValidator}
+			    Con questo strumento abbiamo validato tutto il codice HTML. Principalmente errori segnalati dal programma riguardano direttive sull'uso delle regole WAI-ARIA% 
+			    \footnote{Web Accessibility Initiative - Accessible Rich Internet Applications -  \url{https://www.w3.org/WAI/standards-guidelines/aria/}}
+			    relative all'utilizzo delle \textit{aria-label}, cosa che non è necessaria in questo caso, in quanto i vari link e buttons sono facilmente indiduabili ed interpretabili.
+			
 			\subsubsection{SonarCloud}
 				Servizio integrato con GitHub per la verifica del codice nella repository. Ad ogni push veniva fatta un {\bfseries analisi statica} del codice alla ricerca di problemi e vulnerabilità come ad esempio un problema comune è stata la ripetizione rindondate di regole css. Questa fase di test era bloccante, ovvero perchè il codice venisse aggiunto dovevano prima essere risolti i problemi.
+	
+	\newpage
 	\section{Organizzazione del lavoro}
 		Il progetto è stato suddiviso in modo tale che ogni membro avesse la possibilità di creare sia alcune pagine HTML che il relativo CSS, facendo da verificatore nelle pagine degli altri membri.
 		Lo stesso può essere detto per quanto concerne PHP, JavaScript e la creazione ed il popolamento del database.
-		La sviluppo può essere seguito nella repossitory di GitHub utilizzata:
+		Lo sviluppo può essere seguito nella repository di GitHub utilizzata:
 		\newline
 		\newline
 		\centerline{ \url{https://github.com/Mirco469/ProgettoSushi}}
+		
+		\vspace{0.5cm}
+		Di seguito sono elencati i compiti svolti da ciascun componente:
+		\begin{itemize}
+			\item{\bfseries Dindinelli Alessandro}:
+				\begin{itemize}
+					\item Progettazione database
+					\item Popolamento file sql
+					\item HTML di alcune pagine
+					\item CSS desktop/mobile/stampa di alcune pagine
+					\item PHP di alcune pagine
+					\item Javascript di alcune pagine
+					\item Ajax di alcune pagine
+					\item Stesura di alcune sezioni della relazione
+				\end{itemize}
+			\item{\bfseries Frison Nicolò}:
+				\begin{itemize}
+					\item HTML di alcune pagine
+					\item CSS desktop/mobile/stampa di alcune pagine
+					\item PHP di alcune pagine
+					\item Javascript di alcune pagine
+					\item Ajax di alcune pagine
+				\end{itemize}
+			\item{\bfseries Giardina Mirco}:
+				\begin{itemize}
+					\item Progettazione database
+					\item Creazione tabelle file sql
+					\item HTML di alcune pagine
+					\item CSS desktop/mobile/stampa di alcune pagine
+					\item PHP di alcune pagine
+					\item Javascript di alcune pagine
+					\item Stesura di alcune sezioni della relazione
+				\end{itemize}
+			\item{\bfseries Tommasin Alessandro}:
+				\begin{itemize}
+					\item Progettazione database
+					\item HTML di alcune pagine
+					\item CSS desktop/mobile/stampa di alcune pagine
+					\item PHP di alcune pagine
+					\item Javascript di alcune pagine
+					\item Stesura di alcune sezioni della relazione
+				\end{itemize}
+		\end{itemize}
 
 \end{document}
