@@ -16,15 +16,17 @@
 							<h2 class="data">Data ordine: '.$dettagliOrdine->data_ordine.'</h2>
 							<h2 class="data">Data consegna: '.$dettagliOrdine->data_consegna.'</h2>
 
-							<p>Destinazione:<br/>'.
-							$dettagliOrdine->nome_cognome.'<br/>Via '.
-							$dettagliOrdine->via.' '.$dettagliOrdine->numero_civico.' CAP '.$dettagliOrdine->CAP.'<br/>Tel: '.$dettagliOrdine->numero_telefonico;
+							<p>
+								Destinazione:<br/>'.
+								$dettagliOrdine->nome_cognome.'<br/>Via '.
+								$dettagliOrdine->via.' '.$dettagliOrdine->numero_civico.' CAP '.$dettagliOrdine->CAP.'<br/>Tel: '.$dettagliOrdine->numero_telefonico.
+							'</p>';
 					} else {
 						$content = '<h1>ID ordine: '.$dettagliOrdine->id_ordine.'</h1>
 							<h2 class="data">Data ordine: '.$dettagliOrdine->data_ordine.'</h2>
 							<h2 class="data">Data consegna: '.$dettagliOrdine->data_consegna.'</h2>
 
-							<p>La destinazione è stata eliminata<br/>';
+							<p>La destinazione è stata eliminata</p>';
 					}
 						$content .= '<table class="defaultTable" summary="Lista prodotti ordinati">
 							<thead>
