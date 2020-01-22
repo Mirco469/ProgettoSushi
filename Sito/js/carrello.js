@@ -63,10 +63,11 @@ function rmProdotto(nome) {
 			var data = JSON.parse(xhr.responseText);
 			console.log(data);
 			
+			var dt = document.getElementById('dt-'+nome);
+			var dd = document.getElementById('dd-'+nome);
+			
 			if(data.success) {
 				if( document.getElementsByTagName('dt').length > 1 ) {
-					var dt = document.getElementById('dt-'+nome);
-					var dd = document.getElementById('dd-'+nome);
 					
 					dt.parentNode.removeChild(dt);
 					dd.parentNode.removeChild(dd);
@@ -81,9 +82,6 @@ function rmProdotto(nome) {
 				}
 			} else if(data.error == 'not found') {
 				alert('Il prodotto richiesto non è presente a carrello');
-				
-				var dt = document.getElementById('dt-'+nome);
-				var dd = document.getElementById('dd-'+nome);
 				
 				if( dt != null ) {
 					dt.parentNode.removeChild(dt);
