@@ -99,7 +99,7 @@ body a:visited {
 }
 
 #menu {
-	position: fixed;
+	position: absolute;
 	top: 0;
 	right: 0;
 	padding: 0.5em;
@@ -117,6 +117,7 @@ body a:visited {
 #menu > ul li {
 	margin-left: calc(100% + 0.5em);
 	list-style-type: none;
+	font-size: 0;
 }
 
 #menu.open {
@@ -142,6 +143,7 @@ body a:visited {
 	margin: 0;
 	border-top: solid 1px white;
 	list-style-type: none;
+	font-size: 1.2em;
 }
 
 #menu.open #dropdown_content {

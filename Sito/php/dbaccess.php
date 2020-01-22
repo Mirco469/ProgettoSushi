@@ -3,8 +3,8 @@
     class DBAccess
     {
         const HOST_DB = 'localhost';
-        const USERNAME = 'root';
-        const PASSWORD = '';
+        const USERNAME = 'atommasi';
+        const PASSWORD = 'eugoos7Tip4AJ8iN';
         const DATABASE_NAME = 'atommasi'; //Ogni utente ha un database già creato con nome uguale alla propria login (scritto sulle slide)
 
         public $connection = null;
