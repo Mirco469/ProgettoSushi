@@ -14,7 +14,7 @@
       
         if($queryNews == null){
             $notizie ="<dt>Al momento non ci sono notizie!<dt>
-                          <dd>Appena ne avremo una sarai il/la prim* a saperlo!</dd>"; 
+                          <dd>Appena ne avremo una sarai il/la primo/a a saperlo!</dd>"; 
         }else{
             while ($row = mysqli_fetch_assoc($queryNews)) {
             $notizie .= "<dt>" . $row['data'] . " - " . $row['titolo'] . "</dt>
