@@ -41,7 +41,7 @@
 						foreach( $dettagliOrdine->listaProdotti AS $row ) {
 							$content .=	'<tr>
 										<th scope="row" lang="ja">'.$row->nome.'</th>
-										<td><a href="prodotti.php#'.$row->categoria.'" lang="ja">'.$row->categoria.'</a></td>
+										<td>'.$row->categoria.'</td>
 										<td>'.$row->numero_porzioni.'</td>
 									</tr>';
 						}

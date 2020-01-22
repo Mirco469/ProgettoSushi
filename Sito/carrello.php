@@ -46,7 +46,7 @@
 			foreach( $_SESSION['carrello'] AS $row ) {
 				$nome = str_replace(' ','_',$row['nome']); // nome con underscore al posto degli spazi
 				$content .= '<dt id="dt-'.$nome.'">'.
-					$row['nome'].' - <a href="prodotti.html#'.$row['categoria'].'">'.$row['categoria'].'</a>
+					$row['nome'].' - <a href="prodotti.php#'.strtolower($row['categoria']).'">'.$row['categoria'].'</a>
 					<input title="Rimuovi '.$row['nome'].'" class="rimuovi" type="button" name="rimuovi" onclick="rmProdotto(\''.$nome.'\')" value="Rimuovi" />
 				</dt>
 				<dd id="dd-'.$nome.'">
