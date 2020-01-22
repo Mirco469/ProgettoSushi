@@ -25,22 +25,6 @@
 				exit;
 			}
 		} else {
-			/*
-			$_SESSION['carrello'] = array(
-				'maguro' => array(
-					'nome' => 'maguro',
-					'categoria' => 'uramaki',
-					'quantita' => 2,
-					'prezzo' => 4
-				),
-				'tartara di tonno' => array(
-					'nome' => 'tartara di tonno',
-					'categoria' => 'antipasti',
-					'quantita' => 1,
-					'prezzo' => 6
-				)
-			);
-			*/
 			loadPagina();
 		}
 	} else {
