@@ -117,4 +117,7 @@ function prodottoNonTrovato(dt, dd) {
 		}
 		dd.parentNode.removeChild(dd);
 	}
+	if( document.getElementsByTagName('dt').length == 0 ) {
+		window.location.reload();
+	}
 }
