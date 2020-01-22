@@ -222,18 +222,20 @@
 			if ($db->openDBConnection())
 			{
 				$queryResult = $db->getDestinazioni($user);
-				while ($row = mysqli_fetch_assoc($queryResult))
-				{
-					$indirizzo = "$row[id_destinazione]";
-					if (isset($_POST['destinazione']) && $_POST['destinazione'] == $indirizzo)
+				if($queryResult != null){
+					while ($row = mysqli_fetch_assoc($queryResult))
 					{
-						$indirizziUtente .= "<option value=\"$row[id_destinazione]\" selected=\"selected\" >$row[via], $row[numero_civico]</option>";
+						$indirizzo = "$row[id_destinazione]";
+						if (isset($_POST['destinazione']) && $_POST['destinazione'] == $indirizzo)
+						{
+							$indirizziUtente .= "<option value=\"$row[id_destinazione]\" selected=\"selected\" >$row[via], $row[numero_civico]</option>";
+						}
+						else
+						{
+							$indirizziUtente .= "<option value=\"$row[id_destinazione]\">$row[via], $row[numero_civico]</option>";
+						}
 					}
-					else
-					{
-						$indirizziUtente .= "<option value=\"$row[id_destinazione]\">$row[via], $row[numero_civico]</option>";
-					}
-				}
+				}	
 			}
 			else
 			{
