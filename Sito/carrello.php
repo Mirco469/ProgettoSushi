@@ -24,24 +24,7 @@
 				echo json_encode(array('result'=>false,'error'=>'The request is not valid'));
 				exit;
 			}
-				//echo json_encode(array('index'=>$_POST['index'],'amount'=>$_POST['amount']));exit;
 		} else {
-			/*
-			$_SESSION['carrello'] = array(
-				'maguro' => array(
-					'nome' => 'maguro',
-					'categoria' => 'uramaki',
-					'quantita' => 2,
-					'prezzo' => 4
-				),
-				'tartara di tonno' => array(
-					'nome' => 'tartara di tonno',
-					'categoria' => 'antipasti',
-					'quantita' => 1,
-					'prezzo' => 6
-				)
-			);
-			*/
 			loadPagina();
 		}
 	} else {
