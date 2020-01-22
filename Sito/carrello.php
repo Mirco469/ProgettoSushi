@@ -44,15 +44,16 @@
 			$content = '<dl class="defaultLista">';
 			
 			foreach( $_SESSION['carrello'] AS $row ) {
-				$content .= '<dt id="dt-'.$row['nome'].'">'.
+				$nome = str_replace(' ','_',$row['nome']); // nome con underscore al posto degli spazi
+				$content .= '<dt id="dt-'.$nome.'">'.
 					$row['nome'].' - <a href="prodotti.html#'.$row['categoria'].'">'.$row['categoria'].'</a>
-					<input title="Rimuovi '.$row['nome'].'" class="rimuovi" type="button" name="rimuovi" onclick="rmProdotto(\''.$row['nome'].'\')" value="Rimuovi" />
+					<input title="Rimuovi '.$row['nome'].'" class="rimuovi" type="button" name="rimuovi" onclick="rmProdotto(\''.$nome.'\')" value="Rimuovi" />
 				</dt>
-				<dd id="dd-'.$row['nome'].'">
-					<input title="sottrai '.$row['nome'].' di 1" type="button" name="minus" onclick="rmQuantita(\''.$row['nome'].'\')" value="-" /><!-- togli_prodotto -->
-					<input id="qt-'.$row['nome'].'" type="number" name="quantita" readonly="readonly" value="'.$row['quantita'].'" /><!-- numero prodotto -->
-					<input title="aggiungi '.$row['nome'].' di 1" type="button" name="plus" onclick="addQuantita(\''.$row['nome'].'\')" value="+" /><!-- aggiungi_prodotto -->
-					<span id="tot-'.$row['nome'].'">Prezzo: '.number_format($row['prezzo'], 2, ',', '.').'€</span>
+				<dd id="dd-'.$nome.'">
+					<input title="sottrai '.$row['nome'].' di 1" type="button" name="minus" onclick="rmQuantita(\''.$nome.'\')" value="-" /><!-- togli_prodotto -->
+					<input id="qt-'.$nome.'" type="text" name="quantita" readonly="readonly" value="'.$row['quantita'].'" /><!-- numero prodotto -->
+					<input title="aggiungi '.$row['nome'].' di 1" type="button" name="plus" onclick="addQuantita(\''.$nome.'\')" value="+" /><!-- aggiungi_prodotto -->
+					<span id="tot-'.$nome.'">Prezzo: '.number_format($row['prezzo'], 2, ',', '.').'€</span>
 				</dd>';
 			}
 			
@@ -75,6 +76,8 @@
 		$result = array(
 			'success' => false
 		);
+		
+		$nome = str_replace('_',' ',$nome);	// sostituisco gli underscore con gli spazi
 		
 		if(isset($_SESSION['carrello'][$nome])) {
 			if( checkNumeroIntero($nuovaQuantita) ) {
@@ -108,6 +111,8 @@
 	function rmProdotto($nome) {
 		
 		$result = array();
+		
+		$nome = str_replace('_',' ',$nome);	// sostituisco gli underscore con gli spazi
 		
 		if( isset($_SESSION['carrello'][$nome]) ) {
 			unset($_SESSION['carrello'][$nome]);

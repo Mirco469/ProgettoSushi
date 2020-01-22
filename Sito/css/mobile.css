@@ -1084,13 +1084,13 @@ min-height: 465px;
 }
 
 /*	Rimozione delle frecciette per aumentare e diminuire il numero	*/
-#carrello input[type="number"]::-webkit-outer-spin-button,
-#carrello input[type="number"]::-webkit-inner-spin-button {
+#carrello input[type="text"]::-webkit-outer-spin-button,
+#carrello input[type="text"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-#carrello input[type="number"] {
+#carrello input[type="text"] {
 	-moz-appearance:textfield;
 	text-align: center;
 	max-width: 4em;

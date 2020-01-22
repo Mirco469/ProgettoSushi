@@ -39,13 +39,7 @@ function setQuantita(nome, quantita) {
 			} else if(data.error == 'invalid quantita') {	// quantita prodotto inserita non valida
 				alert('Quantità inserita per '+nome+' non valida');
 			} else if(data.error == 'not found') {	// prodotto non trovato a carrello
-				alert('Il prodotto richiesto non è presente a carrello');
-				
-				var dt = document.getElementById('dt-'+nome);
-				var dd = document.getElementById('dd-'+nome);
-				
-				dt.parentNode.removeChild(dt);
-				dd.parentNode.removeChild(dd);
+				prodottoNonTrovato(dt, dd);
 			} else if(data.error == 'The request is not valid') {
 				window.location.reload();
 			}
@@ -67,29 +61,28 @@ function rmProdotto(nome) {
 			var dd = document.getElementById('dd-'+nome);
 			
 			if(data.success) {
+				
+				// rimuovo tutti i possibili messaggi precedenti
+				var messaggiDaRimuovere = document.getElementsByClassName('messaggio');
+				for( var i = 0; i < messaggiDaRimuovere.length ; i++  ) {
+					messaggiDaRimuovere[i].parentNode.removeChild(messaggiDaRimuovere[i]);
+				}
+				
 				if( document.getElementsByTagName('dt').length > 1 ) {
 					
-					dt.parentNode.removeChild(dt);
+					dt.outerHTML = '<p class="messaggio successo">Prodotto rimosso con successo!</p>';
 					dd.parentNode.removeChild(dd);
 					
 					document.getElementById('totaleValue').textContent = parseFloat(data.total).toFixed(2).replace('.',',');
-					
-					alert('Prodotto rimosso con successo!');
 				} else {
-					alert('Prodotto rimosso con successo!');
+					
+					dt.outerHTML = '<p class="messaggio successo">Prodotto rimosso con successo!</p>';
+					dd.parentNode.removeChild(dd);
 					
 					window.location.reload();
 				}
 			} else if(data.error == 'not found') {
-				alert('Il prodotto richiesto non è presente a carrello');
-				
-				if( dt != null ) {
-					dt.parentNode.removeChild(dt);
-				}
-				if( dd != null ) {
-					dd.parentNode.removeChild(dd);
-				}
-				
+				prodottoNonTrovato(dt, dd);
 			} else if(data.error == 'The request is not valid') {
 				window.location.reload();
 			}
@@ -100,3 +93,31 @@ function rmProdotto(nome) {
 	xhr.send("action=remove&name="+nome);
 }
 
+function prodottoNonTrovato(dt, dd) {
+	if( dt != null ) {
+		
+		// rimuovo tutti i possibili messaggi precedenti
+		var messaggiDaRimuovere = document.getElementsByClassName('messaggio');
+		for( var i = 0; i < messaggiDaRimuovere.length ; i++  ) {
+			messaggiDaRimuovere[i].parentNode.removeChild(messaggiDaRimuovere[i]);
+		}
+		
+		dt.outerHTML = '<p class="messaggio errore">Il prodotto richiesto non è presente a carrello</p>';
+	}
+	if( dd != null ) {
+		if( dt == null ) {
+			
+			// rimuovo tutti i possibili messaggi precedenti
+			var messaggiDaRimuovere = document.getElementsByClassName('messaggio');
+			for( var i = 0; i < messaggiDaRimuovere.length ; i++  ) {
+				messaggiDaRimuovere[i].parentNode.removeChild(messaggiDaRimuovere[i]);
+			}
+			
+			dd = '<p>Il prodotto richiesto non è presente a carrello</p>' + dd;
+		}
+		dd.parentNode.removeChild(dd);
+	}
+	if( document.getElementsByTagName('dt').length == 0 ) {
+		window.location.reload();
+	}
+}
