@@ -15,10 +15,12 @@
 						<h2 class="data">Data ordine: '.$dettagliOrdine->data_ordine.'</h2>
 						<h2 class="data">Data consegna: '.$dettagliOrdine->data_consegna.'</h2>
 
-						<p>Destinazione:<br/>'.
-						$dettagliOrdine->nome_cognome.'<br/>Via '.
-						$dettagliOrdine->via.' '.$dettagliOrdine->numero_civico.' CAP '.$dettagliOrdine->CAP.'<br/>Tel: '.$dettagliOrdine->numero_telefonico.
-						'<table class="defaultTable" summary="Lista prodotti ordinati">
+						<p>
+							Destinazione:<br/>'.
+							$dettagliOrdine->nome_cognome.'<br/>Via '.
+							$dettagliOrdine->via.' '.$dettagliOrdine->numero_civico.' CAP '.$dettagliOrdine->CAP.'<br/>Tel: '.$dettagliOrdine->numero_telefonico.
+						'</p>
+						<table class="defaultTable" summary="Lista prodotti ordinati">
 							<thead>
 								<tr>
 									<th scope="col">Nome prodotto</th>
