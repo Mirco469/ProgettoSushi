@@ -29,7 +29,7 @@
 			$cvv = "";
 
 			$paginaHTML = file_get_contents('html/pagamento.html');
-
+			
 			if (isset($_POST['paga']))
 			{
 				# Controllo primo fieldset
@@ -222,18 +222,20 @@
 			if ($db->openDBConnection())
 			{
 				$queryResult = $db->getDestinazioni($user);
-				while ($row = mysqli_fetch_assoc($queryResult))
-				{
-					$indirizzo = "$row[id_destinazione]";
-					if (isset($_POST['destinazione']) && $_POST['destinazione'] == $indirizzo)
+				if($queryResult != null){
+					while ($row = mysqli_fetch_assoc($queryResult))
 					{
-						$indirizziUtente .= "<option value=\"$row[id_destinazione]\" selected=\"selected\" >$row[via], $row[numero_civico]</option>";
+						$indirizzo = "$row[id_destinazione]";
+						if (isset($_POST['destinazione']) && $_POST['destinazione'] == $indirizzo)
+						{
+							$indirizziUtente .= "<option value=\"$row[id_destinazione]\" selected=\"selected\" >$row[via], $row[numero_civico]</option>";
+						}
+						else
+						{
+							$indirizziUtente .= "<option value=\"$row[id_destinazione]\">$row[via], $row[numero_civico]</option>";
+						}
 					}
-					else
-					{
-						$indirizziUtente .= "<option value=\"$row[id_destinazione]\">$row[via], $row[numero_civico]</option>";
-					}
-				}
+				}	
 			}
 			else
 			{
@@ -259,18 +261,12 @@
 			<label for=\"cap\"><abbr title=\"Codice di Avviamento Postale\">CAP</abbr>: </label>
 			<input type=\"text\" id=\"cap\" name=\"cap\" placeholder=\"Inserire CAP\" value=\"$cap\" />
 			</p>
-			<p>
 			<label for=\"comune\">Comune: </label>
 			<input type=\"text\" id=\"comune\" name=\"comune\" value=\"Padova\" disabled=\"disabled\"/>
-			</p>
-			<p>
 			<label for=\"provincia\">Provincia: </label>
 			<input type=\"text\" id=\"provincia\" name=\"provincia\" value=\"Padova\" disabled=\"disabled\"/>
-			</p>
-			<p>
 			<label for=\"stato\">Stato: </label>
 			<input type=\"text\" id=\"stato\" name=\"stato\" value=\"Italia\" disabled=\"disabled\"/>
-			</p>
 			<p>
 			<label for=\"tel\">Numero di telefono: </label>
 			<input type=\"tel\" id=\"tel\" name=\"tel\" placeholder=\"Inserire recapito\" value=\"$tel\" />
@@ -304,7 +300,7 @@
 			}
 			$paginaHTML = str_replace('<cartaUtente />', $cartaUtente, $paginaHTML);
 
-			$months = "<p>";
+			$months = "";
 			$mesi = array('Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre');
 			for ($i = 0; $i<12; $i++)
 			{
@@ -317,9 +313,8 @@
 					$months .= '<option value="' . ($i+1) . '">' . $mesi[$i] . '</option>';
 				}
 			}
-			$months .= "</p>";
 
-			$years = "<p>";
+			$years = "";
 			$annoCorrente = date("Y");
 			for ($i = 0; $i<20; $i++)
 			{
@@ -332,7 +327,6 @@
 					$years .= '<option value="' . ($annoCorrente+$i) . '">' . ($annoCorrente+$i) . '</option>';
 				}
 			}
-			$years .= "</p>";
 
 			$formCarta = "
 			<p>
@@ -345,14 +339,14 @@
 			</p>
 			<p>
 			<label for=\"mese_scad\">Mese di scadenza: </label>
-			<select name=\"mese_scad\" class=\"selezione_small\">
+			<select name=\"mese_scad\" id=\"mese_scad\" class=\"selezione_small\">
 				<option>Mese</option>
 				$months
 			</select>
 			</p>
 			<p>
 			<label for=\"anno_scad\">Anno di scadenza: </label>
-			<select name=\"anno_scad\" class=\"selezione_small\">
+			<select name=\"anno_scad\" id=\"anno_scad\" class=\"selezione_small\">
 				<option>Anno</option>
 				$years
 			</select>

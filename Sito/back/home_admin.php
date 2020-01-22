@@ -74,7 +74,7 @@
                                 </p>
                                 <p>
                                 <label for="notizia">Inserisci il testo: </label>
-                                <textarea name="notizia" id="notizia" rows="4" cols="35" />'.$testo.'</textarea>
+                                <textarea name="notizia" id="notizia" rows="4" cols="35" >'.$testo.'</textarea>
                                 </p>
                                 <input class="defaultButton" type="submit" name="inserisci" value="Inserisci"/>
                               </fieldset>';
@@ -89,14 +89,14 @@
                 }else {
                     
                     $row = mysqli_fetch_assoc($queryResult);
-                    $notizie = '<input checked="checked" type="radio" name="scegliNews" value="'.$row['id_news'].'" id="radio' . $row['id_news'] . '" aria-labelledby="radio' . $row['id_news'] . '-help"/>
+                    $notizie = '<input checked="checked" type="radio" name="scegliNews" value="'.$row['id_news'].'" id="radio' . $row['id_news'] . '" />
                                <label for="radio' . $row['id_news'] .'">'.$row['data']." - ".$row['titolo'].'</label>
                                <span id="radio' . $row['id_news'] . '-help">'.$row['descrizione'].'</span>';
                     
                     
                      while ($row = mysqli_fetch_assoc($queryResult)) {
 
-                        $notizie .= '<input type="radio" name="scegliNews" value="'.$row['id_news'].'" id="radio' . $row['id_news'] . '" aria-labelledby="radio' . $row['id_news'] . '-help"/>
+                        $notizie .= '<input type="radio" name="scegliNews" value="'.$row['id_news'].'" id="radio' . $row['id_news'] . '" />
                                <label for="radio' . $row['id_news'] .'">'.$row['data']." - ".$row['titolo'].'</label>
                                <span id="radio' . $row['id_news'] . '-help">'.$row['descrizione'].'</span>';
 

@@ -15,7 +15,9 @@ document.addEventListener('readystatechange', function() {
 			document.getElementById("menu").getElementsByTagName("ul")[0].addEventListener("click",function(e) {
 				// fa in modo che venga eseguito solo questo ascoltatore
 				e.stopPropagation();  
-				toggleMenu();
+				if( !open ) {
+					toggleMenu();
+				}
 			});
 		}
 	}

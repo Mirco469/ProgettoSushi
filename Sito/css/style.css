@@ -401,13 +401,13 @@ table.defaultTable td:last-child {
 }
 
 /*	Rimozione delle frecciette per aumentare e diminuire il numero	*/
-#carrello input[type="number"]::-webkit-outer-spin-button,
-#carrello input[type="number"]::-webkit-inner-spin-button {
+#carrello input[type="text"]::-webkit-outer-spin-button,
+#carrello input[type="text"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-#carrello input[type="number"] {
+#carrello input[type="text"] {
 	-moz-appearance:textfield;
 	text-align: center;
 	width: 2.5em;
@@ -1179,6 +1179,10 @@ min-height: 465px;
 /*	storico_ordini	*/
 #storico_ordini h2 {
 	margin-left: 6em;
+}
+
+#storico_ordini>p {
+	margin-left: 8em;
 }
 
 #storico_ordini a.buttonSmall {

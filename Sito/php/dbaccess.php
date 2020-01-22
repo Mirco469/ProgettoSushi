@@ -5,7 +5,7 @@
         const HOST_DB = 'localhost';
         const USERNAME = 'root';
         const PASSWORD = '';
-        const DATABASE_NAME = 'Sushi'; //Ogni utente ha un database già creato con nome uguale alla propria login (scritto sulle slide)
+        const DATABASE_NAME = 'atommasi'; //Ogni utente ha un database già creato con nome uguale alla propria login (scritto sulle slide)
 
         public $connection = null;
 
@@ -476,7 +476,6 @@
 				) A");
 				$query->bind_param('ss',$id_ordine,$id_ordine);
 				$query->execute();
-				//echo $query->info; exit;
 				$queryResult = $query->get_result();
 
 				if( $queryResult->num_rows > 0 ) {
@@ -641,7 +640,7 @@
         } else {return true;}
     }
 
-    //Controlla che l'input contenga solo lettere sia almeno lungo $dim;
+    //Controlla che l'input contenga solo lettere sia almeno lungo $dim
     function checkTestoSpaziDim($string, $dim)
     {
         if (strlen($string) < $dim) {
@@ -652,7 +651,7 @@
         } else return true;
     }
 
-    //Controlla che l'input non contenga numeri e sia lungo tra i 10 ed i 200 caratteri;
+    //Controlla che l'input non contenga numeri e sia lungo tra i 10 ed i 200 caratteri
     function checkTextarea($string)
     {
         if (strlen($string) < 10 || strlen($string) > 200) {
@@ -699,41 +698,4 @@
 	{
 		return array("Antipasti","Primi Piatti","Teppanyako e Tempure","Uramaki","Nigiri ed Onigiri","Gunkan","Temaki","Hosomaki","Sashimi","Dessert");
 	}
-
-
-	/*	Esempio di funzione per prendere i dati
-	public function getPersonaggi()
-	{
-		$query = "SELECT * FROM personaggi ORDER BY ID ASC";
-		$queryResult = myqsli_query($this->connection,$query);
-
-		if(mysqli_num_rows($queryResult) == 0)
-		{
-			return null;
-		}
-		else
-		{
-			$result = array();
-
-			while($row = mysqli_fetch_assoc($queryResult))
-			{
-				$arraySingoloPersonaggio = array(
-					'Nome' =>$row['nome]',
-					'Colore' => $row['colore'],
-					'Peso' => $row['peso'],
-					'Potenza' => $row['potenza'],
-					'Descrizione' => $row['descrizione'],
-					'ABR' => $row['angry_birds'],
-					'ABSW' => $row['angry_birds_star_wars'],
-					'AVS' => $row['angry_birds_space'],
-					'Immagine' => $row['immagine']
-				);
-			}
-				array_push($result,$arraySingoloPersonaggio);
-
-			return $result;
-		}
-	}
-	*/
-
 ?>
