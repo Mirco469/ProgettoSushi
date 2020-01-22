@@ -1,19 +1,31 @@
 function disableInputDest()
 {
-    document.getElementById("nome_cognome").disabled = true;
-    document.getElementById("via").disabled = true;
-    document.getElementById("civico").disabled = true;
-    document.getElementById("cap").disabled = true;
-    document.getElementById("tel").disabled = true;
+    element = document.getElementById("nome_cognome");
+    element.setAttribute("disabled", "disabled");
+    element = document.getElementById("via");
+    element.setAttribute("disabled", "disabled");
+    element = document.getElementById("civico");
+    element.setAttribute("disabled", "disabled");
+    element = document.getElementById("cap");
+    element.setAttribute("disabled", "disabled");
+    element = document.getElementById("tel")
+    element.setAttribute("disabled", "disabled");
+    
 }
 
 function enableInputDest()
 {
-    document.getElementById("nome_cognome").disabled = false;
-    document.getElementById("via").disabled = false;
-    document.getElementById("civico").disabled = false;
-    document.getElementById("cap").disabled = false;
-    document.getElementById("tel").disabled = false;
+    var element;
+    element = document.getElementById("nome_cognome");
+    element.removeAttribute("disabled");
+    element = document.getElementById("via");
+    element.removeAttribute("disabled");
+    element = document.getElementById("civico");
+    element.removeAttribute("disabled");
+    element = document.getElementById("cap");
+    element.removeAttribute("disabled");
+    element = document.getElementById("tel");
+    element.removeAttribute("disabled");
 }
 
 function changeStateDest()
@@ -32,20 +44,32 @@ function changeStateDest()
 
 function disableInputCarta()
 {
-    document.getElementById("intestatario_carta").disabled = true;
-    document.getElementById("num_carta").disabled = true;
-    document.getElementsByName("mese_scad")[0].disabled = true;
-    document.getElementsByName("anno_scad")[0].disabled = true;
-    document.getElementById("cvv_carta").disabled = true;
+    var element;
+    element = document.getElementById("intestatario_carta");
+    element.removeAttribute("disabled");
+    element = document.getElementById("num_carta");
+    element.removeAttribute("disabled");
+    element = document.getElementsByName("mese_scad")[0];
+    element.setAttribute("disabled", "disabled");
+    element = document.getElementsByName("anno_scad")[0];
+    element.setAttribute("disabled", "disabled");
+    element = document.getElementById("cvv_carta");
+    element.setAttribute("disabled", "disabled");
 }
 
 function enableInputCarta()
 {
-    document.getElementById("intestatario_carta").disabled = false;
-    document.getElementById("num_carta").disabled = false;
-    document.getElementsByName("mese_scad")[0].disabled = false;
-    document.getElementsByName("anno_scad")[0].disabled = false;
-    document.getElementById("cvv_carta").disabled = false;
+    var element;
+    element = document.getElementById("intestatario_carta");
+    element.removeAttribute("disabled");
+    element = document.getElementById("num_carta");
+    element.removeAttribute("disabled");
+    element = document.getElementsByName("mese_scad")[0];
+    element.removeAttribute("disabled");
+    element = document.getElementsByName("anno_scad")[0];
+    element.removeAttribute("disabled");
+    element = document.getElementById("cvv_carta");
+    element.removeAttribute("disabled");
 }
 
 function changeStateCarta()
