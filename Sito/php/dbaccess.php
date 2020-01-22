@@ -476,7 +476,6 @@
 				) A");
 				$query->bind_param('ss',$id_ordine,$id_ordine);
 				$query->execute();
-				//echo $query->info; exit;
 				$queryResult = $query->get_result();
 
 				if( $queryResult->num_rows > 0 ) {
@@ -641,7 +640,7 @@
         } else {return true;}
     }
 
-    //Controlla che l'input contenga solo lettere sia almeno lungo $dim;
+    //Controlla che l'input contenga solo lettere sia almeno lungo $dim
     function checkTestoSpaziDim($string, $dim)
     {
         if (strlen($string) < $dim) {
@@ -652,7 +651,7 @@
         } else return true;
     }
 
-    //Controlla che l'input non contenga numeri e sia lungo tra i 10 ed i 200 caratteri;
+    //Controlla che l'input non contenga numeri e sia lungo tra i 10 ed i 200 caratteri
     function checkTextarea($string)
     {
         if (strlen($string) < 10 || strlen($string) > 200) {
