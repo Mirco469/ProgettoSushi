@@ -61,25 +61,20 @@ function rmProdotto(nome) {
 			var dd = document.getElementById('dd-'+nome);
 			
 			if(data.success) {
+				
+				// rimuovo tutti i possibili messaggi precedenti
+				var messaggiDaRimuovere = document.getElementsByClassName('messaggio');
+				for( var i = 0; i < messaggiDaRimuovere.length ; i++  ) {
+					messaggiDaRimuovere[i].parentNode.removeChild(messaggiDaRimuovere[i]);
+				}
+				
 				if( document.getElementsByTagName('dt').length > 1 ) {
-					
-					// rimuovo tutti i possibili messaggi precedenti
-					var messaggiDaRimuovere = document.getElementsByClassName('messaggio');
-					for( var i = 0; i < messaggiDaRimuovere.length ; i++  ) {
-						messaggiDaRimuovere[i].parentNode.removeChild(messaggiDaRimuovere[i]);
-					}
 					
 					dt.outerHTML = '<p class="messaggio successo">Prodotto rimosso con successo!</p>';
 					dd.parentNode.removeChild(dd);
 					
 					document.getElementById('totaleValue').textContent = parseFloat(data.total).toFixed(2).replace('.',',');
 				} else {
-					
-					// rimuovo tutti i possibili messaggi precedenti
-					var messaggiDaRimuovere = document.getElementsByClassName('messaggio');
-					for( var i = 0; i < messaggiDaRimuovere.length ; i++  ) {
-						messaggiDaRimuovere[i].parentNode.removeChild(messaggiDaRimuovere[i]);
-					}
 					
 					dt.outerHTML = '<p class="messaggio successo">Prodotto rimosso con successo!</p>';
 					dd.parentNode.removeChild(dd);
