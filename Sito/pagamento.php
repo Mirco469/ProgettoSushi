@@ -300,7 +300,7 @@
 			}
 			$paginaHTML = str_replace('<cartaUtente />', $cartaUtente, $paginaHTML);
 
-			$months = "<p>";
+			$months = "";
 			$mesi = array('Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre');
 			for ($i = 0; $i<12; $i++)
 			{
@@ -313,9 +313,8 @@
 					$months .= '<option value="' . ($i+1) . '">' . $mesi[$i] . '</option>';
 				}
 			}
-			$months .= "</p>";
 
-			$years = "<p>";
+			$years = "";
 			$annoCorrente = date("Y");
 			for ($i = 0; $i<20; $i++)
 			{
@@ -328,7 +327,6 @@
 					$years .= '<option value="' . ($annoCorrente+$i) . '">' . ($annoCorrente+$i) . '</option>';
 				}
 			}
-			$years .= "</p>";
 
 			$formCarta = "
 			<p>
@@ -341,14 +339,14 @@
 			</p>
 			<p>
 			<label for=\"mese_scad\">Mese di scadenza: </label>
-			<select name=\"mese_scad\" class=\"selezione_small\">
+			<select name=\"mese_scad\" id=\"mese_scad\" class=\"selezione_small\">
 				<option>Mese</option>
 				$months
 			</select>
 			</p>
 			<p>
 			<label for=\"anno_scad\">Anno di scadenza: </label>
-			<select name=\"anno_scad\" class=\"selezione_small\">
+			<select name=\"anno_scad\" id=\"anno_scad\" class=\"selezione_small\">
 				<option>Anno</option>
 				$years
 			</select>
