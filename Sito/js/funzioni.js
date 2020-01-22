@@ -149,6 +149,16 @@ function checkTextarea(input) {
     }
 }
 
+function checkCVV(input) {
+    var patt = new RegExp('^[0-9]{3}$');
+    if (patt.test(input.value.trim())) {
+        togliErrore(input);
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 //FUNZIONI PER MOSTRARE E RIMUOVERE ERRORI
 
@@ -460,4 +470,128 @@ function validazioneFormModificaProdotto() {
 	}
 	
 	return risPorzione && risPrezzo;
+}
+
+//Funzione per la validazione del form di pagamento
+function validazioneForm_pagamento()
+{
+    // Controllo il primo fieldset
+    var risNomeCognome = false;
+	var risVia = false;
+	var risCivico = false;
+	var risCAP = false;
+	var risTel = false;
+
+    var nome_cognome = document.getElementById("nome_cognome");
+	var via = document.getElementById("via");
+	var civico = document.getElementById("civico");
+	var cap = document.getElementById("cap");
+	var tel = document.getElementById("tel");
+
+    var sceltaIndirizzo = document.getElementById("destinazione");
+    var indirizzo_val = sceltaIndirizzo.options[sceltaIndirizzo.selectedIndex].text;
+    if (indirizzo_val == "Indirizzo")
+    {
+        risNomeCognome = checkNomeCognome(nome_cognome);
+	    risVia = checkAlfanumericoESpazi(via);
+	    risCivico = checkCivico(civico);
+	    risCAP = checkCAP(cap);
+	    risTel = checkSoloNumerieDim(tel);
+
+        if (!risNomeCognome) {
+	        mostraErrore(nome_cognome, "Il nome deve contenere solo lettere ed essere lungo almeno due caratteri");
+	    }
+	    if (!risVia) {
+	        mostraErrore(via,"La via non deve contenere caratteri speciali ed essere lunga almeno due caratteri");
+	    }
+	    if (!risCivico) {
+	        mostraErrore(civico,"Il numero civico deve essere del formato corretto (e.g. 4, 4b, 4-b o 4/1)");
+	    }
+	    if (!risCAP) {
+	        mostraErrore(cap,"Il CAP deve essere di Padova e contenere solo numeri");
+	    }
+	    if (!risTel) {
+	        mostraErrore(tel,"Non hai inserito un numero telefonico corretto");
+	    }
+    }
+    else 
+    {
+        togliErrore(nome_cognome);
+        togliErrore(via);
+        togliErrore(civico);
+        togliErrore(cap);
+        togliErrore(tel);
+
+        risNomeCognome = true;
+	    risVia = true;
+	    risCivico = true;
+	    risCAP = true;
+	    risTel = true;
+    }
+
+    // Controllo il secondo fieldset
+    var risIntestatario = false;
+	var risNum = false;
+    var risMeseScad = true;
+	var risAnnoScad = true;
+	var risCvv = false;
+
+    var intestatario = document.getElementById("intestatario_carta");
+	var num_carta = document.getElementById("num_carta");
+	var meseScad = document.getElementsByName("mese_scad")[0];
+	var annoScad = document.getElementsByName("anno_scad")[0];
+	var cvv = document.getElementById("cvv_carta");
+
+	var sceltaCarta = document.getElementById("carta_credito");
+    var carta_val = sceltaCarta.options[sceltaCarta.selectedIndex].text;
+    if (carta_val == "Carta di credito")
+    {
+        var meseScad_val = meseScad.options[meseScad.selectedIndex].text;
+	    var annoScad_val = annoScad.options[annoScad.selectedIndex].text;
+	    risMeseScad = meseScad_val == "Mese";
+	    risAnnoScad = annoScad_val == "Anno";
+
+	    if (risMeseScad) {
+		    togliErrore(meseScad);
+		    mostraErrore(meseScad, "Seleziona il mese di scadenza");
+	    } else {
+		    togliErrore(meseScad);
+	    }
+	    if (risAnnoScad) {
+		    togliErrore(annoScad);
+		    mostraErrore(annoScad, "Seleziona l'anno di scadenza");
+	    } else {
+		    togliErrore(annoScad);
+	    }
+
+        risIntestatario = checkNomeCognome(intestatario);
+	    risNum = checkSoloNumerieDim(num_carta);
+	    risCvv = checkCVV(cvv);
+    
+	    if (!risIntestatario) {
+		    mostraErrore(intestatario, "L'intestatario deve contenere solo lettere ed essere lungo almeno due caratteri");
+	    }
+	    if (!risNum) {
+		    mostraErrore(num_carta, "Non hai inserito un numero della carta corretto");
+	    }
+	    if (!risCvv) {
+		    mostraErrore(cvv, "Il CVV deve essere composto da tre cifre");
+	    }
+    }
+    else
+    {
+        togliErrore(intestatario);
+        togliErrore(num_carta);
+        togliErrore(meseScad);
+        togliErrore(annoScad);
+        togliErrore(cvv);
+
+        risIntestatario = true;
+	    risNum = true;
+        risMeseScad = false;
+	    risAnnoScad = false;
+        risCvv = true;
+    }
+
+    return risNomeCognome && risVia && risCivico && risCAP && risTel && risNum && risIntestatario && !risMeseScad && !risAnnoScad && risCvv;
 }

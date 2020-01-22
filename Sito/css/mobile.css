@@ -222,6 +222,10 @@ body a:visited {
 	border-radius: 4px;
 }
 
+.defaultForm legend{
+	color: #d9d9d9;
+}
+
 .defaultForm input[type=submit]{
 	display: block;
 	margin:auto;
@@ -403,6 +407,10 @@ table.defaultTable td:last-child {
     margin: 1em;
 }
 
+#home_admin legend{
+	color: #d9d9d9;
+}
+
 .mySlides>img {
 	max-height: 15em;
 
@@ -410,7 +418,6 @@ table.defaultTable td:last-child {
 #dots {
 	text-align: center;
 }
-
 
 /* Slideshow container */
 #slideshow_home {
@@ -802,6 +809,10 @@ min-height: 465px;
 	margin-bottom: 1.5em;
 	max-width: 90%;
 	border-radius: 5px;
+}
+
+#recensioni legend{
+	color: #d9d9d9;
 }
 
 #recensioni textarea {
