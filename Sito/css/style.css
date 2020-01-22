@@ -1169,6 +1169,10 @@ min-height: 465px;
 	margin-left: 6em;
 }
 
+#storico_ordini>p {
+	margin-left: 8em;
+}
+
 #storico_ordini a.buttonSmall {
     display: inline-block;
 	box-sizing: border-box;
